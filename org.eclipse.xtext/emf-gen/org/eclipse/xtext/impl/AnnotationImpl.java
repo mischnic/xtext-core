@@ -24,10 +24,6 @@ import org.eclipse.xtext.XtextPackage;
  * </ul>
  *
  * @generated
- * @noreference This class is not intended to be referenced by clients.
- * @noextend This class is not intended to be subclassed by clients.
- * @noinstantiate This class is not intended to be instantiated by clients.
- * @since 2.11
  */
 public class AnnotationImpl extends MinimalEObjectImpl.Container implements Annotation {
 	/**
@@ -74,6 +70,7 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -83,6 +80,7 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -157,7 +155,7 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(')');

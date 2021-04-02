@@ -26,10 +26,6 @@ import org.eclipse.xtext.XtextPackage;
  * </ul>
  *
  * @generated
- * @noreference This class is not intended to be referenced by clients.
- * @noextend This class is not intended to be subclassed by clients.
- * @noinstantiate This class is not intended to be instantiated by clients.
- * @since 2.9
  */
 public class NegationImpl extends ConditionImpl implements Negation {
 	/**
@@ -66,6 +62,7 @@ public class NegationImpl extends ConditionImpl implements Negation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Condition getValue() {
 		return value;
 	}
@@ -90,6 +87,7 @@ public class NegationImpl extends ConditionImpl implements Negation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(Condition newValue) {
 		if (newValue != value) {
 			NotificationChain msgs = null;
