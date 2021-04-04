@@ -48,12 +48,23 @@ ParserRule :
 	(annotations += Annotation)*
 	(
 	  ^fragment?='fragment' RuleNameAndParams (wildcard?='*' | ('returns' type=TypeRef)?)
-	| RuleNameAndParams ('returns' type=TypeRef)?
+	| RuleNameAndParams ('returns' type=TypeRef)? ('becomes' becomes=BecomesDecl)?
 	)
 	(definesHiddenTokens?='hidden' '(' (hiddenTokens+=[AbstractRule|RuleID] (',' hiddenTokens+=[AbstractRule|RuleID])*)? ')')? ':'
 		alternatives=Alternatives
 	';'
 ;
+
+terminal JAVA_STRING returns ecore::EString:
+	'$$' -> '$$'
+;
+
+BecomesDecl returns BecomesDecl:
+	type=QualifiedName code=JAVA_STRING
+;
+
+QualifiedName:
+    ID ('.' ID)*;
 
 fragment RuleNameAndParams returns ParserRule:
 	name=ValidID ('<' (parameters+=Parameter (',' parameters+=Parameter)*)? '>')?
