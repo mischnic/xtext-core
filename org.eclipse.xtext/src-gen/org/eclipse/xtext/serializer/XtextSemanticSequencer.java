@@ -11,6 +11,7 @@ import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Annotation;
 import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.BecomesDecl;
 import org.eclipse.xtext.CharacterRange;
 import org.eclipse.xtext.Conjunction;
 import org.eclipse.xtext.CrossReference;
@@ -136,6 +137,9 @@ public class XtextSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 					return; 
 				}
 				else break;
+			case XtextPackage.BECOMES_DECL:
+				sequence_BecomesDecl(context, (BecomesDecl) semanticObject); 
+				return; 
 			case XtextPackage.CHARACTER_RANGE:
 				if (rule == grammarAccess.getCharacterRangeRule()) {
 					sequence_CharacterRange(context, (CharacterRange) semanticObject); 
@@ -620,6 +624,27 @@ public class XtextSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
+	 *     BecomesDecl returns BecomesDecl
+	 *
+	 * Constraint:
+	 *     (type=QualifiedName code=JAVA_STRING)
+	 */
+	protected void sequence_BecomesDecl(ISerializationContext context, BecomesDecl semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XtextPackage.Literals.BECOMES_DECL__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XtextPackage.Literals.BECOMES_DECL__TYPE));
+			if (transientValues.isValueTransient(semanticObject, XtextPackage.Literals.BECOMES_DECL__CODE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XtextPackage.Literals.BECOMES_DECL__CODE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getBecomesDeclAccess().getTypeQualifiedNameParserRuleCall_0_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getBecomesDeclAccess().getCodeJAVA_STRINGTerminalRuleCall_1_0(), semanticObject.getCode());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     CharacterRange returns CharacterRange
 	 *
 	 * Constraint:
@@ -1016,7 +1041,7 @@ public class XtextSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *         fragment?='fragment'? 
 	 *         name=ValidID 
 	 *         (parameters+=Parameter parameters+=Parameter*)? 
-	 *         (wildcard?='*' | type=TypeRef | type=TypeRef)? 
+	 *         (wildcard?='*' | type=TypeRef | (type=TypeRef? becomes=BecomesDecl?))? 
 	 *         (definesHiddenTokens?='hidden' (hiddenTokens+=[AbstractRule|RuleID] hiddenTokens+=[AbstractRule|RuleID]*)?)? 
 	 *         alternatives=Alternatives
 	 *     )

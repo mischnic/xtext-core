@@ -355,6 +355,15 @@ public interface XtextFactory extends EFactory {
 	Annotation createAnnotation();
 
 	/**
+	 * Returns a new object of class '<em>Becomes Decl</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Becomes Decl</em>'.
+	 * @generated
+	 */
+	BecomesDecl createBecomesDecl();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

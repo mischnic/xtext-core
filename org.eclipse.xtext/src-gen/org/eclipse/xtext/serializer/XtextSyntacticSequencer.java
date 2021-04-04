@@ -234,6 +234,7 @@ public class XtextSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ('<' '>')?
 	 *
 	 * This ambiguous syntax occurs at:
+	 *     name=ValidID (ambiguity) 'becomes' becomes=BecomesDecl
 	 *     name=ValidID (ambiguity) 'returns' type=TypeRef
 	 *     name=ValidID (ambiguity) wildcard?='*'
 	 */

@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtext.AbstractRule;
+import org.eclipse.xtext.BecomesDecl;
 import org.eclipse.xtext.Parameter;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.XtextPackage;
@@ -36,6 +37,7 @@ import org.eclipse.xtext.XtextPackage;
  *   <li>{@link org.eclipse.xtext.impl.ParserRuleImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.eclipse.xtext.impl.ParserRuleImpl#isFragment <em>Fragment</em>}</li>
  *   <li>{@link org.eclipse.xtext.impl.ParserRuleImpl#isWildcard <em>Wildcard</em>}</li>
+ *   <li>{@link org.eclipse.xtext.impl.ParserRuleImpl#getBecomes <em>Becomes</em>}</li>
  * </ul>
  *
  * @generated
@@ -125,6 +127,16 @@ public class ParserRuleImpl extends AbstractRuleImpl implements ParserRule {
 	 * @ordered
 	 */
 	protected boolean wildcard = WILDCARD_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getBecomes() <em>Becomes</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBecomes()
+	 * @generated
+	 * @ordered
+	 */
+	protected BecomesDecl becomes;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -251,10 +263,57 @@ public class ParserRuleImpl extends AbstractRuleImpl implements ParserRule {
 	 * @generated
 	 */
 	@Override
+	public BecomesDecl getBecomes() {
+		return becomes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetBecomes(BecomesDecl newBecomes, NotificationChain msgs) {
+		BecomesDecl oldBecomes = becomes;
+		becomes = newBecomes;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XtextPackage.PARSER_RULE__BECOMES, oldBecomes, newBecomes);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setBecomes(BecomesDecl newBecomes) {
+		if (newBecomes != becomes) {
+			NotificationChain msgs = null;
+			if (becomes != null)
+				msgs = ((InternalEObject)becomes).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XtextPackage.PARSER_RULE__BECOMES, null, msgs);
+			if (newBecomes != null)
+				msgs = ((InternalEObject)newBecomes).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XtextPackage.PARSER_RULE__BECOMES, null, msgs);
+			msgs = basicSetBecomes(newBecomes, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, XtextPackage.PARSER_RULE__BECOMES, newBecomes, newBecomes));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case XtextPackage.PARSER_RULE__PARAMETERS:
 				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
+			case XtextPackage.PARSER_RULE__BECOMES:
+				return basicSetBecomes(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -277,6 +336,8 @@ public class ParserRuleImpl extends AbstractRuleImpl implements ParserRule {
 				return isFragment();
 			case XtextPackage.PARSER_RULE__WILDCARD:
 				return isWildcard();
+			case XtextPackage.PARSER_RULE__BECOMES:
+				return getBecomes();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -307,6 +368,9 @@ public class ParserRuleImpl extends AbstractRuleImpl implements ParserRule {
 			case XtextPackage.PARSER_RULE__WILDCARD:
 				setWildcard((Boolean)newValue);
 				return;
+			case XtextPackage.PARSER_RULE__BECOMES:
+				setBecomes((BecomesDecl)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -334,6 +398,9 @@ public class ParserRuleImpl extends AbstractRuleImpl implements ParserRule {
 			case XtextPackage.PARSER_RULE__WILDCARD:
 				setWildcard(WILDCARD_EDEFAULT);
 				return;
+			case XtextPackage.PARSER_RULE__BECOMES:
+				setBecomes((BecomesDecl)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -356,6 +423,8 @@ public class ParserRuleImpl extends AbstractRuleImpl implements ParserRule {
 				return fragment != FRAGMENT_EDEFAULT;
 			case XtextPackage.PARSER_RULE__WILDCARD:
 				return wildcard != WILDCARD_EDEFAULT;
+			case XtextPackage.PARSER_RULE__BECOMES:
+				return becomes != null;
 		}
 		return super.eIsSet(featureID);
 	}

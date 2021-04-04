@@ -74,9 +74,13 @@ public class XtextParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getParserRuleAccess().getGroup_1_0_2_1(), "rule__ParserRule__Group_1_0_2_1__0");
 			builder.put(grammarAccess.getParserRuleAccess().getGroup_1_1(), "rule__ParserRule__Group_1_1__0");
 			builder.put(grammarAccess.getParserRuleAccess().getGroup_1_1_1(), "rule__ParserRule__Group_1_1_1__0");
+			builder.put(grammarAccess.getParserRuleAccess().getGroup_1_1_2(), "rule__ParserRule__Group_1_1_2__0");
 			builder.put(grammarAccess.getParserRuleAccess().getGroup_2(), "rule__ParserRule__Group_2__0");
 			builder.put(grammarAccess.getParserRuleAccess().getGroup_2_2(), "rule__ParserRule__Group_2_2__0");
 			builder.put(grammarAccess.getParserRuleAccess().getGroup_2_2_1(), "rule__ParserRule__Group_2_2_1__0");
+			builder.put(grammarAccess.getBecomesDeclAccess().getGroup(), "rule__BecomesDecl__Group__0");
+			builder.put(grammarAccess.getQualifiedNameAccess().getGroup(), "rule__QualifiedName__Group__0");
+			builder.put(grammarAccess.getQualifiedNameAccess().getGroup_1(), "rule__QualifiedName__Group_1__0");
 			builder.put(grammarAccess.getRuleNameAndParamsAccess().getGroup(), "rule__RuleNameAndParams__Group__0");
 			builder.put(grammarAccess.getRuleNameAndParamsAccess().getGroup_1(), "rule__RuleNameAndParams__Group_1__0");
 			builder.put(grammarAccess.getRuleNameAndParamsAccess().getGroup_1_1(), "rule__RuleNameAndParams__Group_1_1__0");
@@ -165,10 +169,13 @@ public class XtextParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getParserRuleAccess().getWildcardAssignment_1_0_2_0(), "rule__ParserRule__WildcardAssignment_1_0_2_0");
 			builder.put(grammarAccess.getParserRuleAccess().getTypeAssignment_1_0_2_1_1(), "rule__ParserRule__TypeAssignment_1_0_2_1_1");
 			builder.put(grammarAccess.getParserRuleAccess().getTypeAssignment_1_1_1_1(), "rule__ParserRule__TypeAssignment_1_1_1_1");
+			builder.put(grammarAccess.getParserRuleAccess().getBecomesAssignment_1_1_2_1(), "rule__ParserRule__BecomesAssignment_1_1_2_1");
 			builder.put(grammarAccess.getParserRuleAccess().getDefinesHiddenTokensAssignment_2_0(), "rule__ParserRule__DefinesHiddenTokensAssignment_2_0");
 			builder.put(grammarAccess.getParserRuleAccess().getHiddenTokensAssignment_2_2_0(), "rule__ParserRule__HiddenTokensAssignment_2_2_0");
 			builder.put(grammarAccess.getParserRuleAccess().getHiddenTokensAssignment_2_2_1_1(), "rule__ParserRule__HiddenTokensAssignment_2_2_1_1");
 			builder.put(grammarAccess.getParserRuleAccess().getAlternativesAssignment_4(), "rule__ParserRule__AlternativesAssignment_4");
+			builder.put(grammarAccess.getBecomesDeclAccess().getTypeAssignment_0(), "rule__BecomesDecl__TypeAssignment_0");
+			builder.put(grammarAccess.getBecomesDeclAccess().getCodeAssignment_1(), "rule__BecomesDecl__CodeAssignment_1");
 			builder.put(grammarAccess.getRuleNameAndParamsAccess().getNameAssignment_0(), "rule__RuleNameAndParams__NameAssignment_0");
 			builder.put(grammarAccess.getRuleNameAndParamsAccess().getParametersAssignment_1_1_0(), "rule__RuleNameAndParams__ParametersAssignment_1_1_0");
 			builder.put(grammarAccess.getRuleNameAndParamsAccess().getParametersAssignment_1_1_1_1(), "rule__RuleNameAndParams__ParametersAssignment_1_1_1_1");

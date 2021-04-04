@@ -400,6 +400,15 @@ public interface XtextPackage extends EPackage {
 	int PARSER_RULE__WILDCARD = ABSTRACT_RULE_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Becomes</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARSER_RULE__BECOMES = ABSTRACT_RULE_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Parser Rule</em>' class.
 	 * <!-- begin-user-doc -->
 	 * @since 2.9
@@ -407,7 +416,7 @@ public interface XtextPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARSER_RULE_FEATURE_COUNT = ABSTRACT_RULE_FEATURE_COUNT + 5;
+	int PARSER_RULE_FEATURE_COUNT = ABSTRACT_RULE_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.xtext.impl.TypeRefImpl <em>Type Ref</em>}' class.
@@ -1934,6 +1943,43 @@ public interface XtextPackage extends EPackage {
 	int ANNOTATION_FEATURE_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.xtext.impl.BecomesDeclImpl <em>Becomes Decl</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.xtext.impl.BecomesDeclImpl
+	 * @see org.eclipse.xtext.impl.XtextPackageImpl#getBecomesDecl()
+	 * @generated
+	 */
+	int BECOMES_DECL = 36;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BECOMES_DECL__TYPE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BECOMES_DECL__CODE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Becomes Decl</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BECOMES_DECL_FEATURE_COUNT = 2;
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.xtext.Grammar <em>Grammar</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2193,6 +2239,17 @@ public interface XtextPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getParserRule_Wildcard();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.xtext.ParserRule#getBecomes <em>Becomes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Becomes</em>'.
+	 * @see org.eclipse.xtext.ParserRule#getBecomes()
+	 * @see #getParserRule()
+	 * @generated
+	 */
+	EReference getParserRule_Becomes();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.xtext.TypeRef <em>Type Ref</em>}'.
@@ -2902,6 +2959,38 @@ public interface XtextPackage extends EPackage {
 	EAttribute getAnnotation_Name();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.xtext.BecomesDecl <em>Becomes Decl</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Becomes Decl</em>'.
+	 * @see org.eclipse.xtext.BecomesDecl
+	 * @generated
+	 */
+	EClass getBecomesDecl();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.xtext.BecomesDecl#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see org.eclipse.xtext.BecomesDecl#getType()
+	 * @see #getBecomesDecl()
+	 * @generated
+	 */
+	EAttribute getBecomesDecl_Type();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.xtext.BecomesDecl#getCode <em>Code</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Code</em>'.
+	 * @see org.eclipse.xtext.BecomesDecl#getCode()
+	 * @see #getBecomesDecl()
+	 * @generated
+	 */
+	EAttribute getBecomesDecl_Code();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3129,6 +3218,14 @@ public interface XtextPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PARSER_RULE__WILDCARD = eINSTANCE.getParserRule_Wildcard();
+
+		/**
+		 * The meta object literal for the '<em><b>Becomes</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PARSER_RULE__BECOMES = eINSTANCE.getParserRule_Becomes();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.xtext.impl.TypeRefImpl <em>Type Ref</em>}' class.
@@ -3731,6 +3828,32 @@ public interface XtextPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ANNOTATION__NAME = eINSTANCE.getAnnotation_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.xtext.impl.BecomesDeclImpl <em>Becomes Decl</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.xtext.impl.BecomesDeclImpl
+		 * @see org.eclipse.xtext.impl.XtextPackageImpl#getBecomesDecl()
+		 * @generated
+		 */
+		EClass BECOMES_DECL = eINSTANCE.getBecomesDecl();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BECOMES_DECL__TYPE = eINSTANCE.getBecomesDecl_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BECOMES_DECL__CODE = eINSTANCE.getBecomesDecl_Code();
 
 	}
 

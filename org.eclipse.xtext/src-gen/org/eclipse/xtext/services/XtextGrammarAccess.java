@@ -382,6 +382,10 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Keyword cReturnsKeyword_1_1_1_0 = (Keyword)cGroup_1_1_1.eContents().get(0);
 		private final Assignment cTypeAssignment_1_1_1_1 = (Assignment)cGroup_1_1_1.eContents().get(1);
 		private final RuleCall cTypeTypeRefParserRuleCall_1_1_1_1_0 = (RuleCall)cTypeAssignment_1_1_1_1.eContents().get(0);
+		private final Group cGroup_1_1_2 = (Group)cGroup_1_1.eContents().get(2);
+		private final Keyword cBecomesKeyword_1_1_2_0 = (Keyword)cGroup_1_1_2.eContents().get(0);
+		private final Assignment cBecomesAssignment_1_1_2_1 = (Assignment)cGroup_1_1_2.eContents().get(1);
+		private final RuleCall cBecomesBecomesDeclParserRuleCall_1_1_2_1_0 = (RuleCall)cBecomesAssignment_1_1_2_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
 		private final Assignment cDefinesHiddenTokensAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
 		private final Keyword cDefinesHiddenTokensHiddenKeyword_2_0_0 = (Keyword)cDefinesHiddenTokensAssignment_2_0.eContents().get(0);
@@ -403,15 +407,16 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		
 		//ParserRule:
 		//	annotations+=Annotation* (^fragment?='fragment' RuleNameAndParams (wildcard?='*' | ('returns' type=TypeRef)?) |
-		//	RuleNameAndParams ('returns' type=TypeRef)?) (definesHiddenTokens?='hidden' '(' (hiddenTokens+=[AbstractRule|RuleID]
-		//	(',' hiddenTokens+=[AbstractRule|RuleID])*)? ')')? ':'
+		//	RuleNameAndParams ('returns' type=TypeRef)? ('becomes' becomes=BecomesDecl)?) (definesHiddenTokens?='hidden' '('
+		//	(hiddenTokens+=[AbstractRule|RuleID] (',' hiddenTokens+=[AbstractRule|RuleID])*)? ')')? ':'
 		//	alternatives=Alternatives
 		//	';';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//annotations+=Annotation* (^fragment?='fragment' RuleNameAndParams (wildcard?='*' | ('returns' type=TypeRef)?) |
-		//RuleNameAndParams ('returns' type=TypeRef)?) (definesHiddenTokens?='hidden' '(' (hiddenTokens+=[AbstractRule|RuleID]
-		//(',' hiddenTokens+=[AbstractRule|RuleID])*)? ')')? ':' alternatives=Alternatives ';'
+		//RuleNameAndParams ('returns' type=TypeRef)? ('becomes' becomes=BecomesDecl)?) (definesHiddenTokens?='hidden' '('
+		//(hiddenTokens+=[AbstractRule|RuleID] (',' hiddenTokens+=[AbstractRule|RuleID])*)? ')')? ':' alternatives=Alternatives
+		//';'
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=Annotation*
@@ -421,7 +426,7 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		public RuleCall getAnnotationsAnnotationParserRuleCall_0_0() { return cAnnotationsAnnotationParserRuleCall_0_0; }
 		
 		//(^fragment?='fragment' RuleNameAndParams (wildcard?='*' | ('returns' type=TypeRef)?) | RuleNameAndParams ('returns'
-		//type=TypeRef)?)
+		//type=TypeRef)? ('becomes' becomes=BecomesDecl)?)
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 		
 		//^fragment?='fragment' RuleNameAndParams (wildcard?='*' | ('returns' type=TypeRef)?)
@@ -457,7 +462,7 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//TypeRef
 		public RuleCall getTypeTypeRefParserRuleCall_1_0_2_1_1_0() { return cTypeTypeRefParserRuleCall_1_0_2_1_1_0; }
 		
-		//RuleNameAndParams ('returns' type=TypeRef)?
+		//RuleNameAndParams ('returns' type=TypeRef)? ('becomes' becomes=BecomesDecl)?
 		public Group getGroup_1_1() { return cGroup_1_1; }
 		
 		//RuleNameAndParams
@@ -474,6 +479,18 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		
 		//TypeRef
 		public RuleCall getTypeTypeRefParserRuleCall_1_1_1_1_0() { return cTypeTypeRefParserRuleCall_1_1_1_1_0; }
+		
+		//('becomes' becomes=BecomesDecl)?
+		public Group getGroup_1_1_2() { return cGroup_1_1_2; }
+		
+		//'becomes'
+		public Keyword getBecomesKeyword_1_1_2_0() { return cBecomesKeyword_1_1_2_0; }
+		
+		//becomes=BecomesDecl
+		public Assignment getBecomesAssignment_1_1_2_1() { return cBecomesAssignment_1_1_2_1; }
+		
+		//BecomesDecl
+		public RuleCall getBecomesBecomesDeclParserRuleCall_1_1_2_1_0() { return cBecomesBecomesDeclParserRuleCall_1_1_2_1_0; }
 		
 		//(definesHiddenTokens?='hidden' '(' (hiddenTokens+=[AbstractRule|RuleID] (',' hiddenTokens+=[AbstractRule|RuleID])*)?
 		//')')?
@@ -529,6 +546,60 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		
 		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
+	}
+	public class BecomesDeclElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.Xtext.BecomesDecl");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTypeQualifiedNameParserRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
+		private final Assignment cCodeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cCodeJAVA_STRINGTerminalRuleCall_1_0 = (RuleCall)cCodeAssignment_1.eContents().get(0);
+		
+		//BecomesDecl:
+		//	type=QualifiedName code=JAVA_STRING;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//type=QualifiedName code=JAVA_STRING
+		public Group getGroup() { return cGroup; }
+		
+		//type=QualifiedName
+		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
+		
+		//QualifiedName
+		public RuleCall getTypeQualifiedNameParserRuleCall_0_0() { return cTypeQualifiedNameParserRuleCall_0_0; }
+		
+		//code=JAVA_STRING
+		public Assignment getCodeAssignment_1() { return cCodeAssignment_1; }
+		
+		//JAVA_STRING
+		public RuleCall getCodeJAVA_STRINGTerminalRuleCall_1_0() { return cCodeJAVA_STRINGTerminalRuleCall_1_0; }
+	}
+	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.Xtext.QualifiedName");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		
+		//QualifiedName:
+		//	ID ('.' ID)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//ID ('.' ID)*
+		public Group getGroup() { return cGroup; }
+		
+		//ID
+		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
+		
+		//('.' ID)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'.'
+		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
+		
+		//ID
+		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
 	}
 	public class RuleNameAndParamsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.Xtext.RuleNameAndParams");
@@ -2317,6 +2388,9 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	private final ReferencedMetamodelElements pReferencedMetamodel;
 	private final AnnotationElements pAnnotation;
 	private final ParserRuleElements pParserRule;
+	private final TerminalRule tJAVA_STRING;
+	private final BecomesDeclElements pBecomesDecl;
+	private final QualifiedNameElements pQualifiedName;
 	private final RuleNameAndParamsElements pRuleNameAndParams;
 	private final ParameterElements pParameter;
 	private final TypeRefElements pTypeRef;
@@ -2384,6 +2458,9 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		this.pReferencedMetamodel = new ReferencedMetamodelElements();
 		this.pAnnotation = new AnnotationElements();
 		this.pParserRule = new ParserRuleElements();
+		this.tJAVA_STRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.Xtext.JAVA_STRING");
+		this.pBecomesDecl = new BecomesDeclElements();
+		this.pQualifiedName = new QualifiedNameElements();
 		this.pRuleNameAndParams = new RuleNameAndParamsElements();
 		this.pParameter = new ParameterElements();
 		this.pTypeRef = new TypeRefElements();
@@ -2545,8 +2622,8 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	
 	//ParserRule:
 	//	annotations+=Annotation* (^fragment?='fragment' RuleNameAndParams (wildcard?='*' | ('returns' type=TypeRef)?) |
-	//	RuleNameAndParams ('returns' type=TypeRef)?) (definesHiddenTokens?='hidden' '(' (hiddenTokens+=[AbstractRule|RuleID]
-	//	(',' hiddenTokens+=[AbstractRule|RuleID])*)? ')')? ':'
+	//	RuleNameAndParams ('returns' type=TypeRef)? ('becomes' becomes=BecomesDecl)?) (definesHiddenTokens?='hidden' '('
+	//	(hiddenTokens+=[AbstractRule|RuleID] (',' hiddenTokens+=[AbstractRule|RuleID])*)? ')')? ':'
 	//	alternatives=Alternatives
 	//	';';
 	public ParserRuleElements getParserRuleAccess() {
@@ -2555,6 +2632,32 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	
 	public ParserRule getParserRuleRule() {
 		return getParserRuleAccess().getRule();
+	}
+	
+	//terminal JAVA_STRING:
+	//	'$$'->'$$';
+	public TerminalRule getJAVA_STRINGRule() {
+		return tJAVA_STRING;
+	}
+	
+	//BecomesDecl:
+	//	type=QualifiedName code=JAVA_STRING;
+	public BecomesDeclElements getBecomesDeclAccess() {
+		return pBecomesDecl;
+	}
+	
+	public ParserRule getBecomesDeclRule() {
+		return getBecomesDeclAccess().getRule();
+	}
+	
+	//QualifiedName:
+	//	ID ('.' ID)*;
+	public QualifiedNameElements getQualifiedNameAccess() {
+		return pQualifiedName;
+	}
+	
+	public ParserRule getQualifiedNameRule() {
+		return getQualifiedNameAccess().getRule();
 	}
 	
 	//fragment RuleNameAndParams returns ParserRule:

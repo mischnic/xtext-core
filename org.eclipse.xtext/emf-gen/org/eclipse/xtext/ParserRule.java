@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.xtext.ParserRule#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.eclipse.xtext.ParserRule#isFragment <em>Fragment</em>}</li>
  *   <li>{@link org.eclipse.xtext.ParserRule#isWildcard <em>Wildcard</em>}</li>
+ *   <li>{@link org.eclipse.xtext.ParserRule#getBecomes <em>Becomes</em>}</li>
  * </ul>
  *
  * @see org.eclipse.xtext.XtextPackage#getParserRule()
@@ -141,5 +142,27 @@ public interface ParserRule extends AbstractRule {
 	 * @generated
 	 */
 	void setWildcard(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Becomes</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Becomes</em>' containment reference.
+	 * @see #setBecomes(BecomesDecl)
+	 * @see org.eclipse.xtext.XtextPackage#getParserRule_Becomes()
+	 * @model containment="true"
+	 * @generated
+	 */
+	BecomesDecl getBecomes();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.xtext.ParserRule#getBecomes <em>Becomes</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Becomes</em>' containment reference.
+	 * @see #getBecomes()
+	 * @generated
+	 */
+	void setBecomes(BecomesDecl value);
 
 } // ParserRule
