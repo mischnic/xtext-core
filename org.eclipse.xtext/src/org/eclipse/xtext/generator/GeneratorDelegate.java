@@ -42,6 +42,7 @@ public class GeneratorDelegate implements IGenerator, IGenerator2 {
 	public void doGenerate(Resource input, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		if (generator != null) {
 			generator.doGenerate(input, fsa, context);
+			generator.doGenerateAST(input, fsa, context);
 		} else if (getLegacyGenerator() != null) {
 			getLegacyGenerator().doGenerate(input, fsa);
 		}
@@ -58,6 +59,13 @@ public class GeneratorDelegate implements IGenerator, IGenerator2 {
 	public void afterGenerate(Resource input, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		if (generator != null) {
 			generator.afterGenerate(input, fsa, context);
+		}
+	}
+	
+	@Override
+	public void doGenerateAST(Object input, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		if (generator != null) {
+			generator.doGenerateAST(input, fsa, context);
 		}
 	}
 

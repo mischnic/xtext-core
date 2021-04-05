@@ -35,6 +35,18 @@ public interface IGenerator2 {
 	 * are blocking.
 	 */
 	void doGenerate(Resource input, IFileSystemAccess2 fsa, IGeneratorContext context);
+	
+	/**
+	 * Perform the code generation for the given AST (which is generated as
+	 * described in the grammer).
+	 * Any number of files may be created or modified. Write operations
+	 * to the given file system access may be processed asynchronous and
+	 * are non-blocking if the given fsa is implementing that pattern.
+	 * Read operations will happen in the background but
+	 * are blocking.
+	 */
+	// TODO don't make it a default method.
+	default void doGenerateAST(Object input, IFileSystemAccess2 fsa, IGeneratorContext context) {}
 
 	/**
 	 * Before the generation is triggered, the resource or the entire resource set

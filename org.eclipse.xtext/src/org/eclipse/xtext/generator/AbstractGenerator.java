@@ -23,4 +23,7 @@ public abstract class AbstractGenerator implements IGenerator2 {
 	public void afterGenerate(Resource input, IFileSystemAccess2 fsa, IGeneratorContext context) {
 	}
 
+	@Override
+	public void doGenerateAST(Object input, IFileSystemAccess2 fsa, IGeneratorContext context) {
+	}
 }
