@@ -32,15 +32,17 @@ public class ParseResult implements IParseResult {
     private EObject rootAstElement;
     private ICompositeNode rootNode;
 	private final boolean hasErrors;
+	private Object rootAstElementConverted;
     
-    public ParseResult(/* @Nullable */ EObject rootAstElement, /* @NonNull */ ICompositeNode rootNode, boolean hasErrors) {
+    public ParseResult(/* @Nullable */ EObject rootAstElement, /* @NonNull */ ICompositeNode rootNode, boolean hasErrors, Object rootAstElementConverted) {
     	Preconditions.checkNotNull(rootNode);
         this.rootAstElement = rootAstElement;
         this.rootNode = rootNode;
 		this.hasErrors = hasErrors;
+		this.rootAstElementConverted = rootAstElementConverted;
     }
     
-    public void setRootASTElement(/* @Nullable */ EObject rootAstElement) {
+	public void setRootASTElement(/* @Nullable */ EObject rootAstElement) {
         this.rootAstElement = rootAstElement;
     }
 
@@ -85,5 +87,14 @@ public class ParseResult implements IParseResult {
 	@Override
 	public boolean hasSyntaxErrors() {
 		return hasErrors;
+	}
+
+	@Override
+	public Object getRootASTElementConverted() {
+		return rootAstElementConverted;
+	}
+	
+	public void setRootASTElementConverted(Object rootAstElementConverted) {
+		this.rootAstElementConverted = rootAstElementConverted;
 	}
 }

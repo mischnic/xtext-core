@@ -318,6 +318,16 @@ class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
 			}
 		«ENDIF»
 		
+		public Object «gaRuleBecomeMethodName»(org.xtext.example.mydsl.myDsl.«it.type.getClassifier().name» cst){
+			«IF it.becomes !== null»
+				«it.becomes.type» ast = new «it.becomes.type»();
+				«it.becomes.code.substring(3, it.becomes.code.length - 2)»
+				return ast;
+			«ELSE»
+				return null;
+			«ENDIF»
+		}
+		
 		public ParserRule «gaRuleAccessor» {
 			return «gaElementsAccessor».getRule();
 		}

@@ -30,4 +30,6 @@ public interface IParseResult {
     Iterable<INode> getSyntaxErrors();
     
     boolean hasSyntaxErrors();
+    
+    Object getRootASTElementConverted();
 }

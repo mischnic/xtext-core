@@ -417,6 +417,14 @@ public class GrammarAccessExtensions {
   }
   
   /**
+   * Returns the method name for invoking a become bdoy via a GrammarAccess implementation.
+   */
+  public String gaRuleBecomeMethodName(final AbstractRule rule) {
+    String _gaRuleIdentifier = this.gaRuleIdentifier(rule);
+    return ("convert" + _gaRuleIdentifier);
+  }
+  
+  /**
    * Returns the method name for accessing a rule via a GrammarAccess implementation.
    */
   public String gaBaseRuleAccessMethodName(final AbstractRule rule) {

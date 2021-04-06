@@ -35,6 +35,7 @@ import org.eclipse.xtend2.lib.StringConcatenationClient;
 import org.eclipse.xtext.AbstractElement;
 import org.eclipse.xtext.AbstractMetamodelDeclaration;
 import org.eclipse.xtext.AbstractRule;
+import org.eclipse.xtext.BecomesDecl;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.EnumRule;
 import org.eclipse.xtext.Grammar;
@@ -817,6 +818,45 @@ public class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
             _builder.newLine();
           }
         }
+        _builder.newLine();
+        _builder.append("public Object ");
+        String _gaRuleBecomeMethodName = GrammarAccessFragment2.this._grammarAccessExtensions.gaRuleBecomeMethodName(it);
+        _builder.append(_gaRuleBecomeMethodName);
+        _builder.append("(org.xtext.example.mydsl.myDsl.");
+        String _name = it.getType().getClassifier().getName();
+        _builder.append(_name);
+        _builder.append(" cst){");
+        _builder.newLineIfNotEmpty();
+        {
+          BecomesDecl _becomes = it.getBecomes();
+          boolean _tripleNotEquals = (_becomes != null);
+          if (_tripleNotEquals) {
+            _builder.append("\t");
+            String _type = it.getBecomes().getType();
+            _builder.append(_type, "\t");
+            _builder.append(" ast = new ");
+            String _type_1 = it.getBecomes().getType();
+            _builder.append(_type_1, "\t");
+            _builder.append("();");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            String _code = it.getBecomes().getCode();
+            int _length = it.getBecomes().getCode().length();
+            int _minus = (_length - 2);
+            String _substring = _code.substring(3, _minus);
+            _builder.append(_substring, "\t");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("return ast;");
+            _builder.newLine();
+          } else {
+            _builder.append("\t");
+            _builder.append("return null;");
+            _builder.newLine();
+          }
+        }
+        _builder.append("}");
+        _builder.newLine();
         _builder.newLine();
         _builder.append("public ParserRule ");
         String _gaRuleAccessor = GrammarAccessFragment2.this._grammarAccessExtensions.gaRuleAccessor(it);

@@ -114,7 +114,7 @@ public class ResourceStorageLoadable {
 				completeContent);
 		serializableNodeModel.readObjectData(new DataInputStream(inputStream), deserializationContext);
 		resource.setParseResult(new ParseResult(head(resource.getContents()), serializableNodeModel.root,
-				deserializationContext.hasErrors()));
+				deserializationContext.hasErrors(), null));
 	}
 
 }

@@ -272,6 +272,13 @@ class GrammarAccessExtensions {
 	}
 	
 	/**
+	 * Returns the method name for invoking a become bdoy via a GrammarAccess implementation.
+	 */
+	def String gaRuleBecomeMethodName(AbstractRule rule) {
+		'convert' + rule.gaRuleIdentifier
+	}
+	
+	/**
 	 * Returns the method name for accessing a rule via a GrammarAccess implementation.
 	 */
 	def String gaBaseRuleAccessMethodName(AbstractRule rule) {

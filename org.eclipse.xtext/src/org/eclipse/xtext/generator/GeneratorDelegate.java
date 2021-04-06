@@ -9,6 +9,7 @@
 package org.eclipse.xtext.generator;
 
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.util.CancelIndicator;
 
 import com.google.inject.Inject;
@@ -42,7 +43,7 @@ public class GeneratorDelegate implements IGenerator, IGenerator2 {
 	public void doGenerate(Resource input, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		if (generator != null) {
 			generator.doGenerate(input, fsa, context);
-			generator.doGenerateAST(input, fsa, context);
+			generator.doGenerateAST(((XtextResource) input).getParseResult().getRootASTElementConverted(), fsa, context);
 		} else if (getLegacyGenerator() != null) {
 			getLegacyGenerator().doGenerate(input, fsa);
 		}

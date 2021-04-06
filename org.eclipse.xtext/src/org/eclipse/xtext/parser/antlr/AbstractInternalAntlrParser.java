@@ -39,6 +39,7 @@ import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.IGrammarAccess;
+import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.TerminalRule;
 import org.eclipse.xtext.UnorderedGroup;
 import org.eclipse.xtext.conversion.ValueConverterException;
@@ -600,7 +601,7 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 				appendAllTokens();
 			} finally {
 				ICompositeNode root = nodeBuilder.compressAndReturnParent(currentNode);
-				result = new ParseResult(current, root, hadErrors);
+				result = new ParseResult(current, root, hadErrors, convertAST(current, root));
 			}
 		} catch (InvocationTargetException ite) {
 			Throwable targetException = ite.getTargetException();
@@ -609,7 +610,7 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 					appendAllTokens();
 				} finally {
 					ICompositeNode root = nodeBuilder.compressAndReturnParent(currentNode);
-					result = new ParseResult(current, root, hadErrors);
+					result = new ParseResult(current, root, hadErrors, convertAST(current, root));
 				}
 				throw (RecognitionException) targetException;
 			}
@@ -625,6 +626,28 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 			}
 		}
 		return result;
+	}
+
+	private Object convertAST(EObject current, ICompositeNode root) {
+		System.out.println("convertAST: " + current + " - " + root);
+		try {
+			EObject rootGrammarElement = root.getGrammarElement();
+			if(rootGrammarElement instanceof ParserRule) {
+				ParserRule parserRule = (ParserRule) rootGrammarElement;
+				IGrammarAccess ga = this.getGrammarAccess();
+				if(parserRule.getBecomes() != null) {
+					String ruleName = parserRule.getName();
+					System.out.println("1" + parserRule.getType().getClassifier());
+					Method m = ga.getClass().getMethod("convert" + ruleName, current.getClass().getInterfaces()[0]);
+					Object result = m.invoke(ga, current);
+					return result;
+				}
+			}
+		} catch (Exception e) {
+			throw new WrappedException(e);
+		}
+		System.out.println("problem!!!");
+		return null;
 	}
 
 	private String normalizeEntryRuleName(String entryRuleName) {
