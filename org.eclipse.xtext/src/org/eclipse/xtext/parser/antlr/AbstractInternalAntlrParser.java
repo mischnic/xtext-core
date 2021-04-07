@@ -629,24 +629,23 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 	}
 
 	private Object convertAST(EObject current, ICompositeNode root) {
-		System.out.println("convertAST: " + current + " - " + root);
-		try {
-			EObject rootGrammarElement = root.getGrammarElement();
-			if(rootGrammarElement instanceof ParserRule) {
-				ParserRule parserRule = (ParserRule) rootGrammarElement;
-				IGrammarAccess ga = this.getGrammarAccess();
-				if(parserRule.getBecomes() != null) {
-					String ruleName = parserRule.getName();
-					System.out.println("1" + parserRule.getType().getClassifier());
-					Method m = ga.getClass().getMethod("convert" + ruleName, current.getClass().getInterfaces()[0]);
-					Object result = m.invoke(ga, current);
-					return result;
+		System.out.println("convertAST: " + current + " - " + root + " - " + root.getGrammarElement());
+		if(current != null) {
+			String typeName = current.getClass().getInterfaces()[0].getSimpleName();
+			IGrammarAccess ga = this.getGrammarAccess();
+			Method m = null;
+			try {
+				m = ga.getClass().getMethod("convert" + typeName, current.getClass().getInterfaces()[0]);
+			} catch (NoSuchMethodException | SecurityException e) {	}
+			if(m != null) {
+				try {
+					return m.invoke(ga, current);
+				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+					throw new WrappedException(e);
 				}
 			}
-		} catch (Exception e) {
-			throw new WrappedException(e);
+			System.out.println("didn't convert ast");
 		}
-		System.out.println("problem!!!");
 		return null;
 	}
 
