@@ -47,6 +47,7 @@ import org.eclipse.xtext.xtext.generator.model.annotations.SingletonClassAnnotat
 
 import static extension org.eclipse.xtext.GrammarUtil.*
 import static extension org.eclipse.xtext.xtext.generator.model.TypeReference.*
+import java.util.HashMap
 
 @Log
 class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
@@ -318,12 +319,16 @@ class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
 			}
 		«ENDIF»
 		
-		public Object «gaRuleBecomeMethodName»(org.xtext.example.mydsl.myDsl.«it.type.getClassifier().name» cst){
+		public Object «gaRuleBecomeMethodName»(org.xtext.example.mydsl.myDsl.«it.type.getClassifier().name» node, «HashMap»<String, Object> children){
 			«IF it.becomes !== null»
-				«it.becomes.type» ast = new «it.becomes.type»();
-				«it.becomes.code.substring(3, it.becomes.code.length - 2)»
-				return ast;
+				return new «it.becomes.type»() {
+					«it.becomes.type» XTEXT_INIT() {
+						«it.becomes.code.substring(3, it.becomes.code.length - 2)»
+						return this;
+					}
+				}.XTEXT_INIT();
 			«ELSE»
+				// TODO generate conversion automatically
 				return null;
 			«ENDIF»
 		}

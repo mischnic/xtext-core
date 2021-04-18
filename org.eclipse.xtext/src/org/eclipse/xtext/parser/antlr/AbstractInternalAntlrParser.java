@@ -12,6 +12,7 @@ package org.eclipse.xtext.parser.antlr;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -30,16 +31,20 @@ import org.antlr.runtime.Token;
 import org.antlr.runtime.TokenStream;
 import org.antlr.runtime.UnwantedTokenException;
 import org.apache.log4j.Logger;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.WrappedException;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.xtext.AbstractElement;
 import org.eclipse.xtext.AbstractRule;
 import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.IGrammarAccess;
-import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.TerminalRule;
 import org.eclipse.xtext.UnorderedGroup;
 import org.eclipse.xtext.conversion.ValueConverterException;
@@ -601,7 +606,7 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 				appendAllTokens();
 			} finally {
 				ICompositeNode root = nodeBuilder.compressAndReturnParent(currentNode);
-				result = new ParseResult(current, root, hadErrors, convertAST(current, root));
+				result = new ParseResult(current, root, hadErrors, !hadErrors ? convertAST(current) : null);
 			}
 		} catch (InvocationTargetException ite) {
 			Throwable targetException = ite.getTargetException();
@@ -610,7 +615,7 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 					appendAllTokens();
 				} finally {
 					ICompositeNode root = nodeBuilder.compressAndReturnParent(currentNode);
-					result = new ParseResult(current, root, hadErrors, convertAST(current, root));
+					result = new ParseResult(current, root, hadErrors, !hadErrors ? convertAST(current) : null);
 				}
 				throw (RecognitionException) targetException;
 			}
@@ -628,23 +633,54 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 		return result;
 	}
 
-	private Object convertAST(EObject current, ICompositeNode root) {
-		System.out.println("convertAST: " + current + " - " + root + " - " + root.getGrammarElement());
-		if(current != null) {
-			String typeName = current.getClass().getInterfaces()[0].getSimpleName();
+	@SuppressWarnings("unchecked")
+	private Object convertAST(EObject current) {
+		if(current != null) {	
+			EClass type = current.eClass();
 			IGrammarAccess ga = this.getGrammarAccess();
+			
+//			System.out.println("convertAST current " + current);
 			Method m = null;
-			try {
-				m = ga.getClass().getMethod("convert" + typeName, current.getClass().getInterfaces()[0]);
-			} catch (NoSuchMethodException | SecurityException e) {	}
-			if(m != null) {
+			if(current.getClass().getInterfaces().length > 0) {
 				try {
-					return m.invoke(ga, current);
+					// TODO replace getInterfaces() hack
+					m = ga.getClass().getMethod("convert" + type.getName(), type.getInstanceClass(), HashMap.class);
+				} catch (NoSuchMethodException | SecurityException e) {	}
+			}
+			
+			if(m != null) {
+				EList<EStructuralFeature> features = current.eClass().getEStructuralFeatures();
+				HashMap<String, Object> convertedChildren = new HashMap<>();
+				for(EStructuralFeature f : features) {
+//					System.out.println("convertAST feature: " + f);
+					if(f instanceof EReference) {
+						Object featureValue = current.eGet(f);
+						if(!f.isMany()) {
+							Object converted = this.convertAST((EObject) featureValue);
+//							System.out.println("convertAST child: " + f.getName() + " - " + converted);
+							convertedChildren.put(f.getName(), converted);
+						} else {
+//							System.out.println("convertAST child list: " + f.getName() + " - " + feature);
+							EObjectContainmentEList<EObject> featureValueList = ((EObjectContainmentEList<EObject>) featureValue);
+							List<Object> convertedList = new ArrayList<>();
+							for(EObject featureValueEntry : featureValueList) {
+								Object converted = this.convertAST((EObject) featureValueEntry);
+								convertedList.add(converted);
+							}
+							convertedChildren.put(f.getName(), convertedList);
+						}
+					}
+				}
+				
+				try {
+					Object result = m.invoke(ga, current, convertedChildren);
+//					System.out.println("convertAST result " + result);
+					return result;
 				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 					throw new WrappedException(e);
 				}
 			}
-			System.out.println("didn't convert ast");
+//			System.out.println("didn't convert ast");
 		}
 		return null;
 	}
