@@ -3863,7 +3863,7 @@ rule__BecomesDecl__Group__1__Impl
 :
 (
 	{ before(grammarAccess.getBecomesDeclAccess().getCodeAssignment_1()); }
-	(rule__BecomesDecl__CodeAssignment_1)
+	(rule__BecomesDecl__CodeAssignment_1)?
 	{ after(grammarAccess.getBecomesDeclAccess().getCodeAssignment_1()); }
 )
 ;

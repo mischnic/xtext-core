@@ -9,6 +9,7 @@
  *******************************************************************************/
 package org.eclipse.xtext.parser.antlr;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ import org.antlr.runtime.UnwantedTokenException;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.WrappedException;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
@@ -635,15 +637,14 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 
 	@SuppressWarnings("unchecked")
 	private Object convertAST(EObject current) {
-		if(current != null) {	
+		if (current != null) {	
 			EClass type = current.eClass();
 			IGrammarAccess ga = this.getGrammarAccess();
 			
 //			System.out.println("convertAST current " + current);
 			Method m = null;
-			if(current.getClass().getInterfaces().length > 0) {
+			if (current.getClass().getInterfaces().length > 0) {
 				try {
-					// TODO replace getInterfaces() hack
 					m = ga.getClass().getMethod("convert" + type.getName(), type.getInstanceClass(), HashMap.class);
 				} catch (NoSuchMethodException | SecurityException e) {	}
 			}
@@ -651,11 +652,11 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 			if(m != null) {
 				EList<EStructuralFeature> features = current.eClass().getEStructuralFeatures();
 				HashMap<String, Object> convertedChildren = new HashMap<>();
-				for(EStructuralFeature f : features) {
+				for (EStructuralFeature f : features) {
 //					System.out.println("convertAST feature: " + f);
-					if(f instanceof EReference) {
+					if (f instanceof EReference) {
 						Object featureValue = current.eGet(f);
-						if(!f.isMany()) {
+						if (!f.isMany()) {
 							Object converted = this.convertAST((EObject) featureValue);
 //							System.out.println("convertAST child: " + f.getName() + " - " + converted);
 							convertedChildren.put(f.getName(), converted);
@@ -669,14 +670,34 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 							}
 							convertedChildren.put(f.getName(), convertedList);
 						}
+						// TODO are there more types apart fro EAttribute and EReference?
 					}
 				}
 				
 				try {
 					Object result = m.invoke(ga, current, convertedChildren);
 //					System.out.println("convertAST result " + result);
+					if (result instanceof Class) {
+						Class<?> astClass = (Class<?>) result;
+						result = astClass.getConstructor().newInstance();
+						// automatic/implicit conversion
+						for (EStructuralFeature f : features) {
+//							System.out.println("convertAST auto " + f);
+							Field field = astClass.getField(f.getName());
+							Object featureValue;
+							if (f instanceof EReference) {
+								featureValue = convertedChildren.get(f.getName());
+							} else if (f instanceof EAttribute) {
+								featureValue = current.eGet(f);
+							} else {
+								// TODO are there more types apart fro EAttribute and EReference?
+								featureValue = null;
+							}
+							field.set(result, featureValue);
+						}
+					}
 					return result;
-				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | InstantiationException | NoSuchFieldException | SecurityException | NoSuchMethodException e) {
 					throw new WrappedException(e);
 				}
 			}

@@ -627,19 +627,10 @@ public class XtextSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     BecomesDecl returns BecomesDecl
 	 *
 	 * Constraint:
-	 *     (type=QualifiedName code=JAVA_STRING)
+	 *     (type=QualifiedName code=JAVA_STRING?)
 	 */
 	protected void sequence_BecomesDecl(ISerializationContext context, BecomesDecl semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, XtextPackage.Literals.BECOMES_DECL__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XtextPackage.Literals.BECOMES_DECL__TYPE));
-			if (transientValues.isValueTransient(semanticObject, XtextPackage.Literals.BECOMES_DECL__CODE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XtextPackage.Literals.BECOMES_DECL__CODE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getBecomesDeclAccess().getTypeQualifiedNameParserRuleCall_0_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getBecomesDeclAccess().getCodeJAVA_STRINGTerminalRuleCall_1_0(), semanticObject.getCode());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

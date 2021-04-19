@@ -2119,7 +2119,7 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBecomesDecl"
-    // InternalXtext.g:832:1: ruleBecomesDecl returns [EObject current=null] : ( ( (lv_type_0_0= ruleQualifiedName ) ) ( (lv_code_1_0= RULE_JAVA_STRING ) ) ) ;
+    // InternalXtext.g:832:1: ruleBecomesDecl returns [EObject current=null] : ( ( (lv_type_0_0= ruleQualifiedName ) ) ( (lv_code_1_0= RULE_JAVA_STRING ) )? ) ;
     public final EObject ruleBecomesDecl() throws RecognitionException {
         EObject current = null;
 
@@ -2131,11 +2131,11 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalXtext.g:838:2: ( ( ( (lv_type_0_0= ruleQualifiedName ) ) ( (lv_code_1_0= RULE_JAVA_STRING ) ) ) )
-            // InternalXtext.g:839:2: ( ( (lv_type_0_0= ruleQualifiedName ) ) ( (lv_code_1_0= RULE_JAVA_STRING ) ) )
+            // InternalXtext.g:838:2: ( ( ( (lv_type_0_0= ruleQualifiedName ) ) ( (lv_code_1_0= RULE_JAVA_STRING ) )? ) )
+            // InternalXtext.g:839:2: ( ( (lv_type_0_0= ruleQualifiedName ) ) ( (lv_code_1_0= RULE_JAVA_STRING ) )? )
             {
-            // InternalXtext.g:839:2: ( ( (lv_type_0_0= ruleQualifiedName ) ) ( (lv_code_1_0= RULE_JAVA_STRING ) ) )
-            // InternalXtext.g:840:3: ( (lv_type_0_0= ruleQualifiedName ) ) ( (lv_code_1_0= RULE_JAVA_STRING ) )
+            // InternalXtext.g:839:2: ( ( (lv_type_0_0= ruleQualifiedName ) ) ( (lv_code_1_0= RULE_JAVA_STRING ) )? )
+            // InternalXtext.g:840:3: ( (lv_type_0_0= ruleQualifiedName ) ) ( (lv_code_1_0= RULE_JAVA_STRING ) )?
             {
             // InternalXtext.g:840:3: ( (lv_type_0_0= ruleQualifiedName ) )
             // InternalXtext.g:841:4: (lv_type_0_0= ruleQualifiedName )
@@ -2168,29 +2168,40 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalXtext.g:859:3: ( (lv_code_1_0= RULE_JAVA_STRING ) )
-            // InternalXtext.g:860:4: (lv_code_1_0= RULE_JAVA_STRING )
-            {
-            // InternalXtext.g:860:4: (lv_code_1_0= RULE_JAVA_STRING )
-            // InternalXtext.g:861:5: lv_code_1_0= RULE_JAVA_STRING
-            {
-            lv_code_1_0=(Token)match(input,RULE_JAVA_STRING,FollowSets000.FOLLOW_2); 
+            // InternalXtext.g:859:3: ( (lv_code_1_0= RULE_JAVA_STRING ) )?
+            int alt22=2;
+            int LA22_0 = input.LA(1);
 
-            					newLeafNode(lv_code_1_0, grammarAccess.getBecomesDeclAccess().getCodeJAVA_STRINGTerminalRuleCall_1_0());
-            				
-
-            					if (current==null) {
-            						current = createModelElement(grammarAccess.getBecomesDeclRule());
-            					}
-            					setWithLastConsumed(
-            						current,
-            						"code",
-            						lv_code_1_0,
-            						"org.eclipse.xtext.Xtext.JAVA_STRING");
-            				
-
+            if ( (LA22_0==RULE_JAVA_STRING) ) {
+                alt22=1;
             }
+            switch (alt22) {
+                case 1 :
+                    // InternalXtext.g:860:4: (lv_code_1_0= RULE_JAVA_STRING )
+                    {
+                    // InternalXtext.g:860:4: (lv_code_1_0= RULE_JAVA_STRING )
+                    // InternalXtext.g:861:5: lv_code_1_0= RULE_JAVA_STRING
+                    {
+                    lv_code_1_0=(Token)match(input,RULE_JAVA_STRING,FollowSets000.FOLLOW_2); 
 
+                    					newLeafNode(lv_code_1_0, grammarAccess.getBecomesDeclAccess().getCodeJAVA_STRINGTerminalRuleCall_1_0());
+                    				
+
+                    					if (current==null) {
+                    						current = createModelElement(grammarAccess.getBecomesDeclRule());
+                    					}
+                    					setWithLastConsumed(
+                    						current,
+                    						"code",
+                    						lv_code_1_0,
+                    						"org.eclipse.xtext.Xtext.JAVA_STRING");
+                    				
+
+                    }
+
+
+                    }
+                    break;
 
             }
 
@@ -2279,17 +2290,17 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             			newLeafNode(this_ID_0, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0());
             		
             // InternalXtext.g:903:3: (kw= '.' this_ID_2= RULE_ID )*
-            loop22:
+            loop23:
             do {
-                int alt22=2;
-                int LA22_0 = input.LA(1);
+                int alt23=2;
+                int LA23_0 = input.LA(1);
 
-                if ( (LA22_0==18) ) {
-                    alt22=1;
+                if ( (LA23_0==18) ) {
+                    alt23=1;
                 }
 
 
-                switch (alt22) {
+                switch (alt23) {
             	case 1 :
             	    // InternalXtext.g:904:4: kw= '.' this_ID_2= RULE_ID
             	    {
@@ -2310,7 +2321,7 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop22;
+            	    break loop23;
                 }
             } while (true);
 
@@ -2393,13 +2404,13 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXtext.g:949:3: (otherlv_1= '<' ( ( (lv_parameters_2_0= ruleParameter ) ) (otherlv_3= ',' ( (lv_parameters_4_0= ruleParameter ) ) )* )? otherlv_5= '>' )?
-            int alt25=2;
-            int LA25_0 = input.LA(1);
+            int alt26=2;
+            int LA26_0 = input.LA(1);
 
-            if ( (LA25_0==29) ) {
-                alt25=1;
+            if ( (LA26_0==29) ) {
+                alt26=1;
             }
-            switch (alt25) {
+            switch (alt26) {
                 case 1 :
                     // InternalXtext.g:950:4: otherlv_1= '<' ( ( (lv_parameters_2_0= ruleParameter ) ) (otherlv_3= ',' ( (lv_parameters_4_0= ruleParameter ) ) )* )? otherlv_5= '>'
                     {
@@ -2408,13 +2419,13 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     				newLeafNode(otherlv_1, grammarAccess.getRuleNameAndParamsAccess().getLessThanSignKeyword_1_0());
                     			
                     // InternalXtext.g:954:4: ( ( (lv_parameters_2_0= ruleParameter ) ) (otherlv_3= ',' ( (lv_parameters_4_0= ruleParameter ) ) )* )?
-                    int alt24=2;
-                    int LA24_0 = input.LA(1);
+                    int alt25=2;
+                    int LA25_0 = input.LA(1);
 
-                    if ( (LA24_0==RULE_ID) ) {
-                        alt24=1;
+                    if ( (LA25_0==RULE_ID) ) {
+                        alt25=1;
                     }
-                    switch (alt24) {
+                    switch (alt25) {
                         case 1 :
                             // InternalXtext.g:955:5: ( (lv_parameters_2_0= ruleParameter ) ) (otherlv_3= ',' ( (lv_parameters_4_0= ruleParameter ) ) )*
                             {
@@ -2450,17 +2461,17 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                             }
 
                             // InternalXtext.g:974:5: (otherlv_3= ',' ( (lv_parameters_4_0= ruleParameter ) ) )*
-                            loop23:
+                            loop24:
                             do {
-                                int alt23=2;
-                                int LA23_0 = input.LA(1);
+                                int alt24=2;
+                                int LA24_0 = input.LA(1);
 
-                                if ( (LA23_0==14) ) {
-                                    alt23=1;
+                                if ( (LA24_0==14) ) {
+                                    alt24=1;
                                 }
 
 
-                                switch (alt23) {
+                                switch (alt24) {
                             	case 1 :
                             	    // InternalXtext.g:975:6: otherlv_3= ',' ( (lv_parameters_4_0= ruleParameter ) )
                             	    {
@@ -2504,7 +2515,7 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                             	    break;
 
                             	default :
-                            	    break loop23;
+                            	    break loop24;
                                 }
                             } while (true);
 
@@ -2697,17 +2708,17 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             // InternalXtext.g:1059:3: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '::' )? ( (otherlv_2= RULE_ID ) )
             {
             // InternalXtext.g:1059:3: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= '::' )?
-            int alt26=2;
-            int LA26_0 = input.LA(1);
+            int alt27=2;
+            int LA27_0 = input.LA(1);
 
-            if ( (LA26_0==RULE_ID) ) {
-                int LA26_1 = input.LA(2);
+            if ( (LA27_0==RULE_ID) ) {
+                int LA27_1 = input.LA(2);
 
-                if ( (LA26_1==31) ) {
-                    alt26=1;
+                if ( (LA27_1==31) ) {
+                    alt27=1;
                 }
             }
-            switch (alt26) {
+            switch (alt27) {
                 case 1 :
                     // InternalXtext.g:1060:4: ( (otherlv_0= RULE_ID ) ) otherlv_1= '::'
                     {
@@ -2855,13 +2866,13 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             			afterParserOrEnumRuleCall();
             		
             // InternalXtext.g:1118:3: ( () (otherlv_2= '|' ( (lv_elements_3_0= ruleConditionalBranch ) ) )+ )?
-            int alt28=2;
-            int LA28_0 = input.LA(1);
+            int alt29=2;
+            int LA29_0 = input.LA(1);
 
-            if ( (LA28_0==32) ) {
-                alt28=1;
+            if ( (LA29_0==32) ) {
+                alt29=1;
             }
-            switch (alt28) {
+            switch (alt29) {
                 case 1 :
                     // InternalXtext.g:1119:4: () (otherlv_2= '|' ( (lv_elements_3_0= ruleConditionalBranch ) ) )+
                     {
@@ -2877,18 +2888,18 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     }
 
                     // InternalXtext.g:1126:4: (otherlv_2= '|' ( (lv_elements_3_0= ruleConditionalBranch ) ) )+
-                    int cnt27=0;
-                    loop27:
+                    int cnt28=0;
+                    loop28:
                     do {
-                        int alt27=2;
-                        int LA27_0 = input.LA(1);
+                        int alt28=2;
+                        int LA28_0 = input.LA(1);
 
-                        if ( (LA27_0==32) ) {
-                            alt27=1;
+                        if ( (LA28_0==32) ) {
+                            alt28=1;
                         }
 
 
-                        switch (alt27) {
+                        switch (alt28) {
                     	case 1 :
                     	    // InternalXtext.g:1127:5: otherlv_2= '|' ( (lv_elements_3_0= ruleConditionalBranch ) )
                     	    {
@@ -2932,12 +2943,12 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt27 >= 1 ) break loop27;
+                    	    if ( cnt28 >= 1 ) break loop28;
                                 EarlyExitException eee =
-                                    new EarlyExitException(27, input);
+                                    new EarlyExitException(28, input);
                                 throw eee;
                         }
-                        cnt27++;
+                        cnt28++;
                     } while (true);
 
 
@@ -3026,22 +3037,22 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             // InternalXtext.g:1170:2: (this_UnorderedGroup_0= ruleUnorderedGroup | ( () otherlv_2= '<' ( (lv_guardCondition_3_0= ruleDisjunction ) ) otherlv_4= '>' ( (lv_elements_5_0= ruleAbstractToken ) )+ ) )
             {
             // InternalXtext.g:1170:2: (this_UnorderedGroup_0= ruleUnorderedGroup | ( () otherlv_2= '<' ( (lv_guardCondition_3_0= ruleDisjunction ) ) otherlv_4= '>' ( (lv_elements_5_0= ruleAbstractToken ) )+ ) )
-            int alt30=2;
-            int LA30_0 = input.LA(1);
+            int alt31=2;
+            int LA31_0 = input.LA(1);
 
-            if ( ((LA30_0>=RULE_STRING && LA30_0<=RULE_ID)||LA30_0==16||LA30_0==36||(LA30_0>=41 && LA30_0<=42)||(LA30_0>=44 && LA30_0<=45)) ) {
-                alt30=1;
+            if ( ((LA31_0>=RULE_STRING && LA31_0<=RULE_ID)||LA31_0==16||LA31_0==36||(LA31_0>=41 && LA31_0<=42)||(LA31_0>=44 && LA31_0<=45)) ) {
+                alt31=1;
             }
-            else if ( (LA30_0==29) ) {
-                alt30=2;
+            else if ( (LA31_0==29) ) {
+                alt31=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 30, 0, input);
+                    new NoViableAltException("", 31, 0, input);
 
                 throw nvae;
             }
-            switch (alt30) {
+            switch (alt31) {
                 case 1 :
                     // InternalXtext.g:1171:3: this_UnorderedGroup_0= ruleUnorderedGroup
                     {
@@ -3117,18 +3128,18 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     				newLeafNode(otherlv_4, grammarAccess.getConditionalBranchAccess().getGreaterThanSignKeyword_1_3());
                     			
                     // InternalXtext.g:1215:4: ( (lv_elements_5_0= ruleAbstractToken ) )+
-                    int cnt29=0;
-                    loop29:
+                    int cnt30=0;
+                    loop30:
                     do {
-                        int alt29=2;
-                        int LA29_0 = input.LA(1);
+                        int alt30=2;
+                        int LA30_0 = input.LA(1);
 
-                        if ( ((LA29_0>=RULE_STRING && LA29_0<=RULE_ID)||LA29_0==16||LA29_0==36||(LA29_0>=41 && LA29_0<=42)||(LA29_0>=44 && LA29_0<=45)) ) {
-                            alt29=1;
+                        if ( ((LA30_0>=RULE_STRING && LA30_0<=RULE_ID)||LA30_0==16||LA30_0==36||(LA30_0>=41 && LA30_0<=42)||(LA30_0>=44 && LA30_0<=45)) ) {
+                            alt30=1;
                         }
 
 
-                        switch (alt29) {
+                        switch (alt30) {
                     	case 1 :
                     	    // InternalXtext.g:1216:5: (lv_elements_5_0= ruleAbstractToken )
                     	    {
@@ -3162,12 +3173,12 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt29 >= 1 ) break loop29;
+                    	    if ( cnt30 >= 1 ) break loop30;
                                 EarlyExitException eee =
-                                    new EarlyExitException(29, input);
+                                    new EarlyExitException(30, input);
                                 throw eee;
                         }
-                        cnt29++;
+                        cnt30++;
                     } while (true);
 
 
@@ -3268,13 +3279,13 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             			afterParserOrEnumRuleCall();
             		
             // InternalXtext.g:1262:3: ( () (otherlv_2= '&' ( (lv_elements_3_0= ruleGroup ) ) )+ )?
-            int alt32=2;
-            int LA32_0 = input.LA(1);
+            int alt33=2;
+            int LA33_0 = input.LA(1);
 
-            if ( (LA32_0==33) ) {
-                alt32=1;
+            if ( (LA33_0==33) ) {
+                alt33=1;
             }
-            switch (alt32) {
+            switch (alt33) {
                 case 1 :
                     // InternalXtext.g:1263:4: () (otherlv_2= '&' ( (lv_elements_3_0= ruleGroup ) ) )+
                     {
@@ -3290,18 +3301,18 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     }
 
                     // InternalXtext.g:1270:4: (otherlv_2= '&' ( (lv_elements_3_0= ruleGroup ) ) )+
-                    int cnt31=0;
-                    loop31:
+                    int cnt32=0;
+                    loop32:
                     do {
-                        int alt31=2;
-                        int LA31_0 = input.LA(1);
+                        int alt32=2;
+                        int LA32_0 = input.LA(1);
 
-                        if ( (LA31_0==33) ) {
-                            alt31=1;
+                        if ( (LA32_0==33) ) {
+                            alt32=1;
                         }
 
 
-                        switch (alt31) {
+                        switch (alt32) {
                     	case 1 :
                     	    // InternalXtext.g:1271:5: otherlv_2= '&' ( (lv_elements_3_0= ruleGroup ) )
                     	    {
@@ -3345,12 +3356,12 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt31 >= 1 ) break loop31;
+                    	    if ( cnt32 >= 1 ) break loop32;
                                 EarlyExitException eee =
-                                    new EarlyExitException(31, input);
+                                    new EarlyExitException(32, input);
                                 throw eee;
                         }
-                        cnt31++;
+                        cnt32++;
                     } while (true);
 
 
@@ -3450,13 +3461,13 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             			afterParserOrEnumRuleCall();
             		
             // InternalXtext.g:1323:3: ( () ( (lv_elements_2_0= ruleAbstractToken ) )+ )?
-            int alt34=2;
-            int LA34_0 = input.LA(1);
+            int alt35=2;
+            int LA35_0 = input.LA(1);
 
-            if ( ((LA34_0>=RULE_STRING && LA34_0<=RULE_ID)||LA34_0==16||LA34_0==36||(LA34_0>=41 && LA34_0<=42)||(LA34_0>=44 && LA34_0<=45)) ) {
-                alt34=1;
+            if ( ((LA35_0>=RULE_STRING && LA35_0<=RULE_ID)||LA35_0==16||LA35_0==36||(LA35_0>=41 && LA35_0<=42)||(LA35_0>=44 && LA35_0<=45)) ) {
+                alt35=1;
             }
-            switch (alt34) {
+            switch (alt35) {
                 case 1 :
                     // InternalXtext.g:1324:4: () ( (lv_elements_2_0= ruleAbstractToken ) )+
                     {
@@ -3472,18 +3483,18 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     }
 
                     // InternalXtext.g:1331:4: ( (lv_elements_2_0= ruleAbstractToken ) )+
-                    int cnt33=0;
-                    loop33:
+                    int cnt34=0;
+                    loop34:
                     do {
-                        int alt33=2;
-                        int LA33_0 = input.LA(1);
+                        int alt34=2;
+                        int LA34_0 = input.LA(1);
 
-                        if ( ((LA33_0>=RULE_STRING && LA33_0<=RULE_ID)||LA33_0==16||LA33_0==36||(LA33_0>=41 && LA33_0<=42)||(LA33_0>=44 && LA33_0<=45)) ) {
-                            alt33=1;
+                        if ( ((LA34_0>=RULE_STRING && LA34_0<=RULE_ID)||LA34_0==16||LA34_0==36||(LA34_0>=41 && LA34_0<=42)||(LA34_0>=44 && LA34_0<=45)) ) {
+                            alt34=1;
                         }
 
 
-                        switch (alt33) {
+                        switch (alt34) {
                     	case 1 :
                     	    // InternalXtext.g:1332:5: (lv_elements_2_0= ruleAbstractToken )
                     	    {
@@ -3517,12 +3528,12 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt33 >= 1 ) break loop33;
+                    	    if ( cnt34 >= 1 ) break loop34;
                                 EarlyExitException eee =
-                                    new EarlyExitException(33, input);
+                                    new EarlyExitException(34, input);
                                 throw eee;
                         }
-                        cnt33++;
+                        cnt34++;
                     } while (true);
 
 
@@ -3607,22 +3618,22 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             // InternalXtext.g:1369:2: (this_AbstractTokenWithCardinality_0= ruleAbstractTokenWithCardinality | this_Action_1= ruleAction )
             {
             // InternalXtext.g:1369:2: (this_AbstractTokenWithCardinality_0= ruleAbstractTokenWithCardinality | this_Action_1= ruleAction )
-            int alt35=2;
-            int LA35_0 = input.LA(1);
+            int alt36=2;
+            int LA36_0 = input.LA(1);
 
-            if ( ((LA35_0>=RULE_STRING && LA35_0<=RULE_ID)||LA35_0==16||(LA35_0>=41 && LA35_0<=42)||(LA35_0>=44 && LA35_0<=45)) ) {
-                alt35=1;
+            if ( ((LA36_0>=RULE_STRING && LA36_0<=RULE_ID)||LA36_0==16||(LA36_0>=41 && LA36_0<=42)||(LA36_0>=44 && LA36_0<=45)) ) {
+                alt36=1;
             }
-            else if ( (LA35_0==36) ) {
-                alt35=2;
+            else if ( (LA36_0==36) ) {
+                alt36=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 35, 0, input);
+                    new NoViableAltException("", 36, 0, input);
 
                 throw nvae;
             }
-            switch (alt35) {
+            switch (alt36) {
                 case 1 :
                     // InternalXtext.g:1370:3: this_AbstractTokenWithCardinality_0= ruleAbstractTokenWithCardinality
                     {
@@ -3741,9 +3752,9 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             // InternalXtext.g:1406:3: (this_Assignment_0= ruleAssignment | this_AbstractTerminal_1= ruleAbstractTerminal ) ( ( (lv_cardinality_2_1= '?' | lv_cardinality_2_2= '*' | lv_cardinality_2_3= '+' ) ) )?
             {
             // InternalXtext.g:1406:3: (this_Assignment_0= ruleAssignment | this_AbstractTerminal_1= ruleAbstractTerminal )
-            int alt36=2;
-            alt36 = dfa36.predict(input);
-            switch (alt36) {
+            int alt37=2;
+            alt37 = dfa37.predict(input);
+            switch (alt37) {
                 case 1 :
                     // InternalXtext.g:1407:4: this_Assignment_0= ruleAssignment
                     {
@@ -3784,13 +3795,13 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXtext.g:1425:3: ( ( (lv_cardinality_2_1= '?' | lv_cardinality_2_2= '*' | lv_cardinality_2_3= '+' ) ) )?
-            int alt38=2;
-            int LA38_0 = input.LA(1);
+            int alt39=2;
+            int LA39_0 = input.LA(1);
 
-            if ( (LA38_0==24||(LA38_0>=34 && LA38_0<=35)) ) {
-                alt38=1;
+            if ( (LA39_0==24||(LA39_0>=34 && LA39_0<=35)) ) {
+                alt39=1;
             }
-            switch (alt38) {
+            switch (alt39) {
                 case 1 :
                     // InternalXtext.g:1426:4: ( (lv_cardinality_2_1= '?' | lv_cardinality_2_2= '*' | lv_cardinality_2_3= '+' ) )
                     {
@@ -3798,31 +3809,31 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     // InternalXtext.g:1427:5: (lv_cardinality_2_1= '?' | lv_cardinality_2_2= '*' | lv_cardinality_2_3= '+' )
                     {
                     // InternalXtext.g:1427:5: (lv_cardinality_2_1= '?' | lv_cardinality_2_2= '*' | lv_cardinality_2_3= '+' )
-                    int alt37=3;
+                    int alt38=3;
                     switch ( input.LA(1) ) {
                     case 34:
                         {
-                        alt37=1;
+                        alt38=1;
                         }
                         break;
                     case 24:
                         {
-                        alt37=2;
+                        alt38=2;
                         }
                         break;
                     case 35:
                         {
-                        alt37=3;
+                        alt38=3;
                         }
                         break;
                     default:
                         NoViableAltException nvae =
-                            new NoViableAltException("", 37, 0, input);
+                            new NoViableAltException("", 38, 0, input);
 
                         throw nvae;
                     }
 
-                    switch (alt37) {
+                    switch (alt38) {
                         case 1 :
                             // InternalXtext.g:1428:6: lv_cardinality_2_1= '?'
                             {
@@ -4003,13 +4014,13 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXtext.g:1505:3: (otherlv_2= '.' ( (lv_feature_3_0= ruleValidID ) ) ( ( (lv_operator_4_1= '=' | lv_operator_4_2= '+=' ) ) ) otherlv_5= 'current' )?
-            int alt40=2;
-            int LA40_0 = input.LA(1);
+            int alt41=2;
+            int LA41_0 = input.LA(1);
 
-            if ( (LA40_0==18) ) {
-                alt40=1;
+            if ( (LA41_0==18) ) {
+                alt41=1;
             }
-            switch (alt40) {
+            switch (alt41) {
                 case 1 :
                     // InternalXtext.g:1506:4: otherlv_2= '.' ( (lv_feature_3_0= ruleValidID ) ) ( ( (lv_operator_4_1= '=' | lv_operator_4_2= '+=' ) ) ) otherlv_5= 'current'
                     {
@@ -4055,22 +4066,22 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     // InternalXtext.g:1531:6: (lv_operator_4_1= '=' | lv_operator_4_2= '+=' )
                     {
                     // InternalXtext.g:1531:6: (lv_operator_4_1= '=' | lv_operator_4_2= '+=' )
-                    int alt39=2;
-                    int LA39_0 = input.LA(1);
+                    int alt40=2;
+                    int LA40_0 = input.LA(1);
 
-                    if ( (LA39_0==37) ) {
-                        alt39=1;
+                    if ( (LA40_0==37) ) {
+                        alt40=1;
                     }
-                    else if ( (LA39_0==38) ) {
-                        alt39=2;
+                    else if ( (LA40_0==38) ) {
+                        alt40=2;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 39, 0, input);
+                            new NoViableAltException("", 40, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt39) {
+                    switch (alt40) {
                         case 1 :
                             // InternalXtext.g:1532:7: lv_operator_4_1= '='
                             {
@@ -4210,48 +4221,48 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             // InternalXtext.g:1583:2: (this_Keyword_0= ruleKeyword | this_RuleCall_1= ruleRuleCall | this_ParenthesizedElement_2= ruleParenthesizedElement | this_PredicatedKeyword_3= rulePredicatedKeyword | this_PredicatedRuleCall_4= rulePredicatedRuleCall | this_PredicatedGroup_5= rulePredicatedGroup )
             {
             // InternalXtext.g:1583:2: (this_Keyword_0= ruleKeyword | this_RuleCall_1= ruleRuleCall | this_ParenthesizedElement_2= ruleParenthesizedElement | this_PredicatedKeyword_3= rulePredicatedKeyword | this_PredicatedRuleCall_4= rulePredicatedRuleCall | this_PredicatedGroup_5= rulePredicatedGroup )
-            int alt41=6;
+            int alt42=6;
             switch ( input.LA(1) ) {
             case RULE_STRING:
                 {
-                alt41=1;
+                alt42=1;
                 }
                 break;
             case RULE_ID:
             case 41:
             case 42:
                 {
-                alt41=2;
+                alt42=2;
                 }
                 break;
             case 16:
                 {
-                alt41=3;
+                alt42=3;
                 }
                 break;
             case 44:
                 {
                 switch ( input.LA(2) ) {
-                case 16:
-                    {
-                    alt41=6;
-                    }
-                    break;
                 case RULE_ID:
                 case 41:
                 case 42:
                     {
-                    alt41=5;
+                    alt42=5;
                     }
                     break;
                 case RULE_STRING:
                     {
-                    alt41=4;
+                    alt42=4;
+                    }
+                    break;
+                case 16:
+                    {
+                    alt42=6;
                     }
                     break;
                 default:
                     NoViableAltException nvae =
-                        new NoViableAltException("", 41, 4, input);
+                        new NoViableAltException("", 42, 4, input);
 
                     throw nvae;
                 }
@@ -4263,24 +4274,24 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                 switch ( input.LA(2) ) {
                 case 16:
                     {
-                    alt41=6;
+                    alt42=6;
                     }
                     break;
                 case RULE_ID:
                 case 41:
                 case 42:
                     {
-                    alt41=5;
+                    alt42=5;
                     }
                     break;
                 case RULE_STRING:
                     {
-                    alt41=4;
+                    alt42=4;
                     }
                     break;
                 default:
                     NoViableAltException nvae =
-                        new NoViableAltException("", 41, 5, input);
+                        new NoViableAltException("", 42, 5, input);
 
                     throw nvae;
                 }
@@ -4289,12 +4300,12 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 41, 0, input);
+                    new NoViableAltException("", 42, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt41) {
+            switch (alt42) {
                 case 1 :
                     // InternalXtext.g:1584:3: this_Keyword_0= ruleKeyword
                     {
@@ -4608,13 +4619,13 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXtext.g:1707:3: (otherlv_1= '<' ( (lv_arguments_2_0= ruleNamedArgument ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleNamedArgument ) ) )* otherlv_5= '>' )?
-            int alt43=2;
-            int LA43_0 = input.LA(1);
+            int alt44=2;
+            int LA44_0 = input.LA(1);
 
-            if ( (LA43_0==29) ) {
-                alt43=1;
+            if ( (LA44_0==29) ) {
+                alt44=1;
             }
-            switch (alt43) {
+            switch (alt44) {
                 case 1 :
                     // InternalXtext.g:1708:4: otherlv_1= '<' ( (lv_arguments_2_0= ruleNamedArgument ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleNamedArgument ) ) )* otherlv_5= '>'
                     {
@@ -4654,17 +4665,17 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     }
 
                     // InternalXtext.g:1731:4: (otherlv_3= ',' ( (lv_arguments_4_0= ruleNamedArgument ) ) )*
-                    loop42:
+                    loop43:
                     do {
-                        int alt42=2;
-                        int LA42_0 = input.LA(1);
+                        int alt43=2;
+                        int LA43_0 = input.LA(1);
 
-                        if ( (LA42_0==14) ) {
-                            alt42=1;
+                        if ( (LA43_0==14) ) {
+                            alt43=1;
                         }
 
 
-                        switch (alt42) {
+                        switch (alt43) {
                     	case 1 :
                     	    // InternalXtext.g:1732:5: otherlv_3= ',' ( (lv_arguments_4_0= ruleNamedArgument ) )
                     	    {
@@ -4708,7 +4719,7 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop42;
+                    	    break loop43;
                         }
                     } while (true);
 
@@ -4801,17 +4812,17 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             // InternalXtext.g:1780:3: ( ( (otherlv_0= RULE_ID ) ) ( (lv_calledByName_1_0= '=' ) ) )? ( (lv_value_2_0= ruleDisjunction ) )
             {
             // InternalXtext.g:1780:3: ( ( (otherlv_0= RULE_ID ) ) ( (lv_calledByName_1_0= '=' ) ) )?
-            int alt44=2;
-            int LA44_0 = input.LA(1);
+            int alt45=2;
+            int LA45_0 = input.LA(1);
 
-            if ( (LA44_0==RULE_ID) ) {
-                int LA44_1 = input.LA(2);
+            if ( (LA45_0==RULE_ID) ) {
+                int LA45_1 = input.LA(2);
 
-                if ( (LA44_1==37) ) {
-                    alt44=1;
+                if ( (LA45_1==37) ) {
+                    alt45=1;
                 }
             }
-            switch (alt44) {
+            switch (alt45) {
                 case 1 :
                     // InternalXtext.g:1781:4: ( (otherlv_0= RULE_ID ) ) ( (lv_calledByName_1_0= '=' ) )
                     {
@@ -4983,22 +4994,22 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXtext.g:1854:3: ( ( (lv_true_1_0= 'true' ) ) | otherlv_2= 'false' )
-            int alt45=2;
-            int LA45_0 = input.LA(1);
+            int alt46=2;
+            int LA46_0 = input.LA(1);
 
-            if ( (LA45_0==41) ) {
-                alt45=1;
+            if ( (LA46_0==41) ) {
+                alt46=1;
             }
-            else if ( (LA45_0==42) ) {
-                alt45=2;
+            else if ( (LA46_0==42) ) {
+                alt46=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 45, 0, input);
+                    new NoViableAltException("", 46, 0, input);
 
                 throw nvae;
             }
-            switch (alt45) {
+            switch (alt46) {
                 case 1 :
                     // InternalXtext.g:1855:4: ( (lv_true_1_0= 'true' ) )
                     {
@@ -5132,17 +5143,17 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             			afterParserOrEnumRuleCall();
             		
             // InternalXtext.g:1902:3: ( () otherlv_2= '|' ( (lv_right_3_0= ruleConjunction ) ) )*
-            loop46:
+            loop47:
             do {
-                int alt46=2;
-                int LA46_0 = input.LA(1);
+                int alt47=2;
+                int LA47_0 = input.LA(1);
 
-                if ( (LA46_0==32) ) {
-                    alt46=1;
+                if ( (LA47_0==32) ) {
+                    alt47=1;
                 }
 
 
-                switch (alt46) {
+                switch (alt47) {
             	case 1 :
             	    // InternalXtext.g:1903:4: () otherlv_2= '|' ( (lv_right_3_0= ruleConjunction ) )
             	    {
@@ -5197,7 +5208,7 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop46;
+            	    break loop47;
                 }
             } while (true);
 
@@ -5293,17 +5304,17 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             			afterParserOrEnumRuleCall();
             		
             // InternalXtext.g:1961:3: ( () otherlv_2= '&' ( (lv_right_3_0= ruleNegation ) ) )*
-            loop47:
+            loop48:
             do {
-                int alt47=2;
-                int LA47_0 = input.LA(1);
+                int alt48=2;
+                int LA48_0 = input.LA(1);
 
-                if ( (LA47_0==33) ) {
-                    alt47=1;
+                if ( (LA48_0==33) ) {
+                    alt48=1;
                 }
 
 
-                switch (alt47) {
+                switch (alt48) {
             	case 1 :
             	    // InternalXtext.g:1962:4: () otherlv_2= '&' ( (lv_right_3_0= ruleNegation ) )
             	    {
@@ -5358,7 +5369,7 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop47;
+            	    break loop48;
                 }
             } while (true);
 
@@ -5439,22 +5450,22 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             // InternalXtext.g:2011:2: (this_Atom_0= ruleAtom | ( () otherlv_2= '!' ( (lv_value_3_0= ruleNegation ) ) ) )
             {
             // InternalXtext.g:2011:2: (this_Atom_0= ruleAtom | ( () otherlv_2= '!' ( (lv_value_3_0= ruleNegation ) ) ) )
-            int alt48=2;
-            int LA48_0 = input.LA(1);
+            int alt49=2;
+            int LA49_0 = input.LA(1);
 
-            if ( (LA48_0==RULE_ID||LA48_0==16||(LA48_0>=41 && LA48_0<=42)) ) {
-                alt48=1;
+            if ( (LA49_0==RULE_ID||LA49_0==16||(LA49_0>=41 && LA49_0<=42)) ) {
+                alt49=1;
             }
-            else if ( (LA48_0==43) ) {
-                alt48=2;
+            else if ( (LA49_0==43) ) {
+                alt49=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 48, 0, input);
+                    new NoViableAltException("", 49, 0, input);
 
                 throw nvae;
             }
-            switch (alt48) {
+            switch (alt49) {
                 case 1 :
                     // InternalXtext.g:2012:3: this_Atom_0= ruleAtom
                     {
@@ -5609,32 +5620,32 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             // InternalXtext.g:2071:2: (this_ParameterReference_0= ruleParameterReference | this_ParenthesizedCondition_1= ruleParenthesizedCondition | this_LiteralCondition_2= ruleLiteralCondition )
             {
             // InternalXtext.g:2071:2: (this_ParameterReference_0= ruleParameterReference | this_ParenthesizedCondition_1= ruleParenthesizedCondition | this_LiteralCondition_2= ruleLiteralCondition )
-            int alt49=3;
+            int alt50=3;
             switch ( input.LA(1) ) {
             case RULE_ID:
                 {
-                alt49=1;
+                alt50=1;
                 }
                 break;
             case 16:
                 {
-                alt49=2;
+                alt50=2;
                 }
                 break;
             case 41:
             case 42:
                 {
-                alt49=3;
+                alt50=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 49, 0, input);
+                    new NoViableAltException("", 50, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt49) {
+            switch (alt50) {
                 case 1 :
                     // InternalXtext.g:2072:3: this_ParameterReference_0= ruleParameterReference
                     {
@@ -6066,17 +6077,17 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             			afterParserOrEnumRuleCall();
             		
             // InternalXtext.g:2225:3: (kw= '::' this_ValidID_2= ruleValidID )*
-            loop50:
+            loop51:
             do {
-                int alt50=2;
-                int LA50_0 = input.LA(1);
+                int alt51=2;
+                int LA51_0 = input.LA(1);
 
-                if ( (LA50_0==31) ) {
-                    alt50=1;
+                if ( (LA51_0==31) ) {
+                    alt51=1;
                 }
 
 
-                switch (alt50) {
+                switch (alt51) {
             	case 1 :
             	    // InternalXtext.g:2226:4: kw= '::' this_ValidID_2= ruleValidID
             	    {
@@ -6104,7 +6115,7 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop50;
+            	    break loop51;
                 }
             } while (true);
 
@@ -6182,31 +6193,31 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             // InternalXtext.g:2260:2: (this_ID_0= RULE_ID | kw= 'true' | kw= 'false' )
             {
             // InternalXtext.g:2260:2: (this_ID_0= RULE_ID | kw= 'true' | kw= 'false' )
-            int alt51=3;
+            int alt52=3;
             switch ( input.LA(1) ) {
             case RULE_ID:
                 {
-                alt51=1;
+                alt52=1;
                 }
                 break;
             case 41:
                 {
-                alt51=2;
+                alt52=2;
                 }
                 break;
             case 42:
                 {
-                alt51=3;
+                alt52=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 51, 0, input);
+                    new NoViableAltException("", 52, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt51) {
+            switch (alt52) {
                 case 1 :
                     // InternalXtext.g:2261:3: this_ID_0= RULE_ID
                     {
@@ -6320,22 +6331,22 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             // InternalXtext.g:2299:3: ( ( (lv_predicated_0_0= '=>' ) ) | ( (lv_firstSetPredicated_1_0= '->' ) ) ) ( (lv_value_2_0= RULE_STRING ) )
             {
             // InternalXtext.g:2299:3: ( ( (lv_predicated_0_0= '=>' ) ) | ( (lv_firstSetPredicated_1_0= '->' ) ) )
-            int alt52=2;
-            int LA52_0 = input.LA(1);
+            int alt53=2;
+            int LA53_0 = input.LA(1);
 
-            if ( (LA52_0==44) ) {
-                alt52=1;
+            if ( (LA53_0==44) ) {
+                alt53=1;
             }
-            else if ( (LA52_0==45) ) {
-                alt52=2;
+            else if ( (LA53_0==45) ) {
+                alt53=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 52, 0, input);
+                    new NoViableAltException("", 53, 0, input);
 
                 throw nvae;
             }
-            switch (alt52) {
+            switch (alt53) {
                 case 1 :
                     // InternalXtext.g:2300:4: ( (lv_predicated_0_0= '=>' ) )
                     {
@@ -6505,22 +6516,22 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             // InternalXtext.g:2367:3: ( ( (lv_predicated_0_0= '=>' ) ) | ( (lv_firstSetPredicated_1_0= '->' ) ) ) ( ( ruleRuleID ) ) (otherlv_3= '<' ( (lv_arguments_4_0= ruleNamedArgument ) ) (otherlv_5= ',' ( (lv_arguments_6_0= ruleNamedArgument ) ) )* otherlv_7= '>' )?
             {
             // InternalXtext.g:2367:3: ( ( (lv_predicated_0_0= '=>' ) ) | ( (lv_firstSetPredicated_1_0= '->' ) ) )
-            int alt53=2;
-            int LA53_0 = input.LA(1);
+            int alt54=2;
+            int LA54_0 = input.LA(1);
 
-            if ( (LA53_0==44) ) {
-                alt53=1;
+            if ( (LA54_0==44) ) {
+                alt54=1;
             }
-            else if ( (LA53_0==45) ) {
-                alt53=2;
+            else if ( (LA54_0==45) ) {
+                alt54=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 53, 0, input);
+                    new NoViableAltException("", 54, 0, input);
 
                 throw nvae;
             }
-            switch (alt53) {
+            switch (alt54) {
                 case 1 :
                     // InternalXtext.g:2368:4: ( (lv_predicated_0_0= '=>' ) )
                     {
@@ -6609,13 +6620,13 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXtext.g:2414:3: (otherlv_3= '<' ( (lv_arguments_4_0= ruleNamedArgument ) ) (otherlv_5= ',' ( (lv_arguments_6_0= ruleNamedArgument ) ) )* otherlv_7= '>' )?
-            int alt55=2;
-            int LA55_0 = input.LA(1);
+            int alt56=2;
+            int LA56_0 = input.LA(1);
 
-            if ( (LA55_0==29) ) {
-                alt55=1;
+            if ( (LA56_0==29) ) {
+                alt56=1;
             }
-            switch (alt55) {
+            switch (alt56) {
                 case 1 :
                     // InternalXtext.g:2415:4: otherlv_3= '<' ( (lv_arguments_4_0= ruleNamedArgument ) ) (otherlv_5= ',' ( (lv_arguments_6_0= ruleNamedArgument ) ) )* otherlv_7= '>'
                     {
@@ -6655,17 +6666,17 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     }
 
                     // InternalXtext.g:2438:4: (otherlv_5= ',' ( (lv_arguments_6_0= ruleNamedArgument ) ) )*
-                    loop54:
+                    loop55:
                     do {
-                        int alt54=2;
-                        int LA54_0 = input.LA(1);
+                        int alt55=2;
+                        int LA55_0 = input.LA(1);
 
-                        if ( (LA54_0==14) ) {
-                            alt54=1;
+                        if ( (LA55_0==14) ) {
+                            alt55=1;
                         }
 
 
-                        switch (alt54) {
+                        switch (alt55) {
                     	case 1 :
                     	    // InternalXtext.g:2439:5: otherlv_5= ',' ( (lv_arguments_6_0= ruleNamedArgument ) )
                     	    {
@@ -6709,7 +6720,7 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop54;
+                    	    break loop55;
                         }
                     } while (true);
 
@@ -6807,16 +6818,16 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             // InternalXtext.g:2487:3: ( ( (lv_predicated_0_0= '=>' ) ) | ( (lv_firstSetPredicated_1_0= '->' ) ) )? ( (lv_feature_2_0= ruleValidID ) ) ( ( (lv_operator_3_1= '+=' | lv_operator_3_2= '=' | lv_operator_3_3= '?=' ) ) ) ( (lv_terminal_4_0= ruleAssignableTerminal ) )
             {
             // InternalXtext.g:2487:3: ( ( (lv_predicated_0_0= '=>' ) ) | ( (lv_firstSetPredicated_1_0= '->' ) ) )?
-            int alt56=3;
-            int LA56_0 = input.LA(1);
+            int alt57=3;
+            int LA57_0 = input.LA(1);
 
-            if ( (LA56_0==44) ) {
-                alt56=1;
+            if ( (LA57_0==44) ) {
+                alt57=1;
             }
-            else if ( (LA56_0==45) ) {
-                alt56=2;
+            else if ( (LA57_0==45) ) {
+                alt57=2;
             }
-            switch (alt56) {
+            switch (alt57) {
                 case 1 :
                     // InternalXtext.g:2488:4: ( (lv_predicated_0_0= '=>' ) )
                     {
@@ -6914,31 +6925,31 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             // InternalXtext.g:2539:5: (lv_operator_3_1= '+=' | lv_operator_3_2= '=' | lv_operator_3_3= '?=' )
             {
             // InternalXtext.g:2539:5: (lv_operator_3_1= '+=' | lv_operator_3_2= '=' | lv_operator_3_3= '?=' )
-            int alt57=3;
+            int alt58=3;
             switch ( input.LA(1) ) {
             case 38:
                 {
-                alt57=1;
+                alt58=1;
                 }
                 break;
             case 37:
                 {
-                alt57=2;
+                alt58=2;
                 }
                 break;
             case 46:
                 {
-                alt57=3;
+                alt58=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 57, 0, input);
+                    new NoViableAltException("", 58, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt57) {
+            switch (alt58) {
                 case 1 :
                     // InternalXtext.g:2540:6: lv_operator_3_1= '+='
                     {
@@ -7107,38 +7118,38 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             // InternalXtext.g:2612:2: (this_Keyword_0= ruleKeyword | this_RuleCall_1= ruleRuleCall | this_ParenthesizedAssignableElement_2= ruleParenthesizedAssignableElement | this_CrossReference_3= ruleCrossReference )
             {
             // InternalXtext.g:2612:2: (this_Keyword_0= ruleKeyword | this_RuleCall_1= ruleRuleCall | this_ParenthesizedAssignableElement_2= ruleParenthesizedAssignableElement | this_CrossReference_3= ruleCrossReference )
-            int alt58=4;
+            int alt59=4;
             switch ( input.LA(1) ) {
             case RULE_STRING:
                 {
-                alt58=1;
+                alt59=1;
                 }
                 break;
             case RULE_ID:
             case 41:
             case 42:
                 {
-                alt58=2;
+                alt59=2;
                 }
                 break;
             case 16:
                 {
-                alt58=3;
+                alt59=3;
                 }
                 break;
             case 47:
                 {
-                alt58=4;
+                alt59=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 58, 0, input);
+                    new NoViableAltException("", 59, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt58) {
+            switch (alt59) {
                 case 1 :
                     // InternalXtext.g:2613:3: this_Keyword_0= ruleKeyword
                     {
@@ -7401,13 +7412,13 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             			afterParserOrEnumRuleCall();
             		
             // InternalXtext.g:2710:3: ( () (otherlv_2= '|' ( (lv_elements_3_0= ruleAssignableTerminal ) ) )+ )?
-            int alt60=2;
-            int LA60_0 = input.LA(1);
+            int alt61=2;
+            int LA61_0 = input.LA(1);
 
-            if ( (LA60_0==32) ) {
-                alt60=1;
+            if ( (LA61_0==32) ) {
+                alt61=1;
             }
-            switch (alt60) {
+            switch (alt61) {
                 case 1 :
                     // InternalXtext.g:2711:4: () (otherlv_2= '|' ( (lv_elements_3_0= ruleAssignableTerminal ) ) )+
                     {
@@ -7423,18 +7434,18 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     }
 
                     // InternalXtext.g:2718:4: (otherlv_2= '|' ( (lv_elements_3_0= ruleAssignableTerminal ) ) )+
-                    int cnt59=0;
-                    loop59:
+                    int cnt60=0;
+                    loop60:
                     do {
-                        int alt59=2;
-                        int LA59_0 = input.LA(1);
+                        int alt60=2;
+                        int LA60_0 = input.LA(1);
 
-                        if ( (LA59_0==32) ) {
-                            alt59=1;
+                        if ( (LA60_0==32) ) {
+                            alt60=1;
                         }
 
 
-                        switch (alt59) {
+                        switch (alt60) {
                     	case 1 :
                     	    // InternalXtext.g:2719:5: otherlv_2= '|' ( (lv_elements_3_0= ruleAssignableTerminal ) )
                     	    {
@@ -7478,12 +7489,12 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt59 >= 1 ) break loop59;
+                    	    if ( cnt60 >= 1 ) break loop60;
                                 EarlyExitException eee =
-                                    new EarlyExitException(59, input);
+                                    new EarlyExitException(60, input);
                                 throw eee;
                         }
-                        cnt59++;
+                        cnt60++;
                     } while (true);
 
 
@@ -7609,13 +7620,13 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXtext.g:2786:3: (otherlv_2= '|' ( (lv_terminal_3_0= ruleCrossReferenceableTerminal ) ) )?
-            int alt61=2;
-            int LA61_0 = input.LA(1);
+            int alt62=2;
+            int LA62_0 = input.LA(1);
 
-            if ( (LA61_0==32) ) {
-                alt61=1;
+            if ( (LA62_0==32) ) {
+                alt62=1;
             }
-            switch (alt61) {
+            switch (alt62) {
                 case 1 :
                     // InternalXtext.g:2787:4: otherlv_2= '|' ( (lv_terminal_3_0= ruleCrossReferenceableTerminal ) )
                     {
@@ -7740,22 +7751,22 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             // InternalXtext.g:2833:2: (this_Keyword_0= ruleKeyword | this_RuleCall_1= ruleRuleCall )
             {
             // InternalXtext.g:2833:2: (this_Keyword_0= ruleKeyword | this_RuleCall_1= ruleRuleCall )
-            int alt62=2;
-            int LA62_0 = input.LA(1);
+            int alt63=2;
+            int LA63_0 = input.LA(1);
 
-            if ( (LA62_0==RULE_STRING) ) {
-                alt62=1;
+            if ( (LA63_0==RULE_STRING) ) {
+                alt63=1;
             }
-            else if ( (LA62_0==RULE_ID||(LA62_0>=41 && LA62_0<=42)) ) {
-                alt62=2;
+            else if ( (LA63_0==RULE_ID||(LA63_0>=41 && LA63_0<=42)) ) {
+                alt63=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 62, 0, input);
+                    new NoViableAltException("", 63, 0, input);
 
                 throw nvae;
             }
-            switch (alt62) {
+            switch (alt63) {
                 case 1 :
                     // InternalXtext.g:2834:3: this_Keyword_0= ruleKeyword
                     {
@@ -7971,22 +7982,22 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             // InternalXtext.g:2905:3: ( ( (lv_predicated_0_0= '=>' ) ) | ( (lv_firstSetPredicated_1_0= '->' ) ) ) otherlv_2= '(' ( (lv_elements_3_0= ruleAlternatives ) ) otherlv_4= ')'
             {
             // InternalXtext.g:2905:3: ( ( (lv_predicated_0_0= '=>' ) ) | ( (lv_firstSetPredicated_1_0= '->' ) ) )
-            int alt63=2;
-            int LA63_0 = input.LA(1);
+            int alt64=2;
+            int LA64_0 = input.LA(1);
 
-            if ( (LA63_0==44) ) {
-                alt63=1;
+            if ( (LA64_0==44) ) {
+                alt64=1;
             }
-            else if ( (LA63_0==45) ) {
-                alt63=2;
+            else if ( (LA64_0==45) ) {
+                alt64=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 63, 0, input);
+                    new NoViableAltException("", 64, 0, input);
 
                 throw nvae;
             }
-            switch (alt63) {
+            switch (alt64) {
                 case 1 :
                     // InternalXtext.g:2906:4: ( (lv_predicated_0_0= '=>' ) )
                     {
@@ -8175,17 +8186,17 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             // InternalXtext.g:2982:3: ( (lv_annotations_0_0= ruleAnnotation ) )* otherlv_1= 'terminal' ( ( ( (lv_fragment_2_0= 'fragment' ) ) ( (lv_name_3_0= ruleValidID ) ) ) | ( ( (lv_name_4_0= ruleValidID ) ) (otherlv_5= 'returns' ( (lv_type_6_0= ruleTypeRef ) ) )? ) ) otherlv_7= ':' ( (lv_alternatives_8_0= ruleTerminalAlternatives ) ) otherlv_9= ';'
             {
             // InternalXtext.g:2982:3: ( (lv_annotations_0_0= ruleAnnotation ) )*
-            loop64:
+            loop65:
             do {
-                int alt64=2;
-                int LA64_0 = input.LA(1);
+                int alt65=2;
+                int LA65_0 = input.LA(1);
 
-                if ( (LA64_0==22) ) {
-                    alt64=1;
+                if ( (LA65_0==22) ) {
+                    alt65=1;
                 }
 
 
-                switch (alt64) {
+                switch (alt65) {
             	case 1 :
             	    // InternalXtext.g:2983:4: (lv_annotations_0_0= ruleAnnotation )
             	    {
@@ -8219,7 +8230,7 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop64;
+            	    break loop65;
                 }
             } while (true);
 
@@ -8228,22 +8239,22 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             			newLeafNode(otherlv_1, grammarAccess.getTerminalRuleAccess().getTerminalKeyword_1());
             		
             // InternalXtext.g:3005:3: ( ( ( (lv_fragment_2_0= 'fragment' ) ) ( (lv_name_3_0= ruleValidID ) ) ) | ( ( (lv_name_4_0= ruleValidID ) ) (otherlv_5= 'returns' ( (lv_type_6_0= ruleTypeRef ) ) )? ) )
-            int alt66=2;
-            int LA66_0 = input.LA(1);
+            int alt67=2;
+            int LA67_0 = input.LA(1);
 
-            if ( (LA66_0==23) ) {
-                alt66=1;
+            if ( (LA67_0==23) ) {
+                alt67=1;
             }
-            else if ( (LA66_0==RULE_ID||(LA66_0>=41 && LA66_0<=42)) ) {
-                alt66=2;
+            else if ( (LA67_0==RULE_ID||(LA67_0>=41 && LA67_0<=42)) ) {
+                alt67=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 66, 0, input);
+                    new NoViableAltException("", 67, 0, input);
 
                 throw nvae;
             }
-            switch (alt66) {
+            switch (alt67) {
                 case 1 :
                     // InternalXtext.g:3006:4: ( ( (lv_fragment_2_0= 'fragment' ) ) ( (lv_name_3_0= ruleValidID ) ) )
                     {
@@ -8347,13 +8358,13 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     }
 
                     // InternalXtext.g:3062:5: (otherlv_5= 'returns' ( (lv_type_6_0= ruleTypeRef ) ) )?
-                    int alt65=2;
-                    int LA65_0 = input.LA(1);
+                    int alt66=2;
+                    int LA66_0 = input.LA(1);
 
-                    if ( (LA65_0==25) ) {
-                        alt65=1;
+                    if ( (LA66_0==25) ) {
+                        alt66=1;
                     }
-                    switch (alt65) {
+                    switch (alt66) {
                         case 1 :
                             // InternalXtext.g:3063:6: otherlv_5= 'returns' ( (lv_type_6_0= ruleTypeRef ) )
                             {
@@ -8538,13 +8549,13 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             			afterParserOrEnumRuleCall();
             		
             // InternalXtext.g:3143:3: ( () (otherlv_2= '|' ( (lv_elements_3_0= ruleTerminalGroup ) ) )+ )?
-            int alt68=2;
-            int LA68_0 = input.LA(1);
+            int alt69=2;
+            int LA69_0 = input.LA(1);
 
-            if ( (LA68_0==32) ) {
-                alt68=1;
+            if ( (LA69_0==32) ) {
+                alt69=1;
             }
-            switch (alt68) {
+            switch (alt69) {
                 case 1 :
                     // InternalXtext.g:3144:4: () (otherlv_2= '|' ( (lv_elements_3_0= ruleTerminalGroup ) ) )+
                     {
@@ -8560,18 +8571,18 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     }
 
                     // InternalXtext.g:3151:4: (otherlv_2= '|' ( (lv_elements_3_0= ruleTerminalGroup ) ) )+
-                    int cnt67=0;
-                    loop67:
+                    int cnt68=0;
+                    loop68:
                     do {
-                        int alt67=2;
-                        int LA67_0 = input.LA(1);
+                        int alt68=2;
+                        int LA68_0 = input.LA(1);
 
-                        if ( (LA67_0==32) ) {
-                            alt67=1;
+                        if ( (LA68_0==32) ) {
+                            alt68=1;
                         }
 
 
-                        switch (alt67) {
+                        switch (alt68) {
                     	case 1 :
                     	    // InternalXtext.g:3152:5: otherlv_2= '|' ( (lv_elements_3_0= ruleTerminalGroup ) )
                     	    {
@@ -8615,12 +8626,12 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt67 >= 1 ) break loop67;
+                    	    if ( cnt68 >= 1 ) break loop68;
                                 EarlyExitException eee =
-                                    new EarlyExitException(67, input);
+                                    new EarlyExitException(68, input);
                                 throw eee;
                         }
-                        cnt67++;
+                        cnt68++;
                     } while (true);
 
 
@@ -8720,13 +8731,13 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             			afterParserOrEnumRuleCall();
             		
             // InternalXtext.g:3204:3: ( () ( (lv_elements_2_0= ruleTerminalToken ) )+ )?
-            int alt70=2;
-            int LA70_0 = input.LA(1);
+            int alt71=2;
+            int LA71_0 = input.LA(1);
 
-            if ( ((LA70_0>=RULE_STRING && LA70_0<=RULE_ID)||LA70_0==16||LA70_0==18||(LA70_0>=41 && LA70_0<=43)||LA70_0==45||LA70_0==50) ) {
-                alt70=1;
+            if ( ((LA71_0>=RULE_STRING && LA71_0<=RULE_ID)||LA71_0==16||LA71_0==18||(LA71_0>=41 && LA71_0<=43)||LA71_0==45||LA71_0==50) ) {
+                alt71=1;
             }
-            switch (alt70) {
+            switch (alt71) {
                 case 1 :
                     // InternalXtext.g:3205:4: () ( (lv_elements_2_0= ruleTerminalToken ) )+
                     {
@@ -8742,18 +8753,18 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     }
 
                     // InternalXtext.g:3212:4: ( (lv_elements_2_0= ruleTerminalToken ) )+
-                    int cnt69=0;
-                    loop69:
+                    int cnt70=0;
+                    loop70:
                     do {
-                        int alt69=2;
-                        int LA69_0 = input.LA(1);
+                        int alt70=2;
+                        int LA70_0 = input.LA(1);
 
-                        if ( ((LA69_0>=RULE_STRING && LA69_0<=RULE_ID)||LA69_0==16||LA69_0==18||(LA69_0>=41 && LA69_0<=43)||LA69_0==45||LA69_0==50) ) {
-                            alt69=1;
+                        if ( ((LA70_0>=RULE_STRING && LA70_0<=RULE_ID)||LA70_0==16||LA70_0==18||(LA70_0>=41 && LA70_0<=43)||LA70_0==45||LA70_0==50) ) {
+                            alt70=1;
                         }
 
 
-                        switch (alt69) {
+                        switch (alt70) {
                     	case 1 :
                     	    // InternalXtext.g:3213:5: (lv_elements_2_0= ruleTerminalToken )
                     	    {
@@ -8787,12 +8798,12 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt69 >= 1 ) break loop69;
+                    	    if ( cnt70 >= 1 ) break loop70;
                                 EarlyExitException eee =
-                                    new EarlyExitException(69, input);
+                                    new EarlyExitException(70, input);
                                 throw eee;
                         }
-                        cnt69++;
+                        cnt70++;
                     } while (true);
 
 
@@ -8893,13 +8904,13 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             			afterParserOrEnumRuleCall();
             		
             // InternalXtext.g:3259:3: ( ( (lv_cardinality_1_1= '?' | lv_cardinality_1_2= '*' | lv_cardinality_1_3= '+' ) ) )?
-            int alt72=2;
-            int LA72_0 = input.LA(1);
+            int alt73=2;
+            int LA73_0 = input.LA(1);
 
-            if ( (LA72_0==24||(LA72_0>=34 && LA72_0<=35)) ) {
-                alt72=1;
+            if ( (LA73_0==24||(LA73_0>=34 && LA73_0<=35)) ) {
+                alt73=1;
             }
-            switch (alt72) {
+            switch (alt73) {
                 case 1 :
                     // InternalXtext.g:3260:4: ( (lv_cardinality_1_1= '?' | lv_cardinality_1_2= '*' | lv_cardinality_1_3= '+' ) )
                     {
@@ -8907,31 +8918,31 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     // InternalXtext.g:3261:5: (lv_cardinality_1_1= '?' | lv_cardinality_1_2= '*' | lv_cardinality_1_3= '+' )
                     {
                     // InternalXtext.g:3261:5: (lv_cardinality_1_1= '?' | lv_cardinality_1_2= '*' | lv_cardinality_1_3= '+' )
-                    int alt71=3;
+                    int alt72=3;
                     switch ( input.LA(1) ) {
                     case 34:
                         {
-                        alt71=1;
+                        alt72=1;
                         }
                         break;
                     case 24:
                         {
-                        alt71=2;
+                        alt72=2;
                         }
                         break;
                     case 35:
                         {
-                        alt71=3;
+                        alt72=3;
                         }
                         break;
                     default:
                         NoViableAltException nvae =
-                            new NoViableAltException("", 71, 0, input);
+                            new NoViableAltException("", 72, 0, input);
 
                         throw nvae;
                     }
 
-                    switch (alt71) {
+                    switch (alt72) {
                         case 1 :
                             // InternalXtext.g:3262:6: lv_cardinality_1_1= '?'
                             {
@@ -9076,49 +9087,49 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             // InternalXtext.g:3315:2: (this_CharacterRange_0= ruleCharacterRange | this_TerminalRuleCall_1= ruleTerminalRuleCall | this_ParenthesizedTerminalElement_2= ruleParenthesizedTerminalElement | this_AbstractNegatedToken_3= ruleAbstractNegatedToken | this_Wildcard_4= ruleWildcard | this_EOF_5= ruleEOF )
             {
             // InternalXtext.g:3315:2: (this_CharacterRange_0= ruleCharacterRange | this_TerminalRuleCall_1= ruleTerminalRuleCall | this_ParenthesizedTerminalElement_2= ruleParenthesizedTerminalElement | this_AbstractNegatedToken_3= ruleAbstractNegatedToken | this_Wildcard_4= ruleWildcard | this_EOF_5= ruleEOF )
-            int alt73=6;
+            int alt74=6;
             switch ( input.LA(1) ) {
             case RULE_STRING:
                 {
-                alt73=1;
+                alt74=1;
                 }
                 break;
             case RULE_ID:
             case 41:
             case 42:
                 {
-                alt73=2;
+                alt74=2;
                 }
                 break;
             case 16:
                 {
-                alt73=3;
+                alt74=3;
                 }
                 break;
             case 43:
             case 45:
                 {
-                alt73=4;
+                alt74=4;
                 }
                 break;
             case 18:
                 {
-                alt73=5;
+                alt74=5;
                 }
                 break;
             case 50:
                 {
-                alt73=6;
+                alt74=6;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 73, 0, input);
+                    new NoViableAltException("", 74, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt73) {
+            switch (alt74) {
                 case 1 :
                     // InternalXtext.g:3316:3: this_CharacterRange_0= ruleCharacterRange
                     {
@@ -9401,22 +9412,22 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             // InternalXtext.g:3422:2: (this_NegatedToken_0= ruleNegatedToken | this_UntilToken_1= ruleUntilToken )
             {
             // InternalXtext.g:3422:2: (this_NegatedToken_0= ruleNegatedToken | this_UntilToken_1= ruleUntilToken )
-            int alt74=2;
-            int LA74_0 = input.LA(1);
+            int alt75=2;
+            int LA75_0 = input.LA(1);
 
-            if ( (LA74_0==43) ) {
-                alt74=1;
+            if ( (LA75_0==43) ) {
+                alt75=1;
             }
-            else if ( (LA74_0==45) ) {
-                alt74=2;
+            else if ( (LA75_0==45) ) {
+                alt75=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 74, 0, input);
+                    new NoViableAltException("", 75, 0, input);
 
                 throw nvae;
             }
-            switch (alt74) {
+            switch (alt75) {
                 case 1 :
                     // InternalXtext.g:3423:3: this_NegatedToken_0= ruleNegatedToken
                     {
@@ -9949,13 +9960,13 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             			afterParserOrEnumRuleCall();
             		
             // InternalXtext.g:3611:3: ( () otherlv_2= '..' ( (lv_right_3_0= ruleKeyword ) ) )?
-            int alt75=2;
-            int LA75_0 = input.LA(1);
+            int alt76=2;
+            int LA76_0 = input.LA(1);
 
-            if ( (LA75_0==51) ) {
-                alt75=1;
+            if ( (LA76_0==51) ) {
+                alt76=1;
             }
-            switch (alt75) {
+            switch (alt76) {
                 case 1 :
                     // InternalXtext.g:3612:4: () otherlv_2= '..' ( (lv_right_3_0= ruleKeyword ) )
                     {
@@ -10098,17 +10109,17 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             // InternalXtext.g:3662:3: ( (lv_annotations_0_0= ruleAnnotation ) )* otherlv_1= 'enum' ( (lv_name_2_0= ruleValidID ) ) (otherlv_3= 'returns' ( (lv_type_4_0= ruleTypeRef ) ) )? otherlv_5= ':' ( (lv_alternatives_6_0= ruleEnumLiterals ) ) otherlv_7= ';'
             {
             // InternalXtext.g:3662:3: ( (lv_annotations_0_0= ruleAnnotation ) )*
-            loop76:
+            loop77:
             do {
-                int alt76=2;
-                int LA76_0 = input.LA(1);
+                int alt77=2;
+                int LA77_0 = input.LA(1);
 
-                if ( (LA76_0==22) ) {
-                    alt76=1;
+                if ( (LA77_0==22) ) {
+                    alt77=1;
                 }
 
 
-                switch (alt76) {
+                switch (alt77) {
             	case 1 :
             	    // InternalXtext.g:3663:4: (lv_annotations_0_0= ruleAnnotation )
             	    {
@@ -10142,7 +10153,7 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop76;
+            	    break loop77;
                 }
             } while (true);
 
@@ -10182,13 +10193,13 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXtext.g:3704:3: (otherlv_3= 'returns' ( (lv_type_4_0= ruleTypeRef ) ) )?
-            int alt77=2;
-            int LA77_0 = input.LA(1);
+            int alt78=2;
+            int LA78_0 = input.LA(1);
 
-            if ( (LA77_0==25) ) {
-                alt77=1;
+            if ( (LA78_0==25) ) {
+                alt78=1;
             }
-            switch (alt77) {
+            switch (alt78) {
                 case 1 :
                     // InternalXtext.g:3705:4: otherlv_3= 'returns' ( (lv_type_4_0= ruleTypeRef ) )
                     {
@@ -10364,13 +10375,13 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             			afterParserOrEnumRuleCall();
             		
             // InternalXtext.g:3783:3: ( () (otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) ) )+ )?
-            int alt79=2;
-            int LA79_0 = input.LA(1);
+            int alt80=2;
+            int LA80_0 = input.LA(1);
 
-            if ( (LA79_0==32) ) {
-                alt79=1;
+            if ( (LA80_0==32) ) {
+                alt80=1;
             }
-            switch (alt79) {
+            switch (alt80) {
                 case 1 :
                     // InternalXtext.g:3784:4: () (otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) ) )+
                     {
@@ -10386,18 +10397,18 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     }
 
                     // InternalXtext.g:3791:4: (otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) ) )+
-                    int cnt78=0;
-                    loop78:
+                    int cnt79=0;
+                    loop79:
                     do {
-                        int alt78=2;
-                        int LA78_0 = input.LA(1);
+                        int alt79=2;
+                        int LA79_0 = input.LA(1);
 
-                        if ( (LA78_0==32) ) {
-                            alt78=1;
+                        if ( (LA79_0==32) ) {
+                            alt79=1;
                         }
 
 
-                        switch (alt78) {
+                        switch (alt79) {
                     	case 1 :
                     	    // InternalXtext.g:3792:5: otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) )
                     	    {
@@ -10441,12 +10452,12 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt78 >= 1 ) break loop78;
+                    	    if ( cnt79 >= 1 ) break loop79;
                                 EarlyExitException eee =
-                                    new EarlyExitException(78, input);
+                                    new EarlyExitException(79, input);
                                 throw eee;
                         }
-                        cnt78++;
+                        cnt79++;
                     } while (true);
 
 
@@ -10555,13 +10566,13 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXtext.g:3849:3: (otherlv_1= '=' ( (lv_literal_2_0= ruleKeyword ) ) )?
-            int alt80=2;
-            int LA80_0 = input.LA(1);
+            int alt81=2;
+            int LA81_0 = input.LA(1);
 
-            if ( (LA80_0==37) ) {
-                alt80=1;
+            if ( (LA81_0==37) ) {
+                alt81=1;
             }
-            switch (alt80) {
+            switch (alt81) {
                 case 1 :
                     // InternalXtext.g:3850:4: otherlv_1= '=' ( (lv_literal_2_0= ruleKeyword ) )
                     {
@@ -10631,7 +10642,7 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
 
 
     protected DFA9 dfa9 = new DFA9(this);
-    protected DFA36 dfa36 = new DFA36(this);
+    protected DFA37 dfa37 = new DFA37(this);
     static final String dfa_1s = "\6\uffff";
     static final String dfa_2s = "\2\5\3\uffff\1\5";
     static final String dfa_3s = "\1\64\1\5\3\uffff\1\64";
@@ -10698,11 +10709,11 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
     static final short[] dfa_12 = DFA.unpackEncodedString(dfa_12s);
     static final short[][] dfa_13 = unpackEncodedStringArray(dfa_13s);
 
-    class DFA36 extends DFA {
+    class DFA37 extends DFA {
 
-        public DFA36(BaseRecognizer recognizer) {
+        public DFA37(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 36;
+            this.decisionNumber = 37;
             this.eot = dfa_7;
             this.eof = dfa_8;
             this.min = dfa_9;
@@ -10740,7 +10751,7 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000008000000L});
         public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000361020010030L});
         public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000010000000L});
-        public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000000000040L});
+        public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000000000042L});
         public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000020000002L});
         public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000040000020L});
         public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000040004000L});

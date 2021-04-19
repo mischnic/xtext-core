@@ -820,62 +820,68 @@ public class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
           }
         }
         _builder.newLine();
-        _builder.append("public Object ");
-        String _gaRuleBecomeMethodName = GrammarAccessFragment2.this._grammarAccessExtensions.gaRuleBecomeMethodName(it);
-        _builder.append(_gaRuleBecomeMethodName);
-        _builder.append("(org.xtext.example.mydsl.myDsl.");
-        String _name = it.getType().getClassifier().getName();
-        _builder.append(_name);
-        _builder.append(" node, ");
-        _builder.append(HashMap.class);
-        _builder.append("<String, Object> children){");
-        _builder.newLineIfNotEmpty();
         {
           BecomesDecl _becomes = it.getBecomes();
           boolean _tripleNotEquals = (_becomes != null);
           if (_tripleNotEquals) {
-            _builder.append("\t");
-            _builder.append("return new ");
-            String _type = it.getBecomes().getType();
-            _builder.append(_type, "\t");
-            _builder.append("() {");
+            _builder.append("public Object ");
+            String _gaRuleBecomeMethodName = GrammarAccessFragment2.this._grammarAccessExtensions.gaRuleBecomeMethodName(it);
+            _builder.append(_gaRuleBecomeMethodName);
+            _builder.append("(org.xtext.example.mydsl.myDsl.");
+            String _name = it.getType().getClassifier().getName();
+            _builder.append(_name);
+            _builder.append(" node, ");
+            _builder.append(HashMap.class);
+            _builder.append("<String, Object> children){");
             _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("\t");
-            String _type_1 = it.getBecomes().getType();
-            _builder.append(_type_1, "\t\t");
-            _builder.append(" XTEXT_INIT() {");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("\t\t");
-            String _code = it.getBecomes().getCode();
-            int _length = it.getBecomes().getCode().length();
-            int _minus = (_length - 2);
-            String _substring = _code.substring(3, _minus);
-            _builder.append(_substring, "\t\t\t");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("\t\t");
-            _builder.append("return this;");
-            _builder.newLine();
-            _builder.append("\t");
-            _builder.append("\t");
+            {
+              String _code = it.getBecomes().getCode();
+              boolean _tripleNotEquals_1 = (_code != null);
+              if (_tripleNotEquals_1) {
+                _builder.append("\t");
+                _builder.append("return new ");
+                String _type = it.getBecomes().getType();
+                _builder.append(_type, "\t");
+                _builder.append("() {");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t");
+                String _type_1 = it.getBecomes().getType();
+                _builder.append(_type_1, "\t\t");
+                _builder.append(" XTEXT_INIT() {");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t\t");
+                String _code_1 = it.getBecomes().getCode();
+                int _length = it.getBecomes().getCode().length();
+                int _minus = (_length - 2);
+                String _substring = _code_1.substring(3, _minus);
+                _builder.append(_substring, "\t\t\t");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t\t");
+                _builder.append("return this;");
+                _builder.newLine();
+                _builder.append("\t");
+                _builder.append("\t");
+                _builder.append("}");
+                _builder.newLine();
+                _builder.append("\t");
+                _builder.append("}.XTEXT_INIT();");
+                _builder.newLine();
+              } else {
+                _builder.append("\t");
+                _builder.append("return ");
+                String _type_2 = it.getBecomes().getType();
+                _builder.append(_type_2, "\t");
+                _builder.append(".class;");
+                _builder.newLineIfNotEmpty();
+              }
+            }
             _builder.append("}");
-            _builder.newLine();
-            _builder.append("\t");
-            _builder.append("}.XTEXT_INIT();");
-            _builder.newLine();
-          } else {
-            _builder.append("\t");
-            _builder.append("// TODO generate conversion automatically");
-            _builder.newLine();
-            _builder.append("\t");
-            _builder.append("return null;");
             _builder.newLine();
           }
         }
-        _builder.append("}");
-        _builder.newLine();
         _builder.newLine();
         _builder.append("public ParserRule ");
         String _gaRuleAccessor = GrammarAccessFragment2.this._grammarAccessExtensions.gaRuleAccessor(it);

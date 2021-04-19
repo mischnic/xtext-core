@@ -556,10 +556,10 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final RuleCall cCodeJAVA_STRINGTerminalRuleCall_1_0 = (RuleCall)cCodeAssignment_1.eContents().get(0);
 		
 		//BecomesDecl:
-		//	type=QualifiedName code=JAVA_STRING;
+		//	type=QualifiedName code=JAVA_STRING?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//type=QualifiedName code=JAVA_STRING
+		//type=QualifiedName code=JAVA_STRING?
 		public Group getGroup() { return cGroup; }
 		
 		//type=QualifiedName
@@ -568,7 +568,7 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//QualifiedName
 		public RuleCall getTypeQualifiedNameParserRuleCall_0_0() { return cTypeQualifiedNameParserRuleCall_0_0; }
 		
-		//code=JAVA_STRING
+		//code=JAVA_STRING?
 		public Assignment getCodeAssignment_1() { return cCodeAssignment_1; }
 		
 		//JAVA_STRING
@@ -2641,7 +2641,7 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	}
 	
 	//BecomesDecl:
-	//	type=QualifiedName code=JAVA_STRING;
+	//	type=QualifiedName code=JAVA_STRING?;
 	public BecomesDeclElements getBecomesDeclAccess() {
 		return pBecomesDecl;
 	}

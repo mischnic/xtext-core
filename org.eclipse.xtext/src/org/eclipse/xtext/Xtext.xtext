@@ -60,7 +60,7 @@ terminal JAVA_STRING returns ecore::EString:
 ;
 
 BecomesDecl returns BecomesDecl:
-	type=QualifiedName code=JAVA_STRING
+	type=QualifiedName (code=JAVA_STRING)?
 ;
 
 QualifiedName:

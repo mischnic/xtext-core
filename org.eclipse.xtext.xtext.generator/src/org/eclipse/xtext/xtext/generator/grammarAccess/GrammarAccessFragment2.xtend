@@ -319,19 +319,20 @@ class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
 			}
 		«ENDIF»
 		
-		public Object «gaRuleBecomeMethodName»(org.xtext.example.mydsl.myDsl.«it.type.getClassifier().name» node, «HashMap»<String, Object> children){
-			«IF it.becomes !== null»
-				return new «it.becomes.type»() {
-					«it.becomes.type» XTEXT_INIT() {
-						«it.becomes.code.substring(3, it.becomes.code.length - 2)»
-						return this;
-					}
-				}.XTEXT_INIT();
-			«ELSE»
-				// TODO generate conversion automatically
-				return null;
-			«ENDIF»
-		}
+		«IF it.becomes !== null»
+			public Object «gaRuleBecomeMethodName»(org.xtext.example.mydsl.myDsl.«it.type.getClassifier().name» node, «HashMap»<String, Object> children){
+				«IF it.becomes.code !== null»
+					return new «it.becomes.type»() {
+						«it.becomes.type» XTEXT_INIT() {
+							«it.becomes.code.substring(3, it.becomes.code.length - 2)»
+							return this;
+						}
+					}.XTEXT_INIT();
+				«ELSE»
+					return «it.becomes.type».class;
+				«ENDIF»
+			}
+		«ENDIF»
 		
 		public ParserRule «gaRuleAccessor» {
 			return «gaElementsAccessor».getRule();

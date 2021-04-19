@@ -873,7 +873,7 @@ ruleBecomesDecl returns [EObject current=null]
 						"org.eclipse.xtext.Xtext.JAVA_STRING");
 				}
 			)
-		)
+		)?
 	)
 ;
 
