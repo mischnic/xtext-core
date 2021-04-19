@@ -627,7 +627,7 @@ public class XtextSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     BecomesDecl returns BecomesDecl
 	 *
 	 * Constraint:
-	 *     (type=QualifiedName code=JAVA_STRING?)
+	 *     (type=QualifiedName (code=JAVA_STRING | code=JAVA_STRING_LIST)?)
 	 */
 	protected void sequence_BecomesDecl(ISerializationContext context, BecomesDecl semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

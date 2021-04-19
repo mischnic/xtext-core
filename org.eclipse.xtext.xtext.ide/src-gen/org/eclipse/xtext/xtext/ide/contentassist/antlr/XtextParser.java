@@ -35,6 +35,7 @@ public class XtextParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAbstractMetamodelDeclarationAccess().getAlternatives(), "rule__AbstractMetamodelDeclaration__Alternatives");
 			builder.put(grammarAccess.getParserRuleAccess().getAlternatives_1(), "rule__ParserRule__Alternatives_1");
 			builder.put(grammarAccess.getParserRuleAccess().getAlternatives_1_0_2(), "rule__ParserRule__Alternatives_1_0_2");
+			builder.put(grammarAccess.getBecomesDeclAccess().getAlternatives_1(), "rule__BecomesDecl__Alternatives_1");
 			builder.put(grammarAccess.getConditionalBranchAccess().getAlternatives(), "rule__ConditionalBranch__Alternatives");
 			builder.put(grammarAccess.getAbstractTokenAccess().getAlternatives(), "rule__AbstractToken__Alternatives");
 			builder.put(grammarAccess.getAbstractTokenWithCardinalityAccess().getAlternatives_0(), "rule__AbstractTokenWithCardinality__Alternatives_0");
@@ -175,7 +176,8 @@ public class XtextParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getParserRuleAccess().getHiddenTokensAssignment_2_2_1_1(), "rule__ParserRule__HiddenTokensAssignment_2_2_1_1");
 			builder.put(grammarAccess.getParserRuleAccess().getAlternativesAssignment_4(), "rule__ParserRule__AlternativesAssignment_4");
 			builder.put(grammarAccess.getBecomesDeclAccess().getTypeAssignment_0(), "rule__BecomesDecl__TypeAssignment_0");
-			builder.put(grammarAccess.getBecomesDeclAccess().getCodeAssignment_1(), "rule__BecomesDecl__CodeAssignment_1");
+			builder.put(grammarAccess.getBecomesDeclAccess().getCodeAssignment_1_0(), "rule__BecomesDecl__CodeAssignment_1_0");
+			builder.put(grammarAccess.getBecomesDeclAccess().getCodeAssignment_1_1(), "rule__BecomesDecl__CodeAssignment_1_1");
 			builder.put(grammarAccess.getRuleNameAndParamsAccess().getNameAssignment_0(), "rule__RuleNameAndParams__NameAssignment_0");
 			builder.put(grammarAccess.getRuleNameAndParamsAccess().getParametersAssignment_1_1_0(), "rule__RuleNameAndParams__ParametersAssignment_1_1_0");
 			builder.put(grammarAccess.getRuleNameAndParamsAccess().getParametersAssignment_1_1_1_1(), "rule__RuleNameAndParams__ParametersAssignment_1_1_1_1");

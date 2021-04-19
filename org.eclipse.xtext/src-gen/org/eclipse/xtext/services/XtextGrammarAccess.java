@@ -552,14 +552,17 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cTypeQualifiedNameParserRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
-		private final Assignment cCodeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cCodeJAVA_STRINGTerminalRuleCall_1_0 = (RuleCall)cCodeAssignment_1.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Assignment cCodeAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
+		private final RuleCall cCodeJAVA_STRINGTerminalRuleCall_1_0_0 = (RuleCall)cCodeAssignment_1_0.eContents().get(0);
+		private final Assignment cCodeAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
+		private final RuleCall cCodeJAVA_STRING_LISTTerminalRuleCall_1_1_0 = (RuleCall)cCodeAssignment_1_1.eContents().get(0);
 		
 		//BecomesDecl:
-		//	type=QualifiedName code=JAVA_STRING?;
+		//	type=QualifiedName (code=JAVA_STRING | code=JAVA_STRING_LIST)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//type=QualifiedName code=JAVA_STRING?
+		//type=QualifiedName (code=JAVA_STRING | code=JAVA_STRING_LIST)?
 		public Group getGroup() { return cGroup; }
 		
 		//type=QualifiedName
@@ -568,11 +571,20 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//QualifiedName
 		public RuleCall getTypeQualifiedNameParserRuleCall_0_0() { return cTypeQualifiedNameParserRuleCall_0_0; }
 		
-		//code=JAVA_STRING?
-		public Assignment getCodeAssignment_1() { return cCodeAssignment_1; }
+		//(code=JAVA_STRING | code=JAVA_STRING_LIST)?
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		
+		//code=JAVA_STRING
+		public Assignment getCodeAssignment_1_0() { return cCodeAssignment_1_0; }
 		
 		//JAVA_STRING
-		public RuleCall getCodeJAVA_STRINGTerminalRuleCall_1_0() { return cCodeJAVA_STRINGTerminalRuleCall_1_0; }
+		public RuleCall getCodeJAVA_STRINGTerminalRuleCall_1_0_0() { return cCodeJAVA_STRINGTerminalRuleCall_1_0_0; }
+		
+		//code=JAVA_STRING_LIST
+		public Assignment getCodeAssignment_1_1() { return cCodeAssignment_1_1; }
+		
+		//JAVA_STRING_LIST
+		public RuleCall getCodeJAVA_STRING_LISTTerminalRuleCall_1_1_0() { return cCodeJAVA_STRING_LISTTerminalRuleCall_1_1_0; }
 	}
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.Xtext.QualifiedName");
@@ -2389,6 +2401,7 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	private final AnnotationElements pAnnotation;
 	private final ParserRuleElements pParserRule;
 	private final TerminalRule tJAVA_STRING;
+	private final TerminalRule tJAVA_STRING_LIST;
 	private final BecomesDeclElements pBecomesDecl;
 	private final QualifiedNameElements pQualifiedName;
 	private final RuleNameAndParamsElements pRuleNameAndParams;
@@ -2459,6 +2472,7 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		this.pAnnotation = new AnnotationElements();
 		this.pParserRule = new ParserRuleElements();
 		this.tJAVA_STRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.Xtext.JAVA_STRING");
+		this.tJAVA_STRING_LIST = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.Xtext.JAVA_STRING_LIST");
 		this.pBecomesDecl = new BecomesDeclElements();
 		this.pQualifiedName = new QualifiedNameElements();
 		this.pRuleNameAndParams = new RuleNameAndParamsElements();
@@ -2640,8 +2654,14 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		return tJAVA_STRING;
 	}
 	
+	//terminal JAVA_STRING_LIST:
+	//	'$['->']$';
+	public TerminalRule getJAVA_STRING_LISTRule() {
+		return tJAVA_STRING_LIST;
+	}
+	
 	//BecomesDecl:
-	//	type=QualifiedName code=JAVA_STRING?;
+	//	type=QualifiedName (code=JAVA_STRING | code=JAVA_STRING_LIST)?;
 	public BecomesDeclElements getBecomesDeclAccess() {
 		return pBecomesDecl;
 	}

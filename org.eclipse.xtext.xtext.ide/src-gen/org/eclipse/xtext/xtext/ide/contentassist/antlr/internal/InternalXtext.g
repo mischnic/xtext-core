@@ -1606,6 +1606,27 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__BecomesDecl__Alternatives_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getBecomesDeclAccess().getCodeAssignment_1_0()); }
+		(rule__BecomesDecl__CodeAssignment_1_0)
+		{ after(grammarAccess.getBecomesDeclAccess().getCodeAssignment_1_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBecomesDeclAccess().getCodeAssignment_1_1()); }
+		(rule__BecomesDecl__CodeAssignment_1_1)
+		{ after(grammarAccess.getBecomesDeclAccess().getCodeAssignment_1_1()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__ConditionalBranch__Alternatives
 	@init {
 		int stackSize = keepStackSize();
@@ -3862,9 +3883,9 @@ rule__BecomesDecl__Group__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getBecomesDeclAccess().getCodeAssignment_1()); }
-	(rule__BecomesDecl__CodeAssignment_1)?
-	{ after(grammarAccess.getBecomesDeclAccess().getCodeAssignment_1()); }
+	{ before(grammarAccess.getBecomesDeclAccess().getAlternatives_1()); }
+	(rule__BecomesDecl__Alternatives_1)?
+	{ after(grammarAccess.getBecomesDeclAccess().getAlternatives_1()); }
 )
 ;
 finally {
@@ -9157,15 +9178,30 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__BecomesDecl__CodeAssignment_1
+rule__BecomesDecl__CodeAssignment_1_0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getBecomesDeclAccess().getCodeJAVA_STRINGTerminalRuleCall_1_0()); }
+		{ before(grammarAccess.getBecomesDeclAccess().getCodeJAVA_STRINGTerminalRuleCall_1_0_0()); }
 		RULE_JAVA_STRING
-		{ after(grammarAccess.getBecomesDeclAccess().getCodeJAVA_STRINGTerminalRuleCall_1_0()); }
+		{ after(grammarAccess.getBecomesDeclAccess().getCodeJAVA_STRINGTerminalRuleCall_1_0_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BecomesDecl__CodeAssignment_1_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getBecomesDeclAccess().getCodeJAVA_STRING_LISTTerminalRuleCall_1_1_0()); }
+		RULE_JAVA_STRING_LIST
+		{ after(grammarAccess.getBecomesDeclAccess().getCodeJAVA_STRING_LISTTerminalRuleCall_1_1_0()); }
 	)
 ;
 finally {
@@ -10239,6 +10275,8 @@ finally {
 }
 
 RULE_JAVA_STRING : '$$' ( options {greedy=false;} : . )*'$$';
+
+RULE_JAVA_STRING_LIST : '$[' ( options {greedy=false;} : . )*']$';
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

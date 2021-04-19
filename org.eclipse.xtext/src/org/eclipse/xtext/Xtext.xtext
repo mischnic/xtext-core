@@ -59,8 +59,12 @@ terminal JAVA_STRING returns ecore::EString:
 	'$$' -> '$$'
 ;
 
+terminal JAVA_STRING_LIST returns ecore::EString:
+	'$[' -> ']$'
+;
+
 BecomesDecl returns BecomesDecl:
-	type=QualifiedName (code=JAVA_STRING)?
+	type=QualifiedName (code=JAVA_STRING | code=JAVA_STRING_LIST)?
 ;
 
 QualifiedName:

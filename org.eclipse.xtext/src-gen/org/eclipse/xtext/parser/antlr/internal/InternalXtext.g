@@ -858,20 +858,41 @@ ruleBecomesDecl returns [EObject current=null]
 		)
 		(
 			(
-				lv_code_1_0=RULE_JAVA_STRING
-				{
-					newLeafNode(lv_code_1_0, grammarAccess.getBecomesDeclAccess().getCodeJAVA_STRINGTerminalRuleCall_1_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getBecomesDeclRule());
+				(
+					lv_code_1_0=RULE_JAVA_STRING
+					{
+						newLeafNode(lv_code_1_0, grammarAccess.getBecomesDeclAccess().getCodeJAVA_STRINGTerminalRuleCall_1_0_0());
 					}
-					setWithLastConsumed(
-						$current,
-						"code",
-						lv_code_1_0,
-						"org.eclipse.xtext.Xtext.JAVA_STRING");
-				}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getBecomesDeclRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"code",
+							lv_code_1_0,
+							"org.eclipse.xtext.Xtext.JAVA_STRING");
+					}
+				)
+			)
+			    |
+			(
+				(
+					lv_code_2_0=RULE_JAVA_STRING_LIST
+					{
+						newLeafNode(lv_code_2_0, grammarAccess.getBecomesDeclAccess().getCodeJAVA_STRING_LISTTerminalRuleCall_1_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getBecomesDeclRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"code",
+							lv_code_2_0,
+							"org.eclipse.xtext.Xtext.JAVA_STRING_LIST");
+					}
+				)
 			)
 		)?
 	)
@@ -3875,6 +3896,8 @@ ruleEnumLiteralDeclaration returns [EObject current=null]
 ;
 
 RULE_JAVA_STRING : '$$' ( options {greedy=false;} : . )*'$$';
+
+RULE_JAVA_STRING_LIST : '$[' ( options {greedy=false;} : . )*']$';
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 
