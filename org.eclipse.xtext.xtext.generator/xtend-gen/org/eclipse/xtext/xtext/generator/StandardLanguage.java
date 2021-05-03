@@ -26,6 +26,7 @@ import org.eclipse.xtext.xtext.generator.ecore.EMFGeneratorFragment2;
 import org.eclipse.xtext.xtext.generator.exporting.QualifiedNamesFragment2;
 import org.eclipse.xtext.xtext.generator.formatting.Formatter2Fragment2;
 import org.eclipse.xtext.xtext.generator.generator.GeneratorFragment2;
+import org.eclipse.xtext.xtext.generator.grammarAccess.ASTClassesFragment2;
 import org.eclipse.xtext.xtext.generator.grammarAccess.GrammarAccessFragment2;
 import org.eclipse.xtext.xtext.generator.index.ResourceDescriptionStrategyFragment;
 import org.eclipse.xtext.xtext.generator.junit.JUnitFragment;
@@ -136,6 +137,8 @@ public class StandardLanguage extends XtextGeneratorLanguage {
   
   private TemplateFileWizardFragment fileWizard = new TemplateFileWizardFragment();
   
+  private ASTClassesFragment2 astClasses = new ASTClassesFragment2();
+  
   public StandardLanguage() {
     try {
       this.getClass().getClassLoader().loadClass("org.eclipse.xtext.xbase.XbaseRuntimeModule");
@@ -219,6 +222,7 @@ public class StandardLanguage extends XtextGeneratorLanguage {
       this.operator_add(fragments, this.newProjectWizardForEclipse);
       this.operator_add(fragments, this.projectWizard);
       this.operator_add(fragments, this.fileWizard);
+      this.operator_add(fragments, this.astClasses);
       _xblockexpression = fragments;
     }
     return _xblockexpression;
@@ -494,6 +498,15 @@ public class StandardLanguage extends XtextGeneratorLanguage {
   @Pure
   protected TemplateFileWizardFragment getFileWizard() {
     return this.fileWizard;
+  }
+  
+  @Pure
+  protected ASTClassesFragment2 getAstClasses() {
+    return this.astClasses;
+  }
+  
+  public void setAstClasses(final ASTClassesFragment2 astClasses) {
+    this.astClasses = astClasses;
   }
   
   private static final Logger LOG = Logger.getLogger(StandardLanguage.class);
