@@ -550,41 +550,133 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	public class BecomesDeclElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.Xtext.BecomesDecl");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cTypeQualifiedNameParserRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final Assignment cCodeAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
-		private final RuleCall cCodeJAVA_STRINGTerminalRuleCall_1_0_0 = (RuleCall)cCodeAssignment_1_0.eContents().get(0);
-		private final Assignment cCodeAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
-		private final RuleCall cCodeJAVA_STRING_LISTTerminalRuleCall_1_1_0 = (RuleCall)cCodeAssignment_1_1.eContents().get(0);
+		private final Action cBecomesDeclAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cListAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cListLeftSquareBracketRightSquareBracketKeyword_1_0 = (Keyword)cListAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cAttributesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final Alternatives cAttributesAlternatives_2_1_0 = (Alternatives)cAttributesAssignment_2_1.eContents().get(0);
+		private final RuleCall cAttributesBecomesDeclCopyAttributeParserRuleCall_2_1_0_0 = (RuleCall)cAttributesAlternatives_2_1_0.eContents().get(0);
+		private final RuleCall cAttributesBecomesDeclCustomAttributeParserRuleCall_2_1_0_1 = (RuleCall)cAttributesAlternatives_2_1_0.eContents().get(1);
+		private final Group cGroup_2_2 = (Group)cGroup_2.eContents().get(2);
+		private final Keyword cCommaKeyword_2_2_0 = (Keyword)cGroup_2_2.eContents().get(0);
+		private final Assignment cAttributesAssignment_2_2_1 = (Assignment)cGroup_2_2.eContents().get(1);
+		private final Alternatives cAttributesAlternatives_2_2_1_0 = (Alternatives)cAttributesAssignment_2_2_1.eContents().get(0);
+		private final RuleCall cAttributesBecomesDeclCopyAttributeParserRuleCall_2_2_1_0_0 = (RuleCall)cAttributesAlternatives_2_2_1_0.eContents().get(0);
+		private final RuleCall cAttributesBecomesDeclCustomAttributeParserRuleCall_2_2_1_0_1 = (RuleCall)cAttributesAlternatives_2_2_1_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_2_3 = (Keyword)cGroup_2.eContents().get(3);
+		private final Assignment cCodeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCodeJAVA_STRINGTerminalRuleCall_3_0 = (RuleCall)cCodeAssignment_3.eContents().get(0);
 		
 		//BecomesDecl:
-		//	type=QualifiedName (code=JAVA_STRING | code=JAVA_STRING_LIST)?;
+		//	{BecomesDecl} list?="[]"? ('('
+		//	attributes+=(BecomesDeclCopyAttribute | BecomesDeclCustomAttribute) (',' attributes+=(BecomesDeclCopyAttribute |
+		//	BecomesDeclCustomAttribute))*
+		//	')')?
+		//	code=JAVA_STRING?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//type=QualifiedName (code=JAVA_STRING | code=JAVA_STRING_LIST)?
+		//{BecomesDecl} list?="[]"? ('(' attributes+=(BecomesDeclCopyAttribute | BecomesDeclCustomAttribute) (','
+		//attributes+=(BecomesDeclCopyAttribute | BecomesDeclCustomAttribute))* ')')? code=JAVA_STRING?
 		public Group getGroup() { return cGroup; }
 		
-		//type=QualifiedName
-		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
+		//{BecomesDecl}
+		public Action getBecomesDeclAction_0() { return cBecomesDeclAction_0; }
 		
-		//QualifiedName
-		public RuleCall getTypeQualifiedNameParserRuleCall_0_0() { return cTypeQualifiedNameParserRuleCall_0_0; }
+		//list?="[]"?
+		public Assignment getListAssignment_1() { return cListAssignment_1; }
 		
-		//(code=JAVA_STRING | code=JAVA_STRING_LIST)?
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		//"[]"
+		public Keyword getListLeftSquareBracketRightSquareBracketKeyword_1_0() { return cListLeftSquareBracketRightSquareBracketKeyword_1_0; }
 		
-		//code=JAVA_STRING
-		public Assignment getCodeAssignment_1_0() { return cCodeAssignment_1_0; }
+		//('(' attributes+=(BecomesDeclCopyAttribute | BecomesDeclCustomAttribute) (',' attributes+=(BecomesDeclCopyAttribute |
+		//BecomesDeclCustomAttribute))* ')')?
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
+		
+		//attributes+=(BecomesDeclCopyAttribute | BecomesDeclCustomAttribute)
+		public Assignment getAttributesAssignment_2_1() { return cAttributesAssignment_2_1; }
+		
+		//(BecomesDeclCopyAttribute | BecomesDeclCustomAttribute)
+		public Alternatives getAttributesAlternatives_2_1_0() { return cAttributesAlternatives_2_1_0; }
+		
+		//BecomesDeclCopyAttribute
+		public RuleCall getAttributesBecomesDeclCopyAttributeParserRuleCall_2_1_0_0() { return cAttributesBecomesDeclCopyAttributeParserRuleCall_2_1_0_0; }
+		
+		//BecomesDeclCustomAttribute
+		public RuleCall getAttributesBecomesDeclCustomAttributeParserRuleCall_2_1_0_1() { return cAttributesBecomesDeclCustomAttributeParserRuleCall_2_1_0_1; }
+		
+		//(',' attributes+=(BecomesDeclCopyAttribute | BecomesDeclCustomAttribute))*
+		public Group getGroup_2_2() { return cGroup_2_2; }
+		
+		//','
+		public Keyword getCommaKeyword_2_2_0() { return cCommaKeyword_2_2_0; }
+		
+		//attributes+=(BecomesDeclCopyAttribute | BecomesDeclCustomAttribute)
+		public Assignment getAttributesAssignment_2_2_1() { return cAttributesAssignment_2_2_1; }
+		
+		//(BecomesDeclCopyAttribute | BecomesDeclCustomAttribute)
+		public Alternatives getAttributesAlternatives_2_2_1_0() { return cAttributesAlternatives_2_2_1_0; }
+		
+		//BecomesDeclCopyAttribute
+		public RuleCall getAttributesBecomesDeclCopyAttributeParserRuleCall_2_2_1_0_0() { return cAttributesBecomesDeclCopyAttributeParserRuleCall_2_2_1_0_0; }
+		
+		//BecomesDeclCustomAttribute
+		public RuleCall getAttributesBecomesDeclCustomAttributeParserRuleCall_2_2_1_0_1() { return cAttributesBecomesDeclCustomAttributeParserRuleCall_2_2_1_0_1; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_2_3() { return cRightParenthesisKeyword_2_3; }
+		
+		//code=JAVA_STRING?
+		public Assignment getCodeAssignment_3() { return cCodeAssignment_3; }
 		
 		//JAVA_STRING
-		public RuleCall getCodeJAVA_STRINGTerminalRuleCall_1_0_0() { return cCodeJAVA_STRINGTerminalRuleCall_1_0_0; }
+		public RuleCall getCodeJAVA_STRINGTerminalRuleCall_3_0() { return cCodeJAVA_STRINGTerminalRuleCall_3_0; }
+	}
+	public class BecomesDeclCopyAttributeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.Xtext.BecomesDeclCopyAttribute");
+		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
 		
-		//code=JAVA_STRING_LIST
-		public Assignment getCodeAssignment_1_1() { return cCodeAssignment_1_1; }
+		//BecomesDeclCopyAttribute:
+		//	name=ID;
+		@Override public ParserRule getRule() { return rule; }
 		
-		//JAVA_STRING_LIST
-		public RuleCall getCodeJAVA_STRING_LISTTerminalRuleCall_1_1_0() { return cCodeJAVA_STRING_LISTTerminalRuleCall_1_1_0; }
+		//name=ID
+		public Assignment getNameAssignment() { return cNameAssignment; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0() { return cNameIDTerminalRuleCall_0; }
+	}
+	public class BecomesDeclCustomAttributeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.Xtext.BecomesDeclCustomAttribute");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTypeIDTerminalRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		
+		//BecomesDeclCustomAttribute:
+		//	type=ID name=ID;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//type=ID name=ID
+		public Group getGroup() { return cGroup; }
+		
+		//type=ID
+		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
+		
+		//ID
+		public RuleCall getTypeIDTerminalRuleCall_0_0() { return cTypeIDTerminalRuleCall_0_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 	}
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.Xtext.QualifiedName");
@@ -2401,8 +2493,9 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	private final AnnotationElements pAnnotation;
 	private final ParserRuleElements pParserRule;
 	private final TerminalRule tJAVA_STRING;
-	private final TerminalRule tJAVA_STRING_LIST;
 	private final BecomesDeclElements pBecomesDecl;
+	private final BecomesDeclCopyAttributeElements pBecomesDeclCopyAttribute;
+	private final BecomesDeclCustomAttributeElements pBecomesDeclCustomAttribute;
 	private final QualifiedNameElements pQualifiedName;
 	private final RuleNameAndParamsElements pRuleNameAndParams;
 	private final ParameterElements pParameter;
@@ -2472,8 +2565,9 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		this.pAnnotation = new AnnotationElements();
 		this.pParserRule = new ParserRuleElements();
 		this.tJAVA_STRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.Xtext.JAVA_STRING");
-		this.tJAVA_STRING_LIST = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.Xtext.JAVA_STRING_LIST");
 		this.pBecomesDecl = new BecomesDeclElements();
+		this.pBecomesDeclCopyAttribute = new BecomesDeclCopyAttributeElements();
+		this.pBecomesDeclCustomAttribute = new BecomesDeclCustomAttributeElements();
 		this.pQualifiedName = new QualifiedNameElements();
 		this.pRuleNameAndParams = new RuleNameAndParamsElements();
 		this.pParameter = new ParameterElements();
@@ -2654,20 +2748,38 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		return tJAVA_STRING;
 	}
 	
-	//terminal JAVA_STRING_LIST:
-	//	'$['->']$';
-	public TerminalRule getJAVA_STRING_LISTRule() {
-		return tJAVA_STRING_LIST;
-	}
-	
 	//BecomesDecl:
-	//	type=QualifiedName (code=JAVA_STRING | code=JAVA_STRING_LIST)?;
+	//	{BecomesDecl} list?="[]"? ('('
+	//	attributes+=(BecomesDeclCopyAttribute | BecomesDeclCustomAttribute) (',' attributes+=(BecomesDeclCopyAttribute |
+	//	BecomesDeclCustomAttribute))*
+	//	')')?
+	//	code=JAVA_STRING?;
 	public BecomesDeclElements getBecomesDeclAccess() {
 		return pBecomesDecl;
 	}
 	
 	public ParserRule getBecomesDeclRule() {
 		return getBecomesDeclAccess().getRule();
+	}
+	
+	//BecomesDeclCopyAttribute:
+	//	name=ID;
+	public BecomesDeclCopyAttributeElements getBecomesDeclCopyAttributeAccess() {
+		return pBecomesDeclCopyAttribute;
+	}
+	
+	public ParserRule getBecomesDeclCopyAttributeRule() {
+		return getBecomesDeclCopyAttributeAccess().getRule();
+	}
+	
+	//BecomesDeclCustomAttribute:
+	//	type=ID name=ID;
+	public BecomesDeclCustomAttributeElements getBecomesDeclCustomAttributeAccess() {
+		return pBecomesDeclCustomAttribute;
+	}
+	
+	public ParserRule getBecomesDeclCustomAttributeRule() {
+		return getBecomesDeclCustomAttributeAccess().getRule();
 	}
 	
 	//QualifiedName:

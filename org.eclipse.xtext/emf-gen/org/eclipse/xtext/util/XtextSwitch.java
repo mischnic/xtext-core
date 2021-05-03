@@ -323,6 +323,26 @@ public class XtextSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case XtextPackage.BECOMES_DECL_ATTRIBUTE: {
+				BecomesDeclAttribute becomesDeclAttribute = (BecomesDeclAttribute)theEObject;
+				T result = caseBecomesDeclAttribute(becomesDeclAttribute);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case XtextPackage.BECOMES_DECL_COPY_ATTRIBUTE: {
+				BecomesDeclCopyAttribute becomesDeclCopyAttribute = (BecomesDeclCopyAttribute)theEObject;
+				T result = caseBecomesDeclCopyAttribute(becomesDeclCopyAttribute);
+				if (result == null) result = caseBecomesDeclAttribute(becomesDeclCopyAttribute);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE: {
+				BecomesDeclCustomAttribute becomesDeclCustomAttribute = (BecomesDeclCustomAttribute)theEObject;
+				T result = caseBecomesDeclCustomAttribute(becomesDeclCustomAttribute);
+				if (result == null) result = caseBecomesDeclAttribute(becomesDeclCustomAttribute);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -888,6 +908,51 @@ public class XtextSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseBecomesDecl(BecomesDecl object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Becomes Decl Attribute</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Becomes Decl Attribute</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBecomesDeclAttribute(BecomesDeclAttribute object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Becomes Decl Copy Attribute</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Becomes Decl Copy Attribute</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBecomesDeclCopyAttribute(BecomesDeclCopyAttribute object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Becomes Decl Custom Attribute</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Becomes Decl Custom Attribute</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBecomesDeclCustomAttribute(BecomesDeclCustomAttribute object) {
 		return null;
 	}
 

@@ -1953,13 +1953,22 @@ public interface XtextPackage extends EPackage {
 	int BECOMES_DECL = 36;
 
 	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * The feature id for the '<em><b>List</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BECOMES_DECL__TYPE = 0;
+	int BECOMES_DECL__LIST = 0;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BECOMES_DECL__ATTRIBUTES = 1;
 
 	/**
 	 * The feature id for the '<em><b>Code</b></em>' attribute.
@@ -1968,7 +1977,7 @@ public interface XtextPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BECOMES_DECL__CODE = 1;
+	int BECOMES_DECL__CODE = 2;
 
 	/**
 	 * The number of structural features of the '<em>Becomes Decl</em>' class.
@@ -1977,7 +1986,91 @@ public interface XtextPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BECOMES_DECL_FEATURE_COUNT = 2;
+	int BECOMES_DECL_FEATURE_COUNT = 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.xtext.BecomesDeclAttribute <em>Becomes Decl Attribute</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.xtext.BecomesDeclAttribute
+	 * @see org.eclipse.xtext.impl.XtextPackageImpl#getBecomesDeclAttribute()
+	 * @generated
+	 */
+	int BECOMES_DECL_ATTRIBUTE = 37;
+
+	/**
+	 * The number of structural features of the '<em>Becomes Decl Attribute</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BECOMES_DECL_ATTRIBUTE_FEATURE_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.xtext.impl.BecomesDeclCopyAttributeImpl <em>Becomes Decl Copy Attribute</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.xtext.impl.BecomesDeclCopyAttributeImpl
+	 * @see org.eclipse.xtext.impl.XtextPackageImpl#getBecomesDeclCopyAttribute()
+	 * @generated
+	 */
+	int BECOMES_DECL_COPY_ATTRIBUTE = 38;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BECOMES_DECL_COPY_ATTRIBUTE__NAME = BECOMES_DECL_ATTRIBUTE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Becomes Decl Copy Attribute</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BECOMES_DECL_COPY_ATTRIBUTE_FEATURE_COUNT = BECOMES_DECL_ATTRIBUTE_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.xtext.impl.BecomesDeclCustomAttributeImpl <em>Becomes Decl Custom Attribute</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.xtext.impl.BecomesDeclCustomAttributeImpl
+	 * @see org.eclipse.xtext.impl.XtextPackageImpl#getBecomesDeclCustomAttribute()
+	 * @generated
+	 */
+	int BECOMES_DECL_CUSTOM_ATTRIBUTE = 39;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BECOMES_DECL_CUSTOM_ATTRIBUTE__TYPE = BECOMES_DECL_ATTRIBUTE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BECOMES_DECL_CUSTOM_ATTRIBUTE__NAME = BECOMES_DECL_ATTRIBUTE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Becomes Decl Custom Attribute</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BECOMES_DECL_CUSTOM_ATTRIBUTE_FEATURE_COUNT = BECOMES_DECL_ATTRIBUTE_FEATURE_COUNT + 2;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.xtext.Grammar <em>Grammar</em>}'.
@@ -2969,15 +3062,26 @@ public interface XtextPackage extends EPackage {
 	EClass getBecomesDecl();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.xtext.BecomesDecl#getType <em>Type</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.xtext.BecomesDecl#isList <em>List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see org.eclipse.xtext.BecomesDecl#getType()
+	 * @return the meta object for the attribute '<em>List</em>'.
+	 * @see org.eclipse.xtext.BecomesDecl#isList()
 	 * @see #getBecomesDecl()
 	 * @generated
 	 */
-	EAttribute getBecomesDecl_Type();
+	EAttribute getBecomesDecl_List();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.xtext.BecomesDecl#getAttributes <em>Attributes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Attributes</em>'.
+	 * @see org.eclipse.xtext.BecomesDecl#getAttributes()
+	 * @see #getBecomesDecl()
+	 * @generated
+	 */
+	EReference getBecomesDecl_Attributes();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.xtext.BecomesDecl#getCode <em>Code</em>}'.
@@ -2989,6 +3093,69 @@ public interface XtextPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getBecomesDecl_Code();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.xtext.BecomesDeclAttribute <em>Becomes Decl Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Becomes Decl Attribute</em>'.
+	 * @see org.eclipse.xtext.BecomesDeclAttribute
+	 * @generated
+	 */
+	EClass getBecomesDeclAttribute();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.xtext.BecomesDeclCopyAttribute <em>Becomes Decl Copy Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Becomes Decl Copy Attribute</em>'.
+	 * @see org.eclipse.xtext.BecomesDeclCopyAttribute
+	 * @generated
+	 */
+	EClass getBecomesDeclCopyAttribute();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.xtext.BecomesDeclCopyAttribute#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.xtext.BecomesDeclCopyAttribute#getName()
+	 * @see #getBecomesDeclCopyAttribute()
+	 * @generated
+	 */
+	EAttribute getBecomesDeclCopyAttribute_Name();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.xtext.BecomesDeclCustomAttribute <em>Becomes Decl Custom Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Becomes Decl Custom Attribute</em>'.
+	 * @see org.eclipse.xtext.BecomesDeclCustomAttribute
+	 * @generated
+	 */
+	EClass getBecomesDeclCustomAttribute();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.xtext.BecomesDeclCustomAttribute#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see org.eclipse.xtext.BecomesDeclCustomAttribute#getType()
+	 * @see #getBecomesDeclCustomAttribute()
+	 * @generated
+	 */
+	EAttribute getBecomesDeclCustomAttribute_Type();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.xtext.BecomesDeclCustomAttribute#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.xtext.BecomesDeclCustomAttribute#getName()
+	 * @see #getBecomesDeclCustomAttribute()
+	 * @generated
+	 */
+	EAttribute getBecomesDeclCustomAttribute_Name();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -3840,12 +4007,20 @@ public interface XtextPackage extends EPackage {
 		EClass BECOMES_DECL = eINSTANCE.getBecomesDecl();
 
 		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>List</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute BECOMES_DECL__TYPE = eINSTANCE.getBecomesDecl_Type();
+		EAttribute BECOMES_DECL__LIST = eINSTANCE.getBecomesDecl_List();
+
+		/**
+		 * The meta object literal for the '<em><b>Attributes</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BECOMES_DECL__ATTRIBUTES = eINSTANCE.getBecomesDecl_Attributes();
 
 		/**
 		 * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
@@ -3854,6 +4029,60 @@ public interface XtextPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute BECOMES_DECL__CODE = eINSTANCE.getBecomesDecl_Code();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.xtext.BecomesDeclAttribute <em>Becomes Decl Attribute</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.xtext.BecomesDeclAttribute
+		 * @see org.eclipse.xtext.impl.XtextPackageImpl#getBecomesDeclAttribute()
+		 * @generated
+		 */
+		EClass BECOMES_DECL_ATTRIBUTE = eINSTANCE.getBecomesDeclAttribute();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.xtext.impl.BecomesDeclCopyAttributeImpl <em>Becomes Decl Copy Attribute</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.xtext.impl.BecomesDeclCopyAttributeImpl
+		 * @see org.eclipse.xtext.impl.XtextPackageImpl#getBecomesDeclCopyAttribute()
+		 * @generated
+		 */
+		EClass BECOMES_DECL_COPY_ATTRIBUTE = eINSTANCE.getBecomesDeclCopyAttribute();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BECOMES_DECL_COPY_ATTRIBUTE__NAME = eINSTANCE.getBecomesDeclCopyAttribute_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.xtext.impl.BecomesDeclCustomAttributeImpl <em>Becomes Decl Custom Attribute</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.xtext.impl.BecomesDeclCustomAttributeImpl
+		 * @see org.eclipse.xtext.impl.XtextPackageImpl#getBecomesDeclCustomAttribute()
+		 * @generated
+		 */
+		EClass BECOMES_DECL_CUSTOM_ATTRIBUTE = eINSTANCE.getBecomesDeclCustomAttribute();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BECOMES_DECL_CUSTOM_ATTRIBUTE__TYPE = eINSTANCE.getBecomesDeclCustomAttribute_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BECOMES_DECL_CUSTOM_ATTRIBUTE__NAME = eINSTANCE.getBecomesDeclCustomAttribute_Name();
 
 	}
 

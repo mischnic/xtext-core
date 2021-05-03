@@ -125,8 +125,17 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xtext.ecore#//Annotation/name"/>
     </genClasses>
     <genClasses ecoreClass="Xtext.ecore#//BecomesDecl">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xtext.ecore#//BecomesDecl/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xtext.ecore#//BecomesDecl/list"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Xtext.ecore#//BecomesDecl/attributes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xtext.ecore#//BecomesDecl/code"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Xtext.ecore#//BecomesDeclAttribute"/>
+    <genClasses ecoreClass="Xtext.ecore#//BecomesDeclCopyAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xtext.ecore#//BecomesDeclCopyAttribute/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Xtext.ecore#//BecomesDeclCustomAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xtext.ecore#//BecomesDeclCustomAttribute/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xtext.ecore#//BecomesDeclCustomAttribute/name"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

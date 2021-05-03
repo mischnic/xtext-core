@@ -2,6 +2,7 @@
  */
 package org.eclipse.xtext;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -13,7 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.xtext.BecomesDecl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.xtext.BecomesDecl#isList <em>List</em>}</li>
+ *   <li>{@link org.eclipse.xtext.BecomesDecl#getAttributes <em>Attributes</em>}</li>
  *   <li>{@link org.eclipse.xtext.BecomesDecl#getCode <em>Code</em>}</li>
  * </ul>
  *
@@ -23,26 +25,38 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface BecomesDecl extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' attribute.
+	 * Returns the value of the '<em><b>List</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Type</em>' attribute.
-	 * @see #setType(String)
-	 * @see org.eclipse.xtext.XtextPackage#getBecomesDecl_Type()
+	 * @return the value of the '<em>List</em>' attribute.
+	 * @see #setList(boolean)
+	 * @see org.eclipse.xtext.XtextPackage#getBecomesDecl_List()
 	 * @model
 	 * @generated
 	 */
-	String getType();
+	boolean isList();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.xtext.BecomesDecl#getType <em>Type</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.xtext.BecomesDecl#isList <em>List</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' attribute.
-	 * @see #getType()
+	 * @param value the new value of the '<em>List</em>' attribute.
+	 * @see #isList()
 	 * @generated
 	 */
-	void setType(String value);
+	void setList(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Attributes</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.xtext.BecomesDeclAttribute}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Attributes</em>' containment reference list.
+	 * @see org.eclipse.xtext.XtextPackage#getBecomesDecl_Attributes()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<BecomesDeclAttribute> getAttributes();
 
 	/**
 	 * Returns the value of the '<em><b>Code</b></em>' attribute.

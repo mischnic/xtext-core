@@ -12,6 +12,8 @@ import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Annotation;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.BecomesDecl;
+import org.eclipse.xtext.BecomesDeclCopyAttribute;
+import org.eclipse.xtext.BecomesDeclCustomAttribute;
 import org.eclipse.xtext.CharacterRange;
 import org.eclipse.xtext.Conjunction;
 import org.eclipse.xtext.CrossReference;
@@ -139,6 +141,12 @@ public class XtextSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				else break;
 			case XtextPackage.BECOMES_DECL:
 				sequence_BecomesDecl(context, (BecomesDecl) semanticObject); 
+				return; 
+			case XtextPackage.BECOMES_DECL_COPY_ATTRIBUTE:
+				sequence_BecomesDeclCopyAttribute(context, (BecomesDeclCopyAttribute) semanticObject); 
+				return; 
+			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE:
+				sequence_BecomesDeclCustomAttribute(context, (BecomesDeclCustomAttribute) semanticObject); 
 				return; 
 			case XtextPackage.CHARACTER_RANGE:
 				if (rule == grammarAccess.getCharacterRangeRule()) {
@@ -624,10 +632,57 @@ public class XtextSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
+	 *     BecomesDeclCopyAttribute returns BecomesDeclCopyAttribute
+	 *
+	 * Constraint:
+	 *     name=ID
+	 */
+	protected void sequence_BecomesDeclCopyAttribute(ISerializationContext context, BecomesDeclCopyAttribute semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XtextPackage.Literals.BECOMES_DECL_COPY_ATTRIBUTE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XtextPackage.Literals.BECOMES_DECL_COPY_ATTRIBUTE__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getBecomesDeclCopyAttributeAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     BecomesDeclCustomAttribute returns BecomesDeclCustomAttribute
+	 *
+	 * Constraint:
+	 *     (type=ID name=ID)
+	 */
+	protected void sequence_BecomesDeclCustomAttribute(ISerializationContext context, BecomesDeclCustomAttribute semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XtextPackage.Literals.BECOMES_DECL_CUSTOM_ATTRIBUTE__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XtextPackage.Literals.BECOMES_DECL_CUSTOM_ATTRIBUTE__TYPE));
+			if (transientValues.isValueTransient(semanticObject, XtextPackage.Literals.BECOMES_DECL_CUSTOM_ATTRIBUTE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XtextPackage.Literals.BECOMES_DECL_CUSTOM_ATTRIBUTE__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getBecomesDeclCustomAttributeAccess().getTypeIDTerminalRuleCall_0_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getBecomesDeclCustomAttributeAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     BecomesDecl returns BecomesDecl
 	 *
 	 * Constraint:
-	 *     (type=QualifiedName (code=JAVA_STRING | code=JAVA_STRING_LIST)?)
+	 *     (
+	 *         list?='[]'? 
+	 *         (
+	 *             (attributes+=BecomesDeclCopyAttribute | attributes+=BecomesDeclCustomAttribute) 
+	 *             attributes+=BecomesDeclCopyAttribute? 
+	 *             (attributes+=BecomesDeclCustomAttribute? attributes+=BecomesDeclCopyAttribute?)*
+	 *         )? 
+	 *         code=JAVA_STRING?
+	 *     )
 	 */
 	protected void sequence_BecomesDecl(ISerializationContext context, BecomesDecl semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

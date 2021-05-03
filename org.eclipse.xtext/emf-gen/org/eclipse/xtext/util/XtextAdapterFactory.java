@@ -216,6 +216,18 @@ public class XtextAdapterFactory extends AdapterFactoryImpl {
 				return createBecomesDeclAdapter();
 			}
 			@Override
+			public Adapter caseBecomesDeclAttribute(BecomesDeclAttribute object) {
+				return createBecomesDeclAttributeAdapter();
+			}
+			@Override
+			public Adapter caseBecomesDeclCopyAttribute(BecomesDeclCopyAttribute object) {
+				return createBecomesDeclCopyAttributeAdapter();
+			}
+			@Override
+			public Adapter caseBecomesDeclCustomAttribute(BecomesDeclCustomAttribute object) {
+				return createBecomesDeclCustomAttributeAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -759,6 +771,48 @@ public class XtextAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createBecomesDeclAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtext.BecomesDeclAttribute <em>Becomes Decl Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.xtext.BecomesDeclAttribute
+	 * @generated
+	 */
+	public Adapter createBecomesDeclAttributeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtext.BecomesDeclCopyAttribute <em>Becomes Decl Copy Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.xtext.BecomesDeclCopyAttribute
+	 * @generated
+	 */
+	public Adapter createBecomesDeclCopyAttributeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtext.BecomesDeclCustomAttribute <em>Becomes Decl Custom Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.xtext.BecomesDeclCustomAttribute
+	 * @generated
+	 */
+	public Adapter createBecomesDeclCustomAttributeAdapter() {
 		return null;
 	}
 

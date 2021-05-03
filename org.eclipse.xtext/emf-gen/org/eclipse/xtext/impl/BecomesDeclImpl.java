@@ -2,14 +2,21 @@
  */
 package org.eclipse.xtext.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.xtext.BecomesDecl;
+import org.eclipse.xtext.BecomesDeclAttribute;
 import org.eclipse.xtext.XtextPackage;
 
 /**
@@ -20,7 +27,8 @@ import org.eclipse.xtext.XtextPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.xtext.impl.BecomesDeclImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.xtext.impl.BecomesDeclImpl#isList <em>List</em>}</li>
+ *   <li>{@link org.eclipse.xtext.impl.BecomesDeclImpl#getAttributes <em>Attributes</em>}</li>
  *   <li>{@link org.eclipse.xtext.impl.BecomesDeclImpl#getCode <em>Code</em>}</li>
  * </ul>
  *
@@ -28,24 +36,34 @@ import org.eclipse.xtext.XtextPackage;
  */
 public class BecomesDeclImpl extends MinimalEObjectImpl.Container implements BecomesDecl {
 	/**
-	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * The default value of the '{@link #isList() <em>List</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
+	 * @see #isList()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TYPE_EDEFAULT = null;
+	protected static final boolean LIST_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * The cached value of the '{@link #isList() <em>List</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
+	 * @see #isList()
 	 * @generated
 	 * @ordered
 	 */
-	protected String type = TYPE_EDEFAULT;
+	protected boolean list = LIST_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getAttributes() <em>Attributes</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAttributes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<BecomesDeclAttribute> attributes;
 
 	/**
 	 * The default value of the '{@link #getCode() <em>Code</em>}' attribute.
@@ -92,8 +110,8 @@ public class BecomesDeclImpl extends MinimalEObjectImpl.Container implements Bec
 	 * @generated
 	 */
 	@Override
-	public String getType() {
-		return type;
+	public boolean isList() {
+		return list;
 	}
 
 	/**
@@ -102,11 +120,24 @@ public class BecomesDeclImpl extends MinimalEObjectImpl.Container implements Bec
 	 * @generated
 	 */
 	@Override
-	public void setType(String newType) {
-		String oldType = type;
-		type = newType;
+	public void setList(boolean newList) {
+		boolean oldList = list;
+		list = newList;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XtextPackage.BECOMES_DECL__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, XtextPackage.BECOMES_DECL__LIST, oldList, list));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<BecomesDeclAttribute> getAttributes() {
+		if (attributes == null) {
+			attributes = new EObjectContainmentEList<BecomesDeclAttribute>(BecomesDeclAttribute.class, this, XtextPackage.BECOMES_DECL__ATTRIBUTES);
+		}
+		return attributes;
 	}
 
 	/**
@@ -138,10 +169,26 @@ public class BecomesDeclImpl extends MinimalEObjectImpl.Container implements Bec
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case XtextPackage.BECOMES_DECL__ATTRIBUTES:
+				return ((InternalEList<?>)getAttributes()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case XtextPackage.BECOMES_DECL__TYPE:
-				return getType();
+			case XtextPackage.BECOMES_DECL__LIST:
+				return isList();
+			case XtextPackage.BECOMES_DECL__ATTRIBUTES:
+				return getAttributes();
 			case XtextPackage.BECOMES_DECL__CODE:
 				return getCode();
 		}
@@ -153,11 +200,16 @@ public class BecomesDeclImpl extends MinimalEObjectImpl.Container implements Bec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case XtextPackage.BECOMES_DECL__TYPE:
-				setType((String)newValue);
+			case XtextPackage.BECOMES_DECL__LIST:
+				setList((Boolean)newValue);
+				return;
+			case XtextPackage.BECOMES_DECL__ATTRIBUTES:
+				getAttributes().clear();
+				getAttributes().addAll((Collection<? extends BecomesDeclAttribute>)newValue);
 				return;
 			case XtextPackage.BECOMES_DECL__CODE:
 				setCode((String)newValue);
@@ -174,8 +226,11 @@ public class BecomesDeclImpl extends MinimalEObjectImpl.Container implements Bec
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case XtextPackage.BECOMES_DECL__TYPE:
-				setType(TYPE_EDEFAULT);
+			case XtextPackage.BECOMES_DECL__LIST:
+				setList(LIST_EDEFAULT);
+				return;
+			case XtextPackage.BECOMES_DECL__ATTRIBUTES:
+				getAttributes().clear();
 				return;
 			case XtextPackage.BECOMES_DECL__CODE:
 				setCode(CODE_EDEFAULT);
@@ -192,8 +247,10 @@ public class BecomesDeclImpl extends MinimalEObjectImpl.Container implements Bec
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case XtextPackage.BECOMES_DECL__TYPE:
-				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+			case XtextPackage.BECOMES_DECL__LIST:
+				return list != LIST_EDEFAULT;
+			case XtextPackage.BECOMES_DECL__ATTRIBUTES:
+				return attributes != null && !attributes.isEmpty();
 			case XtextPackage.BECOMES_DECL__CODE:
 				return CODE_EDEFAULT == null ? code != null : !CODE_EDEFAULT.equals(code);
 		}
@@ -210,8 +267,8 @@ public class BecomesDeclImpl extends MinimalEObjectImpl.Container implements Bec
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (type: ");
-		result.append(type);
+		result.append(" (list: ");
+		result.append(list);
 		result.append(", code: ");
 		result.append(code);
 		result.append(')');

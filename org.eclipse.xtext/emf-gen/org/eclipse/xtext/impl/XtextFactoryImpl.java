@@ -93,6 +93,8 @@ public class XtextFactoryImpl extends EFactoryImpl implements XtextFactory {
 			case XtextPackage.LITERAL_CONDITION: return createLiteralCondition();
 			case XtextPackage.ANNOTATION: return createAnnotation();
 			case XtextPackage.BECOMES_DECL: return createBecomesDecl();
+			case XtextPackage.BECOMES_DECL_COPY_ATTRIBUTE: return createBecomesDeclCopyAttribute();
+			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE: return createBecomesDeclCustomAttribute();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -505,6 +507,28 @@ public class XtextFactoryImpl extends EFactoryImpl implements XtextFactory {
 	public BecomesDecl createBecomesDecl() {
 		BecomesDeclImpl becomesDecl = new BecomesDeclImpl();
 		return becomesDecl;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public BecomesDeclCopyAttribute createBecomesDeclCopyAttribute() {
+		BecomesDeclCopyAttributeImpl becomesDeclCopyAttribute = new BecomesDeclCopyAttributeImpl();
+		return becomesDeclCopyAttribute;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public BecomesDeclCustomAttribute createBecomesDeclCustomAttribute() {
+		BecomesDeclCustomAttributeImpl becomesDeclCustomAttribute = new BecomesDeclCustomAttributeImpl();
+		return becomesDeclCustomAttribute;
 	}
 
 	/**

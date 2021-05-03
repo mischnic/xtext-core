@@ -364,6 +364,24 @@ public interface XtextFactory extends EFactory {
 	BecomesDecl createBecomesDecl();
 
 	/**
+	 * Returns a new object of class '<em>Becomes Decl Copy Attribute</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Becomes Decl Copy Attribute</em>'.
+	 * @generated
+	 */
+	BecomesDeclCopyAttribute createBecomesDeclCopyAttribute();
+
+	/**
+	 * Returns a new object of class '<em>Becomes Decl Custom Attribute</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Becomes Decl Custom Attribute</em>'.
+	 * @generated
+	 */
+	BecomesDeclCustomAttribute createBecomesDeclCustomAttribute();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
