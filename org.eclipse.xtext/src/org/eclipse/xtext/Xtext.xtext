@@ -59,12 +59,25 @@ terminal JAVA_STRING returns ecore::EString:
 	'$$' -> '$$'
 ;
 
-terminal JAVA_STRING_LIST returns ecore::EString:
-	'$[' -> ']$'
-;
 
 BecomesDecl returns BecomesDecl:
-	type=QualifiedName (code=JAVA_STRING | code=JAVA_STRING_LIST)?
+	{BecomesDecl}
+	(list?="[]")?
+	(
+	'('
+		attributes+=(BecomesDeclCopyAttribute | BecomesDeclCustomAttribute)
+		(',' attributes+=(BecomesDeclCopyAttribute | BecomesDeclCustomAttribute))*
+	')'
+	)?
+	(code=JAVA_STRING)?
+;
+
+BecomesDeclCopyAttribute returns BecomesDeclCopyAttribute:
+	name=ID
+;
+
+BecomesDeclCustomAttribute returns BecomesDeclCustomAttribute:
+	type=ID name=ID
 ;
 
 QualifiedName:
