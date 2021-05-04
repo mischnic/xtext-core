@@ -14,9 +14,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.antlr.runtime.BitSet;
 import org.antlr.runtime.CommonToken;
@@ -44,9 +46,13 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.xtext.AbstractElement;
 import org.eclipse.xtext.AbstractRule;
 import org.eclipse.xtext.Action;
+import org.eclipse.xtext.BecomesDecl;
+import org.eclipse.xtext.BecomesDeclAttribute;
+import org.eclipse.xtext.BecomesDeclCopyAttribute;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.IGrammarAccess;
+import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.TerminalRule;
 import org.eclipse.xtext.UnorderedGroup;
 import org.eclipse.xtext.conversion.ValueConverterException;
@@ -637,75 +643,93 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 
 	@SuppressWarnings("unchecked")
 	private Object convertAST(EObject current) {
-		if (current != null) {	
-			EClass type = current.eClass();
-			IGrammarAccess ga = this.getGrammarAccess();
-			
-//			System.out.println("convertAST current " + current);
-			Method m = null;
-			if (current.getClass().getInterfaces().length > 0) {
-				try {
-					m = ga.getClass().getMethod("convert" + type.getName(), type.getInstanceClass(), HashMap.class);
-				} catch (NoSuchMethodException | SecurityException e) {	}
-			}
-			
-			if(m != null) {
-				EList<EStructuralFeature> features = current.eClass().getEStructuralFeatures();
-				HashMap<String, Object> convertedChildren = new HashMap<>();
-				for (EStructuralFeature f : features) {
-//					System.out.println("convertAST feature: " + f);
-					if (f instanceof EReference) {
-						Object featureValue = current.eGet(f);
-						if (!f.isMany()) {
-							Object converted = this.convertAST((EObject) featureValue);
-//							System.out.println("convertAST child: " + f.getName() + " - " + converted);
-							convertedChildren.put(f.getName(), converted);
-						} else {
-//							System.out.println("convertAST child list: " + f.getName() + " - " + feature);
-							EObjectContainmentEList<EObject> featureValueList = ((EObjectContainmentEList<EObject>) featureValue);
-							List<Object> convertedList = new ArrayList<>();
-							for(EObject featureValueEntry : featureValueList) {
-								Object converted = this.convertAST((EObject) featureValueEntry);
-								convertedList.add(converted);
-							}
-							convertedChildren.put(f.getName(), convertedList);
-						}
-					} else {
-						// TODO are there more types apart from EAttribute and EReference?
-						throw new UnsupportedOperationException("Unknown feature type");
-					}
-				}
-				
-				try {
-					Object result = m.invoke(ga, current, convertedChildren);
-//					System.out.println("convertAST result " + result);
-					if (result instanceof Class) {
-						Class<?> astClass = (Class<?>) result;
-						result = astClass.getConstructor().newInstance();
-						// automatic/implicit conversion
-						for (EStructuralFeature f : features) {
-//							System.out.println("convertAST auto " + f);
-							Field field = astClass.getField(f.getName());
-							Object featureValue;
-							if (f instanceof EReference) {
-								featureValue = convertedChildren.get(f.getName());
-							} else if (f instanceof EAttribute) {
-								featureValue = current.eGet(f);
-							} else {
-								// TODO are there more types apart fro EAttribute and EReference?
-								featureValue = null;
-							}
-							field.set(result, featureValue);
-						}
-					}
-					return result;
-				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | InstantiationException | NoSuchFieldException | SecurityException | NoSuchMethodException e) {
-					throw new WrappedException(e);
-				}
-			}
-//			System.out.println("didn't convert ast");
+		if (current == null) {
+			return null;
 		}
-		return null;
+		EClass type = current.eClass();
+		IGrammarAccess ga = this.getGrammarAccess();
+		
+//		System.out.println("convertAST current " + current);
+		BecomesDecl becomesDecl = null;
+		try {
+			ParserRule rule = (ParserRule) ga.getClass().getMethod("get" + type.getName() + "Rule").invoke(ga);
+			becomesDecl = (BecomesDecl) rule.getBecomes();
+		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			throw new WrappedException(e);
+		}
+		if(becomesDecl == null) {
+			return null;
+		}
+		Set<String> copyAttributes = new HashSet<>();
+		for(BecomesDeclAttribute attr : becomesDecl.getAttributes()) {
+			if(attr instanceof BecomesDeclCopyAttribute) {
+				copyAttributes.add(((BecomesDeclCopyAttribute)attr).getName());
+			}
+		}
+		
+		Method convertMethod = null;
+		try {
+			convertMethod = ga.getClass().getMethod("convert" + type.getName(), type.getInstanceClass(), HashMap.class);
+		} catch (NoSuchMethodException | SecurityException e) {
+			// TODO ideally, there would be a way to get a handle to the AST class for this CST type
+			return null;
+		}
+		
+		EList<EStructuralFeature> features = current.eClass().getEStructuralFeatures();
+		HashMap<String, Object> convertedChildren = new HashMap<>();
+		HashMap<String, Object> attributesToCopy = new HashMap<>();
+		for (EStructuralFeature f : features) {
+//			System.out.println("convertAST feature: " + f);
+			if (f instanceof EReference) {
+				Object featureValue = current.eGet(f);
+				Object converted = null;
+				if (!f.isMany()) {
+					converted = this.convertAST((EObject) featureValue);
+//					System.out.println("convertAST child: " + f.getName() + " - " + converted);
+				} else {
+//					System.out.println("convertAST child list: " + f.getName() + " - " + feature);
+					EObjectContainmentEList<EObject> featureValueList = ((EObjectContainmentEList<EObject>) featureValue);
+					List<Object> convertedList = new ArrayList<>();
+					for(EObject featureValueEntry : featureValueList) {
+						Object child = this.convertAST((EObject) featureValueEntry);
+						convertedList.add(child);
+					}
+					converted = convertedList;
+				}
+				convertedChildren.put(f.getName(), converted);
+				if(copyAttributes.contains(f.getName())) {
+					attributesToCopy.put(f.getName(), converted);
+				}
+			} else if(f instanceof EAttribute) {
+				if(copyAttributes.contains(f.getName())) {
+					attributesToCopy.put(f.getName(), current.eGet(f));
+				}
+			} else {
+				// TODO are there more types apart from EAttribute and EReference?
+				throw new UnsupportedOperationException("Unknown feature type");
+			}
+		}
+		
+		Object result = null;
+		try {
+			result = convertMethod.invoke(ga, current, convertedChildren);
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | SecurityException e) {
+			throw new WrappedException(e);
+		}
+		
+		Class<?> astClass = result.getClass();
+		// copy BecomeDeclCopyAttributes
+		try {
+			for (Entry<String, Object> entry : attributesToCopy.entrySet()) {
+	//			System.out.println("convertAST auto " + f);
+				Field field = astClass.getField(entry.getKey());
+				Object featureValue = entry.getValue();
+				field.set(result, featureValue);
+			}
+		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+			throw new WrappedException(e);
+		}
+		return result;
 	}
 
 	private String normalizeEntryRuleName(String entryRuleName) {

@@ -49,6 +49,7 @@ import static extension org.eclipse.xtext.GrammarUtil.*
 import static extension org.eclipse.xtext.xtext.generator.model.TypeReference.*
 import java.util.HashMap
 import java.util.ArrayList
+import org.eclipse.emf.ecore.EClass
 
 @Log
 class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
@@ -320,16 +321,20 @@ class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
 			}
 		«ENDIF»
 		
-		«IF it.becomes !== null && it.becomes.code !== null»
+		«IF it.becomes !== null && it.type.classifier instanceof EClass && (!(it.type.classifier as EClass).EStructuralFeatures.empty || !it.becomes.attributes.empty)»
 «««			TODO don't hardcoded package
-			public Object «gaRuleBecomeMethodName»(org.xtext.example.mydsl.myDsl.«it.type.getClassifier().name» node, «HashMap»<String, Object> children){
+			public Object «gaRuleBecomeMethodName»(org.xtext.example.mydsl.myDsl.«it.type.classifier.name» node, «HashMap»<String, Object> children){
 				«IF !it.becomes.list»
-					return new «getASTClass(grammar, it)»() {
-						«getASTClass(grammar, it)» XTEXT_INIT() {
-							«it.becomes.code.substring(3, it.becomes.code.length - 2)»
-							return this;
-						}
-					}.XTEXT_INIT();
+					«IF it.becomes.code !== null»
+						return new «getASTClass(grammar, it)»() {
+							«getASTClass(grammar, it)» XTEXT_INIT() {
+								«it.becomes.code.substring(3, it.becomes.code.length - 2)»
+								return this;
+							}
+						}.XTEXT_INIT();
+					«ELSE»
+						return new «getASTClass(grammar, it)»();
+					«ENDIF»
 				«ELSE»
 					return new «ArrayList»<«getASTClass(grammar, it)»>() {
 						private static final long serialVersionUID =  0;
