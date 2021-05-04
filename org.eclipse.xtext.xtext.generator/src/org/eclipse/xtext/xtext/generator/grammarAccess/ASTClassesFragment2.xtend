@@ -56,7 +56,9 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 						}
 						
 						val referencedASTType = getASTClass(grammar, referencedType.name)
-						if(isListType == true){
+						if(isListType == true && attr.many == true){
+							features.put(attr.name, '''«new TypeReference(List)»<«new TypeReference(List)»<«referencedASTType»>>''' )
+						} else if(isListType == true || attr.many){
 							features.put(attr.name, '''«new TypeReference(List)»<«referencedASTType»>''' )
 						} else {
 							features.put(attr.name, referencedASTType)

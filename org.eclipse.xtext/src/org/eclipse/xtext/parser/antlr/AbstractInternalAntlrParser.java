@@ -697,11 +697,11 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 					converted = convertedList;
 				}
 				convertedChildren.put(f.getName(), converted);
-				if(copyAttributes.contains(f.getName())) {
+				if(copyAttributes.contains(f.getName()) || becomesDecl.getAttributes().isEmpty()) {
 					attributesToCopy.put(f.getName(), converted);
 				}
 			} else if(f instanceof EAttribute) {
-				if(copyAttributes.contains(f.getName())) {
+				if(copyAttributes.contains(f.getName()) || becomesDecl.getAttributes().isEmpty()) {
 					attributesToCopy.put(f.getName(), current.eGet(f));
 				}
 			} else {
@@ -721,10 +721,10 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 		// copy BecomeDeclCopyAttributes
 		for (Entry<String, Object> entry : attributesToCopy.entrySet()) {
 			try {
-//					System.out.println("convertAST auto " + entry.getKey() + " " + astClass);
-					Field field = astClass.getField(entry.getKey());
-					Object featureValue = entry.getValue();
-					field.set(result, featureValue);
+//				System.out.println("convertAST auto " + entry.getKey() + " " + astClass);
+				Field field = astClass.getField(entry.getKey());
+				Object featureValue = entry.getValue();
+				field.set(result, featureValue);
 			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
 				throw new RuntimeException(e);
 			}

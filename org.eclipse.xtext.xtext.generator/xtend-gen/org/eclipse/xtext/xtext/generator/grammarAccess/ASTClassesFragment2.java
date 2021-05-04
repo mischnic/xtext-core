@@ -87,17 +87,31 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
                 throw new IllegalStateException(_plus);
               }
               final TypeReference referencedASTType = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), referencedType.getName());
-              if (((isListType).booleanValue() == true)) {
+              if ((((isListType).booleanValue() == true) && (((EReference)attr).isMany() == true))) {
                 String _name_2 = ((EReference)attr).getName();
                 StringConcatenation _builder = new StringConcatenation();
                 TypeReference _typeReference = new TypeReference(List.class);
                 _builder.append(_typeReference);
                 _builder.append("<");
+                TypeReference _typeReference_1 = new TypeReference(List.class);
+                _builder.append(_typeReference_1);
+                _builder.append("<");
                 _builder.append(referencedASTType);
-                _builder.append(">");
+                _builder.append(">>");
                 features.put(_name_2, _builder.toString());
               } else {
-                features.put(((EReference)attr).getName(), referencedASTType);
+                if ((((isListType).booleanValue() == true) || ((EReference)attr).isMany())) {
+                  String _name_3 = ((EReference)attr).getName();
+                  StringConcatenation _builder_1 = new StringConcatenation();
+                  TypeReference _typeReference_2 = new TypeReference(List.class);
+                  _builder_1.append(_typeReference_2);
+                  _builder_1.append("<");
+                  _builder_1.append(referencedASTType);
+                  _builder_1.append(">");
+                  features.put(_name_3, _builder_1.toString());
+                } else {
+                  features.put(((EReference)attr).getName(), referencedASTType);
+                }
               }
             } else {
               throw new UnsupportedOperationException("Unknown feature type");
