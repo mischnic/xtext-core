@@ -22,6 +22,7 @@ import org.eclipse.xtext.BecomesDeclCustomAttribute;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xtext.generator.AbstractXtextGeneratorFragment;
 import org.eclipse.xtext.xtext.generator.XtextGeneratorNaming;
@@ -44,17 +45,23 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
     EList<AbstractRule> _rules = this.getGrammar().getRules();
     for (final AbstractRule rule : _rules) {
       if ((((rule instanceof ParserRule) && (((ParserRule) rule).getBecomes() != null)) && (((ParserRule) rule).getType().getClassifier() instanceof EClass))) {
-        astClassNames.add(this._xtextGeneratorNaming.getASTClassName(rule));
+        astClassNames.add(this._xtextGeneratorNaming.getASTClassName(rule.getName()));
       }
     }
     EList<AbstractRule> _rules_1 = this.getGrammar().getRules();
     for (final AbstractRule rule_1 : _rules_1) {
       if ((((rule_1 instanceof ParserRule) && (((ParserRule) rule_1).getBecomes() != null)) && (((ParserRule) rule_1).getType().getClassifier() instanceof EClass))) {
         final ParserRule pr = ((ParserRule) rule_1);
-        final TypeReference type = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), pr);
+        final TypeReference type = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), pr.getName());
         EClassifier _classifier = pr.getType().getClassifier();
         final EClass eClass = ((EClass) _classifier);
-        final GeneratedJavaFileAccess javaFile = this.fileAccessFactory.createGeneratedJavaFile(type);
+        final Function1<EClass, Boolean> _function = (EClass it) -> {
+          return Boolean.valueOf(astClassNames.contains(this._xtextGeneratorNaming.getASTClassName(it.getName())));
+        };
+        final Function1<EClass, TypeReference> _function_1 = (EClass it) -> {
+          return this._xtextGeneratorNaming.getASTClass(this.getGrammar(), it.getName());
+        };
+        final Iterable<TypeReference> superTypes = IterableExtensions.<EClass, TypeReference>map(IterableExtensions.<EClass>filter(eClass.getESuperTypes(), _function), _function_1);
         final HashMap<String, Object> features = CollectionLiterals.<String, Object>newHashMap();
         EList<EStructuralFeature> _eStructuralFeatures = eClass.getEStructuralFeatures();
         for (final EStructuralFeature attr : _eStructuralFeatures) {
@@ -69,7 +76,7 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
               if (_tripleNotEquals) {
                 _xifexpression = referencedType.getInstanceClass();
               } else {
-                _xifexpression = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), rule_1);
+                _xifexpression = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), rule_1.getName());
               }
               final Object referencedASTType = _xifexpression;
               features.put(((EReference)attr).getName(), referencedASTType);
@@ -127,68 +134,92 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
             }
           }
         }
+        final GeneratedJavaFileAccess javaFile = this.fileAccessFactory.createGeneratedJavaFile(type);
+        final boolean isInterface = (eClass.getEStructuralFeatures().isEmpty() && pr.getBecomes().getAttributes().isEmpty());
         String _xifexpression_2 = null;
-        if ((eClass.getEStructuralFeatures().isEmpty() && pr.getBecomes().getAttributes().isEmpty())) {
-          _xifexpression_2 = "public abstract";
+        boolean _isEmpty_1 = IterableExtensions.isEmpty(superTypes);
+        boolean _not = (!_isEmpty_1);
+        if (_not) {
+          String _join = IterableExtensions.join(superTypes, "");
+          _xifexpression_2 = ("implements " + _join);
         } else {
-          _xifexpression_2 = "public";
+          _xifexpression_2 = "";
         }
-        final String abstractModifier = _xifexpression_2;
+        final String superModifier = _xifexpression_2;
         StringConcatenationClient _client = new StringConcatenationClient() {
           @Override
           protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-            _builder.append(abstractModifier);
-            _builder.append(" class ");
+            _builder.append("public ");
+            String _xifexpression = null;
+            if (isInterface) {
+              _xifexpression = "interface";
+            } else {
+              _xifexpression = "class";
+            }
+            _builder.append(_xifexpression);
+            _builder.append(" ");
             String _simpleName = type.getSimpleName();
             _builder.append(_simpleName);
+            _builder.append(" ");
+            _builder.append(superModifier);
             _builder.append(" {");
             _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("public ");
-            String _simpleName_1 = type.getSimpleName();
-            _builder.append(_simpleName_1, "\t");
-            _builder.append("(){}");
-            _builder.newLineIfNotEmpty();
             {
-              boolean _isEmpty = attributes.isEmpty();
-              boolean _not = (!_isEmpty);
-              if (_not) {
+              if ((!isInterface)) {
+                _builder.append("\t");
                 _builder.append("\t");
                 _builder.append("public ");
-                String _simpleName_2 = type.getSimpleName();
-                _builder.append(_simpleName_2, "\t");
-                _builder.append("(");
-                String _join = IterableExtensions.join(attributes.values(), ", ");
-                _builder.append(_join, "\t");
-                _builder.append("){");
+                String _simpleName_1 = type.getSimpleName();
+                _builder.append(_simpleName_1, "\t\t");
+                _builder.append("(){}");
                 _builder.newLineIfNotEmpty();
                 {
-                  Set<String> _keySet = attributes.keySet();
-                  for(final String n : _keySet) {
+                  boolean _isEmpty = attributes.isEmpty();
+                  boolean _not = (!_isEmpty);
+                  if (_not) {
                     _builder.append("\t");
                     _builder.append("\t");
-                    _builder.append("this.");
-                    _builder.append(n, "\t\t");
-                    _builder.append(" = ");
-                    _builder.append(n, "\t\t");
+                    _builder.append("public ");
+                    String _simpleName_2 = type.getSimpleName();
+                    _builder.append(_simpleName_2, "\t\t");
+                    _builder.append("(");
+                    String _join = IterableExtensions.join(attributes.values(), ", ");
+                    _builder.append(_join, "\t\t");
+                    _builder.append("){");
+                    _builder.newLineIfNotEmpty();
+                    {
+                      Set<String> _keySet = attributes.keySet();
+                      for(final String n : _keySet) {
+                        _builder.append("\t");
+                        _builder.append("\t");
+                        _builder.append("\t");
+                        _builder.append("this.");
+                        _builder.append(n, "\t\t\t");
+                        _builder.append(" = ");
+                        _builder.append(n, "\t\t\t");
+                        _builder.append(";");
+                        _builder.newLineIfNotEmpty();
+                      }
+                    }
+                    _builder.append("\t");
+                    _builder.append("\t");
+                    _builder.append("}");
+                    _builder.newLine();
+                  }
+                }
+                _builder.append("\t");
+                _builder.newLine();
+                {
+                  Collection<Object> _values = attributes.values();
+                  for(final Object attr : _values) {
+                    _builder.append("\t");
+                    _builder.append("\t");
+                    _builder.append("public ");
+                    _builder.append(attr, "\t\t");
                     _builder.append(";");
                     _builder.newLineIfNotEmpty();
                   }
                 }
-                _builder.append("\t");
-                _builder.append("}");
-                _builder.newLine();
-              }
-            }
-            _builder.append("\t");
-            _builder.newLine();
-            {
-              Collection<Object> _values = attributes.values();
-              for(final Object attr : _values) {
-                _builder.append("\t");
-                _builder.append(attr, "\t");
-                _builder.append(";");
-                _builder.newLineIfNotEmpty();
               }
             }
             _builder.append("}");

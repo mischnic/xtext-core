@@ -125,12 +125,12 @@ public class XtextGeneratorNaming {
 		return getRuntimeBasePackage(grammar) + ".ast";
 	}
 	
-	public String getASTClassName(AbstractRule rule) {
-		return "AST" + rule.getName();
+	public String getASTClassName(String name) {
+		return "AST" + name;
 	}
 
-	public TypeReference getASTClass(Grammar grammar, AbstractRule rule) {
-		return new TypeReference(getASTPackage(grammar), getASTClassName(rule));
+	public TypeReference getASTClass(Grammar grammar, String name) {
+		return new TypeReference(getASTPackage(grammar), getASTClassName(name));
 	}
 
 	/**

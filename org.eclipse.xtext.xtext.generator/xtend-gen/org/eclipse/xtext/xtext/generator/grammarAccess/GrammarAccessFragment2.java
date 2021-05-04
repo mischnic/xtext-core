@@ -843,13 +843,13 @@ public class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
                   if (_tripleNotEquals) {
                     _builder.append("\t");
                     _builder.append("return new ");
-                    TypeReference _aSTClass = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it);
+                    TypeReference _aSTClass = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it.getName());
                     _builder.append(_aSTClass, "\t");
                     _builder.append("() {");
                     _builder.newLineIfNotEmpty();
                     _builder.append("\t");
                     _builder.append("\t");
-                    TypeReference _aSTClass_1 = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it);
+                    TypeReference _aSTClass_1 = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it.getName());
                     _builder.append(_aSTClass_1, "\t\t");
                     _builder.append(" XTEXT_INIT() {");
                     _builder.newLineIfNotEmpty();
@@ -875,7 +875,7 @@ public class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
                   } else {
                     _builder.append("\t");
                     _builder.append("return new ");
-                    TypeReference _aSTClass_2 = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it);
+                    TypeReference _aSTClass_2 = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it.getName());
                     _builder.append(_aSTClass_2, "\t");
                     _builder.append("();");
                     _builder.newLineIfNotEmpty();
@@ -886,7 +886,7 @@ public class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
                 _builder.append("return new ");
                 _builder.append(ArrayList.class, "\t");
                 _builder.append("<");
-                TypeReference _aSTClass_3 = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it);
+                TypeReference _aSTClass_3 = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it.getName());
                 _builder.append(_aSTClass_3, "\t");
                 _builder.append(">() {");
                 _builder.newLineIfNotEmpty();
@@ -898,7 +898,7 @@ public class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
                 _builder.append("\t");
                 _builder.append(ArrayList.class, "\t\t");
                 _builder.append("<");
-                TypeReference _aSTClass_4 = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it);
+                TypeReference _aSTClass_4 = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it.getName());
                 _builder.append(_aSTClass_4, "\t\t");
                 _builder.append("> XTEXT_INIT() {");
                 _builder.newLineIfNotEmpty();

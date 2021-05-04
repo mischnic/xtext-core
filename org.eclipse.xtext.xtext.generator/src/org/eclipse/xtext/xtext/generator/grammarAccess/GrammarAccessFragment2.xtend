@@ -326,19 +326,19 @@ class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
 			public Object «gaRuleBecomeMethodName»(org.xtext.example.mydsl.myDsl.«it.type.classifier.name» node, «HashMap»<String, Object> children){
 				«IF !it.becomes.list»
 					«IF it.becomes.code !== null»
-						return new «getASTClass(grammar, it)»() {
-							«getASTClass(grammar, it)» XTEXT_INIT() {
+						return new «getASTClass(grammar, it.name)»() {
+							«getASTClass(grammar, it.name)» XTEXT_INIT() {
 								«it.becomes.code.substring(3, it.becomes.code.length - 2)»
 								return this;
 							}
 						}.XTEXT_INIT();
 					«ELSE»
-						return new «getASTClass(grammar, it)»();
+						return new «getASTClass(grammar, it.name)»();
 					«ENDIF»
 				«ELSE»
-					return new «ArrayList»<«getASTClass(grammar, it)»>() {
+					return new «ArrayList»<«getASTClass(grammar, it.name)»>() {
 						private static final long serialVersionUID =  0;
-						«ArrayList»<«getASTClass(grammar, it)»> XTEXT_INIT() {
+						«ArrayList»<«getASTClass(grammar, it.name)»> XTEXT_INIT() {
 							«it.becomes.code.substring(3, it.becomes.code.length - 2)»
 							return this;
 						}

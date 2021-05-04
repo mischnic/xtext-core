@@ -719,15 +719,15 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 		
 		Class<?> astClass = result.getClass();
 		// copy BecomeDeclCopyAttributes
-		try {
-			for (Entry<String, Object> entry : attributesToCopy.entrySet()) {
-	//			System.out.println("convertAST auto " + f);
-				Field field = astClass.getField(entry.getKey());
-				Object featureValue = entry.getValue();
-				field.set(result, featureValue);
+		for (Entry<String, Object> entry : attributesToCopy.entrySet()) {
+			try {
+					System.out.println("convertAST auto " + entry.getKey() + " " + astClass);
+					Field field = astClass.getField(entry.getKey());
+					Object featureValue = entry.getValue();
+					field.set(result, featureValue);
+			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+				throw new RuntimeException(e);
 			}
-		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
-			throw new WrappedException(e);
 		}
 		return result;
 	}
