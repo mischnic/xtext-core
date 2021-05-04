@@ -37,7 +37,6 @@ import org.eclipse.xtend2.lib.StringConcatenationClient;
 import org.eclipse.xtext.AbstractElement;
 import org.eclipse.xtext.AbstractMetamodelDeclaration;
 import org.eclipse.xtext.AbstractRule;
-import org.eclipse.xtext.BecomesDecl;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.EnumRule;
 import org.eclipse.xtext.Grammar;
@@ -822,9 +821,7 @@ public class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
         }
         _builder.newLine();
         {
-          BecomesDecl _becomes = it.getBecomes();
-          boolean _tripleNotEquals = (_becomes != null);
-          if (_tripleNotEquals) {
+          if (((it.getBecomes() != null) && (it.getBecomes().getCode() != null))) {
             _builder.append("public Object ");
             String _gaRuleBecomeMethodName = GrammarAccessFragment2.this._grammarAccessExtensions.gaRuleBecomeMethodName(it);
             _builder.append(_gaRuleBecomeMethodName);
@@ -836,88 +833,80 @@ public class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
             _builder.append("<String, Object> children){");
             _builder.newLineIfNotEmpty();
             {
-              String _code = it.getBecomes().getCode();
-              boolean _tripleNotEquals_1 = (_code != null);
-              if (_tripleNotEquals_1) {
-                {
-                  boolean _startsWith = it.getBecomes().getCode().startsWith("$$");
-                  if (_startsWith) {
-                    _builder.append("\t");
-                    _builder.append("return new ");
-                    String _type = it.getBecomes().getType();
-                    _builder.append(_type, "\t");
-                    _builder.append("() {");
-                    _builder.newLineIfNotEmpty();
-                    _builder.append("\t");
-                    _builder.append("\t");
-                    String _type_1 = it.getBecomes().getType();
-                    _builder.append(_type_1, "\t\t");
-                    _builder.append(" XTEXT_INIT() {");
-                    _builder.newLineIfNotEmpty();
-                    _builder.append("\t");
-                    _builder.append("\t\t");
-                    String _code_1 = it.getBecomes().getCode();
-                    int _length = it.getBecomes().getCode().length();
-                    int _minus = (_length - 2);
-                    String _substring = _code_1.substring(3, _minus);
-                    _builder.append(_substring, "\t\t\t");
-                    _builder.newLineIfNotEmpty();
-                    _builder.append("\t");
-                    _builder.append("\t\t");
-                    _builder.append("return this;");
-                    _builder.newLine();
-                    _builder.append("\t");
-                    _builder.append("\t");
-                    _builder.append("}");
-                    _builder.newLine();
-                    _builder.append("\t");
-                    _builder.append("}.XTEXT_INIT();");
-                    _builder.newLine();
-                  } else {
-                    _builder.append("\t");
-                    _builder.append("return new ");
-                    _builder.append(ArrayList.class, "\t");
-                    _builder.append("<");
-                    String _type_2 = it.getBecomes().getType();
-                    _builder.append(_type_2, "\t");
-                    _builder.append(">() {");
-                    _builder.newLineIfNotEmpty();
-                    _builder.append("\t");
-                    _builder.append("\t");
-                    _builder.append(ArrayList.class, "\t\t");
-                    _builder.append("<");
-                    String _type_3 = it.getBecomes().getType();
-                    _builder.append(_type_3, "\t\t");
-                    _builder.append("> XTEXT_INIT() {");
-                    _builder.newLineIfNotEmpty();
-                    _builder.append("\t");
-                    _builder.append("\t\t");
-                    String _code_2 = it.getBecomes().getCode();
-                    int _length_1 = it.getBecomes().getCode().length();
-                    int _minus_1 = (_length_1 - 2);
-                    String _substring_1 = _code_2.substring(3, _minus_1);
-                    _builder.append(_substring_1, "\t\t\t");
-                    _builder.newLineIfNotEmpty();
-                    _builder.append("\t");
-                    _builder.append("\t\t");
-                    _builder.append("return this;");
-                    _builder.newLine();
-                    _builder.append("\t");
-                    _builder.append("\t");
-                    _builder.append("}");
-                    _builder.newLine();
-                    _builder.append("\t");
-                    _builder.append("}.XTEXT_INIT();");
-                    _builder.newLine();
-                  }
-                }
+              boolean _isList = it.getBecomes().isList();
+              boolean _not = (!_isList);
+              if (_not) {
+                _builder.append("\t");
+                _builder.append("return new ");
+                TypeReference _aSTClass = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it);
+                _builder.append(_aSTClass, "\t");
+                _builder.append("() {");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t");
+                TypeReference _aSTClass_1 = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it);
+                _builder.append(_aSTClass_1, "\t\t");
+                _builder.append(" XTEXT_INIT() {");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t\t");
+                String _code = it.getBecomes().getCode();
+                int _length = it.getBecomes().getCode().length();
+                int _minus = (_length - 2);
+                String _substring = _code.substring(3, _minus);
+                _builder.append(_substring, "\t\t\t");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t\t");
+                _builder.append("return this;");
+                _builder.newLine();
+                _builder.append("\t");
+                _builder.append("\t");
+                _builder.append("}");
+                _builder.newLine();
+                _builder.append("\t");
+                _builder.append("}.XTEXT_INIT();");
+                _builder.newLine();
               } else {
                 _builder.append("\t");
-                _builder.append("return ");
-                String _type_4 = it.getBecomes().getType();
-                _builder.append(_type_4, "\t");
-                _builder.append(".class;");
+                _builder.append("return new ");
+                _builder.append(ArrayList.class, "\t");
+                _builder.append("<");
+                TypeReference _aSTClass_2 = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it);
+                _builder.append(_aSTClass_2, "\t");
+                _builder.append(">() {");
                 _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t");
+                _builder.append("private static final long serialVersionUID =  0;");
+                _builder.newLine();
+                _builder.append("\t");
+                _builder.append("\t");
+                _builder.append(ArrayList.class, "\t\t");
+                _builder.append("<");
+                TypeReference _aSTClass_3 = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it);
+                _builder.append(_aSTClass_3, "\t\t");
+                _builder.append("> XTEXT_INIT() {");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t\t");
+                String _code_1 = it.getBecomes().getCode();
+                int _length_1 = it.getBecomes().getCode().length();
+                int _minus_1 = (_length_1 - 2);
+                String _substring_1 = _code_1.substring(3, _minus_1);
+                _builder.append(_substring_1, "\t\t\t");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t\t");
+                _builder.append("return this;");
+                _builder.newLine();
+                _builder.append("\t");
+                _builder.append("\t");
+                _builder.append("}");
+                _builder.newLine();
+                _builder.append("\t");
+                _builder.append("}.XTEXT_INIT();");
+                _builder.newLine();
               }
             }
             _builder.append("}");

@@ -320,26 +320,24 @@ class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
 			}
 		«ENDIF»
 		
-		«IF it.becomes !== null»
+		«IF it.becomes !== null && it.becomes.code !== null»
+«««			TODO don't hardcoded package
 			public Object «gaRuleBecomeMethodName»(org.xtext.example.mydsl.myDsl.«it.type.getClassifier().name» node, «HashMap»<String, Object> children){
-				«IF it.becomes.code !== null»
-					«IF it.becomes.code.startsWith("$$")»
-						return new «it.becomes.type»() {
-							«it.becomes.type» XTEXT_INIT() {
-								«it.becomes.code.substring(3, it.becomes.code.length - 2)»
-								return this;
-							}
-						}.XTEXT_INIT();
-					«ELSE»
-						return new «ArrayList»<«it.becomes.type»>() {
-							«ArrayList»<«it.becomes.type»> XTEXT_INIT() {
-								«it.becomes.code.substring(3, it.becomes.code.length - 2)»
-								return this;
-							}
-						}.XTEXT_INIT();
-					«ENDIF»
+				«IF !it.becomes.list»
+					return new «getASTClass(grammar, it)»() {
+						«getASTClass(grammar, it)» XTEXT_INIT() {
+							«it.becomes.code.substring(3, it.becomes.code.length - 2)»
+							return this;
+						}
+					}.XTEXT_INIT();
 				«ELSE»
-					return «it.becomes.type».class;
+					return new «ArrayList»<«getASTClass(grammar, it)»>() {
+						private static final long serialVersionUID =  0;
+						«ArrayList»<«getASTClass(grammar, it)»> XTEXT_INIT() {
+							«it.becomes.code.substring(3, it.becomes.code.length - 2)»
+							return this;
+						}
+					}.XTEXT_INIT();
 				«ENDIF»
 			}
 		«ENDIF»

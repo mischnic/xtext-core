@@ -670,7 +670,9 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 							}
 							convertedChildren.put(f.getName(), convertedList);
 						}
-						// TODO are there more types apart fro EAttribute and EReference?
+					} else {
+						// TODO are there more types apart from EAttribute and EReference?
+						throw new UnsupportedOperationException("Unknown feature type");
 					}
 				}
 				

@@ -9,6 +9,8 @@
 package org.eclipse.xtext.xtext.generator;
 
 import com.google.inject.Inject;
+
+import org.eclipse.xtext.AbstractRule;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
@@ -117,6 +119,18 @@ public class XtextGeneratorNaming {
 
 	public TypeReference getEclipsePluginDefaultEditor(Grammar grammar) {
 		return new TypeReference("org.eclipse.xtext.ui.editor.XtextEditor");
+	}
+	
+	public String getASTPackage(Grammar grammar) {
+		return getRuntimeBasePackage(grammar) + ".ast";
+	}
+	
+	public String getASTClassName(AbstractRule rule) {
+		return "AST" + rule.getName();
+	}
+
+	public TypeReference getASTClass(Grammar grammar, AbstractRule rule) {
+		return new TypeReference(getASTPackage(grammar), getASTClassName(rule));
 	}
 
 	/**

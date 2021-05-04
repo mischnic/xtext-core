@@ -11,6 +11,7 @@ import org.eclipse.xtext.BecomesDeclCustomAttribute
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EReference
+import org.eclipse.xtext.xtext.generator.model.JavaFileAccess
 
 class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 	@Inject FileAccessFactory fileAccessFactory
@@ -20,72 +21,66 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 		val astClassNames = newHashSet
 		for(rule : grammar.rules) {
 			if(rule instanceof ParserRule && (rule as ParserRule).becomes !== null && (rule as ParserRule).type.classifier instanceof EClass){
-				astClassNames.add("AST" + rule.name);
+				astClassNames.add(getASTClassName(rule));
 			}
 		}
 		
 		for(rule : grammar.rules){
 			if(rule instanceof ParserRule && (rule as ParserRule).becomes !== null && (rule as ParserRule).type.classifier instanceof EClass){
 				val pr = rule as ParserRule;
-				val name = "AST" + rule.name;
-				val clazz = pr.type.classifier as EClass;
-				System.out.println(pr);
-//				System.out.println(pr.type.classifier);
-//				System.out.println(pr.type.metamodel);
-				val type = new TypeReference(getRuntimeBasePackage(grammar) + ".ast", name);
+				val type = getASTClass(grammar, pr);
+				val eClass = pr.type.classifier as EClass;
 				val javaFile = fileAccessFactory.createGeneratedJavaFile(type)
-				
 
-				val ruleCopyAttributes = newHashSet
-				val ruleCustomAttributes = newHashMap
-				for(attr : pr.becomes.attributes) {
-					// TODO pull name into supertype
-					if(attr instanceof BecomesDeclCopyAttribute){
-						ruleCopyAttributes.add(attr.name);
-					}else if(attr instanceof BecomesDeclCustomAttribute){
-						ruleCustomAttributes.put(attr.name, 
-							astClassNames.contains(attr.type) ?
-								(getRuntimeBasePackage(grammar) + ".ast." + attr.type)
-								: attr.type
-						);
+				val features = newHashMap
+				for(attr : eClass.EStructuralFeatures) {
+					if (attr instanceof EAttribute) {
+						features.put(attr.name, attr.EAttributeType.instanceClass);
+					} else if (attr instanceof EReference) {
+						val referencedType = attr.EReferenceType;
+						val referencedASTType = referencedType.instanceClass !== null ?
+							referencedType.instanceClass :
+							getASTClass(grammar, rule);
+						features.put(attr.name, referencedASTType);	
+					} else {
+						throw new UnsupportedOperationException("Unknown feature type");
 					}
 				}
-//				System.out.println(ruleCopyAttributes);
-//				System.out.println(ruleCustomAttributes);
-
-				val attributes = newArrayList
-				for(attr : clazz.EStructuralFeatures) {
-					System.out.println(attr)
-					if(pr.becomes.attributes.empty || ruleCopyAttributes.contains(attr.name)) {
-						if(attr instanceof EAttribute){
-							attributes.add('''
-								«attr.EAttributeType.instanceClass» «attr.name»;
-							''');					
-						} else if(attr instanceof EReference) {
-							val referencedType = attr.EReferenceType;
-							val referencedASTType = referencedType.instanceClass !== null ?
-								referencedType.instanceClass :
-								new TypeReference(getRuntimeBasePackage(grammar) + ".ast", name);
-							attributes.add('''
-								«referencedASTType» «attr.name»;
-							''');	
-						} else {
-							throw new UnsupportedOperationException("Unknown feature type");
+				
+				val attributes = newLinkedHashMap
+				if(pr.becomes.attributes.empty){
+					for(e : features.entrySet) {
+						attributes.put(e.key, '''«e.value» «e.key»''');
+					}
+				} else {
+					for(attr : pr.becomes.attributes) {
+						// TODO pull name into supertype
+						if (attr instanceof BecomesDeclCopyAttribute) {
+							attributes.put(attr.name, '''«features.get(attr.name)» «attr.name»''');
+						} else if (attr instanceof BecomesDeclCustomAttribute){
+							val attrType = astClassNames.contains(attr.type) ?
+								new TypeReference(getASTPackage(grammar), attr.type)
+								: attr.type;
+							attributes.put(attr.name, '''«attrType» «attr.name»''');
 						}
 					}
 				}
 				
-				val abstractModifier = (clazz.EStructuralFeatures.empty && pr.becomes.attributes.empty) ? "public abstract" : "public"
+				val abstractModifier = (eClass.EStructuralFeatures.empty && pr.becomes.attributes.empty) ? "public abstract" : "public"
 				
 				javaFile.content = '''
-					«abstractModifier» class «name» {
-						public «name»(){}
-«««						TODO constructor
-						«FOR attr : attributes»
-							«attr»
-						«ENDFOR»
-						«FOR entry : ruleCustomAttributes.entrySet»
-							«entry.value» «entry.key»;
+					«abstractModifier» class «type.simpleName» {
+						public «type.simpleName»(){}
+						«IF !attributes.empty»
+							public «type.simpleName»(«attributes.values.join(", ")»){
+								«FOR n : attributes.keySet»
+									this.«n» = «n»;
+								«ENDFOR»
+							}
+						«ENDIF»
+						
+						«FOR attr : attributes.values»
+							«attr»;
 						«ENDFOR»
 					}
 				''';
