@@ -655,7 +655,7 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 			ParserRule rule = (ParserRule) ga.getClass().getMethod("get" + type.getName() + "Rule").invoke(ga);
 			becomesDecl = (BecomesDecl) rule.getBecomes();
 		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			throw new WrappedException(e);
+			return null;
 		}
 		if(becomesDecl == null) {
 			return null;
@@ -721,7 +721,7 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 		// copy BecomeDeclCopyAttributes
 		for (Entry<String, Object> entry : attributesToCopy.entrySet()) {
 			try {
-					System.out.println("convertAST auto " + entry.getKey() + " " + astClass);
+//					System.out.println("convertAST auto " + entry.getKey() + " " + astClass);
 					Field field = astClass.getField(entry.getKey());
 					Object featureValue = entry.getValue();
 					field.set(result, featureValue);

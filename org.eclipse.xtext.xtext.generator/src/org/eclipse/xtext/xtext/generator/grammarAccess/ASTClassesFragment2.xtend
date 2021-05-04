@@ -12,16 +12,17 @@ import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.xtext.generator.model.TypeReference
 import org.eclipse.xtext.xtext.generator.model.JavaFileAccess
+import java.util.List
 
 class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 	@Inject FileAccessFactory fileAccessFactory
 	@Inject extension XtextGeneratorNaming
 	
 	override generate() {
-		val astClassNames = newHashSet
+		val astClassNames = newHashMap
 		for(rule : grammar.rules) {
 			if(rule instanceof ParserRule && (rule as ParserRule).becomes !== null && (rule as ParserRule).type.classifier instanceof EClass){
-				astClassNames.add(getASTClassName(rule.name))
+				astClassNames.put(rule.name.getASTClassName, (rule as ParserRule).becomes.list)
 			}
 		}
 		
@@ -31,7 +32,7 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 				val type = getASTClass(grammar, pr.name)
 				val eClass = pr.type.classifier as EClass
 				val superTypes = eClass.ESuperTypes
-					.filter[astClassNames.contains(getASTClassName(name))]
+					.filter[astClassNames.containsKey(name.getASTClassName)]
 					.map[getASTClass(grammar, name)]
 
 				System.out.println(pr)
@@ -45,10 +46,21 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 						)
 					} else if (attr instanceof EReference) {
 						val referencedType = attr.EReferenceType
-						val referencedASTType = referencedType.instanceClass !== null ?
-							referencedType.instanceClass :
-							getASTClass(grammar, referencedType.name)
-						features.put(attr.name, referencedASTType)	
+//						if(referencedType.instanceClass !== null) {
+//							val referencedASTType = referencedType.instanceClass
+//							features.put(attr.name, referencedASTType)
+//						} else {
+						var isListType = astClassNames.get(referencedType.name.getASTClassName);
+						if(isListType === null) {
+							throw new IllegalStateException("Unvalid type: " + referencedType.name)
+						}
+						
+						val referencedASTType = getASTClass(grammar, referencedType.name)
+						if(isListType == true){
+							features.put(attr.name, '''«new TypeReference(List)»<«referencedASTType»>''' )
+						} else {
+							features.put(attr.name, referencedASTType)
+						}						
 					} else {
 						throw new UnsupportedOperationException("Unknown feature type")
 					}
@@ -57,6 +69,7 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 				
 				val attributes = newLinkedHashMap
 				if(pr.becomes.attributes.empty){
+					// implicitly copy everything
 					for(e : features.entrySet) {
 						attributes.put(e.key, e.value)
 					}
@@ -66,7 +79,7 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 						if (attr instanceof BecomesDeclCopyAttribute) {
 							attributes.put(attr.name, features.get(attr.name))
 						} else if (attr instanceof BecomesDeclCustomAttribute){
-							val attrType = astClassNames.contains(attr.type) ?
+							val attrType = astClassNames.containsKey(attr.type) ?
 								new TypeReference(getASTPackage(grammar), attr.type)
 								: attr.type
 							attributes.put(attr.name, attrType)
@@ -78,17 +91,12 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 				javaFile.importNestedTypeThreshold = JavaFileAccess.DONT_IMPORT_NESTED_TYPES
 				val isInterface = (eClass.EStructuralFeatures.empty && pr.becomes.attributes.empty)
 				// TODO can the parent types have attributes? multiple inheritance???
-				val superModifier = !superTypes.empty ? "implements " + superTypes.join("") : ""
 				javaFile.content = '''
-					public «isInterface ? "interface" : "class"» «type.simpleName» «superModifier» {
+					public «isInterface ? "interface" : "class"» «type.simpleName»«FOR s : superTypes BEFORE " implements " SEPARATOR ', '»«s»«ENDFOR» {
 						«IF !isInterface»
 							public «type.simpleName»(){}
 							«IF !attributes.empty»
-								public «type.simpleName»(
-									«FOR e : attributes.entrySet SEPARATOR ', '»
-										«e.value» «e.key»
-									«ENDFOR»
-								){
+								public «type.simpleName»(«FOR e : attributes.entrySet SEPARATOR ', '»«e.value» «e.key»«ENDFOR»){
 									«FOR n : attributes.keySet»
 										this.«n» = «n»;
 									«ENDFOR»
