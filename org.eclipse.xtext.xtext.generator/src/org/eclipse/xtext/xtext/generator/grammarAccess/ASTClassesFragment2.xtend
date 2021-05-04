@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.xtext.generator.model.TypeReference
+import org.eclipse.xtext.xtext.generator.model.JavaFileAccess
 
 class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 	@Inject FileAccessFactory fileAccessFactory
@@ -33,41 +34,48 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 					.filter[astClassNames.contains(getASTClassName(name))]
 					.map[getASTClass(grammar, name)]
 
+				System.out.println(pr)
+
 				val features = newHashMap
 				for(attr : eClass.EStructuralFeatures) {
 					if (attr instanceof EAttribute) {
-						features.put(attr.name, attr.EAttributeType.instanceClass)
+						features.put(attr.name, attr.EAttributeType.instanceClass.isPrimitive ?
+							attr.EAttributeType.instanceClass.toString() :
+							attr.EAttributeType.instanceClass
+						)
 					} else if (attr instanceof EReference) {
 						val referencedType = attr.EReferenceType
 						val referencedASTType = referencedType.instanceClass !== null ?
 							referencedType.instanceClass :
-							getASTClass(grammar, rule.name)
+							getASTClass(grammar, referencedType.name)
 						features.put(attr.name, referencedASTType)	
 					} else {
 						throw new UnsupportedOperationException("Unknown feature type")
 					}
 				}
+				System.out.println(features)
 				
 				val attributes = newLinkedHashMap
 				if(pr.becomes.attributes.empty){
 					for(e : features.entrySet) {
-						attributes.put(e.key, '''«e.value» «e.key»''')
+						attributes.put(e.key, e.value)
 					}
 				} else {
 					for(attr : pr.becomes.attributes) {
 						// TODO pull name into supertype
 						if (attr instanceof BecomesDeclCopyAttribute) {
-							attributes.put(attr.name, '''«features.get(attr.name)» «attr.name»''')
+							attributes.put(attr.name, features.get(attr.name))
 						} else if (attr instanceof BecomesDeclCustomAttribute){
 							val attrType = astClassNames.contains(attr.type) ?
 								new TypeReference(getASTPackage(grammar), attr.type)
 								: attr.type
-							attributes.put(attr.name, '''«attrType» «attr.name»''')
+							attributes.put(attr.name, attrType)
 						}
 					}
 				}
 				
 				val javaFile = fileAccessFactory.createGeneratedJavaFile(type)
+				javaFile.importNestedTypeThreshold = JavaFileAccess.DONT_IMPORT_NESTED_TYPES
 				val isInterface = (eClass.EStructuralFeatures.empty && pr.becomes.attributes.empty)
 				// TODO can the parent types have attributes? multiple inheritance???
 				val superModifier = !superTypes.empty ? "implements " + superTypes.join("") : ""
@@ -76,15 +84,19 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 						«IF !isInterface»
 							public «type.simpleName»(){}
 							«IF !attributes.empty»
-								public «type.simpleName»(«attributes.values.join(", ")»){
+								public «type.simpleName»(
+									«FOR e : attributes.entrySet SEPARATOR ', '»
+										«e.value» «e.key»
+									«ENDFOR»
+								){
 									«FOR n : attributes.keySet»
 										this.«n» = «n»;
 									«ENDFOR»
 								}
 							«ENDIF»
 						
-							«FOR attr : attributes.values»
-								public «attr»;
+							«FOR e : attributes.entrySet»
+								public «e.value» «e.key»;
 							«ENDFOR»
 						«ENDIF»
 					}

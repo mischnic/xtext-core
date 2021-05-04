@@ -1,7 +1,7 @@
 package org.eclipse.xtext.xtext.generator.grammarAccess;
 
 import com.google.inject.Inject;
-import java.util.Collection;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtend2.lib.StringConcatenationClient;
 import org.eclipse.xtext.AbstractRule;
 import org.eclipse.xtext.BecomesDeclAttribute;
@@ -28,6 +27,7 @@ import org.eclipse.xtext.xtext.generator.AbstractXtextGeneratorFragment;
 import org.eclipse.xtext.xtext.generator.XtextGeneratorNaming;
 import org.eclipse.xtext.xtext.generator.model.FileAccessFactory;
 import org.eclipse.xtext.xtext.generator.model.GeneratedJavaFileAccess;
+import org.eclipse.xtext.xtext.generator.model.JavaFileAccess;
 import org.eclipse.xtext.xtext.generator.model.TypeReference;
 
 @SuppressWarnings("all")
@@ -62,90 +62,81 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
           return this._xtextGeneratorNaming.getASTClass(this.getGrammar(), it.getName());
         };
         final Iterable<TypeReference> superTypes = IterableExtensions.<EClass, TypeReference>map(IterableExtensions.<EClass>filter(eClass.getESuperTypes(), _function), _function_1);
+        System.out.println(pr);
         final HashMap<String, Object> features = CollectionLiterals.<String, Object>newHashMap();
         EList<EStructuralFeature> _eStructuralFeatures = eClass.getEStructuralFeatures();
         for (final EStructuralFeature attr : _eStructuralFeatures) {
           if ((attr instanceof EAttribute)) {
-            features.put(((EAttribute)attr).getName(), ((EAttribute)attr).getEAttributeType().getInstanceClass());
+            String _name = ((EAttribute)attr).getName();
+            Serializable _xifexpression = null;
+            boolean _isPrimitive = ((EAttribute)attr).getEAttributeType().getInstanceClass().isPrimitive();
+            if (_isPrimitive) {
+              _xifexpression = ((EAttribute)attr).getEAttributeType().getInstanceClass().toString();
+            } else {
+              _xifexpression = ((EAttribute)attr).getEAttributeType().getInstanceClass();
+            }
+            features.put(_name, _xifexpression);
           } else {
             if ((attr instanceof EReference)) {
               final EClass referencedType = ((EReference)attr).getEReferenceType();
-              Object _xifexpression = null;
+              Object _xifexpression_1 = null;
               Class<?> _instanceClass = referencedType.getInstanceClass();
               boolean _tripleNotEquals = (_instanceClass != null);
               if (_tripleNotEquals) {
-                _xifexpression = referencedType.getInstanceClass();
+                _xifexpression_1 = referencedType.getInstanceClass();
               } else {
-                _xifexpression = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), rule_1.getName());
+                _xifexpression_1 = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), referencedType.getName());
               }
-              final Object referencedASTType = _xifexpression;
+              final Object referencedASTType = _xifexpression_1;
               features.put(((EReference)attr).getName(), referencedASTType);
             } else {
               throw new UnsupportedOperationException("Unknown feature type");
             }
           }
         }
+        System.out.println(features);
         final LinkedHashMap<String, Object> attributes = CollectionLiterals.<String, Object>newLinkedHashMap();
         boolean _isEmpty = pr.getBecomes().getAttributes().isEmpty();
         if (_isEmpty) {
           Set<Map.Entry<String, Object>> _entrySet = features.entrySet();
           for (final Map.Entry<String, Object> e : _entrySet) {
-            String _key = e.getKey();
-            StringConcatenation _builder = new StringConcatenation();
-            Object _value = e.getValue();
-            _builder.append(_value);
-            _builder.append(" ");
-            String _key_1 = e.getKey();
-            _builder.append(_key_1);
-            attributes.put(_key, _builder.toString());
+            attributes.put(e.getKey(), e.getValue());
           }
         } else {
           EList<BecomesDeclAttribute> _attributes = pr.getBecomes().getAttributes();
           for (final BecomesDeclAttribute attr_1 : _attributes) {
             if ((attr_1 instanceof BecomesDeclCopyAttribute)) {
-              String _name = ((BecomesDeclCopyAttribute)attr_1).getName();
-              StringConcatenation _builder_1 = new StringConcatenation();
-              Object _get = features.get(((BecomesDeclCopyAttribute)attr_1).getName());
-              _builder_1.append(_get);
-              _builder_1.append(" ");
-              String _name_1 = ((BecomesDeclCopyAttribute)attr_1).getName();
-              _builder_1.append(_name_1);
-              attributes.put(_name, _builder_1.toString());
+              attributes.put(((BecomesDeclCopyAttribute)attr_1).getName(), features.get(((BecomesDeclCopyAttribute)attr_1).getName()));
             } else {
               if ((attr_1 instanceof BecomesDeclCustomAttribute)) {
-                Object _xifexpression_1 = null;
+                Object _xifexpression_2 = null;
                 boolean _contains = astClassNames.contains(((BecomesDeclCustomAttribute)attr_1).getType());
                 if (_contains) {
                   String _aSTPackage = this._xtextGeneratorNaming.getASTPackage(this.getGrammar());
                   String _type = ((BecomesDeclCustomAttribute)attr_1).getType();
-                  _xifexpression_1 = new TypeReference(_aSTPackage, _type);
+                  _xifexpression_2 = new TypeReference(_aSTPackage, _type);
                 } else {
-                  _xifexpression_1 = ((BecomesDeclCustomAttribute)attr_1).getType();
+                  _xifexpression_2 = ((BecomesDeclCustomAttribute)attr_1).getType();
                 }
-                final Object attrType = _xifexpression_1;
-                String _name_2 = ((BecomesDeclCustomAttribute)attr_1).getName();
-                StringConcatenation _builder_2 = new StringConcatenation();
-                _builder_2.append(attrType);
-                _builder_2.append(" ");
-                String _name_3 = ((BecomesDeclCustomAttribute)attr_1).getName();
-                _builder_2.append(_name_3);
-                attributes.put(_name_2, _builder_2.toString());
+                final Object attrType = _xifexpression_2;
+                attributes.put(((BecomesDeclCustomAttribute)attr_1).getName(), attrType);
               }
             }
           }
         }
         final GeneratedJavaFileAccess javaFile = this.fileAccessFactory.createGeneratedJavaFile(type);
+        javaFile.setImportNestedTypeThreshold(JavaFileAccess.DONT_IMPORT_NESTED_TYPES);
         final boolean isInterface = (eClass.getEStructuralFeatures().isEmpty() && pr.getBecomes().getAttributes().isEmpty());
-        String _xifexpression_2 = null;
+        String _xifexpression_3 = null;
         boolean _isEmpty_1 = IterableExtensions.isEmpty(superTypes);
         boolean _not = (!_isEmpty_1);
         if (_not) {
           String _join = IterableExtensions.join(superTypes, "");
-          _xifexpression_2 = ("implements " + _join);
+          _xifexpression_3 = ("implements " + _join);
         } else {
-          _xifexpression_2 = "";
+          _xifexpression_3 = "";
         }
-        final String superModifier = _xifexpression_2;
+        final String superModifier = _xifexpression_3;
         StringConcatenationClient _client = new StringConcatenationClient() {
           @Override
           protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
@@ -183,10 +174,31 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
                     String _simpleName_2 = type.getSimpleName();
                     _builder.append(_simpleName_2, "\t\t");
                     _builder.append("(");
-                    String _join = IterableExtensions.join(attributes.values(), ", ");
-                    _builder.append(_join, "\t\t");
-                    _builder.append("){");
                     _builder.newLineIfNotEmpty();
+                    {
+                      Set<Map.Entry<String, Object>> _entrySet = attributes.entrySet();
+                      boolean _hasElements = false;
+                      for(final Map.Entry<String, Object> e : _entrySet) {
+                        if (!_hasElements) {
+                          _hasElements = true;
+                        } else {
+                          _builder.appendImmediate(", ", "\t\t\t");
+                        }
+                        _builder.append("\t");
+                        _builder.append("\t");
+                        _builder.append("\t");
+                        Object _value = e.getValue();
+                        _builder.append(_value, "\t\t\t");
+                        _builder.append(" ");
+                        String _key = e.getKey();
+                        _builder.append(_key, "\t\t\t");
+                        _builder.newLineIfNotEmpty();
+                      }
+                    }
+                    _builder.append("\t");
+                    _builder.append("\t");
+                    _builder.append("){");
+                    _builder.newLine();
                     {
                       Set<String> _keySet = attributes.keySet();
                       for(final String n : _keySet) {
@@ -210,12 +222,16 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
                 _builder.append("\t");
                 _builder.newLine();
                 {
-                  Collection<Object> _values = attributes.values();
-                  for(final Object attr : _values) {
+                  Set<Map.Entry<String, Object>> _entrySet_1 = attributes.entrySet();
+                  for(final Map.Entry<String, Object> e_1 : _entrySet_1) {
                     _builder.append("\t");
                     _builder.append("\t");
                     _builder.append("public ");
-                    _builder.append(attr, "\t\t");
+                    Object _value_1 = e_1.getValue();
+                    _builder.append(_value_1, "\t\t");
+                    _builder.append(" ");
+                    String _key_1 = e_1.getKey();
+                    _builder.append(_key_1, "\t\t");
                     _builder.append(";");
                     _builder.newLineIfNotEmpty();
                   }
