@@ -95,6 +95,8 @@ public class XtextFactoryImpl extends EFactoryImpl implements XtextFactory {
 			case XtextPackage.BECOMES_DECL: return createBecomesDecl();
 			case XtextPackage.BECOMES_DECL_COPY_ATTRIBUTE: return createBecomesDeclCopyAttribute();
 			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE: return createBecomesDeclCustomAttribute();
+			case XtextPackage.BECOMES_DECL_GENERATED_CLASS: return createBecomesDeclGeneratedClass();
+			case XtextPackage.BECOMES_DECL_MANUAL_CLASS: return createBecomesDeclManualClass();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -529,6 +531,28 @@ public class XtextFactoryImpl extends EFactoryImpl implements XtextFactory {
 	public BecomesDeclCustomAttribute createBecomesDeclCustomAttribute() {
 		BecomesDeclCustomAttributeImpl becomesDeclCustomAttribute = new BecomesDeclCustomAttributeImpl();
 		return becomesDeclCustomAttribute;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public BecomesDeclGeneratedClass createBecomesDeclGeneratedClass() {
+		BecomesDeclGeneratedClassImpl becomesDeclGeneratedClass = new BecomesDeclGeneratedClassImpl();
+		return becomesDeclGeneratedClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public BecomesDeclManualClass createBecomesDeclManualClass() {
+		BecomesDeclManualClassImpl becomesDeclManualClass = new BecomesDeclManualClassImpl();
+		return becomesDeclManualClass;
 	}
 
 	/**

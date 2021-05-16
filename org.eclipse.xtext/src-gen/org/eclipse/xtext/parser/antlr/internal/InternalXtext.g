@@ -838,121 +838,86 @@ ruleBecomesDecl returns [EObject current=null]
 }:
 	(
 		(
+			(
+				(
+					lv_list_0_0='['
+					{
+						newLeafNode(lv_list_0_0, grammarAccess.getBecomesDeclAccess().getListLeftSquareBracketKeyword_0_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getBecomesDeclRule());
+						}
+						setWithLastConsumed($current, "list", lv_list_0_0 != null, "[");
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getBecomesDeclAccess().getListTypeQualifiedNameParserRuleCall_0_1_0());
+					}
+					lv_listType_1_0=ruleQualifiedName
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getBecomesDeclRule());
+						}
+						set(
+							$current,
+							"listType",
+							lv_listType_1_0,
+							"org.eclipse.xtext.Xtext.QualifiedName");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)?
+			otherlv_2=']'
 			{
-				$current = forceCreateModelElement(
-					grammarAccess.getBecomesDeclAccess().getBecomesDeclAction_0(),
-					$current);
+				newLeafNode(otherlv_2, grammarAccess.getBecomesDeclAccess().getRightSquareBracketKeyword_0_2());
 			}
+		)?
+		(
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getBecomesDeclAccess().getDescriptorBecomesDeclGeneratedClassParserRuleCall_1_0_0());
+					}
+					lv_descriptor_3_1=ruleBecomesDeclGeneratedClass
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getBecomesDeclRule());
+						}
+						set(
+							$current,
+							"descriptor",
+							lv_descriptor_3_1,
+							"org.eclipse.xtext.Xtext.BecomesDeclGeneratedClass");
+						afterParserOrEnumRuleCall();
+					}
+					    |
+					{
+						newCompositeNode(grammarAccess.getBecomesDeclAccess().getDescriptorBecomesDeclManualClassParserRuleCall_1_0_1());
+					}
+					lv_descriptor_3_2=ruleBecomesDeclManualClass
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getBecomesDeclRule());
+						}
+						set(
+							$current,
+							"descriptor",
+							lv_descriptor_3_2,
+							"org.eclipse.xtext.Xtext.BecomesDeclManualClass");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
 		)
 		(
 			(
-				lv_list_1_0='[]'
+				lv_code_4_0=RULE_JAVA_STRING
 				{
-					newLeafNode(lv_list_1_0, grammarAccess.getBecomesDeclAccess().getListLeftSquareBracketRightSquareBracketKeyword_1_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getBecomesDeclRule());
-					}
-					setWithLastConsumed($current, "list", lv_list_1_0 != null, "[]");
-				}
-			)
-		)?
-		(
-			otherlv_2='('
-			{
-				newLeafNode(otherlv_2, grammarAccess.getBecomesDeclAccess().getLeftParenthesisKeyword_2_0());
-			}
-			(
-				(
-					(
-						{
-							newCompositeNode(grammarAccess.getBecomesDeclAccess().getAttributesBecomesDeclCopyAttributeParserRuleCall_2_1_0_0());
-						}
-						lv_attributes_3_1=ruleBecomesDeclCopyAttribute
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getBecomesDeclRule());
-							}
-							add(
-								$current,
-								"attributes",
-								lv_attributes_3_1,
-								"org.eclipse.xtext.Xtext.BecomesDeclCopyAttribute");
-							afterParserOrEnumRuleCall();
-						}
-						    |
-						{
-							newCompositeNode(grammarAccess.getBecomesDeclAccess().getAttributesBecomesDeclCustomAttributeParserRuleCall_2_1_0_1());
-						}
-						lv_attributes_3_2=ruleBecomesDeclCustomAttribute
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getBecomesDeclRule());
-							}
-							add(
-								$current,
-								"attributes",
-								lv_attributes_3_2,
-								"org.eclipse.xtext.Xtext.BecomesDeclCustomAttribute");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-			)
-			(
-				otherlv_4=','
-				{
-					newLeafNode(otherlv_4, grammarAccess.getBecomesDeclAccess().getCommaKeyword_2_2_0());
-				}
-				(
-					(
-						(
-							{
-								newCompositeNode(grammarAccess.getBecomesDeclAccess().getAttributesBecomesDeclCopyAttributeParserRuleCall_2_2_1_0_0());
-							}
-							lv_attributes_5_1=ruleBecomesDeclCopyAttribute
-							{
-								if ($current==null) {
-									$current = createModelElementForParent(grammarAccess.getBecomesDeclRule());
-								}
-								add(
-									$current,
-									"attributes",
-									lv_attributes_5_1,
-									"org.eclipse.xtext.Xtext.BecomesDeclCopyAttribute");
-								afterParserOrEnumRuleCall();
-							}
-							    |
-							{
-								newCompositeNode(grammarAccess.getBecomesDeclAccess().getAttributesBecomesDeclCustomAttributeParserRuleCall_2_2_1_0_1());
-							}
-							lv_attributes_5_2=ruleBecomesDeclCustomAttribute
-							{
-								if ($current==null) {
-									$current = createModelElementForParent(grammarAccess.getBecomesDeclRule());
-								}
-								add(
-									$current,
-									"attributes",
-									lv_attributes_5_2,
-									"org.eclipse.xtext.Xtext.BecomesDeclCustomAttribute");
-								afterParserOrEnumRuleCall();
-							}
-						)
-					)
-				)
-			)*
-			otherlv_6=')'
-			{
-				newLeafNode(otherlv_6, grammarAccess.getBecomesDeclAccess().getRightParenthesisKeyword_2_3());
-			}
-		)?
-		(
-			(
-				lv_code_7_0=RULE_JAVA_STRING
-				{
-					newLeafNode(lv_code_7_0, grammarAccess.getBecomesDeclAccess().getCodeJAVA_STRINGTerminalRuleCall_3_0());
+					newLeafNode(lv_code_4_0, grammarAccess.getBecomesDeclAccess().getCodeJAVA_STRINGTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -961,10 +926,217 @@ ruleBecomesDecl returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"code",
-						lv_code_7_0,
+						lv_code_4_0,
 						"org.eclipse.xtext.Xtext.JAVA_STRING");
 				}
 			)
+		)?
+	)
+;
+
+// Entry rule entryRuleBecomesDeclGeneratedClass
+entryRuleBecomesDeclGeneratedClass returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getBecomesDeclGeneratedClassRule()); }
+	iv_ruleBecomesDeclGeneratedClass=ruleBecomesDeclGeneratedClass
+	{ $current=$iv_ruleBecomesDeclGeneratedClass.current; }
+	EOF;
+
+// Rule BecomesDeclGeneratedClass
+ruleBecomesDeclGeneratedClass returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getBecomesDeclGeneratedClassAccess().getBecomesDeclGeneratedClassAction_0(),
+					$current);
+			}
+		)
+		(
+			otherlv_1='('
+			{
+				newLeafNode(otherlv_1, grammarAccess.getBecomesDeclGeneratedClassAccess().getLeftParenthesisKeyword_1_0());
+			}
+			(
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getBecomesDeclGeneratedClassAccess().getAttributesBecomesDeclCopyAttributeParserRuleCall_1_1_0_0());
+						}
+						lv_attributes_2_1=ruleBecomesDeclCopyAttribute
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getBecomesDeclGeneratedClassRule());
+							}
+							add(
+								$current,
+								"attributes",
+								lv_attributes_2_1,
+								"org.eclipse.xtext.Xtext.BecomesDeclCopyAttribute");
+							afterParserOrEnumRuleCall();
+						}
+						    |
+						{
+							newCompositeNode(grammarAccess.getBecomesDeclGeneratedClassAccess().getAttributesBecomesDeclCustomAttributeParserRuleCall_1_1_0_1());
+						}
+						lv_attributes_2_2=ruleBecomesDeclCustomAttribute
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getBecomesDeclGeneratedClassRule());
+							}
+							add(
+								$current,
+								"attributes",
+								lv_attributes_2_2,
+								"org.eclipse.xtext.Xtext.BecomesDeclCustomAttribute");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+			)
+			(
+				otherlv_3=','
+				{
+					newLeafNode(otherlv_3, grammarAccess.getBecomesDeclGeneratedClassAccess().getCommaKeyword_1_2_0());
+				}
+				(
+					(
+						(
+							{
+								newCompositeNode(grammarAccess.getBecomesDeclGeneratedClassAccess().getAttributesBecomesDeclCopyAttributeParserRuleCall_1_2_1_0_0());
+							}
+							lv_attributes_4_1=ruleBecomesDeclCopyAttribute
+							{
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getBecomesDeclGeneratedClassRule());
+								}
+								add(
+									$current,
+									"attributes",
+									lv_attributes_4_1,
+									"org.eclipse.xtext.Xtext.BecomesDeclCopyAttribute");
+								afterParserOrEnumRuleCall();
+							}
+							    |
+							{
+								newCompositeNode(grammarAccess.getBecomesDeclGeneratedClassAccess().getAttributesBecomesDeclCustomAttributeParserRuleCall_1_2_1_0_1());
+							}
+							lv_attributes_4_2=ruleBecomesDeclCustomAttribute
+							{
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getBecomesDeclGeneratedClassRule());
+								}
+								add(
+									$current,
+									"attributes",
+									lv_attributes_4_2,
+									"org.eclipse.xtext.Xtext.BecomesDeclCustomAttribute");
+								afterParserOrEnumRuleCall();
+							}
+						)
+					)
+				)
+			)*
+			otherlv_5=')'
+			{
+				newLeafNode(otherlv_5, grammarAccess.getBecomesDeclGeneratedClassAccess().getRightParenthesisKeyword_1_3());
+			}
+		)?
+	)
+;
+
+// Entry rule entryRuleBecomesDeclManualClass
+entryRuleBecomesDeclManualClass returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getBecomesDeclManualClassRule()); }
+	iv_ruleBecomesDeclManualClass=ruleBecomesDeclManualClass
+	{ $current=$iv_ruleBecomesDeclManualClass.current; }
+	EOF;
+
+// Rule BecomesDeclManualClass
+ruleBecomesDeclManualClass returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				lv_type_0_0=RULE_ID
+				{
+					newLeafNode(lv_type_0_0, grammarAccess.getBecomesDeclManualClassAccess().getTypeIDTerminalRuleCall_0_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getBecomesDeclManualClassRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"type",
+						lv_type_0_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		(
+			otherlv_1='('
+			{
+				newLeafNode(otherlv_1, grammarAccess.getBecomesDeclManualClassAccess().getLeftParenthesisKeyword_1_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getBecomesDeclManualClassAccess().getAttributesBecomesDeclCopyAttributeParserRuleCall_1_1_0());
+					}
+					lv_attributes_2_0=ruleBecomesDeclCopyAttribute
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getBecomesDeclManualClassRule());
+						}
+						add(
+							$current,
+							"attributes",
+							lv_attributes_2_0,
+							"org.eclipse.xtext.Xtext.BecomesDeclCopyAttribute");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			(
+				otherlv_3=','
+				{
+					newLeafNode(otherlv_3, grammarAccess.getBecomesDeclManualClassAccess().getCommaKeyword_1_2_0());
+				}
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getBecomesDeclManualClassAccess().getAttributesBecomesDeclCopyAttributeParserRuleCall_1_2_1_0());
+						}
+						lv_attributes_4_0=ruleBecomesDeclCopyAttribute
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getBecomesDeclManualClassRule());
+							}
+							add(
+								$current,
+								"attributes",
+								lv_attributes_4_0,
+								"org.eclipse.xtext.Xtext.BecomesDeclCopyAttribute");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+			)*
+			otherlv_5=')'
+			{
+				newLeafNode(otherlv_5, grammarAccess.getBecomesDeclManualClassAccess().getRightParenthesisKeyword_1_3());
+			}
 		)?
 	)
 ;
@@ -1056,6 +1228,46 @@ ruleBecomesDeclCustomAttribute returns [EObject current=null]
 				}
 			)
 		)
+	)
+;
+
+// Entry rule entryRuleQualifiedName
+entryRuleQualifiedName returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getQualifiedNameRule()); }
+	iv_ruleQualifiedName=ruleQualifiedName
+	{ $current=$iv_ruleQualifiedName.current.getText(); }
+	EOF;
+
+// Rule QualifiedName
+ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		this_ID_0=RULE_ID
+		{
+			$current.merge(this_ID_0);
+		}
+		{
+			newLeafNode(this_ID_0, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0());
+		}
+		(
+			kw='.'
+			{
+				$current.merge(kw);
+				newLeafNode(kw, grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0());
+			}
+			this_ID_2=RULE_ID
+			{
+				$current.merge(this_ID_2);
+			}
+			{
+				newLeafNode(this_ID_2, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_1_1());
+			}
+		)*
 	)
 ;
 

@@ -14,6 +14,8 @@ import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.BecomesDecl;
 import org.eclipse.xtext.BecomesDeclCopyAttribute;
 import org.eclipse.xtext.BecomesDeclCustomAttribute;
+import org.eclipse.xtext.BecomesDeclGeneratedClass;
+import org.eclipse.xtext.BecomesDeclManualClass;
 import org.eclipse.xtext.CharacterRange;
 import org.eclipse.xtext.Conjunction;
 import org.eclipse.xtext.CrossReference;
@@ -147,6 +149,12 @@ public class XtextSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				return; 
 			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE:
 				sequence_BecomesDeclCustomAttribute(context, (BecomesDeclCustomAttribute) semanticObject); 
+				return; 
+			case XtextPackage.BECOMES_DECL_GENERATED_CLASS:
+				sequence_BecomesDeclGeneratedClass(context, (BecomesDeclGeneratedClass) semanticObject); 
+				return; 
+			case XtextPackage.BECOMES_DECL_MANUAL_CLASS:
+				sequence_BecomesDeclManualClass(context, (BecomesDeclManualClass) semanticObject); 
 				return; 
 			case XtextPackage.CHARACTER_RANGE:
 				if (rule == grammarAccess.getCharacterRangeRule()) {
@@ -671,18 +679,38 @@ public class XtextSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     BecomesDecl returns BecomesDecl
+	 *     BecomesDeclGeneratedClass returns BecomesDeclGeneratedClass
 	 *
 	 * Constraint:
 	 *     (
-	 *         list?='[]'? 
-	 *         (
-	 *             (attributes+=BecomesDeclCopyAttribute | attributes+=BecomesDeclCustomAttribute) 
-	 *             attributes+=BecomesDeclCopyAttribute? 
-	 *             (attributes+=BecomesDeclCustomAttribute? attributes+=BecomesDeclCopyAttribute?)*
-	 *         )? 
-	 *         code=JAVA_STRING?
-	 *     )
+	 *         (attributes+=BecomesDeclCopyAttribute | attributes+=BecomesDeclCustomAttribute) 
+	 *         attributes+=BecomesDeclCopyAttribute? 
+	 *         (attributes+=BecomesDeclCustomAttribute? attributes+=BecomesDeclCopyAttribute?)*
+	 *     )?
+	 */
+	protected void sequence_BecomesDeclGeneratedClass(ISerializationContext context, BecomesDeclGeneratedClass semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     BecomesDeclManualClass returns BecomesDeclManualClass
+	 *
+	 * Constraint:
+	 *     (type=ID (attributes+=BecomesDeclCopyAttribute attributes+=BecomesDeclCopyAttribute*)?)
+	 */
+	protected void sequence_BecomesDeclManualClass(ISerializationContext context, BecomesDeclManualClass semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     BecomesDecl returns BecomesDecl
+	 *
+	 * Constraint:
+	 *     ((list?='[' listType=QualifiedName?)? (descriptor=BecomesDeclGeneratedClass | descriptor=BecomesDeclManualClass) code=JAVA_STRING?)
 	 */
 	protected void sequence_BecomesDecl(ISerializationContext context, BecomesDecl semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

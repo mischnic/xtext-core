@@ -228,6 +228,18 @@ public class XtextAdapterFactory extends AdapterFactoryImpl {
 				return createBecomesDeclCustomAttributeAdapter();
 			}
 			@Override
+			public Adapter caseBecomesDeclClass(BecomesDeclClass object) {
+				return createBecomesDeclClassAdapter();
+			}
+			@Override
+			public Adapter caseBecomesDeclGeneratedClass(BecomesDeclGeneratedClass object) {
+				return createBecomesDeclGeneratedClassAdapter();
+			}
+			@Override
+			public Adapter caseBecomesDeclManualClass(BecomesDeclManualClass object) {
+				return createBecomesDeclManualClassAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -813,6 +825,48 @@ public class XtextAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createBecomesDeclCustomAttributeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtext.BecomesDeclClass <em>Becomes Decl Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.xtext.BecomesDeclClass
+	 * @generated
+	 */
+	public Adapter createBecomesDeclClassAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtext.BecomesDeclGeneratedClass <em>Becomes Decl Generated Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.xtext.BecomesDeclGeneratedClass
+	 * @generated
+	 */
+	public Adapter createBecomesDeclGeneratedClassAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.xtext.BecomesDeclManualClass <em>Becomes Decl Manual Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.xtext.BecomesDeclManualClass
+	 * @generated
+	 */
+	public Adapter createBecomesDeclManualClassAdapter() {
 		return null;
 	}
 

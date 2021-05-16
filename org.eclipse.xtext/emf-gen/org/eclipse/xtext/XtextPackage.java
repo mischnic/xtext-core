@@ -1962,13 +1962,13 @@ public interface XtextPackage extends EPackage {
 	int BECOMES_DECL__LIST = 0;
 
 	/**
-	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * The feature id for the '<em><b>List Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BECOMES_DECL__ATTRIBUTES = 1;
+	int BECOMES_DECL__LIST_TYPE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Code</b></em>' attribute.
@@ -1980,13 +1980,22 @@ public interface XtextPackage extends EPackage {
 	int BECOMES_DECL__CODE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Descriptor</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BECOMES_DECL__DESCRIPTOR = 3;
+
+	/**
 	 * The number of structural features of the '<em>Becomes Decl</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BECOMES_DECL_FEATURE_COUNT = 3;
+	int BECOMES_DECL_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.xtext.BecomesDeclAttribute <em>Becomes Decl Attribute</em>}' class.
@@ -2071,6 +2080,99 @@ public interface XtextPackage extends EPackage {
 	 * @ordered
 	 */
 	int BECOMES_DECL_CUSTOM_ATTRIBUTE_FEATURE_COUNT = BECOMES_DECL_ATTRIBUTE_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.xtext.BecomesDeclClass <em>Becomes Decl Class</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.xtext.BecomesDeclClass
+	 * @see org.eclipse.xtext.impl.XtextPackageImpl#getBecomesDeclClass()
+	 * @generated
+	 */
+	int BECOMES_DECL_CLASS = 40;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BECOMES_DECL_CLASS__ATTRIBUTES = 0;
+
+	/**
+	 * The number of structural features of the '<em>Becomes Decl Class</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BECOMES_DECL_CLASS_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.xtext.impl.BecomesDeclGeneratedClassImpl <em>Becomes Decl Generated Class</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.xtext.impl.BecomesDeclGeneratedClassImpl
+	 * @see org.eclipse.xtext.impl.XtextPackageImpl#getBecomesDeclGeneratedClass()
+	 * @generated
+	 */
+	int BECOMES_DECL_GENERATED_CLASS = 41;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BECOMES_DECL_GENERATED_CLASS__ATTRIBUTES = BECOMES_DECL_CLASS__ATTRIBUTES;
+
+	/**
+	 * The number of structural features of the '<em>Becomes Decl Generated Class</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BECOMES_DECL_GENERATED_CLASS_FEATURE_COUNT = BECOMES_DECL_CLASS_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.xtext.impl.BecomesDeclManualClassImpl <em>Becomes Decl Manual Class</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.xtext.impl.BecomesDeclManualClassImpl
+	 * @see org.eclipse.xtext.impl.XtextPackageImpl#getBecomesDeclManualClass()
+	 * @generated
+	 */
+	int BECOMES_DECL_MANUAL_CLASS = 42;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BECOMES_DECL_MANUAL_CLASS__ATTRIBUTES = BECOMES_DECL_CLASS__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BECOMES_DECL_MANUAL_CLASS__TYPE = BECOMES_DECL_CLASS_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Becomes Decl Manual Class</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BECOMES_DECL_MANUAL_CLASS_FEATURE_COUNT = BECOMES_DECL_CLASS_FEATURE_COUNT + 1;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.xtext.Grammar <em>Grammar</em>}'.
@@ -3073,15 +3175,15 @@ public interface XtextPackage extends EPackage {
 	EAttribute getBecomesDecl_List();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.xtext.BecomesDecl#getAttributes <em>Attributes</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.xtext.BecomesDecl#getListType <em>List Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Attributes</em>'.
-	 * @see org.eclipse.xtext.BecomesDecl#getAttributes()
+	 * @return the meta object for the attribute '<em>List Type</em>'.
+	 * @see org.eclipse.xtext.BecomesDecl#getListType()
 	 * @see #getBecomesDecl()
 	 * @generated
 	 */
-	EReference getBecomesDecl_Attributes();
+	EAttribute getBecomesDecl_ListType();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.xtext.BecomesDecl#getCode <em>Code</em>}'.
@@ -3093,6 +3195,17 @@ public interface XtextPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getBecomesDecl_Code();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.xtext.BecomesDecl#getDescriptor <em>Descriptor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Descriptor</em>'.
+	 * @see org.eclipse.xtext.BecomesDecl#getDescriptor()
+	 * @see #getBecomesDecl()
+	 * @generated
+	 */
+	EReference getBecomesDecl_Descriptor();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.xtext.BecomesDeclAttribute <em>Becomes Decl Attribute</em>}'.
@@ -3156,6 +3269,58 @@ public interface XtextPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getBecomesDeclCustomAttribute_Name();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.xtext.BecomesDeclClass <em>Becomes Decl Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Becomes Decl Class</em>'.
+	 * @see org.eclipse.xtext.BecomesDeclClass
+	 * @generated
+	 */
+	EClass getBecomesDeclClass();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.xtext.BecomesDeclClass#getAttributes <em>Attributes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Attributes</em>'.
+	 * @see org.eclipse.xtext.BecomesDeclClass#getAttributes()
+	 * @see #getBecomesDeclClass()
+	 * @generated
+	 */
+	EReference getBecomesDeclClass_Attributes();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.xtext.BecomesDeclGeneratedClass <em>Becomes Decl Generated Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Becomes Decl Generated Class</em>'.
+	 * @see org.eclipse.xtext.BecomesDeclGeneratedClass
+	 * @generated
+	 */
+	EClass getBecomesDeclGeneratedClass();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.xtext.BecomesDeclManualClass <em>Becomes Decl Manual Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Becomes Decl Manual Class</em>'.
+	 * @see org.eclipse.xtext.BecomesDeclManualClass
+	 * @generated
+	 */
+	EClass getBecomesDeclManualClass();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.xtext.BecomesDeclManualClass#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see org.eclipse.xtext.BecomesDeclManualClass#getType()
+	 * @see #getBecomesDeclManualClass()
+	 * @generated
+	 */
+	EAttribute getBecomesDeclManualClass_Type();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -4015,12 +4180,12 @@ public interface XtextPackage extends EPackage {
 		EAttribute BECOMES_DECL__LIST = eINSTANCE.getBecomesDecl_List();
 
 		/**
-		 * The meta object literal for the '<em><b>Attributes</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>List Type</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BECOMES_DECL__ATTRIBUTES = eINSTANCE.getBecomesDecl_Attributes();
+		EAttribute BECOMES_DECL__LIST_TYPE = eINSTANCE.getBecomesDecl_ListType();
 
 		/**
 		 * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
@@ -4029,6 +4194,14 @@ public interface XtextPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute BECOMES_DECL__CODE = eINSTANCE.getBecomesDecl_Code();
+
+		/**
+		 * The meta object literal for the '<em><b>Descriptor</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BECOMES_DECL__DESCRIPTOR = eINSTANCE.getBecomesDecl_Descriptor();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.xtext.BecomesDeclAttribute <em>Becomes Decl Attribute</em>}' class.
@@ -4083,6 +4256,52 @@ public interface XtextPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute BECOMES_DECL_CUSTOM_ATTRIBUTE__NAME = eINSTANCE.getBecomesDeclCustomAttribute_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.xtext.BecomesDeclClass <em>Becomes Decl Class</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.xtext.BecomesDeclClass
+		 * @see org.eclipse.xtext.impl.XtextPackageImpl#getBecomesDeclClass()
+		 * @generated
+		 */
+		EClass BECOMES_DECL_CLASS = eINSTANCE.getBecomesDeclClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Attributes</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BECOMES_DECL_CLASS__ATTRIBUTES = eINSTANCE.getBecomesDeclClass_Attributes();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.xtext.impl.BecomesDeclGeneratedClassImpl <em>Becomes Decl Generated Class</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.xtext.impl.BecomesDeclGeneratedClassImpl
+		 * @see org.eclipse.xtext.impl.XtextPackageImpl#getBecomesDeclGeneratedClass()
+		 * @generated
+		 */
+		EClass BECOMES_DECL_GENERATED_CLASS = eINSTANCE.getBecomesDeclGeneratedClass();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.xtext.impl.BecomesDeclManualClassImpl <em>Becomes Decl Manual Class</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.xtext.impl.BecomesDeclManualClassImpl
+		 * @see org.eclipse.xtext.impl.XtextPackageImpl#getBecomesDeclManualClass()
+		 * @generated
+		 */
+		EClass BECOMES_DECL_MANUAL_CLASS = eINSTANCE.getBecomesDeclManualClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BECOMES_DECL_MANUAL_CLASS__TYPE = eINSTANCE.getBecomesDeclManualClass_Type();
 
 	}
 

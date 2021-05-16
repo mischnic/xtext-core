@@ -15,8 +15,9 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.xtext.BecomesDecl#isList <em>List</em>}</li>
- *   <li>{@link org.eclipse.xtext.BecomesDecl#getAttributes <em>Attributes</em>}</li>
+ *   <li>{@link org.eclipse.xtext.BecomesDecl#getListType <em>List Type</em>}</li>
  *   <li>{@link org.eclipse.xtext.BecomesDecl#getCode <em>Code</em>}</li>
+ *   <li>{@link org.eclipse.xtext.BecomesDecl#getDescriptor <em>Descriptor</em>}</li>
  * </ul>
  *
  * @see org.eclipse.xtext.XtextPackage#getBecomesDecl()
@@ -47,16 +48,26 @@ public interface BecomesDecl extends EObject {
 	void setList(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Attributes</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.xtext.BecomesDeclAttribute}.
+	 * Returns the value of the '<em><b>List Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Attributes</em>' containment reference list.
-	 * @see org.eclipse.xtext.XtextPackage#getBecomesDecl_Attributes()
-	 * @model containment="true"
+	 * @return the value of the '<em>List Type</em>' attribute.
+	 * @see #setListType(String)
+	 * @see org.eclipse.xtext.XtextPackage#getBecomesDecl_ListType()
+	 * @model
 	 * @generated
 	 */
-	EList<BecomesDeclAttribute> getAttributes();
+	String getListType();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.xtext.BecomesDecl#getListType <em>List Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>List Type</em>' attribute.
+	 * @see #getListType()
+	 * @generated
+	 */
+	void setListType(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Code</b></em>' attribute.
@@ -79,5 +90,27 @@ public interface BecomesDecl extends EObject {
 	 * @generated
 	 */
 	void setCode(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Descriptor</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Descriptor</em>' containment reference.
+	 * @see #setDescriptor(BecomesDeclClass)
+	 * @see org.eclipse.xtext.XtextPackage#getBecomesDecl_Descriptor()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	BecomesDeclClass getDescriptor();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.xtext.BecomesDecl#getDescriptor <em>Descriptor</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Descriptor</em>' containment reference.
+	 * @see #getDescriptor()
+	 * @generated
+	 */
+	void setDescriptor(BecomesDeclClass value);
 
 } // BecomesDecl

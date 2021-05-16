@@ -343,6 +343,26 @@ public class XtextSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case XtextPackage.BECOMES_DECL_CLASS: {
+				BecomesDeclClass becomesDeclClass = (BecomesDeclClass)theEObject;
+				T result = caseBecomesDeclClass(becomesDeclClass);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case XtextPackage.BECOMES_DECL_GENERATED_CLASS: {
+				BecomesDeclGeneratedClass becomesDeclGeneratedClass = (BecomesDeclGeneratedClass)theEObject;
+				T result = caseBecomesDeclGeneratedClass(becomesDeclGeneratedClass);
+				if (result == null) result = caseBecomesDeclClass(becomesDeclGeneratedClass);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case XtextPackage.BECOMES_DECL_MANUAL_CLASS: {
+				BecomesDeclManualClass becomesDeclManualClass = (BecomesDeclManualClass)theEObject;
+				T result = caseBecomesDeclManualClass(becomesDeclManualClass);
+				if (result == null) result = caseBecomesDeclClass(becomesDeclManualClass);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -953,6 +973,51 @@ public class XtextSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseBecomesDeclCustomAttribute(BecomesDeclCustomAttribute object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Becomes Decl Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Becomes Decl Class</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBecomesDeclClass(BecomesDeclClass object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Becomes Decl Generated Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Becomes Decl Generated Class</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBecomesDeclGeneratedClass(BecomesDeclGeneratedClass object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Becomes Decl Manual Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Becomes Decl Manual Class</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBecomesDeclManualClass(BecomesDeclManualClass object) {
 		return null;
 	}
 
