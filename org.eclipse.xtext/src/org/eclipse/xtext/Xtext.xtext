@@ -61,26 +61,40 @@ terminal JAVA_STRING returns ecore::EString:
 
 
 BecomesDecl returns BecomesDecl:
-	{BecomesDecl}
-	(list?="[]")?
-	(
+	(list?="["
+		(listType=QualifiedName)?
+	"]")?
+	descriptor=(BecomesDeclGeneratedClass|BecomesDeclManualClass)
+	(code=JAVA_STRING)?
+;
+
+BecomesDeclGeneratedClass:
+	{BecomesDeclGeneratedClass} (
 	'('
 		attributes+=(BecomesDeclCopyAttribute | BecomesDeclCustomAttribute)
 		(',' attributes+=(BecomesDeclCopyAttribute | BecomesDeclCustomAttribute))*
 	')'
 	)?
-	(code=JAVA_STRING)?
 ;
 
-BecomesDeclCopyAttribute returns BecomesDeclCopyAttribute:
+BecomesDeclManualClass:
+	type=ID
+	(
+	'('
+		attributes+=(BecomesDeclCopyAttribute) (',' attributes+=BecomesDeclCopyAttribute)*
+	')'
+	)?
+;
+
+BecomesDeclCopyAttribute:
 	name=ID
 ;
 
-BecomesDeclCustomAttribute returns BecomesDeclCustomAttribute:
+BecomesDeclCustomAttribute:
 	type=ID name=ID
 ;
 
-QualifiedName:
+QualifiedName returns ecore::EString:
     ID ('.' ID)*;
 
 fragment RuleNameAndParams returns ParserRule:
