@@ -10,9 +10,12 @@ package org.eclipse.xtext.xtext.generator;
 
 import com.google.inject.Inject;
 
-import org.eclipse.xtext.AbstractRule;
+import org.eclipse.xtext.BecomesDeclClass;
+import org.eclipse.xtext.BecomesDeclGeneratedClass;
+import org.eclipse.xtext.BecomesDeclManualClass;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
+import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.eclipse.xtext.xtext.generator.model.TypeReference;
 import org.eclipse.xtext.xtext.generator.model.project.IXtextProjectConfig;
@@ -129,6 +132,15 @@ public class XtextGeneratorNaming {
 		return "AST" + name;
 	}
 
+	public TypeReference getASTClass(Grammar grammar, ParserRule rule) {
+		BecomesDeclClass descriptor = rule.getBecomes().getDescriptor();
+		if (descriptor instanceof BecomesDeclGeneratedClass) {
+			return new TypeReference(getASTPackage(grammar), getASTClassName(rule.getName()));
+		} else {
+			return new TypeReference(getASTPackage(grammar), ((BecomesDeclManualClass) descriptor).getType());
+		}
+	}
+	
 	public TypeReference getASTClass(Grammar grammar, String name) {
 		return new TypeReference(getASTPackage(grammar), getASTClassName(name));
 	}

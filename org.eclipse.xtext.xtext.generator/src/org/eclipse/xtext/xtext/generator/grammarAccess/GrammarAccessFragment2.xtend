@@ -336,9 +336,9 @@ class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
 						return new «getASTClass(grammar, it.name)»();
 					«ENDIF»
 				«ELSE»
-					return new «ArrayList»<«getASTClass(grammar, it.name)»>() {
+					return new «if (it.becomes.listType !== null) it.becomes.listType else ArrayList»<«getASTClass(grammar, it)»>() {
 						private static final long serialVersionUID =  0;
-						«ArrayList»<«getASTClass(grammar, it.name)»> XTEXT_INIT() {
+						«if (it.becomes.listType !== null) it.becomes.listType else ArrayList»<«getASTClass(grammar, it)»> XTEXT_INIT() {
 							«it.becomes.code.substring(3, it.becomes.code.length - 2)»
 							return this;
 						}

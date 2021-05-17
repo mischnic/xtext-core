@@ -12,6 +12,7 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -884,9 +885,17 @@ public class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
               } else {
                 _builder.append("\t");
                 _builder.append("return new ");
-                _builder.append(ArrayList.class, "\t");
+                Serializable _xifexpression = null;
+                String _listType = it.getBecomes().getListType();
+                boolean _tripleNotEquals_1 = (_listType != null);
+                if (_tripleNotEquals_1) {
+                  _xifexpression = it.getBecomes().getListType();
+                } else {
+                  _xifexpression = ArrayList.class;
+                }
+                _builder.append(_xifexpression, "\t");
                 _builder.append("<");
-                TypeReference _aSTClass_3 = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it.getName());
+                TypeReference _aSTClass_3 = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it);
                 _builder.append(_aSTClass_3, "\t");
                 _builder.append(">() {");
                 _builder.newLineIfNotEmpty();
@@ -896,9 +905,17 @@ public class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
                 _builder.newLine();
                 _builder.append("\t");
                 _builder.append("\t");
-                _builder.append(ArrayList.class, "\t\t");
+                Serializable _xifexpression_1 = null;
+                String _listType_1 = it.getBecomes().getListType();
+                boolean _tripleNotEquals_2 = (_listType_1 != null);
+                if (_tripleNotEquals_2) {
+                  _xifexpression_1 = it.getBecomes().getListType();
+                } else {
+                  _xifexpression_1 = ArrayList.class;
+                }
+                _builder.append(_xifexpression_1, "\t\t");
                 _builder.append("<");
-                TypeReference _aSTClass_4 = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it.getName());
+                TypeReference _aSTClass_4 = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it);
                 _builder.append(_aSTClass_4, "\t\t");
                 _builder.append("> XTEXT_INIT() {");
                 _builder.newLineIfNotEmpty();

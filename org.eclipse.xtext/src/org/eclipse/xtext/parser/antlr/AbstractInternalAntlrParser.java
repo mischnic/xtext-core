@@ -661,6 +661,14 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 		if(becomesDecl == null) {
 			return null;
 		}
+		Method convertMethod = null;
+		try {
+			// TODO ideally, there would be an easier way to get a handle to the AST class for this CST type
+			convertMethod = ga.getClass().getMethod("convert" + type.getName(), type.getInstanceClass(), HashMap.class);
+		} catch (NoSuchMethodException | SecurityException e) {
+			return null;
+		}
+		
 		Set<String> copyAttributes = new HashSet<>();
 		for(BecomesDeclAttribute attr : becomesDecl.getDescriptor().getAttributes()) {
 			if(attr instanceof BecomesDeclCopyAttribute) {
@@ -668,17 +676,10 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 			}
 		}
 		
-		Method convertMethod = null;
-		try {
-			convertMethod = ga.getClass().getMethod("convert" + type.getName(), type.getInstanceClass(), HashMap.class);
-		} catch (NoSuchMethodException | SecurityException e) {
-			// TODO ideally, there would be a way to get a handle to the AST class for this CST type
-			return null;
-		}
-		
 		EList<EStructuralFeature> features = current.eClass().getEStructuralFeatures();
 		HashMap<String, Object> convertedChildren = new HashMap<>();
 		HashMap<String, Object> attributesToCopy = new HashMap<>();
+		// TODO merging
 		boolean copyAllAttributes = becomesDecl.getDescriptor() instanceof BecomesDeclGeneratedClass && becomesDecl.getDescriptor().getAttributes().isEmpty();
 		for (EStructuralFeature f : features) {
 //			System.out.println("convertAST feature: " + f);
