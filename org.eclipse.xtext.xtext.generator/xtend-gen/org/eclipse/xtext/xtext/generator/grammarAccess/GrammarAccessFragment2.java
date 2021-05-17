@@ -12,8 +12,10 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +23,7 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ContentHandler;
@@ -766,10 +769,181 @@ public class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
   }
   
   protected StringConcatenationClient _getter(final ParserRule it, final Grammar original) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field attributes is undefined for the type BecomesDecl"
-      + "\nempty cannot be resolved"
-      + "\n! cannot be resolved");
+    StringConcatenationClient _client = new StringConcatenationClient() {
+      @Override
+      protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
+        String _grammarFragmentToString = GrammarAccessFragment2.this._grammarAccessExtensions.grammarFragmentToString(it, "//");
+        _builder.append(_grammarFragmentToString);
+        _builder.newLineIfNotEmpty();
+        {
+          Grammar _grammar = GrammarUtil.getGrammar(it);
+          boolean _tripleEquals = (_grammar == original);
+          if (_tripleEquals) {
+            _builder.append("public ");
+            String _gaRuleAccessorClassName = GrammarAccessFragment2.this._grammarAccessExtensions.gaRuleAccessorClassName(it);
+            _builder.append(_gaRuleAccessorClassName);
+            _builder.append(" ");
+            String _gaElementsAccessor = GrammarAccessFragment2.this._grammarAccessExtensions.gaElementsAccessor(it);
+            _builder.append(_gaElementsAccessor);
+            _builder.append(" {");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("return ");
+            String _gaRuleAccessorLocalVarName = GrammarAccessFragment2.this.gaRuleAccessorLocalVarName(it);
+            _builder.append(_gaRuleAccessorLocalVarName, "\t");
+            _builder.append(";");
+            _builder.newLineIfNotEmpty();
+            _builder.append("}");
+            _builder.newLine();
+          } else {
+            _builder.append("public ");
+            TypeReference _grammarAccess = GrammarAccessFragment2.this._grammarAccessExtensions.getGrammarAccess(GrammarUtil.getGrammar(it));
+            _builder.append(_grammarAccess);
+            _builder.append(".");
+            String _gaBaseRuleAccessorClassName = GrammarAccessFragment2.this._grammarAccessExtensions.gaBaseRuleAccessorClassName(it);
+            _builder.append(_gaBaseRuleAccessorClassName);
+            _builder.append(" ");
+            String _gaElementsAccessor_1 = GrammarAccessFragment2.this._grammarAccessExtensions.gaElementsAccessor(it);
+            _builder.append(_gaElementsAccessor_1);
+            _builder.append(" {");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("return ");
+            String _gaGrammarAccessLocalVarName = GrammarAccessFragment2.this.gaGrammarAccessLocalVarName(GrammarUtil.getGrammar(it));
+            _builder.append(_gaGrammarAccessLocalVarName, "\t");
+            _builder.append(".");
+            String _gaBaseElementsAccessor = GrammarAccessFragment2.this._grammarAccessExtensions.gaBaseElementsAccessor(it);
+            _builder.append(_gaBaseElementsAccessor, "\t");
+            _builder.append(";");
+            _builder.newLineIfNotEmpty();
+            _builder.append("}");
+            _builder.newLine();
+          }
+        }
+        _builder.newLine();
+        {
+          if ((((it.getBecomes() != null) && (it.getType().getClassifier() instanceof EClass)) && ((!((EClass) it.getType().getClassifier()).getEStructuralFeatures().isEmpty()) || (!it.getBecomes().getDescriptor().getAttributes().isEmpty())))) {
+            _builder.append("public Object ");
+            String _gaRuleBecomeMethodName = GrammarAccessFragment2.this._grammarAccessExtensions.gaRuleBecomeMethodName(it);
+            _builder.append(_gaRuleBecomeMethodName);
+            _builder.append("(org.xtext.example.mydsl.myDsl.");
+            String _name = it.getType().getClassifier().getName();
+            _builder.append(_name);
+            _builder.append(" node, ");
+            _builder.append(HashMap.class);
+            _builder.append("<String, Object> children){");
+            _builder.newLineIfNotEmpty();
+            {
+              boolean _isList = it.getBecomes().isList();
+              boolean _not = (!_isList);
+              if (_not) {
+                {
+                  String _code = it.getBecomes().getCode();
+                  boolean _tripleNotEquals = (_code != null);
+                  if (_tripleNotEquals) {
+                    _builder.append("\t");
+                    _builder.append("return new ");
+                    TypeReference _aSTClass = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it.getName());
+                    _builder.append(_aSTClass, "\t");
+                    _builder.append("() {");
+                    _builder.newLineIfNotEmpty();
+                    _builder.append("\t");
+                    _builder.append("\t");
+                    TypeReference _aSTClass_1 = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it.getName());
+                    _builder.append(_aSTClass_1, "\t\t");
+                    _builder.append(" XTEXT_INIT() {");
+                    _builder.newLineIfNotEmpty();
+                    _builder.append("\t");
+                    _builder.append("\t\t");
+                    String _code_1 = it.getBecomes().getCode();
+                    int _length = it.getBecomes().getCode().length();
+                    int _minus = (_length - 2);
+                    String _substring = _code_1.substring(3, _minus);
+                    _builder.append(_substring, "\t\t\t");
+                    _builder.newLineIfNotEmpty();
+                    _builder.append("\t");
+                    _builder.append("\t\t");
+                    _builder.append("return this;");
+                    _builder.newLine();
+                    _builder.append("\t");
+                    _builder.append("\t");
+                    _builder.append("}");
+                    _builder.newLine();
+                    _builder.append("\t");
+                    _builder.append("}.XTEXT_INIT();");
+                    _builder.newLine();
+                  } else {
+                    _builder.append("\t");
+                    _builder.append("return new ");
+                    TypeReference _aSTClass_2 = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it.getName());
+                    _builder.append(_aSTClass_2, "\t");
+                    _builder.append("();");
+                    _builder.newLineIfNotEmpty();
+                  }
+                }
+              } else {
+                _builder.append("\t");
+                _builder.append("return new ");
+                _builder.append(ArrayList.class, "\t");
+                _builder.append("<");
+                TypeReference _aSTClass_3 = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it.getName());
+                _builder.append(_aSTClass_3, "\t");
+                _builder.append(">() {");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t");
+                _builder.append("private static final long serialVersionUID =  0;");
+                _builder.newLine();
+                _builder.append("\t");
+                _builder.append("\t");
+                _builder.append(ArrayList.class, "\t\t");
+                _builder.append("<");
+                TypeReference _aSTClass_4 = GrammarAccessFragment2.this._xtextGeneratorNaming.getASTClass(GrammarAccessFragment2.this.getGrammar(), it.getName());
+                _builder.append(_aSTClass_4, "\t\t");
+                _builder.append("> XTEXT_INIT() {");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t\t");
+                String _code_2 = it.getBecomes().getCode();
+                int _length_1 = it.getBecomes().getCode().length();
+                int _minus_1 = (_length_1 - 2);
+                String _substring_1 = _code_2.substring(3, _minus_1);
+                _builder.append(_substring_1, "\t\t\t");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t\t");
+                _builder.append("return this;");
+                _builder.newLine();
+                _builder.append("\t");
+                _builder.append("\t");
+                _builder.append("}");
+                _builder.newLine();
+                _builder.append("\t");
+                _builder.append("}.XTEXT_INIT();");
+                _builder.newLine();
+              }
+            }
+            _builder.append("}");
+            _builder.newLine();
+          }
+        }
+        _builder.newLine();
+        _builder.append("public ParserRule ");
+        String _gaRuleAccessor = GrammarAccessFragment2.this._grammarAccessExtensions.gaRuleAccessor(it);
+        _builder.append(_gaRuleAccessor);
+        _builder.append(" {");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("return ");
+        String _gaElementsAccessor_2 = GrammarAccessFragment2.this._grammarAccessExtensions.gaElementsAccessor(it);
+        _builder.append(_gaElementsAccessor_2, "\t");
+        _builder.append(".getRule();");
+        _builder.newLineIfNotEmpty();
+        _builder.append("}");
+        _builder.newLine();
+      }
+    };
+    return _client;
   }
   
   protected StringConcatenationClient _getter(final EnumRule it, final Grammar original) {

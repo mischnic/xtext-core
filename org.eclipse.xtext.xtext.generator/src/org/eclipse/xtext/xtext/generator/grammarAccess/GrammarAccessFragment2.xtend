@@ -321,7 +321,7 @@ class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
 			}
 		«ENDIF»
 		
-		«IF it.becomes !== null && it.type.classifier instanceof EClass && (!(it.type.classifier as EClass).EStructuralFeatures.empty || !it.becomes.attributes.empty)»
+		«IF it.becomes !== null && it.type.classifier instanceof EClass && (!(it.type.classifier as EClass).EStructuralFeatures.empty || !it.becomes.descriptor.attributes.empty)»
 «««			TODO don't hardcoded package
 			public Object «gaRuleBecomeMethodName»(org.xtext.example.mydsl.myDsl.«it.type.classifier.name» node, «HashMap»<String, Object> children){
 				«IF !it.becomes.list»

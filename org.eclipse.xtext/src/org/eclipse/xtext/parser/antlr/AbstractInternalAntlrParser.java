@@ -49,6 +49,7 @@ import org.eclipse.xtext.Action;
 import org.eclipse.xtext.BecomesDecl;
 import org.eclipse.xtext.BecomesDeclAttribute;
 import org.eclipse.xtext.BecomesDeclCopyAttribute;
+import org.eclipse.xtext.BecomesDeclGeneratedClass;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.IGrammarAccess;
@@ -661,7 +662,7 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 			return null;
 		}
 		Set<String> copyAttributes = new HashSet<>();
-		for(BecomesDeclAttribute attr : becomesDecl.getAttributes()) {
+		for(BecomesDeclAttribute attr : becomesDecl.getDescriptor().getAttributes()) {
 			if(attr instanceof BecomesDeclCopyAttribute) {
 				copyAttributes.add(((BecomesDeclCopyAttribute)attr).getName());
 			}
@@ -678,6 +679,7 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 		EList<EStructuralFeature> features = current.eClass().getEStructuralFeatures();
 		HashMap<String, Object> convertedChildren = new HashMap<>();
 		HashMap<String, Object> attributesToCopy = new HashMap<>();
+		boolean copyAllAttributes = becomesDecl.getDescriptor() instanceof BecomesDeclGeneratedClass && becomesDecl.getDescriptor().getAttributes().isEmpty();
 		for (EStructuralFeature f : features) {
 //			System.out.println("convertAST feature: " + f);
 			if (f instanceof EReference) {
@@ -697,11 +699,11 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 					converted = convertedList;
 				}
 				convertedChildren.put(f.getName(), converted);
-				if(copyAttributes.contains(f.getName()) || becomesDecl.getAttributes().isEmpty()) {
+				if(copyAttributes.contains(f.getName()) || copyAllAttributes) {
 					attributesToCopy.put(f.getName(), converted);
 				}
 			} else if(f instanceof EAttribute) {
-				if(copyAttributes.contains(f.getName()) || becomesDecl.getAttributes().isEmpty()) {
+				if(copyAttributes.contains(f.getName()) || copyAllAttributes) {
 					attributesToCopy.put(f.getName(), current.eGet(f));
 				}
 			} else {
