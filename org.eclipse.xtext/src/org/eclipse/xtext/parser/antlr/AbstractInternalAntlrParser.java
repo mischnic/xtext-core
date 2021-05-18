@@ -34,7 +34,6 @@ import org.antlr.runtime.Token;
 import org.antlr.runtime.TokenStream;
 import org.antlr.runtime.UnwantedTokenException;
 import org.apache.log4j.Logger;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -649,8 +648,7 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 		}
 		EClass type = current.eClass();
 		IGrammarAccess ga = this.getGrammarAccess();
-		
-//		System.out.println("convertAST current " + current);
+
 		BecomesDecl becomesDecl = null;
 		try {
 			ParserRule rule = (ParserRule) ga.getClass().getMethod("get" + type.getName() + "Rule").invoke(ga);
@@ -668,34 +666,35 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 		} catch (NoSuchMethodException | SecurityException e) {
 			return null;
 		}
-		
+
+		boolean copyAllAttributes = becomesDecl.getDescriptor() instanceof BecomesDeclGeneratedClass && becomesDecl.getDescriptor().getAttributes().isEmpty();
 		Set<String> copyAttributes = new HashSet<>();
 		for(BecomesDeclAttribute attr : becomesDecl.getDescriptor().getAttributes()) {
 			if(attr instanceof BecomesDeclCopyAttribute) {
 				copyAttributes.add(((BecomesDeclCopyAttribute)attr).getName());
 			}
 		}
-		
-		EList<EStructuralFeature> features = current.eClass().getEStructuralFeatures();
+
 		HashMap<String, Object> convertedChildren = new HashMap<>();
 		HashMap<String, Object> attributesToCopy = new HashMap<>();
 		// TODO merging
-		boolean copyAllAttributes = becomesDecl.getDescriptor() instanceof BecomesDeclGeneratedClass && becomesDecl.getDescriptor().getAttributes().isEmpty();
-		for (EStructuralFeature f : features) {
-//			System.out.println("convertAST feature: " + f);
+		for (EStructuralFeature f : current.eClass().getEStructuralFeatures()) {
 			if (f instanceof EReference) {
 				Object featureValue = current.eGet(f);
 				Object converted = null;
 				if (!f.isMany()) {
 					converted = this.convertAST((EObject) featureValue);
-//					System.out.println("convertAST child: " + f.getName() + " - " + converted);
 				} else {
-//					System.out.println("convertAST child list: " + f.getName() + " - " + feature);
 					EObjectContainmentEList<EObject> featureValueList = ((EObjectContainmentEList<EObject>) featureValue);
 					List<Object> convertedList = new ArrayList<>();
 					for(EObject featureValueEntry : featureValueList) {
 						Object child = this.convertAST((EObject) featureValueEntry);
-						convertedList.add(child);
+						// TODO return boolean from convertAST instead of instanceof List
+						if(child instanceof List) {
+							convertedList.addAll((List<Object>) child);
+						} else {
+							convertedList.add(child);
+						}
 					}
 					converted = convertedList;
 				}
@@ -703,34 +702,31 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 				if(copyAttributes.contains(f.getName()) || copyAllAttributes) {
 					attributesToCopy.put(f.getName(), converted);
 				}
-			} else if(f instanceof EAttribute) {
+			} else if (f instanceof EAttribute) {
 				if(copyAttributes.contains(f.getName()) || copyAllAttributes) {
 					attributesToCopy.put(f.getName(), current.eGet(f));
 				}
 			} else {
-				// TODO are there more types apart from EAttribute and EReference?
 				throw new UnsupportedOperationException("Unknown feature type");
 			}
 		}
-		
+
 		Object result = null;
 		try {
 			result = convertMethod.invoke(ga, current, convertedChildren);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | SecurityException e) {
 			throw new WrappedException(e);
 		}
-		
+
 		Class<?> astClass = result.getClass();
-		// copy BecomeDeclCopyAttributes
-		for (Entry<String, Object> entry : attributesToCopy.entrySet()) {
-			try {
-//				System.out.println("convertAST auto " + entry.getKey() + " " + astClass);
+		try {
+			for (Entry<String, Object> entry : attributesToCopy.entrySet()) {
 				Field field = astClass.getField(entry.getKey());
 				Object featureValue = entry.getValue();
 				field.set(result, featureValue);
-			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
-				throw new RuntimeException(e);
 			}
+		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+			throw new RuntimeException(e);
 		}
 		return result;
 	}
