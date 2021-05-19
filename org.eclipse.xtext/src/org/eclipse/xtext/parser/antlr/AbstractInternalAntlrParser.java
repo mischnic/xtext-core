@@ -277,6 +277,9 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 	}
 
 	protected abstract IGrammarAccess getGrammarAccess();
+	protected Object getASTConversion() {
+		return null;
+	}
 	
 	protected void associateNodeWithAstElement(ICompositeNode node, EObject astElement) {
 		if (astElement == null)
@@ -648,6 +651,10 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 		}
 		EClass type = current.eClass();
 		IGrammarAccess ga = this.getGrammarAccess();
+		Object astConversion = this.getASTConversion();
+		if(astConversion == null) {
+			return null;
+		}
 
 		BecomesDecl becomesDecl = null;
 		try {
@@ -662,7 +669,7 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 		Method convertMethod = null;
 		try {
 			// TODO ideally, there would be an easier way to get a handle to the AST class for this CST type
-			convertMethod = ga.getClass().getMethod("convert" + type.getName(), type.getInstanceClass(), HashMap.class);
+			convertMethod = astConversion.getClass().getMethod("convert" + type.getName(), type.getInstanceClass(), HashMap.class);
 		} catch (NoSuchMethodException | SecurityException e) {
 			return null;
 		}
@@ -713,7 +720,7 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 
 		Object result = null;
 		try {
-			result = convertMethod.invoke(ga, current, convertedChildren);
+			result = convertMethod.invoke(astConversion, current, convertedChildren);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | SecurityException e) {
 			throw new WrappedException(e);
 		}

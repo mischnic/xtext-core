@@ -47,9 +47,6 @@ import org.eclipse.xtext.xtext.generator.model.annotations.SingletonClassAnnotat
 
 import static extension org.eclipse.xtext.GrammarUtil.*
 import static extension org.eclipse.xtext.xtext.generator.model.TypeReference.*
-import java.util.HashMap
-import java.util.ArrayList
-import org.eclipse.emf.ecore.EClass
 
 @Log
 class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
@@ -318,32 +315,6 @@ class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
 		«ELSE»	
 			public «it.grammar.grammarAccess».«gaBaseRuleAccessorClassName» «gaElementsAccessor» {
 				return «it.grammar.gaGrammarAccessLocalVarName».«gaBaseElementsAccessor»;
-			}
-		«ENDIF»
-		
-		«IF it.becomes !== null && it.type.classifier instanceof EClass && (!(it.type.classifier as EClass).EStructuralFeatures.empty || !it.becomes.descriptor.attributes.empty)»
-«««			TODO don't hardcoded package
-			public Object «gaRuleBecomeMethodName»(org.xtext.example.mydsl.myDsl.«it.type.classifier.name» node, «HashMap»<String, Object> children){
-				«IF !it.becomes.list»
-					«IF it.becomes.code !== null»
-						return new «getASTClass(grammar, it.name)»() {
-							«getASTClass(grammar, it.name)» XTEXT_INIT() {
-								«it.becomes.code.substring(3, it.becomes.code.length - 2)»
-								return this;
-							}
-						}.XTEXT_INIT();
-					«ELSE»
-						return new «getASTClass(grammar, it.name)»();
-					«ENDIF»
-				«ELSE»
-					return new «if (it.becomes.listType !== null) it.becomes.listType else ArrayList»<«getASTClass(grammar, it)»>() {
-						private static final long serialVersionUID =  0;
-						«if (it.becomes.listType !== null) it.becomes.listType else ArrayList»<«getASTClass(grammar, it)»> XTEXT_INIT() {
-							«it.becomes.code.substring(3, it.becomes.code.length - 2)»
-							return this;
-						}
-					}.XTEXT_INIT();
-				«ENDIF»
 			}
 		«ENDIF»
 		

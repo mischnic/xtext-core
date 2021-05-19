@@ -80,6 +80,13 @@ class GrammarAccessExtensions {
 	}
 	
 	/**
+	 * Returns a reference to the AST conversion implementation for a grammar.
+	 */
+	def TypeReference getASTConversion(Grammar grammar) {
+		new TypeReference(grammar.runtimeBasePackage + '.services.' + GrammarUtil.getSimpleName(grammar) + 'Conversion')
+	}
+	
+	/**
 	 * Returns the invocation of the element accessor method as fully qualified Java statement.
 	 * Example: return FowlerDslTestLanguageGrammarAccess.INSTANCE.prStatemachine().ele1AssignmentStates()
 	 */	

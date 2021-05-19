@@ -27,6 +27,7 @@ import org.eclipse.xtext.xtext.generator.exporting.QualifiedNamesFragment2;
 import org.eclipse.xtext.xtext.generator.formatting.Formatter2Fragment2;
 import org.eclipse.xtext.xtext.generator.generator.GeneratorFragment2;
 import org.eclipse.xtext.xtext.generator.grammarAccess.ASTClassesFragment2;
+import org.eclipse.xtext.xtext.generator.grammarAccess.ASTConversionFragment2;
 import org.eclipse.xtext.xtext.generator.grammarAccess.GrammarAccessFragment2;
 import org.eclipse.xtext.xtext.generator.index.ResourceDescriptionStrategyFragment;
 import org.eclipse.xtext.xtext.generator.junit.JUnitFragment;
@@ -139,6 +140,8 @@ public class StandardLanguage extends XtextGeneratorLanguage {
   
   private ASTClassesFragment2 astClasses = new ASTClassesFragment2();
   
+  private ASTConversionFragment2 astConversion = new ASTConversionFragment2();
+  
   public StandardLanguage() {
     try {
       this.getClass().getClassLoader().loadClass("org.eclipse.xtext.xbase.XbaseRuntimeModule");
@@ -223,6 +226,7 @@ public class StandardLanguage extends XtextGeneratorLanguage {
       this.operator_add(fragments, this.projectWizard);
       this.operator_add(fragments, this.fileWizard);
       this.operator_add(fragments, this.astClasses);
+      this.operator_add(fragments, this.astConversion);
       _xblockexpression = fragments;
     }
     return _xblockexpression;
@@ -507,6 +511,15 @@ public class StandardLanguage extends XtextGeneratorLanguage {
   
   public void setAstClasses(final ASTClassesFragment2 astClasses) {
     this.astClasses = astClasses;
+  }
+  
+  @Pure
+  protected ASTConversionFragment2 getAstConversion() {
+    return this.astConversion;
+  }
+  
+  public void setAstConversion(final ASTConversionFragment2 astConversion) {
+    this.astConversion = astConversion;
   }
   
   private static final Logger LOG = Logger.getLogger(StandardLanguage.class);

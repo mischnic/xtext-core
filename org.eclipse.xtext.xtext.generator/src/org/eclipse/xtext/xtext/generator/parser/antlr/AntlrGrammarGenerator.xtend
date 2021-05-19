@@ -56,7 +56,7 @@ class AntlrGrammarGenerator extends AbstractAntlrGrammarWithActionsGenerator {
 		«ENDIF»
 		import org.eclipse.xtext.parser.antlr.AntlrDatatypeRuleToken;
 		import «grammarAccess.name»;
-
+		import «ASTConversion.name»;
 	'''
 	
 	protected override compileParserMembers(Grammar it, AntlrOptions options) '''
@@ -71,9 +71,11 @@ class AntlrGrammarGenerator extends AbstractAntlrGrammarWithActionsGenerator {
 
 		«ENDIF»
 		 	private «grammarAccess.simpleName» grammarAccess;
+		 	private «ASTConversion.simpleName» astConversion;
 
-		    public «internalParserClass.simpleName»(TokenStream input, «grammarAccess.simpleName» grammarAccess) {
+		    public «internalParserClass.simpleName»(TokenStream input, «grammarAccess.simpleName» grammarAccess, «ASTConversion.simpleName» astConversion) {
 		        this(input);
+		        this.astConversion = astConversion;
 		        this.grammarAccess = grammarAccess;
 		        registerRules(grammarAccess.getGrammar());
 		    }
@@ -86,6 +88,11 @@ class AntlrGrammarGenerator extends AbstractAntlrGrammarWithActionsGenerator {
 		   	@Override
 		   	protected «grammarAccess.simpleName» getGrammarAccess() {
 		   		return grammarAccess;
+		   	}
+		
+		   	@Override
+		   	protected «ASTConversion.simpleName» getASTConversion() {
+		   		return astConversion;
 		   	}
 		
 		}
