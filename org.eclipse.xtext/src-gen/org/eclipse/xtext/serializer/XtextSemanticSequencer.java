@@ -643,7 +643,7 @@ public class XtextSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     BecomesDeclCopyAttribute returns BecomesDeclCopyAttribute
 	 *
 	 * Constraint:
-	 *     name=ID
+	 *     name=JavaTypeReference
 	 */
 	protected void sequence_BecomesDeclCopyAttribute(ISerializationContext context, BecomesDeclCopyAttribute semanticObject) {
 		if (errorAcceptor != null) {
@@ -651,7 +651,7 @@ public class XtextSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XtextPackage.Literals.BECOMES_DECL_COPY_ATTRIBUTE__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getBecomesDeclCopyAttributeAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getBecomesDeclCopyAttributeAccess().getNameJavaTypeReferenceParserRuleCall_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -661,19 +661,10 @@ public class XtextSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     BecomesDeclCustomAttribute returns BecomesDeclCustomAttribute
 	 *
 	 * Constraint:
-	 *     (type=ID name=ID)
+	 *     (type=JavaTypeReference copy?='&'? name=ID)
 	 */
 	protected void sequence_BecomesDeclCustomAttribute(ISerializationContext context, BecomesDeclCustomAttribute semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, XtextPackage.Literals.BECOMES_DECL_CUSTOM_ATTRIBUTE__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XtextPackage.Literals.BECOMES_DECL_CUSTOM_ATTRIBUTE__TYPE));
-			if (transientValues.isValueTransient(semanticObject, XtextPackage.Literals.BECOMES_DECL_CUSTOM_ATTRIBUTE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XtextPackage.Literals.BECOMES_DECL_CUSTOM_ATTRIBUTE__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getBecomesDeclCustomAttributeAccess().getTypeIDTerminalRuleCall_0_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getBecomesDeclCustomAttributeAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -710,7 +701,7 @@ public class XtextSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     BecomesDecl returns BecomesDecl
 	 *
 	 * Constraint:
-	 *     ((list?='[' listType=QualifiedName?)? (descriptor=BecomesDeclGeneratedClass | descriptor=BecomesDeclManualClass) code=JAVA_STRING?)
+	 *     ((list?='[' listType=JavaTypeReference?)? (descriptor=BecomesDeclGeneratedClass | descriptor=BecomesDeclManualClass) code=JAVA_STRING?)
 	 */
 	protected void sequence_BecomesDecl(ISerializationContext context, BecomesDecl semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

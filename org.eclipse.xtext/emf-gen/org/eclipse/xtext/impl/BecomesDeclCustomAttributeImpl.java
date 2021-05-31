@@ -22,6 +22,7 @@ import org.eclipse.xtext.XtextPackage;
  * <ul>
  *   <li>{@link org.eclipse.xtext.impl.BecomesDeclCustomAttributeImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.xtext.impl.BecomesDeclCustomAttributeImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.xtext.impl.BecomesDeclCustomAttributeImpl#isCopy <em>Copy</em>}</li>
  * </ul>
  *
  * @generated
@@ -66,6 +67,26 @@ public class BecomesDeclCustomAttributeImpl extends MinimalEObjectImpl.Container
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isCopy() <em>Copy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCopy()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean COPY_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isCopy() <em>Copy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCopy()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean copy = COPY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -138,12 +159,37 @@ public class BecomesDeclCustomAttributeImpl extends MinimalEObjectImpl.Container
 	 * @generated
 	 */
 	@Override
+	public boolean isCopy() {
+		return copy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCopy(boolean newCopy) {
+		boolean oldCopy = copy;
+		copy = newCopy;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__COPY, oldCopy, copy));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__TYPE:
 				return getType();
 			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__NAME:
 				return getName();
+			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__COPY:
+				return isCopy();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -161,6 +207,9 @@ public class BecomesDeclCustomAttributeImpl extends MinimalEObjectImpl.Container
 				return;
 			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__NAME:
 				setName((String)newValue);
+				return;
+			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__COPY:
+				setCopy((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -180,6 +229,9 @@ public class BecomesDeclCustomAttributeImpl extends MinimalEObjectImpl.Container
 			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__COPY:
+				setCopy(COPY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -196,6 +248,8 @@ public class BecomesDeclCustomAttributeImpl extends MinimalEObjectImpl.Container
 				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
 			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__COPY:
+				return copy != COPY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -214,6 +268,8 @@ public class BecomesDeclCustomAttributeImpl extends MinimalEObjectImpl.Container
 		result.append(type);
 		result.append(", name: ");
 		result.append(name);
+		result.append(", copy: ");
+		result.append(copy);
 		result.append(')');
 		return result.toString();
 	}

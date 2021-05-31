@@ -821,6 +821,95 @@ ruleParserRule returns [EObject current=null]
 	)
 ;
 
+// Entry rule entryRuleJavaTypeReference
+entryRuleJavaTypeReference returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getJavaTypeReferenceRule()); }
+	iv_ruleJavaTypeReference=ruleJavaTypeReference
+	{ $current=$iv_ruleJavaTypeReference.current.getText(); }
+	EOF;
+
+// Rule JavaTypeReference
+ruleJavaTypeReference returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				kw='\u00AB'
+				{
+					$current.merge(kw);
+					newLeafNode(kw, grammarAccess.getJavaTypeReferenceAccess().getLeftPointingDoubleAngleQuotationMarkKeyword_0_0_0());
+				}
+				this_ID_1=RULE_ID
+				{
+					$current.merge(this_ID_1);
+				}
+				{
+					newLeafNode(this_ID_1, grammarAccess.getJavaTypeReferenceAccess().getIDTerminalRuleCall_0_0_1());
+				}
+				kw='\u00BB'
+				{
+					$current.merge(kw);
+					newLeafNode(kw, grammarAccess.getJavaTypeReferenceAccess().getRightPointingDoubleAngleQuotationMarkKeyword_0_0_2());
+				}
+			)
+			    |
+			this_ID_3=RULE_ID
+			{
+				$current.merge(this_ID_3);
+			}
+			{
+				newLeafNode(this_ID_3, grammarAccess.getJavaTypeReferenceAccess().getIDTerminalRuleCall_0_1());
+			}
+		)
+		(
+			kw='<'
+			{
+				$current.merge(kw);
+				newLeafNode(kw, grammarAccess.getJavaTypeReferenceAccess().getLessThanSignKeyword_1_0());
+			}
+			(
+				(
+					kw='\u00AB'
+					{
+						$current.merge(kw);
+						newLeafNode(kw, grammarAccess.getJavaTypeReferenceAccess().getLeftPointingDoubleAngleQuotationMarkKeyword_1_1_0_0());
+					}
+					this_ID_6=RULE_ID
+					{
+						$current.merge(this_ID_6);
+					}
+					{
+						newLeafNode(this_ID_6, grammarAccess.getJavaTypeReferenceAccess().getIDTerminalRuleCall_1_1_0_1());
+					}
+					kw='\u00BB'
+					{
+						$current.merge(kw);
+						newLeafNode(kw, grammarAccess.getJavaTypeReferenceAccess().getRightPointingDoubleAngleQuotationMarkKeyword_1_1_0_2());
+					}
+				)
+				    |
+				this_ID_8=RULE_ID
+				{
+					$current.merge(this_ID_8);
+				}
+				{
+					newLeafNode(this_ID_8, grammarAccess.getJavaTypeReferenceAccess().getIDTerminalRuleCall_1_1_1());
+				}
+			)
+			kw='>'
+			{
+				$current.merge(kw);
+				newLeafNode(kw, grammarAccess.getJavaTypeReferenceAccess().getGreaterThanSignKeyword_1_2());
+			}
+		)?
+	)
+;
+
 // Entry rule entryRuleBecomesDecl
 entryRuleBecomesDecl returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getBecomesDeclRule()); }
@@ -855,9 +944,9 @@ ruleBecomesDecl returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getBecomesDeclAccess().getListTypeQualifiedNameParserRuleCall_0_1_0());
+						newCompositeNode(grammarAccess.getBecomesDeclAccess().getListTypeJavaTypeReferenceParserRuleCall_0_1_0());
 					}
-					lv_listType_1_0=ruleQualifiedName
+					lv_listType_1_0=ruleJavaTypeReference
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getBecomesDeclRule());
@@ -866,7 +955,7 @@ ruleBecomesDecl returns [EObject current=null]
 							$current,
 							"listType",
 							lv_listType_1_0,
-							"org.eclipse.xtext.Xtext.QualifiedName");
+							"org.eclipse.xtext.Xtext.JavaTypeReference");
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -1158,19 +1247,20 @@ ruleBecomesDeclCopyAttribute returns [EObject current=null]
 }:
 	(
 		(
-			lv_name_0_0=RULE_ID
 			{
-				newLeafNode(lv_name_0_0, grammarAccess.getBecomesDeclCopyAttributeAccess().getNameIDTerminalRuleCall_0());
+				newCompositeNode(grammarAccess.getBecomesDeclCopyAttributeAccess().getNameJavaTypeReferenceParserRuleCall_0());
 			}
+			lv_name_0_0=ruleJavaTypeReference
 			{
 				if ($current==null) {
-					$current = createModelElement(grammarAccess.getBecomesDeclCopyAttributeRule());
+					$current = createModelElementForParent(grammarAccess.getBecomesDeclCopyAttributeRule());
 				}
-				setWithLastConsumed(
+				set(
 					$current,
 					"name",
 					lv_name_0_0,
-					"org.eclipse.xtext.common.Terminals.ID");
+					"org.eclipse.xtext.Xtext.JavaTypeReference");
+				afterParserOrEnumRuleCall();
 			}
 		)
 	)
@@ -1194,27 +1284,42 @@ ruleBecomesDeclCustomAttribute returns [EObject current=null]
 	(
 		(
 			(
-				lv_type_0_0=RULE_ID
 				{
-					newLeafNode(lv_type_0_0, grammarAccess.getBecomesDeclCustomAttributeAccess().getTypeIDTerminalRuleCall_0_0());
+					newCompositeNode(grammarAccess.getBecomesDeclCustomAttributeAccess().getTypeJavaTypeReferenceParserRuleCall_0_0());
 				}
+				lv_type_0_0=ruleJavaTypeReference
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getBecomesDeclCustomAttributeRule());
+						$current = createModelElementForParent(grammarAccess.getBecomesDeclCustomAttributeRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"type",
 						lv_type_0_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"org.eclipse.xtext.Xtext.JavaTypeReference");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
 		(
 			(
-				lv_name_1_0=RULE_ID
+				lv_copy_1_0='&'
 				{
-					newLeafNode(lv_name_1_0, grammarAccess.getBecomesDeclCustomAttributeAccess().getNameIDTerminalRuleCall_1_0());
+					newLeafNode(lv_copy_1_0, grammarAccess.getBecomesDeclCustomAttributeAccess().getCopyAmpersandKeyword_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getBecomesDeclCustomAttributeRule());
+					}
+					setWithLastConsumed($current, "copy", lv_copy_1_0 != null, "&");
+				}
+			)
+		)?
+		(
+			(
+				lv_name_2_0=RULE_ID
+				{
+					newLeafNode(lv_name_2_0, grammarAccess.getBecomesDeclCustomAttributeAccess().getNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -1223,51 +1328,11 @@ ruleBecomesDeclCustomAttribute returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_1_0,
+						lv_name_2_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
-	)
-;
-
-// Entry rule entryRuleQualifiedName
-entryRuleQualifiedName returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getQualifiedNameRule()); }
-	iv_ruleQualifiedName=ruleQualifiedName
-	{ $current=$iv_ruleQualifiedName.current.getText(); }
-	EOF;
-
-// Rule QualifiedName
-ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		this_ID_0=RULE_ID
-		{
-			$current.merge(this_ID_0);
-		}
-		{
-			newLeafNode(this_ID_0, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0());
-		}
-		(
-			kw='.'
-			{
-				$current.merge(kw);
-				newLeafNode(kw, grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0());
-			}
-			this_ID_2=RULE_ID
-			{
-				$current.merge(this_ID_2);
-			}
-			{
-				newLeafNode(this_ID_2, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_1_1());
-			}
-		)*
 	)
 ;
 

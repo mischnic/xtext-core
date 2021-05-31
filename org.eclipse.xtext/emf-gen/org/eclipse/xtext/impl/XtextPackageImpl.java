@@ -1454,6 +1454,16 @@ public class XtextPackageImpl extends EPackageImpl implements XtextPackage {
 	 * @generated
 	 */
 	@Override
+	public EAttribute getBecomesDeclCustomAttribute_Copy() {
+		return (EAttribute)becomesDeclCustomAttributeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getBecomesDeclClass() {
 		return becomesDeclClassEClass;
 	}
@@ -1667,6 +1677,7 @@ public class XtextPackageImpl extends EPackageImpl implements XtextPackage {
 		becomesDeclCustomAttributeEClass = createEClass(BECOMES_DECL_CUSTOM_ATTRIBUTE);
 		createEAttribute(becomesDeclCustomAttributeEClass, BECOMES_DECL_CUSTOM_ATTRIBUTE__TYPE);
 		createEAttribute(becomesDeclCustomAttributeEClass, BECOMES_DECL_CUSTOM_ATTRIBUTE__NAME);
+		createEAttribute(becomesDeclCustomAttributeEClass, BECOMES_DECL_CUSTOM_ATTRIBUTE__COPY);
 
 		becomesDeclClassEClass = createEClass(BECOMES_DECL_CLASS);
 		createEReference(becomesDeclClassEClass, BECOMES_DECL_CLASS__ATTRIBUTES);
@@ -1881,6 +1892,7 @@ public class XtextPackageImpl extends EPackageImpl implements XtextPackage {
 		initEClass(becomesDeclCustomAttributeEClass, BecomesDeclCustomAttribute.class, "BecomesDeclCustomAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBecomesDeclCustomAttribute_Type(), ecorePackage.getEString(), "type", null, 0, 1, BecomesDeclCustomAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBecomesDeclCustomAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, BecomesDeclCustomAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBecomesDeclCustomAttribute_Copy(), ecorePackage.getEBoolean(), "copy", null, 0, 1, BecomesDeclCustomAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(becomesDeclClassEClass, BecomesDeclClass.class, "BecomesDeclClass", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBecomesDeclClass_Attributes(), this.getBecomesDeclAttribute(), null, "attributes", null, 0, -1, BecomesDeclClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

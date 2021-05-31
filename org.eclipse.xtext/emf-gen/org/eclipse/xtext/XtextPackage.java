@@ -2073,13 +2073,22 @@ public interface XtextPackage extends EPackage {
 	int BECOMES_DECL_CUSTOM_ATTRIBUTE__NAME = BECOMES_DECL_ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Copy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BECOMES_DECL_CUSTOM_ATTRIBUTE__COPY = BECOMES_DECL_ATTRIBUTE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Becomes Decl Custom Attribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BECOMES_DECL_CUSTOM_ATTRIBUTE_FEATURE_COUNT = BECOMES_DECL_ATTRIBUTE_FEATURE_COUNT + 2;
+	int BECOMES_DECL_CUSTOM_ATTRIBUTE_FEATURE_COUNT = BECOMES_DECL_ATTRIBUTE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.xtext.BecomesDeclClass <em>Becomes Decl Class</em>}' class.
@@ -3271,6 +3280,17 @@ public interface XtextPackage extends EPackage {
 	EAttribute getBecomesDeclCustomAttribute_Name();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.xtext.BecomesDeclCustomAttribute#isCopy <em>Copy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Copy</em>'.
+	 * @see org.eclipse.xtext.BecomesDeclCustomAttribute#isCopy()
+	 * @see #getBecomesDeclCustomAttribute()
+	 * @generated
+	 */
+	EAttribute getBecomesDeclCustomAttribute_Copy();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.xtext.BecomesDeclClass <em>Becomes Decl Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4256,6 +4276,14 @@ public interface XtextPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute BECOMES_DECL_CUSTOM_ATTRIBUTE__NAME = eINSTANCE.getBecomesDeclCustomAttribute_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Copy</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BECOMES_DECL_CUSTOM_ATTRIBUTE__COPY = eINSTANCE.getBecomesDeclCustomAttribute_Copy();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.xtext.BecomesDeclClass <em>Becomes Decl Class</em>}' class.

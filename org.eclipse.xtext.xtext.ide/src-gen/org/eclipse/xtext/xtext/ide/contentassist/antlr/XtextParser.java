@@ -35,6 +35,8 @@ public class XtextParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAbstractMetamodelDeclarationAccess().getAlternatives(), "rule__AbstractMetamodelDeclaration__Alternatives");
 			builder.put(grammarAccess.getParserRuleAccess().getAlternatives_1(), "rule__ParserRule__Alternatives_1");
 			builder.put(grammarAccess.getParserRuleAccess().getAlternatives_1_0_2(), "rule__ParserRule__Alternatives_1_0_2");
+			builder.put(grammarAccess.getJavaTypeReferenceAccess().getAlternatives_0(), "rule__JavaTypeReference__Alternatives_0");
+			builder.put(grammarAccess.getJavaTypeReferenceAccess().getAlternatives_1_1(), "rule__JavaTypeReference__Alternatives_1_1");
 			builder.put(grammarAccess.getBecomesDeclAccess().getDescriptorAlternatives_1_0(), "rule__BecomesDecl__DescriptorAlternatives_1_0");
 			builder.put(grammarAccess.getBecomesDeclGeneratedClassAccess().getAttributesAlternatives_1_1_0(), "rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_1_0");
 			builder.put(grammarAccess.getBecomesDeclGeneratedClassAccess().getAttributesAlternatives_1_2_1_0(), "rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_2_1_0");
@@ -81,6 +83,10 @@ public class XtextParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getParserRuleAccess().getGroup_2(), "rule__ParserRule__Group_2__0");
 			builder.put(grammarAccess.getParserRuleAccess().getGroup_2_2(), "rule__ParserRule__Group_2_2__0");
 			builder.put(grammarAccess.getParserRuleAccess().getGroup_2_2_1(), "rule__ParserRule__Group_2_2_1__0");
+			builder.put(grammarAccess.getJavaTypeReferenceAccess().getGroup(), "rule__JavaTypeReference__Group__0");
+			builder.put(grammarAccess.getJavaTypeReferenceAccess().getGroup_0_0(), "rule__JavaTypeReference__Group_0_0__0");
+			builder.put(grammarAccess.getJavaTypeReferenceAccess().getGroup_1(), "rule__JavaTypeReference__Group_1__0");
+			builder.put(grammarAccess.getJavaTypeReferenceAccess().getGroup_1_1_0(), "rule__JavaTypeReference__Group_1_1_0__0");
 			builder.put(grammarAccess.getBecomesDeclAccess().getGroup(), "rule__BecomesDecl__Group__0");
 			builder.put(grammarAccess.getBecomesDeclAccess().getGroup_0(), "rule__BecomesDecl__Group_0__0");
 			builder.put(grammarAccess.getBecomesDeclGeneratedClassAccess().getGroup(), "rule__BecomesDeclGeneratedClass__Group__0");
@@ -196,7 +202,8 @@ public class XtextParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getBecomesDeclManualClassAccess().getAttributesAssignment_1_2_1(), "rule__BecomesDeclManualClass__AttributesAssignment_1_2_1");
 			builder.put(grammarAccess.getBecomesDeclCopyAttributeAccess().getNameAssignment(), "rule__BecomesDeclCopyAttribute__NameAssignment");
 			builder.put(grammarAccess.getBecomesDeclCustomAttributeAccess().getTypeAssignment_0(), "rule__BecomesDeclCustomAttribute__TypeAssignment_0");
-			builder.put(grammarAccess.getBecomesDeclCustomAttributeAccess().getNameAssignment_1(), "rule__BecomesDeclCustomAttribute__NameAssignment_1");
+			builder.put(grammarAccess.getBecomesDeclCustomAttributeAccess().getCopyAssignment_1(), "rule__BecomesDeclCustomAttribute__CopyAssignment_1");
+			builder.put(grammarAccess.getBecomesDeclCustomAttributeAccess().getNameAssignment_2(), "rule__BecomesDeclCustomAttribute__NameAssignment_2");
 			builder.put(grammarAccess.getRuleNameAndParamsAccess().getNameAssignment_0(), "rule__RuleNameAndParams__NameAssignment_0");
 			builder.put(grammarAccess.getRuleNameAndParamsAccess().getParametersAssignment_1_1_0(), "rule__RuleNameAndParams__ParametersAssignment_1_1_0");
 			builder.put(grammarAccess.getRuleNameAndParamsAccess().getParametersAssignment_1_1_1_1(), "rule__RuleNameAndParams__ParametersAssignment_1_1_1_1");

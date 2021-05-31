@@ -14,6 +14,7 @@ package org.eclipse.xtext;
  * <ul>
  *   <li>{@link org.eclipse.xtext.BecomesDeclCustomAttribute#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.xtext.BecomesDeclCustomAttribute#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.xtext.BecomesDeclCustomAttribute#isCopy <em>Copy</em>}</li>
  * </ul>
  *
  * @see org.eclipse.xtext.XtextPackage#getBecomesDeclCustomAttribute()
@@ -64,5 +65,27 @@ public interface BecomesDeclCustomAttribute extends BecomesDeclAttribute {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Copy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Copy</em>' attribute.
+	 * @see #setCopy(boolean)
+	 * @see org.eclipse.xtext.XtextPackage#getBecomesDeclCustomAttribute_Copy()
+	 * @model
+	 * @generated
+	 */
+	boolean isCopy();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.xtext.BecomesDeclCustomAttribute#isCopy <em>Copy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Copy</em>' attribute.
+	 * @see #isCopy()
+	 * @generated
+	 */
+	void setCopy(boolean value);
 
 } // BecomesDeclCustomAttribute
