@@ -137,6 +137,7 @@
     <genClasses ecoreClass="Xtext.ecore#//BecomesDeclCustomAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xtext.ecore#//BecomesDeclCustomAttribute/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xtext.ecore#//BecomesDeclCustomAttribute/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xtext.ecore#//BecomesDeclCustomAttribute/copy"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Xtext.ecore#//BecomesDeclClass">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Xtext.ecore#//BecomesDeclClass/attributes"/>

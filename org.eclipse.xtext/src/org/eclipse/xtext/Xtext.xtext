@@ -59,10 +59,14 @@ terminal JAVA_STRING returns ecore::EString:
 	'$$' -> '$$'
 ;
 
+JavaTypeReference returns ecore::EString:
+	(('«' ID '»') | ID)
+	('<' (('«' ID '»') | ID) '>')?
+;
 
 BecomesDecl returns BecomesDecl:
 	(list?="["
-		(listType=QualifiedName)?
+		(listType=JavaTypeReference)?
 	"]")?
 	descriptor=(BecomesDeclGeneratedClass|BecomesDeclManualClass)
 	(code=JAVA_STRING)?
@@ -87,11 +91,11 @@ BecomesDeclManualClass:
 ;
 
 BecomesDeclCopyAttribute:
-	name=ID
+	name=JavaTypeReference
 ;
 
 BecomesDeclCustomAttribute:
-	type=ID name=ID
+	type=JavaTypeReference (copy?='&')? name=ID
 ;
 
 QualifiedName returns ecore::EString:
