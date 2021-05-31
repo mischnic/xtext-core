@@ -14,8 +14,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtend2.lib.StringConcatenationClient;
 import org.eclipse.xtext.AbstractRule;
+import org.eclipse.xtext.BecomesDecl;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.xbase.lib.Extension;
@@ -117,11 +119,8 @@ public class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
                             _builder.append("\t");
                             _builder.append("\t");
                             _builder.append("\t\t");
-                            String _code_1 = ((ParserRule)rule).getBecomes().getCode();
-                            int _length = ((ParserRule)rule).getBecomes().getCode().length();
-                            int _minus = (_length - 2);
-                            String _substring = _code_1.substring(3, _minus);
-                            _builder.append(_substring, "\t\t\t\t");
+                            CharSequence _codeSnippet = ASTConversionFragment2.this.codeSnippet(((ParserRule)rule).getBecomes());
+                            _builder.append(_codeSnippet, "\t\t\t\t");
                             _builder.newLineIfNotEmpty();
                             _builder.append("\t");
                             _builder.append("\t");
@@ -151,11 +150,13 @@ public class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
                         _builder.append("\t");
                         _builder.append("\t");
                         _builder.append("return new ");
-                        Serializable _xifexpression = null;
+                        Object _xifexpression = null;
                         String _listType = ((ParserRule)rule).getBecomes().getListType();
                         boolean _tripleNotEquals_1 = (_listType != null);
                         if (_tripleNotEquals_1) {
-                          _xifexpression = ((ParserRule)rule).getBecomes().getListType();
+                          String _aSTPackage = ASTConversionFragment2.this._xtextGeneratorNaming.getASTPackage(ASTConversionFragment2.this.getGrammar());
+                          String _listType_1 = ((ParserRule)rule).getBecomes().getListType();
+                          _xifexpression = new TypeReference(_aSTPackage, _listType_1);
                         } else {
                           _xifexpression = ArrayList.class;
                         }
@@ -174,8 +175,8 @@ public class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
                         _builder.append("\t");
                         _builder.append("\t");
                         Serializable _xifexpression_1 = null;
-                        String _listType_1 = ((ParserRule)rule).getBecomes().getListType();
-                        boolean _tripleNotEquals_2 = (_listType_1 != null);
+                        String _listType_2 = ((ParserRule)rule).getBecomes().getListType();
+                        boolean _tripleNotEquals_2 = (_listType_2 != null);
                         if (_tripleNotEquals_2) {
                           _xifexpression_1 = ((ParserRule)rule).getBecomes().getListType();
                         } else {
@@ -190,11 +191,8 @@ public class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
                         _builder.append("\t");
                         _builder.append("\t");
                         _builder.append("\t\t");
-                        String _code_2 = ((ParserRule)rule).getBecomes().getCode();
-                        int _length_1 = ((ParserRule)rule).getBecomes().getCode().length();
-                        int _minus_1 = (_length_1 - 2);
-                        String _substring_1 = _code_2.substring(3, _minus_1);
-                        _builder.append(_substring_1, "\t\t\t\t");
+                        CharSequence _codeSnippet_1 = ASTConversionFragment2.this.codeSnippet(((ParserRule)rule).getBecomes());
+                        _builder.append(_codeSnippet_1, "\t\t\t\t");
                         _builder.newLineIfNotEmpty();
                         _builder.append("\t");
                         _builder.append("\t");
@@ -227,5 +225,19 @@ public class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
     };
     javaFile.setContent(_client);
     javaFile.writeTo(this.getProjectConfig().getRuntime().getSrcGen());
+  }
+  
+  private CharSequence codeSnippet(final BecomesDecl it) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _code = it.getCode();
+    int _length = it.getCode().length();
+    int _minus = (_length - 2);
+    String _substring = _code.substring(3, _minus);
+    String _aSTPackage = this._xtextGeneratorNaming.getASTPackage(this.getGrammar());
+    String _plus = (_aSTPackage + ".$1");
+    String _replaceAll = _substring.replaceAll("«(\\w+)»", _plus);
+    _builder.append(_replaceAll);
+    _builder.newLineIfNotEmpty();
+    return _builder;
   }
 }

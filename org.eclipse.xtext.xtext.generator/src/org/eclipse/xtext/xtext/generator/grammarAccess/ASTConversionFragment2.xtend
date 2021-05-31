@@ -21,6 +21,7 @@ import org.eclipse.xtext.xtext.generator.model.TypeReference
 import org.eclipse.xtext.xtext.generator.model.annotations.SingletonClassAnnotation
 
 import static extension org.eclipse.xtext.GrammarUtil.*
+import org.eclipse.xtext.BecomesDecl
 
 class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
 	@Inject FileAccessFactory fileAccessFactory
@@ -44,20 +45,20 @@ class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
 							public Object «rule.gaRuleBecomeMethodName»(«new TypeReference(grammar.runtimeBasePackage + ".myDsl", rule.type.classifier.name)» node, «HashMap»<String, Object> children){
 								«IF !rule.becomes.list»
 									«IF rule.becomes.code !== null»
-										return new «getASTClass(grammar, rule.name)»() {
-											«getASTClass(grammar, rule.name)» XTEXT_INIT() {
-												«rule.becomes.code.substring(3, rule.becomes.code.length - 2)»
+										return new «grammar.getASTClass(rule.name)»() {
+											«grammar.getASTClass(rule.name)» XTEXT_INIT() {
+												«rule.becomes.codeSnippet»
 												return this;
 											}
 										}.XTEXT_INIT();
 									«ELSE»
-										return new «getASTClass(grammar, rule.name)»();
+										return new «grammar.getASTClass(rule.name)»();
 									«ENDIF»
 								«ELSE»
-									return new «if (rule.becomes.listType !== null) rule.becomes.listType else ArrayList»<«getASTClass(grammar, rule)»>() {
+									return new «if (rule.becomes.listType !== null) new TypeReference(grammar.getASTPackage, rule.becomes.listType) else ArrayList»<«grammar.getASTClass(rule)»>() {
 										private static final long serialVersionUID = 0;
-										«if (rule.becomes.listType !== null) rule.becomes.listType else ArrayList»<«getASTClass(grammar, rule)»> XTEXT_INIT() {
-											«rule.becomes.code.substring(3, rule.becomes.code.length - 2)»
+										«if (rule.becomes.listType !== null) rule.becomes.listType else ArrayList»<«grammar.getASTClass(rule)»> XTEXT_INIT() {
+											«rule.becomes.codeSnippet»
 											return this;
 										}
 									}.XTEXT_INIT();
@@ -70,4 +71,8 @@ class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
 		'''
 		javaFile.writeTo(projectConfig.runtime.srcGen)
 	}
+	
+	private def codeSnippet(BecomesDecl it) '''
+		«code.substring(3, code.length - 2).replaceAll("«(\\w+)»", grammar.getASTPackage + ".$1")»
+	'''
 }
