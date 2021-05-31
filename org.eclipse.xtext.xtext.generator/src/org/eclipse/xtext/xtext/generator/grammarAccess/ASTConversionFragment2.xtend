@@ -73,6 +73,6 @@ class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
 	}
 	
 	private def codeSnippet(BecomesDecl it) '''
-		«code.substring(3, code.length - 2).replaceAll("«(\\w+)»", grammar.getASTPackage + ".$1")»
+		«grammar.replaceASTTypeReferences(code.substring(3, code.length - 2))»
 	'''
 }

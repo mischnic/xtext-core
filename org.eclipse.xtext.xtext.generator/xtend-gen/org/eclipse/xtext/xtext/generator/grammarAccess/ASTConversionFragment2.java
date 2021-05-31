@@ -232,11 +232,8 @@ public class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
     String _code = it.getCode();
     int _length = it.getCode().length();
     int _minus = (_length - 2);
-    String _substring = _code.substring(3, _minus);
-    String _aSTPackage = this._xtextGeneratorNaming.getASTPackage(this.getGrammar());
-    String _plus = (_aSTPackage + ".$1");
-    String _replaceAll = _substring.replaceAll("«(\\w+)»", _plus);
-    _builder.append(_replaceAll);
+    String _replaceASTTypeReferences = this._xtextGeneratorNaming.replaceASTTypeReferences(this.getGrammar(), _code.substring(3, _minus));
+    _builder.append(_replaceASTTypeReferences);
     _builder.newLineIfNotEmpty();
     return _builder;
   }

@@ -135,17 +135,7 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
               attributes.put(((BecomesDeclCopyAttribute)attr_1).getName(), features.get(((BecomesDeclCopyAttribute)attr_1).getName()));
             } else {
               if ((attr_1 instanceof BecomesDeclCustomAttribute)) {
-                Object _xifexpression_1 = null;
-                boolean _containsKey = astClassNames.containsKey(((BecomesDeclCustomAttribute)attr_1).getType());
-                if (_containsKey) {
-                  String _aSTPackage = this._xtextGeneratorNaming.getASTPackage(this.getGrammar());
-                  String _type = ((BecomesDeclCustomAttribute)attr_1).getType();
-                  _xifexpression_1 = new TypeReference(_aSTPackage, _type);
-                } else {
-                  _xifexpression_1 = ((BecomesDeclCustomAttribute)attr_1).getType();
-                }
-                final Object attrType = _xifexpression_1;
-                attributes.put(((BecomesDeclCustomAttribute)attr_1).getName(), attrType);
+                attributes.put(((BecomesDeclCustomAttribute)attr_1).getName(), this._xtextGeneratorNaming.replaceASTTypeReferences(this.getGrammar(), ((BecomesDeclCustomAttribute)attr_1).getType()));
               }
             }
           }

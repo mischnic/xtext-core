@@ -144,6 +144,10 @@ public class XtextGeneratorNaming {
 	public TypeReference getASTClass(Grammar grammar, String name) {
 		return new TypeReference(getASTPackage(grammar), getASTClassName(name));
 	}
+	
+	public String replaceASTTypeReferences(Grammar grammar, String s) {
+		return s.replaceAll("«(\\w+)»", this.getASTPackage(grammar) + ".$1");
+	}
 
 	/**
 	 * @return name for the eclipsePlugin Activator or <code>null</code> if

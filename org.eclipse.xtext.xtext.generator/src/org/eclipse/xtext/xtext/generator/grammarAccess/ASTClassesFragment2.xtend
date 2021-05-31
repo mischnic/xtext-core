@@ -85,10 +85,7 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 						if (attr instanceof BecomesDeclCopyAttribute) {
 							attributes.put(attr.name, features.get(attr.name))
 						} else if (attr instanceof BecomesDeclCustomAttribute){
-							val attrType = astClassNames.containsKey(attr.type) ?
-								new TypeReference(getASTPackage(grammar), attr.type)
-								: attr.type
-							attributes.put(attr.name, attrType)
+							attributes.put(attr.name, grammar.replaceASTTypeReferences(attr.type));
 						}
 					}
 				}
