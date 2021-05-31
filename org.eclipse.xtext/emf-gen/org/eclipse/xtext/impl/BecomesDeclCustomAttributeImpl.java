@@ -20,34 +20,14 @@ import org.eclipse.xtext.XtextPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.xtext.impl.BecomesDeclCustomAttributeImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.xtext.impl.BecomesDeclCustomAttributeImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.xtext.impl.BecomesDeclCustomAttributeImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.xtext.impl.BecomesDeclCustomAttributeImpl#isCopy <em>Copy</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class BecomesDeclCustomAttributeImpl extends MinimalEObjectImpl.Container implements BecomesDeclCustomAttribute {
-	/**
-	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getType()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String TYPE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getType()
-	 * @generated
-	 * @ordered
-	 */
-	protected String type = TYPE_EDEFAULT;
-
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -67,6 +47,26 @@ public class BecomesDeclCustomAttributeImpl extends MinimalEObjectImpl.Container
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TYPE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected String type = TYPE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isCopy() <em>Copy</em>}' attribute.
@@ -184,10 +184,10 @@ public class BecomesDeclCustomAttributeImpl extends MinimalEObjectImpl.Container
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__TYPE:
-				return getType();
 			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__NAME:
 				return getName();
+			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__TYPE:
+				return getType();
 			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__COPY:
 				return isCopy();
 		}
@@ -202,11 +202,11 @@ public class BecomesDeclCustomAttributeImpl extends MinimalEObjectImpl.Container
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__TYPE:
-				setType((String)newValue);
-				return;
 			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__NAME:
 				setName((String)newValue);
+				return;
+			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__TYPE:
+				setType((String)newValue);
 				return;
 			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__COPY:
 				setCopy((Boolean)newValue);
@@ -223,11 +223,11 @@ public class BecomesDeclCustomAttributeImpl extends MinimalEObjectImpl.Container
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__TYPE:
-				setType(TYPE_EDEFAULT);
-				return;
 			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__NAME:
 				setName(NAME_EDEFAULT);
+				return;
+			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__TYPE:
+				setType(TYPE_EDEFAULT);
 				return;
 			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__COPY:
 				setCopy(COPY_EDEFAULT);
@@ -244,10 +244,10 @@ public class BecomesDeclCustomAttributeImpl extends MinimalEObjectImpl.Container
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__TYPE:
-				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
 			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__TYPE:
+				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
 			case XtextPackage.BECOMES_DECL_CUSTOM_ATTRIBUTE__COPY:
 				return copy != COPY_EDEFAULT;
 		}
@@ -264,10 +264,10 @@ public class BecomesDeclCustomAttributeImpl extends MinimalEObjectImpl.Container
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (type: ");
-		result.append(type);
-		result.append(", name: ");
+		result.append(" (name: ");
 		result.append(name);
+		result.append(", type: ");
+		result.append(type);
 		result.append(", copy: ");
 		result.append(copy);
 		result.append(')');

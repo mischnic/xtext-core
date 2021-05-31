@@ -1404,8 +1404,8 @@ public class XtextPackageImpl extends EPackageImpl implements XtextPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getBecomesDeclCopyAttribute() {
-		return becomesDeclCopyAttributeEClass;
+	public EAttribute getBecomesDeclAttribute_Name() {
+		return (EAttribute)becomesDeclAttributeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1414,8 +1414,8 @@ public class XtextPackageImpl extends EPackageImpl implements XtextPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getBecomesDeclCopyAttribute_Name() {
-		return (EAttribute)becomesDeclCopyAttributeEClass.getEStructuralFeatures().get(0);
+	public EClass getBecomesDeclCopyAttribute() {
+		return becomesDeclCopyAttributeEClass;
 	}
 
 	/**
@@ -1444,18 +1444,8 @@ public class XtextPackageImpl extends EPackageImpl implements XtextPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getBecomesDeclCustomAttribute_Name() {
-		return (EAttribute)becomesDeclCustomAttributeEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getBecomesDeclCustomAttribute_Copy() {
-		return (EAttribute)becomesDeclCustomAttributeEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)becomesDeclCustomAttributeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1670,13 +1660,12 @@ public class XtextPackageImpl extends EPackageImpl implements XtextPackage {
 		createEReference(becomesDeclEClass, BECOMES_DECL__DESCRIPTOR);
 
 		becomesDeclAttributeEClass = createEClass(BECOMES_DECL_ATTRIBUTE);
+		createEAttribute(becomesDeclAttributeEClass, BECOMES_DECL_ATTRIBUTE__NAME);
 
 		becomesDeclCopyAttributeEClass = createEClass(BECOMES_DECL_COPY_ATTRIBUTE);
-		createEAttribute(becomesDeclCopyAttributeEClass, BECOMES_DECL_COPY_ATTRIBUTE__NAME);
 
 		becomesDeclCustomAttributeEClass = createEClass(BECOMES_DECL_CUSTOM_ATTRIBUTE);
 		createEAttribute(becomesDeclCustomAttributeEClass, BECOMES_DECL_CUSTOM_ATTRIBUTE__TYPE);
-		createEAttribute(becomesDeclCustomAttributeEClass, BECOMES_DECL_CUSTOM_ATTRIBUTE__NAME);
 		createEAttribute(becomesDeclCustomAttributeEClass, BECOMES_DECL_CUSTOM_ATTRIBUTE__COPY);
 
 		becomesDeclClassEClass = createEClass(BECOMES_DECL_CLASS);
@@ -1885,13 +1874,12 @@ public class XtextPackageImpl extends EPackageImpl implements XtextPackage {
 		initEReference(getBecomesDecl_Descriptor(), this.getBecomesDeclClass(), null, "descriptor", null, 1, 1, BecomesDecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(becomesDeclAttributeEClass, BecomesDeclAttribute.class, "BecomesDeclAttribute", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBecomesDeclAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, BecomesDeclAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(becomesDeclCopyAttributeEClass, BecomesDeclCopyAttribute.class, "BecomesDeclCopyAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBecomesDeclCopyAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, BecomesDeclCopyAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(becomesDeclCustomAttributeEClass, BecomesDeclCustomAttribute.class, "BecomesDeclCustomAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBecomesDeclCustomAttribute_Type(), ecorePackage.getEString(), "type", null, 0, 1, BecomesDeclCustomAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBecomesDeclCustomAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, BecomesDeclCustomAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBecomesDeclCustomAttribute_Copy(), ecorePackage.getEBoolean(), "copy", null, 0, 1, BecomesDeclCustomAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(becomesDeclClassEClass, BecomesDeclClass.class, "BecomesDeclClass", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
