@@ -647,8 +647,8 @@ public class XtextSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 */
 	protected void sequence_BecomesDeclCopyAttribute(ISerializationContext context, BecomesDeclCopyAttribute semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, XtextPackage.Literals.BECOMES_DECL_COPY_ATTRIBUTE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XtextPackage.Literals.BECOMES_DECL_COPY_ATTRIBUTE__NAME));
+			if (transientValues.isValueTransient(semanticObject, XtextPackage.Literals.BECOMES_DECL_ATTRIBUTE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XtextPackage.Literals.BECOMES_DECL_ATTRIBUTE__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getBecomesDeclCopyAttributeAccess().getNameJavaTypeReferenceParserRuleCall_0(), semanticObject.getName());

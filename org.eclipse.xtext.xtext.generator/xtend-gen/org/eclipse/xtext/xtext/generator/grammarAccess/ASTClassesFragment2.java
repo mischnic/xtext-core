@@ -17,7 +17,6 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtend2.lib.StringConcatenationClient;
 import org.eclipse.xtext.AbstractRule;
 import org.eclipse.xtext.BecomesDeclAttribute;
-import org.eclipse.xtext.BecomesDeclCopyAttribute;
 import org.eclipse.xtext.BecomesDeclCustomAttribute;
 import org.eclipse.xtext.BecomesDeclGeneratedClass;
 import org.eclipse.xtext.ParserRule;
@@ -131,12 +130,10 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
           }
         } else {
           for (final BecomesDeclAttribute attr_1 : declaredAttributes) {
-            if ((attr_1 instanceof BecomesDeclCopyAttribute)) {
-              attributes.put(((BecomesDeclCopyAttribute)attr_1).getName(), features.get(((BecomesDeclCopyAttribute)attr_1).getName()));
+            if ((attr_1 instanceof BecomesDeclCustomAttribute)) {
+              attributes.put(((BecomesDeclCustomAttribute)attr_1).getName(), this._xtextGeneratorNaming.replaceASTTypeReferences(this.getGrammar(), ((BecomesDeclCustomAttribute)attr_1).getType()));
             } else {
-              if ((attr_1 instanceof BecomesDeclCustomAttribute)) {
-                attributes.put(((BecomesDeclCustomAttribute)attr_1).getName(), this._xtextGeneratorNaming.replaceASTTypeReferences(this.getGrammar(), ((BecomesDeclCustomAttribute)attr_1).getType()));
-              }
+              attributes.put(attr_1.getName(), features.get(attr_1.getName()));
             }
           }
         }

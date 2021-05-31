@@ -81,11 +81,10 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 					}
 				} else {
 					for(attr : declaredAttributes) {
-						// TODO pull name into supertype
-						if (attr instanceof BecomesDeclCopyAttribute) {
-							attributes.put(attr.name, features.get(attr.name))
-						} else if (attr instanceof BecomesDeclCustomAttribute){
+						if (attr instanceof BecomesDeclCustomAttribute){
 							attributes.put(attr.name, grammar.replaceASTTypeReferences(attr.type));
+						} else {
+							attributes.put(attr.name, features.get(attr.name))
 						}
 					}
 				}

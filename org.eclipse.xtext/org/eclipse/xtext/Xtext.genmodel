@@ -130,13 +130,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xtext.ecore#//BecomesDecl/code"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Xtext.ecore#//BecomesDecl/descriptor"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="Xtext.ecore#//BecomesDeclAttribute"/>
-    <genClasses ecoreClass="Xtext.ecore#//BecomesDeclCopyAttribute">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xtext.ecore#//BecomesDeclCopyAttribute/name"/>
+    <genClasses image="false" ecoreClass="Xtext.ecore#//BecomesDeclAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xtext.ecore#//BecomesDeclAttribute/name"/>
     </genClasses>
+    <genClasses ecoreClass="Xtext.ecore#//BecomesDeclCopyAttribute"/>
     <genClasses ecoreClass="Xtext.ecore#//BecomesDeclCustomAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xtext.ecore#//BecomesDeclCustomAttribute/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xtext.ecore#//BecomesDeclCustomAttribute/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xtext.ecore#//BecomesDeclCustomAttribute/copy"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Xtext.ecore#//BecomesDeclClass">
