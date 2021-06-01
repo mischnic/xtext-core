@@ -5,15 +5,14 @@ import java.util.List
 import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EReference
-import org.eclipse.xtext.BecomesDeclCopyAttribute
 import org.eclipse.xtext.BecomesDeclCustomAttribute
+import org.eclipse.xtext.BecomesDeclGeneratedClass
 import org.eclipse.xtext.ParserRule
 import org.eclipse.xtext.xtext.generator.AbstractXtextGeneratorFragment
 import org.eclipse.xtext.xtext.generator.XtextGeneratorNaming
 import org.eclipse.xtext.xtext.generator.model.FileAccessFactory
 import org.eclipse.xtext.xtext.generator.model.JavaFileAccess
 import org.eclipse.xtext.xtext.generator.model.TypeReference
-import org.eclipse.xtext.BecomesDeclGeneratedClass
 
 class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 	@Inject FileAccessFactory fileAccessFactory

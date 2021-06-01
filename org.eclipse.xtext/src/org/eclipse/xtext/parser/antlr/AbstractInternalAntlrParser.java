@@ -668,22 +668,12 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 		}
 		Method convertMethod = null;
 		try {
-			// TODO ideally, there would be an easier way to get a handle to the AST class for this CST type
 			convertMethod = astConversion.getClass().getMethod("convert" + type.getName(), type.getInstanceClass(), HashMap.class);
 		} catch (NoSuchMethodException | SecurityException e) {
 			return null;
 		}
 
-		boolean copyAllAttributes = becomesDecl.getDescriptor() instanceof BecomesDeclGeneratedClass && becomesDecl.getDescriptor().getAttributes().isEmpty();
-		Set<String> copyAttributes = new HashSet<>();
-		for(BecomesDeclAttribute attr : becomesDecl.getDescriptor().getAttributes()) {
-			if(attr instanceof BecomesDeclCopyAttribute) {
-				copyAttributes.add(((BecomesDeclCopyAttribute)attr).getName());
-			}
-		}
-
 		HashMap<String, Object> convertedChildren = new HashMap<>();
-		HashMap<String, Object> attributesToCopy = new HashMap<>();
 		// TODO merging
 		for (EStructuralFeature f : current.eClass().getEStructuralFeatures()) {
 			if (f instanceof EReference) {
@@ -706,15 +696,6 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 					converted = convertedList;
 				}
 				convertedChildren.put(f.getName(), converted);
-				if(copyAttributes.contains(f.getName()) || copyAllAttributes) {
-					attributesToCopy.put(f.getName(), converted);
-				}
-			} else if (f instanceof EAttribute) {
-				if(copyAttributes.contains(f.getName()) || copyAllAttributes) {
-					attributesToCopy.put(f.getName(), current.eGet(f));
-				}
-			} else {
-				throw new UnsupportedOperationException("Unknown feature type");
 			}
 		}
 
@@ -723,17 +704,6 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 			result = convertMethod.invoke(astConversion, current, convertedChildren);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | SecurityException e) {
 			throw new WrappedException(e);
-		}
-
-		Class<?> astClass = result.getClass();
-		try {
-			for (Entry<String, Object> entry : attributesToCopy.entrySet()) {
-				Field field = astClass.getField(entry.getKey());
-				Object featureValue = entry.getValue();
-				field.set(result, featureValue);
-			}
-		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
-			throw new RuntimeException(e);
 		}
 		return result;
 	}
