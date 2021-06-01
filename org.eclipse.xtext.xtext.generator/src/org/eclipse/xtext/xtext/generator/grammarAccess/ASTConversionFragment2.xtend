@@ -10,8 +10,11 @@ package org.eclipse.xtext.xtext.generator.grammarAccess
 
 import com.google.inject.Inject
 import java.util.ArrayList
-import java.util.HashMap
+import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.EReference
+import org.eclipse.xtext.BecomesDeclCustomAttribute
+import org.eclipse.xtext.BecomesDeclGeneratedClass
 import org.eclipse.xtext.ParserRule
 import org.eclipse.xtext.xtext.generator.AbstractXtextGeneratorFragment
 import org.eclipse.xtext.xtext.generator.XtextGeneratorNaming
@@ -21,11 +24,7 @@ import org.eclipse.xtext.xtext.generator.model.TypeReference
 import org.eclipse.xtext.xtext.generator.model.annotations.SingletonClassAnnotation
 
 import static extension org.eclipse.xtext.GrammarUtil.*
-import org.eclipse.xtext.BecomesDeclGeneratedClass
-import org.eclipse.xtext.BecomesDeclCopyAttribute
-import org.eclipse.emf.ecore.EReference
-import org.eclipse.xtext.BecomesDeclCustomAttribute
-import org.eclipse.emf.ecore.EAttribute
+import java.util.List
 
 class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
 	@Inject FileAccessFactory fileAccessFactory
@@ -46,7 +45,8 @@ class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
 				«FOR rule : language.grammar.allRules»
 					«IF rule instanceof ParserRule»
 						«IF rule.becomes !== null && rule.type.classifier instanceof EClass && (!(rule.type.classifier as EClass).EStructuralFeatures.empty || !rule.becomes.descriptor.attributes.empty)»
-							public Object «rule.gaRuleBecomeMethodName»(«new TypeReference(grammar.runtimeBasePackage + ".myDsl", rule.type.classifier.name)» node, «HashMap»<String, Object> children){
+							«getChildrenClass(rule)»
+							public Object «rule.gaRuleBecomeMethodName»(«new TypeReference(grammar.runtimeBasePackage + ".myDsl", rule.type.classifier.name)» node, «rule.childrenClassName» children){
 								«IF !rule.becomes.list»
 									return new «grammar.getASTClass(rule.name)»() {
 										«grammar.getASTClass(rule.name)» XTEXT_INIT() {
@@ -55,21 +55,44 @@ class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
 										}
 									}.XTEXT_INIT();
 								«ELSE»
-									return new «if (rule.becomes.listType !== null) new TypeReference(grammar.getASTPackage, rule.becomes.listType) else ArrayList»<«grammar.getASTClass(rule)»>() {
+									return new «rule.listType»<«grammar.getASTClass(rule)»>() {
 										private static final long serialVersionUID = 0;
-											«if (rule.becomes.listType !== null) rule.becomes.listType else ArrayList»<«grammar.getASTClass(rule)»> XTEXT_INIT() {
+											«rule.listType»<«grammar.getASTClass(rule)»> XTEXT_INIT() {
 											«rule.codeSnippet»
 											return this;
 										}
 									}.XTEXT_INIT();
 								«ENDIF»
 							}
+							
 						«ENDIF»
 					«ENDIF»
 				«ENDFOR»
 			}
 		'''
 		javaFile.writeTo(projectConfig.runtime.srcGen)
+	}
+
+	private def getChildrenClass(ParserRule rule) '''
+		public static class «rule.childrenClassName» {
+			«FOR f : (rule.type.classifier as EClass).EAllReferences»
+				public «f.childrenClassPropertyType» «f.name»;
+			«ENDFOR»
+		}
+	'''
+
+	private def getChildrenClassPropertyType(EReference feature) {
+		val typeName = feature.EType.name;
+		val referencedAbstractRule = grammar.findRuleForName(typeName);
+		if (!(referencedAbstractRule instanceof ParserRule)) {
+			throw new IllegalStateException("Referenced type doesn't belong to parser rule.")
+		}
+		val referencedRule = referencedAbstractRule as ParserRule;
+		if (referencedRule.becomes.list || feature.many) {
+			return '''«referencedRule.listTypeAbstract»<«grammar.getASTClass(typeName)»>'''
+		} else {
+			return '''«grammar.getASTClass(typeName)»'''
+		}
 	}
 
 	private def codeSnippet(ParserRule rule) {
@@ -94,10 +117,10 @@ class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
 		for (f : type.EStructuralFeatures) {
 			if (f instanceof EReference) {
 				if (attributeNamesToCopy.contains(f.name) || shouldCopyAllAttributes) {
-					assignments.add('''this.«f.name» = children.get("«f.name»");''');
+					assignments.add('''this.«f.name» = children.«f.name»;''');
 				} else if (attributeNamesToCopyChangeType.containsKey(f.name)) {
 					assignments.
-						add('''this.«f.name» = new «grammar.replaceASTTypeReferences(attributeNamesToCopyChangeType.get(f.name))»(children.get("«f.name»"));''');
+						add('''this.«f.name» = new «grammar.replaceASTTypeReferences(attributeNamesToCopyChangeType.get(f.name))»(children.«f.name»);''');
 				}
 			} else if (f instanceof EAttribute) {
 				if (attributeNamesToCopy.contains(f.name) || shouldCopyAllAttributes) {
@@ -123,5 +146,17 @@ class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
 
 	private def nameToGetter(String name) {
 		return "get" + name.substring(0, 1).toUpperCase() + name.substring(1);
+	}
+
+	private def getChildrenClassName(ParserRule rule) {
+		return rule.name + "Children";
+	}
+
+	private def getListTypeAbstract(ParserRule rule) {
+		return '''«if (rule.becomes.listType !== null) new TypeReference(grammar.getASTPackage, rule.becomes.listType) else new TypeReference(List)»'''
+	}
+
+	private def getListType(ParserRule rule) {
+		return '''«if (rule.becomes.listType !== null) new TypeReference(grammar.getASTPackage, rule.becomes.listType) else new TypeReference(ArrayList)»'''
 	}
 }

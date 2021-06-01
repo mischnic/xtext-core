@@ -13,12 +13,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import org.antlr.runtime.BitSet;
 import org.antlr.runtime.CommonToken;
@@ -35,20 +32,15 @@ import org.antlr.runtime.TokenStream;
 import org.antlr.runtime.UnwantedTokenException;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.WrappedException;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.xtext.AbstractElement;
 import org.eclipse.xtext.AbstractRule;
 import org.eclipse.xtext.Action;
 import org.eclipse.xtext.BecomesDecl;
-import org.eclipse.xtext.BecomesDeclAttribute;
-import org.eclipse.xtext.BecomesDeclCopyAttribute;
-import org.eclipse.xtext.BecomesDeclGeneratedClass;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.IGrammarAccess;
@@ -652,7 +644,7 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 		EClass type = current.eClass();
 		IGrammarAccess ga = this.getGrammarAccess();
 		Object astConversion = this.getASTConversion();
-		if(astConversion == null) {
+		if (astConversion == null) {
 			return null;
 		}
 
@@ -660,52 +652,75 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 		try {
 			ParserRule rule = (ParserRule) ga.getClass().getMethod("get" + type.getName() + "Rule").invoke(ga);
 			becomesDecl = (BecomesDecl) rule.getBecomes();
-		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			return null;
+		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
+				| InvocationTargetException e) {
+			throw new WrappedException(e);
 		}
-		if(becomesDecl == null) {
-			return null;
-		}
-		Method convertMethod = null;
-		try {
-			convertMethod = astConversion.getClass().getMethod("convert" + type.getName(), type.getInstanceClass(), HashMap.class);
-		} catch (NoSuchMethodException | SecurityException e) {
+		if (becomesDecl == null) {
+			// AST conversion wasn't enabled
 			return null;
 		}
 
-		HashMap<String, Object> convertedChildren = new HashMap<>();
+		Class<?> childrenClass = null;
+		for (Class<?> c : astConversion.getClass().getDeclaredClasses()) {
+			if (c.getSimpleName().equals(type.getName() + "Children")) {
+				childrenClass = c;
+				break;
+			}
+		}
+		if (childrenClass == null) {
+			throw new IllegalStateException("Children class could not be found");
+		}
+
+		Method convertMethod = null;
+		try {
+			convertMethod = astConversion.getClass().getMethod("convert" + type.getName(), type.getInstanceClass(),
+					childrenClass);
+		} catch (NoSuchMethodException | SecurityException e) {
+			throw new WrappedException(e);
+		}
+
+		Object children;
+		try {
+			children = childrenClass.getConstructor().newInstance();
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+				| NoSuchMethodException | SecurityException e) {
+			throw new WrappedException(e);
+		}
 		// TODO merging
-		for (EStructuralFeature f : current.eClass().getEStructuralFeatures()) {
-			if (f instanceof EReference) {
-				Object featureValue = current.eGet(f);
-				Object converted = null;
-				if (!f.isMany()) {
-					converted = this.convertAST((EObject) featureValue);
-				} else {
-					EObjectContainmentEList<EObject> featureValueList = ((EObjectContainmentEList<EObject>) featureValue);
-					List<Object> convertedList = new ArrayList<>();
-					for(EObject featureValueEntry : featureValueList) {
-						Object child = this.convertAST((EObject) featureValueEntry);
-						// TODO return boolean from convertAST instead of instanceof List
-						if(child instanceof List) {
-							convertedList.addAll((List<Object>) child);
-						} else {
-							convertedList.add(child);
-						}
+		for (EReference f : current.eClass().getEAllReferences()) {
+			Object featureValue = current.eGet(f);
+			Object converted = null;
+			if (!f.isMany()) {
+				converted = this.convertAST((EObject) featureValue);
+			} else {
+				EObjectContainmentEList<EObject> featureValueList = ((EObjectContainmentEList<EObject>) featureValue);
+				List<Object> convertedList = new ArrayList<>();
+				for (EObject featureValueEntry : featureValueList) {
+					Object child = this.convertAST((EObject) featureValueEntry);
+					// TODO return boolean from convertAST instead of instanceof List
+					if (child instanceof List) {
+						convertedList.addAll((List<Object>) child);
+					} else {
+						convertedList.add(child);
 					}
-					converted = convertedList;
 				}
-				convertedChildren.put(f.getName(), converted);
+				converted = convertedList;
+			}
+
+			try {
+				Field field = childrenClass.getField(f.getName());
+				field.set(children, converted);
+			} catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException e) {
+				throw new WrappedException(e);
 			}
 		}
 
-		Object result = null;
 		try {
-			result = convertMethod.invoke(astConversion, current, convertedChildren);
+			return convertMethod.invoke(astConversion, current, children);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | SecurityException e) {
 			throw new WrappedException(e);
 		}
-		return result;
 	}
 
 	private String normalizeEntryRuleName(String entryRuleName) {

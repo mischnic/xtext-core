@@ -9,7 +9,6 @@
 package org.eclipse.xtext.xtext.generator.grammarAccess;
 
 import com.google.inject.Inject;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -91,6 +90,10 @@ public class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
                 {
                   if ((((((ParserRule)rule).getBecomes() != null) && (((ParserRule)rule).getType().getClassifier() instanceof EClass)) && ((!((EClass) ((ParserRule)rule).getType().getClassifier()).getEStructuralFeatures().isEmpty()) || (!((ParserRule)rule).getBecomes().getDescriptor().getAttributes().isEmpty())))) {
                     _builder.append("\t");
+                    CharSequence _childrenClass = ASTConversionFragment2.this.getChildrenClass(((ParserRule)rule));
+                    _builder.append(_childrenClass, "\t");
+                    _builder.newLineIfNotEmpty();
+                    _builder.append("\t");
                     _builder.append("public Object ");
                     String _gaRuleBecomeMethodName = ASTConversionFragment2.this._grammarAccessExtensions.gaRuleBecomeMethodName(rule);
                     _builder.append(_gaRuleBecomeMethodName, "\t");
@@ -101,8 +104,9 @@ public class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
                     TypeReference _typeReference = new TypeReference(_plus, _name);
                     _builder.append(_typeReference, "\t");
                     _builder.append(" node, ");
-                    _builder.append(HashMap.class, "\t");
-                    _builder.append("<String, Object> children){");
+                    String _childrenClassName = ASTConversionFragment2.this.getChildrenClassName(((ParserRule)rule));
+                    _builder.append(_childrenClassName, "\t");
+                    _builder.append(" children){");
                     _builder.newLineIfNotEmpty();
                     {
                       boolean _isList = ((ParserRule)rule).getBecomes().isList();
@@ -146,17 +150,8 @@ public class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
                         _builder.append("\t");
                         _builder.append("\t");
                         _builder.append("return new ");
-                        Object _xifexpression = null;
-                        String _listType = ((ParserRule)rule).getBecomes().getListType();
-                        boolean _tripleNotEquals = (_listType != null);
-                        if (_tripleNotEquals) {
-                          String _aSTPackage = ASTConversionFragment2.this._xtextGeneratorNaming.getASTPackage(ASTConversionFragment2.this.getGrammar());
-                          String _listType_1 = ((ParserRule)rule).getBecomes().getListType();
-                          _xifexpression = new TypeReference(_aSTPackage, _listType_1);
-                        } else {
-                          _xifexpression = ArrayList.class;
-                        }
-                        _builder.append(_xifexpression, "\t\t");
+                        String _listType = ASTConversionFragment2.this.getListType(((ParserRule)rule));
+                        _builder.append(_listType, "\t\t");
                         _builder.append("<");
                         TypeReference _aSTClass_2 = ASTConversionFragment2.this._xtextGeneratorNaming.getASTClass(ASTConversionFragment2.this.getGrammar(), ((ParserRule)rule));
                         _builder.append(_aSTClass_2, "\t\t");
@@ -170,15 +165,8 @@ public class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
                         _builder.append("\t");
                         _builder.append("\t");
                         _builder.append("\t\t");
-                        Serializable _xifexpression_1 = null;
-                        String _listType_2 = ((ParserRule)rule).getBecomes().getListType();
-                        boolean _tripleNotEquals_1 = (_listType_2 != null);
-                        if (_tripleNotEquals_1) {
-                          _xifexpression_1 = ((ParserRule)rule).getBecomes().getListType();
-                        } else {
-                          _xifexpression_1 = ArrayList.class;
-                        }
-                        _builder.append(_xifexpression_1, "\t\t\t\t");
+                        String _listType_1 = ASTConversionFragment2.this.getListType(((ParserRule)rule));
+                        _builder.append(_listType_1, "\t\t\t\t");
                         _builder.append("<");
                         TypeReference _aSTClass_3 = ASTConversionFragment2.this._xtextGeneratorNaming.getASTClass(ASTConversionFragment2.this.getGrammar(), ((ParserRule)rule));
                         _builder.append(_aSTClass_3, "\t\t\t\t");
@@ -209,6 +197,8 @@ public class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
                     _builder.append("\t");
                     _builder.append("}");
                     _builder.newLine();
+                    _builder.append("\t");
+                    _builder.newLine();
                   }
                 }
               }
@@ -221,6 +211,57 @@ public class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
     };
     javaFile.setContent(_client);
     javaFile.writeTo(this.getProjectConfig().getRuntime().getSrcGen());
+  }
+  
+  private CharSequence getChildrenClass(final ParserRule rule) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("public static class ");
+    String _childrenClassName = this.getChildrenClassName(rule);
+    _builder.append(_childrenClassName);
+    _builder.append(" {");
+    _builder.newLineIfNotEmpty();
+    {
+      EClassifier _classifier = rule.getType().getClassifier();
+      EList<EReference> _eAllReferences = ((EClass) _classifier).getEAllReferences();
+      for(final EReference f : _eAllReferences) {
+        _builder.append("\t");
+        _builder.append("public ");
+        String _childrenClassPropertyType = this.getChildrenClassPropertyType(f);
+        _builder.append(_childrenClassPropertyType, "\t");
+        _builder.append(" ");
+        String _name = f.getName();
+        _builder.append(_name, "\t");
+        _builder.append(";");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  private String getChildrenClassPropertyType(final EReference feature) {
+    final String typeName = feature.getEType().getName();
+    final AbstractRule referencedAbstractRule = GrammarUtil.findRuleForName(this.getGrammar(), typeName);
+    if ((!(referencedAbstractRule instanceof ParserRule))) {
+      throw new IllegalStateException("Referenced type doesn\'t belong to parser rule.");
+    }
+    final ParserRule referencedRule = ((ParserRule) referencedAbstractRule);
+    if ((referencedRule.getBecomes().isList() || feature.isMany())) {
+      StringConcatenation _builder = new StringConcatenation();
+      String _listTypeAbstract = this.getListTypeAbstract(referencedRule);
+      _builder.append(_listTypeAbstract);
+      _builder.append("<");
+      TypeReference _aSTClass = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), typeName);
+      _builder.append(_aSTClass);
+      _builder.append(">");
+      return _builder.toString();
+    } else {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      TypeReference _aSTClass_1 = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), typeName);
+      _builder_1.append(_aSTClass_1);
+      return _builder_1.toString();
+    }
   }
   
   private String codeSnippet(final ParserRule rule) {
@@ -251,10 +292,10 @@ public class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
           _builder.append("this.");
           String _name = ((EReference)f).getName();
           _builder.append(_name);
-          _builder.append(" = children.get(\"");
+          _builder.append(" = children.");
           String _name_1 = ((EReference)f).getName();
           _builder.append(_name_1);
-          _builder.append("\");");
+          _builder.append(";");
           assignments.add(_builder.toString());
         } else {
           boolean _containsKey = attributeNamesToCopyChangeType.containsKey(((EReference)f).getName());
@@ -266,10 +307,10 @@ public class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
             _builder_1.append(" = new ");
             String _replaceASTTypeReferences = this._xtextGeneratorNaming.replaceASTTypeReferences(this.getGrammar(), attributeNamesToCopyChangeType.get(((EReference)f).getName()));
             _builder_1.append(_replaceASTTypeReferences);
-            _builder_1.append("(children.get(\"");
+            _builder_1.append("(children.");
             String _name_3 = ((EReference)f).getName();
             _builder_1.append(_name_3);
-            _builder_1.append("\"));");
+            _builder_1.append(");");
             assignments.add(_builder_1.toString());
           }
         }
@@ -334,5 +375,42 @@ public class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
     String _plus = ("get" + _upperCase);
     String _substring = name.substring(1);
     return (_plus + _substring);
+  }
+  
+  private String getChildrenClassName(final ParserRule rule) {
+    String _name = rule.getName();
+    return (_name + "Children");
+  }
+  
+  private String getListTypeAbstract(final ParserRule rule) {
+    StringConcatenation _builder = new StringConcatenation();
+    TypeReference _xifexpression = null;
+    String _listType = rule.getBecomes().getListType();
+    boolean _tripleNotEquals = (_listType != null);
+    if (_tripleNotEquals) {
+      String _aSTPackage = this._xtextGeneratorNaming.getASTPackage(this.getGrammar());
+      String _listType_1 = rule.getBecomes().getListType();
+      _xifexpression = new TypeReference(_aSTPackage, _listType_1);
+    } else {
+      _xifexpression = new TypeReference(List.class);
+    }
+    _builder.append(_xifexpression);
+    return _builder.toString();
+  }
+  
+  private String getListType(final ParserRule rule) {
+    StringConcatenation _builder = new StringConcatenation();
+    TypeReference _xifexpression = null;
+    String _listType = rule.getBecomes().getListType();
+    boolean _tripleNotEquals = (_listType != null);
+    if (_tripleNotEquals) {
+      String _aSTPackage = this._xtextGeneratorNaming.getASTPackage(this.getGrammar());
+      String _listType_1 = rule.getBecomes().getListType();
+      _xifexpression = new TypeReference(_aSTPackage, _listType_1);
+    } else {
+      _xifexpression = new TypeReference(ArrayList.class);
+    }
+    _builder.append(_xifexpression);
+    return _builder.toString();
   }
 }
