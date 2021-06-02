@@ -202,9 +202,6 @@ class XtextAntlrGeneratorFragment2 extends AbstractAntlrGeneratorFragment2 {
 			
 				@«Inject»
 				private «grammar.grammarAccess» grammarAccess;
-				
-				@«Inject»
-				private «grammar.ASTConversion» astConversion;
 
 				@Override
 				protected void setInitialHiddenTokens(«XtextTokenStream» tokenStream) {
@@ -229,7 +226,7 @@ class XtextAntlrGeneratorFragment2 extends AbstractAntlrGeneratorFragment2 {
 			
 				@Override
 				protected «grammar.internalParserClass» createParser(«XtextTokenStream» stream) {
-					return new «grammar.internalParserClass»(stream, getGrammarAccess(), getASTConversion());
+					return new «grammar.internalParserClass»(stream, getGrammarAccess());
 				}
 			
 				@Override 
@@ -243,14 +240,6 @@ class XtextAntlrGeneratorFragment2 extends AbstractAntlrGeneratorFragment2 {
 			
 				public void setGrammarAccess(«grammar.grammarAccess» grammarAccess) {
 					this.grammarAccess = grammarAccess;
-				}
-				
-				public «grammar.ASTConversion» getASTConversion() {
-					return this.astConversion;
-				}
-			
-				public void setASTConversion(«grammar.ASTConversion» astConversion) {
-					this.astConversion = astConversion;
 				}
 			}
 		'''

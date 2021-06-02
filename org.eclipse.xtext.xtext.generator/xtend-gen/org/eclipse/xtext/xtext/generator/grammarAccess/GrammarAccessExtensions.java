@@ -115,18 +115,6 @@ public class GrammarAccessExtensions {
   }
   
   /**
-   * Returns a reference to the AST conversion implementation for a grammar.
-   */
-  public TypeReference getASTConversion(final Grammar grammar) {
-    String _runtimeBasePackage = this._xtextGeneratorNaming.getRuntimeBasePackage(grammar);
-    String _plus = (_runtimeBasePackage + ".services.");
-    String _simpleName = GrammarUtil.getSimpleName(grammar);
-    String _plus_1 = (_plus + _simpleName);
-    String _plus_2 = (_plus_1 + "Conversion");
-    return new TypeReference(_plus_2);
-  }
-  
-  /**
    * Returns the invocation of the element accessor method as fully qualified Java statement.
    * Example: return FowlerDslTestLanguageGrammarAccess.INSTANCE.prStatemachine().ele1AssignmentStates()
    */

@@ -54,6 +54,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xtext.generator.AbstractXtextGeneratorFragment;
 import org.eclipse.xtext.xtext.generator.XtextGeneratorNaming;
+import org.eclipse.xtext.xtext.generator.grammarAccess.ASTConversionFragment2;
 import org.eclipse.xtext.xtext.generator.grammarAccess.FragmentFakingEcoreResource;
 import org.eclipse.xtext.xtext.generator.grammarAccess.GrammarAccessExtensions;
 import org.eclipse.xtext.xtext.generator.model.FileAccessFactory;
@@ -70,6 +71,9 @@ import org.eclipse.xtext.xtext.generator.model.annotations.SingletonClassAnnotat
 public class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
   @Inject
   private FileAccessFactory fileAccessFactory;
+  
+  @Inject
+  private ASTConversionFragment2 astConversionFragment;
   
   @Inject
   @Extension
@@ -303,10 +307,19 @@ public class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
         _builder.append("\t");
         _builder.newLine();
         _builder.append("\t");
+        CharSequence _aSTConversionClass = GrammarAccessFragment2.this.astConversionFragment.getASTConversionClass();
+        _builder.append(_aSTConversionClass, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.newLine();
+        _builder.append("\t");
         _builder.append("private final ");
         _builder.append(Grammar.class, "\t");
         _builder.append(" grammar;");
         _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("private final ASTConversion astConversion;");
+        _builder.newLine();
         {
           List<Grammar> _effectivelyUsedGrammars = GrammarAccessFragment2.this.getEffectivelyUsedGrammars(GrammarAccessFragment2.this.getLanguage().getGrammar());
           for(final Grammar g : _effectivelyUsedGrammars) {
@@ -353,6 +366,9 @@ public class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
         _builder.append("this.grammar = internalFindGrammar(grammarProvider);");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("this.astConversion = new ASTConversion();");
         _builder.newLine();
         {
           List<Grammar> _effectivelyUsedGrammars_2 = GrammarAccessFragment2.this.getEffectivelyUsedGrammars(GrammarAccessFragment2.this.getLanguage().getGrammar());
@@ -450,6 +466,19 @@ public class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
         _builder.append("return grammar;");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("}");
+        _builder.newLine();
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("@Override");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("public ASTConversion getASTConversion() {");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("return astConversion;");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("}");

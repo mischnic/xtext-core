@@ -10,68 +10,58 @@ package org.eclipse.xtext.xtext.generator.grammarAccess
 
 import com.google.inject.Inject
 import java.util.ArrayList
+import java.util.List
 import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.BecomesDeclCustomAttribute
 import org.eclipse.xtext.BecomesDeclGeneratedClass
+import org.eclipse.xtext.Grammar
 import org.eclipse.xtext.ParserRule
-import org.eclipse.xtext.xtext.generator.AbstractXtextGeneratorFragment
 import org.eclipse.xtext.xtext.generator.XtextGeneratorNaming
-import org.eclipse.xtext.xtext.generator.model.FileAccessFactory
-import org.eclipse.xtext.xtext.generator.model.JavaFileAccess
 import org.eclipse.xtext.xtext.generator.model.TypeReference
-import org.eclipse.xtext.xtext.generator.model.annotations.SingletonClassAnnotation
 
 import static extension org.eclipse.xtext.GrammarUtil.*
-import java.util.List
 
-class ASTConversionFragment2 extends AbstractXtextGeneratorFragment {
-	@Inject FileAccessFactory fileAccessFactory
-
+class ASTConversionFragment2 {
 	@Inject extension XtextGeneratorNaming
 	@Inject extension GrammarAccessExtensions
 
-	override generate() {
-		val javaFile = fileAccessFactory.createGeneratedJavaFile(grammar.ASTConversion)
-		javaFile.importNestedTypeThreshold = JavaFileAccess.DONT_IMPORT_NESTED_TYPES
-		javaFile.annotations += new SingletonClassAnnotation
-		javaFile.content = '''
-			public class «language.grammar.ASTConversion.simpleName» {
-				
-				@«Inject»
-				public «language.grammar.ASTConversion.simpleName»() {}
-				
-				«FOR rule : language.grammar.allRules»
-					«IF rule instanceof ParserRule»
-						«IF rule.becomes !== null && rule.type.classifier instanceof EClass && (!(rule.type.classifier as EClass).EStructuralFeatures.empty || !rule.becomes.descriptor.attributes.empty)»
-							«getChildrenClass(rule)»
-							public Object «rule.gaRuleBecomeMethodName»(«new TypeReference(grammar.runtimeBasePackage + ".myDsl", rule.type.classifier.name)» node, «rule.childrenClassName» children){
-								«IF !rule.becomes.list»
-									return new «grammar.getASTClass(rule.name)»() {
-										«grammar.getASTClass(rule.name)» XTEXT_INIT() {
-											«rule.codeSnippet»
-											return this;
-										}
-									}.XTEXT_INIT();
-								«ELSE»
-									return new «rule.listType»<«grammar.getASTClass(rule)»>() {
-										private static final long serialVersionUID = 0;
-											«rule.listType»<«grammar.getASTClass(rule)»> XTEXT_INIT() {
-											«rule.codeSnippet»
-											return this;
-										}
-									}.XTEXT_INIT();
-								«ENDIF»
-							}
-							
-						«ENDIF»
+	@Inject
+	Grammar grammar;
+
+	def getASTConversionClass() '''
+		public static class ASTConversion {
+			public ASTConversion() {}
+			
+			«FOR rule : grammar.allRules»
+				«IF rule instanceof ParserRule»
+					«IF rule.becomes !== null && rule.type.classifier instanceof EClass && (!(rule.type.classifier as EClass).EStructuralFeatures.empty || !rule.becomes.descriptor.attributes.empty)»
+						«getChildrenClass(rule)»
+						public Object «rule.gaRuleBecomeMethodName»(«new TypeReference(grammar.runtimeBasePackage + ".myDsl", rule.type.classifier.name)» node, «rule.childrenClassName» children){
+							«IF !rule.becomes.list»
+								return new «grammar.getASTClass(rule.name)»() {
+									«grammar.getASTClass(rule.name)» XTEXT_INIT() {
+										«rule.codeSnippet»
+										return this;
+									}
+								}.XTEXT_INIT();
+							«ELSE»
+								return new «rule.listType»<«grammar.getASTClass(rule)»>() {
+									private static final long serialVersionUID = 0;
+										«rule.listType»<«grammar.getASTClass(rule)»> XTEXT_INIT() {
+										«rule.codeSnippet»
+										return this;
+									}
+								}.XTEXT_INIT();
+							«ENDIF»
+						}
+						
 					«ENDIF»
-				«ENDFOR»
-			}
-		'''
-		javaFile.writeTo(projectConfig.runtime.srcGen)
-	}
+				«ENDIF»
+			«ENDFOR»
+		}
+	'''
 
 	private def getChildrenClass(ParserRule rule) '''
 		public static class «rule.childrenClassName» {

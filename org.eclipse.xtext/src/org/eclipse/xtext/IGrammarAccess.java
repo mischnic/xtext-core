@@ -41,5 +41,8 @@ public interface IGrammarAccess {
 	List<RuleCall> findRuleCalls(AbstractRule... rules);
 
 	Grammar getGrammar();
-
+	
+	default Object getASTConversion() {
+		return null;
+	}
 }

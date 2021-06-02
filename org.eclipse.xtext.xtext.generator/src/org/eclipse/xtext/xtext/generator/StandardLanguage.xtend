@@ -40,7 +40,6 @@ import org.eclipse.xtext.xtext.generator.web.WebIntegrationFragment
 import org.eclipse.xtext.xtext.generator.xbase.XbaseGeneratorFragment2
 import org.eclipse.xtext.xtext.generator.xbase.XtypeGeneratorFragment2
 import org.eclipse.xtext.xtext.generator.grammarAccess.ASTClassesFragment2
-import org.eclipse.xtext.xtext.generator.grammarAccess.ASTConversionFragment2
 
 /**
  * This specialization of the {@link XtextGeneratorLanguage} adds all the standard generator fragments
@@ -127,9 +126,7 @@ import org.eclipse.xtext.xtext.generator.grammarAccess.ASTConversionFragment2
 	TemplateFileWizardFragment fileWizard = new TemplateFileWizardFragment
 	
 	ASTClassesFragment2 astClasses = new ASTClassesFragment2
-	
-	ASTConversionFragment2 astConversion = new ASTConversionFragment2
-	
+		
 	new() {
 		try {
 			class.classLoader.loadClass("org.eclipse.xtext.xbase.XbaseRuntimeModule")
@@ -187,7 +184,6 @@ import org.eclipse.xtext.xtext.generator.grammarAccess.ASTConversionFragment2
 		fragments += projectWizard
 		fragments += fileWizard
 		fragments += astClasses
-		fragments += astConversion
 		fragments
 	}
 	

@@ -269,9 +269,6 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 	}
 
 	protected abstract IGrammarAccess getGrammarAccess();
-	protected Object getASTConversion() {
-		return null;
-	}
 	
 	protected void associateNodeWithAstElement(ICompositeNode node, EObject astElement) {
 		if (astElement == null)
@@ -643,7 +640,7 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 		}
 		EClass type = current.eClass();
 		IGrammarAccess ga = this.getGrammarAccess();
-		Object astConversion = this.getASTConversion();
+		Object astConversion = ga.getASTConversion();
 		if (astConversion == null) {
 			return null;
 		}

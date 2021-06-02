@@ -52,6 +52,7 @@ import static extension org.eclipse.xtext.xtext.generator.model.TypeReference.*
 class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
 	
 	@Inject FileAccessFactory fileAccessFactory
+	@Inject ASTConversionFragment2 astConversionFragment;
 	
 	@Inject extension GrammarAccessExtensions
 	@Inject extension XtextGeneratorNaming
@@ -193,7 +194,10 @@ class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
 					«cache(r)»
 				«ENDFOR»
 				
+				«astConversionFragment.getASTConversionClass()»
+				
 				private final «Grammar» grammar;
+				private final ASTConversion astConversion;
 				«FOR g : language.grammar.effectivelyUsedGrammars»
 					
 					private final «g.grammarAccess» «g.gaGrammarAccessLocalVarName»;
@@ -203,6 +207,7 @@ class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
 				public «language.grammar.grammarAccess.simpleName»(«GrammarProvider» grammarProvider«FOR g : language.grammar.effectivelyUsedGrammars»,
 						«g.grammarAccess» «g.gaGrammarAccessLocalVarName»«ENDFOR») {
 					this.grammar = internalFindGrammar(grammarProvider);
+					this.astConversion = new ASTConversion();
 					«FOR g : language.grammar.effectivelyUsedGrammars»
 						this.«g.gaGrammarAccessLocalVarName» = «g.gaGrammarAccessLocalVarName»;
 					«ENDFOR»
@@ -230,6 +235,11 @@ class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
 				@Override
 				public «Grammar» getGrammar() {
 					return grammar;
+				}
+
+				@Override
+				public ASTConversion getASTConversion() {
+					return astConversion;
 				}
 				
 				«FOR g : language.grammar.effectivelyUsedGrammars»
