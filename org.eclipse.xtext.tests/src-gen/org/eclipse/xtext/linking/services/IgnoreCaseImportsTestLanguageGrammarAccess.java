@@ -69,7 +69,13 @@ public class IgnoreCaseImportsTestLanguageGrammarAccess extends AbstractElementF
 	private final ModelElements pModel;
 	private final ImportElements pImport;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final AbstractIgnoreCaseLinkingTestLanguageGrammarAccess gaAbstractIgnoreCaseLinkingTestLanguage;
 	
@@ -80,6 +86,7 @@ public class IgnoreCaseImportsTestLanguageGrammarAccess extends AbstractElementF
 			AbstractIgnoreCaseLinkingTestLanguageGrammarAccess gaAbstractIgnoreCaseLinkingTestLanguage,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaAbstractIgnoreCaseLinkingTestLanguage = gaAbstractIgnoreCaseLinkingTestLanguage;
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
@@ -105,6 +112,11 @@ public class IgnoreCaseImportsTestLanguageGrammarAccess extends AbstractElementF
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

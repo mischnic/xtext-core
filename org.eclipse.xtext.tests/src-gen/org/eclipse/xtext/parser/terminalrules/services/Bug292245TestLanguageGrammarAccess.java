@@ -186,11 +186,18 @@ public class Bug292245TestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	private final TerminalRule tCHAR;
 	private final TerminalRule tWS;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 
 	@Inject
 	public Bug292245TestLanguageGrammarAccess(GrammarProvider grammarProvider) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.pModel = new ModelElements();
 		this.pError = new ErrorElements();
 		this.pFix = new FixElements();
@@ -221,6 +228,11 @@ public class Bug292245TestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 

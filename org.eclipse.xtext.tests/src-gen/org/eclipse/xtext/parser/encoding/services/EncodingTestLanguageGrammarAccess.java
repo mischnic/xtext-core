@@ -56,11 +56,18 @@ public class EncodingTestLanguageGrammarAccess extends AbstractElementFinder.Abs
 	private final TerminalRule tWS;
 	private final TerminalRule tANY_OTHER;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 
 	@Inject
 	public EncodingTestLanguageGrammarAccess(GrammarProvider grammarProvider) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.pModel = new ModelElements();
 		this.pWord = new WordElements();
 		this.tLEXEME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.parser.encoding.EncodingTestLanguage.LEXEME");
@@ -87,6 +94,11 @@ public class EncodingTestLanguageGrammarAccess extends AbstractElementFinder.Abs
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 

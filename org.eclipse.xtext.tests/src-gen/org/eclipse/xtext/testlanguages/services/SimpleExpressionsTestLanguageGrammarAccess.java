@@ -214,7 +214,13 @@ public class SimpleExpressionsTestLanguageGrammarAccess extends AbstractElementF
 	private final AtomElements pAtom;
 	private final ParensElements pParens;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -222,6 +228,7 @@ public class SimpleExpressionsTestLanguageGrammarAccess extends AbstractElementF
 	public SimpleExpressionsTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pSequence = new SequenceElements();
 		this.pAddition = new AdditionElements();
@@ -250,6 +257,11 @@ public class SimpleExpressionsTestLanguageGrammarAccess extends AbstractElementF
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

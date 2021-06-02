@@ -658,7 +658,13 @@ public class AssignmentFinderTestLanguageGrammarAccess extends AbstractElementFi
 	private final ContainmentRef2Elements pContainmentRef2;
 	private final CrossRefElements pCrossRef;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -666,6 +672,7 @@ public class AssignmentFinderTestLanguageGrammarAccess extends AbstractElementFi
 	public AssignmentFinderTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pKeywordVal = new KeywordValElements();
@@ -708,6 +715,11 @@ public class AssignmentFinderTestLanguageGrammarAccess extends AbstractElementFi
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

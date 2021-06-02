@@ -99,7 +99,13 @@ public class HiddenTokenSequencerTestLanguageGrammarAccess extends AbstractEleme
 	private final DomainModelElements pDomainModel;
 	private final EntityElements pEntity;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -107,6 +113,7 @@ public class HiddenTokenSequencerTestLanguageGrammarAccess extends AbstractEleme
 	public HiddenTokenSequencerTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pDomainModel = new DomainModelElements();
@@ -132,6 +139,11 @@ public class HiddenTokenSequencerTestLanguageGrammarAccess extends AbstractEleme
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

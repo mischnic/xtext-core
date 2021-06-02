@@ -84,7 +84,13 @@ public class DummyTestLanguageGrammarAccess extends AbstractElementFinder.Abstra
 	private final ModelElements pModel;
 	private final ElementElements pElement;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -92,6 +98,7 @@ public class DummyTestLanguageGrammarAccess extends AbstractElementFinder.Abstra
 	public DummyTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pElement = new ElementElements();
@@ -116,6 +123,11 @@ public class DummyTestLanguageGrammarAccess extends AbstractElementFinder.Abstra
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

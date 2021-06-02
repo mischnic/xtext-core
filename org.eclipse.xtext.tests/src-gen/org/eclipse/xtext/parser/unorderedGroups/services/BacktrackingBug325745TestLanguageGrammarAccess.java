@@ -257,7 +257,13 @@ public class BacktrackingBug325745TestLanguageGrammarAccess extends AbstractElem
 	private final ExpressionElements pExpression;
 	private final SimpleTermElements pSimpleTerm;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -265,6 +271,7 @@ public class BacktrackingBug325745TestLanguageGrammarAccess extends AbstractElem
 	public BacktrackingBug325745TestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pElement = new ElementElements();
@@ -292,6 +299,11 @@ public class BacktrackingBug325745TestLanguageGrammarAccess extends AbstractElem
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

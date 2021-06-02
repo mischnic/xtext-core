@@ -229,7 +229,13 @@ public class SerializationErrorTestLanguageGrammarAccess extends AbstractElement
 	private final TwoOptionsElements pTwoOptions;
 	private final IndentElements pIndent;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -237,6 +243,7 @@ public class SerializationErrorTestLanguageGrammarAccess extends AbstractElement
 	public SerializationErrorTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pParenthesis = new ParenthesisElements();
@@ -265,6 +272,11 @@ public class SerializationErrorTestLanguageGrammarAccess extends AbstractElement
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

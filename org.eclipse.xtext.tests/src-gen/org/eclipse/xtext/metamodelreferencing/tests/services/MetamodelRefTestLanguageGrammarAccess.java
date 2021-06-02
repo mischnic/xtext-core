@@ -88,7 +88,13 @@ public class MetamodelRefTestLanguageGrammarAccess extends AbstractElementFinder
 	private final NameRefElements pNameRef;
 	private final MyRuleElements pMyRule;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -96,6 +102,7 @@ public class MetamodelRefTestLanguageGrammarAccess extends AbstractElementFinder
 	public MetamodelRefTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pFoo = new FooElements();
 		this.pNameRef = new NameRefElements();
@@ -121,6 +128,11 @@ public class MetamodelRefTestLanguageGrammarAccess extends AbstractElementFinder
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

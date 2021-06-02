@@ -113,7 +113,13 @@ public class NestedRefsTestLanguageGrammarAccess extends AbstractElementFinder.A
 	private final SelfReferingDeclElements pSelfReferingDecl;
 	private final QualifiedNameElements pQualifiedName;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -121,6 +127,7 @@ public class NestedRefsTestLanguageGrammarAccess extends AbstractElementFinder.A
 	public NestedRefsTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pDoc = new DocElements();
 		this.pSelfReferingDecl = new SelfReferingDeclElements();
@@ -146,6 +153,11 @@ public class NestedRefsTestLanguageGrammarAccess extends AbstractElementFinder.A
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

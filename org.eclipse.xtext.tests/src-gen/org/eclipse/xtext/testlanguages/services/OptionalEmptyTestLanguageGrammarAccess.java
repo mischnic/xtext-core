@@ -64,7 +64,13 @@ public class OptionalEmptyTestLanguageGrammarAccess extends AbstractElementFinde
 	private final ModelElements pModel;
 	private final GreetingElements pGreeting;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -72,6 +78,7 @@ public class OptionalEmptyTestLanguageGrammarAccess extends AbstractElementFinde
 	public OptionalEmptyTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pGreeting = new GreetingElements();
@@ -96,6 +103,11 @@ public class OptionalEmptyTestLanguageGrammarAccess extends AbstractElementFinde
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

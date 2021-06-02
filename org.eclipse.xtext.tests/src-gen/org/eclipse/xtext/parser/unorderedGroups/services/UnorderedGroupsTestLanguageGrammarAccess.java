@@ -1144,7 +1144,13 @@ public class UnorderedGroupsTestLanguageGrammarAccess extends AbstractElementFin
 	private final UnorderedDatatypeElements pUnorderedDatatype;
 	private final UnorderedSerializationElements pUnorderedSerialization;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -1152,6 +1158,7 @@ public class UnorderedGroupsTestLanguageGrammarAccess extends AbstractElementFin
 	public UnorderedGroupsTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pNestedModel = new NestedModelElements();
@@ -1178,6 +1185,11 @@ public class UnorderedGroupsTestLanguageGrammarAccess extends AbstractElementFin
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

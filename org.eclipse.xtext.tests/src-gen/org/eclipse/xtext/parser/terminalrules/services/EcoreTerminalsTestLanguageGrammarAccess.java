@@ -90,11 +90,18 @@ public class EcoreTerminalsTestLanguageGrammarAccess extends AbstractElementFind
 	private final TerminalRule tEINT;
 	private final TerminalRule tWS;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 
 	@Inject
 	public EcoreTerminalsTestLanguageGrammarAccess(GrammarProvider grammarProvider) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.pModel = new ModelElements();
 		this.tEDOUBLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.parser.terminalrules.EcoreTerminalsTestLanguage.EDOUBLE");
 		this.tEDATE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.parser.terminalrules.EcoreTerminalsTestLanguage.EDATE");
@@ -121,6 +128,11 @@ public class EcoreTerminalsTestLanguageGrammarAccess extends AbstractElementFind
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 

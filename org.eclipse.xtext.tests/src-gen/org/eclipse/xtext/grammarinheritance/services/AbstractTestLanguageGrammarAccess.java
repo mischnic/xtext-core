@@ -170,7 +170,13 @@ public class AbstractTestLanguageGrammarAccess extends AbstractElementFinder.Abs
 	private final TerminalRule tREAL;
 	private final TerminalRule tID;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -178,6 +184,7 @@ public class AbstractTestLanguageGrammarAccess extends AbstractElementFinder.Abs
 	public AbstractTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pInheritedParserRule = new InheritedParserRuleElements();
 		this.pAbstractCallOverridenParserRule = new AbstractCallOverridenParserRuleElements();
@@ -208,6 +215,11 @@ public class AbstractTestLanguageGrammarAccess extends AbstractElementFinder.Abs
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

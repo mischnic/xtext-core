@@ -2011,7 +2011,13 @@ public class XtextGrammarTestLanguageGrammarAccess extends AbstractElementFinder
 	private final EnumLiteralsElements pEnumLiterals;
 	private final EnumLiteralDeclarationElements pEnumLiteralDeclaration;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -2019,6 +2025,7 @@ public class XtextGrammarTestLanguageGrammarAccess extends AbstractElementFinder
 	public XtextGrammarTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pGrammar = new GrammarElements();
 		this.pHiddenClause = new HiddenClauseElements();
@@ -2095,6 +2102,11 @@ public class XtextGrammarTestLanguageGrammarAccess extends AbstractElementFinder
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

@@ -121,7 +121,13 @@ public class ActionTestLanguage3GrammarAccess extends AbstractElementFinder.Abst
 	private final ProductionRule1Elements pProductionRule1;
 	private final ProductionRule2Elements pProductionRule2;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -129,6 +135,7 @@ public class ActionTestLanguage3GrammarAccess extends AbstractElementFinder.Abst
 	public ActionTestLanguage3GrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pProductionRules = new ProductionRulesElements();
 		this.pProductionRule1 = new ProductionRule1Elements();
@@ -154,6 +161,11 @@ public class ActionTestLanguage3GrammarAccess extends AbstractElementFinder.Abst
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

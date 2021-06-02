@@ -306,7 +306,13 @@ public class ConcreteTestLanguageGrammarAccess extends AbstractElementFinder.Abs
 	private final CallExtendedParserRuleElements pCallExtendedParserRule;
 	private final TerminalRule tID;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final AbstractTestLanguageGrammarAccess gaAbstractTestLanguage;
 	
@@ -317,6 +323,7 @@ public class ConcreteTestLanguageGrammarAccess extends AbstractElementFinder.Abs
 			AbstractTestLanguageGrammarAccess gaAbstractTestLanguage,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaAbstractTestLanguage = gaAbstractTestLanguage;
 		this.gaTerminals = gaTerminals;
 		this.pRootRule = new RootRuleElements();
@@ -351,6 +358,11 @@ public class ConcreteTestLanguageGrammarAccess extends AbstractElementFinder.Abs
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

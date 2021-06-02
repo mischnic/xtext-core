@@ -175,7 +175,13 @@ public class MultiRuleEnumTestLanguageGrammarAccess extends AbstractElementFinde
 	private final EnumRuleBElements eEnumRuleB;
 	private final EnumRuleCElements eEnumRuleC;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -183,6 +189,7 @@ public class MultiRuleEnumTestLanguageGrammarAccess extends AbstractElementFinde
 	public MultiRuleEnumTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.eEnumRuleA = new EnumRuleAElements();
@@ -209,6 +216,11 @@ public class MultiRuleEnumTestLanguageGrammarAccess extends AbstractElementFinde
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

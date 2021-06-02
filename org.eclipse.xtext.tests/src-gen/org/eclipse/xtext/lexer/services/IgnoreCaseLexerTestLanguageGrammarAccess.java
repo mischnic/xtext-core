@@ -52,11 +52,18 @@ public class IgnoreCaseLexerTestLanguageGrammarAccess extends AbstractElementFin
 	private final TerminalRule tWS;
 	private final TerminalRule tSL_COMMENT;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 
 	@Inject
 	public IgnoreCaseLexerTestLanguageGrammarAccess(GrammarProvider grammarProvider) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.pModel = new ModelElements();
 		this.tWS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.lexer.IgnoreCaseLexerTestLanguage.WS");
 		this.tSL_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.lexer.IgnoreCaseLexerTestLanguage.SL_COMMENT");
@@ -81,6 +88,11 @@ public class IgnoreCaseLexerTestLanguageGrammarAccess extends AbstractElementFin
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 

@@ -110,11 +110,18 @@ public class TerminalRulesTestLanguageGrammarAccess extends AbstractElementFinde
 	private final TerminalRule tWS;
 	private final TerminalRule tANY_OTHER;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 
 	@Inject
 	public TerminalRulesTestLanguageGrammarAccess(GrammarProvider grammarProvider) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.pModel = new ModelElements();
 		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.parser.terminalrules.TerminalRulesTestLanguage.ID");
 		this.tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.parser.terminalrules.TerminalRulesTestLanguage.INT");
@@ -147,6 +154,11 @@ public class TerminalRulesTestLanguageGrammarAccess extends AbstractElementFinde
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 

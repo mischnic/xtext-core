@@ -112,7 +112,13 @@ public class UnassignedRuleCallTestLanguageGrammarAccess extends AbstractElement
 	private final ModelFeaturesElements pModelFeatures;
 	private final DataTypeRuleElements pDataTypeRule;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -120,6 +126,7 @@ public class UnassignedRuleCallTestLanguageGrammarAccess extends AbstractElement
 	public UnassignedRuleCallTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pModelFeatures = new ModelFeaturesElements();
@@ -145,6 +152,11 @@ public class UnassignedRuleCallTestLanguageGrammarAccess extends AbstractElement
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

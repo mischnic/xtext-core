@@ -364,11 +364,18 @@ public class HiddenTerminalsTestLanguageGrammarAccess extends AbstractElementFin
 	private final TerminalRule tWS;
 	private final TerminalRule tANY_OTHER;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 
 	@Inject
 	public HiddenTerminalsTestLanguageGrammarAccess(GrammarProvider grammarProvider) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.pModel = new ModelElements();
 		this.pWithoutHiddens = new WithoutHiddensElements();
 		this.pWithHiddens = new WithHiddensElements();
@@ -404,6 +411,11 @@ public class HiddenTerminalsTestLanguageGrammarAccess extends AbstractElementFin
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 

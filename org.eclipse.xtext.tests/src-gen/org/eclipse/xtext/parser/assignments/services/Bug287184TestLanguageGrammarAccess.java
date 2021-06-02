@@ -194,7 +194,13 @@ public class Bug287184TestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	private final AssociatedDetailElements pAssociatedDetail;
 	private final FQNElements pFQN;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -202,6 +208,7 @@ public class Bug287184TestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	public Bug287184TestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pAbstractDetail = new AbstractDetailElements();
@@ -229,6 +236,11 @@ public class Bug287184TestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

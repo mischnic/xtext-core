@@ -189,7 +189,13 @@ public class FileAwareTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	private final ElementElements pElement;
 	private final QualifiedNameElements pQualifiedName;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -197,6 +203,7 @@ public class FileAwareTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	public FileAwareTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pPackageDeclaration = new PackageDeclarationElements();
 		this.pImport = new ImportElements();
@@ -223,6 +230,11 @@ public class FileAwareTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

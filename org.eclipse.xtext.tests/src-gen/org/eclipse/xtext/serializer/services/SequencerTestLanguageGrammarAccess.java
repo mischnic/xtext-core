@@ -2578,7 +2578,13 @@ public class SequencerTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	private final ParameterDelegationElements pParameterDelegation;
 	private final DelegationElements pDelegation;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -2586,6 +2592,7 @@ public class SequencerTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	public SequencerTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pSimpleGroup = new SimpleGroupElements();
@@ -2664,6 +2671,11 @@ public class SequencerTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

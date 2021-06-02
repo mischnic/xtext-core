@@ -33,7 +33,13 @@ public class ExUnorderedGroupsTestLanguageGrammarAccess extends AbstractElementF
 	
 	private final DelegateModelElements pDelegateModel;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final UnorderedGroupsTestLanguageGrammarAccess gaUnorderedGroupsTestLanguage;
 	
@@ -44,6 +50,7 @@ public class ExUnorderedGroupsTestLanguageGrammarAccess extends AbstractElementF
 			UnorderedGroupsTestLanguageGrammarAccess gaUnorderedGroupsTestLanguage,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaUnorderedGroupsTestLanguage = gaUnorderedGroupsTestLanguage;
 		this.gaTerminals = gaTerminals;
 		this.pDelegateModel = new DelegateModelElements();
@@ -68,6 +75,11 @@ public class ExUnorderedGroupsTestLanguageGrammarAccess extends AbstractElementF
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

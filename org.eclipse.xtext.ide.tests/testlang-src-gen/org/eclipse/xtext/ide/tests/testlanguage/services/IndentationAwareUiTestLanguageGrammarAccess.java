@@ -170,7 +170,13 @@ public class IndentationAwareUiTestLanguageGrammarAccess extends AbstractElement
 	private final TerminalRule tINDENT;
 	private final TerminalRule tDEDENT;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -178,6 +184,7 @@ public class IndentationAwareUiTestLanguageGrammarAccess extends AbstractElement
 	public IndentationAwareUiTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pTree = new TreeElements();
 		this.pTreeNode = new TreeNodeElements();
@@ -207,6 +214,11 @@ public class IndentationAwareUiTestLanguageGrammarAccess extends AbstractElement
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

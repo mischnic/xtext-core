@@ -710,7 +710,13 @@ public class GH1462TestLanguageGrammarAccess extends AbstractElementFinder.Abstr
 	private final MaybeEmptyElements pMaybeEmpty;
 	private final WrapperElements pWrapper;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -718,6 +724,7 @@ public class GH1462TestLanguageGrammarAccess extends AbstractElementFinder.Abstr
 	public GH1462TestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pRoot = new RootElements();
 		this.pRule1 = new Rule1Elements();
@@ -756,6 +763,11 @@ public class GH1462TestLanguageGrammarAccess extends AbstractElementFinder.Abstr
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

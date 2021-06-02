@@ -1474,11 +1474,18 @@ public class XtextTerminalsTestLanguageGrammarAccess extends AbstractElementFind
 	private final TerminalRule tWS;
 	private final TerminalRule tANY_OTHER;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 
 	@Inject
 	public XtextTerminalsTestLanguageGrammarAccess(GrammarProvider grammarProvider) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.pGrammar = new GrammarElements();
 		this.pGrammarID = new GrammarIDElements();
 		this.pAbstractRule = new AbstractRuleElements();
@@ -1544,6 +1551,11 @@ public class XtextTerminalsTestLanguageGrammarAccess extends AbstractElementFind
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 

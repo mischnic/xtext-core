@@ -305,7 +305,13 @@ public class DatatypeRulesTestLanguageGrammarAccess extends AbstractElementFinde
 	private final DotsElements pDots;
 	private final DoubleElements pDouble;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -313,6 +319,7 @@ public class DatatypeRulesTestLanguageGrammarAccess extends AbstractElementFinde
 	public DatatypeRulesTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pCompositeModel = new CompositeModelElements();
 		this.pModel = new ModelElements();
@@ -343,6 +350,11 @@ public class DatatypeRulesTestLanguageGrammarAccess extends AbstractElementFinde
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

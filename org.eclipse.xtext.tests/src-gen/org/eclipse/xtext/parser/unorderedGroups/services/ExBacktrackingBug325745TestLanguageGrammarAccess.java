@@ -33,7 +33,13 @@ public class ExBacktrackingBug325745TestLanguageGrammarAccess extends AbstractEl
 	
 	private final DelegateModelElements pDelegateModel;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final BacktrackingBug325745TestLanguageGrammarAccess gaBacktrackingBug325745TestLanguage;
 	
@@ -44,6 +50,7 @@ public class ExBacktrackingBug325745TestLanguageGrammarAccess extends AbstractEl
 			BacktrackingBug325745TestLanguageGrammarAccess gaBacktrackingBug325745TestLanguage,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaBacktrackingBug325745TestLanguage = gaBacktrackingBug325745TestLanguage;
 		this.gaTerminals = gaTerminals;
 		this.pDelegateModel = new DelegateModelElements();
@@ -68,6 +75,11 @@ public class ExBacktrackingBug325745TestLanguageGrammarAccess extends AbstractEl
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

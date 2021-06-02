@@ -129,7 +129,13 @@ public class PartialContentAssistTestLanguageGrammarAccess extends AbstractEleme
 	private final TypeDeclarationElements pTypeDeclaration;
 	private final PropertyElements pProperty;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -137,6 +143,7 @@ public class PartialContentAssistTestLanguageGrammarAccess extends AbstractEleme
 	public PartialContentAssistTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pTypeDeclaration = new TypeDeclarationElements();
 		this.pProperty = new PropertyElements();
@@ -161,6 +168,11 @@ public class PartialContentAssistTestLanguageGrammarAccess extends AbstractEleme
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

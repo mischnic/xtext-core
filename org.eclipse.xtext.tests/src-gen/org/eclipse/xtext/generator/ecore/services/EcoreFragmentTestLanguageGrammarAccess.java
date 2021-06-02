@@ -61,7 +61,13 @@ public class EcoreFragmentTestLanguageGrammarAccess extends AbstractElementFinde
 	
 	private final SecondElements pSecond;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -69,6 +75,7 @@ public class EcoreFragmentTestLanguageGrammarAccess extends AbstractElementFinde
 	public EcoreFragmentTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pSecond = new SecondElements();
 	}
@@ -92,6 +99,11 @@ public class EcoreFragmentTestLanguageGrammarAccess extends AbstractElementFinde
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

@@ -294,7 +294,13 @@ public class IndexTestLanguageGrammarAccess extends AbstractElementFinder.Abstra
 	private final DatatypeElements pDatatype;
 	private final PropertyElements pProperty;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -302,6 +308,7 @@ public class IndexTestLanguageGrammarAccess extends AbstractElementFinder.Abstra
 	public IndexTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pFile = new FileElements();
 		this.pImport = new ImportElements();
@@ -334,6 +341,11 @@ public class IndexTestLanguageGrammarAccess extends AbstractElementFinder.Abstra
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

@@ -32,7 +32,13 @@ public class Bug301935ExTestLanguageGrammarAccess extends AbstractElementFinder.
 	
 	private final DelegateModelElements pDelegateModel;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final Bug301935TestLanguageGrammarAccess gaBug301935TestLanguage;
 
@@ -40,6 +46,7 @@ public class Bug301935ExTestLanguageGrammarAccess extends AbstractElementFinder.
 	public Bug301935ExTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			Bug301935TestLanguageGrammarAccess gaBug301935TestLanguage) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaBug301935TestLanguage = gaBug301935TestLanguage;
 		this.pDelegateModel = new DelegateModelElements();
 	}
@@ -63,6 +70,11 @@ public class Bug301935ExTestLanguageGrammarAccess extends AbstractElementFinder.
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

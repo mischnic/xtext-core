@@ -419,7 +419,13 @@ public class AssignmentsTestLanguageGrammarAccess extends AbstractElementFinder.
 	private final IdDatatypeElements pIdDatatype;
 	private final StringDatatypeElements pStringDatatype;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -427,6 +433,7 @@ public class AssignmentsTestLanguageGrammarAccess extends AbstractElementFinder.
 	public AssignmentsTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pSingleValue = new SingleValueElements();
@@ -456,6 +463,11 @@ public class AssignmentsTestLanguageGrammarAccess extends AbstractElementFinder.
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

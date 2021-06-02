@@ -253,7 +253,13 @@ public class FowlerDslTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	private final StateElements pState;
 	private final TransitionElements pTransition;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -261,6 +267,7 @@ public class FowlerDslTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	public FowlerDslTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pStatemachine = new StatemachineElements();
 		this.pEvent = new EventElements();
@@ -288,6 +295,11 @@ public class FowlerDslTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

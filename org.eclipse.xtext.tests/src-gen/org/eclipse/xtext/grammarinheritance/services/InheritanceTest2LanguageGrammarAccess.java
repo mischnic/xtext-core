@@ -76,7 +76,13 @@ public class InheritanceTest2LanguageGrammarAccess extends AbstractElementFinder
 	
 	private final ModelElements pModel;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final InheritanceTestLanguageGrammarAccess gaInheritanceTestLanguage;
 	
@@ -90,6 +96,7 @@ public class InheritanceTest2LanguageGrammarAccess extends AbstractElementFinder
 			BaseInheritanceTestLanguageGrammarAccess gaBaseInheritanceTestLanguage,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaInheritanceTestLanguage = gaInheritanceTestLanguage;
 		this.gaBaseInheritanceTestLanguage = gaBaseInheritanceTestLanguage;
 		this.gaTerminals = gaTerminals;
@@ -115,6 +122,11 @@ public class InheritanceTest2LanguageGrammarAccess extends AbstractElementFinder
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

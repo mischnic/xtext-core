@@ -33,7 +33,13 @@ public class ExBeeLangTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	
 	private final DelegateModelElements pDelegateModel;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final BeeLangTestLanguageGrammarAccess gaBeeLangTestLanguage;
 	
@@ -44,6 +50,7 @@ public class ExBeeLangTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 			BeeLangTestLanguageGrammarAccess gaBeeLangTestLanguage,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaBeeLangTestLanguage = gaBeeLangTestLanguage;
 		this.gaTerminals = gaTerminals;
 		this.pDelegateModel = new DelegateModelElements();
@@ -68,6 +75,11 @@ public class ExBeeLangTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

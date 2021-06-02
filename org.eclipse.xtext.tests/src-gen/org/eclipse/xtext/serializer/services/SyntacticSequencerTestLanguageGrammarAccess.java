@@ -1270,7 +1270,13 @@ public class SyntacticSequencerTestLanguageGrammarAccess extends AbstractElement
 	private final Bug398890Elements pBug398890;
 	private final TerminalRule tC_COMMENT_END;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -1278,6 +1284,7 @@ public class SyntacticSequencerTestLanguageGrammarAccess extends AbstractElement
 	public SyntacticSequencerTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pMandatoryKeywords = new MandatoryKeywordsElements();
@@ -1332,6 +1339,11 @@ public class SyntacticSequencerTestLanguageGrammarAccess extends AbstractElement
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

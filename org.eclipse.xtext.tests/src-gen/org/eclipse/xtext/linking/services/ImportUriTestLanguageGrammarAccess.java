@@ -118,7 +118,13 @@ public class ImportUriTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	private final ImportElements pImport;
 	private final TypeElements pType;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -126,6 +132,7 @@ public class ImportUriTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	public ImportUriTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pMain = new MainElements();
 		this.pImport = new ImportElements();
@@ -151,6 +158,11 @@ public class ImportUriTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

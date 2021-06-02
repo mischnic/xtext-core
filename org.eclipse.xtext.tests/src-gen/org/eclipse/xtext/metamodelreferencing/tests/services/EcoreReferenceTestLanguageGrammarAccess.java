@@ -882,7 +882,13 @@ public class EcoreReferenceTestLanguageGrammarAccess extends AbstractElementFind
 	private final EObjectElements pEObject;
 	private final ValidIDElements pValidID;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -890,6 +896,7 @@ public class EcoreReferenceTestLanguageGrammarAccess extends AbstractElementFind
 	public EcoreReferenceTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pExtendsNsURIEObject = new ExtendsNsURIEObjectElements();
@@ -923,6 +930,11 @@ public class EcoreReferenceTestLanguageGrammarAccess extends AbstractElementFind
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

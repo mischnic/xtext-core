@@ -386,7 +386,13 @@ public class PartialParserTestLanguageGrammarAccess extends AbstractElementFinde
 	private final SecondConcreteElements pSecondConcrete;
 	private final NamedElements pNamed;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -394,6 +400,7 @@ public class PartialParserTestLanguageGrammarAccess extends AbstractElementFinde
 	public PartialParserTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pSomeContainer = new SomeContainerElements();
 		this.pNested = new NestedElements();
@@ -426,6 +433,11 @@ public class PartialParserTestLanguageGrammarAccess extends AbstractElementFinde
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

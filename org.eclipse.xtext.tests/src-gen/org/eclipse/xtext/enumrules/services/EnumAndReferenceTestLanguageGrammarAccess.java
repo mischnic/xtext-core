@@ -100,7 +100,13 @@ public class EnumAndReferenceTestLanguageGrammarAccess extends AbstractElementFi
 	private final EntityWithEnumAndReferenceElements pEntityWithEnumAndReference;
 	private final KindOfKeywordElements eKindOfKeyword;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -108,6 +114,7 @@ public class EnumAndReferenceTestLanguageGrammarAccess extends AbstractElementFi
 	public EnumAndReferenceTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pEntityWithEnumAndReference = new EntityWithEnumAndReferenceElements();
 		this.eKindOfKeyword = new KindOfKeywordElements();
@@ -132,6 +139,11 @@ public class EnumAndReferenceTestLanguageGrammarAccess extends AbstractElementFi
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

@@ -732,7 +732,13 @@ public class FragmentTestLanguageGrammarAccess extends AbstractElementFinder.Abs
 	private final RecursiveFragmentElements pRecursiveFragment;
 	private final NamedByActionElements pNamedByAction;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -740,6 +746,7 @@ public class FragmentTestLanguageGrammarAccess extends AbstractElementFinder.Abs
 	public FragmentTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pParserRuleFragments = new ParserRuleFragmentsElements();
 		this.pPRFNamed = new PRFNamedElements();
@@ -780,6 +787,11 @@ public class FragmentTestLanguageGrammarAccess extends AbstractElementFinder.Abs
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

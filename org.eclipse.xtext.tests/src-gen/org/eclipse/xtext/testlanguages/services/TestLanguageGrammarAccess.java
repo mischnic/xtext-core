@@ -146,7 +146,13 @@ public class TestLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 	private final ReducibleRuleElements pReducibleRule;
 	private final TerminalRuleElements pTerminalRule;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -154,6 +160,7 @@ public class TestLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 	public TestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pEntryRule = new EntryRuleElements();
 		this.pAbstractRule = new AbstractRuleElements();
@@ -181,6 +188,11 @@ public class TestLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

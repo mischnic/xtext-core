@@ -253,7 +253,13 @@ public class EObjectAtOffsetTestLanguageGrammarAccess extends AbstractElementFin
 	private final QualifiedNameWithOtherDelimElements pQualifiedNameWithOtherDelim;
 	private final QualifiedNameElements pQualifiedName;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -261,6 +267,7 @@ public class EObjectAtOffsetTestLanguageGrammarAccess extends AbstractElementFin
 	public EObjectAtOffsetTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pAbstractBar = new AbstractBarElements();
@@ -289,6 +296,11 @@ public class EObjectAtOffsetTestLanguageGrammarAccess extends AbstractElementFin
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

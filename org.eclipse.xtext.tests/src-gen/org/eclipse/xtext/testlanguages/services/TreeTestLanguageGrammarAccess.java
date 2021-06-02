@@ -94,7 +94,13 @@ public class TreeTestLanguageGrammarAccess extends AbstractElementFinder.Abstrac
 	private final ModelElements pModel;
 	private final NodeElements pNode;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -102,6 +108,7 @@ public class TreeTestLanguageGrammarAccess extends AbstractElementFinder.Abstrac
 	public TreeTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pNode = new NodeElements();
@@ -126,6 +133,11 @@ public class TreeTestLanguageGrammarAccess extends AbstractElementFinder.Abstrac
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

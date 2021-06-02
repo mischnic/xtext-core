@@ -578,7 +578,13 @@ public class ComplexReconstrTestLanguageGrammarAccess extends AbstractElementFin
 	private final TrickyG1Elements pTrickyG1;
 	private final TrickyG2Elements pTrickyG2;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -586,6 +592,7 @@ public class ComplexReconstrTestLanguageGrammarAccess extends AbstractElementFin
 	public ComplexReconstrTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pRoot = new RootElements();
 		this.pOp = new OpElements();
@@ -621,6 +628,11 @@ public class ComplexReconstrTestLanguageGrammarAccess extends AbstractElementFin
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

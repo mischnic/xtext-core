@@ -97,7 +97,13 @@ public class NoJdtTestLanguageGrammarAccess extends AbstractElementFinder.Abstra
 	private final ModelElements pModel;
 	private final GreetingElements pGreeting;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -105,6 +111,7 @@ public class NoJdtTestLanguageGrammarAccess extends AbstractElementFinder.Abstra
 	public NoJdtTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pGreeting = new GreetingElements();
@@ -129,6 +136,11 @@ public class NoJdtTestLanguageGrammarAccess extends AbstractElementFinder.Abstra
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

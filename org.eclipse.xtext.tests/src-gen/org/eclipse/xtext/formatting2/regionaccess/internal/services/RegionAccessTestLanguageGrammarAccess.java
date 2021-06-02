@@ -635,7 +635,13 @@ public class RegionAccessTestLanguageGrammarAccess extends AbstractElementFinder
 	private final EnumElements eEnum;
 	private final ValueListElements pValueList;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -643,6 +649,7 @@ public class RegionAccessTestLanguageGrammarAccess extends AbstractElementFinder
 	public RegionAccessTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pRoot = new RootElements();
 		this.pSimple = new SimpleElements();
@@ -680,6 +687,11 @@ public class RegionAccessTestLanguageGrammarAccess extends AbstractElementFinder
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

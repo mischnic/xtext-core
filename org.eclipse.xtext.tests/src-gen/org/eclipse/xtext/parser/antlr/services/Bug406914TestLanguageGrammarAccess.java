@@ -91,11 +91,18 @@ public class Bug406914TestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	private final TerminalRule tWS;
 	private final TerminalRule tANY_OTHER;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 
 	@Inject
 	public Bug406914TestLanguageGrammarAccess(GrammarProvider grammarProvider) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.pModel = new ModelElements();
 		this.pBS_ESCAPE = new BS_ESCAPEElements();
 		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.parser.antlr.Bug406914TestLanguage.ID");
@@ -122,6 +129,11 @@ public class Bug406914TestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 

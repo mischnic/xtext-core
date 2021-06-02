@@ -245,7 +245,13 @@ public class LazyLinkingTestLanguageGrammarAccess extends AbstractElementFinder.
 	private final PropertyElements pProperty;
 	private final UnresolvedProxyPropertyElements pUnresolvedProxyProperty;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -253,6 +259,7 @@ public class LazyLinkingTestLanguageGrammarAccess extends AbstractElementFinder.
 	public LazyLinkingTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pType = new TypeElements();
@@ -279,6 +286,11 @@ public class LazyLinkingTestLanguageGrammarAccess extends AbstractElementFinder.
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

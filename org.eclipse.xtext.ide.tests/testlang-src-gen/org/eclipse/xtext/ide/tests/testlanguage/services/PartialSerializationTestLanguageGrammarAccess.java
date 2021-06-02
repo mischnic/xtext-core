@@ -812,7 +812,13 @@ public class PartialSerializationTestLanguageGrammarAccess extends AbstractEleme
 	private final WithTransientContainerElements pWithTransientContainer;
 	private final WithTransientElements pWithTransient;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -820,6 +826,7 @@ public class PartialSerializationTestLanguageGrammarAccess extends AbstractEleme
 	public PartialSerializationTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pMandatoryValue = new MandatoryValueElements();
@@ -863,6 +870,11 @@ public class PartialSerializationTestLanguageGrammarAccess extends AbstractEleme
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

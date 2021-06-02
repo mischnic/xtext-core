@@ -92,7 +92,13 @@ public class UnicodeTestLanguageGrammarAccess extends AbstractElementFinder.Abst
 	private final QuotedStringElements pQuotedString;
 	private final TerminalRule tGERMAN_STRING;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -100,6 +106,7 @@ public class UnicodeTestLanguageGrammarAccess extends AbstractElementFinder.Abst
 	public UnicodeTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pAbstractString = new AbstractStringElements();
@@ -127,6 +134,11 @@ public class UnicodeTestLanguageGrammarAccess extends AbstractElementFinder.Abst
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

@@ -85,7 +85,13 @@ public class SerializationBug269362TestLanguageGrammarAccess extends AbstractEle
 	
 	private final ModelElements pModel;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -93,6 +99,7 @@ public class SerializationBug269362TestLanguageGrammarAccess extends AbstractEle
 	public SerializationBug269362TestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 	}
@@ -116,6 +123,11 @@ public class SerializationBug269362TestLanguageGrammarAccess extends AbstractEle
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

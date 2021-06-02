@@ -151,7 +151,13 @@ public class EnumRulesTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	private final ExistingEnumElements eExistingEnum;
 	private final GeneratedEnumElements eGeneratedEnum;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -159,6 +165,7 @@ public class EnumRulesTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	public EnumRulesTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.eExistingEnum = new ExistingEnumElements();
@@ -184,6 +191,11 @@ public class EnumRulesTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

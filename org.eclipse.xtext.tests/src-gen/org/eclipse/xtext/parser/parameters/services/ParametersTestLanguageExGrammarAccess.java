@@ -47,7 +47,13 @@ public class ParametersTestLanguageExGrammarAccess extends AbstractElementFinder
 	private final ParserRuleParametersElements pParserRuleParameters;
 	private final Scenario1Elements pScenario1;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final ParametersTestLanguageGrammarAccess gaParametersTestLanguage;
 	
@@ -58,6 +64,7 @@ public class ParametersTestLanguageExGrammarAccess extends AbstractElementFinder
 			ParametersTestLanguageGrammarAccess gaParametersTestLanguage,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaParametersTestLanguage = gaParametersTestLanguage;
 		this.gaTerminals = gaTerminals;
 		this.pParserRuleParameters = new ParserRuleParametersElements();
@@ -83,6 +90,11 @@ public class ParametersTestLanguageExGrammarAccess extends AbstractElementFinder
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

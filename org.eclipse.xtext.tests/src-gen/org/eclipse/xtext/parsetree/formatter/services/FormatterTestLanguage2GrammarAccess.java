@@ -57,7 +57,13 @@ public class FormatterTestLanguage2GrammarAccess extends AbstractElementFinder.A
 	
 	private final RootElements pRoot;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -65,6 +71,7 @@ public class FormatterTestLanguage2GrammarAccess extends AbstractElementFinder.A
 	public FormatterTestLanguage2GrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pRoot = new RootElements();
 	}
@@ -88,6 +95,11 @@ public class FormatterTestLanguage2GrammarAccess extends AbstractElementFinder.A
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

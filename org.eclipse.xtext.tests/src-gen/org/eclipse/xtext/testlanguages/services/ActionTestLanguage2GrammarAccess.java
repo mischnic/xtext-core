@@ -78,7 +78,13 @@ public class ActionTestLanguage2GrammarAccess extends AbstractElementFinder.Abst
 	private final ORingElements pORing;
 	private final ValueElements pValue;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -86,6 +92,7 @@ public class ActionTestLanguage2GrammarAccess extends AbstractElementFinder.Abst
 	public ActionTestLanguage2GrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pORing = new ORingElements();
 		this.pValue = new ValueElements();
@@ -110,6 +117,11 @@ public class ActionTestLanguage2GrammarAccess extends AbstractElementFinder.Abst
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

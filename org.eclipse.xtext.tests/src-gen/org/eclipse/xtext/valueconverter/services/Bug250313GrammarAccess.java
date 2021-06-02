@@ -325,7 +325,13 @@ public class Bug250313GrammarAccess extends AbstractElementFinder.AbstractGramma
 	private final Child1Elements pChild1;
 	private final Child2Elements pChild2;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -333,6 +339,7 @@ public class Bug250313GrammarAccess extends AbstractElementFinder.AbstractGramma
 	public Bug250313GrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pDatatype = new DatatypeElements();
@@ -361,6 +368,11 @@ public class Bug250313GrammarAccess extends AbstractElementFinder.AbstractGramma
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

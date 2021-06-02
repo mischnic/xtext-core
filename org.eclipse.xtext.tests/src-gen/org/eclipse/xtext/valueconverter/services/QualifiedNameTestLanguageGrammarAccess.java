@@ -88,7 +88,13 @@ public class QualifiedNameTestLanguageGrammarAccess extends AbstractElementFinde
 	private final ElementElements pElement;
 	private final QualifiedNameElements pQualifiedName;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -96,6 +102,7 @@ public class QualifiedNameTestLanguageGrammarAccess extends AbstractElementFinde
 	public QualifiedNameTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pElement = new ElementElements();
 		this.pQualifiedName = new QualifiedNameElements();
@@ -120,6 +127,11 @@ public class QualifiedNameTestLanguageGrammarAccess extends AbstractElementFinde
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

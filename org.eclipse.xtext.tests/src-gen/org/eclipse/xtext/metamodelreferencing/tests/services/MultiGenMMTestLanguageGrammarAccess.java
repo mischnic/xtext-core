@@ -67,7 +67,13 @@ public class MultiGenMMTestLanguageGrammarAccess extends AbstractElementFinder.A
 	private final FooElements pFoo;
 	private final NameRefElements pNameRef;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -75,6 +81,7 @@ public class MultiGenMMTestLanguageGrammarAccess extends AbstractElementFinder.A
 	public MultiGenMMTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pFoo = new FooElements();
 		this.pNameRef = new NameRefElements();
@@ -99,6 +106,11 @@ public class MultiGenMMTestLanguageGrammarAccess extends AbstractElementFinder.A
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

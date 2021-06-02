@@ -471,7 +471,13 @@ public class ParametersTestLanguageGrammarAccess extends AbstractElementFinder.A
 	private final Scenario4Elements pScenario4;
 	private final IdOrKeywordElements pIdOrKeyword;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -479,6 +485,7 @@ public class ParametersTestLanguageGrammarAccess extends AbstractElementFinder.A
 	public ParametersTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pParserRuleParameters = new ParserRuleParametersElements();
 		this.pScenario1 = new Scenario1Elements();
@@ -507,6 +514,11 @@ public class ParametersTestLanguageGrammarAccess extends AbstractElementFinder.A
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

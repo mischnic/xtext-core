@@ -358,7 +358,13 @@ public class LookaheadTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	private final LookAheadStringsElements pLookAheadStrings;
 	private final FewerLookAheadStringsElements pFewerLookAheadStrings;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -366,6 +372,7 @@ public class LookaheadTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	public LookaheadTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pEntry = new EntryElements();
 		this.pAlts = new AltsElements();
@@ -399,6 +406,11 @@ public class LookaheadTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

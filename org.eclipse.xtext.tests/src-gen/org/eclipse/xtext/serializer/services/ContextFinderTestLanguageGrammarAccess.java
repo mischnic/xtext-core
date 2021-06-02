@@ -835,7 +835,13 @@ public class ContextFinderTestLanguageGrammarAccess extends AbstractElementFinde
 	private final NodeExclusion1ListElements pNodeExclusion1List;
 	private final NodeExclusion2ListElements pNodeExclusion2List;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -843,6 +849,7 @@ public class ContextFinderTestLanguageGrammarAccess extends AbstractElementFinde
 	public ContextFinderTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pModel2 = new Model2Elements();
@@ -891,6 +898,11 @@ public class ContextFinderTestLanguageGrammarAccess extends AbstractElementFinde
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

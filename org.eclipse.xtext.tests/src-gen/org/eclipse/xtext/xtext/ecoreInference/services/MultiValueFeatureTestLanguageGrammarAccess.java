@@ -38,7 +38,13 @@ public class MultiValueFeatureTestLanguageGrammarAccess extends AbstractElementF
 	
 	private final StartElements pStart;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -46,6 +52,7 @@ public class MultiValueFeatureTestLanguageGrammarAccess extends AbstractElementF
 	public MultiValueFeatureTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pStart = new StartElements();
 	}
@@ -69,6 +76,11 @@ public class MultiValueFeatureTestLanguageGrammarAccess extends AbstractElementF
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

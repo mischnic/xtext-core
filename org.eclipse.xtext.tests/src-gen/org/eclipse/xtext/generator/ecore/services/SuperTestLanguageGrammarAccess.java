@@ -72,7 +72,13 @@ public class SuperTestLanguageGrammarAccess extends AbstractElementFinder.Abstra
 	private final SuperMainElements pSuperMain;
 	private final AnotherSuperMainElements pAnotherSuperMain;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -80,6 +86,7 @@ public class SuperTestLanguageGrammarAccess extends AbstractElementFinder.Abstra
 	public SuperTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pSuperMain = new SuperMainElements();
 		this.pAnotherSuperMain = new AnotherSuperMainElements();
@@ -104,6 +111,11 @@ public class SuperTestLanguageGrammarAccess extends AbstractElementFinder.Abstra
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

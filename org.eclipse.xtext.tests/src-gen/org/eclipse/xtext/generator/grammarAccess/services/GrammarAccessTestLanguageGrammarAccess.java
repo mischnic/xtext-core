@@ -102,7 +102,13 @@ public class GrammarAccessTestLanguageGrammarAccess extends AbstractElementFinde
 	private final ATypeElements pAType;
 	private final AnotherTypeElements pAnotherType;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -110,6 +116,7 @@ public class GrammarAccessTestLanguageGrammarAccess extends AbstractElementFinde
 	public GrammarAccessTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pRoot = new RootElements();
 		this.pType = new TypeElements();
@@ -136,6 +143,11 @@ public class GrammarAccessTestLanguageGrammarAccess extends AbstractElementFinde
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

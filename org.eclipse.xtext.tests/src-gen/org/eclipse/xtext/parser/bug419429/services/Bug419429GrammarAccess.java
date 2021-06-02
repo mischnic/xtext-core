@@ -43,7 +43,13 @@ public class Bug419429GrammarAccess extends AbstractElementFinder.AbstractGramma
 	
 	private final EReferenceElements pEReference;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -51,6 +57,7 @@ public class Bug419429GrammarAccess extends AbstractElementFinder.AbstractGramma
 	public Bug419429GrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pEReference = new EReferenceElements();
 	}
@@ -74,6 +81,11 @@ public class Bug419429GrammarAccess extends AbstractElementFinder.AbstractGramma
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

@@ -306,7 +306,13 @@ public class UnassignedTextTestLanguageGrammarAccess extends AbstractElementFind
 	private final GroupRuleElements pGroupRule;
 	private final GroupDataTypeRuleElements pGroupDataTypeRule;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -314,6 +320,7 @@ public class UnassignedTextTestLanguageGrammarAccess extends AbstractElementFind
 	public UnassignedTextTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pCaseInsensitiveKeywordRule = new CaseInsensitiveKeywordRuleElements();
@@ -350,6 +357,11 @@ public class UnassignedTextTestLanguageGrammarAccess extends AbstractElementFind
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

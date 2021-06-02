@@ -33,7 +33,13 @@ public class FragmentTestLanguageExGrammarAccess extends AbstractElementFinder.A
 	
 	private final ParserRuleFragmentsExElements pParserRuleFragmentsEx;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final FragmentTestLanguageGrammarAccess gaFragmentTestLanguage;
 	
@@ -44,6 +50,7 @@ public class FragmentTestLanguageExGrammarAccess extends AbstractElementFinder.A
 			FragmentTestLanguageGrammarAccess gaFragmentTestLanguage,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaFragmentTestLanguage = gaFragmentTestLanguage;
 		this.gaTerminals = gaTerminals;
 		this.pParserRuleFragmentsEx = new ParserRuleFragmentsExElements();
@@ -68,6 +75,11 @@ public class FragmentTestLanguageExGrammarAccess extends AbstractElementFinder.A
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

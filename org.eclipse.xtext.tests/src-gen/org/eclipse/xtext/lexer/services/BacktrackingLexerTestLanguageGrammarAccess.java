@@ -183,11 +183,18 @@ public class BacktrackingLexerTestLanguageGrammarAccess extends AbstractElementF
 	private final TerminalRule tWS;
 	private final TerminalRule tSL_COMMENT;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 
 	@Inject
 	public BacktrackingLexerTestLanguageGrammarAccess(GrammarProvider grammarProvider) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.pModel = new ModelElements();
 		this.pAb = new AbElements();
 		this.pXb = new XbElements();
@@ -221,6 +228,11 @@ public class BacktrackingLexerTestLanguageGrammarAccess extends AbstractElementF
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 

@@ -134,7 +134,13 @@ public class FormatterTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	private final IDListElements pIDList;
 	private final KWListElements pKWList;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final TerminalsGrammarAccess gaTerminals;
 
@@ -142,6 +148,7 @@ public class FormatterTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	public FormatterTestLanguageGrammarAccess(GrammarProvider grammarProvider,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaTerminals = gaTerminals;
 		this.pRoot = new RootElements();
 		this.pIDList = new IDListElements();
@@ -167,6 +174,11 @@ public class FormatterTestLanguageGrammarAccess extends AbstractElementFinder.Ab
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	

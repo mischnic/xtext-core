@@ -92,7 +92,13 @@ public class InheritanceTestLanguageGrammarAccess extends AbstractElementFinder.
 	private final ElementElements pElement;
 	private final TerminalRule tID;
 	
+	public static class ASTConversion {
+		public ASTConversion() {}
+		
+	}
+	
 	private final Grammar grammar;
+	private final ASTConversion astConversion;
 	
 	private final BaseInheritanceTestLanguageGrammarAccess gaBaseInheritanceTestLanguage;
 	
@@ -103,6 +109,7 @@ public class InheritanceTestLanguageGrammarAccess extends AbstractElementFinder.
 			BaseInheritanceTestLanguageGrammarAccess gaBaseInheritanceTestLanguage,
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
+		this.astConversion = new ASTConversion();
 		this.gaBaseInheritanceTestLanguage = gaBaseInheritanceTestLanguage;
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
@@ -129,6 +136,11 @@ public class InheritanceTestLanguageGrammarAccess extends AbstractElementFinder.
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
+	}
+
+	@Override
+	public ASTConversion getASTConversion() {
+		return astConversion;
 	}
 	
 	
