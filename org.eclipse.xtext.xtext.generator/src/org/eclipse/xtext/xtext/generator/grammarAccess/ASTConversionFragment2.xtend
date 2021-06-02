@@ -47,9 +47,9 @@ class ASTConversionFragment2 {
 									}
 								}.XTEXT_INIT();
 							«ELSE»
-								return new «rule.listType»<«grammar.getASTClass(rule)»>() {
+								return new «rule.getListType(grammar.getASTClass(rule))»() {
 									private static final long serialVersionUID = 0;
-										«rule.listType»<«grammar.getASTClass(rule)»> XTEXT_INIT() {
+										«rule.getListType(grammar.getASTClass(rule))» XTEXT_INIT() {
 										«rule.codeSnippet»
 										return this;
 									}
@@ -79,7 +79,7 @@ class ASTConversionFragment2 {
 		}
 		val referencedRule = referencedAbstractRule as ParserRule;
 		if (referencedRule.becomes.list || feature.many) {
-			return '''«referencedRule.listTypeAbstract»<«grammar.getASTClass(typeName)»>'''
+			return '''«referencedRule.getListTypeAbstract(grammar.getASTClass(typeName))»'''
 		} else {
 			return '''«grammar.getASTClass(typeName)»'''
 		}
@@ -142,11 +142,11 @@ class ASTConversionFragment2 {
 		return rule.name + "Children";
 	}
 
-	private def getListTypeAbstract(ParserRule rule) {
-		return '''«if (rule.becomes.listType !== null) new TypeReference(grammar.getASTPackage, rule.becomes.listType) else new TypeReference(List)»'''
+	private def getListTypeAbstract(ParserRule rule, TypeReference of) {
+		return if (rule.becomes.listType !== null) grammar.replaceASTTypeReferences(rule.becomes.listType) else '''«new TypeReference(List)»<«of»>'''
 	}
 
-	private def getListType(ParserRule rule) {
-		return '''«if (rule.becomes.listType !== null) new TypeReference(grammar.getASTPackage, rule.becomes.listType) else new TypeReference(ArrayList)»'''
+	private def getListType(ParserRule rule, TypeReference of) {
+		return if (rule.becomes.listType !== null) grammar.replaceASTTypeReferences(rule.becomes.listType) else '''«new TypeReference(ArrayList)»<«of»>'''
 	}
 }

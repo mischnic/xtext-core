@@ -17,34 +17,38 @@ import org.eclipse.xtext.xtext.generator.model.TypeReference
 class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 	@Inject FileAccessFactory fileAccessFactory
 	@Inject extension XtextGeneratorNaming
-	
+
 	override generate() {
-		val astClassNames = newHashMap
-		for(rule : grammar.rules) {
-			if(rule instanceof ParserRule && (rule as ParserRule).becomes !== null && (rule as ParserRule).type.classifier instanceof EClass){
-				astClassNames.put(rule.name.ASTClassName, (rule as ParserRule).becomes.list)
+		val astClassNames = newHashSet
+		val astClassesList = newHashMap
+		for (rule : grammar.rules) {
+			if (rule instanceof ParserRule && (rule as ParserRule).becomes !== null &&
+				(rule as ParserRule).type.classifier instanceof EClass) {
+				astClassNames.add(rule.name.ASTClassName)
+				if ((rule as ParserRule).becomes.list) {
+					astClassesList.put(rule.name.ASTClassName, (rule as ParserRule).becomes.listType)
+				}
 			}
 		}
-		
-		for(rule : grammar.rules){
-			if(rule instanceof ParserRule &&
-				(rule as ParserRule).becomes !== null &&
+
+		for (rule : grammar.rules) {
+			if (rule instanceof ParserRule && (rule as ParserRule).becomes !== null &&
 				(rule as ParserRule).becomes.descriptor instanceof BecomesDeclGeneratedClass &&
-				(rule as ParserRule).type.classifier instanceof EClass
-			){
+				(rule as ParserRule).type.classifier instanceof EClass) {
 				val pr = rule as ParserRule
 				val type = getASTClass(grammar, pr.name)
 				val eClass = pr.type.classifier as EClass
-				val superTypes = eClass.ESuperTypes
-					.filter[astClassNames.containsKey(name.ASTClassName)]
-					.map[getASTClass(grammar, name)]
+				val superTypes = eClass.ESuperTypes.filter[astClassNames.contains(name.ASTClassName)].map [
+					getASTClass(grammar, name)
+				]
 
 				val features = newHashMap
-				for(attr : eClass.EStructuralFeatures) {
+				for (attr : eClass.EStructuralFeatures) {
 					if (attr instanceof EAttribute) {
-						features.put(attr.name, attr.EAttributeType.instanceClass.isPrimitive ?
-							attr.EAttributeType.instanceClass.toString() :
-							attr.EAttributeType.instanceClass
+						features.put(
+							attr.name,
+							attr.EAttributeType.instanceClass.isPrimitive ? attr.EAttributeType.instanceClass.
+								toString() : attr.EAttributeType.instanceClass
 						)
 					} else if (attr instanceof EReference) {
 						val referencedType = attr.EReferenceType
@@ -52,42 +56,45 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 //							val referencedASTType = referencedType.instanceClass
 //							features.put(attr.name, referencedASTType)
 //						} else {
-						var isListType = astClassNames.get(referencedType.name.ASTClassName);
-						if(isListType === null) {
-							throw new IllegalStateException("Unvalid type: " + referencedType.name)
-						}
-						
+						val isListType = astClassesList.containsKey(referencedType.name.ASTClassName);
+						val customListType = astClassesList.get(referencedType.name.ASTClassName);
+
 						val referencedASTType = getASTClass(grammar, referencedType.name)
-						if(isListType == true && attr.many == true){
-							features.put(attr.name, '''«new TypeReference(List)»<«new TypeReference(List)»<«referencedASTType»>>''' )
-						} else if(isListType == true || attr.many){
-							features.put(attr.name, '''«new TypeReference(List)»<«referencedASTType»>''' )
+						// TODO nested lists??
+						val listType = customListType !== null ? grammar.
+								replaceASTTypeReferences(
+									customListType) : '''«new TypeReference(List)»<«new TypeReference(List)»<«referencedASTType»>>''';
+
+						if (isListType && attr.many) {
+							features.put(attr.name, listType)
+						} else if (isListType || attr.many) {
+							features.put(attr.name, listType)
 						} else {
 							features.put(attr.name, referencedASTType)
-						}						
+						}
 					} else {
 						throw new UnsupportedOperationException("Unknown feature type")
 					}
 				}
 
 				val declaredAttributes = pr.becomes.descriptor.attributes
-				
+
 				val attributes = newLinkedHashMap
-				if(declaredAttributes.empty){
+				if (declaredAttributes.empty) {
 					// implicitly copy everything
-					for(e : features.entrySet) {
+					for (e : features.entrySet) {
 						attributes.put(e.key, e.value)
 					}
 				} else {
-					for(attr : declaredAttributes) {
-						if (attr instanceof BecomesDeclCustomAttribute){
+					for (attr : declaredAttributes) {
+						if (attr instanceof BecomesDeclCustomAttribute) {
 							attributes.put(attr.name, grammar.replaceASTTypeReferences(attr.type));
 						} else {
 							attributes.put(attr.name, features.get(attr.name))
 						}
 					}
 				}
-				
+
 				val javaFile = fileAccessFactory.createGeneratedJavaFile(type)
 				javaFile.importNestedTypeThreshold = JavaFileAccess.DONT_IMPORT_NESTED_TYPES
 				val isInterface = (eClass.EStructuralFeatures.empty && declaredAttributes.empty)
@@ -103,7 +110,7 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 									«ENDFOR»
 								}
 							«ENDIF»
-						
+
 							«FOR e : attributes.entrySet»
 								public «e.value» «e.key»;
 							«ENDFOR»

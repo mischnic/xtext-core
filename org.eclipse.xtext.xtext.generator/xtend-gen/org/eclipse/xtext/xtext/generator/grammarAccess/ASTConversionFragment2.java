@@ -124,12 +124,9 @@ public class ASTConversionFragment2 {
                     _builder.append("\t");
                     _builder.append("\t");
                     _builder.append("return new ");
-                    String _listType = this.getListType(((ParserRule)rule));
+                    String _listType = this.getListType(((ParserRule)rule), this._xtextGeneratorNaming.getASTClass(this.grammar, ((ParserRule)rule)));
                     _builder.append(_listType, "\t\t");
-                    _builder.append("<");
-                    TypeReference _aSTClass_2 = this._xtextGeneratorNaming.getASTClass(this.grammar, ((ParserRule)rule));
-                    _builder.append(_aSTClass_2, "\t\t");
-                    _builder.append(">() {");
+                    _builder.append("() {");
                     _builder.newLineIfNotEmpty();
                     _builder.append("\t");
                     _builder.append("\t");
@@ -139,12 +136,9 @@ public class ASTConversionFragment2 {
                     _builder.append("\t");
                     _builder.append("\t");
                     _builder.append("\t\t");
-                    String _listType_1 = this.getListType(((ParserRule)rule));
+                    String _listType_1 = this.getListType(((ParserRule)rule), this._xtextGeneratorNaming.getASTClass(this.grammar, ((ParserRule)rule)));
                     _builder.append(_listType_1, "\t\t\t\t");
-                    _builder.append("<");
-                    TypeReference _aSTClass_3 = this._xtextGeneratorNaming.getASTClass(this.grammar, ((ParserRule)rule));
-                    _builder.append(_aSTClass_3, "\t\t\t\t");
-                    _builder.append("> XTEXT_INIT() {");
+                    _builder.append(" XTEXT_INIT() {");
                     _builder.newLineIfNotEmpty();
                     _builder.append("\t");
                     _builder.append("\t");
@@ -220,17 +214,13 @@ public class ASTConversionFragment2 {
     final ParserRule referencedRule = ((ParserRule) referencedAbstractRule);
     if ((referencedRule.getBecomes().isList() || feature.isMany())) {
       StringConcatenation _builder = new StringConcatenation();
-      String _listTypeAbstract = this.getListTypeAbstract(referencedRule);
+      String _listTypeAbstract = this.getListTypeAbstract(referencedRule, this._xtextGeneratorNaming.getASTClass(this.grammar, typeName));
       _builder.append(_listTypeAbstract);
-      _builder.append("<");
-      TypeReference _aSTClass = this._xtextGeneratorNaming.getASTClass(this.grammar, typeName);
-      _builder.append(_aSTClass);
-      _builder.append(">");
       return _builder.toString();
     } else {
       StringConcatenation _builder_1 = new StringConcatenation();
-      TypeReference _aSTClass_1 = this._xtextGeneratorNaming.getASTClass(this.grammar, typeName);
-      _builder_1.append(_aSTClass_1);
+      TypeReference _aSTClass = this._xtextGeneratorNaming.getASTClass(this.grammar, typeName);
+      _builder_1.append(_aSTClass);
       return _builder_1.toString();
     }
   }
@@ -353,35 +343,39 @@ public class ASTConversionFragment2 {
     return (_name + "Children");
   }
   
-  private String getListTypeAbstract(final ParserRule rule) {
-    StringConcatenation _builder = new StringConcatenation();
-    TypeReference _xifexpression = null;
+  private String getListTypeAbstract(final ParserRule rule, final TypeReference of) {
+    String _xifexpression = null;
     String _listType = rule.getBecomes().getListType();
     boolean _tripleNotEquals = (_listType != null);
     if (_tripleNotEquals) {
-      String _aSTPackage = this._xtextGeneratorNaming.getASTPackage(this.grammar);
-      String _listType_1 = rule.getBecomes().getListType();
-      _xifexpression = new TypeReference(_aSTPackage, _listType_1);
+      _xifexpression = this._xtextGeneratorNaming.replaceASTTypeReferences(this.grammar, rule.getBecomes().getListType());
     } else {
-      _xifexpression = new TypeReference(List.class);
+      StringConcatenation _builder = new StringConcatenation();
+      TypeReference _typeReference = new TypeReference(List.class);
+      _builder.append(_typeReference);
+      _builder.append("<");
+      _builder.append(of);
+      _builder.append(">");
+      _xifexpression = _builder.toString();
     }
-    _builder.append(_xifexpression);
-    return _builder.toString();
+    return _xifexpression;
   }
   
-  private String getListType(final ParserRule rule) {
-    StringConcatenation _builder = new StringConcatenation();
-    TypeReference _xifexpression = null;
+  private String getListType(final ParserRule rule, final TypeReference of) {
+    String _xifexpression = null;
     String _listType = rule.getBecomes().getListType();
     boolean _tripleNotEquals = (_listType != null);
     if (_tripleNotEquals) {
-      String _aSTPackage = this._xtextGeneratorNaming.getASTPackage(this.grammar);
-      String _listType_1 = rule.getBecomes().getListType();
-      _xifexpression = new TypeReference(_aSTPackage, _listType_1);
+      _xifexpression = this._xtextGeneratorNaming.replaceASTTypeReferences(this.grammar, rule.getBecomes().getListType());
     } else {
-      _xifexpression = new TypeReference(ArrayList.class);
+      StringConcatenation _builder = new StringConcatenation();
+      TypeReference _typeReference = new TypeReference(ArrayList.class);
+      _builder.append(_typeReference);
+      _builder.append("<");
+      _builder.append(of);
+      _builder.append(">");
+      _xifexpression = _builder.toString();
     }
-    _builder.append(_xifexpression);
-    return _builder.toString();
+    return _xifexpression;
   }
 }

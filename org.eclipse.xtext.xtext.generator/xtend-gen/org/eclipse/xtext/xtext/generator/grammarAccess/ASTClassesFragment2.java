@@ -3,6 +3,7 @@ package org.eclipse.xtext.xtext.generator.grammarAccess;
 import com.google.inject.Inject;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,17 +43,22 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
   
   @Override
   public void generate() {
-    final HashMap<String, Boolean> astClassNames = CollectionLiterals.<String, Boolean>newHashMap();
+    final HashSet<String> astClassNames = CollectionLiterals.<String>newHashSet();
+    final HashMap<String, String> astClassesList = CollectionLiterals.<String, String>newHashMap();
     EList<AbstractRule> _rules = this.getGrammar().getRules();
     for (final AbstractRule rule : _rules) {
-      if ((((rule instanceof ParserRule) && (((ParserRule) rule).getBecomes() != null)) && (((ParserRule) rule).getType().getClassifier() instanceof EClass))) {
-        astClassNames.put(this._xtextGeneratorNaming.getASTClassName(rule.getName()), Boolean.valueOf(((ParserRule) rule).getBecomes().isList()));
+      if ((((rule instanceof ParserRule) && (((ParserRule) rule).getBecomes() != null)) && 
+        (((ParserRule) rule).getType().getClassifier() instanceof EClass))) {
+        astClassNames.add(this._xtextGeneratorNaming.getASTClassName(rule.getName()));
+        boolean _isList = ((ParserRule) rule).getBecomes().isList();
+        if (_isList) {
+          astClassesList.put(this._xtextGeneratorNaming.getASTClassName(rule.getName()), ((ParserRule) rule).getBecomes().getListType());
+        }
       }
     }
     EList<AbstractRule> _rules_1 = this.getGrammar().getRules();
     for (final AbstractRule rule_1 : _rules_1) {
-      if (((((rule_1 instanceof ParserRule) && 
-        (((ParserRule) rule_1).getBecomes() != null)) && 
+      if (((((rule_1 instanceof ParserRule) && (((ParserRule) rule_1).getBecomes() != null)) && 
         (((ParserRule) rule_1).getBecomes().getDescriptor() instanceof BecomesDeclGeneratedClass)) && 
         (((ParserRule) rule_1).getType().getClassifier() instanceof EClass))) {
         final ParserRule pr = ((ParserRule) rule_1);
@@ -60,7 +66,7 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
         EClassifier _classifier = pr.getType().getClassifier();
         final EClass eClass = ((EClass) _classifier);
         final Function1<EClass, Boolean> _function = (EClass it) -> {
-          return Boolean.valueOf(astClassNames.containsKey(this._xtextGeneratorNaming.getASTClassName(it.getName())));
+          return Boolean.valueOf(astClassNames.contains(this._xtextGeneratorNaming.getASTClassName(it.getName())));
         };
         final Function1<EClass, TypeReference> _function_1 = (EClass it) -> {
           return this._xtextGeneratorNaming.getASTClass(this.getGrammar(), it.getName());
@@ -82,15 +88,13 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
           } else {
             if ((attr instanceof EReference)) {
               final EClass referencedType = ((EReference)attr).getEReferenceType();
-              Boolean isListType = astClassNames.get(this._xtextGeneratorNaming.getASTClassName(referencedType.getName()));
-              if ((isListType == null)) {
-                String _name_1 = referencedType.getName();
-                String _plus = ("Unvalid type: " + _name_1);
-                throw new IllegalStateException(_plus);
-              }
+              final boolean isListType = astClassesList.containsKey(this._xtextGeneratorNaming.getASTClassName(referencedType.getName()));
+              final String customListType = astClassesList.get(this._xtextGeneratorNaming.getASTClassName(referencedType.getName()));
               final TypeReference referencedASTType = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), referencedType.getName());
-              if ((((isListType).booleanValue() == true) && (((EReference)attr).isMany() == true))) {
-                String _name_2 = ((EReference)attr).getName();
+              String _xifexpression_1 = null;
+              if ((customListType != null)) {
+                _xifexpression_1 = this._xtextGeneratorNaming.replaceASTTypeReferences(this.getGrammar(), customListType);
+              } else {
                 StringConcatenation _builder = new StringConcatenation();
                 TypeReference _typeReference = new TypeReference(List.class);
                 _builder.append(_typeReference);
@@ -100,17 +104,14 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
                 _builder.append("<");
                 _builder.append(referencedASTType);
                 _builder.append(">>");
-                features.put(_name_2, _builder.toString());
+                _xifexpression_1 = _builder.toString();
+              }
+              final String listType = _xifexpression_1;
+              if ((isListType && ((EReference)attr).isMany())) {
+                features.put(((EReference)attr).getName(), listType);
               } else {
-                if ((((isListType).booleanValue() == true) || ((EReference)attr).isMany())) {
-                  String _name_3 = ((EReference)attr).getName();
-                  StringConcatenation _builder_1 = new StringConcatenation();
-                  TypeReference _typeReference_2 = new TypeReference(List.class);
-                  _builder_1.append(_typeReference_2);
-                  _builder_1.append("<");
-                  _builder_1.append(referencedASTType);
-                  _builder_1.append(">");
-                  features.put(_name_3, _builder_1.toString());
+                if ((isListType || ((EReference)attr).isMany())) {
+                  features.put(((EReference)attr).getName(), listType);
                 } else {
                   features.put(((EReference)attr).getName(), referencedASTType);
                 }
@@ -171,10 +172,9 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
             {
               if ((!isInterface)) {
                 _builder.append("\t");
-                _builder.append("\t");
                 _builder.append("public ");
                 String _simpleName_1 = type.getSimpleName();
-                _builder.append(_simpleName_1, "\t\t");
+                _builder.append(_simpleName_1, "\t");
                 _builder.append("(){}");
                 _builder.newLineIfNotEmpty();
                 {
@@ -182,10 +182,9 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
                   boolean _not = (!_isEmpty);
                   if (_not) {
                     _builder.append("\t");
-                    _builder.append("\t");
                     _builder.append("public ");
                     String _simpleName_2 = type.getSimpleName();
-                    _builder.append(_simpleName_2, "\t\t");
+                    _builder.append(_simpleName_2, "\t");
                     _builder.append("(");
                     {
                       Set<Map.Entry<String, Object>> _entrySet = attributes.entrySet();
@@ -194,13 +193,13 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
                         if (!_hasElements_1) {
                           _hasElements_1 = true;
                         } else {
-                          _builder.appendImmediate(", ", "\t\t");
+                          _builder.appendImmediate(", ", "\t");
                         }
                         Object _value = e.getValue();
-                        _builder.append(_value, "\t\t");
+                        _builder.append(_value, "\t");
                         _builder.append(" ");
                         String _key = e.getKey();
-                        _builder.append(_key, "\t\t");
+                        _builder.append(_key, "\t");
                       }
                     }
                     _builder.append("){");
@@ -210,34 +209,30 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
                       for(final String n : _keySet) {
                         _builder.append("\t");
                         _builder.append("\t");
-                        _builder.append("\t");
                         _builder.append("this.");
-                        _builder.append(n, "\t\t\t");
+                        _builder.append(n, "\t\t");
                         _builder.append(" = ");
-                        _builder.append(n, "\t\t\t");
+                        _builder.append(n, "\t\t");
                         _builder.append(";");
                         _builder.newLineIfNotEmpty();
                       }
                     }
                     _builder.append("\t");
-                    _builder.append("\t");
                     _builder.append("}");
                     _builder.newLine();
                   }
                 }
-                _builder.append("\t");
                 _builder.newLine();
                 {
                   Set<Map.Entry<String, Object>> _entrySet_1 = attributes.entrySet();
                   for(final Map.Entry<String, Object> e_1 : _entrySet_1) {
                     _builder.append("\t");
-                    _builder.append("\t");
                     _builder.append("public ");
                     Object _value_1 = e_1.getValue();
-                    _builder.append(_value_1, "\t\t");
+                    _builder.append(_value_1, "\t");
                     _builder.append(" ");
                     String _key_1 = e_1.getKey();
-                    _builder.append(_key_1, "\t\t");
+                    _builder.append(_key_1, "\t");
                     _builder.append(";");
                     _builder.newLineIfNotEmpty();
                   }
