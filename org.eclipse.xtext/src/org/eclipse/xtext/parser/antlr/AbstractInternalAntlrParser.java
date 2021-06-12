@@ -642,19 +642,7 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 		IGrammarAccess ga = this.getGrammarAccess();
 		Object astConversion = ga.getASTConversion();
 		if (astConversion == null) {
-			return null;
-		}
-
-		BecomesDecl becomesDecl = null;
-		try {
-			ParserRule rule = (ParserRule) ga.getClass().getMethod("get" + type.getName() + "Rule").invoke(ga);
-			becomesDecl = (BecomesDecl) rule.getBecomes();
-		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
-				| InvocationTargetException e) {
-			throw new WrappedException(e);
-		}
-		if (becomesDecl == null) {
-			// AST conversion wasn't enabled
+			//System.out.println("Ignored: " + current);
 			return null;
 		}
 
@@ -666,7 +654,9 @@ public abstract class AbstractInternalAntlrParser extends Parser {
 			}
 		}
 		if (childrenClass == null) {
-			throw new IllegalStateException("Children class could not be found");
+			// AST conversion wasn't enabled
+			//System.out.println("Ignored: " + current);
+			return null;
 		}
 
 		Method convertMethod = null;

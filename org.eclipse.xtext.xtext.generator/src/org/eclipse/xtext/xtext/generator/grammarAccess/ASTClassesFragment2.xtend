@@ -7,6 +7,8 @@ import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.BecomesDeclCustomAttribute
 import org.eclipse.xtext.BecomesDeclGeneratedClass
+import org.eclipse.xtext.GeneratedMetamodel
+import org.eclipse.xtext.GrammarUtil
 import org.eclipse.xtext.ParserRule
 import org.eclipse.xtext.xtext.generator.AbstractXtextGeneratorFragment
 import org.eclipse.xtext.xtext.generator.XtextGeneratorNaming
@@ -19,28 +21,35 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 	@Inject extension XtextGeneratorNaming
 
 	override generate() {
+		val generatedClasses = GrammarUtil.allMetamodelDeclarations(grammar).filter(GeneratedMetamodel).map [
+			EPackage.EClassifiers
+		].toList.flatten
+
 		val astClassNames = newHashSet
 		val astClassesList = newHashMap
-		for (rule : grammar.rules) {
-			if (rule instanceof ParserRule && (rule as ParserRule).becomes !== null &&
-				(rule as ParserRule).type.classifier instanceof EClass) {
-				astClassNames.add(rule.name.ASTClassName)
-				if ((rule as ParserRule).becomes.list) {
-					astClassesList.put(rule.name.ASTClassName, (rule as ParserRule).becomes.listType)
+		// TODO??
+		val enabled = (grammar.rules.get(0) as ParserRule).becomes !== null;
+		val rules = newHashMap
+		for (classifier : generatedClasses) {
+			val rule = GrammarUtil.findRuleForName(grammar, classifier.name);
+			println(classifier.name)
+			if ((rule === null && enabled) || (rule instanceof ParserRule && (rule as ParserRule).becomes !== null)) {
+				rules.put(classifier, rule);
+				astClassNames.add(classifier.name.ASTClassName)
+				if (rule !== null && (rule as ParserRule).becomes.list) {
+					astClassesList.put(classifier.name.ASTClassName, (rule as ParserRule).becomes.listType)
 				}
 			}
 		}
 
-		for (rule : grammar.rules) {
-			if (rule instanceof ParserRule && (rule as ParserRule).becomes !== null &&
-				(rule as ParserRule).becomes.descriptor instanceof BecomesDeclGeneratedClass &&
-				(rule as ParserRule).type.classifier instanceof EClass) {
+		for (classifier : generatedClasses) {
+			val rule = rules.get(classifier);
+			if ((rule === null && enabled) || (rule instanceof ParserRule && (rule as ParserRule).becomes !== null &&
+				(rule as ParserRule).becomes.descriptor instanceof BecomesDeclGeneratedClass)) {
 				val pr = rule as ParserRule
-				val type = getASTClass(grammar, pr.name)
-				val eClass = pr.type.classifier as EClass
-				val superTypes = eClass.ESuperTypes.filter[astClassNames.contains(name.ASTClassName)].map [
-					getASTClass(grammar, name)
-				]
+				val eClass = classifier as EClass
+				val becomes = pr === null ? null : pr.becomes;
+				val astType = getASTClass(grammar, classifier.name)
 
 				val features = newHashMap
 				for (attr : eClass.EStructuralFeatures) {
@@ -52,22 +61,19 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 						)
 					} else if (attr instanceof EReference) {
 						val referencedType = attr.EReferenceType
-//						if(referencedType.instanceClass !== null) {
-//							val referencedASTType = referencedType.instanceClass
-//							features.put(attr.name, referencedASTType)
-//						} else {
 						val isListType = astClassesList.containsKey(referencedType.name.ASTClassName);
 						val customListType = astClassesList.get(referencedType.name.ASTClassName);
 
 						val referencedASTType = getASTClass(grammar, referencedType.name)
-						// TODO nested lists??
+						// TODO nested lists
 						val listType = customListType !== null ? grammar.
 								replaceASTTypeReferences(
-									customListType) : '''«new TypeReference(List)»<«new TypeReference(List)»<«referencedASTType»>>''';
+									customListType) : '''«new TypeReference(List)»<«referencedASTType»>''';
 
-						if (isListType && attr.many) {
-							features.put(attr.name, listType)
-						} else if (isListType || attr.many) {
+//						if (isListType && attr.many) {
+//							features.put(attr.name, listType)
+//						} else 
+						if (isListType || attr.many) {
 							features.put(attr.name, listType)
 						} else {
 							features.put(attr.name, referencedASTType)
@@ -77,16 +83,14 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 					}
 				}
 
-				val declaredAttributes = pr.becomes.descriptor.attributes
-
 				val attributes = newLinkedHashMap
-				if (declaredAttributes.empty) {
+				if (becomes === null || becomes.descriptor.attributes.empty) {
 					// implicitly copy everything
 					for (e : features.entrySet) {
 						attributes.put(e.key, e.value)
 					}
 				} else {
-					for (attr : declaredAttributes) {
+					for (attr : becomes.descriptor.attributes) {
 						if (attr instanceof BecomesDeclCustomAttribute) {
 							attributes.put(attr.name, grammar.replaceASTTypeReferences(attr.type));
 						} else {
@@ -95,22 +99,37 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 					}
 				}
 
-				val javaFile = fileAccessFactory.createGeneratedJavaFile(type)
+				val javaFile = fileAccessFactory.createGeneratedJavaFile(astType)
 				javaFile.importNestedTypeThreshold = JavaFileAccess.DONT_IMPORT_NESTED_TYPES
-				val isInterface = (eClass.EStructuralFeatures.empty && declaredAttributes.empty)
-				// TODO can the parent types have attributes? multiple inheritance???
+				val isInterface = eClass.interface
+				val superTypes = eClass.ESuperTypes.filter[astClassNames.contains(name.ASTClassName)]
+				val extending = newArrayList
+				val implementing = newArrayList
+				for (t : superTypes) {
+					val name = getASTClass(grammar, t.name);
+					if (t.interface && !isInterface) {
+						implementing.add(name);
+					} else {
+						extending.add(name);
+					}
+				}
+
+				val extendsDeclaration = '''«FOR s : extending BEFORE " extends " SEPARATOR ', '»«s»«ENDFOR»''';
+				val implementsDeclaration = '''«FOR s : implementing BEFORE " implements " SEPARATOR ', '»«s»«ENDFOR»''';
+
+				// TODO parent types can have attributes, so might need to extend instead of implement 
 				javaFile.content = '''
-					public «isInterface ? "interface" : "class"» «type.simpleName»«FOR s : superTypes BEFORE " implements " SEPARATOR ', '»«s»«ENDFOR» {
+					public «isInterface ? "interface" : "class"» «astType.simpleName»«extendsDeclaration»«implementsDeclaration» {
 						«IF !isInterface»
-							public «type.simpleName»(){}
+							public «astType.simpleName»(){}
 							«IF !attributes.empty»
-								public «type.simpleName»(«FOR e : attributes.entrySet SEPARATOR ', '»«e.value» «e.key»«ENDFOR»){
+								public «astType.simpleName»(«FOR e : attributes.entrySet SEPARATOR ', '»«e.value» «e.key»«ENDFOR»){
 									«FOR n : attributes.keySet»
 										this.«n» = «n»;
 									«ENDFOR»
 								}
 							«ENDIF»
-
+							
 							«FOR e : attributes.entrySet»
 								public «e.value» «e.key»;
 							«ENDFOR»

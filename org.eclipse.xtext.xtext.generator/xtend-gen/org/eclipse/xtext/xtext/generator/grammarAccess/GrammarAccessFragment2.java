@@ -307,7 +307,7 @@ public class GrammarAccessFragment2 extends AbstractXtextGeneratorFragment {
         _builder.append("\t");
         _builder.newLine();
         _builder.append("\t");
-        CharSequence _aSTConversionClass = GrammarAccessFragment2.this.astConversionFragment.getASTConversionClass();
+        String _aSTConversionClass = GrammarAccessFragment2.this.astConversionFragment.getASTConversionClass();
         _builder.append(_aSTConversionClass, "\t");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
