@@ -30,4 +30,5 @@ CompositeGeneratorFragment2 {
 	fragment = grammarAccess.GrammarAccessFragment2 auto-inject {}
 	fragment = tests.TestsEMFGeneratorFragment auto-inject {}
 	fragment = serializer.SerializerFragment2 auto-inject {}
+	fragment = grammarAccess.ASTClassesFragment2 auto-inject {}
 }

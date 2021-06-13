@@ -639,6 +639,10 @@ Workflow {
 			grammarUri = "classpath:/org/eclipse/xtext/parsetree/reconstr/SerializationErrorTestLanguage.xtext"
 			fragment = @TestLanguagesFragments auto-inject {}
 		}
+		language = {
+			grammarUri = "classpath:/org/eclipse/xtext/astconversion/ASTConversionSimple.xtext"
+			fragment = @TestLanguagesFragments auto-inject {}
+		}
 	}
 }
 

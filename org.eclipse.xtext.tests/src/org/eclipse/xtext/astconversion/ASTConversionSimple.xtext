@@ -1,0 +1,36 @@
+grammar org.eclipse.xtext.astconversion.ASTConversionSimple with org.eclipse.xtext.common.Terminals
+
+generate astConversionSimple "http://www.xtext.org/example/ASTConversionSimple"
+
+Program becomes:
+	(entries+=Entry)+;
+
+Entry becomes:
+	AutoClass | AutoExplicitClass | ManualClass | CustomASTClass | CustomCopyASTClass;
+
+AutoClass becomes:
+	"auto" ref1=Reference name1=ID ";";
+
+AutoExplicitClass becomes (name2):
+	"auto-explicit" ref2=Reference name2=ID ";";
+
+ManualClass becomes («ASTReference» ref, String value) $$
+	this.ref = children.ref3;
+	this.value = node.getName3();
+$$:
+	"manual" ref3=Reference name3=ID ";";
+
+CustomASTClass becomes ASTCustomClass $$
+	this.type = children.ref4.name;
+	this.name = node.getName4();
+$$:
+	"custom" ref4=Reference name4=ID ";";
+	
+
+CustomCopyASTClass becomes ASTCustomClass(name) $$
+	this.type = children.ref4.name;
+$$:
+	"custom-copy" ref4=Reference name=ID ";";
+
+Reference becomes:
+	name=ID;
