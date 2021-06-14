@@ -16,10 +16,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -61,10 +64,19 @@ public class ASTConversionFragment2 {
     final HashMap<EClass, ParserRule> rules = CollectionLiterals.<EClass, ParserRule>newHashMap();
     for (final EClassifier classifier : generatedClasses) {
       {
-        AbstractRule _findRuleForName = GrammarUtil.findRuleForName(this.grammar, classifier.getName());
-        final ParserRule rule = ((ParserRule) _findRuleForName);
-        if ((((rule == null) && enabled) || ((rule instanceof ParserRule) && (((ParserRule) rule).getBecomes() != null)))) {
-          rules.put(((EClass) classifier), rule);
+        final AbstractRule rule = GrammarUtil.findRuleForName(this.grammar, classifier.getName());
+        if ((rule == null)) {
+          if (enabled) {
+            rules.put(((EClass) classifier), null);
+          }
+        } else {
+          if ((rule instanceof ParserRule)) {
+            BecomesDecl _becomes_1 = ((ParserRule) rule).getBecomes();
+            boolean _tripleNotEquals = (_becomes_1 != null);
+            if (_tripleNotEquals) {
+              rules.put(((EClass) classifier), ((ParserRule) rule));
+            }
+          }
         }
       }
     }
@@ -79,16 +91,20 @@ public class ASTConversionFragment2 {
     {
       Set<Map.Entry<EClass, ParserRule>> _entrySet = rules.entrySet();
       for(final Map.Entry<EClass, ParserRule> entry : _entrySet) {
-        _builder.append("\t");
-        CharSequence _childrenClass = this.getChildrenClass(entry.getKey());
-        _builder.append(_childrenClass, "\t");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        String _convertMethod = this.getConvertMethod(entry.getKey(), entry.getValue());
-        _builder.append(_convertMethod, "\t");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.newLine();
+        {
+          EClass _key = entry.getKey();
+          if ((_key instanceof EClass)) {
+            _builder.append("\t");
+            EClass _key_1 = entry.getKey();
+            CharSequence _childrenClass = this.getChildrenClass(((EClass) _key_1));
+            _builder.append(_childrenClass, "\t");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            String _convertMethod = this.getConvertMethod(entry.getKey(), entry.getValue());
+            _builder.append(_convertMethod, "\t");
+            _builder.newLineIfNotEmpty();
+          }
+        }
       }
     }
     _builder.append("}");
@@ -127,8 +143,8 @@ public class ASTConversionFragment2 {
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("\t\t");
-        String _codeSnippet = this.codeSnippet(type, rule);
-        _builder.append(_codeSnippet, "\t\t\t");
+        String _codeSnippetClass = this.codeSnippetClass(type, rule);
+        _builder.append(_codeSnippetClass, "\t\t\t");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("\t\t");
@@ -160,8 +176,8 @@ public class ASTConversionFragment2 {
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("\t\t");
-        String _codeSnippet_1 = this.codeSnippet(type, rule);
-        _builder.append(_codeSnippet_1, "\t\t\t");
+        String _codeSnippetClass_1 = this.codeSnippetClass(type, rule);
+        _builder.append(_codeSnippetClass_1, "\t\t\t");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("\t\t");
@@ -225,7 +241,7 @@ public class ASTConversionFragment2 {
     }
   }
   
-  private String codeSnippet(final EClass type, final ParserRule rule) {
+  private String codeSnippetClass(final EClass type, final ParserRule rule) {
     BecomesDecl _xifexpression = null;
     if ((rule != null)) {
       _xifexpression = rule.getBecomes();
@@ -282,31 +298,63 @@ public class ASTConversionFragment2 {
         }
       } else {
         if ((f instanceof EAttribute)) {
-          if ((attributeNamesToCopy.contains(((EAttribute)f).getName()) || shouldCopyAllAttributes)) {
-            StringConcatenation _builder_2 = new StringConcatenation();
-            _builder_2.append("this.");
-            String _name_4 = ((EAttribute)f).getName();
-            _builder_2.append(_name_4);
-            _builder_2.append(" = node.");
-            String _nameToGetter = this.nameToGetter(((EAttribute)f).getName());
-            _builder_2.append(_nameToGetter);
-            _builder_2.append("();");
-            assignments.add(_builder_2.toString());
-          } else {
-            boolean _containsKey_1 = attributeNamesToCopyChangeType.containsKey(((EAttribute)f).getName());
-            if (_containsKey_1) {
+          EDataType _eAttributeType = ((EAttribute)f).getEAttributeType();
+          if ((_eAttributeType instanceof EEnum)) {
+            boolean _isMany = ((EAttribute)f).isMany();
+            if (_isMany) {
+              StringConcatenation _builder_2 = new StringConcatenation();
+              _builder_2.append("this.");
+              String _name_4 = ((EAttribute)f).getName();
+              _builder_2.append(_name_4);
+              _builder_2.append(" = node.getValue().stream().map(e -> ");
+              TypeReference _aSTClass = this._xtextGeneratorNaming.getASTClass(this.grammar, ((EAttribute)f).getEAttributeType().getName());
+              _builder_2.append(_aSTClass);
+              _builder_2.append(".valueOf(e.name())).collect(");
+              TypeReference _typeReference = new TypeReference(Collectors.class);
+              _builder_2.append(_typeReference);
+              _builder_2.append(".toList());");
+              assignments.add(_builder_2.toString());
+            } else {
               StringConcatenation _builder_3 = new StringConcatenation();
               _builder_3.append("this.");
               String _name_5 = ((EAttribute)f).getName();
               _builder_3.append(_name_5);
-              _builder_3.append(" = new ");
-              String _replaceASTTypeReferences_1 = this._xtextGeneratorNaming.replaceASTTypeReferences(this.grammar, attributeNamesToCopyChangeType.get(((EAttribute)f).getName()));
-              _builder_3.append(_replaceASTTypeReferences_1);
-              _builder_3.append("(node.");
-              String _nameToGetter_1 = this.nameToGetter(((EAttribute)f).getName());
-              _builder_3.append(_nameToGetter_1);
-              _builder_3.append("());");
+              _builder_3.append(" = ");
+              TypeReference _aSTClass_1 = this._xtextGeneratorNaming.getASTClass(this.grammar, ((EAttribute)f).getEAttributeType().getName());
+              _builder_3.append(_aSTClass_1);
+              _builder_3.append(".valueOf(node.");
+              String _nameToGetter = this.nameToGetter(((EAttribute)f).getName());
+              _builder_3.append(_nameToGetter);
+              _builder_3.append("().name());");
               assignments.add(_builder_3.toString());
+            }
+          } else {
+            if ((attributeNamesToCopy.contains(((EAttribute)f).getName()) || shouldCopyAllAttributes)) {
+              StringConcatenation _builder_4 = new StringConcatenation();
+              _builder_4.append("this.");
+              String _name_6 = ((EAttribute)f).getName();
+              _builder_4.append(_name_6);
+              _builder_4.append(" = node.");
+              String _nameToGetter_1 = this.nameToGetter(((EAttribute)f).getName());
+              _builder_4.append(_nameToGetter_1);
+              _builder_4.append("();");
+              assignments.add(_builder_4.toString());
+            } else {
+              boolean _containsKey_1 = attributeNamesToCopyChangeType.containsKey(((EAttribute)f).getName());
+              if (_containsKey_1) {
+                StringConcatenation _builder_5 = new StringConcatenation();
+                _builder_5.append("this.");
+                String _name_7 = ((EAttribute)f).getName();
+                _builder_5.append(_name_7);
+                _builder_5.append(" = new ");
+                String _replaceASTTypeReferences_1 = this._xtextGeneratorNaming.replaceASTTypeReferences(this.grammar, attributeNamesToCopyChangeType.get(((EAttribute)f).getName()));
+                _builder_5.append(_replaceASTTypeReferences_1);
+                _builder_5.append("(node.");
+                String _nameToGetter_2 = this.nameToGetter(((EAttribute)f).getName());
+                _builder_5.append(_nameToGetter_2);
+                _builder_5.append("());");
+                assignments.add(_builder_5.toString());
+              }
             }
           }
         } else {
@@ -314,11 +362,11 @@ public class ASTConversionFragment2 {
         }
       }
     }
-    StringConcatenation _builder_4 = new StringConcatenation();
+    StringConcatenation _builder_6 = new StringConcatenation();
     {
       for(final String a : assignments) {
-        _builder_4.append(a);
-        _builder_4.newLineIfNotEmpty();
+        _builder_6.append(a);
+        _builder_6.newLineIfNotEmpty();
       }
     }
     {
@@ -327,11 +375,11 @@ public class ASTConversionFragment2 {
         int _length = becomes.getCode().length();
         int _minus = (_length - 2);
         String _replaceASTTypeReferences_2 = this._xtextGeneratorNaming.replaceASTTypeReferences(this.grammar, _code.substring(3, _minus));
-        _builder_4.append(_replaceASTTypeReferences_2);
-        _builder_4.newLineIfNotEmpty();
+        _builder_6.append(_replaceASTTypeReferences_2);
+        _builder_6.newLineIfNotEmpty();
       }
     }
-    return _builder_4.toString();
+    return _builder_6.toString();
   }
   
   private String nameToGetter(final String name) {
@@ -341,12 +389,12 @@ public class ASTConversionFragment2 {
     return (_plus + _substring);
   }
   
-  private String getChildrenClassName(final EClass type) {
+  private String getChildrenClassName(final EClassifier type) {
     String _name = type.getName();
     return (_name + "Children");
   }
   
-  private TypeReference getASTType(final EClass type, final ParserRule rule) {
+  private TypeReference getASTType(final EClassifier type, final ParserRule rule) {
     if ((((rule != null) && (rule.getBecomes() != null)) && (rule.getBecomes().getDescriptor() instanceof BecomesDeclManualClass))) {
       String _aSTPackage = this._xtextGeneratorNaming.getASTPackage(this.grammar);
       BecomesDeclClass _descriptor = rule.getBecomes().getDescriptor();

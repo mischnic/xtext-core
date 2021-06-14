@@ -4,9 +4,11 @@ import com.google.inject.Inject
 import java.util.List
 import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.BecomesDeclCustomAttribute
 import org.eclipse.xtext.BecomesDeclGeneratedClass
+import org.eclipse.xtext.EnumRule
 import org.eclipse.xtext.GeneratedMetamodel
 import org.eclipse.xtext.GrammarUtil
 import org.eclipse.xtext.ParserRule
@@ -29,38 +31,52 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 		val astClassesList = newHashMap
 		// TODO??
 		val enabled = (grammar.rules.get(0) as ParserRule).becomes !== null;
-		val rules = newHashMap
+		val rulesClasses = newHashMap
+		val rulesEnums = newArrayList
 		for (classifier : generatedClasses) {
 			val rule = GrammarUtil.findRuleForName(grammar, classifier.name);
-			println(classifier.name)
-			if ((rule === null && enabled) || (rule instanceof ParserRule && (rule as ParserRule).becomes !== null)) {
-				rules.put(classifier, rule);
-				astClassNames.add(classifier.name.ASTClassName)
-				if (rule !== null && (rule as ParserRule).becomes.list) {
-					astClassesList.put(classifier.name.ASTClassName, (rule as ParserRule).becomes.listType)
+			if (rule === null) {
+				if (enabled) {
+					rulesClasses.put(classifier as EClass, null);
+					astClassNames.add(classifier.name.ASTClassName)
+				}
+			} else if (rule instanceof ParserRule) {
+				if ((rule as ParserRule).becomes !== null) {
+					rulesClasses.put(classifier as EClass, rule as ParserRule)
+					astClassNames.add(classifier.name.ASTClassName)
+					if ((rule as ParserRule).becomes.list) {
+						astClassesList.put(classifier.name.ASTClassName, (rule as ParserRule).becomes.listType)
+					}
+				}
+			} else if (rule instanceof EnumRule && classifier instanceof EEnum) {
+				if ((rule as EnumRule).becomes) {
+					rulesEnums.add(classifier as EEnum);
+					astClassNames.add(classifier.name.ASTClassName)
 				}
 			}
 		}
 
-		for (classifier : generatedClasses) {
-			val rule = rules.get(classifier);
+		for (entry : rulesClasses.entrySet) {
+			val type = entry.key
+			val rule = entry.value
 			if ((rule === null && enabled) || (rule instanceof ParserRule && (rule as ParserRule).becomes !== null &&
 				(rule as ParserRule).becomes.descriptor instanceof BecomesDeclGeneratedClass)) {
 				val pr = rule as ParserRule
-				val eClass = classifier as EClass
 				val becomes = pr === null ? null : pr.becomes;
-				val astType = getASTClass(grammar, classifier.name)
+				val astType = getASTClass(grammar, type.name)
 
 				val features = newHashMap
-				for (attr : eClass.EStructuralFeatures) {
-					if (attr instanceof EAttribute) {
+				for (attr : type.EStructuralFeatures) {
+					if (attr instanceof EAttribute && !((attr as EAttribute).EAttributeType instanceof EEnum)) {
+						val clazz = (attr as EAttribute).EAttributeType.instanceClass;
 						features.put(
 							attr.name,
-							attr.EAttributeType.instanceClass.isPrimitive ? attr.EAttributeType.instanceClass.
-								toString() : attr.EAttributeType.instanceClass
+							clazz.isPrimitive ? clazz.toString() : clazz
 						)
-					} else if (attr instanceof EReference) {
-						val referencedType = attr.EReferenceType
+
+					} else {
+						val referencedType = attr instanceof EReference ? attr.EReferenceType : (attr as EAttribute).
+								EAttributeType
 						val isListType = astClassesList.containsKey(referencedType.name.ASTClassName);
 						val customListType = astClassesList.get(referencedType.name.ASTClassName);
 
@@ -78,8 +94,6 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 						} else {
 							features.put(attr.name, referencedASTType)
 						}
-					} else {
-						throw new UnsupportedOperationException("Unknown feature type")
 					}
 				}
 
@@ -99,10 +113,8 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 					}
 				}
 
-				val javaFile = fileAccessFactory.createGeneratedJavaFile(astType)
-				javaFile.importNestedTypeThreshold = JavaFileAccess.DONT_IMPORT_NESTED_TYPES
-				val isInterface = eClass.interface
-				val superTypes = eClass.ESuperTypes.filter[astClassNames.contains(name.ASTClassName)]
+				val isInterface = type.interface
+				val superTypes = type.ESuperTypes.filter[astClassNames.contains(name.ASTClassName)]
 				val extending = newArrayList
 				val implementing = newArrayList
 				for (t : superTypes) {
@@ -117,6 +129,8 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 				val extendsDeclaration = '''«FOR s : extending BEFORE " extends " SEPARATOR ', '»«s»«ENDFOR»''';
 				val implementsDeclaration = '''«FOR s : implementing BEFORE " implements " SEPARATOR ', '»«s»«ENDFOR»''';
 
+				val javaFile = fileAccessFactory.createGeneratedJavaFile(astType)
+				javaFile.importNestedTypeThreshold = JavaFileAccess.DONT_IMPORT_NESTED_TYPES
 				// TODO parent types can have attributes, so might need to extend instead of implement 
 				javaFile.content = '''
 					public «isInterface ? "interface" : "class"» «astType.simpleName»«extendsDeclaration»«implementsDeclaration» {
@@ -138,6 +152,20 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 				'''
 				javaFile.writeTo(projectConfig.runtime.srcGen)
 			}
+		}
+
+		for (type : rulesEnums) {
+			val astType = getASTClass(grammar, type.name)
+
+			val javaFile = fileAccessFactory.createGeneratedJavaFile(astType)
+			javaFile.importNestedTypeThreshold = JavaFileAccess.DONT_IMPORT_NESTED_TYPES
+			// TODO parent types can have attributes, so might need to extend instead of implement 
+			javaFile.content = '''
+				public enum «astType.simpleName» {
+					«FOR l : type.ELiterals SEPARATOR ', ' AFTER ';'»«l.name»«ENDFOR»
+				}
+			'''
+			javaFile.writeTo(projectConfig.runtime.srcGen)
 		}
 	}
 }

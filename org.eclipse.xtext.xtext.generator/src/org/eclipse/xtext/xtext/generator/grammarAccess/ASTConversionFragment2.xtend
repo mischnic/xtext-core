@@ -11,11 +11,15 @@ package org.eclipse.xtext.xtext.generator.grammarAccess
 import com.google.inject.Inject
 import java.util.ArrayList
 import java.util.List
+import java.util.stream.Collectors
 import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.EClassifier
+import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.BecomesDeclCustomAttribute
 import org.eclipse.xtext.BecomesDeclGeneratedClass
+import org.eclipse.xtext.BecomesDeclManualClass
 import org.eclipse.xtext.GeneratedMetamodel
 import org.eclipse.xtext.Grammar
 import org.eclipse.xtext.GrammarUtil
@@ -24,7 +28,6 @@ import org.eclipse.xtext.xtext.generator.XtextGeneratorNaming
 import org.eclipse.xtext.xtext.generator.model.TypeReference
 
 import static extension org.eclipse.xtext.GrammarUtil.*
-import org.eclipse.xtext.BecomesDeclManualClass
 
 class ASTConversionFragment2 {
 	@Inject extension XtextGeneratorNaming
@@ -41,9 +44,15 @@ class ASTConversionFragment2 {
 		val enabled = (grammar.rules.get(0) as ParserRule).becomes !== null;
 		val rules = newHashMap
 		for (classifier : generatedClasses) {
-			val rule = GrammarUtil.findRuleForName(grammar, classifier.name) as ParserRule;
-			if ((rule === null && enabled) || (rule instanceof ParserRule && (rule as ParserRule).becomes !== null)) {
-				rules.put(classifier as EClass, rule)
+			val rule = GrammarUtil.findRuleForName(grammar, classifier.name);
+			if (rule === null) {
+				if (enabled) {
+					rules.put(classifier as EClass, null);
+				}
+			} else if (rule instanceof ParserRule) {
+				if ((rule as ParserRule).becomes !== null) {
+					rules.put(classifier as EClass, rule as ParserRule)
+				}
 			}
 		}
 
@@ -52,9 +61,10 @@ class ASTConversionFragment2 {
 				public ASTConversion() {}
 				
 				«FOR entry : rules.entrySet»
-					«getChildrenClass(entry.key)»
-					«getConvertMethod(entry.key, entry.value)»
-					
+					«IF entry.key instanceof EClass»
+						«getChildrenClass(entry.key as EClass)»
+						«getConvertMethod(entry.key, entry.value)»
+					«ENDIF»
 				«ENDFOR»
 			}
 		'''
@@ -67,7 +77,7 @@ class ASTConversionFragment2 {
 				«IF rule === null || !rule.becomes.list»
 					return new «resultType»() {
 						«resultType» XTEXT_INIT() {
-							«codeSnippet(type, rule)»
+							«codeSnippetClass(type, rule)»
 							return this;
 						}
 					}.XTEXT_INIT();
@@ -75,7 +85,7 @@ class ASTConversionFragment2 {
 					return new «rule.getListType(resultType)»() {
 						private static final long serialVersionUID = 0;
 							«rule.getListType(resultType)» XTEXT_INIT() {
-							«codeSnippet(type, rule)»
+							«codeSnippetClass(type, rule)»
 							return this;
 						}
 					}.XTEXT_INIT();
@@ -103,7 +113,7 @@ class ASTConversionFragment2 {
 		}
 	}
 
-	private def codeSnippet(EClass type, ParserRule rule) {
+	private def codeSnippetClass(EClass type, ParserRule rule) {
 		val becomes = rule !== null ? rule.becomes : null
 
 		val shouldCopyAllAttributes = becomes === null ||
@@ -132,11 +142,22 @@ class ASTConversionFragment2 {
 						add('''this.«f.name» = new «grammar.replaceASTTypeReferences(attributeNamesToCopyChangeType.get(f.name))»(children.«f.name»);''')
 				}
 			} else if (f instanceof EAttribute) {
-				if (attributeNamesToCopy.contains(f.name) || shouldCopyAllAttributes) {
-					assignments.add('''this.«f.name» = node.«f.name.nameToGetter»();''')
-				} else if (attributeNamesToCopyChangeType.containsKey(f.name)) {
-					assignments.
-						add('''this.«f.name» = new «grammar.replaceASTTypeReferences(attributeNamesToCopyChangeType.get(f.name))»(node.«f.name.nameToGetter»());''')
+				if (f.EAttributeType instanceof EEnum) {
+					if (f.many) {
+						assignments.
+							add('''this.«f.name» = node.getValue().stream().map(e -> «grammar.getASTClass(f.EAttributeType.name)».valueOf(e.name())).collect(«new TypeReference(Collectors)».toList());''');
+					} else {
+						assignments.
+							add('''this.«f.name» = «grammar.getASTClass(f.EAttributeType.name)».valueOf(node.«f.name.nameToGetter»().name());''')
+
+					}
+				} else {
+					if (attributeNamesToCopy.contains(f.name) || shouldCopyAllAttributes) {
+						assignments.add('''this.«f.name» = node.«f.name.nameToGetter»();''')
+					} else if (attributeNamesToCopyChangeType.containsKey(f.name)) {
+						assignments.
+							add('''this.«f.name» = new «grammar.replaceASTTypeReferences(attributeNamesToCopyChangeType.get(f.name))»(node.«f.name.nameToGetter»());''')
+					}
 				}
 			} else {
 				throw new UnsupportedOperationException("Unknown feature type")
@@ -157,11 +178,11 @@ class ASTConversionFragment2 {
 		return "get" + name.substring(0, 1).toUpperCase() + name.substring(1);
 	}
 
-	private def getChildrenClassName(EClass type) {
+	private def getChildrenClassName(EClassifier type) {
 		return type.name + "Children";
 	}
 
-	private def getASTType(EClass type, ParserRule rule) {
+	private def getASTType(EClassifier type, ParserRule rule) {
 		if (rule !== null && rule.becomes !== null && rule.becomes.descriptor instanceof BecomesDeclManualClass) {
 			return new TypeReference(getASTPackage(grammar), (rule.becomes.descriptor as BecomesDeclManualClass).type)
 		} else {
