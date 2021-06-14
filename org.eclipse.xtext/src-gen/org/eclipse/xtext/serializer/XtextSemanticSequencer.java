@@ -879,7 +879,7 @@ public class XtextSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     EnumRule returns EnumRule
 	 *
 	 * Constraint:
-	 *     (annotations+=Annotation* name=ValidID type=TypeRef? alternatives=EnumLiterals)
+	 *     (annotations+=Annotation* name=ValidID type=TypeRef? becomes?='becomes'? alternatives=EnumLiterals)
 	 */
 	protected void sequence_EnumRule(ISerializationContext context, EnumRule semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

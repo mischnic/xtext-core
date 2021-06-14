@@ -266,7 +266,8 @@ public class XtextParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getEnumRuleAccess().getAnnotationsAssignment_0(), "rule__EnumRule__AnnotationsAssignment_0");
 			builder.put(grammarAccess.getEnumRuleAccess().getNameAssignment_2(), "rule__EnumRule__NameAssignment_2");
 			builder.put(grammarAccess.getEnumRuleAccess().getTypeAssignment_3_1(), "rule__EnumRule__TypeAssignment_3_1");
-			builder.put(grammarAccess.getEnumRuleAccess().getAlternativesAssignment_5(), "rule__EnumRule__AlternativesAssignment_5");
+			builder.put(grammarAccess.getEnumRuleAccess().getBecomesAssignment_4(), "rule__EnumRule__BecomesAssignment_4");
+			builder.put(grammarAccess.getEnumRuleAccess().getAlternativesAssignment_6(), "rule__EnumRule__AlternativesAssignment_6");
 			builder.put(grammarAccess.getEnumLiteralsAccess().getElementsAssignment_1_1_1(), "rule__EnumLiterals__ElementsAssignment_1_1_1");
 			builder.put(grammarAccess.getEnumLiteralDeclarationAccess().getEnumLiteralAssignment_0(), "rule__EnumLiteralDeclaration__EnumLiteralAssignment_0");
 			builder.put(grammarAccess.getEnumLiteralDeclarationAccess().getLiteralAssignment_1_1(), "rule__EnumLiteralDeclaration__LiteralAssignment_1_1");

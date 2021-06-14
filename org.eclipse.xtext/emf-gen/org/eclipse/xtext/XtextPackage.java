@@ -1174,13 +1174,22 @@ public interface XtextPackage extends EPackage {
 	int ENUM_RULE__ANNOTATIONS = ABSTRACT_RULE__ANNOTATIONS;
 
 	/**
+	 * The feature id for the '<em><b>Becomes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUM_RULE__BECOMES = ABSTRACT_RULE_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Enum Rule</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENUM_RULE_FEATURE_COUNT = ABSTRACT_RULE_FEATURE_COUNT + 0;
+	int ENUM_RULE_FEATURE_COUNT = ABSTRACT_RULE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.xtext.impl.EnumLiteralDeclarationImpl <em>Enum Literal Declaration</em>}' class.
@@ -2807,6 +2816,17 @@ public interface XtextPackage extends EPackage {
 	EClass getEnumRule();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.xtext.EnumRule#isBecomes <em>Becomes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Becomes</em>'.
+	 * @see org.eclipse.xtext.EnumRule#isBecomes()
+	 * @see #getEnumRule()
+	 * @generated
+	 */
+	EAttribute getEnumRule_Becomes();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.xtext.EnumLiteralDeclaration <em>Enum Literal Declaration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3861,6 +3881,14 @@ public interface XtextPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ENUM_RULE = eINSTANCE.getEnumRule();
+
+		/**
+		 * The meta object literal for the '<em><b>Becomes</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENUM_RULE__BECOMES = eINSTANCE.getEnumRule_Becomes();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.xtext.impl.EnumLiteralDeclarationImpl <em>Enum Literal Declaration</em>}' class.

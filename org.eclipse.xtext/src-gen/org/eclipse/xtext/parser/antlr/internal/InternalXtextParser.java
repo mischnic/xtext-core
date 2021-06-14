@@ -11114,32 +11114,33 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEnumRule"
-    // InternalXtext.g:4073:1: ruleEnumRule returns [EObject current=null] : ( ( (lv_annotations_0_0= ruleAnnotation ) )* otherlv_1= 'enum' ( (lv_name_2_0= ruleValidID ) ) (otherlv_3= 'returns' ( (lv_type_4_0= ruleTypeRef ) ) )? otherlv_5= ':' ( (lv_alternatives_6_0= ruleEnumLiterals ) ) otherlv_7= ';' ) ;
+    // InternalXtext.g:4073:1: ruleEnumRule returns [EObject current=null] : ( ( (lv_annotations_0_0= ruleAnnotation ) )* otherlv_1= 'enum' ( (lv_name_2_0= ruleValidID ) ) (otherlv_3= 'returns' ( (lv_type_4_0= ruleTypeRef ) ) )? ( (lv_becomes_5_0= 'becomes' ) )? otherlv_6= ':' ( (lv_alternatives_7_0= ruleEnumLiterals ) ) otherlv_8= ';' ) ;
     public final EObject ruleEnumRule() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
         Token otherlv_3=null;
-        Token otherlv_5=null;
-        Token otherlv_7=null;
+        Token lv_becomes_5_0=null;
+        Token otherlv_6=null;
+        Token otherlv_8=null;
         EObject lv_annotations_0_0 = null;
 
         AntlrDatatypeRuleToken lv_name_2_0 = null;
 
         EObject lv_type_4_0 = null;
 
-        EObject lv_alternatives_6_0 = null;
+        EObject lv_alternatives_7_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalXtext.g:4079:2: ( ( ( (lv_annotations_0_0= ruleAnnotation ) )* otherlv_1= 'enum' ( (lv_name_2_0= ruleValidID ) ) (otherlv_3= 'returns' ( (lv_type_4_0= ruleTypeRef ) ) )? otherlv_5= ':' ( (lv_alternatives_6_0= ruleEnumLiterals ) ) otherlv_7= ';' ) )
-            // InternalXtext.g:4080:2: ( ( (lv_annotations_0_0= ruleAnnotation ) )* otherlv_1= 'enum' ( (lv_name_2_0= ruleValidID ) ) (otherlv_3= 'returns' ( (lv_type_4_0= ruleTypeRef ) ) )? otherlv_5= ':' ( (lv_alternatives_6_0= ruleEnumLiterals ) ) otherlv_7= ';' )
+            // InternalXtext.g:4079:2: ( ( ( (lv_annotations_0_0= ruleAnnotation ) )* otherlv_1= 'enum' ( (lv_name_2_0= ruleValidID ) ) (otherlv_3= 'returns' ( (lv_type_4_0= ruleTypeRef ) ) )? ( (lv_becomes_5_0= 'becomes' ) )? otherlv_6= ':' ( (lv_alternatives_7_0= ruleEnumLiterals ) ) otherlv_8= ';' ) )
+            // InternalXtext.g:4080:2: ( ( (lv_annotations_0_0= ruleAnnotation ) )* otherlv_1= 'enum' ( (lv_name_2_0= ruleValidID ) ) (otherlv_3= 'returns' ( (lv_type_4_0= ruleTypeRef ) ) )? ( (lv_becomes_5_0= 'becomes' ) )? otherlv_6= ':' ( (lv_alternatives_7_0= ruleEnumLiterals ) ) otherlv_8= ';' )
             {
-            // InternalXtext.g:4080:2: ( ( (lv_annotations_0_0= ruleAnnotation ) )* otherlv_1= 'enum' ( (lv_name_2_0= ruleValidID ) ) (otherlv_3= 'returns' ( (lv_type_4_0= ruleTypeRef ) ) )? otherlv_5= ':' ( (lv_alternatives_6_0= ruleEnumLiterals ) ) otherlv_7= ';' )
-            // InternalXtext.g:4081:3: ( (lv_annotations_0_0= ruleAnnotation ) )* otherlv_1= 'enum' ( (lv_name_2_0= ruleValidID ) ) (otherlv_3= 'returns' ( (lv_type_4_0= ruleTypeRef ) ) )? otherlv_5= ':' ( (lv_alternatives_6_0= ruleEnumLiterals ) ) otherlv_7= ';'
+            // InternalXtext.g:4080:2: ( ( (lv_annotations_0_0= ruleAnnotation ) )* otherlv_1= 'enum' ( (lv_name_2_0= ruleValidID ) ) (otherlv_3= 'returns' ( (lv_type_4_0= ruleTypeRef ) ) )? ( (lv_becomes_5_0= 'becomes' ) )? otherlv_6= ':' ( (lv_alternatives_7_0= ruleEnumLiterals ) ) otherlv_8= ';' )
+            // InternalXtext.g:4081:3: ( (lv_annotations_0_0= ruleAnnotation ) )* otherlv_1= 'enum' ( (lv_name_2_0= ruleValidID ) ) (otherlv_3= 'returns' ( (lv_type_4_0= ruleTypeRef ) ) )? ( (lv_becomes_5_0= 'becomes' ) )? otherlv_6= ':' ( (lv_alternatives_7_0= ruleEnumLiterals ) ) otherlv_8= ';'
             {
             // InternalXtext.g:4081:3: ( (lv_annotations_0_0= ruleAnnotation ) )*
             loop89:
@@ -11203,7 +11204,7 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
 
             					newCompositeNode(grammarAccess.getEnumRuleAccess().getNameValidIDParserRuleCall_2_0());
             				
-            pushFollow(FollowSets000.FOLLOW_54);
+            pushFollow(FollowSets000.FOLLOW_59);
             lv_name_2_0=ruleValidID();
 
             state._fsp--;
@@ -11249,7 +11250,7 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
 
                     						newCompositeNode(grammarAccess.getEnumRuleAccess().getTypeTypeRefParserRuleCall_3_1_0());
                     					
-                    pushFollow(FollowSets000.FOLLOW_20);
+                    pushFollow(FollowSets000.FOLLOW_60);
                     lv_type_4_0=ruleTypeRef();
 
                     state._fsp--;
@@ -11277,21 +11278,54 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,27,FollowSets000.FOLLOW_13); 
+            // InternalXtext.g:4148:3: ( (lv_becomes_5_0= 'becomes' ) )?
+            int alt91=2;
+            int LA91_0 = input.LA(1);
 
-            			newLeafNode(otherlv_5, grammarAccess.getEnumRuleAccess().getColonKeyword_4());
+            if ( (LA91_0==26) ) {
+                alt91=1;
+            }
+            switch (alt91) {
+                case 1 :
+                    // InternalXtext.g:4149:4: (lv_becomes_5_0= 'becomes' )
+                    {
+                    // InternalXtext.g:4149:4: (lv_becomes_5_0= 'becomes' )
+                    // InternalXtext.g:4150:5: lv_becomes_5_0= 'becomes'
+                    {
+                    lv_becomes_5_0=(Token)match(input,26,FollowSets000.FOLLOW_20); 
+
+                    					newLeafNode(lv_becomes_5_0, grammarAccess.getEnumRuleAccess().getBecomesBecomesKeyword_4_0());
+                    				
+
+                    					if (current==null) {
+                    						current = createModelElement(grammarAccess.getEnumRuleRule());
+                    					}
+                    					setWithLastConsumed(current, "becomes", lv_becomes_5_0 != null, "becomes");
+                    				
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            otherlv_6=(Token)match(input,27,FollowSets000.FOLLOW_13); 
+
+            			newLeafNode(otherlv_6, grammarAccess.getEnumRuleAccess().getColonKeyword_5());
             		
-            // InternalXtext.g:4152:3: ( (lv_alternatives_6_0= ruleEnumLiterals ) )
-            // InternalXtext.g:4153:4: (lv_alternatives_6_0= ruleEnumLiterals )
+            // InternalXtext.g:4166:3: ( (lv_alternatives_7_0= ruleEnumLiterals ) )
+            // InternalXtext.g:4167:4: (lv_alternatives_7_0= ruleEnumLiterals )
             {
-            // InternalXtext.g:4153:4: (lv_alternatives_6_0= ruleEnumLiterals )
-            // InternalXtext.g:4154:5: lv_alternatives_6_0= ruleEnumLiterals
+            // InternalXtext.g:4167:4: (lv_alternatives_7_0= ruleEnumLiterals )
+            // InternalXtext.g:4168:5: lv_alternatives_7_0= ruleEnumLiterals
             {
 
-            					newCompositeNode(grammarAccess.getEnumRuleAccess().getAlternativesEnumLiteralsParserRuleCall_5_0());
+            					newCompositeNode(grammarAccess.getEnumRuleAccess().getAlternativesEnumLiteralsParserRuleCall_6_0());
             				
             pushFollow(FollowSets000.FOLLOW_22);
-            lv_alternatives_6_0=ruleEnumLiterals();
+            lv_alternatives_7_0=ruleEnumLiterals();
 
             state._fsp--;
 
@@ -11302,7 +11336,7 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             					set(
             						current,
             						"alternatives",
-            						lv_alternatives_6_0,
+            						lv_alternatives_7_0,
             						"org.eclipse.xtext.Xtext.EnumLiterals");
             					afterParserOrEnumRuleCall();
             				
@@ -11312,9 +11346,9 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_7=(Token)match(input,28,FollowSets000.FOLLOW_2); 
+            otherlv_8=(Token)match(input,28,FollowSets000.FOLLOW_2); 
 
-            			newLeafNode(otherlv_7, grammarAccess.getEnumRuleAccess().getSemicolonKeyword_6());
+            			newLeafNode(otherlv_8, grammarAccess.getEnumRuleAccess().getSemicolonKeyword_7());
             		
 
             }
@@ -11339,7 +11373,7 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEnumLiterals"
-    // InternalXtext.g:4179:1: entryRuleEnumLiterals returns [EObject current=null] : iv_ruleEnumLiterals= ruleEnumLiterals EOF ;
+    // InternalXtext.g:4193:1: entryRuleEnumLiterals returns [EObject current=null] : iv_ruleEnumLiterals= ruleEnumLiterals EOF ;
     public final EObject entryRuleEnumLiterals() throws RecognitionException {
         EObject current = null;
 
@@ -11347,8 +11381,8 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalXtext.g:4179:53: (iv_ruleEnumLiterals= ruleEnumLiterals EOF )
-            // InternalXtext.g:4180:2: iv_ruleEnumLiterals= ruleEnumLiterals EOF
+            // InternalXtext.g:4193:53: (iv_ruleEnumLiterals= ruleEnumLiterals EOF )
+            // InternalXtext.g:4194:2: iv_ruleEnumLiterals= ruleEnumLiterals EOF
             {
              newCompositeNode(grammarAccess.getEnumLiteralsRule()); 
             pushFollow(FollowSets000.FOLLOW_1);
@@ -11375,7 +11409,7 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEnumLiterals"
-    // InternalXtext.g:4186:1: ruleEnumLiterals returns [EObject current=null] : (this_EnumLiteralDeclaration_0= ruleEnumLiteralDeclaration ( () (otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) ) )+ )? ) ;
+    // InternalXtext.g:4200:1: ruleEnumLiterals returns [EObject current=null] : (this_EnumLiteralDeclaration_0= ruleEnumLiteralDeclaration ( () (otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) ) )+ )? ) ;
     public final EObject ruleEnumLiterals() throws RecognitionException {
         EObject current = null;
 
@@ -11389,11 +11423,11 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalXtext.g:4192:2: ( (this_EnumLiteralDeclaration_0= ruleEnumLiteralDeclaration ( () (otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) ) )+ )? ) )
-            // InternalXtext.g:4193:2: (this_EnumLiteralDeclaration_0= ruleEnumLiteralDeclaration ( () (otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) ) )+ )? )
+            // InternalXtext.g:4206:2: ( (this_EnumLiteralDeclaration_0= ruleEnumLiteralDeclaration ( () (otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) ) )+ )? ) )
+            // InternalXtext.g:4207:2: (this_EnumLiteralDeclaration_0= ruleEnumLiteralDeclaration ( () (otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) ) )+ )? )
             {
-            // InternalXtext.g:4193:2: (this_EnumLiteralDeclaration_0= ruleEnumLiteralDeclaration ( () (otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) ) )+ )? )
-            // InternalXtext.g:4194:3: this_EnumLiteralDeclaration_0= ruleEnumLiteralDeclaration ( () (otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) ) )+ )?
+            // InternalXtext.g:4207:2: (this_EnumLiteralDeclaration_0= ruleEnumLiteralDeclaration ( () (otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) ) )+ )? )
+            // InternalXtext.g:4208:3: this_EnumLiteralDeclaration_0= ruleEnumLiteralDeclaration ( () (otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) ) )+ )?
             {
 
             			newCompositeNode(grammarAccess.getEnumLiteralsAccess().getEnumLiteralDeclarationParserRuleCall_0());
@@ -11407,19 +11441,19 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
             			current = this_EnumLiteralDeclaration_0;
             			afterParserOrEnumRuleCall();
             		
-            // InternalXtext.g:4202:3: ( () (otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) ) )+ )?
-            int alt92=2;
-            int LA92_0 = input.LA(1);
+            // InternalXtext.g:4216:3: ( () (otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) ) )+ )?
+            int alt93=2;
+            int LA93_0 = input.LA(1);
 
-            if ( (LA92_0==37) ) {
-                alt92=1;
+            if ( (LA93_0==37) ) {
+                alt93=1;
             }
-            switch (alt92) {
+            switch (alt93) {
                 case 1 :
-                    // InternalXtext.g:4203:4: () (otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) ) )+
+                    // InternalXtext.g:4217:4: () (otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) ) )+
                     {
-                    // InternalXtext.g:4203:4: ()
-                    // InternalXtext.g:4204:5: 
+                    // InternalXtext.g:4217:4: ()
+                    // InternalXtext.g:4218:5: 
                     {
 
                     					current = forceCreateModelElementAndAdd(
@@ -11429,31 +11463,31 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalXtext.g:4210:4: (otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) ) )+
-                    int cnt91=0;
-                    loop91:
+                    // InternalXtext.g:4224:4: (otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) ) )+
+                    int cnt92=0;
+                    loop92:
                     do {
-                        int alt91=2;
-                        int LA91_0 = input.LA(1);
+                        int alt92=2;
+                        int LA92_0 = input.LA(1);
 
-                        if ( (LA91_0==37) ) {
-                            alt91=1;
+                        if ( (LA92_0==37) ) {
+                            alt92=1;
                         }
 
 
-                        switch (alt91) {
+                        switch (alt92) {
                     	case 1 :
-                    	    // InternalXtext.g:4211:5: otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) )
+                    	    // InternalXtext.g:4225:5: otherlv_2= '|' ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) )
                     	    {
                     	    otherlv_2=(Token)match(input,37,FollowSets000.FOLLOW_13); 
 
                     	    					newLeafNode(otherlv_2, grammarAccess.getEnumLiteralsAccess().getVerticalLineKeyword_1_1_0());
                     	    				
-                    	    // InternalXtext.g:4215:5: ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) )
-                    	    // InternalXtext.g:4216:6: (lv_elements_3_0= ruleEnumLiteralDeclaration )
+                    	    // InternalXtext.g:4229:5: ( (lv_elements_3_0= ruleEnumLiteralDeclaration ) )
+                    	    // InternalXtext.g:4230:6: (lv_elements_3_0= ruleEnumLiteralDeclaration )
                     	    {
-                    	    // InternalXtext.g:4216:6: (lv_elements_3_0= ruleEnumLiteralDeclaration )
-                    	    // InternalXtext.g:4217:7: lv_elements_3_0= ruleEnumLiteralDeclaration
+                    	    // InternalXtext.g:4230:6: (lv_elements_3_0= ruleEnumLiteralDeclaration )
+                    	    // InternalXtext.g:4231:7: lv_elements_3_0= ruleEnumLiteralDeclaration
                     	    {
 
                     	    							newCompositeNode(grammarAccess.getEnumLiteralsAccess().getElementsEnumLiteralDeclarationParserRuleCall_1_1_1_0());
@@ -11485,12 +11519,12 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt91 >= 1 ) break loop91;
+                    	    if ( cnt92 >= 1 ) break loop92;
                                 EarlyExitException eee =
-                                    new EarlyExitException(91, input);
+                                    new EarlyExitException(92, input);
                                 throw eee;
                         }
-                        cnt91++;
+                        cnt92++;
                     } while (true);
 
 
@@ -11522,7 +11556,7 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEnumLiteralDeclaration"
-    // InternalXtext.g:4240:1: entryRuleEnumLiteralDeclaration returns [EObject current=null] : iv_ruleEnumLiteralDeclaration= ruleEnumLiteralDeclaration EOF ;
+    // InternalXtext.g:4254:1: entryRuleEnumLiteralDeclaration returns [EObject current=null] : iv_ruleEnumLiteralDeclaration= ruleEnumLiteralDeclaration EOF ;
     public final EObject entryRuleEnumLiteralDeclaration() throws RecognitionException {
         EObject current = null;
 
@@ -11530,8 +11564,8 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalXtext.g:4240:63: (iv_ruleEnumLiteralDeclaration= ruleEnumLiteralDeclaration EOF )
-            // InternalXtext.g:4241:2: iv_ruleEnumLiteralDeclaration= ruleEnumLiteralDeclaration EOF
+            // InternalXtext.g:4254:63: (iv_ruleEnumLiteralDeclaration= ruleEnumLiteralDeclaration EOF )
+            // InternalXtext.g:4255:2: iv_ruleEnumLiteralDeclaration= ruleEnumLiteralDeclaration EOF
             {
              newCompositeNode(grammarAccess.getEnumLiteralDeclarationRule()); 
             pushFollow(FollowSets000.FOLLOW_1);
@@ -11558,7 +11592,7 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEnumLiteralDeclaration"
-    // InternalXtext.g:4247:1: ruleEnumLiteralDeclaration returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '=' ( (lv_literal_2_0= ruleKeyword ) ) )? ) ;
+    // InternalXtext.g:4261:1: ruleEnumLiteralDeclaration returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '=' ( (lv_literal_2_0= ruleKeyword ) ) )? ) ;
     public final EObject ruleEnumLiteralDeclaration() throws RecognitionException {
         EObject current = null;
 
@@ -11571,24 +11605,24 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalXtext.g:4253:2: ( ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '=' ( (lv_literal_2_0= ruleKeyword ) ) )? ) )
-            // InternalXtext.g:4254:2: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '=' ( (lv_literal_2_0= ruleKeyword ) ) )? )
+            // InternalXtext.g:4267:2: ( ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '=' ( (lv_literal_2_0= ruleKeyword ) ) )? ) )
+            // InternalXtext.g:4268:2: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '=' ( (lv_literal_2_0= ruleKeyword ) ) )? )
             {
-            // InternalXtext.g:4254:2: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '=' ( (lv_literal_2_0= ruleKeyword ) ) )? )
-            // InternalXtext.g:4255:3: ( (otherlv_0= RULE_ID ) ) (otherlv_1= '=' ( (lv_literal_2_0= ruleKeyword ) ) )?
+            // InternalXtext.g:4268:2: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '=' ( (lv_literal_2_0= ruleKeyword ) ) )? )
+            // InternalXtext.g:4269:3: ( (otherlv_0= RULE_ID ) ) (otherlv_1= '=' ( (lv_literal_2_0= ruleKeyword ) ) )?
             {
-            // InternalXtext.g:4255:3: ( (otherlv_0= RULE_ID ) )
-            // InternalXtext.g:4256:4: (otherlv_0= RULE_ID )
+            // InternalXtext.g:4269:3: ( (otherlv_0= RULE_ID ) )
+            // InternalXtext.g:4270:4: (otherlv_0= RULE_ID )
             {
-            // InternalXtext.g:4256:4: (otherlv_0= RULE_ID )
-            // InternalXtext.g:4257:5: otherlv_0= RULE_ID
+            // InternalXtext.g:4270:4: (otherlv_0= RULE_ID )
+            // InternalXtext.g:4271:5: otherlv_0= RULE_ID
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getEnumLiteralDeclarationRule());
             					}
             				
-            otherlv_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_59); 
+            otherlv_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_61); 
 
             					newLeafNode(otherlv_0, grammarAccess.getEnumLiteralDeclarationAccess().getEnumLiteralEEnumLiteralCrossReference_0_0());
             				
@@ -11598,26 +11632,26 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalXtext.g:4268:3: (otherlv_1= '=' ( (lv_literal_2_0= ruleKeyword ) ) )?
-            int alt93=2;
-            int LA93_0 = input.LA(1);
+            // InternalXtext.g:4282:3: (otherlv_1= '=' ( (lv_literal_2_0= ruleKeyword ) ) )?
+            int alt94=2;
+            int LA94_0 = input.LA(1);
 
-            if ( (LA93_0==41) ) {
-                alt93=1;
+            if ( (LA94_0==41) ) {
+                alt94=1;
             }
-            switch (alt93) {
+            switch (alt94) {
                 case 1 :
-                    // InternalXtext.g:4269:4: otherlv_1= '=' ( (lv_literal_2_0= ruleKeyword ) )
+                    // InternalXtext.g:4283:4: otherlv_1= '=' ( (lv_literal_2_0= ruleKeyword ) )
                     {
                     otherlv_1=(Token)match(input,41,FollowSets000.FOLLOW_11); 
 
                     				newLeafNode(otherlv_1, grammarAccess.getEnumLiteralDeclarationAccess().getEqualsSignKeyword_1_0());
                     			
-                    // InternalXtext.g:4273:4: ( (lv_literal_2_0= ruleKeyword ) )
-                    // InternalXtext.g:4274:5: (lv_literal_2_0= ruleKeyword )
+                    // InternalXtext.g:4287:4: ( (lv_literal_2_0= ruleKeyword ) )
+                    // InternalXtext.g:4288:5: (lv_literal_2_0= ruleKeyword )
                     {
-                    // InternalXtext.g:4274:5: (lv_literal_2_0= ruleKeyword )
-                    // InternalXtext.g:4275:6: lv_literal_2_0= ruleKeyword
+                    // InternalXtext.g:4288:5: (lv_literal_2_0= ruleKeyword )
+                    // InternalXtext.g:4289:6: lv_literal_2_0= ruleKeyword
                     {
 
                     						newCompositeNode(grammarAccess.getEnumLiteralDeclarationAccess().getLiteralKeywordParserRuleCall_1_1_0());
@@ -11904,7 +11938,9 @@ public class InternalXtextParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_56 = new BitSet(new long[]{0x0012E00000050032L});
         public static final BitSet FOLLOW_57 = new BitSet(new long[]{0x0020000000000002L});
         public static final BitSet FOLLOW_58 = new BitSet(new long[]{0x0040000000400000L});
-        public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x0000020000000002L});
+        public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x000000000E000000L});
+        public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x000000000C000000L});
+        public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0000020000000002L});
     }
 
 

@@ -4145,16 +4145,30 @@ ruleEnumRule returns [EObject current=null]
 				)
 			)
 		)?
-		otherlv_5=':'
+		(
+			(
+				lv_becomes_5_0='becomes'
+				{
+					newLeafNode(lv_becomes_5_0, grammarAccess.getEnumRuleAccess().getBecomesBecomesKeyword_4_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getEnumRuleRule());
+					}
+					setWithLastConsumed($current, "becomes", lv_becomes_5_0 != null, "becomes");
+				}
+			)
+		)?
+		otherlv_6=':'
 		{
-			newLeafNode(otherlv_5, grammarAccess.getEnumRuleAccess().getColonKeyword_4());
+			newLeafNode(otherlv_6, grammarAccess.getEnumRuleAccess().getColonKeyword_5());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getEnumRuleAccess().getAlternativesEnumLiteralsParserRuleCall_5_0());
+					newCompositeNode(grammarAccess.getEnumRuleAccess().getAlternativesEnumLiteralsParserRuleCall_6_0());
 				}
-				lv_alternatives_6_0=ruleEnumLiterals
+				lv_alternatives_7_0=ruleEnumLiterals
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getEnumRuleRule());
@@ -4162,15 +4176,15 @@ ruleEnumRule returns [EObject current=null]
 					set(
 						$current,
 						"alternatives",
-						lv_alternatives_6_0,
+						lv_alternatives_7_0,
 						"org.eclipse.xtext.Xtext.EnumLiterals");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_7=';'
+		otherlv_8=';'
 		{
-			newLeafNode(otherlv_7, grammarAccess.getEnumRuleAccess().getSemicolonKeyword_6());
+			newLeafNode(otherlv_8, grammarAccess.getEnumRuleAccess().getSemicolonKeyword_7());
 		}
 	)
 ;

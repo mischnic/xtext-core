@@ -2532,19 +2532,22 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Keyword cReturnsKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Assignment cTypeAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
 		private final RuleCall cTypeTypeRefParserRuleCall_3_1_0 = (RuleCall)cTypeAssignment_3_1.eContents().get(0);
-		private final Keyword cColonKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cAlternativesAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cAlternativesEnumLiteralsParserRuleCall_5_0 = (RuleCall)cAlternativesAssignment_5.eContents().get(0);
-		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cBecomesAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final Keyword cBecomesBecomesKeyword_4_0 = (Keyword)cBecomesAssignment_4.eContents().get(0);
+		private final Keyword cColonKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cAlternativesAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cAlternativesEnumLiteralsParserRuleCall_6_0 = (RuleCall)cAlternativesAssignment_6.eContents().get(0);
+		private final Keyword cSemicolonKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//EnumRule:
 		//	annotations+=Annotation*
-		//	'enum' name=ValidID ('returns' type=TypeRef)? ':'
+		//	'enum' name=ValidID ('returns' type=TypeRef)? becomes?='becomes'? ':'
 		//	alternatives=EnumLiterals
 		//	';';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//annotations+=Annotation* 'enum' name=ValidID ('returns' type=TypeRef)? ':' alternatives=EnumLiterals ';'
+		//annotations+=Annotation* 'enum' name=ValidID ('returns' type=TypeRef)? becomes?='becomes'? ':' alternatives=EnumLiterals
+		//';'
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=Annotation*
@@ -2574,17 +2577,23 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//TypeRef
 		public RuleCall getTypeTypeRefParserRuleCall_3_1_0() { return cTypeTypeRefParserRuleCall_3_1_0; }
 		
+		//becomes?='becomes'?
+		public Assignment getBecomesAssignment_4() { return cBecomesAssignment_4; }
+		
+		//'becomes'
+		public Keyword getBecomesBecomesKeyword_4_0() { return cBecomesBecomesKeyword_4_0; }
+		
 		//':'
-		public Keyword getColonKeyword_4() { return cColonKeyword_4; }
+		public Keyword getColonKeyword_5() { return cColonKeyword_5; }
 		
 		//alternatives=EnumLiterals
-		public Assignment getAlternativesAssignment_5() { return cAlternativesAssignment_5; }
+		public Assignment getAlternativesAssignment_6() { return cAlternativesAssignment_6; }
 		
 		//EnumLiterals
-		public RuleCall getAlternativesEnumLiteralsParserRuleCall_5_0() { return cAlternativesEnumLiteralsParserRuleCall_5_0; }
+		public RuleCall getAlternativesEnumLiteralsParserRuleCall_6_0() { return cAlternativesEnumLiteralsParserRuleCall_6_0; }
 		
 		//';'
-		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
+		public Keyword getSemicolonKeyword_7() { return cSemicolonKeyword_7; }
 	}
 	public class EnumLiteralsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.Xtext.EnumLiterals");
@@ -3484,7 +3493,7 @@ public class XtextGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	
 	//EnumRule:
 	//	annotations+=Annotation*
-	//	'enum' name=ValidID ('returns' type=TypeRef)? ':'
+	//	'enum' name=ValidID ('returns' type=TypeRef)? becomes?='becomes'? ':'
 	//	alternatives=EnumLiterals
 	//	';';
 	public EnumRuleElements getEnumRuleAccess() {

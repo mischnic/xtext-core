@@ -1009,6 +1009,16 @@ public class XtextPackageImpl extends EPackageImpl implements XtextPackage {
 	 * @generated
 	 */
 	@Override
+	public EAttribute getEnumRule_Becomes() {
+		return (EAttribute)enumRuleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getEnumLiteralDeclaration() {
 		return enumLiteralDeclarationEClass;
 	}
@@ -1602,6 +1612,7 @@ public class XtextPackageImpl extends EPackageImpl implements XtextPackage {
 		wildcardEClass = createEClass(WILDCARD);
 
 		enumRuleEClass = createEClass(ENUM_RULE);
+		createEAttribute(enumRuleEClass, ENUM_RULE__BECOMES);
 
 		enumLiteralDeclarationEClass = createEClass(ENUM_LITERAL_DECLARATION);
 		createEReference(enumLiteralDeclarationEClass, ENUM_LITERAL_DECLARATION__ENUM_LITERAL);
@@ -1816,6 +1827,7 @@ public class XtextPackageImpl extends EPackageImpl implements XtextPackage {
 		initEClass(wildcardEClass, Wildcard.class, "Wildcard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(enumRuleEClass, EnumRule.class, "EnumRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEnumRule_Becomes(), ecorePackage.getEBoolean(), "becomes", null, 0, 1, EnumRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(enumLiteralDeclarationEClass, EnumLiteralDeclaration.class, "EnumLiteralDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEnumLiteralDeclaration_EnumLiteral(), theEcorePackage.getEEnumLiteral(), null, "enumLiteral", null, 0, 1, EnumLiteralDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

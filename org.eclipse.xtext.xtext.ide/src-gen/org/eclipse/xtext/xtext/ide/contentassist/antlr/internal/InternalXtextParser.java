@@ -6089,13 +6089,6 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
             case 54:
                 {
                 switch ( input.LA(2) ) {
-                case RULE_ID:
-                case 17:
-                case 18:
-                    {
-                    alt16=5;
-                    }
-                    break;
                 case RULE_STRING:
                     {
                     alt16=4;
@@ -6104,6 +6097,13 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
                 case 23:
                     {
                     alt16=6;
+                    }
+                    break;
+                case RULE_ID:
+                case 17:
+                case 18:
+                    {
+                    alt16=5;
                     }
                     break;
                 default:
@@ -29086,7 +29086,7 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
             // InternalXtext.g:9344:1: ( rule__EnumRule__Group__4__Impl rule__EnumRule__Group__5 )
             // InternalXtext.g:9345:2: rule__EnumRule__Group__4__Impl rule__EnumRule__Group__5
             {
-            pushFollow(FollowSets000.FOLLOW_15);
+            pushFollow(FollowSets000.FOLLOW_62);
             rule__EnumRule__Group__4__Impl();
 
             state._fsp--;
@@ -29115,21 +29115,42 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumRule__Group__4__Impl"
-    // InternalXtext.g:9352:1: rule__EnumRule__Group__4__Impl : ( ':' ) ;
+    // InternalXtext.g:9352:1: rule__EnumRule__Group__4__Impl : ( ( rule__EnumRule__BecomesAssignment_4 )? ) ;
     public final void rule__EnumRule__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9356:1: ( ( ':' ) )
-            // InternalXtext.g:9357:1: ( ':' )
+            // InternalXtext.g:9356:1: ( ( ( rule__EnumRule__BecomesAssignment_4 )? ) )
+            // InternalXtext.g:9357:1: ( ( rule__EnumRule__BecomesAssignment_4 )? )
             {
-            // InternalXtext.g:9357:1: ( ':' )
-            // InternalXtext.g:9358:2: ':'
+            // InternalXtext.g:9357:1: ( ( rule__EnumRule__BecomesAssignment_4 )? )
+            // InternalXtext.g:9358:2: ( rule__EnumRule__BecomesAssignment_4 )?
             {
-             before(grammarAccess.getEnumRuleAccess().getColonKeyword_4()); 
-            match(input,30,FollowSets000.FOLLOW_2); 
-             after(grammarAccess.getEnumRuleAccess().getColonKeyword_4()); 
+             before(grammarAccess.getEnumRuleAccess().getBecomesAssignment_4()); 
+            // InternalXtext.g:9359:2: ( rule__EnumRule__BecomesAssignment_4 )?
+            int alt92=2;
+            int LA92_0 = input.LA(1);
+
+            if ( (LA92_0==33) ) {
+                alt92=1;
+            }
+            switch (alt92) {
+                case 1 :
+                    // InternalXtext.g:9359:3: rule__EnumRule__BecomesAssignment_4
+                    {
+                    pushFollow(FollowSets000.FOLLOW_2);
+                    rule__EnumRule__BecomesAssignment_4();
+
+                    state._fsp--;
+
+
+                    }
+                    break;
+
+            }
+
+             after(grammarAccess.getEnumRuleAccess().getBecomesAssignment_4()); 
 
             }
 
@@ -29161,7 +29182,7 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
             // InternalXtext.g:9371:1: ( rule__EnumRule__Group__5__Impl rule__EnumRule__Group__6 )
             // InternalXtext.g:9372:2: rule__EnumRule__Group__5__Impl rule__EnumRule__Group__6
             {
-            pushFollow(FollowSets000.FOLLOW_20);
+            pushFollow(FollowSets000.FOLLOW_15);
             rule__EnumRule__Group__5__Impl();
 
             state._fsp--;
@@ -29190,31 +29211,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumRule__Group__5__Impl"
-    // InternalXtext.g:9379:1: rule__EnumRule__Group__5__Impl : ( ( rule__EnumRule__AlternativesAssignment_5 ) ) ;
+    // InternalXtext.g:9379:1: rule__EnumRule__Group__5__Impl : ( ':' ) ;
     public final void rule__EnumRule__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9383:1: ( ( ( rule__EnumRule__AlternativesAssignment_5 ) ) )
-            // InternalXtext.g:9384:1: ( ( rule__EnumRule__AlternativesAssignment_5 ) )
+            // InternalXtext.g:9383:1: ( ( ':' ) )
+            // InternalXtext.g:9384:1: ( ':' )
             {
-            // InternalXtext.g:9384:1: ( ( rule__EnumRule__AlternativesAssignment_5 ) )
-            // InternalXtext.g:9385:2: ( rule__EnumRule__AlternativesAssignment_5 )
+            // InternalXtext.g:9384:1: ( ':' )
+            // InternalXtext.g:9385:2: ':'
             {
-             before(grammarAccess.getEnumRuleAccess().getAlternativesAssignment_5()); 
-            // InternalXtext.g:9386:2: ( rule__EnumRule__AlternativesAssignment_5 )
-            // InternalXtext.g:9386:3: rule__EnumRule__AlternativesAssignment_5
-            {
-            pushFollow(FollowSets000.FOLLOW_2);
-            rule__EnumRule__AlternativesAssignment_5();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getEnumRuleAccess().getAlternativesAssignment_5()); 
+             before(grammarAccess.getEnumRuleAccess().getColonKeyword_5()); 
+            match(input,30,FollowSets000.FOLLOW_2); 
+             after(grammarAccess.getEnumRuleAccess().getColonKeyword_5()); 
 
             }
 
@@ -29237,17 +29248,22 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumRule__Group__6"
-    // InternalXtext.g:9394:1: rule__EnumRule__Group__6 : rule__EnumRule__Group__6__Impl ;
+    // InternalXtext.g:9394:1: rule__EnumRule__Group__6 : rule__EnumRule__Group__6__Impl rule__EnumRule__Group__7 ;
     public final void rule__EnumRule__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9398:1: ( rule__EnumRule__Group__6__Impl )
-            // InternalXtext.g:9399:2: rule__EnumRule__Group__6__Impl
+            // InternalXtext.g:9398:1: ( rule__EnumRule__Group__6__Impl rule__EnumRule__Group__7 )
+            // InternalXtext.g:9399:2: rule__EnumRule__Group__6__Impl rule__EnumRule__Group__7
             {
-            pushFollow(FollowSets000.FOLLOW_2);
+            pushFollow(FollowSets000.FOLLOW_20);
             rule__EnumRule__Group__6__Impl();
+
+            state._fsp--;
+
+            pushFollow(FollowSets000.FOLLOW_2);
+            rule__EnumRule__Group__7();
 
             state._fsp--;
 
@@ -29270,21 +29286,31 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumRule__Group__6__Impl"
-    // InternalXtext.g:9405:1: rule__EnumRule__Group__6__Impl : ( ';' ) ;
+    // InternalXtext.g:9406:1: rule__EnumRule__Group__6__Impl : ( ( rule__EnumRule__AlternativesAssignment_6 ) ) ;
     public final void rule__EnumRule__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9409:1: ( ( ';' ) )
-            // InternalXtext.g:9410:1: ( ';' )
+            // InternalXtext.g:9410:1: ( ( ( rule__EnumRule__AlternativesAssignment_6 ) ) )
+            // InternalXtext.g:9411:1: ( ( rule__EnumRule__AlternativesAssignment_6 ) )
             {
-            // InternalXtext.g:9410:1: ( ';' )
-            // InternalXtext.g:9411:2: ';'
+            // InternalXtext.g:9411:1: ( ( rule__EnumRule__AlternativesAssignment_6 ) )
+            // InternalXtext.g:9412:2: ( rule__EnumRule__AlternativesAssignment_6 )
             {
-             before(grammarAccess.getEnumRuleAccess().getSemicolonKeyword_6()); 
-            match(input,31,FollowSets000.FOLLOW_2); 
-             after(grammarAccess.getEnumRuleAccess().getSemicolonKeyword_6()); 
+             before(grammarAccess.getEnumRuleAccess().getAlternativesAssignment_6()); 
+            // InternalXtext.g:9413:2: ( rule__EnumRule__AlternativesAssignment_6 )
+            // InternalXtext.g:9413:3: rule__EnumRule__AlternativesAssignment_6
+            {
+            pushFollow(FollowSets000.FOLLOW_2);
+            rule__EnumRule__AlternativesAssignment_6();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getEnumRuleAccess().getAlternativesAssignment_6()); 
 
             }
 
@@ -29306,15 +29332,85 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__EnumRule__Group__6__Impl"
 
 
+    // $ANTLR start "rule__EnumRule__Group__7"
+    // InternalXtext.g:9421:1: rule__EnumRule__Group__7 : rule__EnumRule__Group__7__Impl ;
+    public final void rule__EnumRule__Group__7() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXtext.g:9425:1: ( rule__EnumRule__Group__7__Impl )
+            // InternalXtext.g:9426:2: rule__EnumRule__Group__7__Impl
+            {
+            pushFollow(FollowSets000.FOLLOW_2);
+            rule__EnumRule__Group__7__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumRule__Group__7"
+
+
+    // $ANTLR start "rule__EnumRule__Group__7__Impl"
+    // InternalXtext.g:9432:1: rule__EnumRule__Group__7__Impl : ( ';' ) ;
+    public final void rule__EnumRule__Group__7__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXtext.g:9436:1: ( ( ';' ) )
+            // InternalXtext.g:9437:1: ( ';' )
+            {
+            // InternalXtext.g:9437:1: ( ';' )
+            // InternalXtext.g:9438:2: ';'
+            {
+             before(grammarAccess.getEnumRuleAccess().getSemicolonKeyword_7()); 
+            match(input,31,FollowSets000.FOLLOW_2); 
+             after(grammarAccess.getEnumRuleAccess().getSemicolonKeyword_7()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumRule__Group__7__Impl"
+
+
     // $ANTLR start "rule__EnumRule__Group_3__0"
-    // InternalXtext.g:9421:1: rule__EnumRule__Group_3__0 : rule__EnumRule__Group_3__0__Impl rule__EnumRule__Group_3__1 ;
+    // InternalXtext.g:9448:1: rule__EnumRule__Group_3__0 : rule__EnumRule__Group_3__0__Impl rule__EnumRule__Group_3__1 ;
     public final void rule__EnumRule__Group_3__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9425:1: ( rule__EnumRule__Group_3__0__Impl rule__EnumRule__Group_3__1 )
-            // InternalXtext.g:9426:2: rule__EnumRule__Group_3__0__Impl rule__EnumRule__Group_3__1
+            // InternalXtext.g:9452:1: ( rule__EnumRule__Group_3__0__Impl rule__EnumRule__Group_3__1 )
+            // InternalXtext.g:9453:2: rule__EnumRule__Group_3__0__Impl rule__EnumRule__Group_3__1
             {
             pushFollow(FollowSets000.FOLLOW_15);
             rule__EnumRule__Group_3__0__Impl();
@@ -29345,17 +29441,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumRule__Group_3__0__Impl"
-    // InternalXtext.g:9433:1: rule__EnumRule__Group_3__0__Impl : ( 'returns' ) ;
+    // InternalXtext.g:9460:1: rule__EnumRule__Group_3__0__Impl : ( 'returns' ) ;
     public final void rule__EnumRule__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9437:1: ( ( 'returns' ) )
-            // InternalXtext.g:9438:1: ( 'returns' )
+            // InternalXtext.g:9464:1: ( ( 'returns' ) )
+            // InternalXtext.g:9465:1: ( 'returns' )
             {
-            // InternalXtext.g:9438:1: ( 'returns' )
-            // InternalXtext.g:9439:2: 'returns'
+            // InternalXtext.g:9465:1: ( 'returns' )
+            // InternalXtext.g:9466:2: 'returns'
             {
              before(grammarAccess.getEnumRuleAccess().getReturnsKeyword_3_0()); 
             match(input,32,FollowSets000.FOLLOW_2); 
@@ -29382,14 +29478,14 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumRule__Group_3__1"
-    // InternalXtext.g:9448:1: rule__EnumRule__Group_3__1 : rule__EnumRule__Group_3__1__Impl ;
+    // InternalXtext.g:9475:1: rule__EnumRule__Group_3__1 : rule__EnumRule__Group_3__1__Impl ;
     public final void rule__EnumRule__Group_3__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9452:1: ( rule__EnumRule__Group_3__1__Impl )
-            // InternalXtext.g:9453:2: rule__EnumRule__Group_3__1__Impl
+            // InternalXtext.g:9479:1: ( rule__EnumRule__Group_3__1__Impl )
+            // InternalXtext.g:9480:2: rule__EnumRule__Group_3__1__Impl
             {
             pushFollow(FollowSets000.FOLLOW_2);
             rule__EnumRule__Group_3__1__Impl();
@@ -29415,21 +29511,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumRule__Group_3__1__Impl"
-    // InternalXtext.g:9459:1: rule__EnumRule__Group_3__1__Impl : ( ( rule__EnumRule__TypeAssignment_3_1 ) ) ;
+    // InternalXtext.g:9486:1: rule__EnumRule__Group_3__1__Impl : ( ( rule__EnumRule__TypeAssignment_3_1 ) ) ;
     public final void rule__EnumRule__Group_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9463:1: ( ( ( rule__EnumRule__TypeAssignment_3_1 ) ) )
-            // InternalXtext.g:9464:1: ( ( rule__EnumRule__TypeAssignment_3_1 ) )
+            // InternalXtext.g:9490:1: ( ( ( rule__EnumRule__TypeAssignment_3_1 ) ) )
+            // InternalXtext.g:9491:1: ( ( rule__EnumRule__TypeAssignment_3_1 ) )
             {
-            // InternalXtext.g:9464:1: ( ( rule__EnumRule__TypeAssignment_3_1 ) )
-            // InternalXtext.g:9465:2: ( rule__EnumRule__TypeAssignment_3_1 )
+            // InternalXtext.g:9491:1: ( ( rule__EnumRule__TypeAssignment_3_1 ) )
+            // InternalXtext.g:9492:2: ( rule__EnumRule__TypeAssignment_3_1 )
             {
              before(grammarAccess.getEnumRuleAccess().getTypeAssignment_3_1()); 
-            // InternalXtext.g:9466:2: ( rule__EnumRule__TypeAssignment_3_1 )
-            // InternalXtext.g:9466:3: rule__EnumRule__TypeAssignment_3_1
+            // InternalXtext.g:9493:2: ( rule__EnumRule__TypeAssignment_3_1 )
+            // InternalXtext.g:9493:3: rule__EnumRule__TypeAssignment_3_1
             {
             pushFollow(FollowSets000.FOLLOW_2);
             rule__EnumRule__TypeAssignment_3_1();
@@ -29462,14 +29558,14 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiterals__Group__0"
-    // InternalXtext.g:9475:1: rule__EnumLiterals__Group__0 : rule__EnumLiterals__Group__0__Impl rule__EnumLiterals__Group__1 ;
+    // InternalXtext.g:9502:1: rule__EnumLiterals__Group__0 : rule__EnumLiterals__Group__0__Impl rule__EnumLiterals__Group__1 ;
     public final void rule__EnumLiterals__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9479:1: ( rule__EnumLiterals__Group__0__Impl rule__EnumLiterals__Group__1 )
-            // InternalXtext.g:9480:2: rule__EnumLiterals__Group__0__Impl rule__EnumLiterals__Group__1
+            // InternalXtext.g:9506:1: ( rule__EnumLiterals__Group__0__Impl rule__EnumLiterals__Group__1 )
+            // InternalXtext.g:9507:2: rule__EnumLiterals__Group__0__Impl rule__EnumLiterals__Group__1
             {
             pushFollow(FollowSets000.FOLLOW_34);
             rule__EnumLiterals__Group__0__Impl();
@@ -29500,17 +29596,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiterals__Group__0__Impl"
-    // InternalXtext.g:9487:1: rule__EnumLiterals__Group__0__Impl : ( ruleEnumLiteralDeclaration ) ;
+    // InternalXtext.g:9514:1: rule__EnumLiterals__Group__0__Impl : ( ruleEnumLiteralDeclaration ) ;
     public final void rule__EnumLiterals__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9491:1: ( ( ruleEnumLiteralDeclaration ) )
-            // InternalXtext.g:9492:1: ( ruleEnumLiteralDeclaration )
+            // InternalXtext.g:9518:1: ( ( ruleEnumLiteralDeclaration ) )
+            // InternalXtext.g:9519:1: ( ruleEnumLiteralDeclaration )
             {
-            // InternalXtext.g:9492:1: ( ruleEnumLiteralDeclaration )
-            // InternalXtext.g:9493:2: ruleEnumLiteralDeclaration
+            // InternalXtext.g:9519:1: ( ruleEnumLiteralDeclaration )
+            // InternalXtext.g:9520:2: ruleEnumLiteralDeclaration
             {
              before(grammarAccess.getEnumLiteralsAccess().getEnumLiteralDeclarationParserRuleCall_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -29541,14 +29637,14 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiterals__Group__1"
-    // InternalXtext.g:9502:1: rule__EnumLiterals__Group__1 : rule__EnumLiterals__Group__1__Impl ;
+    // InternalXtext.g:9529:1: rule__EnumLiterals__Group__1 : rule__EnumLiterals__Group__1__Impl ;
     public final void rule__EnumLiterals__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9506:1: ( rule__EnumLiterals__Group__1__Impl )
-            // InternalXtext.g:9507:2: rule__EnumLiterals__Group__1__Impl
+            // InternalXtext.g:9533:1: ( rule__EnumLiterals__Group__1__Impl )
+            // InternalXtext.g:9534:2: rule__EnumLiterals__Group__1__Impl
             {
             pushFollow(FollowSets000.FOLLOW_2);
             rule__EnumLiterals__Group__1__Impl();
@@ -29574,29 +29670,29 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiterals__Group__1__Impl"
-    // InternalXtext.g:9513:1: rule__EnumLiterals__Group__1__Impl : ( ( rule__EnumLiterals__Group_1__0 )? ) ;
+    // InternalXtext.g:9540:1: rule__EnumLiterals__Group__1__Impl : ( ( rule__EnumLiterals__Group_1__0 )? ) ;
     public final void rule__EnumLiterals__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9517:1: ( ( ( rule__EnumLiterals__Group_1__0 )? ) )
-            // InternalXtext.g:9518:1: ( ( rule__EnumLiterals__Group_1__0 )? )
+            // InternalXtext.g:9544:1: ( ( ( rule__EnumLiterals__Group_1__0 )? ) )
+            // InternalXtext.g:9545:1: ( ( rule__EnumLiterals__Group_1__0 )? )
             {
-            // InternalXtext.g:9518:1: ( ( rule__EnumLiterals__Group_1__0 )? )
-            // InternalXtext.g:9519:2: ( rule__EnumLiterals__Group_1__0 )?
+            // InternalXtext.g:9545:1: ( ( rule__EnumLiterals__Group_1__0 )? )
+            // InternalXtext.g:9546:2: ( rule__EnumLiterals__Group_1__0 )?
             {
              before(grammarAccess.getEnumLiteralsAccess().getGroup_1()); 
-            // InternalXtext.g:9520:2: ( rule__EnumLiterals__Group_1__0 )?
-            int alt92=2;
-            int LA92_0 = input.LA(1);
+            // InternalXtext.g:9547:2: ( rule__EnumLiterals__Group_1__0 )?
+            int alt93=2;
+            int LA93_0 = input.LA(1);
 
-            if ( (LA92_0==40) ) {
-                alt92=1;
+            if ( (LA93_0==40) ) {
+                alt93=1;
             }
-            switch (alt92) {
+            switch (alt93) {
                 case 1 :
-                    // InternalXtext.g:9520:3: rule__EnumLiterals__Group_1__0
+                    // InternalXtext.g:9547:3: rule__EnumLiterals__Group_1__0
                     {
                     pushFollow(FollowSets000.FOLLOW_2);
                     rule__EnumLiterals__Group_1__0();
@@ -29632,14 +29728,14 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiterals__Group_1__0"
-    // InternalXtext.g:9529:1: rule__EnumLiterals__Group_1__0 : rule__EnumLiterals__Group_1__0__Impl rule__EnumLiterals__Group_1__1 ;
+    // InternalXtext.g:9556:1: rule__EnumLiterals__Group_1__0 : rule__EnumLiterals__Group_1__0__Impl rule__EnumLiterals__Group_1__1 ;
     public final void rule__EnumLiterals__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9533:1: ( rule__EnumLiterals__Group_1__0__Impl rule__EnumLiterals__Group_1__1 )
-            // InternalXtext.g:9534:2: rule__EnumLiterals__Group_1__0__Impl rule__EnumLiterals__Group_1__1
+            // InternalXtext.g:9560:1: ( rule__EnumLiterals__Group_1__0__Impl rule__EnumLiterals__Group_1__1 )
+            // InternalXtext.g:9561:2: rule__EnumLiterals__Group_1__0__Impl rule__EnumLiterals__Group_1__1
             {
             pushFollow(FollowSets000.FOLLOW_34);
             rule__EnumLiterals__Group_1__0__Impl();
@@ -29670,21 +29766,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiterals__Group_1__0__Impl"
-    // InternalXtext.g:9541:1: rule__EnumLiterals__Group_1__0__Impl : ( () ) ;
+    // InternalXtext.g:9568:1: rule__EnumLiterals__Group_1__0__Impl : ( () ) ;
     public final void rule__EnumLiterals__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9545:1: ( ( () ) )
-            // InternalXtext.g:9546:1: ( () )
+            // InternalXtext.g:9572:1: ( ( () ) )
+            // InternalXtext.g:9573:1: ( () )
             {
-            // InternalXtext.g:9546:1: ( () )
-            // InternalXtext.g:9547:2: ()
+            // InternalXtext.g:9573:1: ( () )
+            // InternalXtext.g:9574:2: ()
             {
              before(grammarAccess.getEnumLiteralsAccess().getAlternativesElementsAction_1_0()); 
-            // InternalXtext.g:9548:2: ()
-            // InternalXtext.g:9548:3: 
+            // InternalXtext.g:9575:2: ()
+            // InternalXtext.g:9575:3: 
             {
             }
 
@@ -29707,14 +29803,14 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiterals__Group_1__1"
-    // InternalXtext.g:9556:1: rule__EnumLiterals__Group_1__1 : rule__EnumLiterals__Group_1__1__Impl ;
+    // InternalXtext.g:9583:1: rule__EnumLiterals__Group_1__1 : rule__EnumLiterals__Group_1__1__Impl ;
     public final void rule__EnumLiterals__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9560:1: ( rule__EnumLiterals__Group_1__1__Impl )
-            // InternalXtext.g:9561:2: rule__EnumLiterals__Group_1__1__Impl
+            // InternalXtext.g:9587:1: ( rule__EnumLiterals__Group_1__1__Impl )
+            // InternalXtext.g:9588:2: rule__EnumLiterals__Group_1__1__Impl
             {
             pushFollow(FollowSets000.FOLLOW_2);
             rule__EnumLiterals__Group_1__1__Impl();
@@ -29740,24 +29836,24 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiterals__Group_1__1__Impl"
-    // InternalXtext.g:9567:1: rule__EnumLiterals__Group_1__1__Impl : ( ( ( rule__EnumLiterals__Group_1_1__0 ) ) ( ( rule__EnumLiterals__Group_1_1__0 )* ) ) ;
+    // InternalXtext.g:9594:1: rule__EnumLiterals__Group_1__1__Impl : ( ( ( rule__EnumLiterals__Group_1_1__0 ) ) ( ( rule__EnumLiterals__Group_1_1__0 )* ) ) ;
     public final void rule__EnumLiterals__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9571:1: ( ( ( ( rule__EnumLiterals__Group_1_1__0 ) ) ( ( rule__EnumLiterals__Group_1_1__0 )* ) ) )
-            // InternalXtext.g:9572:1: ( ( ( rule__EnumLiterals__Group_1_1__0 ) ) ( ( rule__EnumLiterals__Group_1_1__0 )* ) )
+            // InternalXtext.g:9598:1: ( ( ( ( rule__EnumLiterals__Group_1_1__0 ) ) ( ( rule__EnumLiterals__Group_1_1__0 )* ) ) )
+            // InternalXtext.g:9599:1: ( ( ( rule__EnumLiterals__Group_1_1__0 ) ) ( ( rule__EnumLiterals__Group_1_1__0 )* ) )
             {
-            // InternalXtext.g:9572:1: ( ( ( rule__EnumLiterals__Group_1_1__0 ) ) ( ( rule__EnumLiterals__Group_1_1__0 )* ) )
-            // InternalXtext.g:9573:2: ( ( rule__EnumLiterals__Group_1_1__0 ) ) ( ( rule__EnumLiterals__Group_1_1__0 )* )
+            // InternalXtext.g:9599:1: ( ( ( rule__EnumLiterals__Group_1_1__0 ) ) ( ( rule__EnumLiterals__Group_1_1__0 )* ) )
+            // InternalXtext.g:9600:2: ( ( rule__EnumLiterals__Group_1_1__0 ) ) ( ( rule__EnumLiterals__Group_1_1__0 )* )
             {
-            // InternalXtext.g:9573:2: ( ( rule__EnumLiterals__Group_1_1__0 ) )
-            // InternalXtext.g:9574:3: ( rule__EnumLiterals__Group_1_1__0 )
+            // InternalXtext.g:9600:2: ( ( rule__EnumLiterals__Group_1_1__0 ) )
+            // InternalXtext.g:9601:3: ( rule__EnumLiterals__Group_1_1__0 )
             {
              before(grammarAccess.getEnumLiteralsAccess().getGroup_1_1()); 
-            // InternalXtext.g:9575:3: ( rule__EnumLiterals__Group_1_1__0 )
-            // InternalXtext.g:9575:4: rule__EnumLiterals__Group_1_1__0
+            // InternalXtext.g:9602:3: ( rule__EnumLiterals__Group_1_1__0 )
+            // InternalXtext.g:9602:4: rule__EnumLiterals__Group_1_1__0
             {
             pushFollow(FollowSets000.FOLLOW_35);
             rule__EnumLiterals__Group_1_1__0();
@@ -29771,24 +29867,24 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
             }
 
-            // InternalXtext.g:9578:2: ( ( rule__EnumLiterals__Group_1_1__0 )* )
-            // InternalXtext.g:9579:3: ( rule__EnumLiterals__Group_1_1__0 )*
+            // InternalXtext.g:9605:2: ( ( rule__EnumLiterals__Group_1_1__0 )* )
+            // InternalXtext.g:9606:3: ( rule__EnumLiterals__Group_1_1__0 )*
             {
              before(grammarAccess.getEnumLiteralsAccess().getGroup_1_1()); 
-            // InternalXtext.g:9580:3: ( rule__EnumLiterals__Group_1_1__0 )*
-            loop93:
+            // InternalXtext.g:9607:3: ( rule__EnumLiterals__Group_1_1__0 )*
+            loop94:
             do {
-                int alt93=2;
-                int LA93_0 = input.LA(1);
+                int alt94=2;
+                int LA94_0 = input.LA(1);
 
-                if ( (LA93_0==40) ) {
-                    alt93=1;
+                if ( (LA94_0==40) ) {
+                    alt94=1;
                 }
 
 
-                switch (alt93) {
+                switch (alt94) {
             	case 1 :
-            	    // InternalXtext.g:9580:4: rule__EnumLiterals__Group_1_1__0
+            	    // InternalXtext.g:9607:4: rule__EnumLiterals__Group_1_1__0
             	    {
             	    pushFollow(FollowSets000.FOLLOW_35);
             	    rule__EnumLiterals__Group_1_1__0();
@@ -29800,7 +29896,7 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
             	    break;
 
             	default :
-            	    break loop93;
+            	    break loop94;
                 }
             } while (true);
 
@@ -29830,14 +29926,14 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiterals__Group_1_1__0"
-    // InternalXtext.g:9590:1: rule__EnumLiterals__Group_1_1__0 : rule__EnumLiterals__Group_1_1__0__Impl rule__EnumLiterals__Group_1_1__1 ;
+    // InternalXtext.g:9617:1: rule__EnumLiterals__Group_1_1__0 : rule__EnumLiterals__Group_1_1__0__Impl rule__EnumLiterals__Group_1_1__1 ;
     public final void rule__EnumLiterals__Group_1_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9594:1: ( rule__EnumLiterals__Group_1_1__0__Impl rule__EnumLiterals__Group_1_1__1 )
-            // InternalXtext.g:9595:2: rule__EnumLiterals__Group_1_1__0__Impl rule__EnumLiterals__Group_1_1__1
+            // InternalXtext.g:9621:1: ( rule__EnumLiterals__Group_1_1__0__Impl rule__EnumLiterals__Group_1_1__1 )
+            // InternalXtext.g:9622:2: rule__EnumLiterals__Group_1_1__0__Impl rule__EnumLiterals__Group_1_1__1
             {
             pushFollow(FollowSets000.FOLLOW_15);
             rule__EnumLiterals__Group_1_1__0__Impl();
@@ -29868,17 +29964,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiterals__Group_1_1__0__Impl"
-    // InternalXtext.g:9602:1: rule__EnumLiterals__Group_1_1__0__Impl : ( '|' ) ;
+    // InternalXtext.g:9629:1: rule__EnumLiterals__Group_1_1__0__Impl : ( '|' ) ;
     public final void rule__EnumLiterals__Group_1_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9606:1: ( ( '|' ) )
-            // InternalXtext.g:9607:1: ( '|' )
+            // InternalXtext.g:9633:1: ( ( '|' ) )
+            // InternalXtext.g:9634:1: ( '|' )
             {
-            // InternalXtext.g:9607:1: ( '|' )
-            // InternalXtext.g:9608:2: '|'
+            // InternalXtext.g:9634:1: ( '|' )
+            // InternalXtext.g:9635:2: '|'
             {
              before(grammarAccess.getEnumLiteralsAccess().getVerticalLineKeyword_1_1_0()); 
             match(input,40,FollowSets000.FOLLOW_2); 
@@ -29905,14 +30001,14 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiterals__Group_1_1__1"
-    // InternalXtext.g:9617:1: rule__EnumLiterals__Group_1_1__1 : rule__EnumLiterals__Group_1_1__1__Impl ;
+    // InternalXtext.g:9644:1: rule__EnumLiterals__Group_1_1__1 : rule__EnumLiterals__Group_1_1__1__Impl ;
     public final void rule__EnumLiterals__Group_1_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9621:1: ( rule__EnumLiterals__Group_1_1__1__Impl )
-            // InternalXtext.g:9622:2: rule__EnumLiterals__Group_1_1__1__Impl
+            // InternalXtext.g:9648:1: ( rule__EnumLiterals__Group_1_1__1__Impl )
+            // InternalXtext.g:9649:2: rule__EnumLiterals__Group_1_1__1__Impl
             {
             pushFollow(FollowSets000.FOLLOW_2);
             rule__EnumLiterals__Group_1_1__1__Impl();
@@ -29938,21 +30034,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiterals__Group_1_1__1__Impl"
-    // InternalXtext.g:9628:1: rule__EnumLiterals__Group_1_1__1__Impl : ( ( rule__EnumLiterals__ElementsAssignment_1_1_1 ) ) ;
+    // InternalXtext.g:9655:1: rule__EnumLiterals__Group_1_1__1__Impl : ( ( rule__EnumLiterals__ElementsAssignment_1_1_1 ) ) ;
     public final void rule__EnumLiterals__Group_1_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9632:1: ( ( ( rule__EnumLiterals__ElementsAssignment_1_1_1 ) ) )
-            // InternalXtext.g:9633:1: ( ( rule__EnumLiterals__ElementsAssignment_1_1_1 ) )
+            // InternalXtext.g:9659:1: ( ( ( rule__EnumLiterals__ElementsAssignment_1_1_1 ) ) )
+            // InternalXtext.g:9660:1: ( ( rule__EnumLiterals__ElementsAssignment_1_1_1 ) )
             {
-            // InternalXtext.g:9633:1: ( ( rule__EnumLiterals__ElementsAssignment_1_1_1 ) )
-            // InternalXtext.g:9634:2: ( rule__EnumLiterals__ElementsAssignment_1_1_1 )
+            // InternalXtext.g:9660:1: ( ( rule__EnumLiterals__ElementsAssignment_1_1_1 ) )
+            // InternalXtext.g:9661:2: ( rule__EnumLiterals__ElementsAssignment_1_1_1 )
             {
              before(grammarAccess.getEnumLiteralsAccess().getElementsAssignment_1_1_1()); 
-            // InternalXtext.g:9635:2: ( rule__EnumLiterals__ElementsAssignment_1_1_1 )
-            // InternalXtext.g:9635:3: rule__EnumLiterals__ElementsAssignment_1_1_1
+            // InternalXtext.g:9662:2: ( rule__EnumLiterals__ElementsAssignment_1_1_1 )
+            // InternalXtext.g:9662:3: rule__EnumLiterals__ElementsAssignment_1_1_1
             {
             pushFollow(FollowSets000.FOLLOW_2);
             rule__EnumLiterals__ElementsAssignment_1_1_1();
@@ -29985,14 +30081,14 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiteralDeclaration__Group__0"
-    // InternalXtext.g:9644:1: rule__EnumLiteralDeclaration__Group__0 : rule__EnumLiteralDeclaration__Group__0__Impl rule__EnumLiteralDeclaration__Group__1 ;
+    // InternalXtext.g:9671:1: rule__EnumLiteralDeclaration__Group__0 : rule__EnumLiteralDeclaration__Group__0__Impl rule__EnumLiteralDeclaration__Group__1 ;
     public final void rule__EnumLiteralDeclaration__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9648:1: ( rule__EnumLiteralDeclaration__Group__0__Impl rule__EnumLiteralDeclaration__Group__1 )
-            // InternalXtext.g:9649:2: rule__EnumLiteralDeclaration__Group__0__Impl rule__EnumLiteralDeclaration__Group__1
+            // InternalXtext.g:9675:1: ( rule__EnumLiteralDeclaration__Group__0__Impl rule__EnumLiteralDeclaration__Group__1 )
+            // InternalXtext.g:9676:2: rule__EnumLiteralDeclaration__Group__0__Impl rule__EnumLiteralDeclaration__Group__1
             {
             pushFollow(FollowSets000.FOLLOW_46);
             rule__EnumLiteralDeclaration__Group__0__Impl();
@@ -30023,21 +30119,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiteralDeclaration__Group__0__Impl"
-    // InternalXtext.g:9656:1: rule__EnumLiteralDeclaration__Group__0__Impl : ( ( rule__EnumLiteralDeclaration__EnumLiteralAssignment_0 ) ) ;
+    // InternalXtext.g:9683:1: rule__EnumLiteralDeclaration__Group__0__Impl : ( ( rule__EnumLiteralDeclaration__EnumLiteralAssignment_0 ) ) ;
     public final void rule__EnumLiteralDeclaration__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9660:1: ( ( ( rule__EnumLiteralDeclaration__EnumLiteralAssignment_0 ) ) )
-            // InternalXtext.g:9661:1: ( ( rule__EnumLiteralDeclaration__EnumLiteralAssignment_0 ) )
+            // InternalXtext.g:9687:1: ( ( ( rule__EnumLiteralDeclaration__EnumLiteralAssignment_0 ) ) )
+            // InternalXtext.g:9688:1: ( ( rule__EnumLiteralDeclaration__EnumLiteralAssignment_0 ) )
             {
-            // InternalXtext.g:9661:1: ( ( rule__EnumLiteralDeclaration__EnumLiteralAssignment_0 ) )
-            // InternalXtext.g:9662:2: ( rule__EnumLiteralDeclaration__EnumLiteralAssignment_0 )
+            // InternalXtext.g:9688:1: ( ( rule__EnumLiteralDeclaration__EnumLiteralAssignment_0 ) )
+            // InternalXtext.g:9689:2: ( rule__EnumLiteralDeclaration__EnumLiteralAssignment_0 )
             {
              before(grammarAccess.getEnumLiteralDeclarationAccess().getEnumLiteralAssignment_0()); 
-            // InternalXtext.g:9663:2: ( rule__EnumLiteralDeclaration__EnumLiteralAssignment_0 )
-            // InternalXtext.g:9663:3: rule__EnumLiteralDeclaration__EnumLiteralAssignment_0
+            // InternalXtext.g:9690:2: ( rule__EnumLiteralDeclaration__EnumLiteralAssignment_0 )
+            // InternalXtext.g:9690:3: rule__EnumLiteralDeclaration__EnumLiteralAssignment_0
             {
             pushFollow(FollowSets000.FOLLOW_2);
             rule__EnumLiteralDeclaration__EnumLiteralAssignment_0();
@@ -30070,14 +30166,14 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiteralDeclaration__Group__1"
-    // InternalXtext.g:9671:1: rule__EnumLiteralDeclaration__Group__1 : rule__EnumLiteralDeclaration__Group__1__Impl ;
+    // InternalXtext.g:9698:1: rule__EnumLiteralDeclaration__Group__1 : rule__EnumLiteralDeclaration__Group__1__Impl ;
     public final void rule__EnumLiteralDeclaration__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9675:1: ( rule__EnumLiteralDeclaration__Group__1__Impl )
-            // InternalXtext.g:9676:2: rule__EnumLiteralDeclaration__Group__1__Impl
+            // InternalXtext.g:9702:1: ( rule__EnumLiteralDeclaration__Group__1__Impl )
+            // InternalXtext.g:9703:2: rule__EnumLiteralDeclaration__Group__1__Impl
             {
             pushFollow(FollowSets000.FOLLOW_2);
             rule__EnumLiteralDeclaration__Group__1__Impl();
@@ -30103,29 +30199,29 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiteralDeclaration__Group__1__Impl"
-    // InternalXtext.g:9682:1: rule__EnumLiteralDeclaration__Group__1__Impl : ( ( rule__EnumLiteralDeclaration__Group_1__0 )? ) ;
+    // InternalXtext.g:9709:1: rule__EnumLiteralDeclaration__Group__1__Impl : ( ( rule__EnumLiteralDeclaration__Group_1__0 )? ) ;
     public final void rule__EnumLiteralDeclaration__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9686:1: ( ( ( rule__EnumLiteralDeclaration__Group_1__0 )? ) )
-            // InternalXtext.g:9687:1: ( ( rule__EnumLiteralDeclaration__Group_1__0 )? )
+            // InternalXtext.g:9713:1: ( ( ( rule__EnumLiteralDeclaration__Group_1__0 )? ) )
+            // InternalXtext.g:9714:1: ( ( rule__EnumLiteralDeclaration__Group_1__0 )? )
             {
-            // InternalXtext.g:9687:1: ( ( rule__EnumLiteralDeclaration__Group_1__0 )? )
-            // InternalXtext.g:9688:2: ( rule__EnumLiteralDeclaration__Group_1__0 )?
+            // InternalXtext.g:9714:1: ( ( rule__EnumLiteralDeclaration__Group_1__0 )? )
+            // InternalXtext.g:9715:2: ( rule__EnumLiteralDeclaration__Group_1__0 )?
             {
              before(grammarAccess.getEnumLiteralDeclarationAccess().getGroup_1()); 
-            // InternalXtext.g:9689:2: ( rule__EnumLiteralDeclaration__Group_1__0 )?
-            int alt94=2;
-            int LA94_0 = input.LA(1);
+            // InternalXtext.g:9716:2: ( rule__EnumLiteralDeclaration__Group_1__0 )?
+            int alt95=2;
+            int LA95_0 = input.LA(1);
 
-            if ( (LA94_0==15) ) {
-                alt94=1;
+            if ( (LA95_0==15) ) {
+                alt95=1;
             }
-            switch (alt94) {
+            switch (alt95) {
                 case 1 :
-                    // InternalXtext.g:9689:3: rule__EnumLiteralDeclaration__Group_1__0
+                    // InternalXtext.g:9716:3: rule__EnumLiteralDeclaration__Group_1__0
                     {
                     pushFollow(FollowSets000.FOLLOW_2);
                     rule__EnumLiteralDeclaration__Group_1__0();
@@ -30161,14 +30257,14 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiteralDeclaration__Group_1__0"
-    // InternalXtext.g:9698:1: rule__EnumLiteralDeclaration__Group_1__0 : rule__EnumLiteralDeclaration__Group_1__0__Impl rule__EnumLiteralDeclaration__Group_1__1 ;
+    // InternalXtext.g:9725:1: rule__EnumLiteralDeclaration__Group_1__0 : rule__EnumLiteralDeclaration__Group_1__0__Impl rule__EnumLiteralDeclaration__Group_1__1 ;
     public final void rule__EnumLiteralDeclaration__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9702:1: ( rule__EnumLiteralDeclaration__Group_1__0__Impl rule__EnumLiteralDeclaration__Group_1__1 )
-            // InternalXtext.g:9703:2: rule__EnumLiteralDeclaration__Group_1__0__Impl rule__EnumLiteralDeclaration__Group_1__1
+            // InternalXtext.g:9729:1: ( rule__EnumLiteralDeclaration__Group_1__0__Impl rule__EnumLiteralDeclaration__Group_1__1 )
+            // InternalXtext.g:9730:2: rule__EnumLiteralDeclaration__Group_1__0__Impl rule__EnumLiteralDeclaration__Group_1__1
             {
             pushFollow(FollowSets000.FOLLOW_13);
             rule__EnumLiteralDeclaration__Group_1__0__Impl();
@@ -30199,17 +30295,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiteralDeclaration__Group_1__0__Impl"
-    // InternalXtext.g:9710:1: rule__EnumLiteralDeclaration__Group_1__0__Impl : ( '=' ) ;
+    // InternalXtext.g:9737:1: rule__EnumLiteralDeclaration__Group_1__0__Impl : ( '=' ) ;
     public final void rule__EnumLiteralDeclaration__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9714:1: ( ( '=' ) )
-            // InternalXtext.g:9715:1: ( '=' )
+            // InternalXtext.g:9741:1: ( ( '=' ) )
+            // InternalXtext.g:9742:1: ( '=' )
             {
-            // InternalXtext.g:9715:1: ( '=' )
-            // InternalXtext.g:9716:2: '='
+            // InternalXtext.g:9742:1: ( '=' )
+            // InternalXtext.g:9743:2: '='
             {
              before(grammarAccess.getEnumLiteralDeclarationAccess().getEqualsSignKeyword_1_0()); 
             match(input,15,FollowSets000.FOLLOW_2); 
@@ -30236,14 +30332,14 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiteralDeclaration__Group_1__1"
-    // InternalXtext.g:9725:1: rule__EnumLiteralDeclaration__Group_1__1 : rule__EnumLiteralDeclaration__Group_1__1__Impl ;
+    // InternalXtext.g:9752:1: rule__EnumLiteralDeclaration__Group_1__1 : rule__EnumLiteralDeclaration__Group_1__1__Impl ;
     public final void rule__EnumLiteralDeclaration__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9729:1: ( rule__EnumLiteralDeclaration__Group_1__1__Impl )
-            // InternalXtext.g:9730:2: rule__EnumLiteralDeclaration__Group_1__1__Impl
+            // InternalXtext.g:9756:1: ( rule__EnumLiteralDeclaration__Group_1__1__Impl )
+            // InternalXtext.g:9757:2: rule__EnumLiteralDeclaration__Group_1__1__Impl
             {
             pushFollow(FollowSets000.FOLLOW_2);
             rule__EnumLiteralDeclaration__Group_1__1__Impl();
@@ -30269,21 +30365,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiteralDeclaration__Group_1__1__Impl"
-    // InternalXtext.g:9736:1: rule__EnumLiteralDeclaration__Group_1__1__Impl : ( ( rule__EnumLiteralDeclaration__LiteralAssignment_1_1 ) ) ;
+    // InternalXtext.g:9763:1: rule__EnumLiteralDeclaration__Group_1__1__Impl : ( ( rule__EnumLiteralDeclaration__LiteralAssignment_1_1 ) ) ;
     public final void rule__EnumLiteralDeclaration__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9740:1: ( ( ( rule__EnumLiteralDeclaration__LiteralAssignment_1_1 ) ) )
-            // InternalXtext.g:9741:1: ( ( rule__EnumLiteralDeclaration__LiteralAssignment_1_1 ) )
+            // InternalXtext.g:9767:1: ( ( ( rule__EnumLiteralDeclaration__LiteralAssignment_1_1 ) ) )
+            // InternalXtext.g:9768:1: ( ( rule__EnumLiteralDeclaration__LiteralAssignment_1_1 ) )
             {
-            // InternalXtext.g:9741:1: ( ( rule__EnumLiteralDeclaration__LiteralAssignment_1_1 ) )
-            // InternalXtext.g:9742:2: ( rule__EnumLiteralDeclaration__LiteralAssignment_1_1 )
+            // InternalXtext.g:9768:1: ( ( rule__EnumLiteralDeclaration__LiteralAssignment_1_1 ) )
+            // InternalXtext.g:9769:2: ( rule__EnumLiteralDeclaration__LiteralAssignment_1_1 )
             {
              before(grammarAccess.getEnumLiteralDeclarationAccess().getLiteralAssignment_1_1()); 
-            // InternalXtext.g:9743:2: ( rule__EnumLiteralDeclaration__LiteralAssignment_1_1 )
-            // InternalXtext.g:9743:3: rule__EnumLiteralDeclaration__LiteralAssignment_1_1
+            // InternalXtext.g:9770:2: ( rule__EnumLiteralDeclaration__LiteralAssignment_1_1 )
+            // InternalXtext.g:9770:3: rule__EnumLiteralDeclaration__LiteralAssignment_1_1
             {
             pushFollow(FollowSets000.FOLLOW_2);
             rule__EnumLiteralDeclaration__LiteralAssignment_1_1();
@@ -30316,17 +30412,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Grammar__NameAssignment_1"
-    // InternalXtext.g:9752:1: rule__Grammar__NameAssignment_1 : ( ruleGrammarID ) ;
+    // InternalXtext.g:9779:1: rule__Grammar__NameAssignment_1 : ( ruleGrammarID ) ;
     public final void rule__Grammar__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9756:1: ( ( ruleGrammarID ) )
-            // InternalXtext.g:9757:2: ( ruleGrammarID )
+            // InternalXtext.g:9783:1: ( ( ruleGrammarID ) )
+            // InternalXtext.g:9784:2: ( ruleGrammarID )
             {
-            // InternalXtext.g:9757:2: ( ruleGrammarID )
-            // InternalXtext.g:9758:3: ruleGrammarID
+            // InternalXtext.g:9784:2: ( ruleGrammarID )
+            // InternalXtext.g:9785:3: ruleGrammarID
             {
              before(grammarAccess.getGrammarAccess().getNameGrammarIDParserRuleCall_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -30357,21 +30453,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Grammar__UsedGrammarsAssignment_2_1"
-    // InternalXtext.g:9767:1: rule__Grammar__UsedGrammarsAssignment_2_1 : ( ( ruleGrammarID ) ) ;
+    // InternalXtext.g:9794:1: rule__Grammar__UsedGrammarsAssignment_2_1 : ( ( ruleGrammarID ) ) ;
     public final void rule__Grammar__UsedGrammarsAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9771:1: ( ( ( ruleGrammarID ) ) )
-            // InternalXtext.g:9772:2: ( ( ruleGrammarID ) )
+            // InternalXtext.g:9798:1: ( ( ( ruleGrammarID ) ) )
+            // InternalXtext.g:9799:2: ( ( ruleGrammarID ) )
             {
-            // InternalXtext.g:9772:2: ( ( ruleGrammarID ) )
-            // InternalXtext.g:9773:3: ( ruleGrammarID )
+            // InternalXtext.g:9799:2: ( ( ruleGrammarID ) )
+            // InternalXtext.g:9800:3: ( ruleGrammarID )
             {
              before(grammarAccess.getGrammarAccess().getUsedGrammarsGrammarCrossReference_2_1_0()); 
-            // InternalXtext.g:9774:3: ( ruleGrammarID )
-            // InternalXtext.g:9775:4: ruleGrammarID
+            // InternalXtext.g:9801:3: ( ruleGrammarID )
+            // InternalXtext.g:9802:4: ruleGrammarID
             {
              before(grammarAccess.getGrammarAccess().getUsedGrammarsGrammarGrammarIDParserRuleCall_2_1_0_1()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -30406,21 +30502,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Grammar__UsedGrammarsAssignment_2_2_1"
-    // InternalXtext.g:9786:1: rule__Grammar__UsedGrammarsAssignment_2_2_1 : ( ( ruleGrammarID ) ) ;
+    // InternalXtext.g:9813:1: rule__Grammar__UsedGrammarsAssignment_2_2_1 : ( ( ruleGrammarID ) ) ;
     public final void rule__Grammar__UsedGrammarsAssignment_2_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9790:1: ( ( ( ruleGrammarID ) ) )
-            // InternalXtext.g:9791:2: ( ( ruleGrammarID ) )
+            // InternalXtext.g:9817:1: ( ( ( ruleGrammarID ) ) )
+            // InternalXtext.g:9818:2: ( ( ruleGrammarID ) )
             {
-            // InternalXtext.g:9791:2: ( ( ruleGrammarID ) )
-            // InternalXtext.g:9792:3: ( ruleGrammarID )
+            // InternalXtext.g:9818:2: ( ( ruleGrammarID ) )
+            // InternalXtext.g:9819:3: ( ruleGrammarID )
             {
              before(grammarAccess.getGrammarAccess().getUsedGrammarsGrammarCrossReference_2_2_1_0()); 
-            // InternalXtext.g:9793:3: ( ruleGrammarID )
-            // InternalXtext.g:9794:4: ruleGrammarID
+            // InternalXtext.g:9820:3: ( ruleGrammarID )
+            // InternalXtext.g:9821:4: ruleGrammarID
             {
              before(grammarAccess.getGrammarAccess().getUsedGrammarsGrammarGrammarIDParserRuleCall_2_2_1_0_1()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -30455,21 +30551,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Grammar__DefinesHiddenTokensAssignment_3_0"
-    // InternalXtext.g:9805:1: rule__Grammar__DefinesHiddenTokensAssignment_3_0 : ( ( 'hidden' ) ) ;
+    // InternalXtext.g:9832:1: rule__Grammar__DefinesHiddenTokensAssignment_3_0 : ( ( 'hidden' ) ) ;
     public final void rule__Grammar__DefinesHiddenTokensAssignment_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9809:1: ( ( ( 'hidden' ) ) )
-            // InternalXtext.g:9810:2: ( ( 'hidden' ) )
+            // InternalXtext.g:9836:1: ( ( ( 'hidden' ) ) )
+            // InternalXtext.g:9837:2: ( ( 'hidden' ) )
             {
-            // InternalXtext.g:9810:2: ( ( 'hidden' ) )
-            // InternalXtext.g:9811:3: ( 'hidden' )
+            // InternalXtext.g:9837:2: ( ( 'hidden' ) )
+            // InternalXtext.g:9838:3: ( 'hidden' )
             {
              before(grammarAccess.getGrammarAccess().getDefinesHiddenTokensHiddenKeyword_3_0_0()); 
-            // InternalXtext.g:9812:3: ( 'hidden' )
-            // InternalXtext.g:9813:4: 'hidden'
+            // InternalXtext.g:9839:3: ( 'hidden' )
+            // InternalXtext.g:9840:4: 'hidden'
             {
              before(grammarAccess.getGrammarAccess().getDefinesHiddenTokensHiddenKeyword_3_0_0()); 
             match(input,52,FollowSets000.FOLLOW_2); 
@@ -30500,21 +30596,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Grammar__HiddenTokensAssignment_3_2_0"
-    // InternalXtext.g:9824:1: rule__Grammar__HiddenTokensAssignment_3_2_0 : ( ( ruleRuleID ) ) ;
+    // InternalXtext.g:9851:1: rule__Grammar__HiddenTokensAssignment_3_2_0 : ( ( ruleRuleID ) ) ;
     public final void rule__Grammar__HiddenTokensAssignment_3_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9828:1: ( ( ( ruleRuleID ) ) )
-            // InternalXtext.g:9829:2: ( ( ruleRuleID ) )
+            // InternalXtext.g:9855:1: ( ( ( ruleRuleID ) ) )
+            // InternalXtext.g:9856:2: ( ( ruleRuleID ) )
             {
-            // InternalXtext.g:9829:2: ( ( ruleRuleID ) )
-            // InternalXtext.g:9830:3: ( ruleRuleID )
+            // InternalXtext.g:9856:2: ( ( ruleRuleID ) )
+            // InternalXtext.g:9857:3: ( ruleRuleID )
             {
              before(grammarAccess.getGrammarAccess().getHiddenTokensAbstractRuleCrossReference_3_2_0_0()); 
-            // InternalXtext.g:9831:3: ( ruleRuleID )
-            // InternalXtext.g:9832:4: ruleRuleID
+            // InternalXtext.g:9858:3: ( ruleRuleID )
+            // InternalXtext.g:9859:4: ruleRuleID
             {
              before(grammarAccess.getGrammarAccess().getHiddenTokensAbstractRuleRuleIDParserRuleCall_3_2_0_0_1()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -30549,21 +30645,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Grammar__HiddenTokensAssignment_3_2_1_1"
-    // InternalXtext.g:9843:1: rule__Grammar__HiddenTokensAssignment_3_2_1_1 : ( ( ruleRuleID ) ) ;
+    // InternalXtext.g:9870:1: rule__Grammar__HiddenTokensAssignment_3_2_1_1 : ( ( ruleRuleID ) ) ;
     public final void rule__Grammar__HiddenTokensAssignment_3_2_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9847:1: ( ( ( ruleRuleID ) ) )
-            // InternalXtext.g:9848:2: ( ( ruleRuleID ) )
+            // InternalXtext.g:9874:1: ( ( ( ruleRuleID ) ) )
+            // InternalXtext.g:9875:2: ( ( ruleRuleID ) )
             {
-            // InternalXtext.g:9848:2: ( ( ruleRuleID ) )
-            // InternalXtext.g:9849:3: ( ruleRuleID )
+            // InternalXtext.g:9875:2: ( ( ruleRuleID ) )
+            // InternalXtext.g:9876:3: ( ruleRuleID )
             {
              before(grammarAccess.getGrammarAccess().getHiddenTokensAbstractRuleCrossReference_3_2_1_1_0()); 
-            // InternalXtext.g:9850:3: ( ruleRuleID )
-            // InternalXtext.g:9851:4: ruleRuleID
+            // InternalXtext.g:9877:3: ( ruleRuleID )
+            // InternalXtext.g:9878:4: ruleRuleID
             {
              before(grammarAccess.getGrammarAccess().getHiddenTokensAbstractRuleRuleIDParserRuleCall_3_2_1_1_0_1()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -30598,17 +30694,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Grammar__MetamodelDeclarationsAssignment_4"
-    // InternalXtext.g:9862:1: rule__Grammar__MetamodelDeclarationsAssignment_4 : ( ruleAbstractMetamodelDeclaration ) ;
+    // InternalXtext.g:9889:1: rule__Grammar__MetamodelDeclarationsAssignment_4 : ( ruleAbstractMetamodelDeclaration ) ;
     public final void rule__Grammar__MetamodelDeclarationsAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9866:1: ( ( ruleAbstractMetamodelDeclaration ) )
-            // InternalXtext.g:9867:2: ( ruleAbstractMetamodelDeclaration )
+            // InternalXtext.g:9893:1: ( ( ruleAbstractMetamodelDeclaration ) )
+            // InternalXtext.g:9894:2: ( ruleAbstractMetamodelDeclaration )
             {
-            // InternalXtext.g:9867:2: ( ruleAbstractMetamodelDeclaration )
-            // InternalXtext.g:9868:3: ruleAbstractMetamodelDeclaration
+            // InternalXtext.g:9894:2: ( ruleAbstractMetamodelDeclaration )
+            // InternalXtext.g:9895:3: ruleAbstractMetamodelDeclaration
             {
              before(grammarAccess.getGrammarAccess().getMetamodelDeclarationsAbstractMetamodelDeclarationParserRuleCall_4_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -30639,17 +30735,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Grammar__RulesAssignment_5"
-    // InternalXtext.g:9877:1: rule__Grammar__RulesAssignment_5 : ( ruleAbstractRule ) ;
+    // InternalXtext.g:9904:1: rule__Grammar__RulesAssignment_5 : ( ruleAbstractRule ) ;
     public final void rule__Grammar__RulesAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9881:1: ( ( ruleAbstractRule ) )
-            // InternalXtext.g:9882:2: ( ruleAbstractRule )
+            // InternalXtext.g:9908:1: ( ( ruleAbstractRule ) )
+            // InternalXtext.g:9909:2: ( ruleAbstractRule )
             {
-            // InternalXtext.g:9882:2: ( ruleAbstractRule )
-            // InternalXtext.g:9883:3: ruleAbstractRule
+            // InternalXtext.g:9909:2: ( ruleAbstractRule )
+            // InternalXtext.g:9910:3: ruleAbstractRule
             {
              before(grammarAccess.getGrammarAccess().getRulesAbstractRuleParserRuleCall_5_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -30680,17 +30776,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__GeneratedMetamodel__NameAssignment_1"
-    // InternalXtext.g:9892:1: rule__GeneratedMetamodel__NameAssignment_1 : ( ruleValidID ) ;
+    // InternalXtext.g:9919:1: rule__GeneratedMetamodel__NameAssignment_1 : ( ruleValidID ) ;
     public final void rule__GeneratedMetamodel__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9896:1: ( ( ruleValidID ) )
-            // InternalXtext.g:9897:2: ( ruleValidID )
+            // InternalXtext.g:9923:1: ( ( ruleValidID ) )
+            // InternalXtext.g:9924:2: ( ruleValidID )
             {
-            // InternalXtext.g:9897:2: ( ruleValidID )
-            // InternalXtext.g:9898:3: ruleValidID
+            // InternalXtext.g:9924:2: ( ruleValidID )
+            // InternalXtext.g:9925:3: ruleValidID
             {
              before(grammarAccess.getGeneratedMetamodelAccess().getNameValidIDParserRuleCall_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -30721,21 +30817,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__GeneratedMetamodel__EPackageAssignment_2"
-    // InternalXtext.g:9907:1: rule__GeneratedMetamodel__EPackageAssignment_2 : ( ( RULE_STRING ) ) ;
+    // InternalXtext.g:9934:1: rule__GeneratedMetamodel__EPackageAssignment_2 : ( ( RULE_STRING ) ) ;
     public final void rule__GeneratedMetamodel__EPackageAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9911:1: ( ( ( RULE_STRING ) ) )
-            // InternalXtext.g:9912:2: ( ( RULE_STRING ) )
+            // InternalXtext.g:9938:1: ( ( ( RULE_STRING ) ) )
+            // InternalXtext.g:9939:2: ( ( RULE_STRING ) )
             {
-            // InternalXtext.g:9912:2: ( ( RULE_STRING ) )
-            // InternalXtext.g:9913:3: ( RULE_STRING )
+            // InternalXtext.g:9939:2: ( ( RULE_STRING ) )
+            // InternalXtext.g:9940:3: ( RULE_STRING )
             {
              before(grammarAccess.getGeneratedMetamodelAccess().getEPackageEPackageCrossReference_2_0()); 
-            // InternalXtext.g:9914:3: ( RULE_STRING )
-            // InternalXtext.g:9915:4: RULE_STRING
+            // InternalXtext.g:9941:3: ( RULE_STRING )
+            // InternalXtext.g:9942:4: RULE_STRING
             {
              before(grammarAccess.getGeneratedMetamodelAccess().getEPackageEPackageSTRINGTerminalRuleCall_2_0_1()); 
             match(input,RULE_STRING,FollowSets000.FOLLOW_2); 
@@ -30766,17 +30862,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__GeneratedMetamodel__AliasAssignment_3_1"
-    // InternalXtext.g:9926:1: rule__GeneratedMetamodel__AliasAssignment_3_1 : ( ruleValidID ) ;
+    // InternalXtext.g:9953:1: rule__GeneratedMetamodel__AliasAssignment_3_1 : ( ruleValidID ) ;
     public final void rule__GeneratedMetamodel__AliasAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9930:1: ( ( ruleValidID ) )
-            // InternalXtext.g:9931:2: ( ruleValidID )
+            // InternalXtext.g:9957:1: ( ( ruleValidID ) )
+            // InternalXtext.g:9958:2: ( ruleValidID )
             {
-            // InternalXtext.g:9931:2: ( ruleValidID )
-            // InternalXtext.g:9932:3: ruleValidID
+            // InternalXtext.g:9958:2: ( ruleValidID )
+            // InternalXtext.g:9959:3: ruleValidID
             {
              before(grammarAccess.getGeneratedMetamodelAccess().getAliasValidIDParserRuleCall_3_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -30807,21 +30903,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ReferencedMetamodel__EPackageAssignment_1"
-    // InternalXtext.g:9941:1: rule__ReferencedMetamodel__EPackageAssignment_1 : ( ( RULE_STRING ) ) ;
+    // InternalXtext.g:9968:1: rule__ReferencedMetamodel__EPackageAssignment_1 : ( ( RULE_STRING ) ) ;
     public final void rule__ReferencedMetamodel__EPackageAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9945:1: ( ( ( RULE_STRING ) ) )
-            // InternalXtext.g:9946:2: ( ( RULE_STRING ) )
+            // InternalXtext.g:9972:1: ( ( ( RULE_STRING ) ) )
+            // InternalXtext.g:9973:2: ( ( RULE_STRING ) )
             {
-            // InternalXtext.g:9946:2: ( ( RULE_STRING ) )
-            // InternalXtext.g:9947:3: ( RULE_STRING )
+            // InternalXtext.g:9973:2: ( ( RULE_STRING ) )
+            // InternalXtext.g:9974:3: ( RULE_STRING )
             {
              before(grammarAccess.getReferencedMetamodelAccess().getEPackageEPackageCrossReference_1_0()); 
-            // InternalXtext.g:9948:3: ( RULE_STRING )
-            // InternalXtext.g:9949:4: RULE_STRING
+            // InternalXtext.g:9975:3: ( RULE_STRING )
+            // InternalXtext.g:9976:4: RULE_STRING
             {
              before(grammarAccess.getReferencedMetamodelAccess().getEPackageEPackageSTRINGTerminalRuleCall_1_0_1()); 
             match(input,RULE_STRING,FollowSets000.FOLLOW_2); 
@@ -30852,17 +30948,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ReferencedMetamodel__AliasAssignment_2_1"
-    // InternalXtext.g:9960:1: rule__ReferencedMetamodel__AliasAssignment_2_1 : ( ruleValidID ) ;
+    // InternalXtext.g:9987:1: rule__ReferencedMetamodel__AliasAssignment_2_1 : ( ruleValidID ) ;
     public final void rule__ReferencedMetamodel__AliasAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9964:1: ( ( ruleValidID ) )
-            // InternalXtext.g:9965:2: ( ruleValidID )
+            // InternalXtext.g:9991:1: ( ( ruleValidID ) )
+            // InternalXtext.g:9992:2: ( ruleValidID )
             {
-            // InternalXtext.g:9965:2: ( ruleValidID )
-            // InternalXtext.g:9966:3: ruleValidID
+            // InternalXtext.g:9992:2: ( ruleValidID )
+            // InternalXtext.g:9993:3: ruleValidID
             {
              before(grammarAccess.getReferencedMetamodelAccess().getAliasValidIDParserRuleCall_2_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -30893,17 +30989,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Annotation__NameAssignment_1"
-    // InternalXtext.g:9975:1: rule__Annotation__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalXtext.g:10002:1: rule__Annotation__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Annotation__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9979:1: ( ( RULE_ID ) )
-            // InternalXtext.g:9980:2: ( RULE_ID )
+            // InternalXtext.g:10006:1: ( ( RULE_ID ) )
+            // InternalXtext.g:10007:2: ( RULE_ID )
             {
-            // InternalXtext.g:9980:2: ( RULE_ID )
-            // InternalXtext.g:9981:3: RULE_ID
+            // InternalXtext.g:10007:2: ( RULE_ID )
+            // InternalXtext.g:10008:3: RULE_ID
             {
              before(grammarAccess.getAnnotationAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FollowSets000.FOLLOW_2); 
@@ -30930,17 +31026,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ParserRule__AnnotationsAssignment_0"
-    // InternalXtext.g:9990:1: rule__ParserRule__AnnotationsAssignment_0 : ( ruleAnnotation ) ;
+    // InternalXtext.g:10017:1: rule__ParserRule__AnnotationsAssignment_0 : ( ruleAnnotation ) ;
     public final void rule__ParserRule__AnnotationsAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:9994:1: ( ( ruleAnnotation ) )
-            // InternalXtext.g:9995:2: ( ruleAnnotation )
+            // InternalXtext.g:10021:1: ( ( ruleAnnotation ) )
+            // InternalXtext.g:10022:2: ( ruleAnnotation )
             {
-            // InternalXtext.g:9995:2: ( ruleAnnotation )
-            // InternalXtext.g:9996:3: ruleAnnotation
+            // InternalXtext.g:10022:2: ( ruleAnnotation )
+            // InternalXtext.g:10023:3: ruleAnnotation
             {
              before(grammarAccess.getParserRuleAccess().getAnnotationsAnnotationParserRuleCall_0_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -30971,21 +31067,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ParserRule__FragmentAssignment_1_0_0"
-    // InternalXtext.g:10005:1: rule__ParserRule__FragmentAssignment_1_0_0 : ( ( 'fragment' ) ) ;
+    // InternalXtext.g:10032:1: rule__ParserRule__FragmentAssignment_1_0_0 : ( ( 'fragment' ) ) ;
     public final void rule__ParserRule__FragmentAssignment_1_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10009:1: ( ( ( 'fragment' ) ) )
-            // InternalXtext.g:10010:2: ( ( 'fragment' ) )
+            // InternalXtext.g:10036:1: ( ( ( 'fragment' ) ) )
+            // InternalXtext.g:10037:2: ( ( 'fragment' ) )
             {
-            // InternalXtext.g:10010:2: ( ( 'fragment' ) )
-            // InternalXtext.g:10011:3: ( 'fragment' )
+            // InternalXtext.g:10037:2: ( ( 'fragment' ) )
+            // InternalXtext.g:10038:3: ( 'fragment' )
             {
              before(grammarAccess.getParserRuleAccess().getFragmentFragmentKeyword_1_0_0_0()); 
-            // InternalXtext.g:10012:3: ( 'fragment' )
-            // InternalXtext.g:10013:4: 'fragment'
+            // InternalXtext.g:10039:3: ( 'fragment' )
+            // InternalXtext.g:10040:4: 'fragment'
             {
              before(grammarAccess.getParserRuleAccess().getFragmentFragmentKeyword_1_0_0_0()); 
             match(input,53,FollowSets000.FOLLOW_2); 
@@ -31016,21 +31112,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ParserRule__WildcardAssignment_1_0_2_0"
-    // InternalXtext.g:10024:1: rule__ParserRule__WildcardAssignment_1_0_2_0 : ( ( '*' ) ) ;
+    // InternalXtext.g:10051:1: rule__ParserRule__WildcardAssignment_1_0_2_0 : ( ( '*' ) ) ;
     public final void rule__ParserRule__WildcardAssignment_1_0_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10028:1: ( ( ( '*' ) ) )
-            // InternalXtext.g:10029:2: ( ( '*' ) )
+            // InternalXtext.g:10055:1: ( ( ( '*' ) ) )
+            // InternalXtext.g:10056:2: ( ( '*' ) )
             {
-            // InternalXtext.g:10029:2: ( ( '*' ) )
-            // InternalXtext.g:10030:3: ( '*' )
+            // InternalXtext.g:10056:2: ( ( '*' ) )
+            // InternalXtext.g:10057:3: ( '*' )
             {
              before(grammarAccess.getParserRuleAccess().getWildcardAsteriskKeyword_1_0_2_0_0()); 
-            // InternalXtext.g:10031:3: ( '*' )
-            // InternalXtext.g:10032:4: '*'
+            // InternalXtext.g:10058:3: ( '*' )
+            // InternalXtext.g:10059:4: '*'
             {
              before(grammarAccess.getParserRuleAccess().getWildcardAsteriskKeyword_1_0_2_0_0()); 
             match(input,13,FollowSets000.FOLLOW_2); 
@@ -31061,17 +31157,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ParserRule__TypeAssignment_1_0_2_1_1"
-    // InternalXtext.g:10043:1: rule__ParserRule__TypeAssignment_1_0_2_1_1 : ( ruleTypeRef ) ;
+    // InternalXtext.g:10070:1: rule__ParserRule__TypeAssignment_1_0_2_1_1 : ( ruleTypeRef ) ;
     public final void rule__ParserRule__TypeAssignment_1_0_2_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10047:1: ( ( ruleTypeRef ) )
-            // InternalXtext.g:10048:2: ( ruleTypeRef )
+            // InternalXtext.g:10074:1: ( ( ruleTypeRef ) )
+            // InternalXtext.g:10075:2: ( ruleTypeRef )
             {
-            // InternalXtext.g:10048:2: ( ruleTypeRef )
-            // InternalXtext.g:10049:3: ruleTypeRef
+            // InternalXtext.g:10075:2: ( ruleTypeRef )
+            // InternalXtext.g:10076:3: ruleTypeRef
             {
              before(grammarAccess.getParserRuleAccess().getTypeTypeRefParserRuleCall_1_0_2_1_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -31102,17 +31198,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ParserRule__TypeAssignment_1_1_1_1"
-    // InternalXtext.g:10058:1: rule__ParserRule__TypeAssignment_1_1_1_1 : ( ruleTypeRef ) ;
+    // InternalXtext.g:10085:1: rule__ParserRule__TypeAssignment_1_1_1_1 : ( ruleTypeRef ) ;
     public final void rule__ParserRule__TypeAssignment_1_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10062:1: ( ( ruleTypeRef ) )
-            // InternalXtext.g:10063:2: ( ruleTypeRef )
+            // InternalXtext.g:10089:1: ( ( ruleTypeRef ) )
+            // InternalXtext.g:10090:2: ( ruleTypeRef )
             {
-            // InternalXtext.g:10063:2: ( ruleTypeRef )
-            // InternalXtext.g:10064:3: ruleTypeRef
+            // InternalXtext.g:10090:2: ( ruleTypeRef )
+            // InternalXtext.g:10091:3: ruleTypeRef
             {
              before(grammarAccess.getParserRuleAccess().getTypeTypeRefParserRuleCall_1_1_1_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -31143,17 +31239,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ParserRule__BecomesAssignment_1_1_2_1"
-    // InternalXtext.g:10073:1: rule__ParserRule__BecomesAssignment_1_1_2_1 : ( ruleBecomesDecl ) ;
+    // InternalXtext.g:10100:1: rule__ParserRule__BecomesAssignment_1_1_2_1 : ( ruleBecomesDecl ) ;
     public final void rule__ParserRule__BecomesAssignment_1_1_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10077:1: ( ( ruleBecomesDecl ) )
-            // InternalXtext.g:10078:2: ( ruleBecomesDecl )
+            // InternalXtext.g:10104:1: ( ( ruleBecomesDecl ) )
+            // InternalXtext.g:10105:2: ( ruleBecomesDecl )
             {
-            // InternalXtext.g:10078:2: ( ruleBecomesDecl )
-            // InternalXtext.g:10079:3: ruleBecomesDecl
+            // InternalXtext.g:10105:2: ( ruleBecomesDecl )
+            // InternalXtext.g:10106:3: ruleBecomesDecl
             {
              before(grammarAccess.getParserRuleAccess().getBecomesBecomesDeclParserRuleCall_1_1_2_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -31184,21 +31280,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ParserRule__DefinesHiddenTokensAssignment_2_0"
-    // InternalXtext.g:10088:1: rule__ParserRule__DefinesHiddenTokensAssignment_2_0 : ( ( 'hidden' ) ) ;
+    // InternalXtext.g:10115:1: rule__ParserRule__DefinesHiddenTokensAssignment_2_0 : ( ( 'hidden' ) ) ;
     public final void rule__ParserRule__DefinesHiddenTokensAssignment_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10092:1: ( ( ( 'hidden' ) ) )
-            // InternalXtext.g:10093:2: ( ( 'hidden' ) )
+            // InternalXtext.g:10119:1: ( ( ( 'hidden' ) ) )
+            // InternalXtext.g:10120:2: ( ( 'hidden' ) )
             {
-            // InternalXtext.g:10093:2: ( ( 'hidden' ) )
-            // InternalXtext.g:10094:3: ( 'hidden' )
+            // InternalXtext.g:10120:2: ( ( 'hidden' ) )
+            // InternalXtext.g:10121:3: ( 'hidden' )
             {
              before(grammarAccess.getParserRuleAccess().getDefinesHiddenTokensHiddenKeyword_2_0_0()); 
-            // InternalXtext.g:10095:3: ( 'hidden' )
-            // InternalXtext.g:10096:4: 'hidden'
+            // InternalXtext.g:10122:3: ( 'hidden' )
+            // InternalXtext.g:10123:4: 'hidden'
             {
              before(grammarAccess.getParserRuleAccess().getDefinesHiddenTokensHiddenKeyword_2_0_0()); 
             match(input,52,FollowSets000.FOLLOW_2); 
@@ -31229,21 +31325,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ParserRule__HiddenTokensAssignment_2_2_0"
-    // InternalXtext.g:10107:1: rule__ParserRule__HiddenTokensAssignment_2_2_0 : ( ( ruleRuleID ) ) ;
+    // InternalXtext.g:10134:1: rule__ParserRule__HiddenTokensAssignment_2_2_0 : ( ( ruleRuleID ) ) ;
     public final void rule__ParserRule__HiddenTokensAssignment_2_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10111:1: ( ( ( ruleRuleID ) ) )
-            // InternalXtext.g:10112:2: ( ( ruleRuleID ) )
+            // InternalXtext.g:10138:1: ( ( ( ruleRuleID ) ) )
+            // InternalXtext.g:10139:2: ( ( ruleRuleID ) )
             {
-            // InternalXtext.g:10112:2: ( ( ruleRuleID ) )
-            // InternalXtext.g:10113:3: ( ruleRuleID )
+            // InternalXtext.g:10139:2: ( ( ruleRuleID ) )
+            // InternalXtext.g:10140:3: ( ruleRuleID )
             {
              before(grammarAccess.getParserRuleAccess().getHiddenTokensAbstractRuleCrossReference_2_2_0_0()); 
-            // InternalXtext.g:10114:3: ( ruleRuleID )
-            // InternalXtext.g:10115:4: ruleRuleID
+            // InternalXtext.g:10141:3: ( ruleRuleID )
+            // InternalXtext.g:10142:4: ruleRuleID
             {
              before(grammarAccess.getParserRuleAccess().getHiddenTokensAbstractRuleRuleIDParserRuleCall_2_2_0_0_1()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -31278,21 +31374,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ParserRule__HiddenTokensAssignment_2_2_1_1"
-    // InternalXtext.g:10126:1: rule__ParserRule__HiddenTokensAssignment_2_2_1_1 : ( ( ruleRuleID ) ) ;
+    // InternalXtext.g:10153:1: rule__ParserRule__HiddenTokensAssignment_2_2_1_1 : ( ( ruleRuleID ) ) ;
     public final void rule__ParserRule__HiddenTokensAssignment_2_2_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10130:1: ( ( ( ruleRuleID ) ) )
-            // InternalXtext.g:10131:2: ( ( ruleRuleID ) )
+            // InternalXtext.g:10157:1: ( ( ( ruleRuleID ) ) )
+            // InternalXtext.g:10158:2: ( ( ruleRuleID ) )
             {
-            // InternalXtext.g:10131:2: ( ( ruleRuleID ) )
-            // InternalXtext.g:10132:3: ( ruleRuleID )
+            // InternalXtext.g:10158:2: ( ( ruleRuleID ) )
+            // InternalXtext.g:10159:3: ( ruleRuleID )
             {
              before(grammarAccess.getParserRuleAccess().getHiddenTokensAbstractRuleCrossReference_2_2_1_1_0()); 
-            // InternalXtext.g:10133:3: ( ruleRuleID )
-            // InternalXtext.g:10134:4: ruleRuleID
+            // InternalXtext.g:10160:3: ( ruleRuleID )
+            // InternalXtext.g:10161:4: ruleRuleID
             {
              before(grammarAccess.getParserRuleAccess().getHiddenTokensAbstractRuleRuleIDParserRuleCall_2_2_1_1_0_1()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -31327,17 +31423,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ParserRule__AlternativesAssignment_4"
-    // InternalXtext.g:10145:1: rule__ParserRule__AlternativesAssignment_4 : ( ruleAlternatives ) ;
+    // InternalXtext.g:10172:1: rule__ParserRule__AlternativesAssignment_4 : ( ruleAlternatives ) ;
     public final void rule__ParserRule__AlternativesAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10149:1: ( ( ruleAlternatives ) )
-            // InternalXtext.g:10150:2: ( ruleAlternatives )
+            // InternalXtext.g:10176:1: ( ( ruleAlternatives ) )
+            // InternalXtext.g:10177:2: ( ruleAlternatives )
             {
-            // InternalXtext.g:10150:2: ( ruleAlternatives )
-            // InternalXtext.g:10151:3: ruleAlternatives
+            // InternalXtext.g:10177:2: ( ruleAlternatives )
+            // InternalXtext.g:10178:3: ruleAlternatives
             {
              before(grammarAccess.getParserRuleAccess().getAlternativesAlternativesParserRuleCall_4_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -31368,21 +31464,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BecomesDecl__ListAssignment_0_0"
-    // InternalXtext.g:10160:1: rule__BecomesDecl__ListAssignment_0_0 : ( ( '[' ) ) ;
+    // InternalXtext.g:10187:1: rule__BecomesDecl__ListAssignment_0_0 : ( ( '[' ) ) ;
     public final void rule__BecomesDecl__ListAssignment_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10164:1: ( ( ( '[' ) ) )
-            // InternalXtext.g:10165:2: ( ( '[' ) )
+            // InternalXtext.g:10191:1: ( ( ( '[' ) ) )
+            // InternalXtext.g:10192:2: ( ( '[' ) )
             {
-            // InternalXtext.g:10165:2: ( ( '[' ) )
-            // InternalXtext.g:10166:3: ( '[' )
+            // InternalXtext.g:10192:2: ( ( '[' ) )
+            // InternalXtext.g:10193:3: ( '[' )
             {
              before(grammarAccess.getBecomesDeclAccess().getListLeftSquareBracketKeyword_0_0_0()); 
-            // InternalXtext.g:10167:3: ( '[' )
-            // InternalXtext.g:10168:4: '['
+            // InternalXtext.g:10194:3: ( '[' )
+            // InternalXtext.g:10195:4: '['
             {
              before(grammarAccess.getBecomesDeclAccess().getListLeftSquareBracketKeyword_0_0_0()); 
             match(input,46,FollowSets000.FOLLOW_2); 
@@ -31413,17 +31509,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BecomesDecl__ListTypeAssignment_0_1"
-    // InternalXtext.g:10179:1: rule__BecomesDecl__ListTypeAssignment_0_1 : ( ruleJavaTypeReference ) ;
+    // InternalXtext.g:10206:1: rule__BecomesDecl__ListTypeAssignment_0_1 : ( ruleJavaTypeReference ) ;
     public final void rule__BecomesDecl__ListTypeAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10183:1: ( ( ruleJavaTypeReference ) )
-            // InternalXtext.g:10184:2: ( ruleJavaTypeReference )
+            // InternalXtext.g:10210:1: ( ( ruleJavaTypeReference ) )
+            // InternalXtext.g:10211:2: ( ruleJavaTypeReference )
             {
-            // InternalXtext.g:10184:2: ( ruleJavaTypeReference )
-            // InternalXtext.g:10185:3: ruleJavaTypeReference
+            // InternalXtext.g:10211:2: ( ruleJavaTypeReference )
+            // InternalXtext.g:10212:3: ruleJavaTypeReference
             {
              before(grammarAccess.getBecomesDeclAccess().getListTypeJavaTypeReferenceParserRuleCall_0_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -31454,21 +31550,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BecomesDecl__DescriptorAssignment_1"
-    // InternalXtext.g:10194:1: rule__BecomesDecl__DescriptorAssignment_1 : ( ( rule__BecomesDecl__DescriptorAlternatives_1_0 ) ) ;
+    // InternalXtext.g:10221:1: rule__BecomesDecl__DescriptorAssignment_1 : ( ( rule__BecomesDecl__DescriptorAlternatives_1_0 ) ) ;
     public final void rule__BecomesDecl__DescriptorAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10198:1: ( ( ( rule__BecomesDecl__DescriptorAlternatives_1_0 ) ) )
-            // InternalXtext.g:10199:2: ( ( rule__BecomesDecl__DescriptorAlternatives_1_0 ) )
+            // InternalXtext.g:10225:1: ( ( ( rule__BecomesDecl__DescriptorAlternatives_1_0 ) ) )
+            // InternalXtext.g:10226:2: ( ( rule__BecomesDecl__DescriptorAlternatives_1_0 ) )
             {
-            // InternalXtext.g:10199:2: ( ( rule__BecomesDecl__DescriptorAlternatives_1_0 ) )
-            // InternalXtext.g:10200:3: ( rule__BecomesDecl__DescriptorAlternatives_1_0 )
+            // InternalXtext.g:10226:2: ( ( rule__BecomesDecl__DescriptorAlternatives_1_0 ) )
+            // InternalXtext.g:10227:3: ( rule__BecomesDecl__DescriptorAlternatives_1_0 )
             {
              before(grammarAccess.getBecomesDeclAccess().getDescriptorAlternatives_1_0()); 
-            // InternalXtext.g:10201:3: ( rule__BecomesDecl__DescriptorAlternatives_1_0 )
-            // InternalXtext.g:10201:4: rule__BecomesDecl__DescriptorAlternatives_1_0
+            // InternalXtext.g:10228:3: ( rule__BecomesDecl__DescriptorAlternatives_1_0 )
+            // InternalXtext.g:10228:4: rule__BecomesDecl__DescriptorAlternatives_1_0
             {
             pushFollow(FollowSets000.FOLLOW_2);
             rule__BecomesDecl__DescriptorAlternatives_1_0();
@@ -31501,17 +31597,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BecomesDecl__CodeAssignment_2"
-    // InternalXtext.g:10209:1: rule__BecomesDecl__CodeAssignment_2 : ( RULE_JAVA_STRING ) ;
+    // InternalXtext.g:10236:1: rule__BecomesDecl__CodeAssignment_2 : ( RULE_JAVA_STRING ) ;
     public final void rule__BecomesDecl__CodeAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10213:1: ( ( RULE_JAVA_STRING ) )
-            // InternalXtext.g:10214:2: ( RULE_JAVA_STRING )
+            // InternalXtext.g:10240:1: ( ( RULE_JAVA_STRING ) )
+            // InternalXtext.g:10241:2: ( RULE_JAVA_STRING )
             {
-            // InternalXtext.g:10214:2: ( RULE_JAVA_STRING )
-            // InternalXtext.g:10215:3: RULE_JAVA_STRING
+            // InternalXtext.g:10241:2: ( RULE_JAVA_STRING )
+            // InternalXtext.g:10242:3: RULE_JAVA_STRING
             {
              before(grammarAccess.getBecomesDeclAccess().getCodeJAVA_STRINGTerminalRuleCall_2_0()); 
             match(input,RULE_JAVA_STRING,FollowSets000.FOLLOW_2); 
@@ -31538,21 +31634,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BecomesDeclGeneratedClass__AttributesAssignment_1_1"
-    // InternalXtext.g:10224:1: rule__BecomesDeclGeneratedClass__AttributesAssignment_1_1 : ( ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_1_0 ) ) ;
+    // InternalXtext.g:10251:1: rule__BecomesDeclGeneratedClass__AttributesAssignment_1_1 : ( ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_1_0 ) ) ;
     public final void rule__BecomesDeclGeneratedClass__AttributesAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10228:1: ( ( ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_1_0 ) ) )
-            // InternalXtext.g:10229:2: ( ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_1_0 ) )
+            // InternalXtext.g:10255:1: ( ( ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_1_0 ) ) )
+            // InternalXtext.g:10256:2: ( ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_1_0 ) )
             {
-            // InternalXtext.g:10229:2: ( ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_1_0 ) )
-            // InternalXtext.g:10230:3: ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_1_0 )
+            // InternalXtext.g:10256:2: ( ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_1_0 ) )
+            // InternalXtext.g:10257:3: ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_1_0 )
             {
              before(grammarAccess.getBecomesDeclGeneratedClassAccess().getAttributesAlternatives_1_1_0()); 
-            // InternalXtext.g:10231:3: ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_1_0 )
-            // InternalXtext.g:10231:4: rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_1_0
+            // InternalXtext.g:10258:3: ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_1_0 )
+            // InternalXtext.g:10258:4: rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_1_0
             {
             pushFollow(FollowSets000.FOLLOW_2);
             rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_1_0();
@@ -31585,21 +31681,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BecomesDeclGeneratedClass__AttributesAssignment_1_2_1"
-    // InternalXtext.g:10239:1: rule__BecomesDeclGeneratedClass__AttributesAssignment_1_2_1 : ( ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_2_1_0 ) ) ;
+    // InternalXtext.g:10266:1: rule__BecomesDeclGeneratedClass__AttributesAssignment_1_2_1 : ( ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_2_1_0 ) ) ;
     public final void rule__BecomesDeclGeneratedClass__AttributesAssignment_1_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10243:1: ( ( ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_2_1_0 ) ) )
-            // InternalXtext.g:10244:2: ( ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_2_1_0 ) )
+            // InternalXtext.g:10270:1: ( ( ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_2_1_0 ) ) )
+            // InternalXtext.g:10271:2: ( ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_2_1_0 ) )
             {
-            // InternalXtext.g:10244:2: ( ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_2_1_0 ) )
-            // InternalXtext.g:10245:3: ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_2_1_0 )
+            // InternalXtext.g:10271:2: ( ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_2_1_0 ) )
+            // InternalXtext.g:10272:3: ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_2_1_0 )
             {
              before(grammarAccess.getBecomesDeclGeneratedClassAccess().getAttributesAlternatives_1_2_1_0()); 
-            // InternalXtext.g:10246:3: ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_2_1_0 )
-            // InternalXtext.g:10246:4: rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_2_1_0
+            // InternalXtext.g:10273:3: ( rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_2_1_0 )
+            // InternalXtext.g:10273:4: rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_2_1_0
             {
             pushFollow(FollowSets000.FOLLOW_2);
             rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_2_1_0();
@@ -31632,17 +31728,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BecomesDeclManualClass__TypeAssignment_0"
-    // InternalXtext.g:10254:1: rule__BecomesDeclManualClass__TypeAssignment_0 : ( RULE_ID ) ;
+    // InternalXtext.g:10281:1: rule__BecomesDeclManualClass__TypeAssignment_0 : ( RULE_ID ) ;
     public final void rule__BecomesDeclManualClass__TypeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10258:1: ( ( RULE_ID ) )
-            // InternalXtext.g:10259:2: ( RULE_ID )
+            // InternalXtext.g:10285:1: ( ( RULE_ID ) )
+            // InternalXtext.g:10286:2: ( RULE_ID )
             {
-            // InternalXtext.g:10259:2: ( RULE_ID )
-            // InternalXtext.g:10260:3: RULE_ID
+            // InternalXtext.g:10286:2: ( RULE_ID )
+            // InternalXtext.g:10287:3: RULE_ID
             {
              before(grammarAccess.getBecomesDeclManualClassAccess().getTypeIDTerminalRuleCall_0_0()); 
             match(input,RULE_ID,FollowSets000.FOLLOW_2); 
@@ -31669,17 +31765,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BecomesDeclManualClass__AttributesAssignment_1_1"
-    // InternalXtext.g:10269:1: rule__BecomesDeclManualClass__AttributesAssignment_1_1 : ( ruleBecomesDeclCopyAttribute ) ;
+    // InternalXtext.g:10296:1: rule__BecomesDeclManualClass__AttributesAssignment_1_1 : ( ruleBecomesDeclCopyAttribute ) ;
     public final void rule__BecomesDeclManualClass__AttributesAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10273:1: ( ( ruleBecomesDeclCopyAttribute ) )
-            // InternalXtext.g:10274:2: ( ruleBecomesDeclCopyAttribute )
+            // InternalXtext.g:10300:1: ( ( ruleBecomesDeclCopyAttribute ) )
+            // InternalXtext.g:10301:2: ( ruleBecomesDeclCopyAttribute )
             {
-            // InternalXtext.g:10274:2: ( ruleBecomesDeclCopyAttribute )
-            // InternalXtext.g:10275:3: ruleBecomesDeclCopyAttribute
+            // InternalXtext.g:10301:2: ( ruleBecomesDeclCopyAttribute )
+            // InternalXtext.g:10302:3: ruleBecomesDeclCopyAttribute
             {
              before(grammarAccess.getBecomesDeclManualClassAccess().getAttributesBecomesDeclCopyAttributeParserRuleCall_1_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -31710,17 +31806,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BecomesDeclManualClass__AttributesAssignment_1_2_1"
-    // InternalXtext.g:10284:1: rule__BecomesDeclManualClass__AttributesAssignment_1_2_1 : ( ruleBecomesDeclCopyAttribute ) ;
+    // InternalXtext.g:10311:1: rule__BecomesDeclManualClass__AttributesAssignment_1_2_1 : ( ruleBecomesDeclCopyAttribute ) ;
     public final void rule__BecomesDeclManualClass__AttributesAssignment_1_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10288:1: ( ( ruleBecomesDeclCopyAttribute ) )
-            // InternalXtext.g:10289:2: ( ruleBecomesDeclCopyAttribute )
+            // InternalXtext.g:10315:1: ( ( ruleBecomesDeclCopyAttribute ) )
+            // InternalXtext.g:10316:2: ( ruleBecomesDeclCopyAttribute )
             {
-            // InternalXtext.g:10289:2: ( ruleBecomesDeclCopyAttribute )
-            // InternalXtext.g:10290:3: ruleBecomesDeclCopyAttribute
+            // InternalXtext.g:10316:2: ( ruleBecomesDeclCopyAttribute )
+            // InternalXtext.g:10317:3: ruleBecomesDeclCopyAttribute
             {
              before(grammarAccess.getBecomesDeclManualClassAccess().getAttributesBecomesDeclCopyAttributeParserRuleCall_1_2_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -31751,17 +31847,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BecomesDeclCopyAttribute__NameAssignment"
-    // InternalXtext.g:10299:1: rule__BecomesDeclCopyAttribute__NameAssignment : ( ruleJavaTypeReference ) ;
+    // InternalXtext.g:10326:1: rule__BecomesDeclCopyAttribute__NameAssignment : ( ruleJavaTypeReference ) ;
     public final void rule__BecomesDeclCopyAttribute__NameAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10303:1: ( ( ruleJavaTypeReference ) )
-            // InternalXtext.g:10304:2: ( ruleJavaTypeReference )
+            // InternalXtext.g:10330:1: ( ( ruleJavaTypeReference ) )
+            // InternalXtext.g:10331:2: ( ruleJavaTypeReference )
             {
-            // InternalXtext.g:10304:2: ( ruleJavaTypeReference )
-            // InternalXtext.g:10305:3: ruleJavaTypeReference
+            // InternalXtext.g:10331:2: ( ruleJavaTypeReference )
+            // InternalXtext.g:10332:3: ruleJavaTypeReference
             {
              before(grammarAccess.getBecomesDeclCopyAttributeAccess().getNameJavaTypeReferenceParserRuleCall_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -31792,17 +31888,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BecomesDeclCustomAttribute__TypeAssignment_0"
-    // InternalXtext.g:10314:1: rule__BecomesDeclCustomAttribute__TypeAssignment_0 : ( ruleJavaTypeReference ) ;
+    // InternalXtext.g:10341:1: rule__BecomesDeclCustomAttribute__TypeAssignment_0 : ( ruleJavaTypeReference ) ;
     public final void rule__BecomesDeclCustomAttribute__TypeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10318:1: ( ( ruleJavaTypeReference ) )
-            // InternalXtext.g:10319:2: ( ruleJavaTypeReference )
+            // InternalXtext.g:10345:1: ( ( ruleJavaTypeReference ) )
+            // InternalXtext.g:10346:2: ( ruleJavaTypeReference )
             {
-            // InternalXtext.g:10319:2: ( ruleJavaTypeReference )
-            // InternalXtext.g:10320:3: ruleJavaTypeReference
+            // InternalXtext.g:10346:2: ( ruleJavaTypeReference )
+            // InternalXtext.g:10347:3: ruleJavaTypeReference
             {
              before(grammarAccess.getBecomesDeclCustomAttributeAccess().getTypeJavaTypeReferenceParserRuleCall_0_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -31833,21 +31929,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BecomesDeclCustomAttribute__CopyAssignment_1"
-    // InternalXtext.g:10329:1: rule__BecomesDeclCustomAttribute__CopyAssignment_1 : ( ( '&' ) ) ;
+    // InternalXtext.g:10356:1: rule__BecomesDeclCustomAttribute__CopyAssignment_1 : ( ( '&' ) ) ;
     public final void rule__BecomesDeclCustomAttribute__CopyAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10333:1: ( ( ( '&' ) ) )
-            // InternalXtext.g:10334:2: ( ( '&' ) )
+            // InternalXtext.g:10360:1: ( ( ( '&' ) ) )
+            // InternalXtext.g:10361:2: ( ( '&' ) )
             {
-            // InternalXtext.g:10334:2: ( ( '&' ) )
-            // InternalXtext.g:10335:3: ( '&' )
+            // InternalXtext.g:10361:2: ( ( '&' ) )
+            // InternalXtext.g:10362:3: ( '&' )
             {
              before(grammarAccess.getBecomesDeclCustomAttributeAccess().getCopyAmpersandKeyword_1_0()); 
-            // InternalXtext.g:10336:3: ( '&' )
-            // InternalXtext.g:10337:4: '&'
+            // InternalXtext.g:10363:3: ( '&' )
+            // InternalXtext.g:10364:4: '&'
             {
              before(grammarAccess.getBecomesDeclCustomAttributeAccess().getCopyAmpersandKeyword_1_0()); 
             match(input,41,FollowSets000.FOLLOW_2); 
@@ -31878,17 +31974,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BecomesDeclCustomAttribute__NameAssignment_2"
-    // InternalXtext.g:10348:1: rule__BecomesDeclCustomAttribute__NameAssignment_2 : ( RULE_ID ) ;
+    // InternalXtext.g:10375:1: rule__BecomesDeclCustomAttribute__NameAssignment_2 : ( RULE_ID ) ;
     public final void rule__BecomesDeclCustomAttribute__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10352:1: ( ( RULE_ID ) )
-            // InternalXtext.g:10353:2: ( RULE_ID )
+            // InternalXtext.g:10379:1: ( ( RULE_ID ) )
+            // InternalXtext.g:10380:2: ( RULE_ID )
             {
-            // InternalXtext.g:10353:2: ( RULE_ID )
-            // InternalXtext.g:10354:3: RULE_ID
+            // InternalXtext.g:10380:2: ( RULE_ID )
+            // InternalXtext.g:10381:3: RULE_ID
             {
              before(grammarAccess.getBecomesDeclCustomAttributeAccess().getNameIDTerminalRuleCall_2_0()); 
             match(input,RULE_ID,FollowSets000.FOLLOW_2); 
@@ -31915,17 +32011,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleNameAndParams__NameAssignment_0"
-    // InternalXtext.g:10363:1: rule__RuleNameAndParams__NameAssignment_0 : ( ruleValidID ) ;
+    // InternalXtext.g:10390:1: rule__RuleNameAndParams__NameAssignment_0 : ( ruleValidID ) ;
     public final void rule__RuleNameAndParams__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10367:1: ( ( ruleValidID ) )
-            // InternalXtext.g:10368:2: ( ruleValidID )
+            // InternalXtext.g:10394:1: ( ( ruleValidID ) )
+            // InternalXtext.g:10395:2: ( ruleValidID )
             {
-            // InternalXtext.g:10368:2: ( ruleValidID )
-            // InternalXtext.g:10369:3: ruleValidID
+            // InternalXtext.g:10395:2: ( ruleValidID )
+            // InternalXtext.g:10396:3: ruleValidID
             {
              before(grammarAccess.getRuleNameAndParamsAccess().getNameValidIDParserRuleCall_0_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -31956,17 +32052,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleNameAndParams__ParametersAssignment_1_1_0"
-    // InternalXtext.g:10378:1: rule__RuleNameAndParams__ParametersAssignment_1_1_0 : ( ruleParameter ) ;
+    // InternalXtext.g:10405:1: rule__RuleNameAndParams__ParametersAssignment_1_1_0 : ( ruleParameter ) ;
     public final void rule__RuleNameAndParams__ParametersAssignment_1_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10382:1: ( ( ruleParameter ) )
-            // InternalXtext.g:10383:2: ( ruleParameter )
+            // InternalXtext.g:10409:1: ( ( ruleParameter ) )
+            // InternalXtext.g:10410:2: ( ruleParameter )
             {
-            // InternalXtext.g:10383:2: ( ruleParameter )
-            // InternalXtext.g:10384:3: ruleParameter
+            // InternalXtext.g:10410:2: ( ruleParameter )
+            // InternalXtext.g:10411:3: ruleParameter
             {
              before(grammarAccess.getRuleNameAndParamsAccess().getParametersParameterParserRuleCall_1_1_0_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -31997,17 +32093,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleNameAndParams__ParametersAssignment_1_1_1_1"
-    // InternalXtext.g:10393:1: rule__RuleNameAndParams__ParametersAssignment_1_1_1_1 : ( ruleParameter ) ;
+    // InternalXtext.g:10420:1: rule__RuleNameAndParams__ParametersAssignment_1_1_1_1 : ( ruleParameter ) ;
     public final void rule__RuleNameAndParams__ParametersAssignment_1_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10397:1: ( ( ruleParameter ) )
-            // InternalXtext.g:10398:2: ( ruleParameter )
+            // InternalXtext.g:10424:1: ( ( ruleParameter ) )
+            // InternalXtext.g:10425:2: ( ruleParameter )
             {
-            // InternalXtext.g:10398:2: ( ruleParameter )
-            // InternalXtext.g:10399:3: ruleParameter
+            // InternalXtext.g:10425:2: ( ruleParameter )
+            // InternalXtext.g:10426:3: ruleParameter
             {
              before(grammarAccess.getRuleNameAndParamsAccess().getParametersParameterParserRuleCall_1_1_1_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -32038,17 +32134,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Parameter__NameAssignment"
-    // InternalXtext.g:10408:1: rule__Parameter__NameAssignment : ( RULE_ID ) ;
+    // InternalXtext.g:10435:1: rule__Parameter__NameAssignment : ( RULE_ID ) ;
     public final void rule__Parameter__NameAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10412:1: ( ( RULE_ID ) )
-            // InternalXtext.g:10413:2: ( RULE_ID )
+            // InternalXtext.g:10439:1: ( ( RULE_ID ) )
+            // InternalXtext.g:10440:2: ( RULE_ID )
             {
-            // InternalXtext.g:10413:2: ( RULE_ID )
-            // InternalXtext.g:10414:3: RULE_ID
+            // InternalXtext.g:10440:2: ( RULE_ID )
+            // InternalXtext.g:10441:3: RULE_ID
             {
              before(grammarAccess.getParameterAccess().getNameIDTerminalRuleCall_0()); 
             match(input,RULE_ID,FollowSets000.FOLLOW_2); 
@@ -32075,21 +32171,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TypeRef__MetamodelAssignment_0_0"
-    // InternalXtext.g:10423:1: rule__TypeRef__MetamodelAssignment_0_0 : ( ( RULE_ID ) ) ;
+    // InternalXtext.g:10450:1: rule__TypeRef__MetamodelAssignment_0_0 : ( ( RULE_ID ) ) ;
     public final void rule__TypeRef__MetamodelAssignment_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10427:1: ( ( ( RULE_ID ) ) )
-            // InternalXtext.g:10428:2: ( ( RULE_ID ) )
+            // InternalXtext.g:10454:1: ( ( ( RULE_ID ) ) )
+            // InternalXtext.g:10455:2: ( ( RULE_ID ) )
             {
-            // InternalXtext.g:10428:2: ( ( RULE_ID ) )
-            // InternalXtext.g:10429:3: ( RULE_ID )
+            // InternalXtext.g:10455:2: ( ( RULE_ID ) )
+            // InternalXtext.g:10456:3: ( RULE_ID )
             {
              before(grammarAccess.getTypeRefAccess().getMetamodelAbstractMetamodelDeclarationCrossReference_0_0_0()); 
-            // InternalXtext.g:10430:3: ( RULE_ID )
-            // InternalXtext.g:10431:4: RULE_ID
+            // InternalXtext.g:10457:3: ( RULE_ID )
+            // InternalXtext.g:10458:4: RULE_ID
             {
              before(grammarAccess.getTypeRefAccess().getMetamodelAbstractMetamodelDeclarationIDTerminalRuleCall_0_0_0_1()); 
             match(input,RULE_ID,FollowSets000.FOLLOW_2); 
@@ -32120,21 +32216,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TypeRef__ClassifierAssignment_1"
-    // InternalXtext.g:10442:1: rule__TypeRef__ClassifierAssignment_1 : ( ( RULE_ID ) ) ;
+    // InternalXtext.g:10469:1: rule__TypeRef__ClassifierAssignment_1 : ( ( RULE_ID ) ) ;
     public final void rule__TypeRef__ClassifierAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10446:1: ( ( ( RULE_ID ) ) )
-            // InternalXtext.g:10447:2: ( ( RULE_ID ) )
+            // InternalXtext.g:10473:1: ( ( ( RULE_ID ) ) )
+            // InternalXtext.g:10474:2: ( ( RULE_ID ) )
             {
-            // InternalXtext.g:10447:2: ( ( RULE_ID ) )
-            // InternalXtext.g:10448:3: ( RULE_ID )
+            // InternalXtext.g:10474:2: ( ( RULE_ID ) )
+            // InternalXtext.g:10475:3: ( RULE_ID )
             {
              before(grammarAccess.getTypeRefAccess().getClassifierEClassifierCrossReference_1_0()); 
-            // InternalXtext.g:10449:3: ( RULE_ID )
-            // InternalXtext.g:10450:4: RULE_ID
+            // InternalXtext.g:10476:3: ( RULE_ID )
+            // InternalXtext.g:10477:4: RULE_ID
             {
              before(grammarAccess.getTypeRefAccess().getClassifierEClassifierIDTerminalRuleCall_1_0_1()); 
             match(input,RULE_ID,FollowSets000.FOLLOW_2); 
@@ -32165,17 +32261,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Alternatives__ElementsAssignment_1_1_1"
-    // InternalXtext.g:10461:1: rule__Alternatives__ElementsAssignment_1_1_1 : ( ruleConditionalBranch ) ;
+    // InternalXtext.g:10488:1: rule__Alternatives__ElementsAssignment_1_1_1 : ( ruleConditionalBranch ) ;
     public final void rule__Alternatives__ElementsAssignment_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10465:1: ( ( ruleConditionalBranch ) )
-            // InternalXtext.g:10466:2: ( ruleConditionalBranch )
+            // InternalXtext.g:10492:1: ( ( ruleConditionalBranch ) )
+            // InternalXtext.g:10493:2: ( ruleConditionalBranch )
             {
-            // InternalXtext.g:10466:2: ( ruleConditionalBranch )
-            // InternalXtext.g:10467:3: ruleConditionalBranch
+            // InternalXtext.g:10493:2: ( ruleConditionalBranch )
+            // InternalXtext.g:10494:3: ruleConditionalBranch
             {
              before(grammarAccess.getAlternativesAccess().getElementsConditionalBranchParserRuleCall_1_1_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -32206,17 +32302,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ConditionalBranch__GuardConditionAssignment_1_2"
-    // InternalXtext.g:10476:1: rule__ConditionalBranch__GuardConditionAssignment_1_2 : ( ruleDisjunction ) ;
+    // InternalXtext.g:10503:1: rule__ConditionalBranch__GuardConditionAssignment_1_2 : ( ruleDisjunction ) ;
     public final void rule__ConditionalBranch__GuardConditionAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10480:1: ( ( ruleDisjunction ) )
-            // InternalXtext.g:10481:2: ( ruleDisjunction )
+            // InternalXtext.g:10507:1: ( ( ruleDisjunction ) )
+            // InternalXtext.g:10508:2: ( ruleDisjunction )
             {
-            // InternalXtext.g:10481:2: ( ruleDisjunction )
-            // InternalXtext.g:10482:3: ruleDisjunction
+            // InternalXtext.g:10508:2: ( ruleDisjunction )
+            // InternalXtext.g:10509:3: ruleDisjunction
             {
              before(grammarAccess.getConditionalBranchAccess().getGuardConditionDisjunctionParserRuleCall_1_2_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -32247,17 +32343,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ConditionalBranch__ElementsAssignment_1_4"
-    // InternalXtext.g:10491:1: rule__ConditionalBranch__ElementsAssignment_1_4 : ( ruleAbstractToken ) ;
+    // InternalXtext.g:10518:1: rule__ConditionalBranch__ElementsAssignment_1_4 : ( ruleAbstractToken ) ;
     public final void rule__ConditionalBranch__ElementsAssignment_1_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10495:1: ( ( ruleAbstractToken ) )
-            // InternalXtext.g:10496:2: ( ruleAbstractToken )
+            // InternalXtext.g:10522:1: ( ( ruleAbstractToken ) )
+            // InternalXtext.g:10523:2: ( ruleAbstractToken )
             {
-            // InternalXtext.g:10496:2: ( ruleAbstractToken )
-            // InternalXtext.g:10497:3: ruleAbstractToken
+            // InternalXtext.g:10523:2: ( ruleAbstractToken )
+            // InternalXtext.g:10524:3: ruleAbstractToken
             {
              before(grammarAccess.getConditionalBranchAccess().getElementsAbstractTokenParserRuleCall_1_4_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -32288,17 +32384,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__UnorderedGroup__ElementsAssignment_1_1_1"
-    // InternalXtext.g:10506:1: rule__UnorderedGroup__ElementsAssignment_1_1_1 : ( ruleGroup ) ;
+    // InternalXtext.g:10533:1: rule__UnorderedGroup__ElementsAssignment_1_1_1 : ( ruleGroup ) ;
     public final void rule__UnorderedGroup__ElementsAssignment_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10510:1: ( ( ruleGroup ) )
-            // InternalXtext.g:10511:2: ( ruleGroup )
+            // InternalXtext.g:10537:1: ( ( ruleGroup ) )
+            // InternalXtext.g:10538:2: ( ruleGroup )
             {
-            // InternalXtext.g:10511:2: ( ruleGroup )
-            // InternalXtext.g:10512:3: ruleGroup
+            // InternalXtext.g:10538:2: ( ruleGroup )
+            // InternalXtext.g:10539:3: ruleGroup
             {
              before(grammarAccess.getUnorderedGroupAccess().getElementsGroupParserRuleCall_1_1_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -32329,17 +32425,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Group__ElementsAssignment_1_1"
-    // InternalXtext.g:10521:1: rule__Group__ElementsAssignment_1_1 : ( ruleAbstractToken ) ;
+    // InternalXtext.g:10548:1: rule__Group__ElementsAssignment_1_1 : ( ruleAbstractToken ) ;
     public final void rule__Group__ElementsAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10525:1: ( ( ruleAbstractToken ) )
-            // InternalXtext.g:10526:2: ( ruleAbstractToken )
+            // InternalXtext.g:10552:1: ( ( ruleAbstractToken ) )
+            // InternalXtext.g:10553:2: ( ruleAbstractToken )
             {
-            // InternalXtext.g:10526:2: ( ruleAbstractToken )
-            // InternalXtext.g:10527:3: ruleAbstractToken
+            // InternalXtext.g:10553:2: ( ruleAbstractToken )
+            // InternalXtext.g:10554:3: ruleAbstractToken
             {
              before(grammarAccess.getGroupAccess().getElementsAbstractTokenParserRuleCall_1_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -32370,21 +32466,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AbstractTokenWithCardinality__CardinalityAssignment_1"
-    // InternalXtext.g:10536:1: rule__AbstractTokenWithCardinality__CardinalityAssignment_1 : ( ( rule__AbstractTokenWithCardinality__CardinalityAlternatives_1_0 ) ) ;
+    // InternalXtext.g:10563:1: rule__AbstractTokenWithCardinality__CardinalityAssignment_1 : ( ( rule__AbstractTokenWithCardinality__CardinalityAlternatives_1_0 ) ) ;
     public final void rule__AbstractTokenWithCardinality__CardinalityAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10540:1: ( ( ( rule__AbstractTokenWithCardinality__CardinalityAlternatives_1_0 ) ) )
-            // InternalXtext.g:10541:2: ( ( rule__AbstractTokenWithCardinality__CardinalityAlternatives_1_0 ) )
+            // InternalXtext.g:10567:1: ( ( ( rule__AbstractTokenWithCardinality__CardinalityAlternatives_1_0 ) ) )
+            // InternalXtext.g:10568:2: ( ( rule__AbstractTokenWithCardinality__CardinalityAlternatives_1_0 ) )
             {
-            // InternalXtext.g:10541:2: ( ( rule__AbstractTokenWithCardinality__CardinalityAlternatives_1_0 ) )
-            // InternalXtext.g:10542:3: ( rule__AbstractTokenWithCardinality__CardinalityAlternatives_1_0 )
+            // InternalXtext.g:10568:2: ( ( rule__AbstractTokenWithCardinality__CardinalityAlternatives_1_0 ) )
+            // InternalXtext.g:10569:3: ( rule__AbstractTokenWithCardinality__CardinalityAlternatives_1_0 )
             {
              before(grammarAccess.getAbstractTokenWithCardinalityAccess().getCardinalityAlternatives_1_0()); 
-            // InternalXtext.g:10543:3: ( rule__AbstractTokenWithCardinality__CardinalityAlternatives_1_0 )
-            // InternalXtext.g:10543:4: rule__AbstractTokenWithCardinality__CardinalityAlternatives_1_0
+            // InternalXtext.g:10570:3: ( rule__AbstractTokenWithCardinality__CardinalityAlternatives_1_0 )
+            // InternalXtext.g:10570:4: rule__AbstractTokenWithCardinality__CardinalityAlternatives_1_0
             {
             pushFollow(FollowSets000.FOLLOW_2);
             rule__AbstractTokenWithCardinality__CardinalityAlternatives_1_0();
@@ -32417,17 +32513,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Action__TypeAssignment_1"
-    // InternalXtext.g:10551:1: rule__Action__TypeAssignment_1 : ( ruleTypeRef ) ;
+    // InternalXtext.g:10578:1: rule__Action__TypeAssignment_1 : ( ruleTypeRef ) ;
     public final void rule__Action__TypeAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10555:1: ( ( ruleTypeRef ) )
-            // InternalXtext.g:10556:2: ( ruleTypeRef )
+            // InternalXtext.g:10582:1: ( ( ruleTypeRef ) )
+            // InternalXtext.g:10583:2: ( ruleTypeRef )
             {
-            // InternalXtext.g:10556:2: ( ruleTypeRef )
-            // InternalXtext.g:10557:3: ruleTypeRef
+            // InternalXtext.g:10583:2: ( ruleTypeRef )
+            // InternalXtext.g:10584:3: ruleTypeRef
             {
              before(grammarAccess.getActionAccess().getTypeTypeRefParserRuleCall_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -32458,17 +32554,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Action__FeatureAssignment_2_1"
-    // InternalXtext.g:10566:1: rule__Action__FeatureAssignment_2_1 : ( ruleValidID ) ;
+    // InternalXtext.g:10593:1: rule__Action__FeatureAssignment_2_1 : ( ruleValidID ) ;
     public final void rule__Action__FeatureAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10570:1: ( ( ruleValidID ) )
-            // InternalXtext.g:10571:2: ( ruleValidID )
+            // InternalXtext.g:10597:1: ( ( ruleValidID ) )
+            // InternalXtext.g:10598:2: ( ruleValidID )
             {
-            // InternalXtext.g:10571:2: ( ruleValidID )
-            // InternalXtext.g:10572:3: ruleValidID
+            // InternalXtext.g:10598:2: ( ruleValidID )
+            // InternalXtext.g:10599:3: ruleValidID
             {
              before(grammarAccess.getActionAccess().getFeatureValidIDParserRuleCall_2_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -32499,21 +32595,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Action__OperatorAssignment_2_2"
-    // InternalXtext.g:10581:1: rule__Action__OperatorAssignment_2_2 : ( ( rule__Action__OperatorAlternatives_2_2_0 ) ) ;
+    // InternalXtext.g:10608:1: rule__Action__OperatorAssignment_2_2 : ( ( rule__Action__OperatorAlternatives_2_2_0 ) ) ;
     public final void rule__Action__OperatorAssignment_2_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10585:1: ( ( ( rule__Action__OperatorAlternatives_2_2_0 ) ) )
-            // InternalXtext.g:10586:2: ( ( rule__Action__OperatorAlternatives_2_2_0 ) )
+            // InternalXtext.g:10612:1: ( ( ( rule__Action__OperatorAlternatives_2_2_0 ) ) )
+            // InternalXtext.g:10613:2: ( ( rule__Action__OperatorAlternatives_2_2_0 ) )
             {
-            // InternalXtext.g:10586:2: ( ( rule__Action__OperatorAlternatives_2_2_0 ) )
-            // InternalXtext.g:10587:3: ( rule__Action__OperatorAlternatives_2_2_0 )
+            // InternalXtext.g:10613:2: ( ( rule__Action__OperatorAlternatives_2_2_0 ) )
+            // InternalXtext.g:10614:3: ( rule__Action__OperatorAlternatives_2_2_0 )
             {
              before(grammarAccess.getActionAccess().getOperatorAlternatives_2_2_0()); 
-            // InternalXtext.g:10588:3: ( rule__Action__OperatorAlternatives_2_2_0 )
-            // InternalXtext.g:10588:4: rule__Action__OperatorAlternatives_2_2_0
+            // InternalXtext.g:10615:3: ( rule__Action__OperatorAlternatives_2_2_0 )
+            // InternalXtext.g:10615:4: rule__Action__OperatorAlternatives_2_2_0
             {
             pushFollow(FollowSets000.FOLLOW_2);
             rule__Action__OperatorAlternatives_2_2_0();
@@ -32546,17 +32642,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Keyword__ValueAssignment"
-    // InternalXtext.g:10596:1: rule__Keyword__ValueAssignment : ( RULE_STRING ) ;
+    // InternalXtext.g:10623:1: rule__Keyword__ValueAssignment : ( RULE_STRING ) ;
     public final void rule__Keyword__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10600:1: ( ( RULE_STRING ) )
-            // InternalXtext.g:10601:2: ( RULE_STRING )
+            // InternalXtext.g:10627:1: ( ( RULE_STRING ) )
+            // InternalXtext.g:10628:2: ( RULE_STRING )
             {
-            // InternalXtext.g:10601:2: ( RULE_STRING )
-            // InternalXtext.g:10602:3: RULE_STRING
+            // InternalXtext.g:10628:2: ( RULE_STRING )
+            // InternalXtext.g:10629:3: RULE_STRING
             {
              before(grammarAccess.getKeywordAccess().getValueSTRINGTerminalRuleCall_0()); 
             match(input,RULE_STRING,FollowSets000.FOLLOW_2); 
@@ -32583,21 +32679,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleCall__RuleAssignment_0"
-    // InternalXtext.g:10611:1: rule__RuleCall__RuleAssignment_0 : ( ( ruleRuleID ) ) ;
+    // InternalXtext.g:10638:1: rule__RuleCall__RuleAssignment_0 : ( ( ruleRuleID ) ) ;
     public final void rule__RuleCall__RuleAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10615:1: ( ( ( ruleRuleID ) ) )
-            // InternalXtext.g:10616:2: ( ( ruleRuleID ) )
+            // InternalXtext.g:10642:1: ( ( ( ruleRuleID ) ) )
+            // InternalXtext.g:10643:2: ( ( ruleRuleID ) )
             {
-            // InternalXtext.g:10616:2: ( ( ruleRuleID ) )
-            // InternalXtext.g:10617:3: ( ruleRuleID )
+            // InternalXtext.g:10643:2: ( ( ruleRuleID ) )
+            // InternalXtext.g:10644:3: ( ruleRuleID )
             {
              before(grammarAccess.getRuleCallAccess().getRuleAbstractRuleCrossReference_0_0()); 
-            // InternalXtext.g:10618:3: ( ruleRuleID )
-            // InternalXtext.g:10619:4: ruleRuleID
+            // InternalXtext.g:10645:3: ( ruleRuleID )
+            // InternalXtext.g:10646:4: ruleRuleID
             {
              before(grammarAccess.getRuleCallAccess().getRuleAbstractRuleRuleIDParserRuleCall_0_0_1()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -32632,17 +32728,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleCall__ArgumentsAssignment_1_1"
-    // InternalXtext.g:10630:1: rule__RuleCall__ArgumentsAssignment_1_1 : ( ruleNamedArgument ) ;
+    // InternalXtext.g:10657:1: rule__RuleCall__ArgumentsAssignment_1_1 : ( ruleNamedArgument ) ;
     public final void rule__RuleCall__ArgumentsAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10634:1: ( ( ruleNamedArgument ) )
-            // InternalXtext.g:10635:2: ( ruleNamedArgument )
+            // InternalXtext.g:10661:1: ( ( ruleNamedArgument ) )
+            // InternalXtext.g:10662:2: ( ruleNamedArgument )
             {
-            // InternalXtext.g:10635:2: ( ruleNamedArgument )
-            // InternalXtext.g:10636:3: ruleNamedArgument
+            // InternalXtext.g:10662:2: ( ruleNamedArgument )
+            // InternalXtext.g:10663:3: ruleNamedArgument
             {
              before(grammarAccess.getRuleCallAccess().getArgumentsNamedArgumentParserRuleCall_1_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -32673,17 +32769,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleCall__ArgumentsAssignment_1_2_1"
-    // InternalXtext.g:10645:1: rule__RuleCall__ArgumentsAssignment_1_2_1 : ( ruleNamedArgument ) ;
+    // InternalXtext.g:10672:1: rule__RuleCall__ArgumentsAssignment_1_2_1 : ( ruleNamedArgument ) ;
     public final void rule__RuleCall__ArgumentsAssignment_1_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10649:1: ( ( ruleNamedArgument ) )
-            // InternalXtext.g:10650:2: ( ruleNamedArgument )
+            // InternalXtext.g:10676:1: ( ( ruleNamedArgument ) )
+            // InternalXtext.g:10677:2: ( ruleNamedArgument )
             {
-            // InternalXtext.g:10650:2: ( ruleNamedArgument )
-            // InternalXtext.g:10651:3: ruleNamedArgument
+            // InternalXtext.g:10677:2: ( ruleNamedArgument )
+            // InternalXtext.g:10678:3: ruleNamedArgument
             {
              before(grammarAccess.getRuleCallAccess().getArgumentsNamedArgumentParserRuleCall_1_2_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -32714,21 +32810,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__NamedArgument__ParameterAssignment_0_0"
-    // InternalXtext.g:10660:1: rule__NamedArgument__ParameterAssignment_0_0 : ( ( RULE_ID ) ) ;
+    // InternalXtext.g:10687:1: rule__NamedArgument__ParameterAssignment_0_0 : ( ( RULE_ID ) ) ;
     public final void rule__NamedArgument__ParameterAssignment_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10664:1: ( ( ( RULE_ID ) ) )
-            // InternalXtext.g:10665:2: ( ( RULE_ID ) )
+            // InternalXtext.g:10691:1: ( ( ( RULE_ID ) ) )
+            // InternalXtext.g:10692:2: ( ( RULE_ID ) )
             {
-            // InternalXtext.g:10665:2: ( ( RULE_ID ) )
-            // InternalXtext.g:10666:3: ( RULE_ID )
+            // InternalXtext.g:10692:2: ( ( RULE_ID ) )
+            // InternalXtext.g:10693:3: ( RULE_ID )
             {
              before(grammarAccess.getNamedArgumentAccess().getParameterParameterCrossReference_0_0_0()); 
-            // InternalXtext.g:10667:3: ( RULE_ID )
-            // InternalXtext.g:10668:4: RULE_ID
+            // InternalXtext.g:10694:3: ( RULE_ID )
+            // InternalXtext.g:10695:4: RULE_ID
             {
              before(grammarAccess.getNamedArgumentAccess().getParameterParameterIDTerminalRuleCall_0_0_0_1()); 
             match(input,RULE_ID,FollowSets000.FOLLOW_2); 
@@ -32759,21 +32855,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__NamedArgument__CalledByNameAssignment_0_1"
-    // InternalXtext.g:10679:1: rule__NamedArgument__CalledByNameAssignment_0_1 : ( ( '=' ) ) ;
+    // InternalXtext.g:10706:1: rule__NamedArgument__CalledByNameAssignment_0_1 : ( ( '=' ) ) ;
     public final void rule__NamedArgument__CalledByNameAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10683:1: ( ( ( '=' ) ) )
-            // InternalXtext.g:10684:2: ( ( '=' ) )
+            // InternalXtext.g:10710:1: ( ( ( '=' ) ) )
+            // InternalXtext.g:10711:2: ( ( '=' ) )
             {
-            // InternalXtext.g:10684:2: ( ( '=' ) )
-            // InternalXtext.g:10685:3: ( '=' )
+            // InternalXtext.g:10711:2: ( ( '=' ) )
+            // InternalXtext.g:10712:3: ( '=' )
             {
              before(grammarAccess.getNamedArgumentAccess().getCalledByNameEqualsSignKeyword_0_1_0()); 
-            // InternalXtext.g:10686:3: ( '=' )
-            // InternalXtext.g:10687:4: '='
+            // InternalXtext.g:10713:3: ( '=' )
+            // InternalXtext.g:10714:4: '='
             {
              before(grammarAccess.getNamedArgumentAccess().getCalledByNameEqualsSignKeyword_0_1_0()); 
             match(input,15,FollowSets000.FOLLOW_2); 
@@ -32804,17 +32900,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__NamedArgument__ValueAssignment_1"
-    // InternalXtext.g:10698:1: rule__NamedArgument__ValueAssignment_1 : ( ruleDisjunction ) ;
+    // InternalXtext.g:10725:1: rule__NamedArgument__ValueAssignment_1 : ( ruleDisjunction ) ;
     public final void rule__NamedArgument__ValueAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10702:1: ( ( ruleDisjunction ) )
-            // InternalXtext.g:10703:2: ( ruleDisjunction )
+            // InternalXtext.g:10729:1: ( ( ruleDisjunction ) )
+            // InternalXtext.g:10730:2: ( ruleDisjunction )
             {
-            // InternalXtext.g:10703:2: ( ruleDisjunction )
-            // InternalXtext.g:10704:3: ruleDisjunction
+            // InternalXtext.g:10730:2: ( ruleDisjunction )
+            // InternalXtext.g:10731:3: ruleDisjunction
             {
              before(grammarAccess.getNamedArgumentAccess().getValueDisjunctionParserRuleCall_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -32845,21 +32941,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LiteralCondition__TrueAssignment_1_0"
-    // InternalXtext.g:10713:1: rule__LiteralCondition__TrueAssignment_1_0 : ( ( 'true' ) ) ;
+    // InternalXtext.g:10740:1: rule__LiteralCondition__TrueAssignment_1_0 : ( ( 'true' ) ) ;
     public final void rule__LiteralCondition__TrueAssignment_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10717:1: ( ( ( 'true' ) ) )
-            // InternalXtext.g:10718:2: ( ( 'true' ) )
+            // InternalXtext.g:10744:1: ( ( ( 'true' ) ) )
+            // InternalXtext.g:10745:2: ( ( 'true' ) )
             {
-            // InternalXtext.g:10718:2: ( ( 'true' ) )
-            // InternalXtext.g:10719:3: ( 'true' )
+            // InternalXtext.g:10745:2: ( ( 'true' ) )
+            // InternalXtext.g:10746:3: ( 'true' )
             {
              before(grammarAccess.getLiteralConditionAccess().getTrueTrueKeyword_1_0_0()); 
-            // InternalXtext.g:10720:3: ( 'true' )
-            // InternalXtext.g:10721:4: 'true'
+            // InternalXtext.g:10747:3: ( 'true' )
+            // InternalXtext.g:10748:4: 'true'
             {
              before(grammarAccess.getLiteralConditionAccess().getTrueTrueKeyword_1_0_0()); 
             match(input,18,FollowSets000.FOLLOW_2); 
@@ -32890,17 +32986,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Disjunction__RightAssignment_1_2"
-    // InternalXtext.g:10732:1: rule__Disjunction__RightAssignment_1_2 : ( ruleConjunction ) ;
+    // InternalXtext.g:10759:1: rule__Disjunction__RightAssignment_1_2 : ( ruleConjunction ) ;
     public final void rule__Disjunction__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10736:1: ( ( ruleConjunction ) )
-            // InternalXtext.g:10737:2: ( ruleConjunction )
+            // InternalXtext.g:10763:1: ( ( ruleConjunction ) )
+            // InternalXtext.g:10764:2: ( ruleConjunction )
             {
-            // InternalXtext.g:10737:2: ( ruleConjunction )
-            // InternalXtext.g:10738:3: ruleConjunction
+            // InternalXtext.g:10764:2: ( ruleConjunction )
+            // InternalXtext.g:10765:3: ruleConjunction
             {
              before(grammarAccess.getDisjunctionAccess().getRightConjunctionParserRuleCall_1_2_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -32931,17 +33027,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Conjunction__RightAssignment_1_2"
-    // InternalXtext.g:10747:1: rule__Conjunction__RightAssignment_1_2 : ( ruleNegation ) ;
+    // InternalXtext.g:10774:1: rule__Conjunction__RightAssignment_1_2 : ( ruleNegation ) ;
     public final void rule__Conjunction__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10751:1: ( ( ruleNegation ) )
-            // InternalXtext.g:10752:2: ( ruleNegation )
+            // InternalXtext.g:10778:1: ( ( ruleNegation ) )
+            // InternalXtext.g:10779:2: ( ruleNegation )
             {
-            // InternalXtext.g:10752:2: ( ruleNegation )
-            // InternalXtext.g:10753:3: ruleNegation
+            // InternalXtext.g:10779:2: ( ruleNegation )
+            // InternalXtext.g:10780:3: ruleNegation
             {
              before(grammarAccess.getConjunctionAccess().getRightNegationParserRuleCall_1_2_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -32972,17 +33068,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Negation__ValueAssignment_1_2"
-    // InternalXtext.g:10762:1: rule__Negation__ValueAssignment_1_2 : ( ruleNegation ) ;
+    // InternalXtext.g:10789:1: rule__Negation__ValueAssignment_1_2 : ( ruleNegation ) ;
     public final void rule__Negation__ValueAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10766:1: ( ( ruleNegation ) )
-            // InternalXtext.g:10767:2: ( ruleNegation )
+            // InternalXtext.g:10793:1: ( ( ruleNegation ) )
+            // InternalXtext.g:10794:2: ( ruleNegation )
             {
-            // InternalXtext.g:10767:2: ( ruleNegation )
-            // InternalXtext.g:10768:3: ruleNegation
+            // InternalXtext.g:10794:2: ( ruleNegation )
+            // InternalXtext.g:10795:3: ruleNegation
             {
              before(grammarAccess.getNegationAccess().getValueNegationParserRuleCall_1_2_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -33013,21 +33109,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ParameterReference__ParameterAssignment"
-    // InternalXtext.g:10777:1: rule__ParameterReference__ParameterAssignment : ( ( RULE_ID ) ) ;
+    // InternalXtext.g:10804:1: rule__ParameterReference__ParameterAssignment : ( ( RULE_ID ) ) ;
     public final void rule__ParameterReference__ParameterAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10781:1: ( ( ( RULE_ID ) ) )
-            // InternalXtext.g:10782:2: ( ( RULE_ID ) )
+            // InternalXtext.g:10808:1: ( ( ( RULE_ID ) ) )
+            // InternalXtext.g:10809:2: ( ( RULE_ID ) )
             {
-            // InternalXtext.g:10782:2: ( ( RULE_ID ) )
-            // InternalXtext.g:10783:3: ( RULE_ID )
+            // InternalXtext.g:10809:2: ( ( RULE_ID ) )
+            // InternalXtext.g:10810:3: ( RULE_ID )
             {
              before(grammarAccess.getParameterReferenceAccess().getParameterParameterCrossReference_0()); 
-            // InternalXtext.g:10784:3: ( RULE_ID )
-            // InternalXtext.g:10785:4: RULE_ID
+            // InternalXtext.g:10811:3: ( RULE_ID )
+            // InternalXtext.g:10812:4: RULE_ID
             {
              before(grammarAccess.getParameterReferenceAccess().getParameterParameterIDTerminalRuleCall_0_1()); 
             match(input,RULE_ID,FollowSets000.FOLLOW_2); 
@@ -33058,21 +33154,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalRuleCall__RuleAssignment"
-    // InternalXtext.g:10796:1: rule__TerminalRuleCall__RuleAssignment : ( ( ruleRuleID ) ) ;
+    // InternalXtext.g:10823:1: rule__TerminalRuleCall__RuleAssignment : ( ( ruleRuleID ) ) ;
     public final void rule__TerminalRuleCall__RuleAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10800:1: ( ( ( ruleRuleID ) ) )
-            // InternalXtext.g:10801:2: ( ( ruleRuleID ) )
+            // InternalXtext.g:10827:1: ( ( ( ruleRuleID ) ) )
+            // InternalXtext.g:10828:2: ( ( ruleRuleID ) )
             {
-            // InternalXtext.g:10801:2: ( ( ruleRuleID ) )
-            // InternalXtext.g:10802:3: ( ruleRuleID )
+            // InternalXtext.g:10828:2: ( ( ruleRuleID ) )
+            // InternalXtext.g:10829:3: ( ruleRuleID )
             {
              before(grammarAccess.getTerminalRuleCallAccess().getRuleAbstractRuleCrossReference_0()); 
-            // InternalXtext.g:10803:3: ( ruleRuleID )
-            // InternalXtext.g:10804:4: ruleRuleID
+            // InternalXtext.g:10830:3: ( ruleRuleID )
+            // InternalXtext.g:10831:4: ruleRuleID
             {
              before(grammarAccess.getTerminalRuleCallAccess().getRuleAbstractRuleRuleIDParserRuleCall_0_1()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -33107,21 +33203,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PredicatedKeyword__PredicatedAssignment_0_0"
-    // InternalXtext.g:10815:1: rule__PredicatedKeyword__PredicatedAssignment_0_0 : ( ( '=>' ) ) ;
+    // InternalXtext.g:10842:1: rule__PredicatedKeyword__PredicatedAssignment_0_0 : ( ( '=>' ) ) ;
     public final void rule__PredicatedKeyword__PredicatedAssignment_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10819:1: ( ( ( '=>' ) ) )
-            // InternalXtext.g:10820:2: ( ( '=>' ) )
+            // InternalXtext.g:10846:1: ( ( ( '=>' ) ) )
+            // InternalXtext.g:10847:2: ( ( '=>' ) )
             {
-            // InternalXtext.g:10820:2: ( ( '=>' ) )
-            // InternalXtext.g:10821:3: ( '=>' )
+            // InternalXtext.g:10847:2: ( ( '=>' ) )
+            // InternalXtext.g:10848:3: ( '=>' )
             {
              before(grammarAccess.getPredicatedKeywordAccess().getPredicatedEqualsSignGreaterThanSignKeyword_0_0_0()); 
-            // InternalXtext.g:10822:3: ( '=>' )
-            // InternalXtext.g:10823:4: '=>'
+            // InternalXtext.g:10849:3: ( '=>' )
+            // InternalXtext.g:10850:4: '=>'
             {
              before(grammarAccess.getPredicatedKeywordAccess().getPredicatedEqualsSignGreaterThanSignKeyword_0_0_0()); 
             match(input,54,FollowSets000.FOLLOW_2); 
@@ -33152,21 +33248,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PredicatedKeyword__FirstSetPredicatedAssignment_0_1"
-    // InternalXtext.g:10834:1: rule__PredicatedKeyword__FirstSetPredicatedAssignment_0_1 : ( ( '->' ) ) ;
+    // InternalXtext.g:10861:1: rule__PredicatedKeyword__FirstSetPredicatedAssignment_0_1 : ( ( '->' ) ) ;
     public final void rule__PredicatedKeyword__FirstSetPredicatedAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10838:1: ( ( ( '->' ) ) )
-            // InternalXtext.g:10839:2: ( ( '->' ) )
+            // InternalXtext.g:10865:1: ( ( ( '->' ) ) )
+            // InternalXtext.g:10866:2: ( ( '->' ) )
             {
-            // InternalXtext.g:10839:2: ( ( '->' ) )
-            // InternalXtext.g:10840:3: ( '->' )
+            // InternalXtext.g:10866:2: ( ( '->' ) )
+            // InternalXtext.g:10867:3: ( '->' )
             {
              before(grammarAccess.getPredicatedKeywordAccess().getFirstSetPredicatedHyphenMinusGreaterThanSignKeyword_0_1_0()); 
-            // InternalXtext.g:10841:3: ( '->' )
-            // InternalXtext.g:10842:4: '->'
+            // InternalXtext.g:10868:3: ( '->' )
+            // InternalXtext.g:10869:4: '->'
             {
              before(grammarAccess.getPredicatedKeywordAccess().getFirstSetPredicatedHyphenMinusGreaterThanSignKeyword_0_1_0()); 
             match(input,48,FollowSets000.FOLLOW_2); 
@@ -33197,17 +33293,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PredicatedKeyword__ValueAssignment_1"
-    // InternalXtext.g:10853:1: rule__PredicatedKeyword__ValueAssignment_1 : ( RULE_STRING ) ;
+    // InternalXtext.g:10880:1: rule__PredicatedKeyword__ValueAssignment_1 : ( RULE_STRING ) ;
     public final void rule__PredicatedKeyword__ValueAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10857:1: ( ( RULE_STRING ) )
-            // InternalXtext.g:10858:2: ( RULE_STRING )
+            // InternalXtext.g:10884:1: ( ( RULE_STRING ) )
+            // InternalXtext.g:10885:2: ( RULE_STRING )
             {
-            // InternalXtext.g:10858:2: ( RULE_STRING )
-            // InternalXtext.g:10859:3: RULE_STRING
+            // InternalXtext.g:10885:2: ( RULE_STRING )
+            // InternalXtext.g:10886:3: RULE_STRING
             {
              before(grammarAccess.getPredicatedKeywordAccess().getValueSTRINGTerminalRuleCall_1_0()); 
             match(input,RULE_STRING,FollowSets000.FOLLOW_2); 
@@ -33234,21 +33330,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PredicatedRuleCall__PredicatedAssignment_0_0"
-    // InternalXtext.g:10868:1: rule__PredicatedRuleCall__PredicatedAssignment_0_0 : ( ( '=>' ) ) ;
+    // InternalXtext.g:10895:1: rule__PredicatedRuleCall__PredicatedAssignment_0_0 : ( ( '=>' ) ) ;
     public final void rule__PredicatedRuleCall__PredicatedAssignment_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10872:1: ( ( ( '=>' ) ) )
-            // InternalXtext.g:10873:2: ( ( '=>' ) )
+            // InternalXtext.g:10899:1: ( ( ( '=>' ) ) )
+            // InternalXtext.g:10900:2: ( ( '=>' ) )
             {
-            // InternalXtext.g:10873:2: ( ( '=>' ) )
-            // InternalXtext.g:10874:3: ( '=>' )
+            // InternalXtext.g:10900:2: ( ( '=>' ) )
+            // InternalXtext.g:10901:3: ( '=>' )
             {
              before(grammarAccess.getPredicatedRuleCallAccess().getPredicatedEqualsSignGreaterThanSignKeyword_0_0_0()); 
-            // InternalXtext.g:10875:3: ( '=>' )
-            // InternalXtext.g:10876:4: '=>'
+            // InternalXtext.g:10902:3: ( '=>' )
+            // InternalXtext.g:10903:4: '=>'
             {
              before(grammarAccess.getPredicatedRuleCallAccess().getPredicatedEqualsSignGreaterThanSignKeyword_0_0_0()); 
             match(input,54,FollowSets000.FOLLOW_2); 
@@ -33279,21 +33375,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PredicatedRuleCall__FirstSetPredicatedAssignment_0_1"
-    // InternalXtext.g:10887:1: rule__PredicatedRuleCall__FirstSetPredicatedAssignment_0_1 : ( ( '->' ) ) ;
+    // InternalXtext.g:10914:1: rule__PredicatedRuleCall__FirstSetPredicatedAssignment_0_1 : ( ( '->' ) ) ;
     public final void rule__PredicatedRuleCall__FirstSetPredicatedAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10891:1: ( ( ( '->' ) ) )
-            // InternalXtext.g:10892:2: ( ( '->' ) )
+            // InternalXtext.g:10918:1: ( ( ( '->' ) ) )
+            // InternalXtext.g:10919:2: ( ( '->' ) )
             {
-            // InternalXtext.g:10892:2: ( ( '->' ) )
-            // InternalXtext.g:10893:3: ( '->' )
+            // InternalXtext.g:10919:2: ( ( '->' ) )
+            // InternalXtext.g:10920:3: ( '->' )
             {
              before(grammarAccess.getPredicatedRuleCallAccess().getFirstSetPredicatedHyphenMinusGreaterThanSignKeyword_0_1_0()); 
-            // InternalXtext.g:10894:3: ( '->' )
-            // InternalXtext.g:10895:4: '->'
+            // InternalXtext.g:10921:3: ( '->' )
+            // InternalXtext.g:10922:4: '->'
             {
              before(grammarAccess.getPredicatedRuleCallAccess().getFirstSetPredicatedHyphenMinusGreaterThanSignKeyword_0_1_0()); 
             match(input,48,FollowSets000.FOLLOW_2); 
@@ -33324,21 +33420,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PredicatedRuleCall__RuleAssignment_1"
-    // InternalXtext.g:10906:1: rule__PredicatedRuleCall__RuleAssignment_1 : ( ( ruleRuleID ) ) ;
+    // InternalXtext.g:10933:1: rule__PredicatedRuleCall__RuleAssignment_1 : ( ( ruleRuleID ) ) ;
     public final void rule__PredicatedRuleCall__RuleAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10910:1: ( ( ( ruleRuleID ) ) )
-            // InternalXtext.g:10911:2: ( ( ruleRuleID ) )
+            // InternalXtext.g:10937:1: ( ( ( ruleRuleID ) ) )
+            // InternalXtext.g:10938:2: ( ( ruleRuleID ) )
             {
-            // InternalXtext.g:10911:2: ( ( ruleRuleID ) )
-            // InternalXtext.g:10912:3: ( ruleRuleID )
+            // InternalXtext.g:10938:2: ( ( ruleRuleID ) )
+            // InternalXtext.g:10939:3: ( ruleRuleID )
             {
              before(grammarAccess.getPredicatedRuleCallAccess().getRuleAbstractRuleCrossReference_1_0()); 
-            // InternalXtext.g:10913:3: ( ruleRuleID )
-            // InternalXtext.g:10914:4: ruleRuleID
+            // InternalXtext.g:10940:3: ( ruleRuleID )
+            // InternalXtext.g:10941:4: ruleRuleID
             {
              before(grammarAccess.getPredicatedRuleCallAccess().getRuleAbstractRuleRuleIDParserRuleCall_1_0_1()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -33373,17 +33469,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PredicatedRuleCall__ArgumentsAssignment_2_1"
-    // InternalXtext.g:10925:1: rule__PredicatedRuleCall__ArgumentsAssignment_2_1 : ( ruleNamedArgument ) ;
+    // InternalXtext.g:10952:1: rule__PredicatedRuleCall__ArgumentsAssignment_2_1 : ( ruleNamedArgument ) ;
     public final void rule__PredicatedRuleCall__ArgumentsAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10929:1: ( ( ruleNamedArgument ) )
-            // InternalXtext.g:10930:2: ( ruleNamedArgument )
+            // InternalXtext.g:10956:1: ( ( ruleNamedArgument ) )
+            // InternalXtext.g:10957:2: ( ruleNamedArgument )
             {
-            // InternalXtext.g:10930:2: ( ruleNamedArgument )
-            // InternalXtext.g:10931:3: ruleNamedArgument
+            // InternalXtext.g:10957:2: ( ruleNamedArgument )
+            // InternalXtext.g:10958:3: ruleNamedArgument
             {
              before(grammarAccess.getPredicatedRuleCallAccess().getArgumentsNamedArgumentParserRuleCall_2_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -33414,17 +33510,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PredicatedRuleCall__ArgumentsAssignment_2_2_1"
-    // InternalXtext.g:10940:1: rule__PredicatedRuleCall__ArgumentsAssignment_2_2_1 : ( ruleNamedArgument ) ;
+    // InternalXtext.g:10967:1: rule__PredicatedRuleCall__ArgumentsAssignment_2_2_1 : ( ruleNamedArgument ) ;
     public final void rule__PredicatedRuleCall__ArgumentsAssignment_2_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10944:1: ( ( ruleNamedArgument ) )
-            // InternalXtext.g:10945:2: ( ruleNamedArgument )
+            // InternalXtext.g:10971:1: ( ( ruleNamedArgument ) )
+            // InternalXtext.g:10972:2: ( ruleNamedArgument )
             {
-            // InternalXtext.g:10945:2: ( ruleNamedArgument )
-            // InternalXtext.g:10946:3: ruleNamedArgument
+            // InternalXtext.g:10972:2: ( ruleNamedArgument )
+            // InternalXtext.g:10973:3: ruleNamedArgument
             {
              before(grammarAccess.getPredicatedRuleCallAccess().getArgumentsNamedArgumentParserRuleCall_2_2_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -33455,21 +33551,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Assignment__PredicatedAssignment_0_0"
-    // InternalXtext.g:10955:1: rule__Assignment__PredicatedAssignment_0_0 : ( ( '=>' ) ) ;
+    // InternalXtext.g:10982:1: rule__Assignment__PredicatedAssignment_0_0 : ( ( '=>' ) ) ;
     public final void rule__Assignment__PredicatedAssignment_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10959:1: ( ( ( '=>' ) ) )
-            // InternalXtext.g:10960:2: ( ( '=>' ) )
+            // InternalXtext.g:10986:1: ( ( ( '=>' ) ) )
+            // InternalXtext.g:10987:2: ( ( '=>' ) )
             {
-            // InternalXtext.g:10960:2: ( ( '=>' ) )
-            // InternalXtext.g:10961:3: ( '=>' )
+            // InternalXtext.g:10987:2: ( ( '=>' ) )
+            // InternalXtext.g:10988:3: ( '=>' )
             {
              before(grammarAccess.getAssignmentAccess().getPredicatedEqualsSignGreaterThanSignKeyword_0_0_0()); 
-            // InternalXtext.g:10962:3: ( '=>' )
-            // InternalXtext.g:10963:4: '=>'
+            // InternalXtext.g:10989:3: ( '=>' )
+            // InternalXtext.g:10990:4: '=>'
             {
              before(grammarAccess.getAssignmentAccess().getPredicatedEqualsSignGreaterThanSignKeyword_0_0_0()); 
             match(input,54,FollowSets000.FOLLOW_2); 
@@ -33500,21 +33596,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Assignment__FirstSetPredicatedAssignment_0_1"
-    // InternalXtext.g:10974:1: rule__Assignment__FirstSetPredicatedAssignment_0_1 : ( ( '->' ) ) ;
+    // InternalXtext.g:11001:1: rule__Assignment__FirstSetPredicatedAssignment_0_1 : ( ( '->' ) ) ;
     public final void rule__Assignment__FirstSetPredicatedAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10978:1: ( ( ( '->' ) ) )
-            // InternalXtext.g:10979:2: ( ( '->' ) )
+            // InternalXtext.g:11005:1: ( ( ( '->' ) ) )
+            // InternalXtext.g:11006:2: ( ( '->' ) )
             {
-            // InternalXtext.g:10979:2: ( ( '->' ) )
-            // InternalXtext.g:10980:3: ( '->' )
+            // InternalXtext.g:11006:2: ( ( '->' ) )
+            // InternalXtext.g:11007:3: ( '->' )
             {
              before(grammarAccess.getAssignmentAccess().getFirstSetPredicatedHyphenMinusGreaterThanSignKeyword_0_1_0()); 
-            // InternalXtext.g:10981:3: ( '->' )
-            // InternalXtext.g:10982:4: '->'
+            // InternalXtext.g:11008:3: ( '->' )
+            // InternalXtext.g:11009:4: '->'
             {
              before(grammarAccess.getAssignmentAccess().getFirstSetPredicatedHyphenMinusGreaterThanSignKeyword_0_1_0()); 
             match(input,48,FollowSets000.FOLLOW_2); 
@@ -33545,17 +33641,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Assignment__FeatureAssignment_1"
-    // InternalXtext.g:10993:1: rule__Assignment__FeatureAssignment_1 : ( ruleValidID ) ;
+    // InternalXtext.g:11020:1: rule__Assignment__FeatureAssignment_1 : ( ruleValidID ) ;
     public final void rule__Assignment__FeatureAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:10997:1: ( ( ruleValidID ) )
-            // InternalXtext.g:10998:2: ( ruleValidID )
+            // InternalXtext.g:11024:1: ( ( ruleValidID ) )
+            // InternalXtext.g:11025:2: ( ruleValidID )
             {
-            // InternalXtext.g:10998:2: ( ruleValidID )
-            // InternalXtext.g:10999:3: ruleValidID
+            // InternalXtext.g:11025:2: ( ruleValidID )
+            // InternalXtext.g:11026:3: ruleValidID
             {
              before(grammarAccess.getAssignmentAccess().getFeatureValidIDParserRuleCall_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -33586,21 +33682,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Assignment__OperatorAssignment_2"
-    // InternalXtext.g:11008:1: rule__Assignment__OperatorAssignment_2 : ( ( rule__Assignment__OperatorAlternatives_2_0 ) ) ;
+    // InternalXtext.g:11035:1: rule__Assignment__OperatorAssignment_2 : ( ( rule__Assignment__OperatorAlternatives_2_0 ) ) ;
     public final void rule__Assignment__OperatorAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11012:1: ( ( ( rule__Assignment__OperatorAlternatives_2_0 ) ) )
-            // InternalXtext.g:11013:2: ( ( rule__Assignment__OperatorAlternatives_2_0 ) )
+            // InternalXtext.g:11039:1: ( ( ( rule__Assignment__OperatorAlternatives_2_0 ) ) )
+            // InternalXtext.g:11040:2: ( ( rule__Assignment__OperatorAlternatives_2_0 ) )
             {
-            // InternalXtext.g:11013:2: ( ( rule__Assignment__OperatorAlternatives_2_0 ) )
-            // InternalXtext.g:11014:3: ( rule__Assignment__OperatorAlternatives_2_0 )
+            // InternalXtext.g:11040:2: ( ( rule__Assignment__OperatorAlternatives_2_0 ) )
+            // InternalXtext.g:11041:3: ( rule__Assignment__OperatorAlternatives_2_0 )
             {
              before(grammarAccess.getAssignmentAccess().getOperatorAlternatives_2_0()); 
-            // InternalXtext.g:11015:3: ( rule__Assignment__OperatorAlternatives_2_0 )
-            // InternalXtext.g:11015:4: rule__Assignment__OperatorAlternatives_2_0
+            // InternalXtext.g:11042:3: ( rule__Assignment__OperatorAlternatives_2_0 )
+            // InternalXtext.g:11042:4: rule__Assignment__OperatorAlternatives_2_0
             {
             pushFollow(FollowSets000.FOLLOW_2);
             rule__Assignment__OperatorAlternatives_2_0();
@@ -33633,17 +33729,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Assignment__TerminalAssignment_3"
-    // InternalXtext.g:11023:1: rule__Assignment__TerminalAssignment_3 : ( ruleAssignableTerminal ) ;
+    // InternalXtext.g:11050:1: rule__Assignment__TerminalAssignment_3 : ( ruleAssignableTerminal ) ;
     public final void rule__Assignment__TerminalAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11027:1: ( ( ruleAssignableTerminal ) )
-            // InternalXtext.g:11028:2: ( ruleAssignableTerminal )
+            // InternalXtext.g:11054:1: ( ( ruleAssignableTerminal ) )
+            // InternalXtext.g:11055:2: ( ruleAssignableTerminal )
             {
-            // InternalXtext.g:11028:2: ( ruleAssignableTerminal )
-            // InternalXtext.g:11029:3: ruleAssignableTerminal
+            // InternalXtext.g:11055:2: ( ruleAssignableTerminal )
+            // InternalXtext.g:11056:3: ruleAssignableTerminal
             {
              before(grammarAccess.getAssignmentAccess().getTerminalAssignableTerminalParserRuleCall_3_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -33674,17 +33770,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AssignableAlternatives__ElementsAssignment_1_1_1"
-    // InternalXtext.g:11038:1: rule__AssignableAlternatives__ElementsAssignment_1_1_1 : ( ruleAssignableTerminal ) ;
+    // InternalXtext.g:11065:1: rule__AssignableAlternatives__ElementsAssignment_1_1_1 : ( ruleAssignableTerminal ) ;
     public final void rule__AssignableAlternatives__ElementsAssignment_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11042:1: ( ( ruleAssignableTerminal ) )
-            // InternalXtext.g:11043:2: ( ruleAssignableTerminal )
+            // InternalXtext.g:11069:1: ( ( ruleAssignableTerminal ) )
+            // InternalXtext.g:11070:2: ( ruleAssignableTerminal )
             {
-            // InternalXtext.g:11043:2: ( ruleAssignableTerminal )
-            // InternalXtext.g:11044:3: ruleAssignableTerminal
+            // InternalXtext.g:11070:2: ( ruleAssignableTerminal )
+            // InternalXtext.g:11071:3: ruleAssignableTerminal
             {
              before(grammarAccess.getAssignableAlternativesAccess().getElementsAssignableTerminalParserRuleCall_1_1_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -33715,17 +33811,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__CrossReference__TypeAssignment_1"
-    // InternalXtext.g:11053:1: rule__CrossReference__TypeAssignment_1 : ( ruleTypeRef ) ;
+    // InternalXtext.g:11080:1: rule__CrossReference__TypeAssignment_1 : ( ruleTypeRef ) ;
     public final void rule__CrossReference__TypeAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11057:1: ( ( ruleTypeRef ) )
-            // InternalXtext.g:11058:2: ( ruleTypeRef )
+            // InternalXtext.g:11084:1: ( ( ruleTypeRef ) )
+            // InternalXtext.g:11085:2: ( ruleTypeRef )
             {
-            // InternalXtext.g:11058:2: ( ruleTypeRef )
-            // InternalXtext.g:11059:3: ruleTypeRef
+            // InternalXtext.g:11085:2: ( ruleTypeRef )
+            // InternalXtext.g:11086:3: ruleTypeRef
             {
              before(grammarAccess.getCrossReferenceAccess().getTypeTypeRefParserRuleCall_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -33756,17 +33852,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__CrossReference__TerminalAssignment_2_1"
-    // InternalXtext.g:11068:1: rule__CrossReference__TerminalAssignment_2_1 : ( ruleCrossReferenceableTerminal ) ;
+    // InternalXtext.g:11095:1: rule__CrossReference__TerminalAssignment_2_1 : ( ruleCrossReferenceableTerminal ) ;
     public final void rule__CrossReference__TerminalAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11072:1: ( ( ruleCrossReferenceableTerminal ) )
-            // InternalXtext.g:11073:2: ( ruleCrossReferenceableTerminal )
+            // InternalXtext.g:11099:1: ( ( ruleCrossReferenceableTerminal ) )
+            // InternalXtext.g:11100:2: ( ruleCrossReferenceableTerminal )
             {
-            // InternalXtext.g:11073:2: ( ruleCrossReferenceableTerminal )
-            // InternalXtext.g:11074:3: ruleCrossReferenceableTerminal
+            // InternalXtext.g:11100:2: ( ruleCrossReferenceableTerminal )
+            // InternalXtext.g:11101:3: ruleCrossReferenceableTerminal
             {
              before(grammarAccess.getCrossReferenceAccess().getTerminalCrossReferenceableTerminalParserRuleCall_2_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -33797,21 +33893,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PredicatedGroup__PredicatedAssignment_0_0"
-    // InternalXtext.g:11083:1: rule__PredicatedGroup__PredicatedAssignment_0_0 : ( ( '=>' ) ) ;
+    // InternalXtext.g:11110:1: rule__PredicatedGroup__PredicatedAssignment_0_0 : ( ( '=>' ) ) ;
     public final void rule__PredicatedGroup__PredicatedAssignment_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11087:1: ( ( ( '=>' ) ) )
-            // InternalXtext.g:11088:2: ( ( '=>' ) )
+            // InternalXtext.g:11114:1: ( ( ( '=>' ) ) )
+            // InternalXtext.g:11115:2: ( ( '=>' ) )
             {
-            // InternalXtext.g:11088:2: ( ( '=>' ) )
-            // InternalXtext.g:11089:3: ( '=>' )
+            // InternalXtext.g:11115:2: ( ( '=>' ) )
+            // InternalXtext.g:11116:3: ( '=>' )
             {
              before(grammarAccess.getPredicatedGroupAccess().getPredicatedEqualsSignGreaterThanSignKeyword_0_0_0()); 
-            // InternalXtext.g:11090:3: ( '=>' )
-            // InternalXtext.g:11091:4: '=>'
+            // InternalXtext.g:11117:3: ( '=>' )
+            // InternalXtext.g:11118:4: '=>'
             {
              before(grammarAccess.getPredicatedGroupAccess().getPredicatedEqualsSignGreaterThanSignKeyword_0_0_0()); 
             match(input,54,FollowSets000.FOLLOW_2); 
@@ -33842,21 +33938,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PredicatedGroup__FirstSetPredicatedAssignment_0_1"
-    // InternalXtext.g:11102:1: rule__PredicatedGroup__FirstSetPredicatedAssignment_0_1 : ( ( '->' ) ) ;
+    // InternalXtext.g:11129:1: rule__PredicatedGroup__FirstSetPredicatedAssignment_0_1 : ( ( '->' ) ) ;
     public final void rule__PredicatedGroup__FirstSetPredicatedAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11106:1: ( ( ( '->' ) ) )
-            // InternalXtext.g:11107:2: ( ( '->' ) )
+            // InternalXtext.g:11133:1: ( ( ( '->' ) ) )
+            // InternalXtext.g:11134:2: ( ( '->' ) )
             {
-            // InternalXtext.g:11107:2: ( ( '->' ) )
-            // InternalXtext.g:11108:3: ( '->' )
+            // InternalXtext.g:11134:2: ( ( '->' ) )
+            // InternalXtext.g:11135:3: ( '->' )
             {
              before(grammarAccess.getPredicatedGroupAccess().getFirstSetPredicatedHyphenMinusGreaterThanSignKeyword_0_1_0()); 
-            // InternalXtext.g:11109:3: ( '->' )
-            // InternalXtext.g:11110:4: '->'
+            // InternalXtext.g:11136:3: ( '->' )
+            // InternalXtext.g:11137:4: '->'
             {
              before(grammarAccess.getPredicatedGroupAccess().getFirstSetPredicatedHyphenMinusGreaterThanSignKeyword_0_1_0()); 
             match(input,48,FollowSets000.FOLLOW_2); 
@@ -33887,17 +33983,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PredicatedGroup__ElementsAssignment_2"
-    // InternalXtext.g:11121:1: rule__PredicatedGroup__ElementsAssignment_2 : ( ruleAlternatives ) ;
+    // InternalXtext.g:11148:1: rule__PredicatedGroup__ElementsAssignment_2 : ( ruleAlternatives ) ;
     public final void rule__PredicatedGroup__ElementsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11125:1: ( ( ruleAlternatives ) )
-            // InternalXtext.g:11126:2: ( ruleAlternatives )
+            // InternalXtext.g:11152:1: ( ( ruleAlternatives ) )
+            // InternalXtext.g:11153:2: ( ruleAlternatives )
             {
-            // InternalXtext.g:11126:2: ( ruleAlternatives )
-            // InternalXtext.g:11127:3: ruleAlternatives
+            // InternalXtext.g:11153:2: ( ruleAlternatives )
+            // InternalXtext.g:11154:3: ruleAlternatives
             {
              before(grammarAccess.getPredicatedGroupAccess().getElementsAlternativesParserRuleCall_2_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -33928,17 +34024,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalRule__AnnotationsAssignment_0"
-    // InternalXtext.g:11136:1: rule__TerminalRule__AnnotationsAssignment_0 : ( ruleAnnotation ) ;
+    // InternalXtext.g:11163:1: rule__TerminalRule__AnnotationsAssignment_0 : ( ruleAnnotation ) ;
     public final void rule__TerminalRule__AnnotationsAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11140:1: ( ( ruleAnnotation ) )
-            // InternalXtext.g:11141:2: ( ruleAnnotation )
+            // InternalXtext.g:11167:1: ( ( ruleAnnotation ) )
+            // InternalXtext.g:11168:2: ( ruleAnnotation )
             {
-            // InternalXtext.g:11141:2: ( ruleAnnotation )
-            // InternalXtext.g:11142:3: ruleAnnotation
+            // InternalXtext.g:11168:2: ( ruleAnnotation )
+            // InternalXtext.g:11169:3: ruleAnnotation
             {
              before(grammarAccess.getTerminalRuleAccess().getAnnotationsAnnotationParserRuleCall_0_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -33969,21 +34065,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalRule__FragmentAssignment_2_0_0"
-    // InternalXtext.g:11151:1: rule__TerminalRule__FragmentAssignment_2_0_0 : ( ( 'fragment' ) ) ;
+    // InternalXtext.g:11178:1: rule__TerminalRule__FragmentAssignment_2_0_0 : ( ( 'fragment' ) ) ;
     public final void rule__TerminalRule__FragmentAssignment_2_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11155:1: ( ( ( 'fragment' ) ) )
-            // InternalXtext.g:11156:2: ( ( 'fragment' ) )
+            // InternalXtext.g:11182:1: ( ( ( 'fragment' ) ) )
+            // InternalXtext.g:11183:2: ( ( 'fragment' ) )
             {
-            // InternalXtext.g:11156:2: ( ( 'fragment' ) )
-            // InternalXtext.g:11157:3: ( 'fragment' )
+            // InternalXtext.g:11183:2: ( ( 'fragment' ) )
+            // InternalXtext.g:11184:3: ( 'fragment' )
             {
              before(grammarAccess.getTerminalRuleAccess().getFragmentFragmentKeyword_2_0_0_0()); 
-            // InternalXtext.g:11158:3: ( 'fragment' )
-            // InternalXtext.g:11159:4: 'fragment'
+            // InternalXtext.g:11185:3: ( 'fragment' )
+            // InternalXtext.g:11186:4: 'fragment'
             {
              before(grammarAccess.getTerminalRuleAccess().getFragmentFragmentKeyword_2_0_0_0()); 
             match(input,53,FollowSets000.FOLLOW_2); 
@@ -34014,17 +34110,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalRule__NameAssignment_2_0_1"
-    // InternalXtext.g:11170:1: rule__TerminalRule__NameAssignment_2_0_1 : ( ruleValidID ) ;
+    // InternalXtext.g:11197:1: rule__TerminalRule__NameAssignment_2_0_1 : ( ruleValidID ) ;
     public final void rule__TerminalRule__NameAssignment_2_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11174:1: ( ( ruleValidID ) )
-            // InternalXtext.g:11175:2: ( ruleValidID )
+            // InternalXtext.g:11201:1: ( ( ruleValidID ) )
+            // InternalXtext.g:11202:2: ( ruleValidID )
             {
-            // InternalXtext.g:11175:2: ( ruleValidID )
-            // InternalXtext.g:11176:3: ruleValidID
+            // InternalXtext.g:11202:2: ( ruleValidID )
+            // InternalXtext.g:11203:3: ruleValidID
             {
              before(grammarAccess.getTerminalRuleAccess().getNameValidIDParserRuleCall_2_0_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -34055,17 +34151,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalRule__NameAssignment_2_1_0"
-    // InternalXtext.g:11185:1: rule__TerminalRule__NameAssignment_2_1_0 : ( ruleValidID ) ;
+    // InternalXtext.g:11212:1: rule__TerminalRule__NameAssignment_2_1_0 : ( ruleValidID ) ;
     public final void rule__TerminalRule__NameAssignment_2_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11189:1: ( ( ruleValidID ) )
-            // InternalXtext.g:11190:2: ( ruleValidID )
+            // InternalXtext.g:11216:1: ( ( ruleValidID ) )
+            // InternalXtext.g:11217:2: ( ruleValidID )
             {
-            // InternalXtext.g:11190:2: ( ruleValidID )
-            // InternalXtext.g:11191:3: ruleValidID
+            // InternalXtext.g:11217:2: ( ruleValidID )
+            // InternalXtext.g:11218:3: ruleValidID
             {
              before(grammarAccess.getTerminalRuleAccess().getNameValidIDParserRuleCall_2_1_0_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -34096,17 +34192,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalRule__TypeAssignment_2_1_1_1"
-    // InternalXtext.g:11200:1: rule__TerminalRule__TypeAssignment_2_1_1_1 : ( ruleTypeRef ) ;
+    // InternalXtext.g:11227:1: rule__TerminalRule__TypeAssignment_2_1_1_1 : ( ruleTypeRef ) ;
     public final void rule__TerminalRule__TypeAssignment_2_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11204:1: ( ( ruleTypeRef ) )
-            // InternalXtext.g:11205:2: ( ruleTypeRef )
+            // InternalXtext.g:11231:1: ( ( ruleTypeRef ) )
+            // InternalXtext.g:11232:2: ( ruleTypeRef )
             {
-            // InternalXtext.g:11205:2: ( ruleTypeRef )
-            // InternalXtext.g:11206:3: ruleTypeRef
+            // InternalXtext.g:11232:2: ( ruleTypeRef )
+            // InternalXtext.g:11233:3: ruleTypeRef
             {
              before(grammarAccess.getTerminalRuleAccess().getTypeTypeRefParserRuleCall_2_1_1_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -34137,17 +34233,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalRule__AlternativesAssignment_4"
-    // InternalXtext.g:11215:1: rule__TerminalRule__AlternativesAssignment_4 : ( ruleTerminalAlternatives ) ;
+    // InternalXtext.g:11242:1: rule__TerminalRule__AlternativesAssignment_4 : ( ruleTerminalAlternatives ) ;
     public final void rule__TerminalRule__AlternativesAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11219:1: ( ( ruleTerminalAlternatives ) )
-            // InternalXtext.g:11220:2: ( ruleTerminalAlternatives )
+            // InternalXtext.g:11246:1: ( ( ruleTerminalAlternatives ) )
+            // InternalXtext.g:11247:2: ( ruleTerminalAlternatives )
             {
-            // InternalXtext.g:11220:2: ( ruleTerminalAlternatives )
-            // InternalXtext.g:11221:3: ruleTerminalAlternatives
+            // InternalXtext.g:11247:2: ( ruleTerminalAlternatives )
+            // InternalXtext.g:11248:3: ruleTerminalAlternatives
             {
              before(grammarAccess.getTerminalRuleAccess().getAlternativesTerminalAlternativesParserRuleCall_4_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -34178,17 +34274,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalAlternatives__ElementsAssignment_1_1_1"
-    // InternalXtext.g:11230:1: rule__TerminalAlternatives__ElementsAssignment_1_1_1 : ( ruleTerminalGroup ) ;
+    // InternalXtext.g:11257:1: rule__TerminalAlternatives__ElementsAssignment_1_1_1 : ( ruleTerminalGroup ) ;
     public final void rule__TerminalAlternatives__ElementsAssignment_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11234:1: ( ( ruleTerminalGroup ) )
-            // InternalXtext.g:11235:2: ( ruleTerminalGroup )
+            // InternalXtext.g:11261:1: ( ( ruleTerminalGroup ) )
+            // InternalXtext.g:11262:2: ( ruleTerminalGroup )
             {
-            // InternalXtext.g:11235:2: ( ruleTerminalGroup )
-            // InternalXtext.g:11236:3: ruleTerminalGroup
+            // InternalXtext.g:11262:2: ( ruleTerminalGroup )
+            // InternalXtext.g:11263:3: ruleTerminalGroup
             {
              before(grammarAccess.getTerminalAlternativesAccess().getElementsTerminalGroupParserRuleCall_1_1_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -34219,17 +34315,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalGroup__ElementsAssignment_1_1"
-    // InternalXtext.g:11245:1: rule__TerminalGroup__ElementsAssignment_1_1 : ( ruleTerminalToken ) ;
+    // InternalXtext.g:11272:1: rule__TerminalGroup__ElementsAssignment_1_1 : ( ruleTerminalToken ) ;
     public final void rule__TerminalGroup__ElementsAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11249:1: ( ( ruleTerminalToken ) )
-            // InternalXtext.g:11250:2: ( ruleTerminalToken )
+            // InternalXtext.g:11276:1: ( ( ruleTerminalToken ) )
+            // InternalXtext.g:11277:2: ( ruleTerminalToken )
             {
-            // InternalXtext.g:11250:2: ( ruleTerminalToken )
-            // InternalXtext.g:11251:3: ruleTerminalToken
+            // InternalXtext.g:11277:2: ( ruleTerminalToken )
+            // InternalXtext.g:11278:3: ruleTerminalToken
             {
              before(grammarAccess.getTerminalGroupAccess().getElementsTerminalTokenParserRuleCall_1_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -34260,21 +34356,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalToken__CardinalityAssignment_1"
-    // InternalXtext.g:11260:1: rule__TerminalToken__CardinalityAssignment_1 : ( ( rule__TerminalToken__CardinalityAlternatives_1_0 ) ) ;
+    // InternalXtext.g:11287:1: rule__TerminalToken__CardinalityAssignment_1 : ( ( rule__TerminalToken__CardinalityAlternatives_1_0 ) ) ;
     public final void rule__TerminalToken__CardinalityAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11264:1: ( ( ( rule__TerminalToken__CardinalityAlternatives_1_0 ) ) )
-            // InternalXtext.g:11265:2: ( ( rule__TerminalToken__CardinalityAlternatives_1_0 ) )
+            // InternalXtext.g:11291:1: ( ( ( rule__TerminalToken__CardinalityAlternatives_1_0 ) ) )
+            // InternalXtext.g:11292:2: ( ( rule__TerminalToken__CardinalityAlternatives_1_0 ) )
             {
-            // InternalXtext.g:11265:2: ( ( rule__TerminalToken__CardinalityAlternatives_1_0 ) )
-            // InternalXtext.g:11266:3: ( rule__TerminalToken__CardinalityAlternatives_1_0 )
+            // InternalXtext.g:11292:2: ( ( rule__TerminalToken__CardinalityAlternatives_1_0 ) )
+            // InternalXtext.g:11293:3: ( rule__TerminalToken__CardinalityAlternatives_1_0 )
             {
              before(grammarAccess.getTerminalTokenAccess().getCardinalityAlternatives_1_0()); 
-            // InternalXtext.g:11267:3: ( rule__TerminalToken__CardinalityAlternatives_1_0 )
-            // InternalXtext.g:11267:4: rule__TerminalToken__CardinalityAlternatives_1_0
+            // InternalXtext.g:11294:3: ( rule__TerminalToken__CardinalityAlternatives_1_0 )
+            // InternalXtext.g:11294:4: rule__TerminalToken__CardinalityAlternatives_1_0
             {
             pushFollow(FollowSets000.FOLLOW_2);
             rule__TerminalToken__CardinalityAlternatives_1_0();
@@ -34307,17 +34403,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__NegatedToken__TerminalAssignment_1"
-    // InternalXtext.g:11275:1: rule__NegatedToken__TerminalAssignment_1 : ( ruleTerminalTokenElement ) ;
+    // InternalXtext.g:11302:1: rule__NegatedToken__TerminalAssignment_1 : ( ruleTerminalTokenElement ) ;
     public final void rule__NegatedToken__TerminalAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11279:1: ( ( ruleTerminalTokenElement ) )
-            // InternalXtext.g:11280:2: ( ruleTerminalTokenElement )
+            // InternalXtext.g:11306:1: ( ( ruleTerminalTokenElement ) )
+            // InternalXtext.g:11307:2: ( ruleTerminalTokenElement )
             {
-            // InternalXtext.g:11280:2: ( ruleTerminalTokenElement )
-            // InternalXtext.g:11281:3: ruleTerminalTokenElement
+            // InternalXtext.g:11307:2: ( ruleTerminalTokenElement )
+            // InternalXtext.g:11308:3: ruleTerminalTokenElement
             {
              before(grammarAccess.getNegatedTokenAccess().getTerminalTerminalTokenElementParserRuleCall_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -34348,17 +34444,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__UntilToken__TerminalAssignment_1"
-    // InternalXtext.g:11290:1: rule__UntilToken__TerminalAssignment_1 : ( ruleTerminalTokenElement ) ;
+    // InternalXtext.g:11317:1: rule__UntilToken__TerminalAssignment_1 : ( ruleTerminalTokenElement ) ;
     public final void rule__UntilToken__TerminalAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11294:1: ( ( ruleTerminalTokenElement ) )
-            // InternalXtext.g:11295:2: ( ruleTerminalTokenElement )
+            // InternalXtext.g:11321:1: ( ( ruleTerminalTokenElement ) )
+            // InternalXtext.g:11322:2: ( ruleTerminalTokenElement )
             {
-            // InternalXtext.g:11295:2: ( ruleTerminalTokenElement )
-            // InternalXtext.g:11296:3: ruleTerminalTokenElement
+            // InternalXtext.g:11322:2: ( ruleTerminalTokenElement )
+            // InternalXtext.g:11323:3: ruleTerminalTokenElement
             {
              before(grammarAccess.getUntilTokenAccess().getTerminalTerminalTokenElementParserRuleCall_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -34389,17 +34485,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__CharacterRange__RightAssignment_1_2"
-    // InternalXtext.g:11305:1: rule__CharacterRange__RightAssignment_1_2 : ( ruleKeyword ) ;
+    // InternalXtext.g:11332:1: rule__CharacterRange__RightAssignment_1_2 : ( ruleKeyword ) ;
     public final void rule__CharacterRange__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11309:1: ( ( ruleKeyword ) )
-            // InternalXtext.g:11310:2: ( ruleKeyword )
+            // InternalXtext.g:11336:1: ( ( ruleKeyword ) )
+            // InternalXtext.g:11337:2: ( ruleKeyword )
             {
-            // InternalXtext.g:11310:2: ( ruleKeyword )
-            // InternalXtext.g:11311:3: ruleKeyword
+            // InternalXtext.g:11337:2: ( ruleKeyword )
+            // InternalXtext.g:11338:3: ruleKeyword
             {
              before(grammarAccess.getCharacterRangeAccess().getRightKeywordParserRuleCall_1_2_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -34430,17 +34526,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumRule__AnnotationsAssignment_0"
-    // InternalXtext.g:11320:1: rule__EnumRule__AnnotationsAssignment_0 : ( ruleAnnotation ) ;
+    // InternalXtext.g:11347:1: rule__EnumRule__AnnotationsAssignment_0 : ( ruleAnnotation ) ;
     public final void rule__EnumRule__AnnotationsAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11324:1: ( ( ruleAnnotation ) )
-            // InternalXtext.g:11325:2: ( ruleAnnotation )
+            // InternalXtext.g:11351:1: ( ( ruleAnnotation ) )
+            // InternalXtext.g:11352:2: ( ruleAnnotation )
             {
-            // InternalXtext.g:11325:2: ( ruleAnnotation )
-            // InternalXtext.g:11326:3: ruleAnnotation
+            // InternalXtext.g:11352:2: ( ruleAnnotation )
+            // InternalXtext.g:11353:3: ruleAnnotation
             {
              before(grammarAccess.getEnumRuleAccess().getAnnotationsAnnotationParserRuleCall_0_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -34471,17 +34567,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumRule__NameAssignment_2"
-    // InternalXtext.g:11335:1: rule__EnumRule__NameAssignment_2 : ( ruleValidID ) ;
+    // InternalXtext.g:11362:1: rule__EnumRule__NameAssignment_2 : ( ruleValidID ) ;
     public final void rule__EnumRule__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11339:1: ( ( ruleValidID ) )
-            // InternalXtext.g:11340:2: ( ruleValidID )
+            // InternalXtext.g:11366:1: ( ( ruleValidID ) )
+            // InternalXtext.g:11367:2: ( ruleValidID )
             {
-            // InternalXtext.g:11340:2: ( ruleValidID )
-            // InternalXtext.g:11341:3: ruleValidID
+            // InternalXtext.g:11367:2: ( ruleValidID )
+            // InternalXtext.g:11368:3: ruleValidID
             {
              before(grammarAccess.getEnumRuleAccess().getNameValidIDParserRuleCall_2_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -34512,17 +34608,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumRule__TypeAssignment_3_1"
-    // InternalXtext.g:11350:1: rule__EnumRule__TypeAssignment_3_1 : ( ruleTypeRef ) ;
+    // InternalXtext.g:11377:1: rule__EnumRule__TypeAssignment_3_1 : ( ruleTypeRef ) ;
     public final void rule__EnumRule__TypeAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11354:1: ( ( ruleTypeRef ) )
-            // InternalXtext.g:11355:2: ( ruleTypeRef )
+            // InternalXtext.g:11381:1: ( ( ruleTypeRef ) )
+            // InternalXtext.g:11382:2: ( ruleTypeRef )
             {
-            // InternalXtext.g:11355:2: ( ruleTypeRef )
-            // InternalXtext.g:11356:3: ruleTypeRef
+            // InternalXtext.g:11382:2: ( ruleTypeRef )
+            // InternalXtext.g:11383:3: ruleTypeRef
             {
              before(grammarAccess.getEnumRuleAccess().getTypeTypeRefParserRuleCall_3_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -34552,26 +34648,30 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__EnumRule__TypeAssignment_3_1"
 
 
-    // $ANTLR start "rule__EnumRule__AlternativesAssignment_5"
-    // InternalXtext.g:11365:1: rule__EnumRule__AlternativesAssignment_5 : ( ruleEnumLiterals ) ;
-    public final void rule__EnumRule__AlternativesAssignment_5() throws RecognitionException {
+    // $ANTLR start "rule__EnumRule__BecomesAssignment_4"
+    // InternalXtext.g:11392:1: rule__EnumRule__BecomesAssignment_4 : ( ( 'becomes' ) ) ;
+    public final void rule__EnumRule__BecomesAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11369:1: ( ( ruleEnumLiterals ) )
-            // InternalXtext.g:11370:2: ( ruleEnumLiterals )
+            // InternalXtext.g:11396:1: ( ( ( 'becomes' ) ) )
+            // InternalXtext.g:11397:2: ( ( 'becomes' ) )
             {
-            // InternalXtext.g:11370:2: ( ruleEnumLiterals )
-            // InternalXtext.g:11371:3: ruleEnumLiterals
+            // InternalXtext.g:11397:2: ( ( 'becomes' ) )
+            // InternalXtext.g:11398:3: ( 'becomes' )
             {
-             before(grammarAccess.getEnumRuleAccess().getAlternativesEnumLiteralsParserRuleCall_5_0()); 
-            pushFollow(FollowSets000.FOLLOW_2);
-            ruleEnumLiterals();
+             before(grammarAccess.getEnumRuleAccess().getBecomesBecomesKeyword_4_0()); 
+            // InternalXtext.g:11399:3: ( 'becomes' )
+            // InternalXtext.g:11400:4: 'becomes'
+            {
+             before(grammarAccess.getEnumRuleAccess().getBecomesBecomesKeyword_4_0()); 
+            match(input,33,FollowSets000.FOLLOW_2); 
+             after(grammarAccess.getEnumRuleAccess().getBecomesBecomesKeyword_4_0()); 
 
-            state._fsp--;
+            }
 
-             after(grammarAccess.getEnumRuleAccess().getAlternativesEnumLiteralsParserRuleCall_5_0()); 
+             after(grammarAccess.getEnumRuleAccess().getBecomesBecomesKeyword_4_0()); 
 
             }
 
@@ -34590,21 +34690,62 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__EnumRule__AlternativesAssignment_5"
+    // $ANTLR end "rule__EnumRule__BecomesAssignment_4"
+
+
+    // $ANTLR start "rule__EnumRule__AlternativesAssignment_6"
+    // InternalXtext.g:11411:1: rule__EnumRule__AlternativesAssignment_6 : ( ruleEnumLiterals ) ;
+    public final void rule__EnumRule__AlternativesAssignment_6() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXtext.g:11415:1: ( ( ruleEnumLiterals ) )
+            // InternalXtext.g:11416:2: ( ruleEnumLiterals )
+            {
+            // InternalXtext.g:11416:2: ( ruleEnumLiterals )
+            // InternalXtext.g:11417:3: ruleEnumLiterals
+            {
+             before(grammarAccess.getEnumRuleAccess().getAlternativesEnumLiteralsParserRuleCall_6_0()); 
+            pushFollow(FollowSets000.FOLLOW_2);
+            ruleEnumLiterals();
+
+            state._fsp--;
+
+             after(grammarAccess.getEnumRuleAccess().getAlternativesEnumLiteralsParserRuleCall_6_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumRule__AlternativesAssignment_6"
 
 
     // $ANTLR start "rule__EnumLiterals__ElementsAssignment_1_1_1"
-    // InternalXtext.g:11380:1: rule__EnumLiterals__ElementsAssignment_1_1_1 : ( ruleEnumLiteralDeclaration ) ;
+    // InternalXtext.g:11426:1: rule__EnumLiterals__ElementsAssignment_1_1_1 : ( ruleEnumLiteralDeclaration ) ;
     public final void rule__EnumLiterals__ElementsAssignment_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11384:1: ( ( ruleEnumLiteralDeclaration ) )
-            // InternalXtext.g:11385:2: ( ruleEnumLiteralDeclaration )
+            // InternalXtext.g:11430:1: ( ( ruleEnumLiteralDeclaration ) )
+            // InternalXtext.g:11431:2: ( ruleEnumLiteralDeclaration )
             {
-            // InternalXtext.g:11385:2: ( ruleEnumLiteralDeclaration )
-            // InternalXtext.g:11386:3: ruleEnumLiteralDeclaration
+            // InternalXtext.g:11431:2: ( ruleEnumLiteralDeclaration )
+            // InternalXtext.g:11432:3: ruleEnumLiteralDeclaration
             {
              before(grammarAccess.getEnumLiteralsAccess().getElementsEnumLiteralDeclarationParserRuleCall_1_1_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -34635,21 +34776,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiteralDeclaration__EnumLiteralAssignment_0"
-    // InternalXtext.g:11395:1: rule__EnumLiteralDeclaration__EnumLiteralAssignment_0 : ( ( RULE_ID ) ) ;
+    // InternalXtext.g:11441:1: rule__EnumLiteralDeclaration__EnumLiteralAssignment_0 : ( ( RULE_ID ) ) ;
     public final void rule__EnumLiteralDeclaration__EnumLiteralAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11399:1: ( ( ( RULE_ID ) ) )
-            // InternalXtext.g:11400:2: ( ( RULE_ID ) )
+            // InternalXtext.g:11445:1: ( ( ( RULE_ID ) ) )
+            // InternalXtext.g:11446:2: ( ( RULE_ID ) )
             {
-            // InternalXtext.g:11400:2: ( ( RULE_ID ) )
-            // InternalXtext.g:11401:3: ( RULE_ID )
+            // InternalXtext.g:11446:2: ( ( RULE_ID ) )
+            // InternalXtext.g:11447:3: ( RULE_ID )
             {
              before(grammarAccess.getEnumLiteralDeclarationAccess().getEnumLiteralEEnumLiteralCrossReference_0_0()); 
-            // InternalXtext.g:11402:3: ( RULE_ID )
-            // InternalXtext.g:11403:4: RULE_ID
+            // InternalXtext.g:11448:3: ( RULE_ID )
+            // InternalXtext.g:11449:4: RULE_ID
             {
              before(grammarAccess.getEnumLiteralDeclarationAccess().getEnumLiteralEEnumLiteralIDTerminalRuleCall_0_0_1()); 
             match(input,RULE_ID,FollowSets000.FOLLOW_2); 
@@ -34680,17 +34821,17 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EnumLiteralDeclaration__LiteralAssignment_1_1"
-    // InternalXtext.g:11414:1: rule__EnumLiteralDeclaration__LiteralAssignment_1_1 : ( ruleKeyword ) ;
+    // InternalXtext.g:11460:1: rule__EnumLiteralDeclaration__LiteralAssignment_1_1 : ( ruleKeyword ) ;
     public final void rule__EnumLiteralDeclaration__LiteralAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXtext.g:11418:1: ( ( ruleKeyword ) )
-            // InternalXtext.g:11419:2: ( ruleKeyword )
+            // InternalXtext.g:11464:1: ( ( ruleKeyword ) )
+            // InternalXtext.g:11465:2: ( ruleKeyword )
             {
-            // InternalXtext.g:11419:2: ( ruleKeyword )
-            // InternalXtext.g:11420:3: ruleKeyword
+            // InternalXtext.g:11465:2: ( ruleKeyword )
+            // InternalXtext.g:11466:3: ruleKeyword
             {
              before(grammarAccess.getEnumLiteralDeclarationAccess().getLiteralKeywordParserRuleCall_1_1_0()); 
             pushFollow(FollowSets000.FOLLOW_2);
@@ -34767,21 +34908,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
     static final String dfa_7s = "\15\uffff";
     static final String dfa_8s = "\3\4\1\43\1\4\2\uffff\2\4\1\45\1\43\1\4\1\45";
     static final String dfa_9s = "\1\42\1\4\1\51\1\43\1\42\2\uffff\1\51\1\4\1\45\1\43\1\51\1\45";
-    static final String dfa_10s = "\5\uffff\1\2\1\1\6\uffff";
+    static final String dfa_10s = "\5\uffff\1\1\1\2\6\uffff";
     static final String dfa_11s = "\15\uffff}>";
     static final String[] dfa_12s = {
             "\1\2\35\uffff\1\1",
             "\1\3",
-            "\1\5\21\uffff\1\6\1\uffff\1\6\13\uffff\1\4\4\uffff\1\5",
+            "\1\6\21\uffff\1\5\1\uffff\1\5\13\uffff\1\4\4\uffff\1\6",
             "\1\7",
             "\1\11\35\uffff\1\10",
             "",
             "",
-            "\1\5\21\uffff\1\6\1\uffff\1\6\13\uffff\1\4\4\uffff\1\5",
+            "\1\6\21\uffff\1\5\1\uffff\1\5\13\uffff\1\4\4\uffff\1\6",
             "\1\12",
             "\1\13",
             "\1\14",
-            "\1\5\21\uffff\1\6\1\uffff\1\6\20\uffff\1\5",
+            "\1\6\21\uffff\1\5\1\uffff\1\5\20\uffff\1\6",
             "\1\13"
     };
 
@@ -34809,6 +34950,24 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
             return "1772:1: rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_1_0 : ( ( ruleBecomesDeclCopyAttribute ) | ( ruleBecomesDeclCustomAttribute ) );";
         }
     }
+    static final String dfa_13s = "\5\uffff\1\2\1\1\6\uffff";
+    static final String[] dfa_14s = {
+            "\1\2\35\uffff\1\1",
+            "\1\3",
+            "\1\5\21\uffff\1\6\1\uffff\1\6\13\uffff\1\4\4\uffff\1\5",
+            "\1\7",
+            "\1\11\35\uffff\1\10",
+            "",
+            "",
+            "\1\5\21\uffff\1\6\1\uffff\1\6\13\uffff\1\4\4\uffff\1\5",
+            "\1\12",
+            "\1\13",
+            "\1\14",
+            "\1\5\21\uffff\1\6\1\uffff\1\6\20\uffff\1\5",
+            "\1\13"
+    };
+    static final short[] dfa_13 = DFA.unpackEncodedString(dfa_13s);
+    static final short[][] dfa_14 = unpackEncodedStringArray(dfa_14s);
 
     class DFA10 extends DFA {
 
@@ -34819,21 +34978,21 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
             this.eof = dfa_7;
             this.min = dfa_8;
             this.max = dfa_9;
-            this.accept = dfa_10;
+            this.accept = dfa_13;
             this.special = dfa_11;
-            this.transition = dfa_12;
+            this.transition = dfa_14;
         }
         public String getDescription() {
             return "1793:1: rule__BecomesDeclGeneratedClass__AttributesAlternatives_1_2_1_0 : ( ( ruleBecomesDeclCopyAttribute ) | ( ruleBecomesDeclCustomAttribute ) );";
         }
     }
-    static final String dfa_13s = "\13\uffff";
-    static final String dfa_14s = "\3\uffff\3\6\1\uffff\3\6\1\uffff";
-    static final String dfa_15s = "\6\4\1\uffff\3\4\1\uffff";
-    static final String dfa_16s = "\1\66\2\27\3\66\1\uffff\3\66\1\uffff";
-    static final String dfa_17s = "\6\uffff\1\2\3\uffff\1\1";
-    static final String dfa_18s = "\13\uffff}>";
-    static final String[] dfa_19s = {
+    static final String dfa_15s = "\13\uffff";
+    static final String dfa_16s = "\3\uffff\3\6\1\uffff\3\6\1\uffff";
+    static final String dfa_17s = "\6\4\1\uffff\3\4\1\uffff";
+    static final String dfa_18s = "\1\66\2\27\3\66\1\uffff\3\66\1\uffff";
+    static final String dfa_19s = "\6\uffff\1\2\3\uffff\1\1";
+    static final String dfa_20s = "\13\uffff}>";
+    static final String[] dfa_21s = {
             "\1\3\1\6\13\uffff\1\5\1\4\4\uffff\1\6\30\uffff\1\2\5\uffff\1\1",
             "\1\7\1\6\13\uffff\1\11\1\10\4\uffff\1\6",
             "\1\7\1\6\13\uffff\1\11\1\10\4\uffff\1\6",
@@ -34847,26 +35006,26 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
             ""
     };
 
-    static final short[] dfa_13 = DFA.unpackEncodedString(dfa_13s);
-    static final short[] dfa_14 = DFA.unpackEncodedString(dfa_14s);
-    static final char[] dfa_15 = DFA.unpackEncodedStringToUnsignedChars(dfa_15s);
-    static final char[] dfa_16 = DFA.unpackEncodedStringToUnsignedChars(dfa_16s);
-    static final short[] dfa_17 = DFA.unpackEncodedString(dfa_17s);
-    static final short[] dfa_18 = DFA.unpackEncodedString(dfa_18s);
-    static final short[][] dfa_19 = unpackEncodedStringArray(dfa_19s);
+    static final short[] dfa_15 = DFA.unpackEncodedString(dfa_15s);
+    static final short[] dfa_16 = DFA.unpackEncodedString(dfa_16s);
+    static final char[] dfa_17 = DFA.unpackEncodedStringToUnsignedChars(dfa_17s);
+    static final char[] dfa_18 = DFA.unpackEncodedStringToUnsignedChars(dfa_18s);
+    static final short[] dfa_19 = DFA.unpackEncodedString(dfa_19s);
+    static final short[] dfa_20 = DFA.unpackEncodedString(dfa_20s);
+    static final short[][] dfa_21 = unpackEncodedStringArray(dfa_21s);
 
     class DFA13 extends DFA {
 
         public DFA13(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
             this.decisionNumber = 13;
-            this.eot = dfa_13;
-            this.eof = dfa_14;
-            this.min = dfa_15;
-            this.max = dfa_16;
-            this.accept = dfa_17;
-            this.special = dfa_18;
-            this.transition = dfa_19;
+            this.eot = dfa_15;
+            this.eof = dfa_16;
+            this.min = dfa_17;
+            this.max = dfa_18;
+            this.accept = dfa_19;
+            this.special = dfa_20;
+            this.transition = dfa_21;
         }
         public String getDescription() {
             return "1856:1: rule__AbstractTokenWithCardinality__Alternatives_0 : ( ( ruleAssignment ) | ( ruleAbstractTerminal ) );";
@@ -34937,7 +35096,7 @@ public class InternalXtextParser extends AbstractInternalContentAssistParser {
         public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x0000000100000000L});
         public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x0003200002860032L});
         public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0004000000000000L});
-        public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x0000000140000000L});
+        public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x0000000340000000L});
     }
 
 
