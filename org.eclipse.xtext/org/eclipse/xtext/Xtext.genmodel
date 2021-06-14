@@ -79,7 +79,9 @@
     <genClasses ecoreClass="Xtext.ecore#//NegatedToken"/>
     <genClasses ecoreClass="Xtext.ecore#//UntilToken"/>
     <genClasses ecoreClass="Xtext.ecore#//Wildcard"/>
-    <genClasses ecoreClass="Xtext.ecore#//EnumRule"/>
+    <genClasses ecoreClass="Xtext.ecore#//EnumRule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Xtext.ecore#//EnumRule/becomes"/>
+    </genClasses>
     <genClasses ecoreClass="Xtext.ecore#//EnumLiteralDeclaration">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Xtext.ecore#//EnumLiteralDeclaration/enumLiteral"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Xtext.ecore#//EnumLiteralDeclaration/literal"/>
