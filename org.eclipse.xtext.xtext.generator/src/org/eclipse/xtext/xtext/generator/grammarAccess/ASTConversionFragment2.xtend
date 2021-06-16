@@ -36,9 +36,11 @@ class ASTConversionFragment2 {
 	Grammar grammar;
 
 	def getASTConversionClass() {
-		val generatedClasses = GrammarUtil.allMetamodelDeclarations(grammar).filter(GeneratedMetamodel).map [
+		val generatedMetaModels = GrammarUtil.allMetamodelDeclarations(grammar).filter(GeneratedMetamodel)
+		val generatedClasses = generatedMetaModels.map [
 			EPackage.EClassifiers
 		].toList.flatten
+		// TODO??
 
 		// TODO??
 		val enabled = (grammar.rules.get(0) as ParserRule).becomes !== null;
@@ -56,6 +58,11 @@ class ASTConversionFragment2 {
 			}
 		}
 
+		val modelName = generatedMetaModels.empty ? null : generatedMetaModels.get(0).name
+		if(!rules.empty && modelName === null) {
+			throw new RuntimeException("Need a model for " + grammar.name);
+		}
+
 		return '''
 			public static class ASTConversion {
 				public ASTConversion() {}
@@ -63,17 +70,17 @@ class ASTConversionFragment2 {
 				«FOR entry : rules.entrySet»
 					«IF entry.key instanceof EClass»
 						«getChildrenClass(entry.key as EClass)»
-						«getConvertMethod(entry.key, entry.value)»
+						«getConvertMethod(entry.key, entry.value, modelName)»
 					«ENDIF»
 				«ENDFOR»
 			}
 		'''
 	}
 
-	private def getConvertMethod(EClass type, ParserRule rule) {
+	private def getConvertMethod(EClass type, ParserRule rule, String modelName) {
 		val resultType = getASTType(type, rule)
 		return '''
-			public Object convert«type.name»(«new TypeReference(grammar.runtimeBasePackage + ".myDsl", type.name)» node, «type.childrenClassName» children){
+			public Object convert«type.name»(«new TypeReference(grammar.runtimeBasePackage + "." + modelName, type.name)» node, «type.childrenClassName» children){
 				«IF rule === null || !rule.becomes.list»
 					return new «resultType»() {
 						«resultType» XTEXT_INIT() {

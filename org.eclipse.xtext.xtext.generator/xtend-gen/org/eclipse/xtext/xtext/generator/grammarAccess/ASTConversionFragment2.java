@@ -38,6 +38,7 @@ import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -54,10 +55,11 @@ public class ASTConversionFragment2 {
   private Grammar grammar;
   
   public String getASTConversionClass() {
+    final Iterable<GeneratedMetamodel> generatedMetaModels = Iterables.<GeneratedMetamodel>filter(GrammarUtil.allMetamodelDeclarations(this.grammar), GeneratedMetamodel.class);
     final Function1<GeneratedMetamodel, EList<EClassifier>> _function = (GeneratedMetamodel it) -> {
       return it.getEPackage().getEClassifiers();
     };
-    final Iterable<EClassifier> generatedClasses = Iterables.<EClassifier>concat(IterableExtensions.<EList<EClassifier>>toList(IterableExtensions.<GeneratedMetamodel, EList<EClassifier>>map(Iterables.<GeneratedMetamodel>filter(GrammarUtil.allMetamodelDeclarations(this.grammar), GeneratedMetamodel.class), _function)));
+    final Iterable<EClassifier> generatedClasses = Iterables.<EClassifier>concat(IterableExtensions.<EList<EClassifier>>toList(IterableExtensions.<GeneratedMetamodel, EList<EClassifier>>map(generatedMetaModels, _function)));
     AbstractRule _get = this.grammar.getRules().get(0);
     BecomesDecl _becomes = ((ParserRule) _get).getBecomes();
     final boolean enabled = (_becomes != null);
@@ -80,6 +82,19 @@ public class ASTConversionFragment2 {
         }
       }
     }
+    String _xifexpression = null;
+    boolean _isEmpty = IterableExtensions.isEmpty(generatedMetaModels);
+    if (_isEmpty) {
+      _xifexpression = null;
+    } else {
+      _xifexpression = (((GeneratedMetamodel[])Conversions.unwrapArray(generatedMetaModels, GeneratedMetamodel.class))[0]).getName();
+    }
+    final String modelName = _xifexpression;
+    if (((!rules.isEmpty()) && (modelName == null))) {
+      String _name = this.grammar.getName();
+      String _plus = ("Need a model for " + _name);
+      throw new RuntimeException(_plus);
+    }
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public static class ASTConversion {");
     _builder.newLine();
@@ -100,7 +115,7 @@ public class ASTConversionFragment2 {
             _builder.append(_childrenClass, "\t");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
-            String _convertMethod = this.getConvertMethod(entry.getKey(), entry.getValue());
+            String _convertMethod = this.getConvertMethod(entry.getKey(), entry.getValue(), modelName);
             _builder.append(_convertMethod, "\t");
             _builder.newLineIfNotEmpty();
           }
@@ -112,7 +127,7 @@ public class ASTConversionFragment2 {
     return _builder.toString();
   }
   
-  private String getConvertMethod(final EClass type, final ParserRule rule) {
+  private String getConvertMethod(final EClass type, final ParserRule rule, final String modelName) {
     final TypeReference resultType = this.getASTType(type, rule);
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public Object convert");
@@ -120,9 +135,10 @@ public class ASTConversionFragment2 {
     _builder.append(_name);
     _builder.append("(");
     String _runtimeBasePackage = this._xtextGeneratorNaming.getRuntimeBasePackage(this.grammar);
-    String _plus = (_runtimeBasePackage + ".myDsl");
+    String _plus = (_runtimeBasePackage + ".");
+    String _plus_1 = (_plus + modelName);
     String _name_1 = type.getName();
-    TypeReference _typeReference = new TypeReference(_plus, _name_1);
+    TypeReference _typeReference = new TypeReference(_plus_1, _name_1);
     _builder.append(_typeReference);
     _builder.append(" node, ");
     String _childrenClassName = this.getChildrenClassName(type);
