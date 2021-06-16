@@ -6,6 +6,14 @@ Bundle-Version: 0.0.1.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.xtext,
+ org.eclipse.xtext.astconversion,
+ org.eclipse.xtext.astconversion.astConversionSimple,
+ org.eclipse.xtext.astconversion.astConversionSimple.impl,
+ org.eclipse.xtext.astconversion.astConversionSimple.util,
+ org.eclipse.xtext.astconversion.parser.antlr,
+ org.eclipse.xtext.astconversion.parser.antlr.internal,
+ org.eclipse.xtext.astconversion.serializer,
+ org.eclipse.xtext.astconversion.services,
  org.eclipse.xtext.dummy,
  org.eclipse.xtext.dummy.dummyLang,
  org.eclipse.xtext.dummy.dummyLang.impl,
