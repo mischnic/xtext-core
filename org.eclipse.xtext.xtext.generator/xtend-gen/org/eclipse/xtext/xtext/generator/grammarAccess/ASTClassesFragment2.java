@@ -11,16 +11,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtend2.lib.StringConcatenationClient;
 import org.eclipse.xtext.AbstractRule;
+import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.BecomesDecl;
 import org.eclipse.xtext.BecomesDeclAttribute;
 import org.eclipse.xtext.BecomesDeclCustomAttribute;
@@ -55,38 +58,44 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
       return it.getEPackage().getEClassifiers();
     };
     final Iterable<EClassifier> generatedClasses = Iterables.<EClassifier>concat(IterableExtensions.<EList<EClassifier>>toList(IterableExtensions.<GeneratedMetamodel, EList<EClassifier>>map(Iterables.<GeneratedMetamodel>filter(GrammarUtil.allMetamodelDeclarations(this.getGrammar()), GeneratedMetamodel.class), _function)));
-    final HashSet<String> astClassNames = CollectionLiterals.<String>newHashSet();
-    final HashMap<String, String> astClassesList = CollectionLiterals.<String, String>newHashMap();
     AbstractRule _get = this.getGrammar().getRules().get(0);
     BecomesDecl _becomes = ((ParserRule) _get).getBecomes();
     final boolean enabled = (_becomes != null);
-    final HashMap<EClass, ParserRule> rulesClasses = CollectionLiterals.<EClass, ParserRule>newHashMap();
-    final ArrayList<EEnum> rulesEnums = CollectionLiterals.<EEnum>newArrayList();
+    final HashSet<String> astClassNames = CollectionLiterals.<String>newHashSet();
+    final HashMap<String, String> astClassesListType = CollectionLiterals.<String, String>newHashMap();
+    final HashSet<EClass> interfaceTypes = CollectionLiterals.<EClass>newHashSet();
+    final HashMap<EClass, ParserRule> objectClasses = CollectionLiterals.<EClass, ParserRule>newHashMap();
+    final ArrayList<EEnum> enumClasses = CollectionLiterals.<EEnum>newArrayList();
     for (final EClassifier classifier : generatedClasses) {
       {
         final AbstractRule rule = GrammarUtil.findRuleForName(this.getGrammar(), classifier.getName());
         if ((rule == null)) {
           if (enabled) {
-            rulesClasses.put(((EClass) classifier), null);
+            objectClasses.put(((EClass) classifier), null);
             astClassNames.add(this._xtextGeneratorNaming.getASTClassName(classifier.getName()));
+            interfaceTypes.add(((EClass) classifier));
           }
         } else {
           if ((rule instanceof ParserRule)) {
             BecomesDecl _becomes_1 = ((ParserRule) rule).getBecomes();
             boolean _tripleNotEquals = (_becomes_1 != null);
             if (_tripleNotEquals) {
-              rulesClasses.put(((EClass) classifier), ((ParserRule) rule));
+              objectClasses.put(((EClass) classifier), ((ParserRule) rule));
               astClassNames.add(this._xtextGeneratorNaming.getASTClassName(classifier.getName()));
               boolean _isList = ((ParserRule) rule).getBecomes().isList();
               if (_isList) {
-                astClassesList.put(this._xtextGeneratorNaming.getASTClassName(classifier.getName()), ((ParserRule) rule).getBecomes().getListType());
+                astClassesListType.put(this._xtextGeneratorNaming.getASTClassName(classifier.getName()), ((ParserRule) rule).getBecomes().getListType());
+              }
+              boolean _unassignedRuleCall = this.unassignedRuleCall(((ParserRule)rule));
+              if (_unassignedRuleCall) {
+                interfaceTypes.add(((EClass) classifier));
               }
             }
           } else {
             if (((rule instanceof EnumRule) && (classifier instanceof EEnum))) {
               boolean _isBecomes = ((EnumRule) rule).isBecomes();
               if (_isBecomes) {
-                rulesEnums.add(((EEnum) classifier));
+                enumClasses.add(((EEnum) classifier));
                 astClassNames.add(this._xtextGeneratorNaming.getASTClassName(classifier.getName()));
               }
             }
@@ -94,7 +103,7 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
         }
       }
     }
-    Set<Map.Entry<EClass, ParserRule>> _entrySet = rulesClasses.entrySet();
+    Set<Map.Entry<EClass, ParserRule>> _entrySet = objectClasses.entrySet();
     for (final Map.Entry<EClass, ParserRule> entry : _entrySet) {
       {
         final EClass type = entry.getKey();
@@ -111,8 +120,8 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
           final BecomesDecl becomes = _xifexpression;
           final TypeReference astType = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), type.getName());
           final HashMap<String, Object> features = CollectionLiterals.<String, Object>newHashMap();
-          EList<EStructuralFeature> _eStructuralFeatures = type.getEStructuralFeatures();
-          for (final EStructuralFeature attr : _eStructuralFeatures) {
+          EList<EStructuralFeature> _eAllStructuralFeatures = type.getEAllStructuralFeatures();
+          for (final EStructuralFeature attr : _eAllStructuralFeatures) {
             if (((attr instanceof EAttribute) && (!(((EAttribute) attr).getEAttributeType() instanceof EEnum)))) {
               final Class<?> clazz = ((EAttribute) attr).getEAttributeType().getInstanceClass();
               String _name = attr.getName();
@@ -132,8 +141,8 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
                 _xifexpression_2 = ((EAttribute) attr).getEAttributeType();
               }
               final EClassifier referencedType = _xifexpression_2;
-              final boolean isListType = astClassesList.containsKey(this._xtextGeneratorNaming.getASTClassName(referencedType.getName()));
-              final String customListType = astClassesList.get(this._xtextGeneratorNaming.getASTClassName(referencedType.getName()));
+              final boolean isListType = astClassesListType.containsKey(this._xtextGeneratorNaming.getASTClassName(referencedType.getName()));
+              final String customListType = astClassesListType.get(this._xtextGeneratorNaming.getASTClassName(referencedType.getName()));
               final TypeReference referencedASTType = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), referencedType.getName());
               String _xifexpression_3 = null;
               if ((customListType != null)) {
@@ -155,67 +164,47 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
               }
             }
           }
+          final boolean isInterface = interfaceTypes.contains(type);
           final LinkedHashMap<String, Object> attributes = CollectionLiterals.<String, Object>newLinkedHashMap();
-          if (((becomes == null) || becomes.getDescriptor().getAttributes().isEmpty())) {
-            Set<Map.Entry<String, Object>> _entrySet_1 = features.entrySet();
-            for (final Map.Entry<String, Object> e : _entrySet_1) {
-              attributes.put(e.getKey(), e.getValue());
-            }
+          if (isInterface) {
           } else {
-            EList<BecomesDeclAttribute> _attributes = becomes.getDescriptor().getAttributes();
-            for (final BecomesDeclAttribute attr_1 : _attributes) {
-              if ((attr_1 instanceof BecomesDeclCustomAttribute)) {
-                attributes.put(((BecomesDeclCustomAttribute)attr_1).getName(), this._xtextGeneratorNaming.replaceASTTypeReferences(this.getGrammar(), ((BecomesDeclCustomAttribute)attr_1).getType()));
-              } else {
-                attributes.put(attr_1.getName(), features.get(attr_1.getName()));
+            if (((becomes == null) || becomes.getDescriptor().getAttributes().isEmpty())) {
+              Set<Map.Entry<String, Object>> _entrySet_1 = features.entrySet();
+              for (final Map.Entry<String, Object> e : _entrySet_1) {
+                attributes.put(e.getKey(), e.getValue());
+              }
+            } else {
+              EList<BecomesDeclAttribute> _attributes = becomes.getDescriptor().getAttributes();
+              for (final BecomesDeclAttribute attr_1 : _attributes) {
+                if ((attr_1 instanceof BecomesDeclCustomAttribute)) {
+                  attributes.put(((BecomesDeclCustomAttribute)attr_1).getName(), this._xtextGeneratorNaming.replaceASTTypeReferences(this.getGrammar(), ((BecomesDeclCustomAttribute)attr_1).getType()));
+                } else {
+                  attributes.put(attr_1.getName(), features.get(attr_1.getName()));
+                }
               }
             }
           }
-          final boolean isInterface = type.isInterface();
           final Function1<EClass, Boolean> _function_1 = (EClass it) -> {
             return Boolean.valueOf(astClassNames.contains(this._xtextGeneratorNaming.getASTClassName(it.getName())));
           };
-          final Iterable<EClass> superTypes = IterableExtensions.<EClass>filter(type.getESuperTypes(), _function_1);
-          final ArrayList<TypeReference> extending = CollectionLiterals.<TypeReference>newArrayList();
-          final ArrayList<TypeReference> implementing = CollectionLiterals.<TypeReference>newArrayList();
-          for (final EClass t : superTypes) {
-            {
-              final TypeReference name = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), t.getName());
-              if ((t.isInterface() && (!isInterface))) {
-                implementing.add(name);
-              } else {
-                extending.add(name);
-              }
-            }
-          }
+          final Function1<EClass, TypeReference> _function_2 = (EClass it) -> {
+            return this._xtextGeneratorNaming.getASTClass(this.getGrammar(), it.getName());
+          };
+          final Iterable<TypeReference> superTypes = IterableExtensions.<EClass, TypeReference>map(IterableExtensions.<EClass>filter(type.getESuperTypes(), _function_1), _function_2);
           StringConcatenation _builder_1 = new StringConcatenation();
           {
             boolean _hasElements = false;
-            for(final TypeReference s : extending) {
+            for(final TypeReference s : superTypes) {
               if (!_hasElements) {
                 _hasElements = true;
-                _builder_1.append(" extends ");
+                _builder_1.append(" implements ");
               } else {
                 _builder_1.appendImmediate(", ", "");
               }
               _builder_1.append(s);
             }
           }
-          final String extendsDeclaration = _builder_1.toString();
-          StringConcatenation _builder_2 = new StringConcatenation();
-          {
-            boolean _hasElements_1 = false;
-            for(final TypeReference s_1 : implementing) {
-              if (!_hasElements_1) {
-                _hasElements_1 = true;
-                _builder_2.append(" implements ");
-              } else {
-                _builder_2.appendImmediate(", ", "");
-              }
-              _builder_2.append(s_1);
-            }
-          }
-          final String implementsDeclaration = _builder_2.toString();
+          final String implementsDeclaration = _builder_1.toString();
           final GeneratedJavaFileAccess javaFile = this.fileAccessFactory.createGeneratedJavaFile(astType);
           javaFile.setImportNestedTypeThreshold(JavaFileAccess.DONT_IMPORT_NESTED_TYPES);
           StringConcatenationClient _client = new StringConcatenationClient() {
@@ -232,7 +221,6 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
               _builder.append(" ");
               String _simpleName = astType.getSimpleName();
               _builder.append(_simpleName);
-              _builder.append(extendsDeclaration);
               _builder.append(implementsDeclaration);
               _builder.append(" {");
               _builder.newLineIfNotEmpty();
@@ -316,7 +304,7 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
         }
       }
     }
-    for (final EEnum type : rulesEnums) {
+    for (final EEnum type : enumClasses) {
       {
         final TypeReference astType = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), type.getName());
         final GeneratedJavaFileAccess javaFile = this.fileAccessFactory.createGeneratedJavaFile(astType);
@@ -355,5 +343,18 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
         javaFile.writeTo(this.getProjectConfig().getRuntime().getSrcGen());
       }
     }
+  }
+  
+  private boolean unassignedRuleCall(final ParserRule rule) {
+    final TreeIterator<EObject> ti = rule.eAllContents();
+    while (ti.hasNext()) {
+      {
+        final EObject obj = ti.next();
+        if ((obj instanceof Assignment)) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 }

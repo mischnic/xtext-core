@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EReference
+import org.eclipse.xtext.Assignment
 import org.eclipse.xtext.BecomesDeclCustomAttribute
 import org.eclipse.xtext.BecomesDeclGeneratedClass
 import org.eclipse.xtext.EnumRule
@@ -27,46 +28,53 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 			EPackage.EClassifiers
 		].toList.flatten
 
-		val astClassNames = newHashSet
-		val astClassesList = newHashMap
-		// TODO??
+		// whether to generate AST classes for CST classes without corresponding explicit rules  
 		val enabled = (grammar.rules.get(0) as ParserRule).becomes !== null;
-		val rulesClasses = newHashMap
-		val rulesEnums = newArrayList
+
+		val astClassNames = newHashSet
+		val astClassesListType = newHashMap
+		val interfaceTypes = newHashSet
+		val objectClasses = newHashMap
+		val enumClasses = newArrayList
 		for (classifier : generatedClasses) {
 			val rule = GrammarUtil.findRuleForName(grammar, classifier.name);
 			if (rule === null) {
 				if (enabled) {
-					rulesClasses.put(classifier as EClass, null);
+					objectClasses.put(classifier as EClass, null);
 					astClassNames.add(classifier.name.ASTClassName)
+					interfaceTypes.add(classifier as EClass);
 				}
 			} else if (rule instanceof ParserRule) {
 				if ((rule as ParserRule).becomes !== null) {
-					rulesClasses.put(classifier as EClass, rule as ParserRule)
+					objectClasses.put(classifier as EClass, rule as ParserRule)
 					astClassNames.add(classifier.name.ASTClassName)
 					if ((rule as ParserRule).becomes.list) {
-						astClassesList.put(classifier.name.ASTClassName, (rule as ParserRule).becomes.listType)
+						astClassesListType.put(classifier.name.ASTClassName, (rule as ParserRule).becomes.listType)
+					}
+					if (rule.unassignedRuleCall) {
+						interfaceTypes.add(classifier as EClass);
 					}
 				}
 			} else if (rule instanceof EnumRule && classifier instanceof EEnum) {
 				if ((rule as EnumRule).becomes) {
-					rulesEnums.add(classifier as EEnum);
+					enumClasses.add(classifier as EEnum);
 					astClassNames.add(classifier.name.ASTClassName)
 				}
 			}
 		}
 
-		for (entry : rulesClasses.entrySet) {
+		for (entry : objectClasses.entrySet) {
 			val type = entry.key
 			val rule = entry.value
+			// TODO cleanup?
 			if ((rule === null && enabled) || (rule instanceof ParserRule && (rule as ParserRule).becomes !== null &&
 				(rule as ParserRule).becomes.descriptor instanceof BecomesDeclGeneratedClass)) {
+
 				val pr = rule as ParserRule
 				val becomes = pr === null ? null : pr.becomes;
 				val astType = getASTClass(grammar, type.name)
-
 				val features = newHashMap
-				for (attr : type.EStructuralFeatures) {
+				for (attr : type.EAllStructuralFeatures) {
 					if (attr instanceof EAttribute && !((attr as EAttribute).EAttributeType instanceof EEnum)) {
 						val clazz = (attr as EAttribute).EAttributeType.instanceClass;
 						features.put(
@@ -77,8 +85,8 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 					} else {
 						val referencedType = attr instanceof EReference ? attr.EReferenceType : (attr as EAttribute).
 								EAttributeType
-						val isListType = astClassesList.containsKey(referencedType.name.ASTClassName);
-						val customListType = astClassesList.get(referencedType.name.ASTClassName);
+						val isListType = astClassesListType.containsKey(referencedType.name.ASTClassName);
+						val customListType = astClassesListType.get(referencedType.name.ASTClassName);
 
 						val referencedASTType = getASTClass(grammar, referencedType.name)
 						// TODO nested lists
@@ -97,8 +105,12 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 					}
 				}
 
+				// unassigned rule call or implicit class, becomes an interface
+				val isInterface = interfaceTypes.contains(type);
 				val attributes = newLinkedHashMap
-				if (becomes === null || becomes.descriptor.attributes.empty) {
+				if (isInterface) {
+					// no attributes
+				} else if (becomes === null || becomes.descriptor.attributes.empty) {
 					// implicitly copy everything
 					for (e : features.entrySet) {
 						attributes.put(e.key, e.value)
@@ -113,27 +125,16 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 					}
 				}
 
-				val isInterface = type.interface
-				val superTypes = type.ESuperTypes.filter[astClassNames.contains(name.ASTClassName)]
-				val extending = newArrayList
-				val implementing = newArrayList
-				for (t : superTypes) {
-					val name = getASTClass(grammar, t.name);
-					if (t.interface && !isInterface) {
-						implementing.add(name);
-					} else {
-						extending.add(name);
-					}
-				}
+				val superTypes = type.ESuperTypes.filter[astClassNames.contains(name.ASTClassName)].map [
+					getASTClass(grammar, name)
+				]
 
-				val extendsDeclaration = '''«FOR s : extending BEFORE " extends " SEPARATOR ', '»«s»«ENDFOR»''';
-				val implementsDeclaration = '''«FOR s : implementing BEFORE " implements " SEPARATOR ', '»«s»«ENDFOR»''';
+				val implementsDeclaration = '''«FOR s : superTypes BEFORE " implements " SEPARATOR ', '»«s»«ENDFOR»''';
 
 				val javaFile = fileAccessFactory.createGeneratedJavaFile(astType)
 				javaFile.importNestedTypeThreshold = JavaFileAccess.DONT_IMPORT_NESTED_TYPES
-				// TODO parent types can have attributes, so might need to extend instead of implement 
 				javaFile.content = '''
-					public «isInterface ? "interface" : "class"» «astType.simpleName»«extendsDeclaration»«implementsDeclaration» {
+					public «isInterface ? "interface" : "class"» «astType.simpleName»«implementsDeclaration» {
 						«IF !isInterface»
 							public «astType.simpleName»(){}
 							«IF !attributes.empty»
@@ -154,12 +155,11 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 			}
 		}
 
-		for (type : rulesEnums) {
+		for (type : enumClasses) {
 			val astType = getASTClass(grammar, type.name)
 
 			val javaFile = fileAccessFactory.createGeneratedJavaFile(astType)
 			javaFile.importNestedTypeThreshold = JavaFileAccess.DONT_IMPORT_NESTED_TYPES
-			// TODO parent types can have attributes, so might need to extend instead of implement 
 			javaFile.content = '''
 				public enum «astType.simpleName» {
 					«FOR l : type.ELiterals SEPARATOR ', ' AFTER ';'»«l.name»«ENDFOR»
@@ -167,5 +167,17 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 			'''
 			javaFile.writeTo(projectConfig.runtime.srcGen)
 		}
+	}
+
+	private def unassignedRuleCall(ParserRule rule) {
+		// TODO is there a better way?
+		val ti = rule.eAllContents();
+		while (ti.hasNext()) {
+			val obj = ti.next();
+			if (obj instanceof Assignment) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
