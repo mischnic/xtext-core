@@ -28,9 +28,11 @@ import org.eclipse.xtext.xtext.generator.XtextGeneratorNaming
 import org.eclipse.xtext.xtext.generator.model.TypeReference
 
 import static extension org.eclipse.xtext.GrammarUtil.*
+import org.eclipse.xtext.Assignment
 
 class ASTConversionFragment2 {
 	@Inject extension XtextGeneratorNaming
+	@Inject extension ASTUtils
 
 	@Inject
 	Grammar grammar;
@@ -57,7 +59,7 @@ class ASTConversionFragment2 {
 		}
 
 		val modelName = generatedMetaModels.empty ? null : generatedMetaModels.get(0).name
-		if(!rules.empty && modelName === null) {
+		if (!rules.empty && modelName === null) {
 			throw new RuntimeException("Need a model for " + grammar.name);
 		}
 
@@ -66,7 +68,7 @@ class ASTConversionFragment2 {
 				public ASTConversion() {}
 				
 				«FOR entry : rules.entrySet»
-					«IF entry.key instanceof EClass»
+					«IF entry.key instanceof EClass && !entry.value.isUnassigningRule»
 						«getChildrenClass(entry.key as EClass)»
 						«getConvertMethod(entry.key, entry.value, modelName)»
 					«ENDIF»

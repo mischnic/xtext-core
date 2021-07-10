@@ -22,6 +22,7 @@ import org.eclipse.xtext.xtext.generator.model.TypeReference
 class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 	@Inject FileAccessFactory fileAccessFactory
 	@Inject extension XtextGeneratorNaming
+	@Inject extension ASTUtils
 
 	override generate() {
 		val generatedClasses = GrammarUtil.allMetamodelDeclarations(grammar).filter(GeneratedMetamodel).map [
@@ -102,7 +103,7 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 			}
 
 			// unassigned rule calls or implicit classes become interfaces
-			val isInterface = rule === null || rule.unassignedRuleCall
+			val isInterface = rule === null || rule.isUnassigningRule
 			val attributes = newLinkedHashMap
 			if (isInterface) {
 				// no attributes
@@ -167,17 +168,5 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 			'''
 			javaFile.writeTo(projectConfig.runtime.srcGen)
 		}
-	}
-
-	private def unassignedRuleCall(ParserRule rule) {
-		// TODO is there a better way?
-		val ti = rule.eAllContents()
-		while (ti.hasNext()) {
-			val obj = ti.next()
-			if (obj instanceof Assignment) {
-				return false
-			}
-		}
-		return true
 	}
 }

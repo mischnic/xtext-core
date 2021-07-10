@@ -10,19 +10,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtend2.lib.StringConcatenationClient;
 import org.eclipse.xtext.AbstractRule;
-import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.BecomesDecl;
 import org.eclipse.xtext.BecomesDeclAttribute;
 import org.eclipse.xtext.BecomesDeclCustomAttribute;
@@ -37,6 +34,7 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xtext.generator.AbstractXtextGeneratorFragment;
 import org.eclipse.xtext.xtext.generator.XtextGeneratorNaming;
+import org.eclipse.xtext.xtext.generator.grammarAccess.ASTUtils;
 import org.eclipse.xtext.xtext.generator.model.FileAccessFactory;
 import org.eclipse.xtext.xtext.generator.model.GeneratedJavaFileAccess;
 import org.eclipse.xtext.xtext.generator.model.JavaFileAccess;
@@ -50,6 +48,10 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
   @Inject
   @Extension
   private XtextGeneratorNaming _xtextGeneratorNaming;
+  
+  @Inject
+  @Extension
+  private ASTUtils _aSTUtils;
   
   @Override
   public void generate() {
@@ -153,7 +155,7 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
             }
           }
         }
-        final boolean isInterface = ((rule == null) || this.unassignedRuleCall(rule));
+        final boolean isInterface = ((rule == null) || this._aSTUtils.isUnassigningRule(rule));
         final LinkedHashMap<String, Object> attributes = CollectionLiterals.<String, Object>newLinkedHashMap();
         if (isInterface) {
         } else {
@@ -341,18 +343,5 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
         javaFile.writeTo(this.getProjectConfig().getRuntime().getSrcGen());
       }
     }
-  }
-  
-  private boolean unassignedRuleCall(final ParserRule rule) {
-    final TreeIterator<EObject> ti = rule.eAllContents();
-    while (ti.hasNext()) {
-      {
-        final EObject obj = ti.next();
-        if ((obj instanceof Assignment)) {
-          return false;
-        }
-      }
-    }
-    return true;
   }
 }

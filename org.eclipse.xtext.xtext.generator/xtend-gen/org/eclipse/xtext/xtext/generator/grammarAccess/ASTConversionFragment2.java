@@ -43,6 +43,7 @@ import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xtext.generator.XtextGeneratorNaming;
+import org.eclipse.xtext.xtext.generator.grammarAccess.ASTUtils;
 import org.eclipse.xtext.xtext.generator.model.TypeReference;
 
 @SuppressWarnings("all")
@@ -50,6 +51,10 @@ public class ASTConversionFragment2 {
   @Inject
   @Extension
   private XtextGeneratorNaming _xtextGeneratorNaming;
+  
+  @Inject
+  @Extension
+  private ASTUtils _aSTUtils;
   
   @Inject
   private Grammar grammar;
@@ -107,11 +112,10 @@ public class ASTConversionFragment2 {
       Set<Map.Entry<EClass, ParserRule>> _entrySet = rules.entrySet();
       for(final Map.Entry<EClass, ParserRule> entry : _entrySet) {
         {
-          EClass _key = entry.getKey();
-          if ((_key instanceof EClass)) {
+          if (((entry.getKey() instanceof EClass) && (!this._aSTUtils.isUnassigningRule(entry.getValue())))) {
             _builder.append("\t");
-            EClass _key_1 = entry.getKey();
-            CharSequence _childrenClass = this.getChildrenClass(((EClass) _key_1));
+            EClass _key = entry.getKey();
+            CharSequence _childrenClass = this.getChildrenClass(((EClass) _key));
             _builder.append(_childrenClass, "\t");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
