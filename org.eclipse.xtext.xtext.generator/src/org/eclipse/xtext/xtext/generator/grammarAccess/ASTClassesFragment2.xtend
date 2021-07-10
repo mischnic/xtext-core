@@ -83,8 +83,8 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 							EAttributeType
 					val referencedASTType = getASTClass(grammar, referencedType.name)
 
-					val isListType = astClassesListType.containsKey(referencedType.name.ASTClassName)
-					val customListType = astClassesListType.get(referencedType.name.ASTClassName)
+					val isListType = astClassesListType.containsKey(referencedASTType.simpleName)
+					val customListType = astClassesListType.get(referencedASTType.simpleName)
 
 					// TODO nested lists
 					val listType = customListType !== null ? grammar.

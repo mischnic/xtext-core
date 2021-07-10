@@ -142,7 +142,11 @@ public class XtextGeneratorNaming {
 	}
 	
 	public TypeReference getASTClass(Grammar grammar, String name) {
-		return new TypeReference(getASTPackage(grammar), getASTClassName(name));
+		if (name.equals("EObject")) {
+			return new TypeReference(Object.class);
+		} else {
+			return new TypeReference(getASTPackage(grammar), getASTClassName(name));
+		}
 	}
 	
 	public String replaceASTTypeReferences(Grammar grammar, String s) {

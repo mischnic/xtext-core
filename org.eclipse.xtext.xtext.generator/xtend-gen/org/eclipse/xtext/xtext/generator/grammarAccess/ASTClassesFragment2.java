@@ -133,8 +133,8 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
             }
             final EClassifier referencedType = _xifexpression_2;
             final TypeReference referencedASTType = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), referencedType.getName());
-            final boolean isListType = astClassesListType.containsKey(this._xtextGeneratorNaming.getASTClassName(referencedType.getName()));
-            final String customListType = astClassesListType.get(this._xtextGeneratorNaming.getASTClassName(referencedType.getName()));
+            final boolean isListType = astClassesListType.containsKey(referencedASTType.getSimpleName());
+            final String customListType = astClassesListType.get(referencedASTType.getSimpleName());
             String _xifexpression_3 = null;
             if ((customListType != null)) {
               _xifexpression_3 = this._xtextGeneratorNaming.replaceASTTypeReferences(this.getGrammar(), customListType);
