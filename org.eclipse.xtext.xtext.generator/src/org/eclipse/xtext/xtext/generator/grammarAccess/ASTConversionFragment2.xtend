@@ -140,7 +140,7 @@ class ASTConversionFragment2 {
 		}
 
 		val assignments = newArrayList
-		for (f : type.EStructuralFeatures) {
+		for (f : type.EAllStructuralFeatures) {
 			if (f instanceof EReference) {
 				if (attributeNamesToCopy.contains(f.name) || shouldCopyAllAttributes) {
 					assignments.add('''this.«f.name» = children.«f.name»;''');

@@ -286,8 +286,8 @@ public class ASTConversionFragment2 {
       }
     }
     final ArrayList<String> assignments = CollectionLiterals.<String>newArrayList();
-    EList<EStructuralFeature> _eStructuralFeatures = type.getEStructuralFeatures();
-    for (final EStructuralFeature f : _eStructuralFeatures) {
+    EList<EStructuralFeature> _eAllStructuralFeatures = type.getEAllStructuralFeatures();
+    for (final EStructuralFeature f : _eAllStructuralFeatures) {
       if ((f instanceof EReference)) {
         if ((attributeNamesToCopy.contains(((EReference)f).getName()) || shouldCopyAllAttributes)) {
           StringConcatenation _builder = new StringConcatenation();

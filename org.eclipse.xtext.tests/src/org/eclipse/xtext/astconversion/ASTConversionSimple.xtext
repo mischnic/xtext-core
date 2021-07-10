@@ -6,31 +6,34 @@ Program becomes:
 	(entries+=Entry)+;
 
 Entry becomes:
-	AutoClass | AutoExplicitClass | ManualClass | CustomASTClass | CustomCopyASTClass;
+	AutoClass | AutoExplicitClass | ManualClass | CustomASTClass | CustomCopyASTClass | Other;
 
 AutoClass becomes:
-	"auto" ref1=Reference name1=ID ";";
+	"auto" ref=Reference name=ID ";";
 
-AutoExplicitClass becomes (name2):
-	"auto-explicit" ref2=Reference name2=ID ";";
+AutoExplicitClass becomes (name):
+	"auto-explicit" ref=Reference name=ID ";";
 
 ManualClass becomes («ASTReference» ref, String value) $$
-	this.ref = children.ref3;
-	this.value = node.getName3();
+	this.ref = children.ref;
+	this.value = node.getName();
 $$:
-	"manual" ref3=Reference name3=ID ";";
+	"manual" ref=Reference name=ID ";";
 
 CustomASTClass becomes ASTCustomClass $$
-	this.type = children.ref4.name;
-	this.name = node.getName4();
+	this.type = children.ref.name;
+	this.name = node.getName();
 $$:
-	"custom" ref4=Reference name4=ID ";";
+	"custom" ref=Reference name=ID ";";
 	
-
 CustomCopyASTClass becomes ASTCustomClass(name) $$
-	this.type = children.ref4.name;
+	this.type = children.ref.name;
 $$:
-	"custom-copy" ref4=Reference name=ID ";";
+	"custom-copy" ref=Reference name=ID ";";
+
+Other becomes:
+	"other" name=ID content=(Reference | AutoClass)
+;
 
 Reference becomes:
 	name=ID;
