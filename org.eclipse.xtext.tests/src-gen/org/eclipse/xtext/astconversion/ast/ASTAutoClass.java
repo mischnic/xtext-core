@@ -4,7 +4,7 @@
 package org.eclipse.xtext.astconversion.ast;
 
 
-public class ASTAutoClass extends org.eclipse.xtext.astconversion.ast.ASTEntry {
+public class ASTAutoClass implements org.eclipse.xtext.astconversion.ast.ASTEntry {
 	public ASTAutoClass(){}
 	public ASTAutoClass(ASTReference ref1, String name1){
 		this.ref1 = ref1;

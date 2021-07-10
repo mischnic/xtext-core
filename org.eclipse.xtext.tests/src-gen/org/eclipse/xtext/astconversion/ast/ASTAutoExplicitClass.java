@@ -4,7 +4,7 @@
 package org.eclipse.xtext.astconversion.ast;
 
 
-public class ASTAutoExplicitClass extends org.eclipse.xtext.astconversion.ast.ASTEntry {
+public class ASTAutoExplicitClass implements org.eclipse.xtext.astconversion.ast.ASTEntry {
 	public ASTAutoExplicitClass(){}
 	public ASTAutoExplicitClass(String name2){
 		this.name2 = name2;

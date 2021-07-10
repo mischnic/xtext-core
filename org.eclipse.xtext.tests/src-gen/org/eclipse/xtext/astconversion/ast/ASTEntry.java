@@ -4,7 +4,5 @@
 package org.eclipse.xtext.astconversion.ast;
 
 
-public class ASTEntry {
-	public ASTEntry(){}
-	
+public interface ASTEntry {
 }

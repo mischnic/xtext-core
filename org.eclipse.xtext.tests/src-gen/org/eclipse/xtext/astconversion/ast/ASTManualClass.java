@@ -4,7 +4,7 @@
 package org.eclipse.xtext.astconversion.ast;
 
 
-public class ASTManualClass extends org.eclipse.xtext.astconversion.ast.ASTEntry {
+public class ASTManualClass implements org.eclipse.xtext.astconversion.ast.ASTEntry {
 	public ASTManualClass(){}
 	public ASTManualClass(org.eclipse.xtext.astconversion.ast.ASTReference ref, String value){
 		this.ref = ref;

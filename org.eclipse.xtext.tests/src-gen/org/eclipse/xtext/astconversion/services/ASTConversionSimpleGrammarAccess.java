@@ -280,61 +280,6 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 	public static class ASTConversion {
 		public ASTConversion() {}
 		
-		public static class ManualClassChildren {
-			public org.eclipse.xtext.astconversion.ast.ASTReference ref3;
-		}
-		public Object convertManualClass(org.eclipse.xtext.astconversion.astConversionSimple.ManualClass node, ManualClassChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTManualClass() {
-				org.eclipse.xtext.astconversion.ast.ASTManualClass XTEXT_INIT() {
-						this.ref = children.ref3;
-						this.value = node.getName3();
-					return this;
-				}
-			}.XTEXT_INIT();
-		}
-		public static class CustomCopyASTClassChildren {
-			public org.eclipse.xtext.astconversion.ast.ASTReference ref4;
-		}
-		public Object convertCustomCopyASTClass(org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass node, CustomCopyASTClassChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTCustomClass() {
-				org.eclipse.xtext.astconversion.ast.ASTCustomClass XTEXT_INIT() {
-					this.name = node.getName();
-						this.type = children.ref4.name;
-					return this;
-				}
-			}.XTEXT_INIT();
-		}
-		public static class CustomASTClassChildren {
-			public org.eclipse.xtext.astconversion.ast.ASTReference ref4;
-		}
-		public Object convertCustomASTClass(org.eclipse.xtext.astconversion.astConversionSimple.CustomASTClass node, CustomASTClassChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTCustomClass() {
-				org.eclipse.xtext.astconversion.ast.ASTCustomClass XTEXT_INIT() {
-						this.type = children.ref4.name;
-						this.name = node.getName4();
-					return this;
-				}
-			}.XTEXT_INIT();
-		}
-		public static class EntryChildren {
-		}
-		public Object convertEntry(org.eclipse.xtext.astconversion.astConversionSimple.Entry node, EntryChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTEntry() {
-				org.eclipse.xtext.astconversion.ast.ASTEntry XTEXT_INIT() {
-					return this;
-				}
-			}.XTEXT_INIT();
-		}
-		public static class ReferenceChildren {
-		}
-		public Object convertReference(org.eclipse.xtext.astconversion.astConversionSimple.Reference node, ReferenceChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTReference() {
-				org.eclipse.xtext.astconversion.ast.ASTReference XTEXT_INIT() {
-					this.name = node.getName();
-					return this;
-				}
-			}.XTEXT_INIT();
-		}
 		public static class ProgramChildren {
 			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTEntry> entries;
 		}
@@ -365,6 +310,52 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 			return new org.eclipse.xtext.astconversion.ast.ASTAutoExplicitClass() {
 				org.eclipse.xtext.astconversion.ast.ASTAutoExplicitClass XTEXT_INIT() {
 					this.name2 = node.getName2();
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class ReferenceChildren {
+		}
+		public Object convertReference(org.eclipse.xtext.astconversion.astConversionSimple.Reference node, ReferenceChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTReference() {
+				org.eclipse.xtext.astconversion.ast.ASTReference XTEXT_INIT() {
+					this.name = node.getName();
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class CustomCopyASTClassChildren {
+			public org.eclipse.xtext.astconversion.ast.ASTReference ref4;
+		}
+		public Object convertCustomCopyASTClass(org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass node, CustomCopyASTClassChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTCustomClass() {
+				org.eclipse.xtext.astconversion.ast.ASTCustomClass XTEXT_INIT() {
+					this.name = node.getName();
+						this.type = children.ref4.name;
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class CustomASTClassChildren {
+			public org.eclipse.xtext.astconversion.ast.ASTReference ref4;
+		}
+		public Object convertCustomASTClass(org.eclipse.xtext.astconversion.astConversionSimple.CustomASTClass node, CustomASTClassChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTCustomClass() {
+				org.eclipse.xtext.astconversion.ast.ASTCustomClass XTEXT_INIT() {
+						this.type = children.ref4.name;
+						this.name = node.getName4();
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class ManualClassChildren {
+			public org.eclipse.xtext.astconversion.ast.ASTReference ref3;
+		}
+		public Object convertManualClass(org.eclipse.xtext.astconversion.astConversionSimple.ManualClass node, ManualClassChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTManualClass() {
+				org.eclipse.xtext.astconversion.ast.ASTManualClass XTEXT_INIT() {
+						this.ref = children.ref3;
+						this.value = node.getName3();
 					return this;
 				}
 			}.XTEXT_INIT();
