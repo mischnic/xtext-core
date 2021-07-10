@@ -41,8 +41,6 @@ class ASTConversionFragment2 {
 			EPackage.EClassifiers
 		].toList.flatten
 		// TODO??
-
-		// TODO??
 		val enabled = (grammar.rules.get(0) as ParserRule).becomes !== null;
 		val rules = newHashMap
 		for (classifier : generatedClasses) {

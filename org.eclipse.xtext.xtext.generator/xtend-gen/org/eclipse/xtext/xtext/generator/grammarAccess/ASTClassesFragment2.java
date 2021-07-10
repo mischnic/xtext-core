@@ -3,7 +3,6 @@ package org.eclipse.xtext.xtext.generator.grammarAccess;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -63,9 +62,8 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
     final boolean enabled = (_becomes != null);
     final HashSet<String> astClassNames = CollectionLiterals.<String>newHashSet();
     final HashMap<String, String> astClassesListType = CollectionLiterals.<String, String>newHashMap();
-    final HashSet<EClass> interfaceTypes = CollectionLiterals.<EClass>newHashSet();
     final HashMap<EClass, ParserRule> objectClasses = CollectionLiterals.<EClass, ParserRule>newHashMap();
-    final ArrayList<EEnum> enumClasses = CollectionLiterals.<EEnum>newArrayList();
+    final HashSet<EEnum> enumClasses = CollectionLiterals.<EEnum>newHashSet();
     for (final EClassifier classifier : generatedClasses) {
       {
         final AbstractRule rule = GrammarUtil.findRuleForName(this.getGrammar(), classifier.getName());
@@ -73,22 +71,16 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
           if (enabled) {
             objectClasses.put(((EClass) classifier), null);
             astClassNames.add(this._xtextGeneratorNaming.getASTClassName(classifier.getName()));
-            interfaceTypes.add(((EClass) classifier));
           }
         } else {
           if ((rule instanceof ParserRule)) {
-            BecomesDecl _becomes_1 = ((ParserRule) rule).getBecomes();
-            boolean _tripleNotEquals = (_becomes_1 != null);
-            if (_tripleNotEquals) {
+            if (((((ParserRule) rule).getBecomes() != null) && 
+              (((ParserRule) rule).getBecomes().getDescriptor() instanceof BecomesDeclGeneratedClass))) {
               objectClasses.put(((EClass) classifier), ((ParserRule) rule));
               astClassNames.add(this._xtextGeneratorNaming.getASTClassName(classifier.getName()));
               boolean _isList = ((ParserRule) rule).getBecomes().isList();
               if (_isList) {
                 astClassesListType.put(this._xtextGeneratorNaming.getASTClassName(classifier.getName()), ((ParserRule) rule).getBecomes().getListType());
-              }
-              boolean _unassignedRuleCall = this.unassignedRuleCall(((ParserRule)rule));
-              if (_unassignedRuleCall) {
-                interfaceTypes.add(((EClass) classifier));
               }
             }
           } else {
@@ -108,200 +100,206 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
       {
         final EClass type = entry.getKey();
         final ParserRule rule = entry.getValue();
-        if ((((rule == null) && enabled) || (((rule instanceof ParserRule) && (((ParserRule) rule).getBecomes() != null)) && 
-          (((ParserRule) rule).getBecomes().getDescriptor() instanceof BecomesDeclGeneratedClass)))) {
-          final ParserRule pr = ((ParserRule) rule);
-          BecomesDecl _xifexpression = null;
-          if ((pr == null)) {
-            _xifexpression = null;
-          } else {
-            _xifexpression = pr.getBecomes();
-          }
-          final BecomesDecl becomes = _xifexpression;
-          final TypeReference astType = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), type.getName());
-          final HashMap<String, Object> features = CollectionLiterals.<String, Object>newHashMap();
-          EList<EStructuralFeature> _eAllStructuralFeatures = type.getEAllStructuralFeatures();
-          for (final EStructuralFeature attr : _eAllStructuralFeatures) {
-            if (((attr instanceof EAttribute) && (!(((EAttribute) attr).getEAttributeType() instanceof EEnum)))) {
-              final Class<?> clazz = ((EAttribute) attr).getEAttributeType().getInstanceClass();
-              String _name = attr.getName();
-              Serializable _xifexpression_1 = null;
-              boolean _isPrimitive = clazz.isPrimitive();
-              if (_isPrimitive) {
-                _xifexpression_1 = clazz.toString();
-              } else {
-                _xifexpression_1 = clazz;
-              }
-              features.put(_name, _xifexpression_1);
-            } else {
-              EClassifier _xifexpression_2 = null;
-              if ((attr instanceof EReference)) {
-                _xifexpression_2 = ((EReference)attr).getEReferenceType();
-              } else {
-                _xifexpression_2 = ((EAttribute) attr).getEAttributeType();
-              }
-              final EClassifier referencedType = _xifexpression_2;
-              final boolean isListType = astClassesListType.containsKey(this._xtextGeneratorNaming.getASTClassName(referencedType.getName()));
-              final String customListType = astClassesListType.get(this._xtextGeneratorNaming.getASTClassName(referencedType.getName()));
-              final TypeReference referencedASTType = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), referencedType.getName());
-              String _xifexpression_3 = null;
-              if ((customListType != null)) {
-                _xifexpression_3 = this._xtextGeneratorNaming.replaceASTTypeReferences(this.getGrammar(), customListType);
-              } else {
-                StringConcatenation _builder = new StringConcatenation();
-                TypeReference _typeReference = new TypeReference(List.class);
-                _builder.append(_typeReference);
-                _builder.append("<");
-                _builder.append(referencedASTType);
-                _builder.append(">");
-                _xifexpression_3 = _builder.toString();
-              }
-              final String listType = _xifexpression_3;
-              if ((isListType || attr.isMany())) {
-                features.put(attr.getName(), listType);
-              } else {
-                features.put(attr.getName(), referencedASTType);
-              }
-            }
-          }
-          final boolean isInterface = interfaceTypes.contains(type);
-          final LinkedHashMap<String, Object> attributes = CollectionLiterals.<String, Object>newLinkedHashMap();
-          if (isInterface) {
-          } else {
-            if (((becomes == null) || becomes.getDescriptor().getAttributes().isEmpty())) {
-              Set<Map.Entry<String, Object>> _entrySet_1 = features.entrySet();
-              for (final Map.Entry<String, Object> e : _entrySet_1) {
-                attributes.put(e.getKey(), e.getValue());
-              }
-            } else {
-              EList<BecomesDeclAttribute> _attributes = becomes.getDescriptor().getAttributes();
-              for (final BecomesDeclAttribute attr_1 : _attributes) {
-                if ((attr_1 instanceof BecomesDeclCustomAttribute)) {
-                  attributes.put(((BecomesDeclCustomAttribute)attr_1).getName(), this._xtextGeneratorNaming.replaceASTTypeReferences(this.getGrammar(), ((BecomesDeclCustomAttribute)attr_1).getType()));
-                } else {
-                  attributes.put(attr_1.getName(), features.get(attr_1.getName()));
-                }
-              }
-            }
-          }
-          final Function1<EClass, Boolean> _function_1 = (EClass it) -> {
-            return Boolean.valueOf(astClassNames.contains(this._xtextGeneratorNaming.getASTClassName(it.getName())));
-          };
-          final Function1<EClass, TypeReference> _function_2 = (EClass it) -> {
-            return this._xtextGeneratorNaming.getASTClass(this.getGrammar(), it.getName());
-          };
-          final Iterable<TypeReference> superTypes = IterableExtensions.<EClass, TypeReference>map(IterableExtensions.<EClass>filter(type.getESuperTypes(), _function_1), _function_2);
-          StringConcatenation _builder_1 = new StringConcatenation();
-          {
-            boolean _hasElements = false;
-            for(final TypeReference s : superTypes) {
-              if (!_hasElements) {
-                _hasElements = true;
-                _builder_1.append(" implements ");
-              } else {
-                _builder_1.appendImmediate(", ", "");
-              }
-              _builder_1.append(s);
-            }
-          }
-          final String implementsDeclaration = _builder_1.toString();
-          final GeneratedJavaFileAccess javaFile = this.fileAccessFactory.createGeneratedJavaFile(astType);
-          javaFile.setImportNestedTypeThreshold(JavaFileAccess.DONT_IMPORT_NESTED_TYPES);
-          StringConcatenationClient _client = new StringConcatenationClient() {
-            @Override
-            protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-              _builder.append("public ");
-              String _xifexpression = null;
-              if (isInterface) {
-                _xifexpression = "interface";
-              } else {
-                _xifexpression = "class";
-              }
-              _builder.append(_xifexpression);
-              _builder.append(" ");
-              String _simpleName = astType.getSimpleName();
-              _builder.append(_simpleName);
-              _builder.append(implementsDeclaration);
-              _builder.append(" {");
-              _builder.newLineIfNotEmpty();
-              {
-                if ((!isInterface)) {
-                  _builder.append("\t");
-                  _builder.append("public ");
-                  String _simpleName_1 = astType.getSimpleName();
-                  _builder.append(_simpleName_1, "\t");
-                  _builder.append("(){}");
-                  _builder.newLineIfNotEmpty();
-                  {
-                    boolean _isEmpty = attributes.isEmpty();
-                    boolean _not = (!_isEmpty);
-                    if (_not) {
-                      _builder.append("\t");
-                      _builder.append("public ");
-                      String _simpleName_2 = astType.getSimpleName();
-                      _builder.append(_simpleName_2, "\t");
-                      _builder.append("(");
-                      {
-                        Set<Map.Entry<String, Object>> _entrySet = attributes.entrySet();
-                        boolean _hasElements = false;
-                        for(final Map.Entry<String, Object> e : _entrySet) {
-                          if (!_hasElements) {
-                            _hasElements = true;
-                          } else {
-                            _builder.appendImmediate(", ", "\t");
-                          }
-                          Object _value = e.getValue();
-                          _builder.append(_value, "\t");
-                          _builder.append(" ");
-                          String _key = e.getKey();
-                          _builder.append(_key, "\t");
-                        }
-                      }
-                      _builder.append("){");
-                      _builder.newLineIfNotEmpty();
-                      {
-                        Set<String> _keySet = attributes.keySet();
-                        for(final String n : _keySet) {
-                          _builder.append("\t");
-                          _builder.append("\t");
-                          _builder.append("this.");
-                          _builder.append(n, "\t\t");
-                          _builder.append(" = ");
-                          _builder.append(n, "\t\t");
-                          _builder.append(";");
-                          _builder.newLineIfNotEmpty();
-                        }
-                      }
-                      _builder.append("\t");
-                      _builder.append("}");
-                      _builder.newLine();
-                    }
-                  }
-                  _builder.append("\t");
-                  _builder.newLine();
-                  {
-                    Set<Map.Entry<String, Object>> _entrySet_1 = attributes.entrySet();
-                    for(final Map.Entry<String, Object> e_1 : _entrySet_1) {
-                      _builder.append("\t");
-                      _builder.append("public ");
-                      Object _value_1 = e_1.getValue();
-                      _builder.append(_value_1, "\t");
-                      _builder.append(" ");
-                      String _key_1 = e_1.getKey();
-                      _builder.append(_key_1, "\t");
-                      _builder.append(";");
-                      _builder.newLineIfNotEmpty();
-                    }
-                  }
-                }
-              }
-              _builder.append("}");
-              _builder.newLine();
-            }
-          };
-          javaFile.setContent(_client);
-          javaFile.writeTo(this.getProjectConfig().getRuntime().getSrcGen());
+        BecomesDecl _xifexpression = null;
+        if ((rule == null)) {
+          _xifexpression = null;
+        } else {
+          _xifexpression = rule.getBecomes();
         }
+        final BecomesDecl becomes = _xifexpression;
+        final TypeReference astType = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), type.getName());
+        final HashMap<String, Object> structuralFeatures = CollectionLiterals.<String, Object>newHashMap();
+        EList<EStructuralFeature> _eAllStructuralFeatures = type.getEAllStructuralFeatures();
+        for (final EStructuralFeature attr : _eAllStructuralFeatures) {
+          if (((attr instanceof EAttribute) && (!(((EAttribute) attr).getEAttributeType() instanceof EEnum)))) {
+            final Class<?> clazz = ((EAttribute) attr).getEAttributeType().getInstanceClass();
+            String _name = attr.getName();
+            Serializable _xifexpression_1 = null;
+            boolean _isPrimitive = clazz.isPrimitive();
+            if (_isPrimitive) {
+              _xifexpression_1 = clazz.toString();
+            } else {
+              _xifexpression_1 = clazz;
+            }
+            structuralFeatures.put(_name, _xifexpression_1);
+          } else {
+            EClassifier _xifexpression_2 = null;
+            if ((attr instanceof EReference)) {
+              _xifexpression_2 = ((EReference)attr).getEReferenceType();
+            } else {
+              _xifexpression_2 = ((EAttribute) attr).getEAttributeType();
+            }
+            final EClassifier referencedType = _xifexpression_2;
+            final TypeReference referencedASTType = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), referencedType.getName());
+            final boolean isListType = astClassesListType.containsKey(this._xtextGeneratorNaming.getASTClassName(referencedType.getName()));
+            final String customListType = astClassesListType.get(this._xtextGeneratorNaming.getASTClassName(referencedType.getName()));
+            String _xifexpression_3 = null;
+            if ((customListType != null)) {
+              _xifexpression_3 = this._xtextGeneratorNaming.replaceASTTypeReferences(this.getGrammar(), customListType);
+            } else {
+              StringConcatenation _builder = new StringConcatenation();
+              TypeReference _typeReference = new TypeReference(List.class);
+              _builder.append(_typeReference);
+              _builder.append("<");
+              _builder.append(referencedASTType);
+              _builder.append(">");
+              _xifexpression_3 = _builder.toString();
+            }
+            final String listType = _xifexpression_3;
+            if ((isListType || attr.isMany())) {
+              structuralFeatures.put(attr.getName(), listType);
+            } else {
+              structuralFeatures.put(attr.getName(), referencedASTType);
+            }
+          }
+        }
+        final boolean isInterface = ((rule == null) || this.unassignedRuleCall(rule));
+        final LinkedHashMap<String, Object> attributes = CollectionLiterals.<String, Object>newLinkedHashMap();
+        if (isInterface) {
+        } else {
+          boolean _isEmpty = becomes.getDescriptor().getAttributes().isEmpty();
+          if (_isEmpty) {
+            Set<Map.Entry<String, Object>> _entrySet_1 = structuralFeatures.entrySet();
+            for (final Map.Entry<String, Object> e : _entrySet_1) {
+              attributes.put(e.getKey(), e.getValue());
+            }
+          } else {
+            EList<BecomesDeclAttribute> _attributes = becomes.getDescriptor().getAttributes();
+            for (final BecomesDeclAttribute attr_1 : _attributes) {
+              if ((attr_1 instanceof BecomesDeclCustomAttribute)) {
+                attributes.put(((BecomesDeclCustomAttribute)attr_1).getName(), this._xtextGeneratorNaming.replaceASTTypeReferences(this.getGrammar(), ((BecomesDeclCustomAttribute)attr_1).getType()));
+              } else {
+                final Object feature = structuralFeatures.get(attr_1.getName());
+                if ((feature == null)) {
+                  String _name_1 = rule.getName();
+                  String _plus = ("The rule " + _name_1);
+                  String _plus_1 = (_plus + " declared the non-existing AST attribute: ");
+                  String _name_2 = attr_1.getName();
+                  String _plus_2 = (_plus_1 + _name_2);
+                  throw new RuntimeException(_plus_2);
+                }
+                attributes.put(attr_1.getName(), feature);
+              }
+            }
+          }
+        }
+        final Function1<EClass, Boolean> _function_1 = (EClass it) -> {
+          return Boolean.valueOf(astClassNames.contains(this._xtextGeneratorNaming.getASTClassName(it.getName())));
+        };
+        final Function1<EClass, TypeReference> _function_2 = (EClass it) -> {
+          return this._xtextGeneratorNaming.getASTClass(this.getGrammar(), it.getName());
+        };
+        final Iterable<TypeReference> superTypes = IterableExtensions.<EClass, TypeReference>map(IterableExtensions.<EClass>filter(type.getESuperTypes(), _function_1), _function_2);
+        StringConcatenation _builder_1 = new StringConcatenation();
+        {
+          boolean _hasElements = false;
+          for(final TypeReference s : superTypes) {
+            if (!_hasElements) {
+              _hasElements = true;
+              _builder_1.append(" implements ");
+            } else {
+              _builder_1.appendImmediate(", ", "");
+            }
+            _builder_1.append(s);
+          }
+        }
+        final String implementsDeclaration = _builder_1.toString();
+        final GeneratedJavaFileAccess javaFile = this.fileAccessFactory.createGeneratedJavaFile(astType);
+        javaFile.setImportNestedTypeThreshold(JavaFileAccess.DONT_IMPORT_NESTED_TYPES);
+        StringConcatenationClient _client = new StringConcatenationClient() {
+          @Override
+          protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
+            _builder.append("public ");
+            String _xifexpression = null;
+            if (isInterface) {
+              _xifexpression = "interface";
+            } else {
+              _xifexpression = "class";
+            }
+            _builder.append(_xifexpression);
+            _builder.append(" ");
+            String _simpleName = astType.getSimpleName();
+            _builder.append(_simpleName);
+            _builder.append(implementsDeclaration);
+            _builder.append(" {");
+            _builder.newLineIfNotEmpty();
+            {
+              if ((!isInterface)) {
+                _builder.append("\t");
+                _builder.append("public ");
+                String _simpleName_1 = astType.getSimpleName();
+                _builder.append(_simpleName_1, "\t");
+                _builder.append("(){}");
+                _builder.newLineIfNotEmpty();
+                {
+                  boolean _isEmpty = attributes.isEmpty();
+                  boolean _not = (!_isEmpty);
+                  if (_not) {
+                    _builder.append("\t");
+                    _builder.append("public ");
+                    String _simpleName_2 = astType.getSimpleName();
+                    _builder.append(_simpleName_2, "\t");
+                    _builder.append("(");
+                    {
+                      Set<Map.Entry<String, Object>> _entrySet = attributes.entrySet();
+                      boolean _hasElements = false;
+                      for(final Map.Entry<String, Object> e : _entrySet) {
+                        if (!_hasElements) {
+                          _hasElements = true;
+                        } else {
+                          _builder.appendImmediate(", ", "\t");
+                        }
+                        Object _value = e.getValue();
+                        _builder.append(_value, "\t");
+                        _builder.append(" ");
+                        String _key = e.getKey();
+                        _builder.append(_key, "\t");
+                      }
+                    }
+                    _builder.append("){");
+                    _builder.newLineIfNotEmpty();
+                    {
+                      Set<String> _keySet = attributes.keySet();
+                      for(final String n : _keySet) {
+                        _builder.append("\t");
+                        _builder.append("\t");
+                        _builder.append("this.");
+                        _builder.append(n, "\t\t");
+                        _builder.append(" = ");
+                        _builder.append(n, "\t\t");
+                        _builder.append(";");
+                        _builder.newLineIfNotEmpty();
+                      }
+                    }
+                    _builder.append("\t");
+                    _builder.append("}");
+                    _builder.newLine();
+                  }
+                }
+                _builder.append("\t");
+                _builder.newLine();
+                {
+                  Set<Map.Entry<String, Object>> _entrySet_1 = attributes.entrySet();
+                  for(final Map.Entry<String, Object> e_1 : _entrySet_1) {
+                    _builder.append("\t");
+                    _builder.append("public ");
+                    Object _value_1 = e_1.getValue();
+                    _builder.append(_value_1, "\t");
+                    _builder.append(" ");
+                    String _key_1 = e_1.getKey();
+                    _builder.append(_key_1, "\t");
+                    _builder.append(";");
+                    _builder.newLineIfNotEmpty();
+                  }
+                }
+              }
+            }
+            _builder.append("}");
+            _builder.newLine();
+          }
+        };
+        javaFile.setContent(_client);
+        javaFile.writeTo(this.getProjectConfig().getRuntime().getSrcGen());
       }
     }
     for (final EEnum type : enumClasses) {
