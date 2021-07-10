@@ -23,8 +23,7 @@ import org.eclipse.xtext.astconversion.astConversionSimple.Reference;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.CustomCopyASTClassImpl#getRef4 <em>Ref4</em>}</li>
- *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.CustomCopyASTClassImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.CustomCopyASTClassImpl#getRef <em>Ref</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,34 +31,14 @@ import org.eclipse.xtext.astconversion.astConversionSimple.Reference;
 public class CustomCopyASTClassImpl extends EntryImpl implements CustomCopyASTClass
 {
   /**
-   * The cached value of the '{@link #getRef4() <em>Ref4</em>}' containment reference.
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRef4()
+   * @see #getRef()
    * @generated
    * @ordered
    */
-  protected Reference ref4;
-
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
+  protected Reference ref;
 
   /**
    * <!-- begin-user-doc -->
@@ -88,9 +67,9 @@ public class CustomCopyASTClassImpl extends EntryImpl implements CustomCopyASTCl
    * @generated
    */
   @Override
-  public Reference getRef4()
+  public Reference getRef()
   {
-    return ref4;
+    return ref;
   }
 
   /**
@@ -98,13 +77,13 @@ public class CustomCopyASTClassImpl extends EntryImpl implements CustomCopyASTCl
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRef4(Reference newRef4, NotificationChain msgs)
+  public NotificationChain basicSetRef(Reference newRef, NotificationChain msgs)
   {
-    Reference oldRef4 = ref4;
-    ref4 = newRef4;
+    Reference oldRef = ref;
+    ref = newRef;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__REF4, oldRef4, newRef4);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__REF, oldRef, newRef);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -116,45 +95,20 @@ public class CustomCopyASTClassImpl extends EntryImpl implements CustomCopyASTCl
    * @generated
    */
   @Override
-  public void setRef4(Reference newRef4)
+  public void setRef(Reference newRef)
   {
-    if (newRef4 != ref4)
+    if (newRef != ref)
     {
       NotificationChain msgs = null;
-      if (ref4 != null)
-        msgs = ((InternalEObject)ref4).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__REF4, null, msgs);
-      if (newRef4 != null)
-        msgs = ((InternalEObject)newRef4).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__REF4, null, msgs);
-      msgs = basicSetRef4(newRef4, msgs);
+      if (ref != null)
+        msgs = ((InternalEObject)ref).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__REF, null, msgs);
+      if (newRef != null)
+        msgs = ((InternalEObject)newRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__REF, null, msgs);
+      msgs = basicSetRef(newRef, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__REF4, newRef4, newRef4));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__REF, newRef, newRef));
   }
 
   /**
@@ -167,8 +121,8 @@ public class CustomCopyASTClassImpl extends EntryImpl implements CustomCopyASTCl
   {
     switch (featureID)
     {
-      case AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__REF4:
-        return basicSetRef4(null, msgs);
+      case AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__REF:
+        return basicSetRef(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -183,10 +137,8 @@ public class CustomCopyASTClassImpl extends EntryImpl implements CustomCopyASTCl
   {
     switch (featureID)
     {
-      case AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__REF4:
-        return getRef4();
-      case AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__NAME:
-        return getName();
+      case AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__REF:
+        return getRef();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -201,11 +153,8 @@ public class CustomCopyASTClassImpl extends EntryImpl implements CustomCopyASTCl
   {
     switch (featureID)
     {
-      case AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__REF4:
-        setRef4((Reference)newValue);
-        return;
-      case AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__NAME:
-        setName((String)newValue);
+      case AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__REF:
+        setRef((Reference)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -221,11 +170,8 @@ public class CustomCopyASTClassImpl extends EntryImpl implements CustomCopyASTCl
   {
     switch (featureID)
     {
-      case AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__REF4:
-        setRef4((Reference)null);
-        return;
-      case AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__NAME:
-        setName(NAME_EDEFAULT);
+      case AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__REF:
+        setRef((Reference)null);
         return;
     }
     super.eUnset(featureID);
@@ -241,29 +187,10 @@ public class CustomCopyASTClassImpl extends EntryImpl implements CustomCopyASTCl
   {
     switch (featureID)
     {
-      case AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__REF4:
-        return ref4 != null;
-      case AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS__REF:
+        return ref != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //CustomCopyASTClassImpl

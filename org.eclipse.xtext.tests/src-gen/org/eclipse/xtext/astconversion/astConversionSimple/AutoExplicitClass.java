@@ -13,8 +13,7 @@ package org.eclipse.xtext.astconversion.astConversionSimple;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass#getRef2 <em>Ref2</em>}</li>
- *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass#getName2 <em>Name2</em>}</li>
+ *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass#getRef <em>Ref</em>}</li>
  * </ul>
  *
  * @see org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage#getAutoExplicitClass()
@@ -24,47 +23,25 @@ package org.eclipse.xtext.astconversion.astConversionSimple;
 public interface AutoExplicitClass extends Entry
 {
   /**
-   * Returns the value of the '<em><b>Ref2</b></em>' containment reference.
+   * Returns the value of the '<em><b>Ref</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Ref2</em>' containment reference.
-   * @see #setRef2(Reference)
-   * @see org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage#getAutoExplicitClass_Ref2()
+   * @return the value of the '<em>Ref</em>' containment reference.
+   * @see #setRef(Reference)
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage#getAutoExplicitClass_Ref()
    * @model containment="true"
    * @generated
    */
-  Reference getRef2();
+  Reference getRef();
 
   /**
-   * Sets the value of the '{@link org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass#getRef2 <em>Ref2</em>}' containment reference.
+   * Sets the value of the '{@link org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass#getRef <em>Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ref2</em>' containment reference.
-   * @see #getRef2()
+   * @param value the new value of the '<em>Ref</em>' containment reference.
+   * @see #getRef()
    * @generated
    */
-  void setRef2(Reference value);
-
-  /**
-   * Returns the value of the '<em><b>Name2</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name2</em>' attribute.
-   * @see #setName2(String)
-   * @see org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage#getAutoExplicitClass_Name2()
-   * @model
-   * @generated
-   */
-  String getName2();
-
-  /**
-   * Sets the value of the '{@link org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass#getName2 <em>Name2</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name2</em>' attribute.
-   * @see #getName2()
-   * @generated
-   */
-  void setName2(String value);
+  void setRef(Reference value);
 
 } // AutoExplicitClass

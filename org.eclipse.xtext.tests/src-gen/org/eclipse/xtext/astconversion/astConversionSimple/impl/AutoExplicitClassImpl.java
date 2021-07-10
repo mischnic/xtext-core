@@ -23,8 +23,7 @@ import org.eclipse.xtext.astconversion.astConversionSimple.Reference;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.AutoExplicitClassImpl#getRef2 <em>Ref2</em>}</li>
- *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.AutoExplicitClassImpl#getName2 <em>Name2</em>}</li>
+ *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.AutoExplicitClassImpl#getRef <em>Ref</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,34 +31,14 @@ import org.eclipse.xtext.astconversion.astConversionSimple.Reference;
 public class AutoExplicitClassImpl extends EntryImpl implements AutoExplicitClass
 {
   /**
-   * The cached value of the '{@link #getRef2() <em>Ref2</em>}' containment reference.
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRef2()
+   * @see #getRef()
    * @generated
    * @ordered
    */
-  protected Reference ref2;
-
-  /**
-   * The default value of the '{@link #getName2() <em>Name2</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName2()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME2_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName2() <em>Name2</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName2()
-   * @generated
-   * @ordered
-   */
-  protected String name2 = NAME2_EDEFAULT;
+  protected Reference ref;
 
   /**
    * <!-- begin-user-doc -->
@@ -88,9 +67,9 @@ public class AutoExplicitClassImpl extends EntryImpl implements AutoExplicitClas
    * @generated
    */
   @Override
-  public Reference getRef2()
+  public Reference getRef()
   {
-    return ref2;
+    return ref;
   }
 
   /**
@@ -98,13 +77,13 @@ public class AutoExplicitClassImpl extends EntryImpl implements AutoExplicitClas
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRef2(Reference newRef2, NotificationChain msgs)
+  public NotificationChain basicSetRef(Reference newRef, NotificationChain msgs)
   {
-    Reference oldRef2 = ref2;
-    ref2 = newRef2;
+    Reference oldRef = ref;
+    ref = newRef;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__REF2, oldRef2, newRef2);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__REF, oldRef, newRef);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -116,45 +95,20 @@ public class AutoExplicitClassImpl extends EntryImpl implements AutoExplicitClas
    * @generated
    */
   @Override
-  public void setRef2(Reference newRef2)
+  public void setRef(Reference newRef)
   {
-    if (newRef2 != ref2)
+    if (newRef != ref)
     {
       NotificationChain msgs = null;
-      if (ref2 != null)
-        msgs = ((InternalEObject)ref2).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__REF2, null, msgs);
-      if (newRef2 != null)
-        msgs = ((InternalEObject)newRef2).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__REF2, null, msgs);
-      msgs = basicSetRef2(newRef2, msgs);
+      if (ref != null)
+        msgs = ((InternalEObject)ref).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__REF, null, msgs);
+      if (newRef != null)
+        msgs = ((InternalEObject)newRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__REF, null, msgs);
+      msgs = basicSetRef(newRef, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__REF2, newRef2, newRef2));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getName2()
-  {
-    return name2;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName2(String newName2)
-  {
-    String oldName2 = name2;
-    name2 = newName2;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__NAME2, oldName2, name2));
+      eNotify(new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__REF, newRef, newRef));
   }
 
   /**
@@ -167,8 +121,8 @@ public class AutoExplicitClassImpl extends EntryImpl implements AutoExplicitClas
   {
     switch (featureID)
     {
-      case AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__REF2:
-        return basicSetRef2(null, msgs);
+      case AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__REF:
+        return basicSetRef(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -183,10 +137,8 @@ public class AutoExplicitClassImpl extends EntryImpl implements AutoExplicitClas
   {
     switch (featureID)
     {
-      case AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__REF2:
-        return getRef2();
-      case AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__NAME2:
-        return getName2();
+      case AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__REF:
+        return getRef();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -201,11 +153,8 @@ public class AutoExplicitClassImpl extends EntryImpl implements AutoExplicitClas
   {
     switch (featureID)
     {
-      case AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__REF2:
-        setRef2((Reference)newValue);
-        return;
-      case AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__NAME2:
-        setName2((String)newValue);
+      case AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__REF:
+        setRef((Reference)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -221,11 +170,8 @@ public class AutoExplicitClassImpl extends EntryImpl implements AutoExplicitClas
   {
     switch (featureID)
     {
-      case AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__REF2:
-        setRef2((Reference)null);
-        return;
-      case AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__NAME2:
-        setName2(NAME2_EDEFAULT);
+      case AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__REF:
+        setRef((Reference)null);
         return;
     }
     super.eUnset(featureID);
@@ -241,29 +187,10 @@ public class AutoExplicitClassImpl extends EntryImpl implements AutoExplicitClas
   {
     switch (featureID)
     {
-      case AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__REF2:
-        return ref2 != null;
-      case AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__NAME2:
-        return NAME2_EDEFAULT == null ? name2 != null : !NAME2_EDEFAULT.equals(name2);
+      case AstConversionSimplePackage.AUTO_EXPLICIT_CLASS__REF:
+        return ref != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name2: ");
-    result.append(name2);
-    result.append(')');
-    return result.toString();
   }
 
 } //AutoExplicitClassImpl

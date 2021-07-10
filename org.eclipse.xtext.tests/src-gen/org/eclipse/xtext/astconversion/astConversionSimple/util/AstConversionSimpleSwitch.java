@@ -127,6 +127,14 @@ public class AstConversionSimpleSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case AstConversionSimplePackage.OTHER:
+      {
+        Other other = (Other)theEObject;
+        T result = caseOther(other);
+        if (result == null) result = caseEntry(other);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case AstConversionSimplePackage.REFERENCE:
       {
         Reference reference = (Reference)theEObject;
@@ -246,6 +254,22 @@ public class AstConversionSimpleSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCustomCopyASTClass(CustomCopyASTClass object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Other</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Other</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOther(Other object)
   {
     return null;
   }

@@ -156,6 +156,15 @@ ruleEntry returns [EObject current=null]
 			$current = $this_CustomCopyASTClass_4.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getEntryAccess().getOtherParserRuleCall_5());
+		}
+		this_Other_5=ruleOther
+		{
+			$current = $this_Other_5.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -182,17 +191,17 @@ ruleAutoClass returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getAutoClassAccess().getRef1ReferenceParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getAutoClassAccess().getRefReferenceParserRuleCall_1_0());
 				}
-				lv_ref1_1_0=ruleReference
+				lv_ref_1_0=ruleReference
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getAutoClassRule());
 					}
 					set(
 						$current,
-						"ref1",
-						lv_ref1_1_0,
+						"ref",
+						lv_ref_1_0,
 						"org.eclipse.xtext.astconversion.ASTConversionSimple.Reference");
 					afterParserOrEnumRuleCall();
 				}
@@ -200,9 +209,9 @@ ruleAutoClass returns [EObject current=null]
 		)
 		(
 			(
-				lv_name1_2_0=RULE_ID
+				lv_name_2_0=RULE_ID
 				{
-					newLeafNode(lv_name1_2_0, grammarAccess.getAutoClassAccess().getName1IDTerminalRuleCall_2_0());
+					newLeafNode(lv_name_2_0, grammarAccess.getAutoClassAccess().getNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -210,8 +219,8 @@ ruleAutoClass returns [EObject current=null]
 					}
 					setWithLastConsumed(
 						$current,
-						"name1",
-						lv_name1_2_0,
+						"name",
+						lv_name_2_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
@@ -246,17 +255,17 @@ ruleAutoExplicitClass returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getAutoExplicitClassAccess().getRef2ReferenceParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getAutoExplicitClassAccess().getRefReferenceParserRuleCall_1_0());
 				}
-				lv_ref2_1_0=ruleReference
+				lv_ref_1_0=ruleReference
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getAutoExplicitClassRule());
 					}
 					set(
 						$current,
-						"ref2",
-						lv_ref2_1_0,
+						"ref",
+						lv_ref_1_0,
 						"org.eclipse.xtext.astconversion.ASTConversionSimple.Reference");
 					afterParserOrEnumRuleCall();
 				}
@@ -264,9 +273,9 @@ ruleAutoExplicitClass returns [EObject current=null]
 		)
 		(
 			(
-				lv_name2_2_0=RULE_ID
+				lv_name_2_0=RULE_ID
 				{
-					newLeafNode(lv_name2_2_0, grammarAccess.getAutoExplicitClassAccess().getName2IDTerminalRuleCall_2_0());
+					newLeafNode(lv_name_2_0, grammarAccess.getAutoExplicitClassAccess().getNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -274,8 +283,8 @@ ruleAutoExplicitClass returns [EObject current=null]
 					}
 					setWithLastConsumed(
 						$current,
-						"name2",
-						lv_name2_2_0,
+						"name",
+						lv_name_2_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
@@ -310,17 +319,17 @@ ruleManualClass returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getManualClassAccess().getRef3ReferenceParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getManualClassAccess().getRefReferenceParserRuleCall_1_0());
 				}
-				lv_ref3_1_0=ruleReference
+				lv_ref_1_0=ruleReference
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getManualClassRule());
 					}
 					set(
 						$current,
-						"ref3",
-						lv_ref3_1_0,
+						"ref",
+						lv_ref_1_0,
 						"org.eclipse.xtext.astconversion.ASTConversionSimple.Reference");
 					afterParserOrEnumRuleCall();
 				}
@@ -328,9 +337,9 @@ ruleManualClass returns [EObject current=null]
 		)
 		(
 			(
-				lv_name3_2_0=RULE_ID
+				lv_name_2_0=RULE_ID
 				{
-					newLeafNode(lv_name3_2_0, grammarAccess.getManualClassAccess().getName3IDTerminalRuleCall_2_0());
+					newLeafNode(lv_name_2_0, grammarAccess.getManualClassAccess().getNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -338,8 +347,8 @@ ruleManualClass returns [EObject current=null]
 					}
 					setWithLastConsumed(
 						$current,
-						"name3",
-						lv_name3_2_0,
+						"name",
+						lv_name_2_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
@@ -374,17 +383,17 @@ ruleCustomASTClass returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getCustomASTClassAccess().getRef4ReferenceParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getCustomASTClassAccess().getRefReferenceParserRuleCall_1_0());
 				}
-				lv_ref4_1_0=ruleReference
+				lv_ref_1_0=ruleReference
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getCustomASTClassRule());
 					}
 					set(
 						$current,
-						"ref4",
-						lv_ref4_1_0,
+						"ref",
+						lv_ref_1_0,
 						"org.eclipse.xtext.astconversion.ASTConversionSimple.Reference");
 					afterParserOrEnumRuleCall();
 				}
@@ -392,9 +401,9 @@ ruleCustomASTClass returns [EObject current=null]
 		)
 		(
 			(
-				lv_name4_2_0=RULE_ID
+				lv_name_2_0=RULE_ID
 				{
-					newLeafNode(lv_name4_2_0, grammarAccess.getCustomASTClassAccess().getName4IDTerminalRuleCall_2_0());
+					newLeafNode(lv_name_2_0, grammarAccess.getCustomASTClassAccess().getNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -402,8 +411,8 @@ ruleCustomASTClass returns [EObject current=null]
 					}
 					setWithLastConsumed(
 						$current,
-						"name4",
-						lv_name4_2_0,
+						"name",
+						lv_name_2_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
@@ -438,17 +447,17 @@ ruleCustomCopyASTClass returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getCustomCopyASTClassAccess().getRef4ReferenceParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getCustomCopyASTClassAccess().getRefReferenceParserRuleCall_1_0());
 				}
-				lv_ref4_1_0=ruleReference
+				lv_ref_1_0=ruleReference
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getCustomCopyASTClassRule());
 					}
 					set(
 						$current,
-						"ref4",
-						lv_ref4_1_0,
+						"ref",
+						lv_ref_1_0,
 						"org.eclipse.xtext.astconversion.ASTConversionSimple.Reference");
 					afterParserOrEnumRuleCall();
 				}
@@ -476,6 +485,84 @@ ruleCustomCopyASTClass returns [EObject current=null]
 		{
 			newLeafNode(otherlv_3, grammarAccess.getCustomCopyASTClassAccess().getSemicolonKeyword_3());
 		}
+	)
+;
+
+// Entry rule entryRuleOther
+entryRuleOther returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getOtherRule()); }
+	iv_ruleOther=ruleOther
+	{ $current=$iv_ruleOther.current; }
+	EOF;
+
+// Rule Other
+ruleOther returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='other'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getOtherAccess().getOtherKeyword_0());
+		}
+		(
+			(
+				lv_name_1_0=RULE_ID
+				{
+					newLeafNode(lv_name_1_0, grammarAccess.getOtherAccess().getNameIDTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getOtherRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		(
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getOtherAccess().getContentReferenceParserRuleCall_2_0_0());
+					}
+					lv_content_2_1=ruleReference
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getOtherRule());
+						}
+						set(
+							$current,
+							"content",
+							lv_content_2_1,
+							"org.eclipse.xtext.astconversion.ASTConversionSimple.Reference");
+						afterParserOrEnumRuleCall();
+					}
+					    |
+					{
+						newCompositeNode(grammarAccess.getOtherAccess().getContentAutoClassParserRuleCall_2_0_1());
+					}
+					lv_content_2_2=ruleAutoClass
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getOtherRule());
+						}
+						set(
+							$current,
+							"content",
+							lv_content_2_2,
+							"org.eclipse.xtext.astconversion.ASTConversionSimple.AutoClass");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
 	)
 ;
 

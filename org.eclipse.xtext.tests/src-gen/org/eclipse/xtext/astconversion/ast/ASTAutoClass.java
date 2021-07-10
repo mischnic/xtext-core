@@ -6,11 +6,11 @@ package org.eclipse.xtext.astconversion.ast;
 
 public class ASTAutoClass implements org.eclipse.xtext.astconversion.ast.ASTEntry {
 	public ASTAutoClass(){}
-	public ASTAutoClass(ASTReference ref1, String name1){
-		this.ref1 = ref1;
-		this.name1 = name1;
+	public ASTAutoClass(ASTReference ref, String name){
+		this.ref = ref;
+		this.name = name;
 	}
 	
-	public ASTReference ref1;
-	public String name1;
+	public ASTReference ref;
+	public String name;
 }

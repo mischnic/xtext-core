@@ -9,26 +9,26 @@
     <genClasses ecoreClass="ASTConversionSimple.ecore#//Program">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Program/entries"/>
     </genClasses>
-    <genClasses ecoreClass="ASTConversionSimple.ecore#//Entry"/>
+    <genClasses ecoreClass="ASTConversionSimple.ecore#//Entry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//Entry/name"/>
+    </genClasses>
     <genClasses ecoreClass="ASTConversionSimple.ecore#//AutoClass">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//AutoClass/ref1"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//AutoClass/name1"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//AutoClass/ref"/>
     </genClasses>
     <genClasses ecoreClass="ASTConversionSimple.ecore#//AutoExplicitClass">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//AutoExplicitClass/ref2"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//AutoExplicitClass/name2"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//AutoExplicitClass/ref"/>
     </genClasses>
     <genClasses ecoreClass="ASTConversionSimple.ecore#//ManualClass">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//ManualClass/ref3"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//ManualClass/name3"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//ManualClass/ref"/>
     </genClasses>
     <genClasses ecoreClass="ASTConversionSimple.ecore#//CustomASTClass">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//CustomASTClass/ref4"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//CustomASTClass/name4"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//CustomASTClass/ref"/>
     </genClasses>
     <genClasses ecoreClass="ASTConversionSimple.ecore#//CustomCopyASTClass">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//CustomCopyASTClass/ref4"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//CustomCopyASTClass/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//CustomCopyASTClass/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="ASTConversionSimple.ecore#//Other">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Other/content"/>
     </genClasses>
     <genClasses ecoreClass="ASTConversionSimple.ecore#//Reference">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//Reference/name"/>

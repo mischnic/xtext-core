@@ -19,6 +19,7 @@ import org.eclipse.xtext.astconversion.astConversionSimple.CustomASTClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.Entry;
 import org.eclipse.xtext.astconversion.astConversionSimple.ManualClass;
+import org.eclipse.xtext.astconversion.astConversionSimple.Other;
 import org.eclipse.xtext.astconversion.astConversionSimple.Program;
 import org.eclipse.xtext.astconversion.astConversionSimple.Reference;
 
@@ -78,6 +79,13 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
    * @generated
    */
   private EClass customCopyASTClassEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass otherEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -191,6 +199,17 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
    * @generated
    */
   @Override
+  public EAttribute getEntry_Name()
+  {
+    return (EAttribute)entryEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getAutoClass()
   {
     return autoClassEClass;
@@ -202,20 +221,9 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
    * @generated
    */
   @Override
-  public EReference getAutoClass_Ref1()
+  public EReference getAutoClass_Ref()
   {
     return (EReference)autoClassEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getAutoClass_Name1()
-  {
-    return (EAttribute)autoClassEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -235,20 +243,9 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
    * @generated
    */
   @Override
-  public EReference getAutoExplicitClass_Ref2()
+  public EReference getAutoExplicitClass_Ref()
   {
     return (EReference)autoExplicitClassEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getAutoExplicitClass_Name2()
-  {
-    return (EAttribute)autoExplicitClassEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -268,20 +265,9 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
    * @generated
    */
   @Override
-  public EReference getManualClass_Ref3()
+  public EReference getManualClass_Ref()
   {
     return (EReference)manualClassEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getManualClass_Name3()
-  {
-    return (EAttribute)manualClassEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -301,20 +287,9 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
    * @generated
    */
   @Override
-  public EReference getCustomASTClass_Ref4()
+  public EReference getCustomASTClass_Ref()
   {
     return (EReference)customASTClassEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getCustomASTClass_Name4()
-  {
-    return (EAttribute)customASTClassEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -334,7 +309,7 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
    * @generated
    */
   @Override
-  public EReference getCustomCopyASTClass_Ref4()
+  public EReference getCustomCopyASTClass_Ref()
   {
     return (EReference)customCopyASTClassEClass.getEStructuralFeatures().get(0);
   }
@@ -345,9 +320,20 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
    * @generated
    */
   @Override
-  public EAttribute getCustomCopyASTClass_Name()
+  public EClass getOther()
   {
-    return (EAttribute)customCopyASTClassEClass.getEStructuralFeatures().get(1);
+    return otherEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getOther_Content()
+  {
+    return (EReference)otherEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -407,26 +393,25 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
     createEReference(programEClass, PROGRAM__ENTRIES);
 
     entryEClass = createEClass(ENTRY);
+    createEAttribute(entryEClass, ENTRY__NAME);
 
     autoClassEClass = createEClass(AUTO_CLASS);
-    createEReference(autoClassEClass, AUTO_CLASS__REF1);
-    createEAttribute(autoClassEClass, AUTO_CLASS__NAME1);
+    createEReference(autoClassEClass, AUTO_CLASS__REF);
 
     autoExplicitClassEClass = createEClass(AUTO_EXPLICIT_CLASS);
-    createEReference(autoExplicitClassEClass, AUTO_EXPLICIT_CLASS__REF2);
-    createEAttribute(autoExplicitClassEClass, AUTO_EXPLICIT_CLASS__NAME2);
+    createEReference(autoExplicitClassEClass, AUTO_EXPLICIT_CLASS__REF);
 
     manualClassEClass = createEClass(MANUAL_CLASS);
-    createEReference(manualClassEClass, MANUAL_CLASS__REF3);
-    createEAttribute(manualClassEClass, MANUAL_CLASS__NAME3);
+    createEReference(manualClassEClass, MANUAL_CLASS__REF);
 
     customASTClassEClass = createEClass(CUSTOM_AST_CLASS);
-    createEReference(customASTClassEClass, CUSTOM_AST_CLASS__REF4);
-    createEAttribute(customASTClassEClass, CUSTOM_AST_CLASS__NAME4);
+    createEReference(customASTClassEClass, CUSTOM_AST_CLASS__REF);
 
     customCopyASTClassEClass = createEClass(CUSTOM_COPY_AST_CLASS);
-    createEReference(customCopyASTClassEClass, CUSTOM_COPY_AST_CLASS__REF4);
-    createEAttribute(customCopyASTClassEClass, CUSTOM_COPY_AST_CLASS__NAME);
+    createEReference(customCopyASTClassEClass, CUSTOM_COPY_AST_CLASS__REF);
+
+    otherEClass = createEClass(OTHER);
+    createEReference(otherEClass, OTHER__CONTENT);
 
     referenceEClass = createEClass(REFERENCE);
     createEAttribute(referenceEClass, REFERENCE__NAME);
@@ -469,32 +454,32 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
     manualClassEClass.getESuperTypes().add(this.getEntry());
     customASTClassEClass.getESuperTypes().add(this.getEntry());
     customCopyASTClassEClass.getESuperTypes().add(this.getEntry());
+    otherEClass.getESuperTypes().add(this.getEntry());
 
     // Initialize classes and features; add operations and parameters
     initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getProgram_Entries(), this.getEntry(), null, "entries", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(entryEClass, Entry.class, "Entry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEntry_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(autoClassEClass, AutoClass.class, "AutoClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAutoClass_Ref1(), this.getReference(), null, "ref1", null, 0, 1, AutoClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAutoClass_Name1(), theEcorePackage.getEString(), "name1", null, 0, 1, AutoClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAutoClass_Ref(), this.getReference(), null, "ref", null, 0, 1, AutoClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(autoExplicitClassEClass, AutoExplicitClass.class, "AutoExplicitClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAutoExplicitClass_Ref2(), this.getReference(), null, "ref2", null, 0, 1, AutoExplicitClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAutoExplicitClass_Name2(), theEcorePackage.getEString(), "name2", null, 0, 1, AutoExplicitClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAutoExplicitClass_Ref(), this.getReference(), null, "ref", null, 0, 1, AutoExplicitClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(manualClassEClass, ManualClass.class, "ManualClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getManualClass_Ref3(), this.getReference(), null, "ref3", null, 0, 1, ManualClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getManualClass_Name3(), theEcorePackage.getEString(), "name3", null, 0, 1, ManualClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getManualClass_Ref(), this.getReference(), null, "ref", null, 0, 1, ManualClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(customASTClassEClass, CustomASTClass.class, "CustomASTClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCustomASTClass_Ref4(), this.getReference(), null, "ref4", null, 0, 1, CustomASTClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCustomASTClass_Name4(), theEcorePackage.getEString(), "name4", null, 0, 1, CustomASTClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCustomASTClass_Ref(), this.getReference(), null, "ref", null, 0, 1, CustomASTClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(customCopyASTClassEClass, CustomCopyASTClass.class, "CustomCopyASTClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCustomCopyASTClass_Ref4(), this.getReference(), null, "ref4", null, 0, 1, CustomCopyASTClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCustomCopyASTClass_Name(), theEcorePackage.getEString(), "name", null, 0, 1, CustomCopyASTClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCustomCopyASTClass_Ref(), this.getReference(), null, "ref", null, 0, 1, CustomCopyASTClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(otherEClass, Other.class, "Other", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getOther_Content(), theEcorePackage.getEObject(), null, "content", null, 0, 1, Other.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(referenceEClass, Reference.class, "Reference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getReference_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

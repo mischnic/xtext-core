@@ -13,8 +13,7 @@ package org.eclipse.xtext.astconversion.astConversionSimple;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass#getRef4 <em>Ref4</em>}</li>
- *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass#getRef <em>Ref</em>}</li>
  * </ul>
  *
  * @see org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage#getCustomCopyASTClass()
@@ -24,47 +23,25 @@ package org.eclipse.xtext.astconversion.astConversionSimple;
 public interface CustomCopyASTClass extends Entry
 {
   /**
-   * Returns the value of the '<em><b>Ref4</b></em>' containment reference.
+   * Returns the value of the '<em><b>Ref</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Ref4</em>' containment reference.
-   * @see #setRef4(Reference)
-   * @see org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage#getCustomCopyASTClass_Ref4()
+   * @return the value of the '<em>Ref</em>' containment reference.
+   * @see #setRef(Reference)
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage#getCustomCopyASTClass_Ref()
    * @model containment="true"
    * @generated
    */
-  Reference getRef4();
+  Reference getRef();
 
   /**
-   * Sets the value of the '{@link org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass#getRef4 <em>Ref4</em>}' containment reference.
+   * Sets the value of the '{@link org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass#getRef <em>Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ref4</em>' containment reference.
-   * @see #getRef4()
+   * @param value the new value of the '<em>Ref</em>' containment reference.
+   * @see #getRef()
    * @generated
    */
-  void setRef4(Reference value);
-
-  /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage#getCustomCopyASTClass_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
+  void setRef(Reference value);
 
 } // CustomCopyASTClass

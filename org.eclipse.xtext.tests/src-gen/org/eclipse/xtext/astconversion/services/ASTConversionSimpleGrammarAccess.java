@@ -45,12 +45,13 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 		private final RuleCall cManualClassParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cCustomASTClassParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final RuleCall cCustomCopyASTClassParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cOtherParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		
 		//Entry becomes:
-		//	AutoClass | AutoExplicitClass | ManualClass | CustomASTClass | CustomCopyASTClass;
+		//	AutoClass | AutoExplicitClass | ManualClass | CustomASTClass | CustomCopyASTClass | Other;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//AutoClass | AutoExplicitClass | ManualClass | CustomASTClass | CustomCopyASTClass
+		//AutoClass | AutoExplicitClass | ManualClass | CustomASTClass | CustomCopyASTClass | Other
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//AutoClass
@@ -67,180 +68,35 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 		
 		//CustomCopyASTClass
 		public RuleCall getCustomCopyASTClassParserRuleCall_4() { return cCustomCopyASTClassParserRuleCall_4; }
+		
+		//Other
+		public RuleCall getOtherParserRuleCall_5() { return cOtherParserRuleCall_5; }
 	}
 	public class AutoClassElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.AutoClass");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cAutoKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cRef1Assignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cRef1ReferenceParserRuleCall_1_0 = (RuleCall)cRef1Assignment_1.eContents().get(0);
-		private final Assignment cName1Assignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cName1IDTerminalRuleCall_2_0 = (RuleCall)cName1Assignment_2.eContents().get(0);
+		private final Assignment cRefAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cRefReferenceParserRuleCall_1_0 = (RuleCall)cRefAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//AutoClass becomes:
-		//	"auto" ref1=Reference name1=ID ";";
+		//	"auto" ref=Reference name=ID ";";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"auto" ref1=Reference name1=ID ";"
+		//"auto" ref=Reference name=ID ";"
 		public Group getGroup() { return cGroup; }
 		
 		//"auto"
 		public Keyword getAutoKeyword_0() { return cAutoKeyword_0; }
 		
-		//ref1=Reference
-		public Assignment getRef1Assignment_1() { return cRef1Assignment_1; }
+		//ref=Reference
+		public Assignment getRefAssignment_1() { return cRefAssignment_1; }
 		
 		//Reference
-		public RuleCall getRef1ReferenceParserRuleCall_1_0() { return cRef1ReferenceParserRuleCall_1_0; }
-		
-		//name1=ID
-		public Assignment getName1Assignment_2() { return cName1Assignment_2; }
-		
-		//ID
-		public RuleCall getName1IDTerminalRuleCall_2_0() { return cName1IDTerminalRuleCall_2_0; }
-		
-		//";"
-		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
-	}
-	public class AutoExplicitClassElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.AutoExplicitClass");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cAutoExplicitKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cRef2Assignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cRef2ReferenceParserRuleCall_1_0 = (RuleCall)cRef2Assignment_1.eContents().get(0);
-		private final Assignment cName2Assignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cName2IDTerminalRuleCall_2_0 = (RuleCall)cName2Assignment_2.eContents().get(0);
-		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		
-		//AutoExplicitClass becomes (name2):
-		//	"auto-explicit" ref2=Reference name2=ID ";";
-		@Override public ParserRule getRule() { return rule; }
-		
-		//"auto-explicit" ref2=Reference name2=ID ";"
-		public Group getGroup() { return cGroup; }
-		
-		//"auto-explicit"
-		public Keyword getAutoExplicitKeyword_0() { return cAutoExplicitKeyword_0; }
-		
-		//ref2=Reference
-		public Assignment getRef2Assignment_1() { return cRef2Assignment_1; }
-		
-		//Reference
-		public RuleCall getRef2ReferenceParserRuleCall_1_0() { return cRef2ReferenceParserRuleCall_1_0; }
-		
-		//name2=ID
-		public Assignment getName2Assignment_2() { return cName2Assignment_2; }
-		
-		//ID
-		public RuleCall getName2IDTerminalRuleCall_2_0() { return cName2IDTerminalRuleCall_2_0; }
-		
-		//";"
-		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
-	}
-	public class ManualClassElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.ManualClass");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cManualKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cRef3Assignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cRef3ReferenceParserRuleCall_1_0 = (RuleCall)cRef3Assignment_1.eContents().get(0);
-		private final Assignment cName3Assignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cName3IDTerminalRuleCall_2_0 = (RuleCall)cName3Assignment_2.eContents().get(0);
-		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		
-		//ManualClass becomes («ASTReference» ref, String value) $$
-		//	this.ref = children.ref3;
-		//	this.value = node.getName3();
-		//$$:
-		//	"manual" ref3=Reference name3=ID ";";
-		@Override public ParserRule getRule() { return rule; }
-		
-		//"manual" ref3=Reference name3=ID ";"
-		public Group getGroup() { return cGroup; }
-		
-		//"manual"
-		public Keyword getManualKeyword_0() { return cManualKeyword_0; }
-		
-		//ref3=Reference
-		public Assignment getRef3Assignment_1() { return cRef3Assignment_1; }
-		
-		//Reference
-		public RuleCall getRef3ReferenceParserRuleCall_1_0() { return cRef3ReferenceParserRuleCall_1_0; }
-		
-		//name3=ID
-		public Assignment getName3Assignment_2() { return cName3Assignment_2; }
-		
-		//ID
-		public RuleCall getName3IDTerminalRuleCall_2_0() { return cName3IDTerminalRuleCall_2_0; }
-		
-		//";"
-		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
-	}
-	public class CustomASTClassElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.CustomASTClass");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cCustomKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cRef4Assignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cRef4ReferenceParserRuleCall_1_0 = (RuleCall)cRef4Assignment_1.eContents().get(0);
-		private final Assignment cName4Assignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cName4IDTerminalRuleCall_2_0 = (RuleCall)cName4Assignment_2.eContents().get(0);
-		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		
-		//CustomASTClass becomes ASTCustomClass $$
-		//	this.type = children.ref4.name;
-		//	this.name = node.getName4();
-		//$$:
-		//	"custom" ref4=Reference name4=ID ";";
-		@Override public ParserRule getRule() { return rule; }
-		
-		//"custom" ref4=Reference name4=ID ";"
-		public Group getGroup() { return cGroup; }
-		
-		//"custom"
-		public Keyword getCustomKeyword_0() { return cCustomKeyword_0; }
-		
-		//ref4=Reference
-		public Assignment getRef4Assignment_1() { return cRef4Assignment_1; }
-		
-		//Reference
-		public RuleCall getRef4ReferenceParserRuleCall_1_0() { return cRef4ReferenceParserRuleCall_1_0; }
-		
-		//name4=ID
-		public Assignment getName4Assignment_2() { return cName4Assignment_2; }
-		
-		//ID
-		public RuleCall getName4IDTerminalRuleCall_2_0() { return cName4IDTerminalRuleCall_2_0; }
-		
-		//";"
-		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
-	}
-	public class CustomCopyASTClassElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.CustomCopyASTClass");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cCustomCopyKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cRef4Assignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cRef4ReferenceParserRuleCall_1_0 = (RuleCall)cRef4Assignment_1.eContents().get(0);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		
-		//CustomCopyASTClass becomes ASTCustomClass (name) $$
-		//	this.type = children.ref4.name;
-		//$$:
-		//	"custom-copy" ref4=Reference name=ID ";";
-		@Override public ParserRule getRule() { return rule; }
-		
-		//"custom-copy" ref4=Reference name=ID ";"
-		public Group getGroup() { return cGroup; }
-		
-		//"custom-copy"
-		public Keyword getCustomCopyKeyword_0() { return cCustomCopyKeyword_0; }
-		
-		//ref4=Reference
-		public Assignment getRef4Assignment_1() { return cRef4Assignment_1; }
-		
-		//Reference
-		public RuleCall getRef4ReferenceParserRuleCall_1_0() { return cRef4ReferenceParserRuleCall_1_0; }
+		public RuleCall getRefReferenceParserRuleCall_1_0() { return cRefReferenceParserRuleCall_1_0; }
 		
 		//name=ID
 		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
@@ -250,6 +106,193 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 		
 		//";"
 		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
+	}
+	public class AutoExplicitClassElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.AutoExplicitClass");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cAutoExplicitKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cRefAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cRefReferenceParserRuleCall_1_0 = (RuleCall)cRefAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//AutoExplicitClass becomes (name):
+		//	"auto-explicit" ref=Reference name=ID ";";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"auto-explicit" ref=Reference name=ID ";"
+		public Group getGroup() { return cGroup; }
+		
+		//"auto-explicit"
+		public Keyword getAutoExplicitKeyword_0() { return cAutoExplicitKeyword_0; }
+		
+		//ref=Reference
+		public Assignment getRefAssignment_1() { return cRefAssignment_1; }
+		
+		//Reference
+		public RuleCall getRefReferenceParserRuleCall_1_0() { return cRefReferenceParserRuleCall_1_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+		
+		//";"
+		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
+	}
+	public class ManualClassElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.ManualClass");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cManualKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cRefAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cRefReferenceParserRuleCall_1_0 = (RuleCall)cRefAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//ManualClass becomes («ASTReference» ref, String value) $$
+		//	this.ref = children.ref;
+		//	this.value = node.getName();
+		//$$:
+		//	"manual" ref=Reference name=ID ";";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"manual" ref=Reference name=ID ";"
+		public Group getGroup() { return cGroup; }
+		
+		//"manual"
+		public Keyword getManualKeyword_0() { return cManualKeyword_0; }
+		
+		//ref=Reference
+		public Assignment getRefAssignment_1() { return cRefAssignment_1; }
+		
+		//Reference
+		public RuleCall getRefReferenceParserRuleCall_1_0() { return cRefReferenceParserRuleCall_1_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+		
+		//";"
+		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
+	}
+	public class CustomASTClassElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.CustomASTClass");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cCustomKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cRefAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cRefReferenceParserRuleCall_1_0 = (RuleCall)cRefAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//CustomASTClass becomes ASTCustomClass $$
+		//	this.type = children.ref.name;
+		//	this.name = node.getName();
+		//$$:
+		//	"custom" ref=Reference name=ID ";";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"custom" ref=Reference name=ID ";"
+		public Group getGroup() { return cGroup; }
+		
+		//"custom"
+		public Keyword getCustomKeyword_0() { return cCustomKeyword_0; }
+		
+		//ref=Reference
+		public Assignment getRefAssignment_1() { return cRefAssignment_1; }
+		
+		//Reference
+		public RuleCall getRefReferenceParserRuleCall_1_0() { return cRefReferenceParserRuleCall_1_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+		
+		//";"
+		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
+	}
+	public class CustomCopyASTClassElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.CustomCopyASTClass");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cCustomCopyKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cRefAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cRefReferenceParserRuleCall_1_0 = (RuleCall)cRefAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//CustomCopyASTClass becomes ASTCustomClass (name) $$
+		//	this.type = children.ref.name;
+		//$$:
+		//	"custom-copy" ref=Reference name=ID ";";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"custom-copy" ref=Reference name=ID ";"
+		public Group getGroup() { return cGroup; }
+		
+		//"custom-copy"
+		public Keyword getCustomCopyKeyword_0() { return cCustomCopyKeyword_0; }
+		
+		//ref=Reference
+		public Assignment getRefAssignment_1() { return cRefAssignment_1; }
+		
+		//Reference
+		public RuleCall getRefReferenceParserRuleCall_1_0() { return cRefReferenceParserRuleCall_1_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+		
+		//";"
+		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
+	}
+	public class OtherElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.Other");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cOtherKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cContentAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Alternatives cContentAlternatives_2_0 = (Alternatives)cContentAssignment_2.eContents().get(0);
+		private final RuleCall cContentReferenceParserRuleCall_2_0_0 = (RuleCall)cContentAlternatives_2_0.eContents().get(0);
+		private final RuleCall cContentAutoClassParserRuleCall_2_0_1 = (RuleCall)cContentAlternatives_2_0.eContents().get(1);
+		
+		//Other becomes:
+		//	"other" name=ID content=(Reference | AutoClass);
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"other" name=ID content=(Reference | AutoClass)
+		public Group getGroup() { return cGroup; }
+		
+		//"other"
+		public Keyword getOtherKeyword_0() { return cOtherKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//content=(Reference | AutoClass)
+		public Assignment getContentAssignment_2() { return cContentAssignment_2; }
+		
+		//(Reference | AutoClass)
+		public Alternatives getContentAlternatives_2_0() { return cContentAlternatives_2_0; }
+		
+		//Reference
+		public RuleCall getContentReferenceParserRuleCall_2_0_0() { return cContentReferenceParserRuleCall_2_0_0; }
+		
+		//AutoClass
+		public RuleCall getContentAutoClassParserRuleCall_2_0_1() { return cContentAutoClassParserRuleCall_2_0_1; }
 	}
 	public class ReferenceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.Reference");
@@ -275,41 +318,67 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 	private final ManualClassElements pManualClass;
 	private final CustomASTClassElements pCustomASTClass;
 	private final CustomCopyASTClassElements pCustomCopyASTClass;
+	private final OtherElements pOther;
 	private final ReferenceElements pReference;
 	
 	public static class ASTConversion {
 		public ASTConversion() {}
 		
-		public static class ProgramChildren {
-			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTEntry> entries;
+		public static class CustomCopyASTClassChildren {
+			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
 		}
-		public Object convertProgram(org.eclipse.xtext.astconversion.astConversionSimple.Program node, ProgramChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTProgram() {
-				org.eclipse.xtext.astconversion.ast.ASTProgram XTEXT_INIT() {
-					this.entries = children.entries;
+		public Object convertCustomCopyASTClass(org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass node, CustomCopyASTClassChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTCustomClass() {
+				org.eclipse.xtext.astconversion.ast.ASTCustomClass XTEXT_INIT() {
+					this.name = node.getName();
+						this.type = children.ref.name;
 					return this;
 				}
 			}.XTEXT_INIT();
 		}
-		public static class AutoClassChildren {
-			public org.eclipse.xtext.astconversion.ast.ASTReference ref1;
+		public static class OtherChildren {
+			public java.lang.Object content;
 		}
-		public Object convertAutoClass(org.eclipse.xtext.astconversion.astConversionSimple.AutoClass node, AutoClassChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTAutoClass() {
-				org.eclipse.xtext.astconversion.ast.ASTAutoClass XTEXT_INIT() {
-					this.ref1 = children.ref1;
-					this.name1 = node.getName1();
+		public Object convertOther(org.eclipse.xtext.astconversion.astConversionSimple.Other node, OtherChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTOther() {
+				org.eclipse.xtext.astconversion.ast.ASTOther XTEXT_INIT() {
+					this.name = node.getName();
+					this.content = children.content;
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class ManualClassChildren {
+			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
+		}
+		public Object convertManualClass(org.eclipse.xtext.astconversion.astConversionSimple.ManualClass node, ManualClassChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTManualClass() {
+				org.eclipse.xtext.astconversion.ast.ASTManualClass XTEXT_INIT() {
+						this.ref = children.ref;
+						this.value = node.getName();
 					return this;
 				}
 			}.XTEXT_INIT();
 		}
 		public static class AutoExplicitClassChildren {
-			public org.eclipse.xtext.astconversion.ast.ASTReference ref2;
+			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
 		}
 		public Object convertAutoExplicitClass(org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass node, AutoExplicitClassChildren children){
 			return new org.eclipse.xtext.astconversion.ast.ASTAutoExplicitClass() {
 				org.eclipse.xtext.astconversion.ast.ASTAutoExplicitClass XTEXT_INIT() {
-					this.name2 = node.getName2();
+					this.name = node.getName();
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class AutoClassChildren {
+			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
+		}
+		public Object convertAutoClass(org.eclipse.xtext.astconversion.astConversionSimple.AutoClass node, AutoClassChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTAutoClass() {
+				org.eclipse.xtext.astconversion.ast.ASTAutoClass XTEXT_INIT() {
+					this.name = node.getName();
+					this.ref = children.ref;
 					return this;
 				}
 			}.XTEXT_INIT();
@@ -324,38 +393,25 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 				}
 			}.XTEXT_INIT();
 		}
-		public static class CustomCopyASTClassChildren {
-			public org.eclipse.xtext.astconversion.ast.ASTReference ref4;
+		public static class ProgramChildren {
+			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTEntry> entries;
 		}
-		public Object convertCustomCopyASTClass(org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass node, CustomCopyASTClassChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTCustomClass() {
-				org.eclipse.xtext.astconversion.ast.ASTCustomClass XTEXT_INIT() {
-					this.name = node.getName();
-						this.type = children.ref4.name;
+		public Object convertProgram(org.eclipse.xtext.astconversion.astConversionSimple.Program node, ProgramChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTProgram() {
+				org.eclipse.xtext.astconversion.ast.ASTProgram XTEXT_INIT() {
+					this.entries = children.entries;
 					return this;
 				}
 			}.XTEXT_INIT();
 		}
 		public static class CustomASTClassChildren {
-			public org.eclipse.xtext.astconversion.ast.ASTReference ref4;
+			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
 		}
 		public Object convertCustomASTClass(org.eclipse.xtext.astconversion.astConversionSimple.CustomASTClass node, CustomASTClassChildren children){
 			return new org.eclipse.xtext.astconversion.ast.ASTCustomClass() {
 				org.eclipse.xtext.astconversion.ast.ASTCustomClass XTEXT_INIT() {
-						this.type = children.ref4.name;
-						this.name = node.getName4();
-					return this;
-				}
-			}.XTEXT_INIT();
-		}
-		public static class ManualClassChildren {
-			public org.eclipse.xtext.astconversion.ast.ASTReference ref3;
-		}
-		public Object convertManualClass(org.eclipse.xtext.astconversion.astConversionSimple.ManualClass node, ManualClassChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTManualClass() {
-				org.eclipse.xtext.astconversion.ast.ASTManualClass XTEXT_INIT() {
-						this.ref = children.ref3;
-						this.value = node.getName3();
+						this.type = children.ref.name;
+						this.name = node.getName();
 					return this;
 				}
 			}.XTEXT_INIT();
@@ -380,6 +436,7 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 		this.pManualClass = new ManualClassElements();
 		this.pCustomASTClass = new CustomASTClassElements();
 		this.pCustomCopyASTClass = new CustomCopyASTClassElements();
+		this.pOther = new OtherElements();
 		this.pReference = new ReferenceElements();
 	}
 	
@@ -426,7 +483,7 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 	}
 	
 	//Entry becomes:
-	//	AutoClass | AutoExplicitClass | ManualClass | CustomASTClass | CustomCopyASTClass;
+	//	AutoClass | AutoExplicitClass | ManualClass | CustomASTClass | CustomCopyASTClass | Other;
 	public EntryElements getEntryAccess() {
 		return pEntry;
 	}
@@ -436,7 +493,7 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 	}
 	
 	//AutoClass becomes:
-	//	"auto" ref1=Reference name1=ID ";";
+	//	"auto" ref=Reference name=ID ";";
 	public AutoClassElements getAutoClassAccess() {
 		return pAutoClass;
 	}
@@ -445,8 +502,8 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 		return getAutoClassAccess().getRule();
 	}
 	
-	//AutoExplicitClass becomes (name2):
-	//	"auto-explicit" ref2=Reference name2=ID ";";
+	//AutoExplicitClass becomes (name):
+	//	"auto-explicit" ref=Reference name=ID ";";
 	public AutoExplicitClassElements getAutoExplicitClassAccess() {
 		return pAutoExplicitClass;
 	}
@@ -456,10 +513,10 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 	}
 	
 	//ManualClass becomes («ASTReference» ref, String value) $$
-	//	this.ref = children.ref3;
-	//	this.value = node.getName3();
+	//	this.ref = children.ref;
+	//	this.value = node.getName();
 	//$$:
-	//	"manual" ref3=Reference name3=ID ";";
+	//	"manual" ref=Reference name=ID ";";
 	public ManualClassElements getManualClassAccess() {
 		return pManualClass;
 	}
@@ -469,10 +526,10 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 	}
 	
 	//CustomASTClass becomes ASTCustomClass $$
-	//	this.type = children.ref4.name;
-	//	this.name = node.getName4();
+	//	this.type = children.ref.name;
+	//	this.name = node.getName();
 	//$$:
-	//	"custom" ref4=Reference name4=ID ";";
+	//	"custom" ref=Reference name=ID ";";
 	public CustomASTClassElements getCustomASTClassAccess() {
 		return pCustomASTClass;
 	}
@@ -482,15 +539,25 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 	}
 	
 	//CustomCopyASTClass becomes ASTCustomClass (name) $$
-	//	this.type = children.ref4.name;
+	//	this.type = children.ref.name;
 	//$$:
-	//	"custom-copy" ref4=Reference name=ID ";";
+	//	"custom-copy" ref=Reference name=ID ";";
 	public CustomCopyASTClassElements getCustomCopyASTClassAccess() {
 		return pCustomCopyASTClass;
 	}
 	
 	public ParserRule getCustomCopyASTClassRule() {
 		return getCustomCopyASTClassAccess().getRule();
+	}
+	
+	//Other becomes:
+	//	"other" name=ID content=(Reference | AutoClass);
+	public OtherElements getOtherAccess() {
+		return pOther;
+	}
+	
+	public ParserRule getOtherRule() {
+		return getOtherAccess().getRule();
 	}
 	
 	//Reference becomes:

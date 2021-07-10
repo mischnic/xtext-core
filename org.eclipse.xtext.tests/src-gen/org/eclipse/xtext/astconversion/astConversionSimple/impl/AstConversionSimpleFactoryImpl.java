@@ -72,6 +72,7 @@ public class AstConversionSimpleFactoryImpl extends EFactoryImpl implements AstC
       case AstConversionSimplePackage.MANUAL_CLASS: return createManualClass();
       case AstConversionSimplePackage.CUSTOM_AST_CLASS: return createCustomASTClass();
       case AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS: return createCustomCopyASTClass();
+      case AstConversionSimplePackage.OTHER: return createOther();
       case AstConversionSimplePackage.REFERENCE: return createReference();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -160,6 +161,18 @@ public class AstConversionSimpleFactoryImpl extends EFactoryImpl implements AstC
   {
     CustomCopyASTClassImpl customCopyASTClass = new CustomCopyASTClassImpl();
     return customCopyASTClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Other createOther()
+  {
+    OtherImpl other = new OtherImpl();
+    return other;
   }
 
   /**

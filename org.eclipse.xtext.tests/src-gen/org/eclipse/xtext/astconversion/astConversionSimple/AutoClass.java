@@ -13,8 +13,7 @@ package org.eclipse.xtext.astconversion.astConversionSimple;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.AutoClass#getRef1 <em>Ref1</em>}</li>
- *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.AutoClass#getName1 <em>Name1</em>}</li>
+ *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.AutoClass#getRef <em>Ref</em>}</li>
  * </ul>
  *
  * @see org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage#getAutoClass()
@@ -24,47 +23,25 @@ package org.eclipse.xtext.astconversion.astConversionSimple;
 public interface AutoClass extends Entry
 {
   /**
-   * Returns the value of the '<em><b>Ref1</b></em>' containment reference.
+   * Returns the value of the '<em><b>Ref</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Ref1</em>' containment reference.
-   * @see #setRef1(Reference)
-   * @see org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage#getAutoClass_Ref1()
+   * @return the value of the '<em>Ref</em>' containment reference.
+   * @see #setRef(Reference)
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage#getAutoClass_Ref()
    * @model containment="true"
    * @generated
    */
-  Reference getRef1();
+  Reference getRef();
 
   /**
-   * Sets the value of the '{@link org.eclipse.xtext.astconversion.astConversionSimple.AutoClass#getRef1 <em>Ref1</em>}' containment reference.
+   * Sets the value of the '{@link org.eclipse.xtext.astconversion.astConversionSimple.AutoClass#getRef <em>Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ref1</em>' containment reference.
-   * @see #getRef1()
+   * @param value the new value of the '<em>Ref</em>' containment reference.
+   * @see #getRef()
    * @generated
    */
-  void setRef1(Reference value);
-
-  /**
-   * Returns the value of the '<em><b>Name1</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name1</em>' attribute.
-   * @see #setName1(String)
-   * @see org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage#getAutoClass_Name1()
-   * @model
-   * @generated
-   */
-  String getName1();
-
-  /**
-   * Sets the value of the '{@link org.eclipse.xtext.astconversion.astConversionSimple.AutoClass#getName1 <em>Name1</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name1</em>' attribute.
-   * @see #getName1()
-   * @generated
-   */
-  void setName1(String value);
+  void setRef(Reference value);
 
 } // AutoClass

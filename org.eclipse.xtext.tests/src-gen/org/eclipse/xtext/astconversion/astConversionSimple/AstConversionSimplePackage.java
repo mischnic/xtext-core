@@ -96,13 +96,22 @@ public interface AstConversionSimplePackage extends EPackage
   int ENTRY = 1;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTRY__NAME = 0;
+
+  /**
    * The number of structural features of the '<em>Entry</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENTRY_FEATURE_COUNT = 0;
+  int ENTRY_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.AutoClassImpl <em>Auto Class</em>}' class.
@@ -115,22 +124,22 @@ public interface AstConversionSimplePackage extends EPackage
   int AUTO_CLASS = 2;
 
   /**
-   * The feature id for the '<em><b>Ref1</b></em>' containment reference.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int AUTO_CLASS__REF1 = ENTRY_FEATURE_COUNT + 0;
+  int AUTO_CLASS__NAME = ENTRY__NAME;
 
   /**
-   * The feature id for the '<em><b>Name1</b></em>' attribute.
+   * The feature id for the '<em><b>Ref</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int AUTO_CLASS__NAME1 = ENTRY_FEATURE_COUNT + 1;
+  int AUTO_CLASS__REF = ENTRY_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Auto Class</em>' class.
@@ -139,7 +148,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @generated
    * @ordered
    */
-  int AUTO_CLASS_FEATURE_COUNT = ENTRY_FEATURE_COUNT + 2;
+  int AUTO_CLASS_FEATURE_COUNT = ENTRY_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.AutoExplicitClassImpl <em>Auto Explicit Class</em>}' class.
@@ -152,22 +161,22 @@ public interface AstConversionSimplePackage extends EPackage
   int AUTO_EXPLICIT_CLASS = 3;
 
   /**
-   * The feature id for the '<em><b>Ref2</b></em>' containment reference.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int AUTO_EXPLICIT_CLASS__REF2 = ENTRY_FEATURE_COUNT + 0;
+  int AUTO_EXPLICIT_CLASS__NAME = ENTRY__NAME;
 
   /**
-   * The feature id for the '<em><b>Name2</b></em>' attribute.
+   * The feature id for the '<em><b>Ref</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int AUTO_EXPLICIT_CLASS__NAME2 = ENTRY_FEATURE_COUNT + 1;
+  int AUTO_EXPLICIT_CLASS__REF = ENTRY_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Auto Explicit Class</em>' class.
@@ -176,7 +185,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @generated
    * @ordered
    */
-  int AUTO_EXPLICIT_CLASS_FEATURE_COUNT = ENTRY_FEATURE_COUNT + 2;
+  int AUTO_EXPLICIT_CLASS_FEATURE_COUNT = ENTRY_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ManualClassImpl <em>Manual Class</em>}' class.
@@ -189,22 +198,22 @@ public interface AstConversionSimplePackage extends EPackage
   int MANUAL_CLASS = 4;
 
   /**
-   * The feature id for the '<em><b>Ref3</b></em>' containment reference.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MANUAL_CLASS__REF3 = ENTRY_FEATURE_COUNT + 0;
+  int MANUAL_CLASS__NAME = ENTRY__NAME;
 
   /**
-   * The feature id for the '<em><b>Name3</b></em>' attribute.
+   * The feature id for the '<em><b>Ref</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MANUAL_CLASS__NAME3 = ENTRY_FEATURE_COUNT + 1;
+  int MANUAL_CLASS__REF = ENTRY_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Manual Class</em>' class.
@@ -213,7 +222,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MANUAL_CLASS_FEATURE_COUNT = ENTRY_FEATURE_COUNT + 2;
+  int MANUAL_CLASS_FEATURE_COUNT = ENTRY_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.CustomASTClassImpl <em>Custom AST Class</em>}' class.
@@ -226,22 +235,22 @@ public interface AstConversionSimplePackage extends EPackage
   int CUSTOM_AST_CLASS = 5;
 
   /**
-   * The feature id for the '<em><b>Ref4</b></em>' containment reference.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CUSTOM_AST_CLASS__REF4 = ENTRY_FEATURE_COUNT + 0;
+  int CUSTOM_AST_CLASS__NAME = ENTRY__NAME;
 
   /**
-   * The feature id for the '<em><b>Name4</b></em>' attribute.
+   * The feature id for the '<em><b>Ref</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CUSTOM_AST_CLASS__NAME4 = ENTRY_FEATURE_COUNT + 1;
+  int CUSTOM_AST_CLASS__REF = ENTRY_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Custom AST Class</em>' class.
@@ -250,7 +259,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_AST_CLASS_FEATURE_COUNT = ENTRY_FEATURE_COUNT + 2;
+  int CUSTOM_AST_CLASS_FEATURE_COUNT = ENTRY_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.CustomCopyASTClassImpl <em>Custom Copy AST Class</em>}' class.
@@ -263,22 +272,22 @@ public interface AstConversionSimplePackage extends EPackage
   int CUSTOM_COPY_AST_CLASS = 6;
 
   /**
-   * The feature id for the '<em><b>Ref4</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_COPY_AST_CLASS__REF4 = ENTRY_FEATURE_COUNT + 0;
-
-  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CUSTOM_COPY_AST_CLASS__NAME = ENTRY_FEATURE_COUNT + 1;
+  int CUSTOM_COPY_AST_CLASS__NAME = ENTRY__NAME;
+
+  /**
+   * The feature id for the '<em><b>Ref</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_COPY_AST_CLASS__REF = ENTRY_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Custom Copy AST Class</em>' class.
@@ -287,7 +296,44 @@ public interface AstConversionSimplePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_COPY_AST_CLASS_FEATURE_COUNT = ENTRY_FEATURE_COUNT + 2;
+  int CUSTOM_COPY_AST_CLASS_FEATURE_COUNT = ENTRY_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.OtherImpl <em>Other</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.OtherImpl
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getOther()
+   * @generated
+   */
+  int OTHER = 7;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OTHER__NAME = ENTRY__NAME;
+
+  /**
+   * The feature id for the '<em><b>Content</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OTHER__CONTENT = ENTRY_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Other</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OTHER_FEATURE_COUNT = ENTRY_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ReferenceImpl <em>Reference</em>}' class.
@@ -297,7 +343,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getReference()
    * @generated
    */
-  int REFERENCE = 7;
+  int REFERENCE = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -350,6 +396,17 @@ public interface AstConversionSimplePackage extends EPackage
   EClass getEntry();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.xtext.astconversion.astConversionSimple.Entry#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Entry#getName()
+   * @see #getEntry()
+   * @generated
+   */
+  EAttribute getEntry_Name();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.AutoClass <em>Auto Class</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -360,26 +417,15 @@ public interface AstConversionSimplePackage extends EPackage
   EClass getAutoClass();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.AutoClass#getRef1 <em>Ref1</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.AutoClass#getRef <em>Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Ref1</em>'.
-   * @see org.eclipse.xtext.astconversion.astConversionSimple.AutoClass#getRef1()
+   * @return the meta object for the containment reference '<em>Ref</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.AutoClass#getRef()
    * @see #getAutoClass()
    * @generated
    */
-  EReference getAutoClass_Ref1();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.xtext.astconversion.astConversionSimple.AutoClass#getName1 <em>Name1</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name1</em>'.
-   * @see org.eclipse.xtext.astconversion.astConversionSimple.AutoClass#getName1()
-   * @see #getAutoClass()
-   * @generated
-   */
-  EAttribute getAutoClass_Name1();
+  EReference getAutoClass_Ref();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass <em>Auto Explicit Class</em>}'.
@@ -392,26 +438,15 @@ public interface AstConversionSimplePackage extends EPackage
   EClass getAutoExplicitClass();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass#getRef2 <em>Ref2</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass#getRef <em>Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Ref2</em>'.
-   * @see org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass#getRef2()
+   * @return the meta object for the containment reference '<em>Ref</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass#getRef()
    * @see #getAutoExplicitClass()
    * @generated
    */
-  EReference getAutoExplicitClass_Ref2();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass#getName2 <em>Name2</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name2</em>'.
-   * @see org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass#getName2()
-   * @see #getAutoExplicitClass()
-   * @generated
-   */
-  EAttribute getAutoExplicitClass_Name2();
+  EReference getAutoExplicitClass_Ref();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.ManualClass <em>Manual Class</em>}'.
@@ -424,26 +459,15 @@ public interface AstConversionSimplePackage extends EPackage
   EClass getManualClass();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.ManualClass#getRef3 <em>Ref3</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.ManualClass#getRef <em>Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Ref3</em>'.
-   * @see org.eclipse.xtext.astconversion.astConversionSimple.ManualClass#getRef3()
+   * @return the meta object for the containment reference '<em>Ref</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.ManualClass#getRef()
    * @see #getManualClass()
    * @generated
    */
-  EReference getManualClass_Ref3();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.xtext.astconversion.astConversionSimple.ManualClass#getName3 <em>Name3</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name3</em>'.
-   * @see org.eclipse.xtext.astconversion.astConversionSimple.ManualClass#getName3()
-   * @see #getManualClass()
-   * @generated
-   */
-  EAttribute getManualClass_Name3();
+  EReference getManualClass_Ref();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.CustomASTClass <em>Custom AST Class</em>}'.
@@ -456,26 +480,15 @@ public interface AstConversionSimplePackage extends EPackage
   EClass getCustomASTClass();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.CustomASTClass#getRef4 <em>Ref4</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.CustomASTClass#getRef <em>Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Ref4</em>'.
-   * @see org.eclipse.xtext.astconversion.astConversionSimple.CustomASTClass#getRef4()
+   * @return the meta object for the containment reference '<em>Ref</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.CustomASTClass#getRef()
    * @see #getCustomASTClass()
    * @generated
    */
-  EReference getCustomASTClass_Ref4();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.xtext.astconversion.astConversionSimple.CustomASTClass#getName4 <em>Name4</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name4</em>'.
-   * @see org.eclipse.xtext.astconversion.astConversionSimple.CustomASTClass#getName4()
-   * @see #getCustomASTClass()
-   * @generated
-   */
-  EAttribute getCustomASTClass_Name4();
+  EReference getCustomASTClass_Ref();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass <em>Custom Copy AST Class</em>}'.
@@ -488,26 +501,36 @@ public interface AstConversionSimplePackage extends EPackage
   EClass getCustomCopyASTClass();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass#getRef4 <em>Ref4</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass#getRef <em>Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Ref4</em>'.
-   * @see org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass#getRef4()
+   * @return the meta object for the containment reference '<em>Ref</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass#getRef()
    * @see #getCustomCopyASTClass()
    * @generated
    */
-  EReference getCustomCopyASTClass_Ref4();
+  EReference getCustomCopyASTClass_Ref();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass#getName <em>Name</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Other <em>Other</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass#getName()
-   * @see #getCustomCopyASTClass()
+   * @return the meta object for class '<em>Other</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Other
    * @generated
    */
-  EAttribute getCustomCopyASTClass_Name();
+  EClass getOther();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.Other#getContent <em>Content</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Content</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Other#getContent()
+   * @see #getOther()
+   * @generated
+   */
+  EReference getOther_Content();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Reference <em>Reference</em>}'.
@@ -582,6 +605,14 @@ public interface AstConversionSimplePackage extends EPackage
     EClass ENTRY = eINSTANCE.getEntry();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ENTRY__NAME = eINSTANCE.getEntry_Name();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.AutoClassImpl <em>Auto Class</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -592,20 +623,12 @@ public interface AstConversionSimplePackage extends EPackage
     EClass AUTO_CLASS = eINSTANCE.getAutoClass();
 
     /**
-     * The meta object literal for the '<em><b>Ref1</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Ref</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference AUTO_CLASS__REF1 = eINSTANCE.getAutoClass_Ref1();
-
-    /**
-     * The meta object literal for the '<em><b>Name1</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute AUTO_CLASS__NAME1 = eINSTANCE.getAutoClass_Name1();
+    EReference AUTO_CLASS__REF = eINSTANCE.getAutoClass_Ref();
 
     /**
      * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.AutoExplicitClassImpl <em>Auto Explicit Class</em>}' class.
@@ -618,20 +641,12 @@ public interface AstConversionSimplePackage extends EPackage
     EClass AUTO_EXPLICIT_CLASS = eINSTANCE.getAutoExplicitClass();
 
     /**
-     * The meta object literal for the '<em><b>Ref2</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Ref</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference AUTO_EXPLICIT_CLASS__REF2 = eINSTANCE.getAutoExplicitClass_Ref2();
-
-    /**
-     * The meta object literal for the '<em><b>Name2</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute AUTO_EXPLICIT_CLASS__NAME2 = eINSTANCE.getAutoExplicitClass_Name2();
+    EReference AUTO_EXPLICIT_CLASS__REF = eINSTANCE.getAutoExplicitClass_Ref();
 
     /**
      * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ManualClassImpl <em>Manual Class</em>}' class.
@@ -644,20 +659,12 @@ public interface AstConversionSimplePackage extends EPackage
     EClass MANUAL_CLASS = eINSTANCE.getManualClass();
 
     /**
-     * The meta object literal for the '<em><b>Ref3</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Ref</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MANUAL_CLASS__REF3 = eINSTANCE.getManualClass_Ref3();
-
-    /**
-     * The meta object literal for the '<em><b>Name3</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute MANUAL_CLASS__NAME3 = eINSTANCE.getManualClass_Name3();
+    EReference MANUAL_CLASS__REF = eINSTANCE.getManualClass_Ref();
 
     /**
      * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.CustomASTClassImpl <em>Custom AST Class</em>}' class.
@@ -670,20 +677,12 @@ public interface AstConversionSimplePackage extends EPackage
     EClass CUSTOM_AST_CLASS = eINSTANCE.getCustomASTClass();
 
     /**
-     * The meta object literal for the '<em><b>Ref4</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Ref</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CUSTOM_AST_CLASS__REF4 = eINSTANCE.getCustomASTClass_Ref4();
-
-    /**
-     * The meta object literal for the '<em><b>Name4</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute CUSTOM_AST_CLASS__NAME4 = eINSTANCE.getCustomASTClass_Name4();
+    EReference CUSTOM_AST_CLASS__REF = eINSTANCE.getCustomASTClass_Ref();
 
     /**
      * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.CustomCopyASTClassImpl <em>Custom Copy AST Class</em>}' class.
@@ -696,20 +695,30 @@ public interface AstConversionSimplePackage extends EPackage
     EClass CUSTOM_COPY_AST_CLASS = eINSTANCE.getCustomCopyASTClass();
 
     /**
-     * The meta object literal for the '<em><b>Ref4</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Ref</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CUSTOM_COPY_AST_CLASS__REF4 = eINSTANCE.getCustomCopyASTClass_Ref4();
+    EReference CUSTOM_COPY_AST_CLASS__REF = eINSTANCE.getCustomCopyASTClass_Ref();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.OtherImpl <em>Other</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.OtherImpl
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getOther()
+     * @generated
+     */
+    EClass OTHER = eINSTANCE.getOther();
+
+    /**
+     * The meta object literal for the '<em><b>Content</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CUSTOM_COPY_AST_CLASS__NAME = eINSTANCE.getCustomCopyASTClass_Name();
+    EReference OTHER__CONTENT = eINSTANCE.getOther_Content();
 
     /**
      * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ReferenceImpl <em>Reference</em>}' class.

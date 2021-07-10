@@ -6,9 +6,9 @@ package org.eclipse.xtext.astconversion.ast;
 
 public class ASTAutoExplicitClass implements org.eclipse.xtext.astconversion.ast.ASTEntry {
 	public ASTAutoExplicitClass(){}
-	public ASTAutoExplicitClass(String name2){
-		this.name2 = name2;
+	public ASTAutoExplicitClass(String name){
+		this.name = name;
 	}
 	
-	public String name2;
+	public String name;
 }

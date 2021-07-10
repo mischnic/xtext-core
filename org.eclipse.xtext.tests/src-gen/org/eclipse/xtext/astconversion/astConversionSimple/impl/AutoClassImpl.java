@@ -23,8 +23,7 @@ import org.eclipse.xtext.astconversion.astConversionSimple.Reference;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.AutoClassImpl#getRef1 <em>Ref1</em>}</li>
- *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.AutoClassImpl#getName1 <em>Name1</em>}</li>
+ *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.AutoClassImpl#getRef <em>Ref</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,34 +31,14 @@ import org.eclipse.xtext.astconversion.astConversionSimple.Reference;
 public class AutoClassImpl extends EntryImpl implements AutoClass
 {
   /**
-   * The cached value of the '{@link #getRef1() <em>Ref1</em>}' containment reference.
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRef1()
+   * @see #getRef()
    * @generated
    * @ordered
    */
-  protected Reference ref1;
-
-  /**
-   * The default value of the '{@link #getName1() <em>Name1</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName1()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME1_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName1() <em>Name1</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName1()
-   * @generated
-   * @ordered
-   */
-  protected String name1 = NAME1_EDEFAULT;
+  protected Reference ref;
 
   /**
    * <!-- begin-user-doc -->
@@ -88,9 +67,9 @@ public class AutoClassImpl extends EntryImpl implements AutoClass
    * @generated
    */
   @Override
-  public Reference getRef1()
+  public Reference getRef()
   {
-    return ref1;
+    return ref;
   }
 
   /**
@@ -98,13 +77,13 @@ public class AutoClassImpl extends EntryImpl implements AutoClass
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRef1(Reference newRef1, NotificationChain msgs)
+  public NotificationChain basicSetRef(Reference newRef, NotificationChain msgs)
   {
-    Reference oldRef1 = ref1;
-    ref1 = newRef1;
+    Reference oldRef = ref;
+    ref = newRef;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.AUTO_CLASS__REF1, oldRef1, newRef1);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.AUTO_CLASS__REF, oldRef, newRef);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -116,45 +95,20 @@ public class AutoClassImpl extends EntryImpl implements AutoClass
    * @generated
    */
   @Override
-  public void setRef1(Reference newRef1)
+  public void setRef(Reference newRef)
   {
-    if (newRef1 != ref1)
+    if (newRef != ref)
     {
       NotificationChain msgs = null;
-      if (ref1 != null)
-        msgs = ((InternalEObject)ref1).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.AUTO_CLASS__REF1, null, msgs);
-      if (newRef1 != null)
-        msgs = ((InternalEObject)newRef1).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.AUTO_CLASS__REF1, null, msgs);
-      msgs = basicSetRef1(newRef1, msgs);
+      if (ref != null)
+        msgs = ((InternalEObject)ref).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.AUTO_CLASS__REF, null, msgs);
+      if (newRef != null)
+        msgs = ((InternalEObject)newRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.AUTO_CLASS__REF, null, msgs);
+      msgs = basicSetRef(newRef, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.AUTO_CLASS__REF1, newRef1, newRef1));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getName1()
-  {
-    return name1;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName1(String newName1)
-  {
-    String oldName1 = name1;
-    name1 = newName1;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.AUTO_CLASS__NAME1, oldName1, name1));
+      eNotify(new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.AUTO_CLASS__REF, newRef, newRef));
   }
 
   /**
@@ -167,8 +121,8 @@ public class AutoClassImpl extends EntryImpl implements AutoClass
   {
     switch (featureID)
     {
-      case AstConversionSimplePackage.AUTO_CLASS__REF1:
-        return basicSetRef1(null, msgs);
+      case AstConversionSimplePackage.AUTO_CLASS__REF:
+        return basicSetRef(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -183,10 +137,8 @@ public class AutoClassImpl extends EntryImpl implements AutoClass
   {
     switch (featureID)
     {
-      case AstConversionSimplePackage.AUTO_CLASS__REF1:
-        return getRef1();
-      case AstConversionSimplePackage.AUTO_CLASS__NAME1:
-        return getName1();
+      case AstConversionSimplePackage.AUTO_CLASS__REF:
+        return getRef();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -201,11 +153,8 @@ public class AutoClassImpl extends EntryImpl implements AutoClass
   {
     switch (featureID)
     {
-      case AstConversionSimplePackage.AUTO_CLASS__REF1:
-        setRef1((Reference)newValue);
-        return;
-      case AstConversionSimplePackage.AUTO_CLASS__NAME1:
-        setName1((String)newValue);
+      case AstConversionSimplePackage.AUTO_CLASS__REF:
+        setRef((Reference)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -221,11 +170,8 @@ public class AutoClassImpl extends EntryImpl implements AutoClass
   {
     switch (featureID)
     {
-      case AstConversionSimplePackage.AUTO_CLASS__REF1:
-        setRef1((Reference)null);
-        return;
-      case AstConversionSimplePackage.AUTO_CLASS__NAME1:
-        setName1(NAME1_EDEFAULT);
+      case AstConversionSimplePackage.AUTO_CLASS__REF:
+        setRef((Reference)null);
         return;
     }
     super.eUnset(featureID);
@@ -241,29 +187,10 @@ public class AutoClassImpl extends EntryImpl implements AutoClass
   {
     switch (featureID)
     {
-      case AstConversionSimplePackage.AUTO_CLASS__REF1:
-        return ref1 != null;
-      case AstConversionSimplePackage.AUTO_CLASS__NAME1:
-        return NAME1_EDEFAULT == null ? name1 != null : !NAME1_EDEFAULT.equals(name1);
+      case AstConversionSimplePackage.AUTO_CLASS__REF:
+        return ref != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name1: ");
-    result.append(name1);
-    result.append(')');
-    return result.toString();
   }
 
 } //AutoClassImpl

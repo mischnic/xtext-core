@@ -16,6 +16,7 @@ import org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.CustomASTClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.ManualClass;
+import org.eclipse.xtext.astconversion.astConversionSimple.Other;
 import org.eclipse.xtext.astconversion.astConversionSimple.Program;
 import org.eclipse.xtext.astconversion.astConversionSimple.Reference;
 import org.eclipse.xtext.astconversion.services.ASTConversionSimpleGrammarAccess;
@@ -53,6 +54,9 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 			case AstConversionSimplePackage.MANUAL_CLASS:
 				sequence_ManualClass(context, (ManualClass) semanticObject); 
 				return; 
+			case AstConversionSimplePackage.OTHER:
+				sequence_Other(context, (Other) semanticObject); 
+				return; 
 			case AstConversionSimplePackage.PROGRAM:
 				sequence_Program(context, (Program) semanticObject); 
 				return; 
@@ -70,18 +74,18 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 	 *     AutoClass returns AutoClass
 	 *
 	 * Constraint:
-	 *     (ref1=Reference name1=ID)
+	 *     (ref=Reference name=ID)
 	 */
 	protected void sequence_AutoClass(ISerializationContext context, AutoClass semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.AUTO_CLASS__REF1) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.AUTO_CLASS__REF1));
-			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.AUTO_CLASS__NAME1) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.AUTO_CLASS__NAME1));
+			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.AUTO_CLASS__REF) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.AUTO_CLASS__REF));
+			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.ENTRY__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.ENTRY__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAutoClassAccess().getRef1ReferenceParserRuleCall_1_0(), semanticObject.getRef1());
-		feeder.accept(grammarAccess.getAutoClassAccess().getName1IDTerminalRuleCall_2_0(), semanticObject.getName1());
+		feeder.accept(grammarAccess.getAutoClassAccess().getRefReferenceParserRuleCall_1_0(), semanticObject.getRef());
+		feeder.accept(grammarAccess.getAutoClassAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -92,18 +96,18 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 	 *     AutoExplicitClass returns AutoExplicitClass
 	 *
 	 * Constraint:
-	 *     (ref2=Reference name2=ID)
+	 *     (ref=Reference name=ID)
 	 */
 	protected void sequence_AutoExplicitClass(ISerializationContext context, AutoExplicitClass semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.AUTO_EXPLICIT_CLASS__REF2) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.AUTO_EXPLICIT_CLASS__REF2));
-			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.AUTO_EXPLICIT_CLASS__NAME2) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.AUTO_EXPLICIT_CLASS__NAME2));
+			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.AUTO_EXPLICIT_CLASS__REF) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.AUTO_EXPLICIT_CLASS__REF));
+			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.ENTRY__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.ENTRY__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAutoExplicitClassAccess().getRef2ReferenceParserRuleCall_1_0(), semanticObject.getRef2());
-		feeder.accept(grammarAccess.getAutoExplicitClassAccess().getName2IDTerminalRuleCall_2_0(), semanticObject.getName2());
+		feeder.accept(grammarAccess.getAutoExplicitClassAccess().getRefReferenceParserRuleCall_1_0(), semanticObject.getRef());
+		feeder.accept(grammarAccess.getAutoExplicitClassAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -114,18 +118,18 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 	 *     CustomASTClass returns CustomASTClass
 	 *
 	 * Constraint:
-	 *     (ref4=Reference name4=ID)
+	 *     (ref=Reference name=ID)
 	 */
 	protected void sequence_CustomASTClass(ISerializationContext context, CustomASTClass semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.CUSTOM_AST_CLASS__REF4) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.CUSTOM_AST_CLASS__REF4));
-			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.CUSTOM_AST_CLASS__NAME4) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.CUSTOM_AST_CLASS__NAME4));
+			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.CUSTOM_AST_CLASS__REF) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.CUSTOM_AST_CLASS__REF));
+			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.ENTRY__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.ENTRY__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getCustomASTClassAccess().getRef4ReferenceParserRuleCall_1_0(), semanticObject.getRef4());
-		feeder.accept(grammarAccess.getCustomASTClassAccess().getName4IDTerminalRuleCall_2_0(), semanticObject.getName4());
+		feeder.accept(grammarAccess.getCustomASTClassAccess().getRefReferenceParserRuleCall_1_0(), semanticObject.getRef());
+		feeder.accept(grammarAccess.getCustomASTClassAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -136,17 +140,17 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 	 *     CustomCopyASTClass returns CustomCopyASTClass
 	 *
 	 * Constraint:
-	 *     (ref4=Reference name=ID)
+	 *     (ref=Reference name=ID)
 	 */
 	protected void sequence_CustomCopyASTClass(ISerializationContext context, CustomCopyASTClass semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.CUSTOM_COPY_AST_CLASS__REF4) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.CUSTOM_COPY_AST_CLASS__REF4));
-			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.CUSTOM_COPY_AST_CLASS__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.CUSTOM_COPY_AST_CLASS__NAME));
+			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.CUSTOM_COPY_AST_CLASS__REF) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.CUSTOM_COPY_AST_CLASS__REF));
+			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.ENTRY__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.ENTRY__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getCustomCopyASTClassAccess().getRef4ReferenceParserRuleCall_1_0(), semanticObject.getRef4());
+		feeder.accept(grammarAccess.getCustomCopyASTClassAccess().getRefReferenceParserRuleCall_1_0(), semanticObject.getRef());
 		feeder.accept(grammarAccess.getCustomCopyASTClassAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
 		feeder.finish();
 	}
@@ -158,19 +162,32 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 	 *     ManualClass returns ManualClass
 	 *
 	 * Constraint:
-	 *     (ref3=Reference name3=ID)
+	 *     (ref=Reference name=ID)
 	 */
 	protected void sequence_ManualClass(ISerializationContext context, ManualClass semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.MANUAL_CLASS__REF3) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.MANUAL_CLASS__REF3));
-			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.MANUAL_CLASS__NAME3) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.MANUAL_CLASS__NAME3));
+			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.MANUAL_CLASS__REF) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.MANUAL_CLASS__REF));
+			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.ENTRY__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.ENTRY__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getManualClassAccess().getRef3ReferenceParserRuleCall_1_0(), semanticObject.getRef3());
-		feeder.accept(grammarAccess.getManualClassAccess().getName3IDTerminalRuleCall_2_0(), semanticObject.getName3());
+		feeder.accept(grammarAccess.getManualClassAccess().getRefReferenceParserRuleCall_1_0(), semanticObject.getRef());
+		feeder.accept(grammarAccess.getManualClassAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Entry returns Other
+	 *     Other returns Other
+	 *
+	 * Constraint:
+	 *     (name=ID (content=Reference | content=AutoClass))
+	 */
+	protected void sequence_Other(ISerializationContext context, Other semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

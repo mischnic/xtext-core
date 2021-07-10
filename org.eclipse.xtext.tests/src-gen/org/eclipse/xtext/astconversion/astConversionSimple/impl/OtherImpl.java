@@ -7,45 +7,45 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage;
-import org.eclipse.xtext.astconversion.astConversionSimple.ManualClass;
-import org.eclipse.xtext.astconversion.astConversionSimple.Reference;
+import org.eclipse.xtext.astconversion.astConversionSimple.Other;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Manual Class</b></em>'.
+ * An implementation of the model object '<em><b>Other</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ManualClassImpl#getRef <em>Ref</em>}</li>
+ *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.OtherImpl#getContent <em>Content</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ManualClassImpl extends EntryImpl implements ManualClass
+public class OtherImpl extends EntryImpl implements Other
 {
   /**
-   * The cached value of the '{@link #getRef() <em>Ref</em>}' containment reference.
+   * The cached value of the '{@link #getContent() <em>Content</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRef()
+   * @see #getContent()
    * @generated
    * @ordered
    */
-  protected Reference ref;
+  protected EObject content;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ManualClassImpl()
+  protected OtherImpl()
   {
     super();
   }
@@ -58,7 +58,7 @@ public class ManualClassImpl extends EntryImpl implements ManualClass
   @Override
   protected EClass eStaticClass()
   {
-    return AstConversionSimplePackage.Literals.MANUAL_CLASS;
+    return AstConversionSimplePackage.Literals.OTHER;
   }
 
   /**
@@ -67,9 +67,9 @@ public class ManualClassImpl extends EntryImpl implements ManualClass
    * @generated
    */
   @Override
-  public Reference getRef()
+  public EObject getContent()
   {
-    return ref;
+    return content;
   }
 
   /**
@@ -77,13 +77,13 @@ public class ManualClassImpl extends EntryImpl implements ManualClass
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRef(Reference newRef, NotificationChain msgs)
+  public NotificationChain basicSetContent(EObject newContent, NotificationChain msgs)
   {
-    Reference oldRef = ref;
-    ref = newRef;
+    EObject oldContent = content;
+    content = newContent;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.MANUAL_CLASS__REF, oldRef, newRef);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.OTHER__CONTENT, oldContent, newContent);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -95,20 +95,20 @@ public class ManualClassImpl extends EntryImpl implements ManualClass
    * @generated
    */
   @Override
-  public void setRef(Reference newRef)
+  public void setContent(EObject newContent)
   {
-    if (newRef != ref)
+    if (newContent != content)
     {
       NotificationChain msgs = null;
-      if (ref != null)
-        msgs = ((InternalEObject)ref).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.MANUAL_CLASS__REF, null, msgs);
-      if (newRef != null)
-        msgs = ((InternalEObject)newRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.MANUAL_CLASS__REF, null, msgs);
-      msgs = basicSetRef(newRef, msgs);
+      if (content != null)
+        msgs = ((InternalEObject)content).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.OTHER__CONTENT, null, msgs);
+      if (newContent != null)
+        msgs = ((InternalEObject)newContent).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.OTHER__CONTENT, null, msgs);
+      msgs = basicSetContent(newContent, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.MANUAL_CLASS__REF, newRef, newRef));
+      eNotify(new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.OTHER__CONTENT, newContent, newContent));
   }
 
   /**
@@ -121,8 +121,8 @@ public class ManualClassImpl extends EntryImpl implements ManualClass
   {
     switch (featureID)
     {
-      case AstConversionSimplePackage.MANUAL_CLASS__REF:
-        return basicSetRef(null, msgs);
+      case AstConversionSimplePackage.OTHER__CONTENT:
+        return basicSetContent(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -137,8 +137,8 @@ public class ManualClassImpl extends EntryImpl implements ManualClass
   {
     switch (featureID)
     {
-      case AstConversionSimplePackage.MANUAL_CLASS__REF:
-        return getRef();
+      case AstConversionSimplePackage.OTHER__CONTENT:
+        return getContent();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -153,8 +153,8 @@ public class ManualClassImpl extends EntryImpl implements ManualClass
   {
     switch (featureID)
     {
-      case AstConversionSimplePackage.MANUAL_CLASS__REF:
-        setRef((Reference)newValue);
+      case AstConversionSimplePackage.OTHER__CONTENT:
+        setContent((EObject)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -170,8 +170,8 @@ public class ManualClassImpl extends EntryImpl implements ManualClass
   {
     switch (featureID)
     {
-      case AstConversionSimplePackage.MANUAL_CLASS__REF:
-        setRef((Reference)null);
+      case AstConversionSimplePackage.OTHER__CONTENT:
+        setContent((EObject)null);
         return;
     }
     super.eUnset(featureID);
@@ -187,10 +187,10 @@ public class ManualClassImpl extends EntryImpl implements ManualClass
   {
     switch (featureID)
     {
-      case AstConversionSimplePackage.MANUAL_CLASS__REF:
-        return ref != null;
+      case AstConversionSimplePackage.OTHER__CONTENT:
+        return content != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //ManualClassImpl
+} //OtherImpl

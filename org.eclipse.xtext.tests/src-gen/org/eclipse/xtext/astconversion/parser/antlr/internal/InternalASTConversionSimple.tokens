@@ -4,6 +4,7 @@
 'custom'=15
 'custom-copy'=16
 'manual'=14
+'other'=17
 RULE_ANY_OTHER=10
 RULE_ID=4
 RULE_INT=5
@@ -17,3 +18,4 @@ T__13=13
 T__14=14
 T__15=15
 T__16=16
+T__17=17

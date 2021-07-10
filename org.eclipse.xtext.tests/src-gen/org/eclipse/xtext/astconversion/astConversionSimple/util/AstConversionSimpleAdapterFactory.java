@@ -111,6 +111,11 @@ public class AstConversionSimpleAdapterFactory extends AdapterFactoryImpl
         return createCustomCopyASTClassAdapter();
       }
       @Override
+      public Adapter caseOther(Other object)
+      {
+        return createOtherAdapter();
+      }
+      @Override
       public Adapter caseReference(Reference object)
       {
         return createReferenceAdapter();
@@ -238,6 +243,21 @@ public class AstConversionSimpleAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCustomCopyASTClassAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Other <em>Other</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Other
+   * @generated
+   */
+  public Adapter createOtherAdapter()
   {
     return null;
   }

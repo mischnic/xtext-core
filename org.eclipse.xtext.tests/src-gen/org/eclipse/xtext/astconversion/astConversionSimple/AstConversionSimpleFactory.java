@@ -87,6 +87,15 @@ public interface AstConversionSimpleFactory extends EFactory
   CustomCopyASTClass createCustomCopyASTClass();
 
   /**
+   * Returns a new object of class '<em>Other</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Other</em>'.
+   * @generated
+   */
+  Other createOther();
+
+  /**
    * Returns a new object of class '<em>Reference</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
