@@ -78,13 +78,22 @@ public interface AstConversionSimplePackage extends EPackage
   int PROGRAM__ENTRIES = 0;
 
   /**
+   * The feature id for the '<em><b>Sequence</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROGRAM__SEQUENCE = 1;
+
+  /**
    * The number of structural features of the '<em>Program</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROGRAM_FEATURE_COUNT = 1;
+  int PROGRAM_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.EntryImpl <em>Entry</em>}' class.
@@ -300,6 +309,34 @@ public interface AstConversionSimplePackage extends EPackage
   int CUSTOM_COPY_AST_CLASS_FEATURE_COUNT = ENTRY_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ReferenceImpl <em>Reference</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.ReferenceImpl
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getReference()
+   * @generated
+   */
+  int REFERENCE = 7;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCE__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Reference</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCE_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.OtherImpl <em>Other</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -307,7 +344,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getOther()
    * @generated
    */
-  int OTHER = 7;
+  int OTHER = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -344,7 +381,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getElement()
    * @generated
    */
-  int ELEMENT = 8;
+  int ELEMENT = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -383,32 +420,78 @@ public interface AstConversionSimplePackage extends EPackage
   int ELEMENT_FEATURE_COUNT = ENTRY_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ReferenceImpl <em>Reference</em>}' class.
+   * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.SequenceImpl <em>Sequence</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.ReferenceImpl
-   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getReference()
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.SequenceImpl
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getSequence()
    * @generated
    */
-  int REFERENCE = 9;
+  int SEQUENCE = 10;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REFERENCE__NAME = 0;
+  int SEQUENCE__EXPRESSIONS = 0;
 
   /**
-   * The number of structural features of the '<em>Reference</em>' class.
+   * The number of structural features of the '<em>Sequence</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REFERENCE_FEATURE_COUNT = 1;
+  int SEQUENCE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.AdditionImpl <em>Addition</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AdditionImpl
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getAddition()
+   * @generated
+   */
+  int ADDITION = 11;
+
+  /**
+   * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION__EXPRESSIONS = SEQUENCE__EXPRESSIONS;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION__LEFT = SEQUENCE_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION__RIGHT = SEQUENCE_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Addition</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITION_FEATURE_COUNT = SEQUENCE_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.ChangeKind <em>Change Kind</em>}' enum.
@@ -418,7 +501,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getChangeKind()
    * @generated
    */
-  int CHANGE_KIND = 10;
+  int CHANGE_KIND = 12;
 
 
   /**
@@ -441,6 +524,17 @@ public interface AstConversionSimplePackage extends EPackage
    * @generated
    */
   EReference getProgram_Entries();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getSequence <em>Sequence</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Sequence</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Program#getSequence()
+   * @see #getProgram()
+   * @generated
+   */
+  EReference getProgram_Sequence();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Entry <em>Entry</em>}'.
@@ -569,6 +663,27 @@ public interface AstConversionSimplePackage extends EPackage
   EReference getCustomCopyASTClass_Ref();
 
   /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Reference <em>Reference</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Reference</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Reference
+   * @generated
+   */
+  EClass getReference();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.xtext.astconversion.astConversionSimple.Reference#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Reference#getName()
+   * @see #getReference()
+   * @generated
+   */
+  EAttribute getReference_Name();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Other <em>Other</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -622,25 +737,57 @@ public interface AstConversionSimplePackage extends EPackage
   EAttribute getElement_Value();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Reference <em>Reference</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Sequence <em>Sequence</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Reference</em>'.
-   * @see org.eclipse.xtext.astconversion.astConversionSimple.Reference
+   * @return the meta object for class '<em>Sequence</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Sequence
    * @generated
    */
-  EClass getReference();
+  EClass getSequence();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.xtext.astconversion.astConversionSimple.Reference#getName <em>Name</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.eclipse.xtext.astconversion.astConversionSimple.Sequence#getExpressions <em>Expressions</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.eclipse.xtext.astconversion.astConversionSimple.Reference#getName()
-   * @see #getReference()
+   * @return the meta object for the containment reference list '<em>Expressions</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Sequence#getExpressions()
+   * @see #getSequence()
    * @generated
    */
-  EAttribute getReference_Name();
+  EReference getSequence_Expressions();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Addition <em>Addition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Addition</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Addition
+   * @generated
+   */
+  EClass getAddition();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.xtext.astconversion.astConversionSimple.Addition#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Left</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Addition#getLeft()
+   * @see #getAddition()
+   * @generated
+   */
+  EAttribute getAddition_Left();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.xtext.astconversion.astConversionSimple.Addition#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Right</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Addition#getRight()
+   * @see #getAddition()
+   * @generated
+   */
+  EAttribute getAddition_Right();
 
   /**
    * Returns the meta object for enum '{@link org.eclipse.xtext.astconversion.astConversionSimple.ChangeKind <em>Change Kind</em>}'.
@@ -692,6 +839,14 @@ public interface AstConversionSimplePackage extends EPackage
      * @generated
      */
     EReference PROGRAM__ENTRIES = eINSTANCE.getProgram_Entries();
+
+    /**
+     * The meta object literal for the '<em><b>Sequence</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROGRAM__SEQUENCE = eINSTANCE.getProgram_Sequence();
 
     /**
      * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.EntryImpl <em>Entry</em>}' class.
@@ -802,6 +957,24 @@ public interface AstConversionSimplePackage extends EPackage
     EReference CUSTOM_COPY_AST_CLASS__REF = eINSTANCE.getCustomCopyASTClass_Ref();
 
     /**
+     * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ReferenceImpl <em>Reference</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.ReferenceImpl
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getReference()
+     * @generated
+     */
+    EClass REFERENCE = eINSTANCE.getReference();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REFERENCE__NAME = eINSTANCE.getReference_Name();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.OtherImpl <em>Other</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -846,22 +1019,48 @@ public interface AstConversionSimplePackage extends EPackage
     EAttribute ELEMENT__VALUE = eINSTANCE.getElement_Value();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ReferenceImpl <em>Reference</em>}' class.
+     * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.SequenceImpl <em>Sequence</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.ReferenceImpl
-     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getReference()
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.SequenceImpl
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getSequence()
      * @generated
      */
-    EClass REFERENCE = eINSTANCE.getReference();
+    EClass SEQUENCE = eINSTANCE.getSequence();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Expressions</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute REFERENCE__NAME = eINSTANCE.getReference_Name();
+    EReference SEQUENCE__EXPRESSIONS = eINSTANCE.getSequence_Expressions();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.AdditionImpl <em>Addition</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AdditionImpl
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getAddition()
+     * @generated
+     */
+    EClass ADDITION = eINSTANCE.getAddition();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ADDITION__LEFT = eINSTANCE.getAddition_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ADDITION__RIGHT = eINSTANCE.getAddition_Right();
 
     /**
      * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.ChangeKind <em>Change Kind</em>}' enum.

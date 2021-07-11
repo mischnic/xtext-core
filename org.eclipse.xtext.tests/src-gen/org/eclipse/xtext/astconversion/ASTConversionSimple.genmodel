@@ -13,6 +13,7 @@
     </genEnums>
     <genClasses ecoreClass="ASTConversionSimple.ecore#//Program">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Program/entries"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Program/sequence"/>
     </genClasses>
     <genClasses ecoreClass="ASTConversionSimple.ecore#//Entry">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//Entry/name"/>
@@ -32,6 +33,9 @@
     <genClasses ecoreClass="ASTConversionSimple.ecore#//CustomCopyASTClass">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//CustomCopyASTClass/ref"/>
     </genClasses>
+    <genClasses ecoreClass="ASTConversionSimple.ecore#//Reference">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//Reference/name"/>
+    </genClasses>
     <genClasses ecoreClass="ASTConversionSimple.ecore#//Other">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Other/content"/>
     </genClasses>
@@ -39,8 +43,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//Element/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//Element/value"/>
     </genClasses>
-    <genClasses ecoreClass="ASTConversionSimple.ecore#//Reference">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//Reference/name"/>
+    <genClasses ecoreClass="ASTConversionSimple.ecore#//Sequence">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Sequence/expressions"/>
+    </genClasses>
+    <genClasses ecoreClass="ASTConversionSimple.ecore#//Addition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//Addition/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//Addition/right"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

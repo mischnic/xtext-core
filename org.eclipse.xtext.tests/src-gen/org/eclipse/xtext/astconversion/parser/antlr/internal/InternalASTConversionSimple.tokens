@@ -1,15 +1,17 @@
+'+'=21
 ';'=12
 '='=19
-'add'=20
+'add'=22
 'auto'=11
 'auto-explicit'=13
 'custom'=15
 'custom-copy'=16
 'element'=18
 'manual'=14
-'move'=21
+'move'=23
 'other'=17
-'remove'=22
+'remove'=24
+'sequence'=20
 RULE_ANY_OTHER=10
 RULE_ID=4
 RULE_INT=5
@@ -29,3 +31,5 @@ T__19=19
 T__20=20
 T__21=21
 T__22=22
+T__23=23
+T__24=24

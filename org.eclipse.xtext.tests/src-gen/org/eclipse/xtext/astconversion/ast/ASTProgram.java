@@ -6,9 +6,11 @@ package org.eclipse.xtext.astconversion.ast;
 
 public class ASTProgram {
 	public ASTProgram(){}
-	public ASTProgram(java.util.List<org.eclipse.xtext.astconversion.ast.ASTEntry> entries){
+	public ASTProgram(java.util.List<org.eclipse.xtext.astconversion.ast.ASTSequence> sequence, java.util.List<org.eclipse.xtext.astconversion.ast.ASTEntry> entries){
+		this.sequence = sequence;
 		this.entries = entries;
 	}
 	
+	public java.util.List<org.eclipse.xtext.astconversion.ast.ASTSequence> sequence;
 	public java.util.List<org.eclipse.xtext.astconversion.ast.ASTEntry> entries;
 }

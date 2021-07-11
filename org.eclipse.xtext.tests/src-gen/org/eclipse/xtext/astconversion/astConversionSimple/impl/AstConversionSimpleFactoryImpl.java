@@ -73,9 +73,11 @@ public class AstConversionSimpleFactoryImpl extends EFactoryImpl implements AstC
       case AstConversionSimplePackage.MANUAL_CLASS: return createManualClass();
       case AstConversionSimplePackage.CUSTOM_AST_CLASS: return createCustomASTClass();
       case AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS: return createCustomCopyASTClass();
+      case AstConversionSimplePackage.REFERENCE: return createReference();
       case AstConversionSimplePackage.OTHER: return createOther();
       case AstConversionSimplePackage.ELEMENT: return createElement();
-      case AstConversionSimplePackage.REFERENCE: return createReference();
+      case AstConversionSimplePackage.SEQUENCE: return createSequence();
+      case AstConversionSimplePackage.ADDITION: return createAddition();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -205,6 +207,18 @@ public class AstConversionSimpleFactoryImpl extends EFactoryImpl implements AstC
    * @generated
    */
   @Override
+  public Reference createReference()
+  {
+    ReferenceImpl reference = new ReferenceImpl();
+    return reference;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Other createOther()
   {
     OtherImpl other = new OtherImpl();
@@ -229,10 +243,22 @@ public class AstConversionSimpleFactoryImpl extends EFactoryImpl implements AstC
    * @generated
    */
   @Override
-  public Reference createReference()
+  public Sequence createSequence()
   {
-    ReferenceImpl reference = new ReferenceImpl();
-    return reference;
+    SequenceImpl sequence = new SequenceImpl();
+    return sequence;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Addition createAddition()
+  {
+    AdditionImpl addition = new AdditionImpl();
+    return addition;
   }
 
   /**

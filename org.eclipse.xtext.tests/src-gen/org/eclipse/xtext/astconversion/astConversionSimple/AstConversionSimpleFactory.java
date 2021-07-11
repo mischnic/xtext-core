@@ -87,6 +87,15 @@ public interface AstConversionSimpleFactory extends EFactory
   CustomCopyASTClass createCustomCopyASTClass();
 
   /**
+   * Returns a new object of class '<em>Reference</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Reference</em>'.
+   * @generated
+   */
+  Reference createReference();
+
+  /**
    * Returns a new object of class '<em>Other</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -105,13 +114,22 @@ public interface AstConversionSimpleFactory extends EFactory
   Element createElement();
 
   /**
-   * Returns a new object of class '<em>Reference</em>'.
+   * Returns a new object of class '<em>Sequence</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Reference</em>'.
+   * @return a new object of class '<em>Sequence</em>'.
    * @generated
    */
-  Reference createReference();
+  Sequence createSequence();
+
+  /**
+   * Returns a new object of class '<em>Addition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Addition</em>'.
+   * @generated
+   */
+  Addition createAddition();
 
   /**
    * Returns the package supported by this factory.

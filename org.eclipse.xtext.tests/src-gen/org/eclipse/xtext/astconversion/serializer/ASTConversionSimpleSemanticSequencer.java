@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Parameter;
 import org.eclipse.xtext.ParserRule;
+import org.eclipse.xtext.astconversion.astConversionSimple.Addition;
 import org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage;
 import org.eclipse.xtext.astconversion.astConversionSimple.AutoClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass;
@@ -20,6 +21,7 @@ import org.eclipse.xtext.astconversion.astConversionSimple.ManualClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.Other;
 import org.eclipse.xtext.astconversion.astConversionSimple.Program;
 import org.eclipse.xtext.astconversion.astConversionSimple.Reference;
+import org.eclipse.xtext.astconversion.astConversionSimple.Sequence;
 import org.eclipse.xtext.astconversion.services.ASTConversionSimpleGrammarAccess;
 import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
@@ -40,6 +42,9 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == AstConversionSimplePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case AstConversionSimplePackage.ADDITION:
+				sequence_Addition(context, (Addition) semanticObject); 
+				return; 
 			case AstConversionSimplePackage.AUTO_CLASS:
 				sequence_AutoClass(context, (AutoClass) semanticObject); 
 				return; 
@@ -67,10 +72,36 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 			case AstConversionSimplePackage.REFERENCE:
 				sequence_Reference(context, (Reference) semanticObject); 
 				return; 
+			case AstConversionSimplePackage.SEQUENCE:
+				sequence_Sequence(context, (Sequence) semanticObject); 
+				return; 
 			}
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * Contexts:
+	 *     Sequence returns Addition
+	 *     Sequence.Sequence_2_0 returns Addition
+	 *     Addition returns Addition
+	 *
+	 * Constraint:
+	 *     (left=ID right=ID)
+	 */
+	protected void sequence_Addition(ISerializationContext context, Addition semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.ADDITION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.ADDITION__LEFT));
+			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.ADDITION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.ADDITION__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAdditionAccess().getLeftIDTerminalRuleCall_0_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getAdditionAccess().getRightIDTerminalRuleCall_2_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
 	
 	/**
 	 * Contexts:
@@ -213,7 +244,7 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 	 *     Program returns Program
 	 *
 	 * Constraint:
-	 *     entries+=Entry+
+	 *     (entries+=Entry+ sequence+=Sequence+)
 	 */
 	protected void sequence_Program(ISerializationContext context, Program semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -235,6 +266,19 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getReferenceAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Sequence returns Sequence
+	 *     Sequence.Sequence_2_0 returns Sequence
+	 *
+	 * Constraint:
+	 *     (expressions+=Sequence_Sequence_2_0 expressions+=Addition)
+	 */
+	protected void sequence_Sequence(ISerializationContext context, Sequence semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

@@ -111,6 +111,11 @@ public class AstConversionSimpleAdapterFactory extends AdapterFactoryImpl
         return createCustomCopyASTClassAdapter();
       }
       @Override
+      public Adapter caseReference(Reference object)
+      {
+        return createReferenceAdapter();
+      }
+      @Override
       public Adapter caseOther(Other object)
       {
         return createOtherAdapter();
@@ -121,9 +126,14 @@ public class AstConversionSimpleAdapterFactory extends AdapterFactoryImpl
         return createElementAdapter();
       }
       @Override
-      public Adapter caseReference(Reference object)
+      public Adapter caseSequence(Sequence object)
       {
-        return createReferenceAdapter();
+        return createSequenceAdapter();
+      }
+      @Override
+      public Adapter caseAddition(Addition object)
+      {
+        return createAdditionAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -253,6 +263,21 @@ public class AstConversionSimpleAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Reference <em>Reference</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Reference
+   * @generated
+   */
+  public Adapter createReferenceAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Other <em>Other</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -283,16 +308,31 @@ public class AstConversionSimpleAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Reference <em>Reference</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Sequence <em>Sequence</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.eclipse.xtext.astconversion.astConversionSimple.Reference
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Sequence
    * @generated
    */
-  public Adapter createReferenceAdapter()
+  public Adapter createSequenceAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Addition <em>Addition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Addition
+   * @generated
+   */
+  public Adapter createAdditionAdapter()
   {
     return null;
   }

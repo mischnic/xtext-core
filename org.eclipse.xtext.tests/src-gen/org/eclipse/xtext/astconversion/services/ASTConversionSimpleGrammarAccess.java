@@ -6,6 +6,7 @@ package org.eclipse.xtext.astconversion.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.EnumLiteralDeclaration;
@@ -26,18 +27,31 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 	
 	public class ProgramElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.Program");
-		private final Assignment cEntriesAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cEntriesEntryParserRuleCall_0 = (RuleCall)cEntriesAssignment.eContents().get(0);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cEntriesAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cEntriesEntryParserRuleCall_0_0 = (RuleCall)cEntriesAssignment_0.eContents().get(0);
+		private final Assignment cSequenceAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cSequenceSequenceParserRuleCall_1_0 = (RuleCall)cSequenceAssignment_1.eContents().get(0);
 		
 		//Program becomes:
-		//	entries+=Entry+;
+		//	entries+=Entry+
+		//	sequence+=Sequence+;
 		@Override public ParserRule getRule() { return rule; }
 		
+		//entries+=Entry+ sequence+=Sequence+
+		public Group getGroup() { return cGroup; }
+		
 		//entries+=Entry+
-		public Assignment getEntriesAssignment() { return cEntriesAssignment; }
+		public Assignment getEntriesAssignment_0() { return cEntriesAssignment_0; }
 		
 		//Entry
-		public RuleCall getEntriesEntryParserRuleCall_0() { return cEntriesEntryParserRuleCall_0; }
+		public RuleCall getEntriesEntryParserRuleCall_0_0() { return cEntriesEntryParserRuleCall_0_0; }
+		
+		//sequence+=Sequence+
+		public Assignment getSequenceAssignment_1() { return cSequenceAssignment_1; }
+		
+		//Sequence
+		public RuleCall getSequenceSequenceParserRuleCall_1_0() { return cSequenceSequenceParserRuleCall_1_0; }
 	}
 	public class EntryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.Entry");
@@ -261,6 +275,21 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 		//";"
 		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
 	}
+	public class ReferenceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.Reference");
+		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
+		
+		//Reference becomes:
+		//	name=ID;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name=ID
+		public Assignment getNameAssignment() { return cNameAssignment; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0() { return cNameIDTerminalRuleCall_0; }
+	}
 	public class OtherElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.Other");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -272,6 +301,7 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 		private final RuleCall cContentReferenceParserRuleCall_2_0_0 = (RuleCall)cContentAlternatives_2_0.eContents().get(0);
 		private final RuleCall cContentAutoClassParserRuleCall_2_0_1 = (RuleCall)cContentAlternatives_2_0.eContents().get(1);
 		
+		//// --------
 		//Other becomes:
 		//	"other" name=ID content=(Reference | AutoClass);
 		@Override public ParserRule getRule() { return rule; }
@@ -313,6 +343,7 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 		private final RuleCall cValueChangeKindEnumRuleCall_4_0 = (RuleCall)cValueAssignment_4.eContents().get(0);
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
+		//// --------
 		//Element becomes:
 		//	'element' name=ID type=ChangeKind? '=' value+=ChangeKind+ ';';
 		@Override public ParserRule getRule() { return rule; }
@@ -347,20 +378,76 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 	}
-	public class ReferenceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.Reference");
-		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
+	public class SequenceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.Sequence");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cSequenceKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cAdditionParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Action cSequenceExpressionsAction_2_0 = (Action)cGroup_2.eContents().get(0);
+		private final Assignment cExpressionsAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cExpressionsAdditionParserRuleCall_2_1_0 = (RuleCall)cExpressionsAssignment_2_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//Reference becomes:
-		//	name=ID;
+		//// --------
+		//Sequence becomes:
+		//	"sequence" Addition ({Sequence.expressions+=current} expressions+=Addition)* ";";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID
-		public Assignment getNameAssignment() { return cNameAssignment; }
+		//"sequence" Addition ({Sequence.expressions+=current} expressions+=Addition)* ";"
+		public Group getGroup() { return cGroup; }
+		
+		//"sequence"
+		public Keyword getSequenceKeyword_0() { return cSequenceKeyword_0; }
+		
+		//Addition
+		public RuleCall getAdditionParserRuleCall_1() { return cAdditionParserRuleCall_1; }
+		
+		//({Sequence.expressions+=current} expressions+=Addition)*
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//{Sequence.expressions+=current}
+		public Action getSequenceExpressionsAction_2_0() { return cSequenceExpressionsAction_2_0; }
+		
+		//expressions+=Addition
+		public Assignment getExpressionsAssignment_2_1() { return cExpressionsAssignment_2_1; }
+		
+		//Addition
+		public RuleCall getExpressionsAdditionParserRuleCall_2_1_0() { return cExpressionsAdditionParserRuleCall_2_1_0; }
+		
+		//";"
+		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
+	}
+	public class AdditionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.Addition");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cLeftAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cLeftIDTerminalRuleCall_0_0 = (RuleCall)cLeftAssignment_0.eContents().get(0);
+		private final Keyword cPlusSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cRightAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cRightIDTerminalRuleCall_2_0 = (RuleCall)cRightAssignment_2.eContents().get(0);
+		
+		//Addition becomes:
+		//	left=ID '+' right=ID;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//left=ID '+' right=ID
+		public Group getGroup() { return cGroup; }
+		
+		//left=ID
+		public Assignment getLeftAssignment_0() { return cLeftAssignment_0; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_0() { return cNameIDTerminalRuleCall_0; }
+		public RuleCall getLeftIDTerminalRuleCall_0_0() { return cLeftIDTerminalRuleCall_0_0; }
+		
+		//'+'
+		public Keyword getPlusSignKeyword_1() { return cPlusSignKeyword_1; }
+		
+		//right=ID
+		public Assignment getRightAssignment_2() { return cRightAssignment_2; }
+		
+		//ID
+		public RuleCall getRightIDTerminalRuleCall_2_0() { return cRightIDTerminalRuleCall_2_0; }
 	}
 	
 	public class ChangeKindElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
@@ -407,14 +494,28 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 	private final ManualClassElements pManualClass;
 	private final CustomASTClassElements pCustomASTClass;
 	private final CustomCopyASTClassElements pCustomCopyASTClass;
+	private final ReferenceElements pReference;
 	private final OtherElements pOther;
 	private final ElementElements pElement;
 	private final ChangeKindElements eChangeKind;
-	private final ReferenceElements pReference;
+	private final SequenceElements pSequence;
+	private final AdditionElements pAddition;
 	
 	public static class ASTConversion {
 		public ASTConversion() {}
 		
+		public static class CustomASTClassChildren {
+			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
+		}
+		public Object convertCustomASTClass(org.eclipse.xtext.astconversion.astConversionSimple.CustomASTClass node, CustomASTClassChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTCustomClass() {
+				org.eclipse.xtext.astconversion.ast.ASTCustomClass XTEXT_INIT() {
+						this.type = children.ref.name;
+						this.name = node.getName();
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
 		public static class AutoClassChildren {
 			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
 		}
@@ -427,12 +528,15 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 				}
 			}.XTEXT_INIT();
 		}
-		public static class ReferenceChildren {
+		public static class AdditionChildren {
+			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTSequence> expressions;
 		}
-		public Object convertReference(org.eclipse.xtext.astconversion.astConversionSimple.Reference node, ReferenceChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTReference() {
-				org.eclipse.xtext.astconversion.ast.ASTReference XTEXT_INIT() {
-					this.name = node.getName();
+		public Object convertAddition(org.eclipse.xtext.astconversion.astConversionSimple.Addition node, AdditionChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTAddition() {
+				org.eclipse.xtext.astconversion.ast.ASTAddition XTEXT_INIT() {
+					this.expressions = children.expressions;
+					this.left = node.getLeft();
+					this.right = node.getRight();
 					return this;
 				}
 			}.XTEXT_INIT();
@@ -460,6 +564,29 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 				}
 			}.XTEXT_INIT();
 		}
+		public static class ProgramChildren {
+			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTEntry> entries;
+			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTSequence> sequence;
+		}
+		public Object convertProgram(org.eclipse.xtext.astconversion.astConversionSimple.Program node, ProgramChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTProgram() {
+				org.eclipse.xtext.astconversion.ast.ASTProgram XTEXT_INIT() {
+					this.entries = children.entries;
+					this.sequence = children.sequence;
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class ReferenceChildren {
+		}
+		public Object convertReference(org.eclipse.xtext.astconversion.astConversionSimple.Reference node, ReferenceChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTReference() {
+				org.eclipse.xtext.astconversion.ast.ASTReference XTEXT_INIT() {
+					this.name = node.getName();
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
 		public static class CustomCopyASTClassChildren {
 			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
 		}
@@ -468,18 +595,6 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 				org.eclipse.xtext.astconversion.ast.ASTCustomClass XTEXT_INIT() {
 					this.name = node.getName();
 						this.type = children.ref.name;
-					return this;
-				}
-			}.XTEXT_INIT();
-		}
-		public static class ElementChildren {
-		}
-		public Object convertElement(org.eclipse.xtext.astconversion.astConversionSimple.Element node, ElementChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTElement() {
-				org.eclipse.xtext.astconversion.ast.ASTElement XTEXT_INIT() {
-					this.name = node.getName();
-					this.type = org.eclipse.xtext.astconversion.ast.ASTChangeKind.valueOf(node.getType().name());
-					this.value = node.getValue().stream().map(e -> org.eclipse.xtext.astconversion.ast.ASTChangeKind.valueOf(e.name())).collect(java.util.stream.Collectors.toList());
 					return this;
 				}
 			}.XTEXT_INIT();
@@ -496,25 +611,25 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 				}
 			}.XTEXT_INIT();
 		}
-		public static class ProgramChildren {
-			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTEntry> entries;
+		public static class ElementChildren {
 		}
-		public Object convertProgram(org.eclipse.xtext.astconversion.astConversionSimple.Program node, ProgramChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTProgram() {
-				org.eclipse.xtext.astconversion.ast.ASTProgram XTEXT_INIT() {
-					this.entries = children.entries;
+		public Object convertElement(org.eclipse.xtext.astconversion.astConversionSimple.Element node, ElementChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTElement() {
+				org.eclipse.xtext.astconversion.ast.ASTElement XTEXT_INIT() {
+					this.name = node.getName();
+					this.type = org.eclipse.xtext.astconversion.ast.ASTChangeKind.valueOf(node.getType().name());
+					this.value = node.getValue().stream().map(e -> org.eclipse.xtext.astconversion.ast.ASTChangeKind.valueOf(e.name())).collect(java.util.stream.Collectors.toList());
 					return this;
 				}
 			}.XTEXT_INIT();
 		}
-		public static class CustomASTClassChildren {
-			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
+		public static class SequenceChildren {
+			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTSequence> expressions;
 		}
-		public Object convertCustomASTClass(org.eclipse.xtext.astconversion.astConversionSimple.CustomASTClass node, CustomASTClassChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTCustomClass() {
-				org.eclipse.xtext.astconversion.ast.ASTCustomClass XTEXT_INIT() {
-						this.type = children.ref.name;
-						this.name = node.getName();
+		public Object convertSequence(org.eclipse.xtext.astconversion.astConversionSimple.Sequence node, SequenceChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTSequence() {
+				org.eclipse.xtext.astconversion.ast.ASTSequence XTEXT_INIT() {
+					this.expressions = children.expressions;
 					return this;
 				}
 			}.XTEXT_INIT();
@@ -539,10 +654,12 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 		this.pManualClass = new ManualClassElements();
 		this.pCustomASTClass = new CustomASTClassElements();
 		this.pCustomCopyASTClass = new CustomCopyASTClassElements();
+		this.pReference = new ReferenceElements();
 		this.pOther = new OtherElements();
 		this.pElement = new ElementElements();
 		this.eChangeKind = new ChangeKindElements();
-		this.pReference = new ReferenceElements();
+		this.pSequence = new SequenceElements();
+		this.pAddition = new AdditionElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -578,7 +695,8 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 
 	
 	//Program becomes:
-	//	entries+=Entry+;
+	//	entries+=Entry+
+	//	sequence+=Sequence+;
 	public ProgramElements getProgramAccess() {
 		return pProgram;
 	}
@@ -655,6 +773,17 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 		return getCustomCopyASTClassAccess().getRule();
 	}
 	
+	//Reference becomes:
+	//	name=ID;
+	public ReferenceElements getReferenceAccess() {
+		return pReference;
+	}
+	
+	public ParserRule getReferenceRule() {
+		return getReferenceAccess().getRule();
+	}
+	
+	//// --------
 	//Other becomes:
 	//	"other" name=ID content=(Reference | AutoClass);
 	public OtherElements getOtherAccess() {
@@ -665,6 +794,7 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 		return getOtherAccess().getRule();
 	}
 	
+	//// --------
 	//Element becomes:
 	//	'element' name=ID type=ChangeKind? '=' value+=ChangeKind+ ';';
 	public ElementElements getElementAccess() {
@@ -686,14 +816,25 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 		return getChangeKindAccess().getRule();
 	}
 	
-	//Reference becomes:
-	//	name=ID;
-	public ReferenceElements getReferenceAccess() {
-		return pReference;
+	//// --------
+	//Sequence becomes:
+	//	"sequence" Addition ({Sequence.expressions+=current} expressions+=Addition)* ";";
+	public SequenceElements getSequenceAccess() {
+		return pSequence;
 	}
 	
-	public ParserRule getReferenceRule() {
-		return getReferenceAccess().getRule();
+	public ParserRule getSequenceRule() {
+		return getSequenceAccess().getRule();
+	}
+	
+	//Addition becomes:
+	//	left=ID '+' right=ID;
+	public AdditionElements getAdditionAccess() {
+		return pAddition;
+	}
+	
+	public ParserRule getAdditionRule() {
+		return getAdditionAccess().getRule();
 	}
 	
 	//terminal ID:

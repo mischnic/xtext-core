@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getSequence <em>Sequence</em>}</li>
  * </ul>
  *
  * @see org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage#getProgram()
@@ -36,5 +37,17 @@ public interface Program extends EObject
    * @generated
    */
   EList<Entry> getEntries();
+
+  /**
+   * Returns the value of the '<em><b>Sequence</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.xtext.astconversion.astConversionSimple.Sequence}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Sequence</em>' containment reference list.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage#getProgram_Sequence()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Sequence> getSequence();
 
 } // Program

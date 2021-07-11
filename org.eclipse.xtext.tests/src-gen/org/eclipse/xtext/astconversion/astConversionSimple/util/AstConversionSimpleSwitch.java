@@ -127,6 +127,13 @@ public class AstConversionSimpleSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case AstConversionSimplePackage.REFERENCE:
+      {
+        Reference reference = (Reference)theEObject;
+        T result = caseReference(reference);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case AstConversionSimplePackage.OTHER:
       {
         Other other = (Other)theEObject;
@@ -143,10 +150,18 @@ public class AstConversionSimpleSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AstConversionSimplePackage.REFERENCE:
+      case AstConversionSimplePackage.SEQUENCE:
       {
-        Reference reference = (Reference)theEObject;
-        T result = caseReference(reference);
+        Sequence sequence = (Sequence)theEObject;
+        T result = caseSequence(sequence);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AstConversionSimplePackage.ADDITION:
+      {
+        Addition addition = (Addition)theEObject;
+        T result = caseAddition(addition);
+        if (result == null) result = caseSequence(addition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -267,6 +282,22 @@ public class AstConversionSimpleSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Reference</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Reference</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseReference(Reference object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Other</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -299,17 +330,33 @@ public class AstConversionSimpleSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Reference</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Sequence</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Reference</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Sequence</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseReference(Reference object)
+  public T caseSequence(Sequence object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Addition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Addition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAddition(Addition object)
   {
     return null;
   }
