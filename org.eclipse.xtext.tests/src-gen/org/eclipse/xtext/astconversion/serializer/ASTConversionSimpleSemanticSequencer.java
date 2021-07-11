@@ -15,6 +15,7 @@ import org.eclipse.xtext.astconversion.astConversionSimple.AutoClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.CustomASTClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass;
+import org.eclipse.xtext.astconversion.astConversionSimple.Element;
 import org.eclipse.xtext.astconversion.astConversionSimple.ManualClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.Other;
 import org.eclipse.xtext.astconversion.astConversionSimple.Program;
@@ -50,6 +51,9 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 				return; 
 			case AstConversionSimplePackage.CUSTOM_COPY_AST_CLASS:
 				sequence_CustomCopyASTClass(context, (CustomCopyASTClass) semanticObject); 
+				return; 
+			case AstConversionSimplePackage.ELEMENT:
+				sequence_Element(context, (Element) semanticObject); 
 				return; 
 			case AstConversionSimplePackage.MANUAL_CLASS:
 				sequence_ManualClass(context, (ManualClass) semanticObject); 
@@ -153,6 +157,19 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 		feeder.accept(grammarAccess.getCustomCopyASTClassAccess().getRefReferenceParserRuleCall_1_0(), semanticObject.getRef());
 		feeder.accept(grammarAccess.getCustomCopyASTClassAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Entry returns Element
+	 *     Element returns Element
+	 *
+	 * Constraint:
+	 *     (name=ID type=ChangeKind? value+=ChangeKind+)
+	 */
+	protected void sequence_Element(ISerializationContext context, Element semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

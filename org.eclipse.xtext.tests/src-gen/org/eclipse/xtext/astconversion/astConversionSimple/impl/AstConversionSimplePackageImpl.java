@@ -5,6 +5,7 @@ package org.eclipse.xtext.astconversion.astConversionSimple.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -15,8 +16,10 @@ import org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimpleFa
 import org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage;
 import org.eclipse.xtext.astconversion.astConversionSimple.AutoClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass;
+import org.eclipse.xtext.astconversion.astConversionSimple.ChangeKind;
 import org.eclipse.xtext.astconversion.astConversionSimple.CustomASTClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass;
+import org.eclipse.xtext.astconversion.astConversionSimple.Element;
 import org.eclipse.xtext.astconversion.astConversionSimple.Entry;
 import org.eclipse.xtext.astconversion.astConversionSimple.ManualClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.Other;
@@ -92,7 +95,21 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass elementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass referenceEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum changeKindEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -342,6 +359,39 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
    * @generated
    */
   @Override
+  public EClass getElement()
+  {
+    return elementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getElement_Type()
+  {
+    return (EAttribute)elementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getElement_Value()
+  {
+    return (EAttribute)elementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getReference()
   {
     return referenceEClass;
@@ -356,6 +406,17 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
   public EAttribute getReference_Name()
   {
     return (EAttribute)referenceEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getChangeKind()
+  {
+    return changeKindEEnum;
   }
 
   /**
@@ -413,8 +474,15 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
     otherEClass = createEClass(OTHER);
     createEReference(otherEClass, OTHER__CONTENT);
 
+    elementEClass = createEClass(ELEMENT);
+    createEAttribute(elementEClass, ELEMENT__TYPE);
+    createEAttribute(elementEClass, ELEMENT__VALUE);
+
     referenceEClass = createEClass(REFERENCE);
     createEAttribute(referenceEClass, REFERENCE__NAME);
+
+    // Create enums
+    changeKindEEnum = createEEnum(CHANGE_KIND);
   }
 
   /**
@@ -455,6 +523,7 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
     customASTClassEClass.getESuperTypes().add(this.getEntry());
     customCopyASTClassEClass.getESuperTypes().add(this.getEntry());
     otherEClass.getESuperTypes().add(this.getEntry());
+    elementEClass.getESuperTypes().add(this.getEntry());
 
     // Initialize classes and features; add operations and parameters
     initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -481,8 +550,18 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
     initEClass(otherEClass, Other.class, "Other", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getOther_Content(), theEcorePackage.getEObject(), null, "content", null, 0, 1, Other.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(elementEClass, Element.class, "Element", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getElement_Type(), this.getChangeKind(), "type", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getElement_Value(), this.getChangeKind(), "value", null, 0, -1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(referenceEClass, Reference.class, "Reference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getReference_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    // Initialize enums and add enum literals
+    initEEnum(changeKindEEnum, ChangeKind.class, "ChangeKind");
+    addEEnumLiteral(changeKindEEnum, ChangeKind.ADD);
+    addEEnumLiteral(changeKindEEnum, ChangeKind.MOVE);
+    addEEnumLiteral(changeKindEEnum, ChangeKind.REMOVE);
 
     // Create resource
     createResource(eNS_URI);

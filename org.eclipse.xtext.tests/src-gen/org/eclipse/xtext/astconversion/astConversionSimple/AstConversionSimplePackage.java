@@ -5,6 +5,7 @@ package org.eclipse.xtext.astconversion.astConversionSimple;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -336,6 +337,52 @@ public interface AstConversionSimplePackage extends EPackage
   int OTHER_FEATURE_COUNT = ENTRY_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ElementImpl <em>Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.ElementImpl
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getElement()
+   * @generated
+   */
+  int ELEMENT = 8;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ELEMENT__NAME = ENTRY__NAME;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ELEMENT__TYPE = ENTRY_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ELEMENT__VALUE = ENTRY_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ELEMENT_FEATURE_COUNT = ENTRY_FEATURE_COUNT + 2;
+
+  /**
    * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ReferenceImpl <em>Reference</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -343,7 +390,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getReference()
    * @generated
    */
-  int REFERENCE = 8;
+  int REFERENCE = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -362,6 +409,16 @@ public interface AstConversionSimplePackage extends EPackage
    * @ordered
    */
   int REFERENCE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.ChangeKind <em>Change Kind</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.ChangeKind
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getChangeKind()
+   * @generated
+   */
+  int CHANGE_KIND = 10;
 
 
   /**
@@ -533,6 +590,38 @@ public interface AstConversionSimplePackage extends EPackage
   EReference getOther_Content();
 
   /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Element <em>Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Element</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Element
+   * @generated
+   */
+  EClass getElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.xtext.astconversion.astConversionSimple.Element#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Element#getType()
+   * @see #getElement()
+   * @generated
+   */
+  EAttribute getElement_Type();
+
+  /**
+   * Returns the meta object for the attribute list '{@link org.eclipse.xtext.astconversion.astConversionSimple.Element#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Value</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Element#getValue()
+   * @see #getElement()
+   * @generated
+   */
+  EAttribute getElement_Value();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Reference <em>Reference</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -552,6 +641,16 @@ public interface AstConversionSimplePackage extends EPackage
    * @generated
    */
   EAttribute getReference_Name();
+
+  /**
+   * Returns the meta object for enum '{@link org.eclipse.xtext.astconversion.astConversionSimple.ChangeKind <em>Change Kind</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Change Kind</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.ChangeKind
+   * @generated
+   */
+  EEnum getChangeKind();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -721,6 +820,32 @@ public interface AstConversionSimplePackage extends EPackage
     EReference OTHER__CONTENT = eINSTANCE.getOther_Content();
 
     /**
+     * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ElementImpl <em>Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.ElementImpl
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getElement()
+     * @generated
+     */
+    EClass ELEMENT = eINSTANCE.getElement();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ELEMENT__TYPE = eINSTANCE.getElement_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ELEMENT__VALUE = eINSTANCE.getElement_Value();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ReferenceImpl <em>Reference</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -737,6 +862,16 @@ public interface AstConversionSimplePackage extends EPackage
      * @generated
      */
     EAttribute REFERENCE__NAME = eINSTANCE.getReference_Name();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.ChangeKind <em>Change Kind</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.ChangeKind
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getChangeKind()
+     * @generated
+     */
+    EEnum CHANGE_KIND = eINSTANCE.getChangeKind();
 
   }
 

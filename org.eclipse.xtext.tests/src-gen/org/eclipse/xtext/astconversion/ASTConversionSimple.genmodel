@@ -6,6 +6,11 @@
     complianceLevel="8.0" copyrightFields="false" runtimeVersion="2.20" usedGenPackages="platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
   <genPackages prefix="AstConversionSimple" basePackage="org.eclipse.xtext.astconversion"
       disposableProviderFactory="true" fileExtensions="astconversionsimple" ecorePackage="ASTConversionSimple.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ASTConversionSimple.ecore#//ChangeKind">
+      <genEnumLiterals ecoreEnumLiteral="ASTConversionSimple.ecore#//ChangeKind/ADD"/>
+      <genEnumLiterals ecoreEnumLiteral="ASTConversionSimple.ecore#//ChangeKind/MOVE"/>
+      <genEnumLiterals ecoreEnumLiteral="ASTConversionSimple.ecore#//ChangeKind/REMOVE"/>
+    </genEnums>
     <genClasses ecoreClass="ASTConversionSimple.ecore#//Program">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Program/entries"/>
     </genClasses>
@@ -29,6 +34,10 @@
     </genClasses>
     <genClasses ecoreClass="ASTConversionSimple.ecore#//Other">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Other/content"/>
+    </genClasses>
+    <genClasses ecoreClass="ASTConversionSimple.ecore#//Element">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//Element/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//Element/value"/>
     </genClasses>
     <genClasses ecoreClass="ASTConversionSimple.ecore#//Reference">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//Reference/name"/>

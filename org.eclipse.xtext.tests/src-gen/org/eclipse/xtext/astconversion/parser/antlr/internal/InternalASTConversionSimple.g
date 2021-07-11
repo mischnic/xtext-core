@@ -23,6 +23,7 @@ import org.eclipse.xtext.parser.*;
 import org.eclipse.xtext.parser.impl.*;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
@@ -163,6 +164,15 @@ ruleEntry returns [EObject current=null]
 		this_Other_5=ruleOther
 		{
 			$current = $this_Other_5.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getEntryAccess().getElementParserRuleCall_6());
+		}
+		this_Element_6=ruleElement
+		{
+			$current = $this_Element_6.current;
 			afterParserOrEnumRuleCall();
 		}
 	)
@@ -566,6 +576,93 @@ ruleOther returns [EObject current=null]
 	)
 ;
 
+// Entry rule entryRuleElement
+entryRuleElement returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getElementRule()); }
+	iv_ruleElement=ruleElement
+	{ $current=$iv_ruleElement.current; }
+	EOF;
+
+// Rule Element
+ruleElement returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='element'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getElementAccess().getElementKeyword_0());
+		}
+		(
+			(
+				lv_name_1_0=RULE_ID
+				{
+					newLeafNode(lv_name_1_0, grammarAccess.getElementAccess().getNameIDTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getElementRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getElementAccess().getTypeChangeKindEnumRuleCall_2_0());
+				}
+				lv_type_2_0=ruleChangeKind
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getElementRule());
+					}
+					set(
+						$current,
+						"type",
+						lv_type_2_0,
+						"org.eclipse.xtext.astconversion.ASTConversionSimple.ChangeKind");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		otherlv_3='='
+		{
+			newLeafNode(otherlv_3, grammarAccess.getElementAccess().getEqualsSignKeyword_3());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getElementAccess().getValueChangeKindEnumRuleCall_4_0());
+				}
+				lv_value_4_0=ruleChangeKind
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getElementRule());
+					}
+					add(
+						$current,
+						"value",
+						lv_value_4_0,
+						"org.eclipse.xtext.astconversion.ASTConversionSimple.ChangeKind");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)+
+		otherlv_5=';'
+		{
+			newLeafNode(otherlv_5, grammarAccess.getElementAccess().getSemicolonKeyword_5());
+		}
+	)
+;
+
 // Entry rule entryRuleReference
 entryRuleReference returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getReferenceRule()); }
@@ -596,6 +693,41 @@ ruleReference returns [EObject current=null]
 					"name",
 					lv_name_0_0,
 					"org.eclipse.xtext.common.Terminals.ID");
+			}
+		)
+	)
+;
+
+// Rule ChangeKind
+ruleChangeKind returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='add'
+			{
+				$current = grammarAccess.getChangeKindAccess().getADDEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getChangeKindAccess().getADDEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1='move'
+			{
+				$current = grammarAccess.getChangeKindAccess().getMOVEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getChangeKindAccess().getMOVEEnumLiteralDeclaration_1());
+			}
+		)
+		    |
+		(
+			enumLiteral_2='remove'
+			{
+				$current = grammarAccess.getChangeKindAccess().getREMOVEEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getChangeKindAccess().getREMOVEEnumLiteralDeclaration_2());
 			}
 		)
 	)
