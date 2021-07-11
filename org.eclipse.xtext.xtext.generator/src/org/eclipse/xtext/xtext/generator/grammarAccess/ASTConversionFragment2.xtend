@@ -68,7 +68,7 @@ class ASTConversionFragment2 {
 				public ASTConversion() {}
 				
 				«FOR entry : rules.entrySet»
-					«IF entry.key instanceof EClass && !entry.value.isUnassigningRule»
+					«IF entry.key instanceof EClass && (entry.value === null || !entry.value.isUnassigningRule)»
 						«getChildrenClass(entry.key as EClass)»
 						«getConvertMethod(entry.key, entry.value, modelName)»
 					«ENDIF»

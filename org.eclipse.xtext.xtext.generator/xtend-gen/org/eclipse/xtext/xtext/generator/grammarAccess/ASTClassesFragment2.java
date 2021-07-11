@@ -3,6 +3,7 @@ package org.eclipse.xtext.xtext.generator.grammarAccess;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -66,6 +67,7 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
     final HashMap<String, String> astClassesListType = CollectionLiterals.<String, String>newHashMap();
     final HashMap<EClass, ParserRule> objectClasses = CollectionLiterals.<EClass, ParserRule>newHashMap();
     final HashSet<EEnum> enumClasses = CollectionLiterals.<EEnum>newHashSet();
+    final HashSet<String> interfaceClasses = CollectionLiterals.<String>newHashSet();
     for (final EClassifier classifier : generatedClasses) {
       {
         final AbstractRule rule = GrammarUtil.findRuleForName(this.getGrammar(), classifier.getName());
@@ -73,6 +75,7 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
           if (enabled) {
             objectClasses.put(((EClass) classifier), null);
             astClassNames.add(this._xtextGeneratorNaming.getASTClassName(classifier.getName()));
+            interfaceClasses.add(this._xtextGeneratorNaming.getASTClassName(classifier.getName()));
           }
         } else {
           if ((rule instanceof ParserRule)) {
@@ -80,6 +83,10 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
               (((ParserRule) rule).getBecomes().getDescriptor() instanceof BecomesDeclGeneratedClass))) {
               objectClasses.put(((EClass) classifier), ((ParserRule) rule));
               astClassNames.add(this._xtextGeneratorNaming.getASTClassName(classifier.getName()));
+              boolean _isUnassigningRule = this._aSTUtils.isUnassigningRule(((ParserRule)rule));
+              if (_isUnassigningRule) {
+                interfaceClasses.add(this._xtextGeneratorNaming.getASTClassName(classifier.getName()));
+              }
               boolean _isList = ((ParserRule) rule).getBecomes().isList();
               if (_isList) {
                 astClassesListType.put(this._xtextGeneratorNaming.getASTClassName(classifier.getName()), ((ParserRule) rule).getBecomes().getListType());
@@ -155,7 +162,7 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
             }
           }
         }
-        final boolean isInterface = ((rule == null) || this._aSTUtils.isUnassigningRule(rule));
+        final boolean isInterface = ((rule == null) || interfaceClasses.contains(astType.getSimpleName()));
         final LinkedHashMap<String, Object> attributes = CollectionLiterals.<String, Object>newLinkedHashMap();
         if (isInterface) {
         } else {
@@ -185,27 +192,72 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
             }
           }
         }
-        final Function1<EClass, Boolean> _function_1 = (EClass it) -> {
-          return Boolean.valueOf(astClassNames.contains(this._xtextGeneratorNaming.getASTClassName(it.getName())));
-        };
-        final Function1<EClass, TypeReference> _function_2 = (EClass it) -> {
-          return this._xtextGeneratorNaming.getASTClass(this.getGrammar(), it.getName());
-        };
-        final Iterable<TypeReference> superTypes = IterableExtensions.<EClass, TypeReference>map(IterableExtensions.<EClass>filter(type.getESuperTypes(), _function_1), _function_2);
-        StringConcatenation _builder_1 = new StringConcatenation();
-        {
-          boolean _hasElements = false;
-          for(final TypeReference s : superTypes) {
-            if (!_hasElements) {
-              _hasElements = true;
-              _builder_1.append(" implements ");
-            } else {
-              _builder_1.appendImmediate(", ", "");
+        final ArrayList<TypeReference> superClasses = CollectionLiterals.<TypeReference>newArrayList();
+        final ArrayList<TypeReference> superInterfaces = CollectionLiterals.<TypeReference>newArrayList();
+        EList<EClass> _eSuperTypes = type.getESuperTypes();
+        for (final EClass c : _eSuperTypes) {
+          {
+            final TypeReference cAST = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), c.getName());
+            boolean _contains = astClassNames.contains(cAST.getSimpleName());
+            if (_contains) {
+              boolean _contains_1 = interfaceClasses.contains(cAST.getSimpleName());
+              if (_contains_1) {
+                superInterfaces.add(cAST);
+              } else {
+                if (isInterface) {
+                  String _name_3 = rule.getName();
+                  String _plus_3 = ("The AST class for rule " + _name_3);
+                  String _plus_4 = (_plus_3 + 
+                    " is an interface but would need to extend the class: ");
+                  String _simpleName = cAST.getSimpleName();
+                  String _plus_5 = (_plus_4 + _simpleName);
+                  throw new RuntimeException(_plus_5);
+                }
+                superClasses.add(cAST);
+              }
             }
-            _builder_1.append(s);
           }
         }
-        final String implementsDeclaration = _builder_1.toString();
+        String _xifexpression_4 = null;
+        if (isInterface) {
+          _xifexpression_4 = "";
+        } else {
+          StringConcatenation _builder_1 = new StringConcatenation();
+          {
+            boolean _hasElements = false;
+            for(final TypeReference s : superInterfaces) {
+              if (!_hasElements) {
+                _hasElements = true;
+                _builder_1.append(" implements ");
+              } else {
+                _builder_1.appendImmediate(", ", "");
+              }
+              _builder_1.append(s);
+            }
+          }
+          _xifexpression_4 = _builder_1.toString();
+        }
+        final String implementsDeclaration = _xifexpression_4;
+        StringConcatenation _builder_2 = new StringConcatenation();
+        {
+          ArrayList<TypeReference> _xifexpression_5 = null;
+          if (isInterface) {
+            _xifexpression_5 = superInterfaces;
+          } else {
+            _xifexpression_5 = superClasses;
+          }
+          boolean _hasElements_1 = false;
+          for(final TypeReference s_1 : _xifexpression_5) {
+            if (!_hasElements_1) {
+              _hasElements_1 = true;
+              _builder_2.append(" extends ");
+            } else {
+              _builder_2.appendImmediate(", ", "");
+            }
+            _builder_2.append(s_1);
+          }
+        }
+        final String extendsDeclaration = _builder_2.toString();
         final GeneratedJavaFileAccess javaFile = this.fileAccessFactory.createGeneratedJavaFile(astType);
         javaFile.setImportNestedTypeThreshold(JavaFileAccess.DONT_IMPORT_NESTED_TYPES);
         StringConcatenationClient _client = new StringConcatenationClient() {
@@ -223,6 +275,7 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
             String _simpleName = astType.getSimpleName();
             _builder.append(_simpleName);
             _builder.append(implementsDeclaration);
+            _builder.append(extendsDeclaration);
             _builder.append(" {");
             _builder.newLineIfNotEmpty();
             {

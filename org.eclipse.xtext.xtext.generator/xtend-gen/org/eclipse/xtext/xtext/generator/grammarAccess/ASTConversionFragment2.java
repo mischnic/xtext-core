@@ -112,7 +112,7 @@ public class ASTConversionFragment2 {
       Set<Map.Entry<EClass, ParserRule>> _entrySet = rules.entrySet();
       for(final Map.Entry<EClass, ParserRule> entry : _entrySet) {
         {
-          if (((entry.getKey() instanceof EClass) && (!this._aSTUtils.isUnassigningRule(entry.getValue())))) {
+          if (((entry.getKey() instanceof EClass) && ((entry.getValue() == null) || (!this._aSTUtils.isUnassigningRule(entry.getValue()))))) {
             _builder.append("\t");
             EClass _key = entry.getKey();
             CharSequence _childrenClass = this.getChildrenClass(((EClass) _key));

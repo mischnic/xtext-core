@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.eclipse.xtext.astconversion.ast.ASTAddition;
 import org.eclipse.xtext.astconversion.ast.ASTAutoClass;
 import org.eclipse.xtext.astconversion.ast.ASTAutoExplicitClass;
 import org.eclipse.xtext.astconversion.ast.ASTChangeKind;
@@ -19,6 +20,7 @@ import org.eclipse.xtext.astconversion.ast.ASTManualClass;
 import org.eclipse.xtext.astconversion.ast.ASTOther;
 import org.eclipse.xtext.astconversion.ast.ASTProgram;
 import org.eclipse.xtext.astconversion.ast.ASTReference;
+import org.eclipse.xtext.astconversion.ast.ASTSequence;
 import org.eclipse.xtext.astconversion.astConversionSimple.Entry;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.tests.AbstractXtextTests;
@@ -35,30 +37,55 @@ public class ASTConversionSimpleTest extends AbstractXtextTests {
 		with(ASTConversionSimpleStandaloneSetup.class);
 	}
 
-	String programCorrect = "auto t1 x; manual t2 y; auto-explicit t3 z; custom t4 u; custom-copy t5 v;"
-			+ "other o auto t2 x; element x = add remove; element y remove = move;";
-
 	@Test
 	public void testGeneratedASTClass() throws Exception {
-		assertClass(ASTAutoClass.class,
+		assertClassFields(ASTAutoClass.class,
 				toMap(new Object[][] { { "ref", ASTReference.class }, { "name", String.class } }));
-		assertClass(ASTAutoExplicitClass.class, toMap(new Object[][] { { "name", String.class } }));
+		assertSuperTypes(ASTAutoClass.class, Object.class, ASTEntry.class);
+
+		assertClassFields(ASTAutoExplicitClass.class, toMap(new Object[][] { { "name", String.class } }));
+		assertSuperTypes(ASTAutoExplicitClass.class, Object.class, ASTEntry.class);
 
 		// Ensure that Xtext has hoisted fields in the CST
 		assertTrue(Entry.class.getMethod("getName") != null);
 		assertTrue(ASTEntry.class.isInterface());
+		assertSuperTypes(ASTEntry.class, null);
 
-		assertClass(ASTManualClass.class,
+		assertClassFields(ASTManualClass.class,
 				toMap(new Object[][] { { "ref", ASTReference.class }, { "value", String.class } }));
-		assertClass(ASTOther.class, toMap(new Object[][] { { "name", String.class }, { "content", Object.class } }));
+		assertSuperTypes(ASTManualClass.class, Object.class, ASTEntry.class);
 
-		assertClass(ASTProgram.class, toMap(new Object[][] { { "entries", List.class } }));
-		assertClass(ASTReference.class, toMap(new Object[][] { { "name", String.class } }));
-		assertClass(ASTElement.class, toMap(
+		assertClassFields(ASTOther.class,
+				toMap(new Object[][] { { "name", String.class }, { "content", Object.class } }));
+		assertSuperTypes(ASTOther.class, Object.class, ASTEntry.class);
+
+		assertClassFields(ASTProgram.class,
+				toMap(new Object[][] { { "entries", List.class }, { "sequence", List.class } }));
+		assertSuperTypes(ASTProgram.class, Object.class);
+
+		assertClassFields(ASTReference.class, toMap(new Object[][] { { "name", String.class } }));
+		assertSuperTypes(ASTReference.class, Object.class);
+
+		assertClassFields(ASTElement.class, toMap(
 				new Object[][] { { "name", String.class }, { "type", ASTChangeKind.class }, { "value", List.class } }));
-		assertClass(ASTChangeKind.class, toMap(new Object[][] { { "ADD", ASTChangeKind.class },
+		assertSuperTypes(ASTElement.class, Object.class, ASTEntry.class);
+
+		assertClassFields(ASTChangeKind.class, toMap(new Object[][] { { "ADD", ASTChangeKind.class },
 				{ "REMOVE", ASTChangeKind.class }, { "MOVE", ASTChangeKind.class } }));
+		assertTrue(ASTChangeKind.class.isEnum());
+		assertSuperTypes(ASTChangeKind.class, Enum.class);
+
+		assertClassFields(ASTSequence.class, toMap(new Object[][] { { "expressions", List.class } }));
+		assertSuperTypes(ASTSequence.class, Object.class);
+
+		assertClassFields(ASTAddition.class, toMap(
+				new Object[][] { { "expressions", List.class }, { "left", String.class }, { "right", String.class } }));
+		assertSuperTypes(ASTAddition.class, ASTSequence.class);
 	}
+
+	private static final String programCorrect = "auto t1 x; manual t2 y; auto-explicit t3 z; custom t4 u;"
+			+ "custom-copy t5 v; other o auto t2 x; element x = add remove; element y remove = move;"
+			+ "sequence a + b; sequence u + v w + x;";
 
 	@Test
 	public void testBasicASTConversion() throws Exception {
@@ -67,53 +94,86 @@ public class ASTConversionSimpleTest extends AbstractXtextTests {
 		ASTProgram root = (ASTProgram) result.getRootASTElementConverted();
 
 		int i = 0;
-		ASTAutoClass a = ((ASTAutoClass) root.entries.get(i));
-		assertEquals("x", a.name);
-		assertEquals("t1", a.ref.name);
+		{
+			ASTAutoClass node = ((ASTAutoClass) root.entries.get(i));
+			assertEquals("x", node.name);
+			assertEquals("t1", node.ref.name);
+		}
 
 		i++;
-		ASTManualClass b = ((ASTManualClass) root.entries.get(i));
-		assertEquals("y", b.value);
-		assertEquals("t2", b.ref.name);
+		{
+			ASTManualClass node = ((ASTManualClass) root.entries.get(i));
+			assertEquals("y", node.value);
+			assertEquals("t2", node.ref.name);
+		}
 
 		i++;
-		ASTAutoExplicitClass c = ((ASTAutoExplicitClass) root.entries.get(i));
-		assertEquals("z", c.name);
+		{
+			ASTAutoExplicitClass node = ((ASTAutoExplicitClass) root.entries.get(i));
+			assertEquals("z", node.name);
+		}
 
 		i++;
-		ASTCustomClass d = ((ASTCustomClass) root.entries.get(i));
-		assertEquals("u", d.name);
-		assertEquals("t4", d.type);
+		{
+			ASTCustomClass node = ((ASTCustomClass) root.entries.get(i));
+			assertEquals("u", node.name);
+			assertEquals("t4", node.type);
+		}
 
 		i++;
-		ASTCustomClass e = ((ASTCustomClass) root.entries.get(i));
-		assertEquals("v", e.name);
-		assertEquals("t5", e.type);
+		{
+			ASTCustomClass node = ((ASTCustomClass) root.entries.get(i));
+			assertEquals("v", node.name);
+			assertEquals("t5", node.type);
+		}
 
 		i++;
-		assertTrue(root.entries.get(i) instanceof ASTOther);
-		ASTAutoClass f = (ASTAutoClass) ((ASTOther) root.entries.get(i)).content;
-		assertEquals("x", f.name);
-		assertEquals("t2", f.ref.name);
+		{
+			ASTAutoClass node = (ASTAutoClass) ((ASTOther) root.entries.get(i)).content;
+			assertEquals("x", node.name);
+			assertEquals("t2", node.ref.name);
+		}
 
 		i++;
-		assertTrue(root.entries.get(i) instanceof ASTElement);
-		ASTElement g = (ASTElement) root.entries.get(i);
-		assertEquals("x", g.name);
-		assertEquals(ASTChangeKind.ADD, g.type);
-		assertEquals(Arrays.asList(ASTChangeKind.ADD, ASTChangeKind.REMOVE), g.value);
+		{
+			ASTElement node = (ASTElement) root.entries.get(i);
+			assertEquals("x", node.name);
+			assertEquals(ASTChangeKind.ADD, node.type);
+			assertEquals(Arrays.asList(ASTChangeKind.ADD, ASTChangeKind.REMOVE), node.value);
+		}
 
 		i++;
-		assertTrue(root.entries.get(i) instanceof ASTElement);
-		ASTElement h = (ASTElement) root.entries.get(i);
-		assertEquals("y", h.name);
-		assertEquals(ASTChangeKind.REMOVE, h.type);
-		assertEquals(Arrays.asList(ASTChangeKind.MOVE), h.value);
-
+		{
+			ASTElement node = (ASTElement) root.entries.get(i);
+			assertEquals("y", node.name);
+			assertEquals(ASTChangeKind.REMOVE, node.type);
+			assertEquals(Arrays.asList(ASTChangeKind.MOVE), node.value);
+		}
 		assertEquals(i + 1, root.entries.size());
+
+		i = 0;
+		{
+			ASTAddition node = (ASTAddition) root.sequence.get(i);
+			assertEquals("a", node.left);
+			assertEquals("b", node.right);
+		}
+
+		i++;
+		{
+			ASTSequence node = root.sequence.get(i);
+			assertEquals(2, node.expressions.size());
+			ASTAddition a = (ASTAddition) node.expressions.get(0);
+			ASTAddition b = (ASTAddition) node.expressions.get(1);
+			assertEquals("u", a.left);
+			assertEquals("v", a.right);
+			assertEquals("w", b.left);
+			assertEquals("x", b.right);
+		}
+		assertEquals(i + 1, root.sequence.size());
+
 	}
 
-	private void assertClass(Class<?> clazz, Map<String, Class<?>> expectedFields) {
+	private void assertClassFields(Class<?> clazz, Map<String, Class<?>> expectedFields) {
 		Field[] actualFields = clazz.getDeclaredFields();
 		List<Field> publicFields = new ArrayList<>();
 		for (Field f : actualFields) {
@@ -125,6 +185,18 @@ public class ASTConversionSimpleTest extends AbstractXtextTests {
 		assertEquals(expectedFields.size(), publicFields.size());
 		for (Field f : publicFields) {
 			assertEquals(expectedFields.get(f.getName()), f.getType());
+		}
+	}
+
+	public void assertSuperTypes(Class<?> clazz, Class<?> expectedSuperclass, Class<?>... expectedInterfaces) {
+		assertSame(expectedSuperclass, clazz.getSuperclass());
+
+		Class<?>[] actualInterfaces = clazz.getInterfaces();
+
+		assertEquals(expectedInterfaces.length, actualInterfaces.length);
+		List<Class<?>> expectedInterfacesList = Arrays.asList(expectedInterfaces);
+		for (Class<?> c : actualInterfaces) {
+			assertTrue(expectedInterfacesList.contains(c));
 		}
 	}
 

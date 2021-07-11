@@ -40,18 +40,24 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 		val objectClasses = newHashMap
 		// classes generated from enum rules
 		val enumClasses = newHashSet
+		// ast classes that become interfaces 
+		val interfaceClasses = newHashSet
 		for (classifier : generatedClasses) {
 			val rule = GrammarUtil.findRuleForName(grammar, classifier.name)
 			if (rule === null) {
 				if (enabled) {
 					objectClasses.put(classifier as EClass, null)
 					astClassNames.add(classifier.name.ASTClassName)
+					interfaceClasses.add(classifier.name.ASTClassName)
 				}
 			} else if (rule instanceof ParserRule) {
 				if ((rule as ParserRule).becomes !== null &&
 					(rule as ParserRule).becomes.descriptor instanceof BecomesDeclGeneratedClass) {
 					objectClasses.put(classifier as EClass, rule as ParserRule)
 					astClassNames.add(classifier.name.ASTClassName)
+					if (rule.isUnassigningRule) {
+						interfaceClasses.add(classifier.name.ASTClassName)
+					}
 					if ((rule as ParserRule).becomes.list) {
 						astClassesListType.put(classifier.name.ASTClassName, (rule as ParserRule).becomes.listType)
 					}
@@ -103,7 +109,7 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 			}
 
 			// unassigned rule calls or implicit classes become interfaces
-			val isInterface = rule === null || rule.isUnassigningRule
+			val isInterface = rule === null || interfaceClasses.contains(astType.simpleName)
 			val attributes = newLinkedHashMap
 			if (isInterface) {
 				// no attributes
@@ -127,16 +133,31 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 				}
 			}
 
-			val superTypes = type.ESuperTypes.filter[astClassNames.contains(name.ASTClassName)].map [
-				getASTClass(grammar, name)
-			]
+			val superClasses = newArrayList
+			val superInterfaces = newArrayList
+			for (c : type.ESuperTypes) {
+				val cAST = getASTClass(grammar, c.name);
+				if (astClassNames.contains(cAST.simpleName)) {
+					if (interfaceClasses.contains(cAST.simpleName)) {
+						superInterfaces.add(cAST)
+					} else {
+						if (isInterface) {
+							throw new RuntimeException(
+								"The AST class for rule " + rule.name +
+									" is an interface but would need to extend the class: " + cAST.simpleName);
+						}
+						superClasses.add(cAST)
+					}
+				}
+			}
 
-			val implementsDeclaration = '''«FOR s : superTypes BEFORE " implements " SEPARATOR ', '»«s»«ENDFOR»'''
+			val implementsDeclaration = isInterface ? "" : '''«FOR s : superInterfaces BEFORE " implements " SEPARATOR ', '»«s»«ENDFOR»'''
+			val extendsDeclaration = '''«FOR s : (isInterface ? superInterfaces : superClasses) BEFORE " extends " SEPARATOR ', '»«s»«ENDFOR»'''
 
 			val javaFile = fileAccessFactory.createGeneratedJavaFile(astType)
 			javaFile.importNestedTypeThreshold = JavaFileAccess.DONT_IMPORT_NESTED_TYPES
 			javaFile.content = '''
-				public «isInterface ? "interface" : "class"» «astType.simpleName»«implementsDeclaration» {
+				public «isInterface ? "interface" : "class"» «astType.simpleName»«implementsDeclaration»«extendsDeclaration» {
 					«IF !isInterface»
 						public «astType.simpleName»(){}
 						«IF !attributes.empty»
