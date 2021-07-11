@@ -1,6 +1,9 @@
 package org.eclipse.xtext.astconversion;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -8,7 +11,9 @@ import java.util.stream.Stream;
 
 import org.eclipse.xtext.astconversion.ast.ASTAutoClass;
 import org.eclipse.xtext.astconversion.ast.ASTAutoExplicitClass;
+import org.eclipse.xtext.astconversion.ast.ASTChangeKind;
 import org.eclipse.xtext.astconversion.ast.ASTCustomClass;
+import org.eclipse.xtext.astconversion.ast.ASTElement;
 import org.eclipse.xtext.astconversion.ast.ASTEntry;
 import org.eclipse.xtext.astconversion.ast.ASTManualClass;
 import org.eclipse.xtext.astconversion.ast.ASTOther;
@@ -30,7 +35,8 @@ public class ASTConversionSimpleTest extends AbstractXtextTests {
 		with(ASTConversionSimpleStandaloneSetup.class);
 	}
 
-	String programCorrect = "auto t1 x; manual t2 y; auto-explicit t3 z; custom t4 u; custom-copy t5 v; other o auto t2 x;";
+	String programCorrect = "auto t1 x; manual t2 y; auto-explicit t3 z; custom t4 u; custom-copy t5 v;"
+			+ "other o auto t2 x; element x = add remove; element y remove = move;";
 
 	@Test
 	public void testGeneratedASTClass() throws Exception {
@@ -48,6 +54,10 @@ public class ASTConversionSimpleTest extends AbstractXtextTests {
 
 		assertClass(ASTProgram.class, toMap(new Object[][] { { "entries", List.class } }));
 		assertClass(ASTReference.class, toMap(new Object[][] { { "name", String.class } }));
+		assertClass(ASTElement.class, toMap(
+				new Object[][] { { "name", String.class }, { "type", ASTChangeKind.class }, { "value", List.class } }));
+		assertClass(ASTChangeKind.class, toMap(new Object[][] { { "ADD", ASTChangeKind.class },
+				{ "REMOVE", ASTChangeKind.class }, { "MOVE", ASTChangeKind.class } }));
 	}
 
 	@Test
@@ -55,8 +65,6 @@ public class ASTConversionSimpleTest extends AbstractXtextTests {
 		IParseResult result = getResourceFor(getAsStream(programCorrect)).getParseResult();
 		assertFalse(result.hasSyntaxErrors());
 		ASTProgram root = (ASTProgram) result.getRootASTElementConverted();
-
-		assertEquals(6, root.entries.size());
 
 		int i = 0;
 		ASTAutoClass a = ((ASTAutoClass) root.entries.get(i));
@@ -87,13 +95,35 @@ public class ASTConversionSimpleTest extends AbstractXtextTests {
 		ASTAutoClass f = (ASTAutoClass) ((ASTOther) root.entries.get(i)).content;
 		assertEquals("x", f.name);
 		assertEquals("t2", f.ref.name);
+
+		i++;
+		assertTrue(root.entries.get(i) instanceof ASTElement);
+		ASTElement g = (ASTElement) root.entries.get(i);
+		assertEquals("x", g.name);
+		assertEquals(ASTChangeKind.ADD, g.type);
+		assertEquals(Arrays.asList(ASTChangeKind.ADD, ASTChangeKind.REMOVE), g.value);
+
+		i++;
+		assertTrue(root.entries.get(i) instanceof ASTElement);
+		ASTElement h = (ASTElement) root.entries.get(i);
+		assertEquals("y", h.name);
+		assertEquals(ASTChangeKind.REMOVE, h.type);
+		assertEquals(Arrays.asList(ASTChangeKind.MOVE), h.value);
+
+		assertEquals(i + 1, root.entries.size());
 	}
 
 	private void assertClass(Class<?> clazz, Map<String, Class<?>> expectedFields) {
 		Field[] actualFields = clazz.getDeclaredFields();
-		assertEquals(expectedFields.size(), actualFields.length);
-
+		List<Field> publicFields = new ArrayList<>();
 		for (Field f : actualFields) {
+			if (Modifier.isPublic(f.getModifiers())) {
+				publicFields.add(f);
+			}
+		}
+
+		assertEquals(expectedFields.size(), publicFields.size());
+		for (Field f : publicFields) {
 			assertEquals(expectedFields.get(f.getName()), f.getType());
 		}
 	}

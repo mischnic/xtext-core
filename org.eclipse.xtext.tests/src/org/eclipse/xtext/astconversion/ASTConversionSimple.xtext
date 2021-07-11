@@ -6,7 +6,7 @@ Program becomes:
 	(entries+=Entry)+;
 
 Entry becomes:
-	AutoClass | AutoExplicitClass | ManualClass | CustomASTClass | CustomCopyASTClass | Other;
+	AutoClass | AutoExplicitClass | ManualClass | CustomASTClass | CustomCopyASTClass | Other | Element;
 
 AutoClass becomes:
 	"auto" ref=Reference name=ID ";";
@@ -34,6 +34,13 @@ $$:
 Other becomes:
 	"other" name=ID content=(Reference | AutoClass)
 ;
+
+Element becomes:
+	'element' name=ID (type=ChangeKind)? '=' (value+=ChangeKind)+ ';';
+
+enum ChangeKind becomes:
+	ADD='add' | MOVE='move' |
+	REMOVE='remove';
 
 Reference becomes:
 	name=ID;
