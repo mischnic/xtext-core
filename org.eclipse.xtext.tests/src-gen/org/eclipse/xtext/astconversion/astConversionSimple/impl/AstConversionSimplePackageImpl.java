@@ -22,7 +22,10 @@ import org.eclipse.xtext.astconversion.astConversionSimple.CustomASTClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.Element;
 import org.eclipse.xtext.astconversion.astConversionSimple.Entry;
+import org.eclipse.xtext.astconversion.astConversionSimple.Lists;
 import org.eclipse.xtext.astconversion.astConversionSimple.ManualClass;
+import org.eclipse.xtext.astconversion.astConversionSimple.MapEntry;
+import org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom;
 import org.eclipse.xtext.astconversion.astConversionSimple.Other;
 import org.eclipse.xtext.astconversion.astConversionSimple.Program;
 import org.eclipse.xtext.astconversion.astConversionSimple.Reference;
@@ -119,6 +122,27 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
    * @generated
    */
   private EClass additionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass listsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass mapEntryEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass mapEntryCustomEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -224,6 +248,17 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
   public EReference getProgram_Sequence()
   {
     return (EReference)programEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getProgram_List()
+  {
+    return (EReference)programEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -496,6 +531,127 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
    * @generated
    */
   @Override
+  public EClass getLists()
+  {
+    return listsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLists_A()
+  {
+    return (EReference)listsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLists_B()
+  {
+    return (EReference)listsEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLists_C()
+  {
+    return (EReference)listsEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLists_D()
+  {
+    return (EReference)listsEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMapEntry()
+  {
+    return mapEntryEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMapEntry_Keys()
+  {
+    return (EAttribute)mapEntryEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMapEntry_Value()
+  {
+    return (EAttribute)mapEntryEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMapEntryCustom()
+  {
+    return mapEntryCustomEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMapEntryCustom_Keys()
+  {
+    return (EAttribute)mapEntryCustomEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMapEntryCustom_Value()
+  {
+    return (EReference)mapEntryCustomEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EEnum getChangeKind()
   {
     return changeKindEEnum;
@@ -535,6 +691,7 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
     programEClass = createEClass(PROGRAM);
     createEReference(programEClass, PROGRAM__ENTRIES);
     createEReference(programEClass, PROGRAM__SEQUENCE);
+    createEReference(programEClass, PROGRAM__LIST);
 
     entryEClass = createEClass(ENTRY);
     createEAttribute(entryEClass, ENTRY__NAME);
@@ -570,6 +727,20 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
     additionEClass = createEClass(ADDITION);
     createEAttribute(additionEClass, ADDITION__LEFT);
     createEAttribute(additionEClass, ADDITION__RIGHT);
+
+    listsEClass = createEClass(LISTS);
+    createEReference(listsEClass, LISTS__A);
+    createEReference(listsEClass, LISTS__B);
+    createEReference(listsEClass, LISTS__C);
+    createEReference(listsEClass, LISTS__D);
+
+    mapEntryEClass = createEClass(MAP_ENTRY);
+    createEAttribute(mapEntryEClass, MAP_ENTRY__KEYS);
+    createEAttribute(mapEntryEClass, MAP_ENTRY__VALUE);
+
+    mapEntryCustomEClass = createEClass(MAP_ENTRY_CUSTOM);
+    createEAttribute(mapEntryCustomEClass, MAP_ENTRY_CUSTOM__KEYS);
+    createEReference(mapEntryCustomEClass, MAP_ENTRY_CUSTOM__VALUE);
 
     // Create enums
     changeKindEEnum = createEEnum(CHANGE_KIND);
@@ -620,6 +791,7 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
     initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getProgram_Entries(), this.getEntry(), null, "entries", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProgram_Sequence(), this.getSequence(), null, "sequence", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProgram_List(), this.getLists(), null, "list", null, 0, 1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(entryEClass, Entry.class, "Entry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEntry_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -655,6 +827,20 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
     initEClass(additionEClass, Addition.class, "Addition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAddition_Left(), theEcorePackage.getEString(), "left", null, 0, 1, Addition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAddition_Right(), theEcorePackage.getEString(), "right", null, 0, 1, Addition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(listsEClass, Lists.class, "Lists", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLists_A(), this.getMapEntry(), null, "a", null, 0, 1, Lists.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLists_B(), this.getMapEntryCustom(), null, "b", null, 0, 1, Lists.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLists_C(), this.getMapEntry(), null, "c", null, 0, -1, Lists.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLists_D(), this.getMapEntryCustom(), null, "d", null, 0, -1, Lists.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(mapEntryEClass, MapEntry.class, "MapEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMapEntry_Keys(), theEcorePackage.getEString(), "keys", null, 0, -1, MapEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMapEntry_Value(), theEcorePackage.getEInt(), "value", null, 0, 1, MapEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(mapEntryCustomEClass, MapEntryCustom.class, "MapEntryCustom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMapEntryCustom_Keys(), theEcorePackage.getEString(), "keys", null, 0, -1, MapEntryCustom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMapEntryCustom_Value(), this.getReference(), null, "value", null, 0, 1, MapEntryCustom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(changeKindEEnum, ChangeKind.class, "ChangeKind");

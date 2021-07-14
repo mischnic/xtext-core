@@ -165,6 +165,27 @@ public class AstConversionSimpleSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case AstConversionSimplePackage.LISTS:
+      {
+        Lists lists = (Lists)theEObject;
+        T result = caseLists(lists);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AstConversionSimplePackage.MAP_ENTRY:
+      {
+        MapEntry mapEntry = (MapEntry)theEObject;
+        T result = caseMapEntry(mapEntry);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AstConversionSimplePackage.MAP_ENTRY_CUSTOM:
+      {
+        MapEntryCustom mapEntryCustom = (MapEntryCustom)theEObject;
+        T result = caseMapEntryCustom(mapEntryCustom);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -357,6 +378,54 @@ public class AstConversionSimpleSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseAddition(Addition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Lists</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Lists</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLists(Lists object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Map Entry</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Map Entry</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMapEntry(MapEntry object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Map Entry Custom</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Map Entry Custom</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMapEntryCustom(MapEntryCustom object)
   {
     return null;
   }

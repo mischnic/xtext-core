@@ -17,7 +17,10 @@ import org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.CustomASTClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.Element;
+import org.eclipse.xtext.astconversion.astConversionSimple.Lists;
 import org.eclipse.xtext.astconversion.astConversionSimple.ManualClass;
+import org.eclipse.xtext.astconversion.astConversionSimple.MapEntry;
+import org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom;
 import org.eclipse.xtext.astconversion.astConversionSimple.Other;
 import org.eclipse.xtext.astconversion.astConversionSimple.Program;
 import org.eclipse.xtext.astconversion.astConversionSimple.Reference;
@@ -60,8 +63,17 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 			case AstConversionSimplePackage.ELEMENT:
 				sequence_Element(context, (Element) semanticObject); 
 				return; 
+			case AstConversionSimplePackage.LISTS:
+				sequence_Lists(context, (Lists) semanticObject); 
+				return; 
 			case AstConversionSimplePackage.MANUAL_CLASS:
 				sequence_ManualClass(context, (ManualClass) semanticObject); 
+				return; 
+			case AstConversionSimplePackage.MAP_ENTRY:
+				sequence_MapEntry(context, (MapEntry) semanticObject); 
+				return; 
+			case AstConversionSimplePackage.MAP_ENTRY_CUSTOM:
+				sequence_MapEntryCustom(context, (MapEntryCustom) semanticObject); 
 				return; 
 			case AstConversionSimplePackage.OTHER:
 				sequence_Other(context, (Other) semanticObject); 
@@ -206,6 +218,18 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 	
 	/**
 	 * Contexts:
+	 *     Lists returns Lists
+	 *
+	 * Constraint:
+	 *     (a=MapEntry b=MapEntryCustom c+=MapEntry+ d+=MapEntryCustom+)
+	 */
+	protected void sequence_Lists(ISerializationContext context, Lists semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Entry returns ManualClass
 	 *     ManualClass returns ManualClass
 	 *
@@ -228,6 +252,30 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 	
 	/**
 	 * Contexts:
+	 *     MapEntryCustom returns MapEntryCustom
+	 *
+	 * Constraint:
+	 *     (keys+=ID keys+=ID* value=Reference)
+	 */
+	protected void sequence_MapEntryCustom(ISerializationContext context, MapEntryCustom semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     MapEntry returns MapEntry
+	 *
+	 * Constraint:
+	 *     (keys+=ID keys+=ID* value=INT)
+	 */
+	protected void sequence_MapEntry(ISerializationContext context, MapEntry semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Entry returns Other
 	 *     Other returns Other
 	 *
@@ -244,7 +292,7 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 	 *     Program returns Program
 	 *
 	 * Constraint:
-	 *     (entries+=Entry+ sequence+=Sequence+)
+	 *     (entries+=Entry+ sequence+=Sequence+ list=Lists)
 	 */
 	protected void sequence_Program(ISerializationContext context, Program semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -136,6 +136,21 @@ public class AstConversionSimpleAdapterFactory extends AdapterFactoryImpl
         return createAdditionAdapter();
       }
       @Override
+      public Adapter caseLists(Lists object)
+      {
+        return createListsAdapter();
+      }
+      @Override
+      public Adapter caseMapEntry(MapEntry object)
+      {
+        return createMapEntryAdapter();
+      }
+      @Override
+      public Adapter caseMapEntryCustom(MapEntryCustom object)
+      {
+        return createMapEntryCustomAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -333,6 +348,51 @@ public class AstConversionSimpleAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAdditionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Lists <em>Lists</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Lists
+   * @generated
+   */
+  public Adapter createListsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.astconversion.astConversionSimple.MapEntry <em>Map Entry</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.MapEntry
+   * @generated
+   */
+  public Adapter createMapEntryAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom <em>Map Entry Custom</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom
+   * @generated
+   */
+  public Adapter createMapEntryCustomAdapter()
   {
     return null;
   }

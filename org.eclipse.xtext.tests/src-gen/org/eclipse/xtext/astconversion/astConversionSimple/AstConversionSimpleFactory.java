@@ -132,6 +132,33 @@ public interface AstConversionSimpleFactory extends EFactory
   Addition createAddition();
 
   /**
+   * Returns a new object of class '<em>Lists</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Lists</em>'.
+   * @generated
+   */
+  Lists createLists();
+
+  /**
+   * Returns a new object of class '<em>Map Entry</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Map Entry</em>'.
+   * @generated
+   */
+  MapEntry createMapEntry();
+
+  /**
+   * Returns a new object of class '<em>Map Entry Custom</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Map Entry Custom</em>'.
+   * @generated
+   */
+  MapEntryCustom createMapEntryCustom();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

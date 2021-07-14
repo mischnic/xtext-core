@@ -87,13 +87,22 @@ public interface AstConversionSimplePackage extends EPackage
   int PROGRAM__SEQUENCE = 1;
 
   /**
+   * The feature id for the '<em><b>List</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROGRAM__LIST = 2;
+
+  /**
    * The number of structural features of the '<em>Program</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROGRAM_FEATURE_COUNT = 2;
+  int PROGRAM_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.EntryImpl <em>Entry</em>}' class.
@@ -494,6 +503,135 @@ public interface AstConversionSimplePackage extends EPackage
   int ADDITION_FEATURE_COUNT = SEQUENCE_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ListsImpl <em>Lists</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.ListsImpl
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getLists()
+   * @generated
+   */
+  int LISTS = 12;
+
+  /**
+   * The feature id for the '<em><b>A</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LISTS__A = 0;
+
+  /**
+   * The feature id for the '<em><b>B</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LISTS__B = 1;
+
+  /**
+   * The feature id for the '<em><b>C</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LISTS__C = 2;
+
+  /**
+   * The feature id for the '<em><b>D</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LISTS__D = 3;
+
+  /**
+   * The number of structural features of the '<em>Lists</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LISTS_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.MapEntryImpl <em>Map Entry</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.MapEntryImpl
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getMapEntry()
+   * @generated
+   */
+  int MAP_ENTRY = 13;
+
+  /**
+   * The feature id for the '<em><b>Keys</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAP_ENTRY__KEYS = 0;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAP_ENTRY__VALUE = 1;
+
+  /**
+   * The number of structural features of the '<em>Map Entry</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAP_ENTRY_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.MapEntryCustomImpl <em>Map Entry Custom</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.MapEntryCustomImpl
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getMapEntryCustom()
+   * @generated
+   */
+  int MAP_ENTRY_CUSTOM = 14;
+
+  /**
+   * The feature id for the '<em><b>Keys</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAP_ENTRY_CUSTOM__KEYS = 0;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAP_ENTRY_CUSTOM__VALUE = 1;
+
+  /**
+   * The number of structural features of the '<em>Map Entry Custom</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAP_ENTRY_CUSTOM_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.ChangeKind <em>Change Kind</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -501,7 +639,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getChangeKind()
    * @generated
    */
-  int CHANGE_KIND = 12;
+  int CHANGE_KIND = 15;
 
 
   /**
@@ -535,6 +673,17 @@ public interface AstConversionSimplePackage extends EPackage
    * @generated
    */
   EReference getProgram_Sequence();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getList <em>List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>List</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Program#getList()
+   * @see #getProgram()
+   * @generated
+   */
+  EReference getProgram_List();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Entry <em>Entry</em>}'.
@@ -790,6 +939,124 @@ public interface AstConversionSimplePackage extends EPackage
   EAttribute getAddition_Right();
 
   /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Lists <em>Lists</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Lists</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Lists
+   * @generated
+   */
+  EClass getLists();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.Lists#getA <em>A</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>A</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Lists#getA()
+   * @see #getLists()
+   * @generated
+   */
+  EReference getLists_A();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.Lists#getB <em>B</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>B</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Lists#getB()
+   * @see #getLists()
+   * @generated
+   */
+  EReference getLists_B();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.xtext.astconversion.astConversionSimple.Lists#getC <em>C</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>C</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Lists#getC()
+   * @see #getLists()
+   * @generated
+   */
+  EReference getLists_C();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.xtext.astconversion.astConversionSimple.Lists#getD <em>D</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>D</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Lists#getD()
+   * @see #getLists()
+   * @generated
+   */
+  EReference getLists_D();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.MapEntry <em>Map Entry</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Map Entry</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.MapEntry
+   * @generated
+   */
+  EClass getMapEntry();
+
+  /**
+   * Returns the meta object for the attribute list '{@link org.eclipse.xtext.astconversion.astConversionSimple.MapEntry#getKeys <em>Keys</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Keys</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.MapEntry#getKeys()
+   * @see #getMapEntry()
+   * @generated
+   */
+  EAttribute getMapEntry_Keys();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.xtext.astconversion.astConversionSimple.MapEntry#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.MapEntry#getValue()
+   * @see #getMapEntry()
+   * @generated
+   */
+  EAttribute getMapEntry_Value();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom <em>Map Entry Custom</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Map Entry Custom</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom
+   * @generated
+   */
+  EClass getMapEntryCustom();
+
+  /**
+   * Returns the meta object for the attribute list '{@link org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom#getKeys <em>Keys</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Keys</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom#getKeys()
+   * @see #getMapEntryCustom()
+   * @generated
+   */
+  EAttribute getMapEntryCustom_Keys();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom#getValue()
+   * @see #getMapEntryCustom()
+   * @generated
+   */
+  EReference getMapEntryCustom_Value();
+
+  /**
    * Returns the meta object for enum '{@link org.eclipse.xtext.astconversion.astConversionSimple.ChangeKind <em>Change Kind</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -847,6 +1114,14 @@ public interface AstConversionSimplePackage extends EPackage
      * @generated
      */
     EReference PROGRAM__SEQUENCE = eINSTANCE.getProgram_Sequence();
+
+    /**
+     * The meta object literal for the '<em><b>List</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROGRAM__LIST = eINSTANCE.getProgram_List();
 
     /**
      * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.EntryImpl <em>Entry</em>}' class.
@@ -1061,6 +1336,100 @@ public interface AstConversionSimplePackage extends EPackage
      * @generated
      */
     EAttribute ADDITION__RIGHT = eINSTANCE.getAddition_Right();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ListsImpl <em>Lists</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.ListsImpl
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getLists()
+     * @generated
+     */
+    EClass LISTS = eINSTANCE.getLists();
+
+    /**
+     * The meta object literal for the '<em><b>A</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LISTS__A = eINSTANCE.getLists_A();
+
+    /**
+     * The meta object literal for the '<em><b>B</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LISTS__B = eINSTANCE.getLists_B();
+
+    /**
+     * The meta object literal for the '<em><b>C</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LISTS__C = eINSTANCE.getLists_C();
+
+    /**
+     * The meta object literal for the '<em><b>D</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LISTS__D = eINSTANCE.getLists_D();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.MapEntryImpl <em>Map Entry</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.MapEntryImpl
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getMapEntry()
+     * @generated
+     */
+    EClass MAP_ENTRY = eINSTANCE.getMapEntry();
+
+    /**
+     * The meta object literal for the '<em><b>Keys</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MAP_ENTRY__KEYS = eINSTANCE.getMapEntry_Keys();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MAP_ENTRY__VALUE = eINSTANCE.getMapEntry_Value();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.MapEntryCustomImpl <em>Map Entry Custom</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.MapEntryCustomImpl
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getMapEntryCustom()
+     * @generated
+     */
+    EClass MAP_ENTRY_CUSTOM = eINSTANCE.getMapEntryCustom();
+
+    /**
+     * The meta object literal for the '<em><b>Keys</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MAP_ENTRY_CUSTOM__KEYS = eINSTANCE.getMapEntryCustom_Keys();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MAP_ENTRY_CUSTOM__VALUE = eINSTANCE.getMapEntryCustom_Value();
 
     /**
      * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.ChangeKind <em>Change Kind</em>}' enum.

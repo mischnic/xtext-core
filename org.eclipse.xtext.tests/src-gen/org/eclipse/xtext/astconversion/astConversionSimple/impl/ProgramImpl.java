@@ -5,6 +5,7 @@ package org.eclipse.xtext.astconversion.astConversionSimple.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -12,6 +13,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -19,6 +21,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage;
 import org.eclipse.xtext.astconversion.astConversionSimple.Entry;
+import org.eclipse.xtext.astconversion.astConversionSimple.Lists;
 import org.eclipse.xtext.astconversion.astConversionSimple.Program;
 import org.eclipse.xtext.astconversion.astConversionSimple.Sequence;
 
@@ -32,6 +35,7 @@ import org.eclipse.xtext.astconversion.astConversionSimple.Sequence;
  * <ul>
  *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ProgramImpl#getEntries <em>Entries</em>}</li>
  *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ProgramImpl#getSequence <em>Sequence</em>}</li>
+ *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ProgramImpl#getList <em>List</em>}</li>
  * </ul>
  *
  * @generated
@@ -57,6 +61,16 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * @ordered
    */
   protected EList<Sequence> sequence;
+
+  /**
+   * The cached value of the '{@link #getList() <em>List</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getList()
+   * @generated
+   * @ordered
+   */
+  protected Lists list;
 
   /**
    * <!-- begin-user-doc -->
@@ -115,6 +129,56 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * @generated
    */
   @Override
+  public Lists getList()
+  {
+    return list;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetList(Lists newList, NotificationChain msgs)
+  {
+    Lists oldList = list;
+    list = newList;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.PROGRAM__LIST, oldList, newList);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setList(Lists newList)
+  {
+    if (newList != list)
+    {
+      NotificationChain msgs = null;
+      if (list != null)
+        msgs = ((InternalEObject)list).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.PROGRAM__LIST, null, msgs);
+      if (newList != null)
+        msgs = ((InternalEObject)newList).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.PROGRAM__LIST, null, msgs);
+      msgs = basicSetList(newList, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.PROGRAM__LIST, newList, newList));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
@@ -123,6 +187,8 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
         return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
       case AstConversionSimplePackage.PROGRAM__SEQUENCE:
         return ((InternalEList<?>)getSequence()).basicRemove(otherEnd, msgs);
+      case AstConversionSimplePackage.PROGRAM__LIST:
+        return basicSetList(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -141,6 +207,8 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
         return getEntries();
       case AstConversionSimplePackage.PROGRAM__SEQUENCE:
         return getSequence();
+      case AstConversionSimplePackage.PROGRAM__LIST:
+        return getList();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -164,6 +232,9 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
         getSequence().clear();
         getSequence().addAll((Collection<? extends Sequence>)newValue);
         return;
+      case AstConversionSimplePackage.PROGRAM__LIST:
+        setList((Lists)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -184,6 +255,9 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
       case AstConversionSimplePackage.PROGRAM__SEQUENCE:
         getSequence().clear();
         return;
+      case AstConversionSimplePackage.PROGRAM__LIST:
+        setList((Lists)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -202,6 +276,8 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
         return entries != null && !entries.isEmpty();
       case AstConversionSimplePackage.PROGRAM__SEQUENCE:
         return sequence != null && !sequence.isEmpty();
+      case AstConversionSimplePackage.PROGRAM__LIST:
+        return list != null;
     }
     return super.eIsSet(featureID);
   }

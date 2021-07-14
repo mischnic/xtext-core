@@ -78,6 +78,9 @@ public class AstConversionSimpleFactoryImpl extends EFactoryImpl implements AstC
       case AstConversionSimplePackage.ELEMENT: return createElement();
       case AstConversionSimplePackage.SEQUENCE: return createSequence();
       case AstConversionSimplePackage.ADDITION: return createAddition();
+      case AstConversionSimplePackage.LISTS: return createLists();
+      case AstConversionSimplePackage.MAP_ENTRY: return createMapEntry();
+      case AstConversionSimplePackage.MAP_ENTRY_CUSTOM: return createMapEntryCustom();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -259,6 +262,42 @@ public class AstConversionSimpleFactoryImpl extends EFactoryImpl implements AstC
   {
     AdditionImpl addition = new AdditionImpl();
     return addition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Lists createLists()
+  {
+    ListsImpl lists = new ListsImpl();
+    return lists;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MapEntry createMapEntry()
+  {
+    MapEntryImpl mapEntry = new MapEntryImpl();
+    return mapEntry;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MapEntryCustom createMapEntryCustom()
+  {
+    MapEntryCustomImpl mapEntryCustom = new MapEntryCustomImpl();
+    return mapEntryCustom;
   }
 
   /**
