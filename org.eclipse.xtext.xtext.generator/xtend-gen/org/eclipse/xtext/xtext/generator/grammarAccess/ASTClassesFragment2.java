@@ -143,7 +143,7 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
             final boolean isListType = astClassesListType.containsKey(referencedASTType.getSimpleName());
             final String customListType = astClassesListType.get(referencedASTType.getSimpleName());
             String _xifexpression_3 = null;
-            if ((customListType != null)) {
+            if (((customListType != null) && (!attr.isMany()))) {
               _xifexpression_3 = this._xtextGeneratorNaming.replaceASTTypeReferences(this.getGrammar(), customListType);
             } else {
               StringConcatenation _builder = new StringConcatenation();

@@ -6,7 +6,6 @@ import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EReference
-import org.eclipse.xtext.Assignment
 import org.eclipse.xtext.BecomesDeclCustomAttribute
 import org.eclipse.xtext.BecomesDeclGeneratedClass
 import org.eclipse.xtext.EnumRule
@@ -92,14 +91,9 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 					val isListType = astClassesListType.containsKey(referencedASTType.simpleName)
 					val customListType = astClassesListType.get(referencedASTType.simpleName)
 
-					// TODO nested lists
-					val listType = customListType !== null ? grammar.
+					val listType = (customListType !== null && !attr.many) ? grammar.
 							replaceASTTypeReferences(
 								customListType) : '''«new TypeReference(List)»<«referencedASTType»>'''
-
-//						if (isListType && attr.many) {
-//							features.put(attr.name, listType)
-//						} else 
 					if (isListType || attr.many) {
 						structuralFeatures.put(attr.name, listType)
 					} else {

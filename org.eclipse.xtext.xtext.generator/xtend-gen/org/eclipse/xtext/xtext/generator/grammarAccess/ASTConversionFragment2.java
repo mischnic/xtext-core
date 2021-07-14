@@ -180,7 +180,7 @@ public class ASTConversionFragment2 {
       } else {
         _builder.append("\t");
         _builder.append("return new ");
-        String _listType = this.getListType(rule, resultType);
+        String _listType = this.getListType(false, rule, resultType);
         _builder.append(_listType, "\t");
         _builder.append("() {");
         _builder.newLineIfNotEmpty();
@@ -190,7 +190,7 @@ public class ASTConversionFragment2 {
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t\t");
-        String _listType_1 = this.getListType(rule, resultType);
+        String _listType_1 = this.getListType(false, rule, resultType);
         _builder.append(_listType_1, "\t\t\t");
         _builder.append(" XTEXT_INIT() {");
         _builder.newLineIfNotEmpty();
@@ -250,7 +250,7 @@ public class ASTConversionFragment2 {
     if (((((referencedRule != null) && (referencedRule.getBecomes() != null)) && referencedRule.getBecomes().isList()) || 
       feature.isMany())) {
       StringConcatenation _builder = new StringConcatenation();
-      String _listTypeAbstract = this.getListTypeAbstract(referencedRule, this._xtextGeneratorNaming.getASTClass(this.grammar, typeName));
+      String _listTypeAbstract = this.getListTypeAbstract(feature.isMany(), referencedRule, this._xtextGeneratorNaming.getASTClass(this.grammar, typeName));
       _builder.append(_listTypeAbstract);
       return _builder.toString();
     } else {
@@ -415,19 +415,21 @@ public class ASTConversionFragment2 {
   }
   
   private TypeReference getASTType(final EClassifier type, final ParserRule rule) {
+    TypeReference _xifexpression = null;
     if ((((rule != null) && (rule.getBecomes() != null)) && (rule.getBecomes().getDescriptor() instanceof BecomesDeclManualClass))) {
       String _aSTPackage = this._xtextGeneratorNaming.getASTPackage(this.grammar);
       BecomesDeclClass _descriptor = rule.getBecomes().getDescriptor();
       String _type = ((BecomesDeclManualClass) _descriptor).getType();
-      return new TypeReference(_aSTPackage, _type);
+      _xifexpression = new TypeReference(_aSTPackage, _type);
     } else {
-      return this._xtextGeneratorNaming.getASTClass(this.grammar, type.getName());
+      _xifexpression = this._xtextGeneratorNaming.getASTClass(this.grammar, type.getName());
     }
+    return _xifexpression;
   }
   
-  private String getListTypeAbstract(final ParserRule rule, final TypeReference of) {
+  private String getListTypeAbstract(final boolean isMany, final ParserRule rule, final TypeReference of) {
     String _xifexpression = null;
-    if ((((rule != null) && (rule.getBecomes() != null)) && (rule.getBecomes().getListType() != null))) {
+    if (((((rule != null) && (rule.getBecomes() != null)) && (rule.getBecomes().getListType() != null)) && (!isMany))) {
       _xifexpression = this._xtextGeneratorNaming.replaceASTTypeReferences(this.grammar, rule.getBecomes().getListType());
     } else {
       StringConcatenation _builder = new StringConcatenation();
@@ -441,9 +443,9 @@ public class ASTConversionFragment2 {
     return _xifexpression;
   }
   
-  private String getListType(final ParserRule rule, final TypeReference of) {
+  private String getListType(final boolean isMany, final ParserRule rule, final TypeReference of) {
     String _xifexpression = null;
-    if ((((rule != null) && (rule.getBecomes() != null)) && (rule.getBecomes().getListType() != null))) {
+    if (((((rule != null) && (rule.getBecomes() != null)) && (rule.getBecomes().getListType() != null)) && (!isMany))) {
       _xifexpression = this._xtextGeneratorNaming.replaceASTTypeReferences(this.grammar, rule.getBecomes().getListType());
     } else {
       StringConcatenation _builder = new StringConcatenation();

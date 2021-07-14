@@ -28,7 +28,6 @@ import org.eclipse.xtext.xtext.generator.XtextGeneratorNaming
 import org.eclipse.xtext.xtext.generator.model.TypeReference
 
 import static extension org.eclipse.xtext.GrammarUtil.*
-import org.eclipse.xtext.Assignment
 
 class ASTConversionFragment2 {
 	@Inject extension XtextGeneratorNaming
@@ -89,9 +88,9 @@ class ASTConversionFragment2 {
 						}
 					}.XTEXT_INIT();
 				«ELSE»
-					return new «rule.getListType(resultType)»() {
+					return new «getListType(false, rule, resultType)»() {
 						private static final long serialVersionUID = 0;
-							«rule.getListType(resultType)» XTEXT_INIT() {
+							«getListType(false, rule, resultType)» XTEXT_INIT() {
 							«codeSnippetClass(type, rule)»
 							return this;
 						}
@@ -114,7 +113,7 @@ class ASTConversionFragment2 {
 		val referencedRule = grammar.findRuleForName(typeName) as ParserRule
 		if ((referencedRule !== null && referencedRule.becomes !== null && referencedRule.becomes.list) ||
 			feature.many) {
-			return '''«referencedRule.getListTypeAbstract(grammar.getASTClass(typeName))»'''
+			return '''«getListTypeAbstract(feature.many, referencedRule, grammar.getASTClass(typeName))»'''
 		} else {
 			return '''«grammar.getASTClass(typeName)»'''
 		}
@@ -190,22 +189,21 @@ class ASTConversionFragment2 {
 	}
 
 	private def getASTType(EClassifier type, ParserRule rule) {
-		if (rule !== null && rule.becomes !== null && rule.becomes.descriptor instanceof BecomesDeclManualClass) {
-			return new TypeReference(getASTPackage(grammar), (rule.becomes.descriptor as BecomesDeclManualClass).type)
-		} else {
-			return grammar.getASTClass(type.name)
-		}
+		return if (rule !== null && rule.becomes !== null && rule.becomes.descriptor instanceof BecomesDeclManualClass)
+			new TypeReference(getASTPackage(grammar), (rule.becomes.descriptor as BecomesDeclManualClass).type)
+		else
+			grammar.getASTClass(type.name);
 	}
 
-	private def getListTypeAbstract(ParserRule rule, TypeReference of) {
-		return if (rule !== null && rule.becomes !== null && rule.becomes.listType !== null)
+	private def getListTypeAbstract(boolean isMany, ParserRule rule, TypeReference of) {
+		return if (rule !== null && rule.becomes !== null && rule.becomes.listType !== null && !isMany)
 			grammar.replaceASTTypeReferences(rule.becomes.listType)
 		else
 			'''«new TypeReference(List)»<«of»>'''
 	}
 
-	private def getListType(ParserRule rule, TypeReference of) {
-		return if (rule !== null && rule.becomes !== null && rule.becomes.listType !== null)
+	private def getListType(boolean isMany, ParserRule rule, TypeReference of) {
+		return if (rule !== null && rule.becomes !== null && rule.becomes.listType !== null && !isMany)
 			grammar.replaceASTTypeReferences(rule.becomes.listType)
 		else
 			'''«new TypeReference(ArrayList)»<«of»>'''
