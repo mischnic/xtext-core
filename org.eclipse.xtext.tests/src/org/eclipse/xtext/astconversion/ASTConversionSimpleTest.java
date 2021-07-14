@@ -16,11 +16,15 @@ import org.eclipse.xtext.astconversion.ast.ASTChangeKind;
 import org.eclipse.xtext.astconversion.ast.ASTCustomClass;
 import org.eclipse.xtext.astconversion.ast.ASTElement;
 import org.eclipse.xtext.astconversion.ast.ASTEntry;
+import org.eclipse.xtext.astconversion.ast.ASTLists;
 import org.eclipse.xtext.astconversion.ast.ASTManualClass;
+import org.eclipse.xtext.astconversion.ast.ASTMapEntry;
+import org.eclipse.xtext.astconversion.ast.ASTMapEntryCustom;
 import org.eclipse.xtext.astconversion.ast.ASTOther;
 import org.eclipse.xtext.astconversion.ast.ASTProgram;
 import org.eclipse.xtext.astconversion.ast.ASTReference;
 import org.eclipse.xtext.astconversion.ast.ASTSequence;
+import org.eclipse.xtext.astconversion.ast.NodeList;
 import org.eclipse.xtext.astconversion.astConversionSimple.Entry;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.tests.AbstractXtextTests;
@@ -59,8 +63,8 @@ public class ASTConversionSimpleTest extends AbstractXtextTests {
 				toMap(new Object[][] { { "name", String.class }, { "content", Object.class } }));
 		assertSuperTypes(ASTOther.class, Object.class, ASTEntry.class);
 
-		assertClassFields(ASTProgram.class,
-				toMap(new Object[][] { { "entries", List.class }, { "sequence", List.class } }));
+		assertClassFields(ASTProgram.class, toMap(
+				new Object[][] { { "entries", List.class }, { "sequence", List.class }, { "list", ASTLists.class } }));
 		assertSuperTypes(ASTProgram.class, Object.class);
 
 		assertClassFields(ASTReference.class, toMap(new Object[][] { { "name", String.class } }));
@@ -81,11 +85,21 @@ public class ASTConversionSimpleTest extends AbstractXtextTests {
 		assertClassFields(ASTAddition.class, toMap(
 				new Object[][] { { "expressions", List.class }, { "left", String.class }, { "right", String.class } }));
 		assertSuperTypes(ASTAddition.class, ASTSequence.class);
+
+		assertClassFields(ASTLists.class, toMap(
+				new Object[][] { { "a", List.class }, { "b", NodeList.class }, { "c", List.class }, { "d", List.class } }));
+		assertSuperTypes(ASTLists.class, Object.class);
+		assertClassFields(ASTMapEntry.class, toMap(new Object[][] { { "x", String.class }, { "y", int.class } }));
+		assertSuperTypes(ASTMapEntry.class, Object.class);
+		assertClassFields(ASTMapEntryCustom.class,
+				toMap(new Object[][] { { "x", String.class }, { "y", String.class } }));
+		assertSuperTypes(ASTMapEntryCustom.class, Object.class);
 	}
 
 	private static final String programCorrect = "auto t1 x; manual t2 y; auto-explicit t3 z; custom t4 u;"
 			+ "custom-copy t5 v; other o auto t2 x; element x = add remove; element y remove = move;"
-			+ "sequence a + b; sequence u + v w + x;";
+			+ "sequence a + b; sequence u + v w + x;"
+			+ "[a, b]: 4; [c, d]: e; [f, g, h]: 4 [i]: 6; [j, k]: l [m, n, o]: p;";
 
 	@Test
 	public void testBasicASTConversion() throws Exception {
@@ -169,8 +183,43 @@ public class ASTConversionSimpleTest extends AbstractXtextTests {
 			assertEquals("w", b.left);
 			assertEquals("x", b.right);
 		}
+
 		assertEquals(i + 1, root.sequence.size());
 
+		ASTLists lists = root.list;
+		assertEquals(2, lists.a.size());
+		assertEquals("a", lists.a.get(0).x);
+		assertEquals(4, lists.a.get(0).y);
+		assertEquals("b", lists.a.get(1).x);
+		assertEquals(4, lists.a.get(1).y);
+
+		assertEquals(2, lists.b.size());
+		assertEquals("c", lists.b.get(0).x);
+		assertEquals("e", lists.b.get(0).y);
+		assertEquals("d", lists.b.get(1).x);
+		assertEquals("e", lists.b.get(1).y);
+
+		assertEquals(4, lists.c.size());
+		assertEquals("f", lists.c.get(0).x);
+		assertEquals(4, lists.c.get(0).y);
+		assertEquals("g", lists.c.get(1).x);
+		assertEquals(4, lists.c.get(1).y);
+		assertEquals("h", lists.c.get(2).x);
+		assertEquals(4, lists.c.get(2).y);
+		assertEquals("i", lists.c.get(3).x);
+		assertEquals(6, lists.c.get(3).y);
+
+		assertEquals(5, lists.d.size());
+		assertEquals("j", lists.d.get(0).x);
+		assertEquals("l", lists.d.get(0).y);
+		assertEquals("k", lists.d.get(1).x);
+		assertEquals("l", lists.d.get(1).y);
+		assertEquals("m", lists.d.get(2).x);
+		assertEquals("p", lists.d.get(2).y);
+		assertEquals("n", lists.d.get(3).x);
+		assertEquals("p", lists.d.get(3).y);
+		assertEquals("o", lists.d.get(4).x);
+		assertEquals("p", lists.d.get(4).y);
 	}
 
 	private void assertClassFields(Class<?> clazz, Map<String, Class<?>> expectedFields) {

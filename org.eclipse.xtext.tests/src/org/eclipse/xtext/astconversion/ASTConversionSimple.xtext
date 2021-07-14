@@ -4,7 +4,8 @@ generate astConversionSimple "http://www.xtext.org/example/ASTConversionSimple"
 
 Program becomes:
 	(entries+=Entry)+
-	(sequence+=Sequence)+;
+	(sequence+=Sequence)+
+	list=Lists;
 
 Entry becomes:
 	AutoClass | AutoExplicitClass | ManualClass | CustomASTClass | CustomCopyASTClass | Other | Element;
@@ -56,3 +57,26 @@ Sequence becomes: "sequence" Addition ( {Sequence.expressions+=current} expressi
 
 Addition becomes: 
 	left=ID '+' right=ID;
+
+// --------
+
+Lists becomes:
+	a=MapEntry ";"
+	b=MapEntryCustom ";"
+	(c+=MapEntry)+ ";"
+	(d+=MapEntryCustom)+ ";";
+
+
+MapEntry becomes[] (String x, int y) $$
+  for(String key: node.getKeys()){
+    this.add(new «ASTMapEntry»(key, node.getValue()));
+  }
+$$:
+  "[" keys+=ID ("," keys+=ID)* "]" ":" value=INT;
+
+MapEntryCustom becomes[«NodeList»<«ASTMapEntryCustom»>] (String x, String y) $$
+  for(String key: node.getKeys()){
+    this.add(new «ASTMapEntryCustom»(key, children.value.name));
+  }
+$$:
+  "[" keys+=ID ("," keys+=ID)* "]" ":" value=Reference;
