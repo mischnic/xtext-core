@@ -75,7 +75,6 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
           if (enabled) {
             objectClasses.put(((EClass) classifier), null);
             astClassNames.add(this._xtextGeneratorNaming.getASTClassName(classifier.getName()));
-            interfaceClasses.add(this._xtextGeneratorNaming.getASTClassName(classifier.getName()));
           }
         } else {
           if ((rule instanceof ParserRule)) {
@@ -162,12 +161,11 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
             }
           }
         }
-        final boolean isInterface = ((rule == null) || interfaceClasses.contains(astType.getSimpleName()));
+        final boolean isInterface = interfaceClasses.contains(astType.getSimpleName());
         final LinkedHashMap<String, Object> attributes = CollectionLiterals.<String, Object>newLinkedHashMap();
         if (isInterface) {
         } else {
-          boolean _isEmpty = becomes.getDescriptor().getAttributes().isEmpty();
-          if (_isEmpty) {
+          if (((rule == null) || becomes.getDescriptor().getAttributes().isEmpty())) {
             Set<Map.Entry<String, Object>> _entrySet_1 = structuralFeatures.entrySet();
             for (final Map.Entry<String, Object> e : _entrySet_1) {
               attributes.put(e.getKey(), e.getValue());
@@ -205,12 +203,12 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
                 superInterfaces.add(cAST);
               } else {
                 if (isInterface) {
-                  String _name_3 = rule.getName();
-                  String _plus_3 = ("The AST class for rule " + _name_3);
-                  String _plus_4 = (_plus_3 + 
-                    " is an interface but would need to extend the class: ");
                   String _simpleName = cAST.getSimpleName();
-                  String _plus_5 = (_plus_4 + _simpleName);
+                  String _plus_3 = ("The AST class " + _simpleName);
+                  String _plus_4 = (_plus_3 + 
+                    " is an interface but would need to extend the class ");
+                  String _simpleName_1 = cAST.getSimpleName();
+                  String _plus_5 = (_plus_4 + _simpleName_1);
                   throw new RuntimeException(_plus_5);
                 }
                 superClasses.add(cAST);

@@ -47,7 +47,6 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 				if (enabled) {
 					objectClasses.put(classifier as EClass, null)
 					astClassNames.add(classifier.name.ASTClassName)
-					interfaceClasses.add(classifier.name.ASTClassName)
 				}
 			} else if (rule instanceof ParserRule) {
 				if ((rule as ParserRule).becomes !== null &&
@@ -103,11 +102,11 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 			}
 
 			// unassigned rule calls or implicit classes become interfaces
-			val isInterface = rule === null || interfaceClasses.contains(astType.simpleName)
+			val isInterface = interfaceClasses.contains(astType.simpleName)
 			val attributes = newLinkedHashMap
 			if (isInterface) {
 				// no attributes
-			} else if (becomes.descriptor.attributes.empty) {
+			} else if (rule === null || becomes.descriptor.attributes.empty) {
 				// implicitly copy everything
 				for (e : structuralFeatures.entrySet) {
 					attributes.put(e.key, e.value)
@@ -137,8 +136,8 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 					} else {
 						if (isInterface) {
 							throw new RuntimeException(
-								"The AST class for rule " + rule.name +
-									" is an interface but would need to extend the class: " + cAST.simpleName);
+								"The AST class " + cAST.simpleName +
+									" is an interface but would need to extend the class " + cAST.simpleName);
 						}
 						superClasses.add(cAST)
 					}
