@@ -132,6 +132,24 @@ public interface AstConversionSimpleFactory extends EFactory
   Addition createAddition();
 
   /**
+   * Returns a new object of class '<em>Returns New X</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Returns New X</em>'.
+   * @generated
+   */
+  ReturnsNewX createReturnsNewX();
+
+  /**
+   * Returns a new object of class '<em>Action New</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Action New</em>'.
+   * @generated
+   */
+  ActionNew createActionNew();
+
+  /**
    * Returns a new object of class '<em>Lists</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -157,6 +175,15 @@ public interface AstConversionSimpleFactory extends EFactory
    * @generated
    */
   MapEntryCustom createMapEntryCustom();
+
+  /**
+   * Returns a new object of class '<em>Action New X</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Action New X</em>'.
+   * @generated
+   */
+  ActionNewX createActionNewX();
 
   /**
    * Returns the package supported by this factory.

@@ -12,6 +12,8 @@ import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.eclipse.xtext.astconversion.astConversionSimple.ActionNew;
+import org.eclipse.xtext.astconversion.astConversionSimple.ActionNewX;
 import org.eclipse.xtext.astconversion.astConversionSimple.Addition;
 import org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimpleFactory;
 import org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage;
@@ -29,6 +31,7 @@ import org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom;
 import org.eclipse.xtext.astconversion.astConversionSimple.Other;
 import org.eclipse.xtext.astconversion.astConversionSimple.Program;
 import org.eclipse.xtext.astconversion.astConversionSimple.Reference;
+import org.eclipse.xtext.astconversion.astConversionSimple.ReturnsNewX;
 import org.eclipse.xtext.astconversion.astConversionSimple.Sequence;
 
 /**
@@ -128,6 +131,20 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass returnsNewXEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass actionNewEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass listsEClass = null;
 
   /**
@@ -143,6 +160,13 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
    * @generated
    */
   private EClass mapEntryCustomEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass actionNewXEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -256,9 +280,31 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
    * @generated
    */
   @Override
-  public EReference getProgram_List()
+  public EReference getProgram_ReturnsNew()
   {
     return (EReference)programEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getProgram_ActionNew()
+  {
+    return (EReference)programEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getProgram_List()
+  {
+    return (EReference)programEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -531,6 +577,39 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
    * @generated
    */
   @Override
+  public EClass getReturnsNewX()
+  {
+    return returnsNewXEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getReturnsNewX_Value()
+  {
+    return (EAttribute)returnsNewXEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getActionNew()
+  {
+    return actionNewEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getLists()
   {
     return listsEClass;
@@ -652,6 +731,28 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
    * @generated
    */
   @Override
+  public EClass getActionNewX()
+  {
+    return actionNewXEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getActionNewX_Value()
+  {
+    return (EAttribute)actionNewXEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EEnum getChangeKind()
   {
     return changeKindEEnum;
@@ -691,6 +792,8 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
     programEClass = createEClass(PROGRAM);
     createEReference(programEClass, PROGRAM__ENTRIES);
     createEReference(programEClass, PROGRAM__SEQUENCE);
+    createEReference(programEClass, PROGRAM__RETURNS_NEW);
+    createEReference(programEClass, PROGRAM__ACTION_NEW);
     createEReference(programEClass, PROGRAM__LIST);
 
     entryEClass = createEClass(ENTRY);
@@ -728,6 +831,11 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
     createEAttribute(additionEClass, ADDITION__LEFT);
     createEAttribute(additionEClass, ADDITION__RIGHT);
 
+    returnsNewXEClass = createEClass(RETURNS_NEW_X);
+    createEAttribute(returnsNewXEClass, RETURNS_NEW_X__VALUE);
+
+    actionNewEClass = createEClass(ACTION_NEW);
+
     listsEClass = createEClass(LISTS);
     createEReference(listsEClass, LISTS__A);
     createEReference(listsEClass, LISTS__B);
@@ -741,6 +849,9 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
     mapEntryCustomEClass = createEClass(MAP_ENTRY_CUSTOM);
     createEAttribute(mapEntryCustomEClass, MAP_ENTRY_CUSTOM__KEYS);
     createEReference(mapEntryCustomEClass, MAP_ENTRY_CUSTOM__VALUE);
+
+    actionNewXEClass = createEClass(ACTION_NEW_X);
+    createEAttribute(actionNewXEClass, ACTION_NEW_X__VALUE);
 
     // Create enums
     changeKindEEnum = createEEnum(CHANGE_KIND);
@@ -786,11 +897,14 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
     otherEClass.getESuperTypes().add(this.getEntry());
     elementEClass.getESuperTypes().add(this.getEntry());
     additionEClass.getESuperTypes().add(this.getSequence());
+    actionNewXEClass.getESuperTypes().add(this.getActionNew());
 
     // Initialize classes and features; add operations and parameters
     initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getProgram_Entries(), this.getEntry(), null, "entries", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProgram_Sequence(), this.getSequence(), null, "sequence", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProgram_ReturnsNew(), this.getReturnsNewX(), null, "returnsNew", null, 0, 1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProgram_ActionNew(), this.getActionNew(), null, "actionNew", null, 0, 1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProgram_List(), this.getLists(), null, "list", null, 0, 1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(entryEClass, Entry.class, "Entry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -828,6 +942,11 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
     initEAttribute(getAddition_Left(), theEcorePackage.getEString(), "left", null, 0, 1, Addition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAddition_Right(), theEcorePackage.getEString(), "right", null, 0, 1, Addition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(returnsNewXEClass, ReturnsNewX.class, "ReturnsNewX", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getReturnsNewX_Value(), theEcorePackage.getEString(), "value", null, 0, 1, ReturnsNewX.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(actionNewEClass, ActionNew.class, "ActionNew", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
     initEClass(listsEClass, Lists.class, "Lists", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLists_A(), this.getMapEntry(), null, "a", null, 0, 1, Lists.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLists_B(), this.getMapEntryCustom(), null, "b", null, 0, 1, Lists.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -841,6 +960,9 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
     initEClass(mapEntryCustomEClass, MapEntryCustom.class, "MapEntryCustom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getMapEntryCustom_Keys(), theEcorePackage.getEString(), "keys", null, 0, -1, MapEntryCustom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMapEntryCustom_Value(), this.getReference(), null, "value", null, 0, 1, MapEntryCustom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(actionNewXEClass, ActionNewX.class, "ActionNewX", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getActionNewX_Value(), theEcorePackage.getEString(), "value", null, 0, 1, ActionNewX.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(changeKindEEnum, ChangeKind.class, "ChangeKind");

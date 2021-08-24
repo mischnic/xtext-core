@@ -136,6 +136,16 @@ public class AstConversionSimpleAdapterFactory extends AdapterFactoryImpl
         return createAdditionAdapter();
       }
       @Override
+      public Adapter caseReturnsNewX(ReturnsNewX object)
+      {
+        return createReturnsNewXAdapter();
+      }
+      @Override
+      public Adapter caseActionNew(ActionNew object)
+      {
+        return createActionNewAdapter();
+      }
+      @Override
       public Adapter caseLists(Lists object)
       {
         return createListsAdapter();
@@ -149,6 +159,11 @@ public class AstConversionSimpleAdapterFactory extends AdapterFactoryImpl
       public Adapter caseMapEntryCustom(MapEntryCustom object)
       {
         return createMapEntryCustomAdapter();
+      }
+      @Override
+      public Adapter caseActionNewX(ActionNewX object)
+      {
+        return createActionNewXAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -353,6 +368,36 @@ public class AstConversionSimpleAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.astconversion.astConversionSimple.ReturnsNewX <em>Returns New X</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.ReturnsNewX
+   * @generated
+   */
+  public Adapter createReturnsNewXAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.astconversion.astConversionSimple.ActionNew <em>Action New</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.ActionNew
+   * @generated
+   */
+  public Adapter createActionNewAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Lists <em>Lists</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -393,6 +438,21 @@ public class AstConversionSimpleAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMapEntryCustomAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.astconversion.astConversionSimple.ActionNewX <em>Action New X</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.ActionNewX
+   * @generated
+   */
+  public Adapter createActionNewXAdapter()
   {
     return null;
   }

@@ -87,13 +87,31 @@ public interface AstConversionSimplePackage extends EPackage
   int PROGRAM__SEQUENCE = 1;
 
   /**
+   * The feature id for the '<em><b>Returns New</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROGRAM__RETURNS_NEW = 2;
+
+  /**
+   * The feature id for the '<em><b>Action New</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROGRAM__ACTION_NEW = 3;
+
+  /**
    * The feature id for the '<em><b>List</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROGRAM__LIST = 2;
+  int PROGRAM__LIST = 4;
 
   /**
    * The number of structural features of the '<em>Program</em>' class.
@@ -102,7 +120,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROGRAM_FEATURE_COUNT = 3;
+  int PROGRAM_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.EntryImpl <em>Entry</em>}' class.
@@ -503,6 +521,53 @@ public interface AstConversionSimplePackage extends EPackage
   int ADDITION_FEATURE_COUNT = SEQUENCE_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ReturnsNewXImpl <em>Returns New X</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.ReturnsNewXImpl
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getReturnsNewX()
+   * @generated
+   */
+  int RETURNS_NEW_X = 12;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RETURNS_NEW_X__VALUE = 0;
+
+  /**
+   * The number of structural features of the '<em>Returns New X</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RETURNS_NEW_X_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ActionNewImpl <em>Action New</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.ActionNewImpl
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getActionNew()
+   * @generated
+   */
+  int ACTION_NEW = 13;
+
+  /**
+   * The number of structural features of the '<em>Action New</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION_NEW_FEATURE_COUNT = 0;
+
+  /**
    * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ListsImpl <em>Lists</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -510,7 +575,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getLists()
    * @generated
    */
-  int LISTS = 12;
+  int LISTS = 14;
 
   /**
    * The feature id for the '<em><b>A</b></em>' containment reference.
@@ -565,7 +630,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getMapEntry()
    * @generated
    */
-  int MAP_ENTRY = 13;
+  int MAP_ENTRY = 15;
 
   /**
    * The feature id for the '<em><b>Keys</b></em>' attribute list.
@@ -602,7 +667,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getMapEntryCustom()
    * @generated
    */
-  int MAP_ENTRY_CUSTOM = 14;
+  int MAP_ENTRY_CUSTOM = 16;
 
   /**
    * The feature id for the '<em><b>Keys</b></em>' attribute list.
@@ -632,6 +697,34 @@ public interface AstConversionSimplePackage extends EPackage
   int MAP_ENTRY_CUSTOM_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ActionNewXImpl <em>Action New X</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.ActionNewXImpl
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getActionNewX()
+   * @generated
+   */
+  int ACTION_NEW_X = 17;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION_NEW_X__VALUE = ACTION_NEW_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Action New X</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION_NEW_X_FEATURE_COUNT = ACTION_NEW_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.ChangeKind <em>Change Kind</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -639,7 +732,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getChangeKind()
    * @generated
    */
-  int CHANGE_KIND = 15;
+  int CHANGE_KIND = 18;
 
 
   /**
@@ -673,6 +766,28 @@ public interface AstConversionSimplePackage extends EPackage
    * @generated
    */
   EReference getProgram_Sequence();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getReturnsNew <em>Returns New</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Returns New</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Program#getReturnsNew()
+   * @see #getProgram()
+   * @generated
+   */
+  EReference getProgram_ReturnsNew();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getActionNew <em>Action New</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Action New</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Program#getActionNew()
+   * @see #getProgram()
+   * @generated
+   */
+  EReference getProgram_ActionNew();
 
   /**
    * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getList <em>List</em>}'.
@@ -939,6 +1054,37 @@ public interface AstConversionSimplePackage extends EPackage
   EAttribute getAddition_Right();
 
   /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.ReturnsNewX <em>Returns New X</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Returns New X</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.ReturnsNewX
+   * @generated
+   */
+  EClass getReturnsNewX();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.xtext.astconversion.astConversionSimple.ReturnsNewX#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.ReturnsNewX#getValue()
+   * @see #getReturnsNewX()
+   * @generated
+   */
+  EAttribute getReturnsNewX_Value();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.ActionNew <em>Action New</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Action New</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.ActionNew
+   * @generated
+   */
+  EClass getActionNew();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Lists <em>Lists</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1057,6 +1203,27 @@ public interface AstConversionSimplePackage extends EPackage
   EReference getMapEntryCustom_Value();
 
   /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.ActionNewX <em>Action New X</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Action New X</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.ActionNewX
+   * @generated
+   */
+  EClass getActionNewX();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.xtext.astconversion.astConversionSimple.ActionNewX#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.ActionNewX#getValue()
+   * @see #getActionNewX()
+   * @generated
+   */
+  EAttribute getActionNewX_Value();
+
+  /**
    * Returns the meta object for enum '{@link org.eclipse.xtext.astconversion.astConversionSimple.ChangeKind <em>Change Kind</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1114,6 +1281,22 @@ public interface AstConversionSimplePackage extends EPackage
      * @generated
      */
     EReference PROGRAM__SEQUENCE = eINSTANCE.getProgram_Sequence();
+
+    /**
+     * The meta object literal for the '<em><b>Returns New</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROGRAM__RETURNS_NEW = eINSTANCE.getProgram_ReturnsNew();
+
+    /**
+     * The meta object literal for the '<em><b>Action New</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROGRAM__ACTION_NEW = eINSTANCE.getProgram_ActionNew();
 
     /**
      * The meta object literal for the '<em><b>List</b></em>' containment reference feature.
@@ -1338,6 +1521,34 @@ public interface AstConversionSimplePackage extends EPackage
     EAttribute ADDITION__RIGHT = eINSTANCE.getAddition_Right();
 
     /**
+     * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ReturnsNewXImpl <em>Returns New X</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.ReturnsNewXImpl
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getReturnsNewX()
+     * @generated
+     */
+    EClass RETURNS_NEW_X = eINSTANCE.getReturnsNewX();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute RETURNS_NEW_X__VALUE = eINSTANCE.getReturnsNewX_Value();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ActionNewImpl <em>Action New</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.ActionNewImpl
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getActionNew()
+     * @generated
+     */
+    EClass ACTION_NEW = eINSTANCE.getActionNew();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ListsImpl <em>Lists</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1430,6 +1641,24 @@ public interface AstConversionSimplePackage extends EPackage
      * @generated
      */
     EReference MAP_ENTRY_CUSTOM__VALUE = eINSTANCE.getMapEntryCustom_Value();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ActionNewXImpl <em>Action New X</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.ActionNewXImpl
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getActionNewX()
+     * @generated
+     */
+    EClass ACTION_NEW_X = eINSTANCE.getActionNewX();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ACTION_NEW_X__VALUE = eINSTANCE.getActionNewX_Value();
 
     /**
      * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.ChangeKind <em>Change Kind</em>}' enum.

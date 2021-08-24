@@ -6,13 +6,17 @@ package org.eclipse.xtext.astconversion.ast;
 
 public class ASTProgram {
 	public ASTProgram(){}
-	public ASTProgram(java.util.List<org.eclipse.xtext.astconversion.ast.ASTSequence> sequence, java.util.List<org.eclipse.xtext.astconversion.ast.ASTEntry> entries, ASTLists list){
+	public ASTProgram(java.util.List<org.eclipse.xtext.astconversion.ast.ASTSequence> sequence, java.util.List<org.eclipse.xtext.astconversion.ast.ASTEntry> entries, ASTActionNew actionNew, ASTReturnsNewX returnsNew, ASTLists list){
 		this.sequence = sequence;
 		this.entries = entries;
+		this.actionNew = actionNew;
+		this.returnsNew = returnsNew;
 		this.list = list;
 	}
 	
 	public java.util.List<org.eclipse.xtext.astconversion.ast.ASTSequence> sequence;
 	public java.util.List<org.eclipse.xtext.astconversion.ast.ASTEntry> entries;
+	public ASTActionNew actionNew;
+	public ASTReturnsNewX returnsNew;
 	public ASTLists list;
 }

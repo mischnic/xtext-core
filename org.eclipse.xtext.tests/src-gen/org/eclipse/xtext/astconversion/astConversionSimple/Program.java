@@ -18,6 +18,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getEntries <em>Entries</em>}</li>
  *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getSequence <em>Sequence</em>}</li>
+ *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getReturnsNew <em>Returns New</em>}</li>
+ *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getActionNew <em>Action New</em>}</li>
  *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getList <em>List</em>}</li>
  * </ul>
  *
@@ -50,6 +52,50 @@ public interface Program extends EObject
    * @generated
    */
   EList<Sequence> getSequence();
+
+  /**
+   * Returns the value of the '<em><b>Returns New</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Returns New</em>' containment reference.
+   * @see #setReturnsNew(ReturnsNewX)
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage#getProgram_ReturnsNew()
+   * @model containment="true"
+   * @generated
+   */
+  ReturnsNewX getReturnsNew();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getReturnsNew <em>Returns New</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Returns New</em>' containment reference.
+   * @see #getReturnsNew()
+   * @generated
+   */
+  void setReturnsNew(ReturnsNewX value);
+
+  /**
+   * Returns the value of the '<em><b>Action New</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Action New</em>' containment reference.
+   * @see #setActionNew(ActionNew)
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage#getProgram_ActionNew()
+   * @model containment="true"
+   * @generated
+   */
+  ActionNew getActionNew();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getActionNew <em>Action New</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Action New</em>' containment reference.
+   * @see #getActionNew()
+   * @generated
+   */
+  void setActionNew(ActionNew value);
 
   /**
    * Returns the value of the '<em><b>List</b></em>' containment reference.

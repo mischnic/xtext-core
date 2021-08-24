@@ -32,16 +32,22 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 		private final RuleCall cEntriesEntryParserRuleCall_0_0 = (RuleCall)cEntriesAssignment_0.eContents().get(0);
 		private final Assignment cSequenceAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cSequenceSequenceParserRuleCall_1_0 = (RuleCall)cSequenceAssignment_1.eContents().get(0);
-		private final Assignment cListAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cListListsParserRuleCall_2_0 = (RuleCall)cListAssignment_2.eContents().get(0);
+		private final Assignment cReturnsNewAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cReturnsNewReturnsNewParserRuleCall_2_0 = (RuleCall)cReturnsNewAssignment_2.eContents().get(0);
+		private final Assignment cActionNewAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cActionNewActionNewParserRuleCall_3_0 = (RuleCall)cActionNewAssignment_3.eContents().get(0);
+		private final Assignment cListAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cListListsParserRuleCall_4_0 = (RuleCall)cListAssignment_4.eContents().get(0);
 		
 		//Program becomes:
 		//	entries+=Entry+
 		//	sequence+=Sequence+
+		//	returnsNew=ReturnsNew
+		//	actionNew=ActionNew
 		//	list=Lists;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//entries+=Entry+ sequence+=Sequence+ list=Lists
+		//entries+=Entry+ sequence+=Sequence+ returnsNew=ReturnsNew actionNew=ActionNew list=Lists
 		public Group getGroup() { return cGroup; }
 		
 		//entries+=Entry+
@@ -56,11 +62,23 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 		//Sequence
 		public RuleCall getSequenceSequenceParserRuleCall_1_0() { return cSequenceSequenceParserRuleCall_1_0; }
 		
+		//returnsNew=ReturnsNew
+		public Assignment getReturnsNewAssignment_2() { return cReturnsNewAssignment_2; }
+		
+		//ReturnsNew
+		public RuleCall getReturnsNewReturnsNewParserRuleCall_2_0() { return cReturnsNewReturnsNewParserRuleCall_2_0; }
+		
+		//actionNew=ActionNew
+		public Assignment getActionNewAssignment_3() { return cActionNewAssignment_3; }
+		
+		//ActionNew
+		public RuleCall getActionNewActionNewParserRuleCall_3_0() { return cActionNewActionNewParserRuleCall_3_0; }
+		
 		//list=Lists
-		public Assignment getListAssignment_2() { return cListAssignment_2; }
+		public Assignment getListAssignment_4() { return cListAssignment_4; }
 		
 		//Lists
-		public RuleCall getListListsParserRuleCall_2_0() { return cListListsParserRuleCall_2_0; }
+		public RuleCall getListListsParserRuleCall_4_0() { return cListListsParserRuleCall_4_0; }
 	}
 	public class EntryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.Entry");
@@ -458,6 +476,64 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 		//ID
 		public RuleCall getRightIDTerminalRuleCall_2_0() { return cRightIDTerminalRuleCall_2_0; }
 	}
+	public class ReturnsNewElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.ReturnsNew");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cReturnsNewKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cValueIDTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		//ReturnsNew returns ReturnsNewX becomes:
+		//	'returns-new' value=ID ';';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'returns-new' value=ID ';'
+		public Group getGroup() { return cGroup; }
+		
+		//'returns-new'
+		public Keyword getReturnsNewKeyword_0() { return cReturnsNewKeyword_0; }
+		
+		//value=ID
+		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+		
+		//ID
+		public RuleCall getValueIDTerminalRuleCall_1_0() { return cValueIDTerminalRuleCall_1_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
+	}
+	public class ActionNewElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.ActionNew");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cActionNewXAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cActionNewKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValueIDTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
+		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//ActionNew becomes:
+		//	{ActionNewX} 'action-new' value=ID ';';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{ActionNewX} 'action-new' value=ID ';'
+		public Group getGroup() { return cGroup; }
+		
+		//{ActionNewX}
+		public Action getActionNewXAction_0() { return cActionNewXAction_0; }
+		
+		//'action-new'
+		public Keyword getActionNewKeyword_1() { return cActionNewKeyword_1; }
+		
+		//value=ID
+		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
+		
+		//ID
+		public RuleCall getValueIDTerminalRuleCall_2_0() { return cValueIDTerminalRuleCall_2_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
+	}
 	public class ListsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.Lists");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -690,6 +766,8 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 	private final ChangeKindElements eChangeKind;
 	private final SequenceElements pSequence;
 	private final AdditionElements pAddition;
+	private final ReturnsNewElements pReturnsNew;
+	private final ActionNewElements pActionNew;
 	private final ListsElements pLists;
 	private final MapEntryElements pMapEntry;
 	private final MapEntryCustomElements pMapEntryCustom;
@@ -697,39 +775,12 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 	public static class ASTConversion {
 		public ASTConversion() {}
 		
-		public static class CustomASTClassChildren {
-			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
+		public static class ReturnsNewXChildren {
 		}
-		public Object convertCustomASTClass(org.eclipse.xtext.astconversion.astConversionSimple.CustomASTClass node, CustomASTClassChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTCustomClass() {
-				org.eclipse.xtext.astconversion.ast.ASTCustomClass XTEXT_INIT() {
-						this.type = children.ref.name;
-						this.name = node.getName();
-					return this;
-				}
-			}.XTEXT_INIT();
-		}
-		public static class CustomCopyASTClassChildren {
-			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
-		}
-		public Object convertCustomCopyASTClass(org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass node, CustomCopyASTClassChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTCustomClass() {
-				org.eclipse.xtext.astconversion.ast.ASTCustomClass XTEXT_INIT() {
-					this.name = node.getName();
-						this.type = children.ref.name;
-					return this;
-				}
-			}.XTEXT_INIT();
-		}
-		public static class AdditionChildren {
-			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTSequence> expressions;
-		}
-		public Object convertAddition(org.eclipse.xtext.astconversion.astConversionSimple.Addition node, AdditionChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTAddition() {
-				org.eclipse.xtext.astconversion.ast.ASTAddition XTEXT_INIT() {
-					this.expressions = children.expressions;
-					this.left = node.getLeft();
-					this.right = node.getRight();
+		public Object convertReturnsNewX(org.eclipse.xtext.astconversion.astConversionSimple.ReturnsNewX node, ReturnsNewXChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTReturnsNewX() {
+				org.eclipse.xtext.astconversion.ast.ASTReturnsNewX XTEXT_INIT() {
+					this.value = node.getValue();
 					return this;
 				}
 			}.XTEXT_INIT();
@@ -751,40 +802,66 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 				}
 			}.XTEXT_INIT();
 		}
-		public static class MapEntryChildren {
+		public static class ActionNewXChildren {
 		}
-		public Object convertMapEntry(org.eclipse.xtext.astconversion.astConversionSimple.MapEntry node, MapEntryChildren children){
-			return new java.util.ArrayList<org.eclipse.xtext.astconversion.ast.ASTMapEntry>() {
-				private static final long serialVersionUID = 0;
-					java.util.ArrayList<org.eclipse.xtext.astconversion.ast.ASTMapEntry> XTEXT_INIT() {
-					  for(String key: node.getKeys()){
-					    this.add(new org.eclipse.xtext.astconversion.ast.ASTMapEntry(key, node.getValue()));
-					  }
+		public Object convertActionNewX(org.eclipse.xtext.astconversion.astConversionSimple.ActionNewX node, ActionNewXChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTActionNewX() {
+				org.eclipse.xtext.astconversion.ast.ASTActionNewX XTEXT_INIT() {
+					this.value = node.getValue();
 					return this;
 				}
 			}.XTEXT_INIT();
 		}
-		public static class ProgramChildren {
-			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTEntry> entries;
-			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTSequence> sequence;
-			public org.eclipse.xtext.astconversion.ast.ASTLists list;
-		}
-		public Object convertProgram(org.eclipse.xtext.astconversion.astConversionSimple.Program node, ProgramChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTProgram() {
-				org.eclipse.xtext.astconversion.ast.ASTProgram XTEXT_INIT() {
-					this.entries = children.entries;
-					this.sequence = children.sequence;
-					this.list = children.list;
-					return this;
-				}
-			}.XTEXT_INIT();
-		}
-		public static class AutoExplicitClassChildren {
+		public static class AutoClassChildren {
 			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
 		}
-		public Object convertAutoExplicitClass(org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass node, AutoExplicitClassChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTAutoExplicitClass() {
-				org.eclipse.xtext.astconversion.ast.ASTAutoExplicitClass XTEXT_INIT() {
+		public Object convertAutoClass(org.eclipse.xtext.astconversion.astConversionSimple.AutoClass node, AutoClassChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTAutoClass() {
+				org.eclipse.xtext.astconversion.ast.ASTAutoClass XTEXT_INIT() {
+					this.name = node.getName();
+					this.ref = children.ref;
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class CustomASTClassChildren {
+			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
+		}
+		public Object convertCustomASTClass(org.eclipse.xtext.astconversion.astConversionSimple.CustomASTClass node, CustomASTClassChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTCustomClass() {
+				org.eclipse.xtext.astconversion.ast.ASTCustomClass XTEXT_INIT() {
+						this.type = children.ref.name;
+						this.name = node.getName();
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class ActionNewChildren {
+		}
+		public Object convertActionNew(org.eclipse.xtext.astconversion.astConversionSimple.ActionNew node, ActionNewChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTActionNew() {
+				org.eclipse.xtext.astconversion.ast.ASTActionNew XTEXT_INIT() {
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class CustomCopyASTClassChildren {
+			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
+		}
+		public Object convertCustomCopyASTClass(org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass node, CustomCopyASTClassChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTCustomClass() {
+				org.eclipse.xtext.astconversion.ast.ASTCustomClass XTEXT_INIT() {
+					this.name = node.getName();
+						this.type = children.ref.name;
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class ReferenceChildren {
+		}
+		public Object convertReference(org.eclipse.xtext.astconversion.astConversionSimple.Reference node, ReferenceChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTReference() {
+				org.eclipse.xtext.astconversion.ast.ASTReference XTEXT_INIT() {
 					this.name = node.getName();
 					return this;
 				}
@@ -798,29 +875,6 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 					this.name = node.getName();
 					this.type = org.eclipse.xtext.astconversion.ast.ASTChangeKind.valueOf(node.getType().name());
 					this.value = node.getValue().stream().map(e -> org.eclipse.xtext.astconversion.ast.ASTChangeKind.valueOf(e.name())).collect(java.util.stream.Collectors.toList());
-					return this;
-				}
-			}.XTEXT_INIT();
-		}
-		public static class SequenceChildren {
-			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTSequence> expressions;
-		}
-		public Object convertSequence(org.eclipse.xtext.astconversion.astConversionSimple.Sequence node, SequenceChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTSequence() {
-				org.eclipse.xtext.astconversion.ast.ASTSequence XTEXT_INIT() {
-					this.expressions = children.expressions;
-					return this;
-				}
-			}.XTEXT_INIT();
-		}
-		public static class ManualClassChildren {
-			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
-		}
-		public Object convertManualClass(org.eclipse.xtext.astconversion.astConversionSimple.ManualClass node, ManualClassChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTManualClass() {
-				org.eclipse.xtext.astconversion.ast.ASTManualClass XTEXT_INIT() {
-						this.ref = children.ref;
-						this.value = node.getName();
 					return this;
 				}
 			}.XTEXT_INIT();
@@ -839,6 +893,63 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 				}
 			}.XTEXT_INIT();
 		}
+		public static class ManualClassChildren {
+			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
+		}
+		public Object convertManualClass(org.eclipse.xtext.astconversion.astConversionSimple.ManualClass node, ManualClassChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTManualClass() {
+				org.eclipse.xtext.astconversion.ast.ASTManualClass XTEXT_INIT() {
+						this.ref = children.ref;
+						this.value = node.getName();
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class AdditionChildren {
+			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTSequence> expressions;
+		}
+		public Object convertAddition(org.eclipse.xtext.astconversion.astConversionSimple.Addition node, AdditionChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTAddition() {
+				org.eclipse.xtext.astconversion.ast.ASTAddition XTEXT_INIT() {
+					this.expressions = children.expressions;
+					this.left = node.getLeft();
+					this.right = node.getRight();
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class ProgramChildren {
+			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTEntry> entries;
+			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTSequence> sequence;
+			public org.eclipse.xtext.astconversion.ast.ASTReturnsNewX returnsNew;
+			public org.eclipse.xtext.astconversion.ast.ASTActionNew actionNew;
+			public org.eclipse.xtext.astconversion.ast.ASTLists list;
+		}
+		public Object convertProgram(org.eclipse.xtext.astconversion.astConversionSimple.Program node, ProgramChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTProgram() {
+				org.eclipse.xtext.astconversion.ast.ASTProgram XTEXT_INIT() {
+					this.entries = children.entries;
+					this.sequence = children.sequence;
+					this.returnsNew = children.returnsNew;
+					this.actionNew = children.actionNew;
+					this.list = children.list;
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class MapEntryChildren {
+		}
+		public Object convertMapEntry(org.eclipse.xtext.astconversion.astConversionSimple.MapEntry node, MapEntryChildren children){
+			return new java.util.ArrayList<org.eclipse.xtext.astconversion.ast.ASTMapEntry>() {
+				private static final long serialVersionUID = 0;
+					java.util.ArrayList<org.eclipse.xtext.astconversion.ast.ASTMapEntry> XTEXT_INIT() {
+					  for(String key: node.getKeys()){
+					    this.add(new org.eclipse.xtext.astconversion.ast.ASTMapEntry(key, node.getValue()));
+					  }
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
 		public static class OtherChildren {
 			public java.lang.Object content;
 		}
@@ -851,23 +962,23 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 				}
 			}.XTEXT_INIT();
 		}
-		public static class AutoClassChildren {
-			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
+		public static class SequenceChildren {
+			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTSequence> expressions;
 		}
-		public Object convertAutoClass(org.eclipse.xtext.astconversion.astConversionSimple.AutoClass node, AutoClassChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTAutoClass() {
-				org.eclipse.xtext.astconversion.ast.ASTAutoClass XTEXT_INIT() {
-					this.name = node.getName();
-					this.ref = children.ref;
+		public Object convertSequence(org.eclipse.xtext.astconversion.astConversionSimple.Sequence node, SequenceChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTSequence() {
+				org.eclipse.xtext.astconversion.ast.ASTSequence XTEXT_INIT() {
+					this.expressions = children.expressions;
 					return this;
 				}
 			}.XTEXT_INIT();
 		}
-		public static class ReferenceChildren {
+		public static class AutoExplicitClassChildren {
+			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
 		}
-		public Object convertReference(org.eclipse.xtext.astconversion.astConversionSimple.Reference node, ReferenceChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTReference() {
-				org.eclipse.xtext.astconversion.ast.ASTReference XTEXT_INIT() {
+		public Object convertAutoExplicitClass(org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass node, AutoExplicitClassChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTAutoExplicitClass() {
+				org.eclipse.xtext.astconversion.ast.ASTAutoExplicitClass XTEXT_INIT() {
 					this.name = node.getName();
 					return this;
 				}
@@ -899,6 +1010,8 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 		this.eChangeKind = new ChangeKindElements();
 		this.pSequence = new SequenceElements();
 		this.pAddition = new AdditionElements();
+		this.pReturnsNew = new ReturnsNewElements();
+		this.pActionNew = new ActionNewElements();
 		this.pLists = new ListsElements();
 		this.pMapEntry = new MapEntryElements();
 		this.pMapEntryCustom = new MapEntryCustomElements();
@@ -939,6 +1052,8 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 	//Program becomes:
 	//	entries+=Entry+
 	//	sequence+=Sequence+
+	//	returnsNew=ReturnsNew
+	//	actionNew=ActionNew
 	//	list=Lists;
 	public ProgramElements getProgramAccess() {
 		return pProgram;
@@ -1078,6 +1193,26 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 	
 	public ParserRule getAdditionRule() {
 		return getAdditionAccess().getRule();
+	}
+	
+	//ReturnsNew returns ReturnsNewX becomes:
+	//	'returns-new' value=ID ';';
+	public ReturnsNewElements getReturnsNewAccess() {
+		return pReturnsNew;
+	}
+	
+	public ParserRule getReturnsNewRule() {
+		return getReturnsNewAccess().getRule();
+	}
+	
+	//ActionNew becomes:
+	//	{ActionNewX} 'action-new' value=ID ';';
+	public ActionNewElements getActionNewAccess() {
+		return pActionNew;
+	}
+	
+	public ParserRule getActionNewRule() {
+		return getActionNewAccess().getRule();
 	}
 	
 	//// --------

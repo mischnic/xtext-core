@@ -19,10 +19,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.xtext.astconversion.astConversionSimple.ActionNew;
 import org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage;
 import org.eclipse.xtext.astconversion.astConversionSimple.Entry;
 import org.eclipse.xtext.astconversion.astConversionSimple.Lists;
 import org.eclipse.xtext.astconversion.astConversionSimple.Program;
+import org.eclipse.xtext.astconversion.astConversionSimple.ReturnsNewX;
 import org.eclipse.xtext.astconversion.astConversionSimple.Sequence;
 
 /**
@@ -35,6 +37,8 @@ import org.eclipse.xtext.astconversion.astConversionSimple.Sequence;
  * <ul>
  *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ProgramImpl#getEntries <em>Entries</em>}</li>
  *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ProgramImpl#getSequence <em>Sequence</em>}</li>
+ *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ProgramImpl#getReturnsNew <em>Returns New</em>}</li>
+ *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ProgramImpl#getActionNew <em>Action New</em>}</li>
  *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ProgramImpl#getList <em>List</em>}</li>
  * </ul>
  *
@@ -61,6 +65,26 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * @ordered
    */
   protected EList<Sequence> sequence;
+
+  /**
+   * The cached value of the '{@link #getReturnsNew() <em>Returns New</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReturnsNew()
+   * @generated
+   * @ordered
+   */
+  protected ReturnsNewX returnsNew;
+
+  /**
+   * The cached value of the '{@link #getActionNew() <em>Action New</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getActionNew()
+   * @generated
+   * @ordered
+   */
+  protected ActionNew actionNew;
 
   /**
    * The cached value of the '{@link #getList() <em>List</em>}' containment reference.
@@ -129,6 +153,106 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * @generated
    */
   @Override
+  public ReturnsNewX getReturnsNew()
+  {
+    return returnsNew;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetReturnsNew(ReturnsNewX newReturnsNew, NotificationChain msgs)
+  {
+    ReturnsNewX oldReturnsNew = returnsNew;
+    returnsNew = newReturnsNew;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.PROGRAM__RETURNS_NEW, oldReturnsNew, newReturnsNew);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setReturnsNew(ReturnsNewX newReturnsNew)
+  {
+    if (newReturnsNew != returnsNew)
+    {
+      NotificationChain msgs = null;
+      if (returnsNew != null)
+        msgs = ((InternalEObject)returnsNew).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.PROGRAM__RETURNS_NEW, null, msgs);
+      if (newReturnsNew != null)
+        msgs = ((InternalEObject)newReturnsNew).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.PROGRAM__RETURNS_NEW, null, msgs);
+      msgs = basicSetReturnsNew(newReturnsNew, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.PROGRAM__RETURNS_NEW, newReturnsNew, newReturnsNew));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ActionNew getActionNew()
+  {
+    return actionNew;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetActionNew(ActionNew newActionNew, NotificationChain msgs)
+  {
+    ActionNew oldActionNew = actionNew;
+    actionNew = newActionNew;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.PROGRAM__ACTION_NEW, oldActionNew, newActionNew);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setActionNew(ActionNew newActionNew)
+  {
+    if (newActionNew != actionNew)
+    {
+      NotificationChain msgs = null;
+      if (actionNew != null)
+        msgs = ((InternalEObject)actionNew).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.PROGRAM__ACTION_NEW, null, msgs);
+      if (newActionNew != null)
+        msgs = ((InternalEObject)newActionNew).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.PROGRAM__ACTION_NEW, null, msgs);
+      msgs = basicSetActionNew(newActionNew, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.PROGRAM__ACTION_NEW, newActionNew, newActionNew));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Lists getList()
   {
     return list;
@@ -187,6 +311,10 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
         return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
       case AstConversionSimplePackage.PROGRAM__SEQUENCE:
         return ((InternalEList<?>)getSequence()).basicRemove(otherEnd, msgs);
+      case AstConversionSimplePackage.PROGRAM__RETURNS_NEW:
+        return basicSetReturnsNew(null, msgs);
+      case AstConversionSimplePackage.PROGRAM__ACTION_NEW:
+        return basicSetActionNew(null, msgs);
       case AstConversionSimplePackage.PROGRAM__LIST:
         return basicSetList(null, msgs);
     }
@@ -207,6 +335,10 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
         return getEntries();
       case AstConversionSimplePackage.PROGRAM__SEQUENCE:
         return getSequence();
+      case AstConversionSimplePackage.PROGRAM__RETURNS_NEW:
+        return getReturnsNew();
+      case AstConversionSimplePackage.PROGRAM__ACTION_NEW:
+        return getActionNew();
       case AstConversionSimplePackage.PROGRAM__LIST:
         return getList();
     }
@@ -232,6 +364,12 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
         getSequence().clear();
         getSequence().addAll((Collection<? extends Sequence>)newValue);
         return;
+      case AstConversionSimplePackage.PROGRAM__RETURNS_NEW:
+        setReturnsNew((ReturnsNewX)newValue);
+        return;
+      case AstConversionSimplePackage.PROGRAM__ACTION_NEW:
+        setActionNew((ActionNew)newValue);
+        return;
       case AstConversionSimplePackage.PROGRAM__LIST:
         setList((Lists)newValue);
         return;
@@ -255,6 +393,12 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
       case AstConversionSimplePackage.PROGRAM__SEQUENCE:
         getSequence().clear();
         return;
+      case AstConversionSimplePackage.PROGRAM__RETURNS_NEW:
+        setReturnsNew((ReturnsNewX)null);
+        return;
+      case AstConversionSimplePackage.PROGRAM__ACTION_NEW:
+        setActionNew((ActionNew)null);
+        return;
       case AstConversionSimplePackage.PROGRAM__LIST:
         setList((Lists)null);
         return;
@@ -276,6 +420,10 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
         return entries != null && !entries.isEmpty();
       case AstConversionSimplePackage.PROGRAM__SEQUENCE:
         return sequence != null && !sequence.isEmpty();
+      case AstConversionSimplePackage.PROGRAM__RETURNS_NEW:
+        return returnsNew != null;
+      case AstConversionSimplePackage.PROGRAM__ACTION_NEW:
+        return actionNew != null;
       case AstConversionSimplePackage.PROGRAM__LIST:
         return list != null;
     }

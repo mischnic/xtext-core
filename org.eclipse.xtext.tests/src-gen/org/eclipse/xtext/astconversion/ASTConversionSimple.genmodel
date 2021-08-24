@@ -14,6 +14,8 @@
     <genClasses ecoreClass="ASTConversionSimple.ecore#//Program">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Program/entries"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Program/sequence"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Program/returnsNew"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Program/actionNew"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Program/list"/>
     </genClasses>
     <genClasses ecoreClass="ASTConversionSimple.ecore#//Entry">
@@ -51,6 +53,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//Addition/left"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//Addition/right"/>
     </genClasses>
+    <genClasses ecoreClass="ASTConversionSimple.ecore#//ReturnsNewX">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//ReturnsNewX/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ASTConversionSimple.ecore#//ActionNew"/>
     <genClasses ecoreClass="ASTConversionSimple.ecore#//Lists">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Lists/a"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Lists/b"/>
@@ -64,6 +70,9 @@
     <genClasses ecoreClass="ASTConversionSimple.ecore#//MapEntryCustom">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//MapEntryCustom/keys"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//MapEntryCustom/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ASTConversionSimple.ecore#//ActionNewX">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//ActionNewX/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -165,6 +165,20 @@ public class AstConversionSimpleSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case AstConversionSimplePackage.RETURNS_NEW_X:
+      {
+        ReturnsNewX returnsNewX = (ReturnsNewX)theEObject;
+        T result = caseReturnsNewX(returnsNewX);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AstConversionSimplePackage.ACTION_NEW:
+      {
+        ActionNew actionNew = (ActionNew)theEObject;
+        T result = caseActionNew(actionNew);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case AstConversionSimplePackage.LISTS:
       {
         Lists lists = (Lists)theEObject;
@@ -183,6 +197,14 @@ public class AstConversionSimpleSwitch<T> extends Switch<T>
       {
         MapEntryCustom mapEntryCustom = (MapEntryCustom)theEObject;
         T result = caseMapEntryCustom(mapEntryCustom);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AstConversionSimplePackage.ACTION_NEW_X:
+      {
+        ActionNewX actionNewX = (ActionNewX)theEObject;
+        T result = caseActionNewX(actionNewX);
+        if (result == null) result = caseActionNew(actionNewX);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -383,6 +405,38 @@ public class AstConversionSimpleSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Returns New X</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Returns New X</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseReturnsNewX(ReturnsNewX object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Action New</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Action New</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseActionNew(ActionNew object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Lists</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -426,6 +480,22 @@ public class AstConversionSimpleSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseMapEntryCustom(MapEntryCustom object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Action New X</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Action New X</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseActionNewX(ActionNewX object)
   {
     return null;
   }

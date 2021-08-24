@@ -78,9 +78,12 @@ public class AstConversionSimpleFactoryImpl extends EFactoryImpl implements AstC
       case AstConversionSimplePackage.ELEMENT: return createElement();
       case AstConversionSimplePackage.SEQUENCE: return createSequence();
       case AstConversionSimplePackage.ADDITION: return createAddition();
+      case AstConversionSimplePackage.RETURNS_NEW_X: return createReturnsNewX();
+      case AstConversionSimplePackage.ACTION_NEW: return createActionNew();
       case AstConversionSimplePackage.LISTS: return createLists();
       case AstConversionSimplePackage.MAP_ENTRY: return createMapEntry();
       case AstConversionSimplePackage.MAP_ENTRY_CUSTOM: return createMapEntryCustom();
+      case AstConversionSimplePackage.ACTION_NEW_X: return createActionNewX();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -270,6 +273,30 @@ public class AstConversionSimpleFactoryImpl extends EFactoryImpl implements AstC
    * @generated
    */
   @Override
+  public ReturnsNewX createReturnsNewX()
+  {
+    ReturnsNewXImpl returnsNewX = new ReturnsNewXImpl();
+    return returnsNewX;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ActionNew createActionNew()
+  {
+    ActionNewImpl actionNew = new ActionNewImpl();
+    return actionNew;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Lists createLists()
   {
     ListsImpl lists = new ListsImpl();
@@ -298,6 +325,18 @@ public class AstConversionSimpleFactoryImpl extends EFactoryImpl implements AstC
   {
     MapEntryCustomImpl mapEntryCustom = new MapEntryCustomImpl();
     return mapEntryCustom;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ActionNewX createActionNewX()
+  {
+    ActionNewXImpl actionNewX = new ActionNewXImpl();
+    return actionNewX;
   }
 
   /**

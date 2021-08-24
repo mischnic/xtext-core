@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Parameter;
 import org.eclipse.xtext.ParserRule;
+import org.eclipse.xtext.astconversion.astConversionSimple.ActionNewX;
 import org.eclipse.xtext.astconversion.astConversionSimple.Addition;
 import org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage;
 import org.eclipse.xtext.astconversion.astConversionSimple.AutoClass;
@@ -24,6 +25,7 @@ import org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom;
 import org.eclipse.xtext.astconversion.astConversionSimple.Other;
 import org.eclipse.xtext.astconversion.astConversionSimple.Program;
 import org.eclipse.xtext.astconversion.astConversionSimple.Reference;
+import org.eclipse.xtext.astconversion.astConversionSimple.ReturnsNewX;
 import org.eclipse.xtext.astconversion.astConversionSimple.Sequence;
 import org.eclipse.xtext.astconversion.services.ASTConversionSimpleGrammarAccess;
 import org.eclipse.xtext.serializer.ISerializationContext;
@@ -45,6 +47,9 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == AstConversionSimplePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case AstConversionSimplePackage.ACTION_NEW_X:
+				sequence_ActionNew(context, (ActionNewX) semanticObject); 
+				return; 
 			case AstConversionSimplePackage.ADDITION:
 				sequence_Addition(context, (Addition) semanticObject); 
 				return; 
@@ -84,6 +89,9 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 			case AstConversionSimplePackage.REFERENCE:
 				sequence_Reference(context, (Reference) semanticObject); 
 				return; 
+			case AstConversionSimplePackage.RETURNS_NEW_X:
+				sequence_ReturnsNew(context, (ReturnsNewX) semanticObject); 
+				return; 
 			case AstConversionSimplePackage.SEQUENCE:
 				sequence_Sequence(context, (Sequence) semanticObject); 
 				return; 
@@ -91,6 +99,24 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * Contexts:
+	 *     ActionNew returns ActionNewX
+	 *
+	 * Constraint:
+	 *     value=ID
+	 */
+	protected void sequence_ActionNew(ISerializationContext context, ActionNewX semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.ACTION_NEW_X__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.ACTION_NEW_X__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getActionNewAccess().getValueIDTerminalRuleCall_2_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
 	
 	/**
 	 * Contexts:
@@ -292,7 +318,7 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 	 *     Program returns Program
 	 *
 	 * Constraint:
-	 *     (entries+=Entry+ sequence+=Sequence+ list=Lists)
+	 *     (entries+=Entry+ sequence+=Sequence+ returnsNew=ReturnsNew actionNew=ActionNew list=Lists)
 	 */
 	protected void sequence_Program(ISerializationContext context, Program semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -313,6 +339,24 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getReferenceAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ReturnsNew returns ReturnsNewX
+	 *
+	 * Constraint:
+	 *     value=ID
+	 */
+	protected void sequence_ReturnsNew(ISerializationContext context, ReturnsNewX semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AstConversionSimplePackage.Literals.RETURNS_NEW_X__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AstConversionSimplePackage.Literals.RETURNS_NEW_X__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getReturnsNewAccess().getValueIDTerminalRuleCall_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
