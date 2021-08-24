@@ -9,6 +9,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.eclipse.xtext.astconversion.ast.ASTActionNew;
+import org.eclipse.xtext.astconversion.ast.ASTActionNewX;
 import org.eclipse.xtext.astconversion.ast.ASTAddition;
 import org.eclipse.xtext.astconversion.ast.ASTAutoClass;
 import org.eclipse.xtext.astconversion.ast.ASTAutoExplicitClass;
@@ -23,6 +25,7 @@ import org.eclipse.xtext.astconversion.ast.ASTMapEntryCustom;
 import org.eclipse.xtext.astconversion.ast.ASTOther;
 import org.eclipse.xtext.astconversion.ast.ASTProgram;
 import org.eclipse.xtext.astconversion.ast.ASTReference;
+import org.eclipse.xtext.astconversion.ast.ASTReturnsNewX;
 import org.eclipse.xtext.astconversion.ast.ASTSequence;
 import org.eclipse.xtext.astconversion.ast.NodeList;
 import org.eclipse.xtext.astconversion.astConversionSimple.Entry;
@@ -64,7 +67,7 @@ public class ASTConversionSimpleTest extends AbstractXtextTests {
 		assertSuperTypes(ASTOther.class, Object.class, ASTEntry.class);
 
 		assertClassFields(ASTProgram.class, toMap(
-				new Object[][] { { "entries", List.class }, { "sequence", List.class }, { "list", ASTLists.class } }));
+				new Object[][] { { "entries", List.class }, { "sequence", List.class }, { "list", ASTLists.class }, {"returnsNew", ASTReturnsNewX.class}, {"actionNew", ASTActionNew.class }}));
 		assertSuperTypes(ASTProgram.class, Object.class);
 
 		assertClassFields(ASTReference.class, toMap(new Object[][] { { "name", String.class } }));
@@ -94,11 +97,21 @@ public class ASTConversionSimpleTest extends AbstractXtextTests {
 		assertClassFields(ASTMapEntryCustom.class,
 				toMap(new Object[][] { { "x", String.class }, { "y", String.class } }));
 		assertSuperTypes(ASTMapEntryCustom.class, Object.class);
+		
+		assertClassFields(ASTActionNew.class,
+				toMap(new Object[][] { }));
+		assertClassFields(ASTActionNewX.class,
+				toMap(new Object[][] { { "value", String.class } }));
+		assertSuperTypes(ASTActionNewX.class, ASTActionNew.class);
+		
+		assertClassFields(ASTReturnsNewX.class,
+				toMap(new Object[][] { { "value", String.class } }));
+		assertSuperTypes(ASTReturnsNewX.class, Object.class);
 	}
 
 	private static final String programCorrect = "auto t1 x; manual t2 y; auto-explicit t3 z; custom t4 u;"
 			+ "custom-copy t5 v; other o auto t2 x; element x = add remove; element y remove = move;"
-			+ "sequence a + b; sequence u + v w + x;"
+			+ "sequence a + b; sequence u + v w + x; returns-new a; action-new b;"
 			+ "[a, b]: 4; [c, d]: e; [f, g, h]: 4 [i]: 6; [j, k]: l [m, n, o]: p;";
 
 	@Test
@@ -183,8 +196,13 @@ public class ASTConversionSimpleTest extends AbstractXtextTests {
 			assertEquals("w", b.left);
 			assertEquals("x", b.right);
 		}
-
 		assertEquals(i + 1, root.sequence.size());
+		
+		ASTReturnsNewX returnsNew = root.returnsNew;
+		assertEquals("a", returnsNew.value);
+		
+		ASTActionNewX actionNew = (ASTActionNewX) root.actionNew;
+		assertEquals("b", actionNew.value);
 
 		ASTLists lists = root.list;
 		assertEquals(2, lists.a.size());
