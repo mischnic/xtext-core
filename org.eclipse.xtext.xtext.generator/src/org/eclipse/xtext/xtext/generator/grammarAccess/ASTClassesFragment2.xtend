@@ -17,6 +17,7 @@ import org.eclipse.xtext.xtext.generator.XtextGeneratorNaming
 import org.eclipse.xtext.xtext.generator.model.FileAccessFactory
 import org.eclipse.xtext.xtext.generator.model.JavaFileAccess
 import org.eclipse.xtext.xtext.generator.model.TypeReference
+import org.eclipse.xtext.BecomesDeclManualClass
 
 class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 	@Inject FileAccessFactory fileAccessFactory
@@ -49,15 +50,27 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 					astClassNames.add(classifier.name.ASTClassName)
 				}
 			} else if (rule instanceof ParserRule) {
-				if ((rule as ParserRule).becomes !== null &&
-					(rule as ParserRule).becomes.descriptor instanceof BecomesDeclGeneratedClass) {
-					objectClasses.put(classifier as EClass, rule as ParserRule)
-					astClassNames.add(classifier.name.ASTClassName)
-					if (rule.isUnassigningRule) {
-						interfaceClasses.add(classifier.name.ASTClassName)
+				if ((rule as ParserRule).becomes !== null) {
+					if ((rule as ParserRule).becomes.descriptor instanceof BecomesDeclGeneratedClass) {
+						objectClasses.put(classifier as EClass, rule as ParserRule)
+						astClassNames.add(classifier.name.ASTClassName)
+						if (rule.isUnassigningRule) {
+							interfaceClasses.add(classifier.name.ASTClassName)
+						}
+						if ((rule as ParserRule).becomes.list) {
+							astClassesListType.put(classifier.name.ASTClassName, (rule as ParserRule).becomes.listType)
+						}
 					}
-					if ((rule as ParserRule).becomes.list) {
-						astClassesListType.put(classifier.name.ASTClassName, (rule as ParserRule).becomes.listType)
+
+					if (rule.becomes.code !== null || rule.becomes.descriptor instanceof BecomesDeclManualClass) {
+						// The type has to stay the same, otherwise the code is never executed or the manual class object is
+						// never populated. 
+						val differentAction = rule.containsDifferentSimpleAction
+						if (differentAction !== null) {
+							throw new RuntimeException(
+								"The rule " + rule.name + " contains a simple action referencing a different type: " +
+									differentAction.type.classifier.name);
+						}
 					}
 				}
 			} else if (rule instanceof EnumRule && classifier instanceof EEnum) {
@@ -76,6 +89,7 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 			// feature name -> type (string/class)
 			val structuralFeatures = newHashMap
 			for (attr : type.EAllStructuralFeatures) {
+				// TODO don't add feature from parent if parent is not an interface (= add for unassigned rule call but don't add for simple actions) 
 				if (attr instanceof EAttribute && !((attr as EAttribute).EAttributeType instanceof EEnum)) {
 					val clazz = (attr as EAttribute).EAttributeType.instanceClass
 					structuralFeatures.put(

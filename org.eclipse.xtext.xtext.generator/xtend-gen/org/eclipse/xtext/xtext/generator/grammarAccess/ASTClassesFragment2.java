@@ -21,10 +21,13 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtend2.lib.StringConcatenationClient;
 import org.eclipse.xtext.AbstractRule;
+import org.eclipse.xtext.Action;
 import org.eclipse.xtext.BecomesDecl;
 import org.eclipse.xtext.BecomesDeclAttribute;
+import org.eclipse.xtext.BecomesDeclClass;
 import org.eclipse.xtext.BecomesDeclCustomAttribute;
 import org.eclipse.xtext.BecomesDeclGeneratedClass;
+import org.eclipse.xtext.BecomesDeclManualClass;
 import org.eclipse.xtext.EnumRule;
 import org.eclipse.xtext.GeneratedMetamodel;
 import org.eclipse.xtext.GrammarUtil;
@@ -78,17 +81,32 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
           }
         } else {
           if ((rule instanceof ParserRule)) {
-            if (((((ParserRule) rule).getBecomes() != null) && 
-              (((ParserRule) rule).getBecomes().getDescriptor() instanceof BecomesDeclGeneratedClass))) {
-              objectClasses.put(((EClass) classifier), ((ParserRule) rule));
-              astClassNames.add(this._xtextGeneratorNaming.getASTClassName(classifier.getName()));
-              boolean _isUnassigningRule = this._aSTUtils.isUnassigningRule(((ParserRule)rule));
-              if (_isUnassigningRule) {
-                interfaceClasses.add(this._xtextGeneratorNaming.getASTClassName(classifier.getName()));
+            BecomesDecl _becomes_1 = ((ParserRule) rule).getBecomes();
+            boolean _tripleNotEquals = (_becomes_1 != null);
+            if (_tripleNotEquals) {
+              BecomesDeclClass _descriptor = ((ParserRule) rule).getBecomes().getDescriptor();
+              if ((_descriptor instanceof BecomesDeclGeneratedClass)) {
+                objectClasses.put(((EClass) classifier), ((ParserRule) rule));
+                astClassNames.add(this._xtextGeneratorNaming.getASTClassName(classifier.getName()));
+                boolean _isUnassigningRule = this._aSTUtils.isUnassigningRule(((ParserRule)rule));
+                if (_isUnassigningRule) {
+                  interfaceClasses.add(this._xtextGeneratorNaming.getASTClassName(classifier.getName()));
+                }
+                boolean _isList = ((ParserRule) rule).getBecomes().isList();
+                if (_isList) {
+                  astClassesListType.put(this._xtextGeneratorNaming.getASTClassName(classifier.getName()), ((ParserRule) rule).getBecomes().getListType());
+                }
               }
-              boolean _isList = ((ParserRule) rule).getBecomes().isList();
-              if (_isList) {
-                astClassesListType.put(this._xtextGeneratorNaming.getASTClassName(classifier.getName()), ((ParserRule) rule).getBecomes().getListType());
+              if (((((ParserRule)rule).getBecomes().getCode() != null) || (((ParserRule)rule).getBecomes().getDescriptor() instanceof BecomesDeclManualClass))) {
+                final Action differentAction = this._aSTUtils.containsDifferentSimpleAction(((ParserRule)rule));
+                if ((differentAction != null)) {
+                  String _name = ((ParserRule)rule).getName();
+                  String _plus = ("The rule " + _name);
+                  String _plus_1 = (_plus + " contains a simple action referencing a different type: ");
+                  String _name_1 = differentAction.getType().getClassifier().getName();
+                  String _plus_2 = (_plus_1 + _name_1);
+                  throw new RuntimeException(_plus_2);
+                }
               }
             }
           } else {

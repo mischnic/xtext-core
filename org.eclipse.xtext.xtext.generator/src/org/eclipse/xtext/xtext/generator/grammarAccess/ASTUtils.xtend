@@ -8,8 +8,9 @@
  *******************************************************************************/
 package org.eclipse.xtext.xtext.generator.grammarAccess
 
-import org.eclipse.xtext.ParserRule
+import org.eclipse.xtext.Action
 import org.eclipse.xtext.Assignment
+import org.eclipse.xtext.ParserRule
 
 /**
  * @author niklas - Initial contribution and API
@@ -25,5 +26,17 @@ class ASTUtils {
 			}
 		}
 		return true
+	}
+
+	def containsDifferentSimpleAction(ParserRule rule) {
+		// TODO is there a better way?
+		val ti = rule.eAllContents()
+		while (ti.hasNext()) {
+			val obj = ti.next()
+			if (obj instanceof Action && (obj as Action).type.classifier != rule.type.classifier) {
+				return obj as Action
+			}
+		}
+		return null
 	}
 }

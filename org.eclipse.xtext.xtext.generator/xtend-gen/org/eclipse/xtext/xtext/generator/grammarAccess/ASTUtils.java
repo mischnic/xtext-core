@@ -8,8 +8,10 @@
  */
 package org.eclipse.xtext.xtext.generator.grammarAccess;
 
+import com.google.common.base.Objects;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.ParserRule;
 
@@ -29,5 +31,18 @@ public class ASTUtils {
       }
     }
     return true;
+  }
+  
+  public Action containsDifferentSimpleAction(final ParserRule rule) {
+    final TreeIterator<EObject> ti = rule.eAllContents();
+    while (ti.hasNext()) {
+      {
+        final EObject obj = ti.next();
+        if (((obj instanceof Action) && (!Objects.equal(((Action) obj).getType().getClassifier(), rule.getType().getClassifier())))) {
+          return ((Action) obj);
+        }
+      }
+    }
+    return null;
   }
 }
