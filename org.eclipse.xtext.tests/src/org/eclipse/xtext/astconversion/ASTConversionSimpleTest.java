@@ -18,6 +18,9 @@ import org.eclipse.xtext.astconversion.ast.ASTChangeKind;
 import org.eclipse.xtext.astconversion.ast.ASTCustomClass;
 import org.eclipse.xtext.astconversion.ast.ASTElement;
 import org.eclipse.xtext.astconversion.ast.ASTEntry;
+import org.eclipse.xtext.astconversion.ast.ASTHoistingActionNew;
+import org.eclipse.xtext.astconversion.ast.ASTHoistingActionNewX;
+import org.eclipse.xtext.astconversion.ast.ASTHoistingAlternative;
 import org.eclipse.xtext.astconversion.ast.ASTLists;
 import org.eclipse.xtext.astconversion.ast.ASTManualClass;
 import org.eclipse.xtext.astconversion.ast.ASTMapEntry;
@@ -27,8 +30,11 @@ import org.eclipse.xtext.astconversion.ast.ASTProgram;
 import org.eclipse.xtext.astconversion.ast.ASTReference;
 import org.eclipse.xtext.astconversion.ast.ASTReturnsNewX;
 import org.eclipse.xtext.astconversion.ast.ASTSequence;
+import org.eclipse.xtext.astconversion.ast.ASTX;
+import org.eclipse.xtext.astconversion.ast.ASTY;
 import org.eclipse.xtext.astconversion.ast.NodeList;
 import org.eclipse.xtext.astconversion.astConversionSimple.Entry;
+import org.eclipse.xtext.nodemodel.impl.LeafNodeWithSyntaxError;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.tests.AbstractXtextTests;
 import org.junit.Test;
@@ -66,8 +72,13 @@ public class ASTConversionSimpleTest extends AbstractXtextTests {
 				toMap(new Object[][] { { "name", String.class }, { "content", Object.class } }));
 		assertSuperTypes(ASTOther.class, Object.class, ASTEntry.class);
 
-		assertClassFields(ASTProgram.class, toMap(
-				new Object[][] { { "entries", List.class }, { "sequence", List.class }, { "list", ASTLists.class }, {"returnsNew", ASTReturnsNewX.class}, {"actionNew", ASTActionNew.class }}));
+		assertClassFields(ASTProgram.class,
+				toMap(new Object[][] { { "entries", List.class }, { "sequence", List.class },
+						{ "list", ASTLists.class }, { "returnsNew", ASTReturnsNewX.class },
+						{ "actionNew", ASTActionNew.class }, { "hoistingActionNew", ASTHoistingActionNew.class },
+						{ "hoistingAlternative", ASTHoistingAlternative.class },
+
+				}));
 		assertSuperTypes(ASTProgram.class, Object.class);
 
 		assertClassFields(ASTReference.class, toMap(new Object[][] { { "name", String.class } }));
@@ -85,33 +96,44 @@ public class ASTConversionSimpleTest extends AbstractXtextTests {
 		assertClassFields(ASTSequence.class, toMap(new Object[][] { { "expressions", List.class } }));
 		assertSuperTypes(ASTSequence.class, Object.class);
 
-		assertClassFields(ASTAddition.class, toMap(new Object[][] { { "left", String.class }, { "right", String.class } }));
+		assertClassFields(ASTAddition.class,
+				toMap(new Object[][] { { "left", String.class }, { "right", String.class } }));
 		assertSuperTypes(ASTAddition.class, ASTSequence.class);
 
-		assertClassFields(ASTLists.class, toMap(
-				new Object[][] { { "a", List.class }, { "b", NodeList.class }, { "c", List.class }, { "d", List.class } }));
+		assertClassFields(ASTLists.class, toMap(new Object[][] { { "a", List.class }, { "b", NodeList.class },
+				{ "c", List.class }, { "d", List.class } }));
 		assertSuperTypes(ASTLists.class, Object.class);
 		assertClassFields(ASTMapEntry.class, toMap(new Object[][] { { "x", String.class }, { "y", int.class } }));
 		assertSuperTypes(ASTMapEntry.class, Object.class);
 		assertClassFields(ASTMapEntryCustom.class,
 				toMap(new Object[][] { { "x", String.class }, { "y", String.class } }));
 		assertSuperTypes(ASTMapEntryCustom.class, Object.class);
-		
-		assertClassFields(ASTActionNew.class,
-				toMap(new Object[][] { }));
-		assertClassFields(ASTActionNewX.class,
-				toMap(new Object[][] { { "value", String.class } }));
+
+		assertClassFields(ASTActionNew.class, toMap(new Object[][] {}));
+		assertClassFields(ASTActionNewX.class, toMap(new Object[][] { { "value", String.class } }));
 		assertSuperTypes(ASTActionNewX.class, ASTActionNew.class);
-		
-		assertClassFields(ASTReturnsNewX.class,
-				toMap(new Object[][] { { "value", String.class } }));
+
+		assertClassFields(ASTReturnsNewX.class, toMap(new Object[][] { { "value", String.class } }));
 		assertSuperTypes(ASTReturnsNewX.class, Object.class);
+
+		assertClassFields(ASTHoistingActionNew.class, toMap(new Object[][] { { "x", String.class } }));
+		assertClassFields(ASTHoistingActionNewX.class, toMap(new Object[][] { { "value", String.class } }));
+		assertSuperTypes(ASTHoistingActionNewX.class, ASTHoistingActionNew.class);
+
+		assertClassFields(ASTHoistingAlternative.class, toMap(new Object[][] {}));
+		assertTrue(ASTHoistingAlternative.class.isInterface());
+		assertSuperTypes(ASTHoistingAlternative.class, null);
+
+		assertClassFields(ASTX.class, toMap(new Object[][] { { "val", String.class } }));
+		assertSuperTypes(ASTX.class, Object.class, ASTHoistingAlternative.class);
+		assertClassFields(ASTY.class, toMap(new Object[][] { { "val", String.class }, { "y", String.class } }));
+		assertSuperTypes(ASTY.class, Object.class, ASTHoistingAlternative.class);
 	}
 
 	private static final String programCorrect = "auto t1 x; manual t2 y; auto-explicit t3 z; custom t4 u;"
 			+ "custom-copy t5 v; other o auto t2 x; element x = add remove; element y remove = move;"
 			+ "sequence a + b; sequence u + v w + x; returns-new a; action-new b;"
-			+ "[a, b]: 4; [c, d]: e; [f, g, h]: 4 [i]: 6; [j, k]: l [m, n, o]: p;";
+			+ "[a, b]: 4; [c, d]: e; [f, g, h]: 4 [i]: 6; [j, k]: l [m, n, o]: p;" + "altY h1 h2; hoistA h3;";
 
 	@Test
 	public void testBasicASTConversion() throws Exception {
@@ -196,10 +218,10 @@ public class ASTConversionSimpleTest extends AbstractXtextTests {
 			assertEquals("x", b.right);
 		}
 		assertEquals(i + 1, root.sequence.size());
-		
+
 		ASTReturnsNewX returnsNew = root.returnsNew;
 		assertEquals("a", returnsNew.value);
-		
+
 		ASTActionNewX actionNew = (ASTActionNewX) root.actionNew;
 		assertEquals("b", actionNew.value);
 
@@ -237,6 +259,15 @@ public class ASTConversionSimpleTest extends AbstractXtextTests {
 		assertEquals("p", lists.d.get(3).y);
 		assertEquals("o", lists.d.get(4).x);
 		assertEquals("p", lists.d.get(4).y);
+
+		ASTHoistingActionNewX hoistingActionNew = (ASTHoistingActionNewX) root.hoistingActionNew;
+		assertEquals(hoistingActionNew.value, "h3");
+		assertEquals(hoistingActionNew.x, null);
+		
+		ASTY hoistingAlternative = (ASTY) root.hoistingAlternative;
+		assertEquals(hoistingAlternative.val, "h1");
+		assertEquals(hoistingAlternative.y, "h2");
+		
 	}
 
 	private void assertClassFields(Class<?> clazz, Map<String, Class<?>> expectedFields) {

@@ -7,7 +7,9 @@ Program becomes:
 	(sequence+=Sequence)+
 	returnsNew=ReturnsNew
 	actionNew=ActionNew
-	list=Lists;
+	list=Lists
+	hoistingAlternative=HoistingAlternative
+	hoistingActionNew=HoistingActionNew;
 
 Entry becomes:
 	AutoClass | AutoExplicitClass | ManualClass | CustomASTClass | CustomCopyASTClass | Other | Element;
@@ -85,3 +87,12 @@ MapEntryCustom becomes[«NodeList»<«ASTMapEntryCustom»>] (String x, String y) $$
   }
 $$:
   "[" keys+=ID ("," keys+=ID)* "]" ":" value=Reference;
+
+// --------
+ 
+HoistingAlternative becomes: X | Y;
+
+X becomes: "altX" val=ID ';';
+Y becomes: "altY" val=ID y=ID ';';
+
+HoistingActionNew becomes: {HoistingActionNewX} 'hoistA' value=ID ';' | 'hoistB' x=ID ';';
