@@ -17,6 +17,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Program/returnsNew"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Program/actionNew"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Program/list"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Program/hoistingAlternative"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Program/hoistingActionNew"/>
     </genClasses>
     <genClasses ecoreClass="ASTConversionSimple.ecore#//Entry">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//Entry/name"/>
@@ -71,8 +73,21 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//MapEntryCustom/keys"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//MapEntryCustom/value"/>
     </genClasses>
+    <genClasses ecoreClass="ASTConversionSimple.ecore#//HoistingAlternative">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//HoistingAlternative/val"/>
+    </genClasses>
+    <genClasses ecoreClass="ASTConversionSimple.ecore#//X"/>
+    <genClasses ecoreClass="ASTConversionSimple.ecore#//Y">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//Y/y"/>
+    </genClasses>
+    <genClasses ecoreClass="ASTConversionSimple.ecore#//HoistingActionNew">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//HoistingActionNew/x"/>
+    </genClasses>
     <genClasses ecoreClass="ASTConversionSimple.ecore#//ActionNewX">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//ActionNewX/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ASTConversionSimple.ecore#//HoistingActionNewX">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//HoistingActionNewX/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

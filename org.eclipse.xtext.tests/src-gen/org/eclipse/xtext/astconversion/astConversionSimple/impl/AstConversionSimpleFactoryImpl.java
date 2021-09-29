@@ -83,7 +83,12 @@ public class AstConversionSimpleFactoryImpl extends EFactoryImpl implements AstC
       case AstConversionSimplePackage.LISTS: return createLists();
       case AstConversionSimplePackage.MAP_ENTRY: return createMapEntry();
       case AstConversionSimplePackage.MAP_ENTRY_CUSTOM: return createMapEntryCustom();
+      case AstConversionSimplePackage.HOISTING_ALTERNATIVE: return createHoistingAlternative();
+      case AstConversionSimplePackage.X: return createX();
+      case AstConversionSimplePackage.Y: return createY();
+      case AstConversionSimplePackage.HOISTING_ACTION_NEW: return createHoistingActionNew();
       case AstConversionSimplePackage.ACTION_NEW_X: return createActionNewX();
+      case AstConversionSimplePackage.HOISTING_ACTION_NEW_X: return createHoistingActionNewX();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -333,10 +338,70 @@ public class AstConversionSimpleFactoryImpl extends EFactoryImpl implements AstC
    * @generated
    */
   @Override
+  public HoistingAlternative createHoistingAlternative()
+  {
+    HoistingAlternativeImpl hoistingAlternative = new HoistingAlternativeImpl();
+    return hoistingAlternative;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public X createX()
+  {
+    XImpl x = new XImpl();
+    return x;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Y createY()
+  {
+    YImpl y = new YImpl();
+    return y;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public HoistingActionNew createHoistingActionNew()
+  {
+    HoistingActionNewImpl hoistingActionNew = new HoistingActionNewImpl();
+    return hoistingActionNew;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public ActionNewX createActionNewX()
   {
     ActionNewXImpl actionNewX = new ActionNewXImpl();
     return actionNewX;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public HoistingActionNewX createHoistingActionNewX()
+  {
+    HoistingActionNewXImpl hoistingActionNewX = new HoistingActionNewXImpl();
+    return hoistingActionNewX;
   }
 
   /**

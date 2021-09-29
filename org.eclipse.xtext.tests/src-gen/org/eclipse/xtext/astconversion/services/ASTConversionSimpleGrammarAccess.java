@@ -38,16 +38,23 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 		private final RuleCall cActionNewActionNewParserRuleCall_3_0 = (RuleCall)cActionNewAssignment_3.eContents().get(0);
 		private final Assignment cListAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cListListsParserRuleCall_4_0 = (RuleCall)cListAssignment_4.eContents().get(0);
+		private final Assignment cHoistingAlternativeAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cHoistingAlternativeHoistingAlternativeParserRuleCall_5_0 = (RuleCall)cHoistingAlternativeAssignment_5.eContents().get(0);
+		private final Assignment cHoistingActionNewAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cHoistingActionNewHoistingActionNewParserRuleCall_6_0 = (RuleCall)cHoistingActionNewAssignment_6.eContents().get(0);
 		
 		//Program becomes:
 		//	entries+=Entry+
 		//	sequence+=Sequence+
 		//	returnsNew=ReturnsNew
 		//	actionNew=ActionNew
-		//	list=Lists;
+		//	list=Lists
+		//	hoistingAlternative=HoistingAlternative
+		//	hoistingActionNew=HoistingActionNew;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//entries+=Entry+ sequence+=Sequence+ returnsNew=ReturnsNew actionNew=ActionNew list=Lists
+		//hoistingAlternative=HoistingAlternative hoistingActionNew=HoistingActionNew
 		public Group getGroup() { return cGroup; }
 		
 		//entries+=Entry+
@@ -79,6 +86,18 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 		
 		//Lists
 		public RuleCall getListListsParserRuleCall_4_0() { return cListListsParserRuleCall_4_0; }
+		
+		//hoistingAlternative=HoistingAlternative
+		public Assignment getHoistingAlternativeAssignment_5() { return cHoistingAlternativeAssignment_5; }
+		
+		//HoistingAlternative
+		public RuleCall getHoistingAlternativeHoistingAlternativeParserRuleCall_5_0() { return cHoistingAlternativeHoistingAlternativeParserRuleCall_5_0; }
+		
+		//hoistingActionNew=HoistingActionNew
+		public Assignment getHoistingActionNewAssignment_6() { return cHoistingActionNewAssignment_6; }
+		
+		//HoistingActionNew
+		public RuleCall getHoistingActionNewHoistingActionNewParserRuleCall_6_0() { return cHoistingActionNewHoistingActionNewParserRuleCall_6_0; }
 	}
 	public class EntryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.Entry");
@@ -715,6 +734,143 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 		//Reference
 		public RuleCall getValueReferenceParserRuleCall_5_0() { return cValueReferenceParserRuleCall_5_0; }
 	}
+	public class HoistingAlternativeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.HoistingAlternative");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cXParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cYParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//// --------
+		//HoistingAlternative becomes:
+		//	X | Y;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//X | Y
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//X
+		public RuleCall getXParserRuleCall_0() { return cXParserRuleCall_0; }
+		
+		//Y
+		public RuleCall getYParserRuleCall_1() { return cYParserRuleCall_1; }
+	}
+	public class XElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.X");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cAltXKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cValAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cValIDTerminalRuleCall_1_0 = (RuleCall)cValAssignment_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		//X becomes:
+		//	"altX" val=ID ';';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"altX" val=ID ';'
+		public Group getGroup() { return cGroup; }
+		
+		//"altX"
+		public Keyword getAltXKeyword_0() { return cAltXKeyword_0; }
+		
+		//val=ID
+		public Assignment getValAssignment_1() { return cValAssignment_1; }
+		
+		//ID
+		public RuleCall getValIDTerminalRuleCall_1_0() { return cValIDTerminalRuleCall_1_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
+	}
+	public class YElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.Y");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cAltYKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cValAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cValIDTerminalRuleCall_1_0 = (RuleCall)cValAssignment_1.eContents().get(0);
+		private final Assignment cYAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cYIDTerminalRuleCall_2_0 = (RuleCall)cYAssignment_2.eContents().get(0);
+		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//Y becomes:
+		//	"altY" val=ID y=ID ';';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"altY" val=ID y=ID ';'
+		public Group getGroup() { return cGroup; }
+		
+		//"altY"
+		public Keyword getAltYKeyword_0() { return cAltYKeyword_0; }
+		
+		//val=ID
+		public Assignment getValAssignment_1() { return cValAssignment_1; }
+		
+		//ID
+		public RuleCall getValIDTerminalRuleCall_1_0() { return cValIDTerminalRuleCall_1_0; }
+		
+		//y=ID
+		public Assignment getYAssignment_2() { return cYAssignment_2; }
+		
+		//ID
+		public RuleCall getYIDTerminalRuleCall_2_0() { return cYIDTerminalRuleCall_2_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
+	}
+	public class HoistingActionNewElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.HoistingActionNew");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cHoistingActionNewXAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Keyword cHoistAKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Assignment cValueAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
+		private final RuleCall cValueIDTerminalRuleCall_0_2_0 = (RuleCall)cValueAssignment_0_2.eContents().get(0);
+		private final Keyword cSemicolonKeyword_0_3 = (Keyword)cGroup_0.eContents().get(3);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Keyword cHoistBKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cXAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cXIDTerminalRuleCall_1_1_0 = (RuleCall)cXAssignment_1_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
+		
+		//HoistingActionNew becomes:
+		//	{HoistingActionNewX} 'hoistA' value=ID ';' | 'hoistB' x=ID ';';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{HoistingActionNewX} 'hoistA' value=ID ';' | 'hoistB' x=ID ';'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//{HoistingActionNewX} 'hoistA' value=ID ';'
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//{HoistingActionNewX}
+		public Action getHoistingActionNewXAction_0_0() { return cHoistingActionNewXAction_0_0; }
+		
+		//'hoistA'
+		public Keyword getHoistAKeyword_0_1() { return cHoistAKeyword_0_1; }
+		
+		//value=ID
+		public Assignment getValueAssignment_0_2() { return cValueAssignment_0_2; }
+		
+		//ID
+		public RuleCall getValueIDTerminalRuleCall_0_2_0() { return cValueIDTerminalRuleCall_0_2_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_0_3() { return cSemicolonKeyword_0_3; }
+		
+		//'hoistB' x=ID ';'
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'hoistB'
+		public Keyword getHoistBKeyword_1_0() { return cHoistBKeyword_1_0; }
+		
+		//x=ID
+		public Assignment getXAssignment_1_1() { return cXAssignment_1_1; }
+		
+		//ID
+		public RuleCall getXIDTerminalRuleCall_1_1_0() { return cXIDTerminalRuleCall_1_1_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_1_2() { return cSemicolonKeyword_1_2; }
+	}
 	
 	public class ChangeKindElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.astconversion.ASTConversionSimple.ChangeKind");
@@ -771,16 +927,124 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 	private final ListsElements pLists;
 	private final MapEntryElements pMapEntry;
 	private final MapEntryCustomElements pMapEntryCustom;
+	private final HoistingAlternativeElements pHoistingAlternative;
+	private final XElements pX;
+	private final YElements pY;
+	private final HoistingActionNewElements pHoistingActionNew;
 	
 	public static class ASTConversion {
 		public ASTConversion() {}
 		
-		public static class ReturnsNewXChildren {
+		public static class HoistingActionNewXChildren {
 		}
-		public Object convertReturnsNewX(org.eclipse.xtext.astconversion.astConversionSimple.ReturnsNewX node, ReturnsNewXChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTReturnsNewX() {
-				org.eclipse.xtext.astconversion.ast.ASTReturnsNewX XTEXT_INIT() {
+		public Object convertHoistingActionNewX(org.eclipse.xtext.astconversion.astConversionSimple.HoistingActionNewX node, HoistingActionNewXChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTHoistingActionNewX() {
+				org.eclipse.xtext.astconversion.ast.ASTHoistingActionNewX XTEXT_INIT() {
+					this.x = node.getX();
 					this.value = node.getValue();
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class ManualClassChildren {
+			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
+		}
+		public Object convertManualClass(org.eclipse.xtext.astconversion.astConversionSimple.ManualClass node, ManualClassChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTManualClass() {
+				org.eclipse.xtext.astconversion.ast.ASTManualClass XTEXT_INIT() {
+						this.ref = children.ref;
+						this.value = node.getName();
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class OtherChildren {
+			public java.lang.Object content;
+		}
+		public Object convertOther(org.eclipse.xtext.astconversion.astConversionSimple.Other node, OtherChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTOther() {
+				org.eclipse.xtext.astconversion.ast.ASTOther XTEXT_INIT() {
+					this.name = node.getName();
+					this.content = children.content;
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class AutoExplicitClassChildren {
+			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
+		}
+		public Object convertAutoExplicitClass(org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass node, AutoExplicitClassChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTAutoExplicitClass() {
+				org.eclipse.xtext.astconversion.ast.ASTAutoExplicitClass XTEXT_INIT() {
+					this.name = node.getName();
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class AutoClassChildren {
+			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
+		}
+		public Object convertAutoClass(org.eclipse.xtext.astconversion.astConversionSimple.AutoClass node, AutoClassChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTAutoClass() {
+				org.eclipse.xtext.astconversion.ast.ASTAutoClass XTEXT_INIT() {
+					this.name = node.getName();
+					this.ref = children.ref;
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class ProgramChildren {
+			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTEntry> entries;
+			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTSequence> sequence;
+			public org.eclipse.xtext.astconversion.ast.ASTReturnsNewX returnsNew;
+			public org.eclipse.xtext.astconversion.ast.ASTActionNew actionNew;
+			public org.eclipse.xtext.astconversion.ast.ASTLists list;
+			public org.eclipse.xtext.astconversion.ast.ASTHoistingAlternative hoistingAlternative;
+			public org.eclipse.xtext.astconversion.ast.ASTHoistingActionNew hoistingActionNew;
+		}
+		public Object convertProgram(org.eclipse.xtext.astconversion.astConversionSimple.Program node, ProgramChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTProgram() {
+				org.eclipse.xtext.astconversion.ast.ASTProgram XTEXT_INIT() {
+					this.entries = children.entries;
+					this.sequence = children.sequence;
+					this.returnsNew = children.returnsNew;
+					this.actionNew = children.actionNew;
+					this.list = children.list;
+					this.hoistingAlternative = children.hoistingAlternative;
+					this.hoistingActionNew = children.hoistingActionNew;
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class XChildren {
+		}
+		public Object convertX(org.eclipse.xtext.astconversion.astConversionSimple.X node, XChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTX() {
+				org.eclipse.xtext.astconversion.ast.ASTX XTEXT_INIT() {
+					this.val = node.getVal();
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class YChildren {
+		}
+		public Object convertY(org.eclipse.xtext.astconversion.astConversionSimple.Y node, YChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTY() {
+				org.eclipse.xtext.astconversion.ast.ASTY XTEXT_INIT() {
+					this.val = node.getVal();
+					this.y = node.getY();
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class ElementChildren {
+		}
+		public Object convertElement(org.eclipse.xtext.astconversion.astConversionSimple.Element node, ElementChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTElement() {
+				org.eclipse.xtext.astconversion.ast.ASTElement XTEXT_INIT() {
+					this.name = node.getName();
+					this.type = org.eclipse.xtext.astconversion.ast.ASTChangeKind.valueOf(node.getType().name());
+					this.value = node.getValue().stream().map(e -> org.eclipse.xtext.astconversion.ast.ASTChangeKind.valueOf(e.name())).collect(java.util.stream.Collectors.toList());
 					return this;
 				}
 			}.XTEXT_INIT();
@@ -802,24 +1066,61 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 				}
 			}.XTEXT_INIT();
 		}
+		public static class MapEntryCustomChildren {
+			public org.eclipse.xtext.astconversion.ast.ASTReference value;
+		}
+		public Object convertMapEntryCustom(org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom node, MapEntryCustomChildren children){
+			return new org.eclipse.xtext.astconversion.ast.NodeList<org.eclipse.xtext.astconversion.ast.ASTMapEntryCustom>() {
+				private static final long serialVersionUID = 0;
+					org.eclipse.xtext.astconversion.ast.NodeList<org.eclipse.xtext.astconversion.ast.ASTMapEntryCustom> XTEXT_INIT() {
+					  for(String key: node.getKeys()){
+					    this.add(new org.eclipse.xtext.astconversion.ast.ASTMapEntryCustom(key, children.value.name));
+					  }
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class CustomCopyASTClassChildren {
+			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
+		}
+		public Object convertCustomCopyASTClass(org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass node, CustomCopyASTClassChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTCustomClass() {
+				org.eclipse.xtext.astconversion.ast.ASTCustomClass XTEXT_INIT() {
+					this.name = node.getName();
+						this.type = children.ref.name;
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class ReturnsNewXChildren {
+		}
+		public Object convertReturnsNewX(org.eclipse.xtext.astconversion.astConversionSimple.ReturnsNewX node, ReturnsNewXChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTReturnsNewX() {
+				org.eclipse.xtext.astconversion.ast.ASTReturnsNewX XTEXT_INIT() {
+					this.value = node.getValue();
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
+		public static class MapEntryChildren {
+		}
+		public Object convertMapEntry(org.eclipse.xtext.astconversion.astConversionSimple.MapEntry node, MapEntryChildren children){
+			return new java.util.ArrayList<org.eclipse.xtext.astconversion.ast.ASTMapEntry>() {
+				private static final long serialVersionUID = 0;
+					java.util.ArrayList<org.eclipse.xtext.astconversion.ast.ASTMapEntry> XTEXT_INIT() {
+					  for(String key: node.getKeys()){
+					    this.add(new org.eclipse.xtext.astconversion.ast.ASTMapEntry(key, node.getValue()));
+					  }
+					return this;
+				}
+			}.XTEXT_INIT();
+		}
 		public static class ActionNewXChildren {
 		}
 		public Object convertActionNewX(org.eclipse.xtext.astconversion.astConversionSimple.ActionNewX node, ActionNewXChildren children){
 			return new org.eclipse.xtext.astconversion.ast.ASTActionNewX() {
 				org.eclipse.xtext.astconversion.ast.ASTActionNewX XTEXT_INIT() {
 					this.value = node.getValue();
-					return this;
-				}
-			}.XTEXT_INIT();
-		}
-		public static class AutoClassChildren {
-			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
-		}
-		public Object convertAutoClass(org.eclipse.xtext.astconversion.astConversionSimple.AutoClass node, AutoClassChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTAutoClass() {
-				org.eclipse.xtext.astconversion.ast.ASTAutoClass XTEXT_INIT() {
-					this.name = node.getName();
-					this.ref = children.ref;
 					return this;
 				}
 			}.XTEXT_INIT();
@@ -845,14 +1146,12 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 				}
 			}.XTEXT_INIT();
 		}
-		public static class CustomCopyASTClassChildren {
-			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
+		public static class HoistingActionNewChildren {
 		}
-		public Object convertCustomCopyASTClass(org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass node, CustomCopyASTClassChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTCustomClass() {
-				org.eclipse.xtext.astconversion.ast.ASTCustomClass XTEXT_INIT() {
-					this.name = node.getName();
-						this.type = children.ref.name;
+		public Object convertHoistingActionNew(org.eclipse.xtext.astconversion.astConversionSimple.HoistingActionNew node, HoistingActionNewChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTHoistingActionNew() {
+				org.eclipse.xtext.astconversion.ast.ASTHoistingActionNew XTEXT_INIT() {
+					this.x = node.getX();
 					return this;
 				}
 			}.XTEXT_INIT();
@@ -863,101 +1162,6 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 			return new org.eclipse.xtext.astconversion.ast.ASTReference() {
 				org.eclipse.xtext.astconversion.ast.ASTReference XTEXT_INIT() {
 					this.name = node.getName();
-					return this;
-				}
-			}.XTEXT_INIT();
-		}
-		public static class ElementChildren {
-		}
-		public Object convertElement(org.eclipse.xtext.astconversion.astConversionSimple.Element node, ElementChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTElement() {
-				org.eclipse.xtext.astconversion.ast.ASTElement XTEXT_INIT() {
-					this.name = node.getName();
-					this.type = org.eclipse.xtext.astconversion.ast.ASTChangeKind.valueOf(node.getType().name());
-					this.value = node.getValue().stream().map(e -> org.eclipse.xtext.astconversion.ast.ASTChangeKind.valueOf(e.name())).collect(java.util.stream.Collectors.toList());
-					return this;
-				}
-			}.XTEXT_INIT();
-		}
-		public static class MapEntryCustomChildren {
-			public org.eclipse.xtext.astconversion.ast.ASTReference value;
-		}
-		public Object convertMapEntryCustom(org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom node, MapEntryCustomChildren children){
-			return new org.eclipse.xtext.astconversion.ast.NodeList<org.eclipse.xtext.astconversion.ast.ASTMapEntryCustom>() {
-				private static final long serialVersionUID = 0;
-					org.eclipse.xtext.astconversion.ast.NodeList<org.eclipse.xtext.astconversion.ast.ASTMapEntryCustom> XTEXT_INIT() {
-					  for(String key: node.getKeys()){
-					    this.add(new org.eclipse.xtext.astconversion.ast.ASTMapEntryCustom(key, children.value.name));
-					  }
-					return this;
-				}
-			}.XTEXT_INIT();
-		}
-		public static class ManualClassChildren {
-			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
-		}
-		public Object convertManualClass(org.eclipse.xtext.astconversion.astConversionSimple.ManualClass node, ManualClassChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTManualClass() {
-				org.eclipse.xtext.astconversion.ast.ASTManualClass XTEXT_INIT() {
-						this.ref = children.ref;
-						this.value = node.getName();
-					return this;
-				}
-			}.XTEXT_INIT();
-		}
-		public static class AdditionChildren {
-			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTSequence> expressions;
-		}
-		public Object convertAddition(org.eclipse.xtext.astconversion.astConversionSimple.Addition node, AdditionChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTAddition() {
-				org.eclipse.xtext.astconversion.ast.ASTAddition XTEXT_INIT() {
-					this.expressions = children.expressions;
-					this.left = node.getLeft();
-					this.right = node.getRight();
-					return this;
-				}
-			}.XTEXT_INIT();
-		}
-		public static class ProgramChildren {
-			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTEntry> entries;
-			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTSequence> sequence;
-			public org.eclipse.xtext.astconversion.ast.ASTReturnsNewX returnsNew;
-			public org.eclipse.xtext.astconversion.ast.ASTActionNew actionNew;
-			public org.eclipse.xtext.astconversion.ast.ASTLists list;
-		}
-		public Object convertProgram(org.eclipse.xtext.astconversion.astConversionSimple.Program node, ProgramChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTProgram() {
-				org.eclipse.xtext.astconversion.ast.ASTProgram XTEXT_INIT() {
-					this.entries = children.entries;
-					this.sequence = children.sequence;
-					this.returnsNew = children.returnsNew;
-					this.actionNew = children.actionNew;
-					this.list = children.list;
-					return this;
-				}
-			}.XTEXT_INIT();
-		}
-		public static class MapEntryChildren {
-		}
-		public Object convertMapEntry(org.eclipse.xtext.astconversion.astConversionSimple.MapEntry node, MapEntryChildren children){
-			return new java.util.ArrayList<org.eclipse.xtext.astconversion.ast.ASTMapEntry>() {
-				private static final long serialVersionUID = 0;
-					java.util.ArrayList<org.eclipse.xtext.astconversion.ast.ASTMapEntry> XTEXT_INIT() {
-					  for(String key: node.getKeys()){
-					    this.add(new org.eclipse.xtext.astconversion.ast.ASTMapEntry(key, node.getValue()));
-					  }
-					return this;
-				}
-			}.XTEXT_INIT();
-		}
-		public static class OtherChildren {
-			public java.lang.Object content;
-		}
-		public Object convertOther(org.eclipse.xtext.astconversion.astConversionSimple.Other node, OtherChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTOther() {
-				org.eclipse.xtext.astconversion.ast.ASTOther XTEXT_INIT() {
-					this.name = node.getName();
-					this.content = children.content;
 					return this;
 				}
 			}.XTEXT_INIT();
@@ -973,13 +1177,15 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 				}
 			}.XTEXT_INIT();
 		}
-		public static class AutoExplicitClassChildren {
-			public org.eclipse.xtext.astconversion.ast.ASTReference ref;
+		public static class AdditionChildren {
+			public java.util.List<org.eclipse.xtext.astconversion.ast.ASTSequence> expressions;
 		}
-		public Object convertAutoExplicitClass(org.eclipse.xtext.astconversion.astConversionSimple.AutoExplicitClass node, AutoExplicitClassChildren children){
-			return new org.eclipse.xtext.astconversion.ast.ASTAutoExplicitClass() {
-				org.eclipse.xtext.astconversion.ast.ASTAutoExplicitClass XTEXT_INIT() {
-					this.name = node.getName();
+		public Object convertAddition(org.eclipse.xtext.astconversion.astConversionSimple.Addition node, AdditionChildren children){
+			return new org.eclipse.xtext.astconversion.ast.ASTAddition() {
+				org.eclipse.xtext.astconversion.ast.ASTAddition XTEXT_INIT() {
+					this.expressions = children.expressions;
+					this.left = node.getLeft();
+					this.right = node.getRight();
 					return this;
 				}
 			}.XTEXT_INIT();
@@ -1015,6 +1221,10 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 		this.pLists = new ListsElements();
 		this.pMapEntry = new MapEntryElements();
 		this.pMapEntryCustom = new MapEntryCustomElements();
+		this.pHoistingAlternative = new HoistingAlternativeElements();
+		this.pX = new XElements();
+		this.pY = new YElements();
+		this.pHoistingActionNew = new HoistingActionNewElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -1054,7 +1264,9 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 	//	sequence+=Sequence+
 	//	returnsNew=ReturnsNew
 	//	actionNew=ActionNew
-	//	list=Lists;
+	//	list=Lists
+	//	hoistingAlternative=HoistingAlternative
+	//	hoistingActionNew=HoistingActionNew;
 	public ProgramElements getProgramAccess() {
 		return pProgram;
 	}
@@ -1255,6 +1467,47 @@ public class ASTConversionSimpleGrammarAccess extends AbstractElementFinder.Abst
 	
 	public ParserRule getMapEntryCustomRule() {
 		return getMapEntryCustomAccess().getRule();
+	}
+	
+	//// --------
+	//HoistingAlternative becomes:
+	//	X | Y;
+	public HoistingAlternativeElements getHoistingAlternativeAccess() {
+		return pHoistingAlternative;
+	}
+	
+	public ParserRule getHoistingAlternativeRule() {
+		return getHoistingAlternativeAccess().getRule();
+	}
+	
+	//X becomes:
+	//	"altX" val=ID ';';
+	public XElements getXAccess() {
+		return pX;
+	}
+	
+	public ParserRule getXRule() {
+		return getXAccess().getRule();
+	}
+	
+	//Y becomes:
+	//	"altY" val=ID y=ID ';';
+	public YElements getYAccess() {
+		return pY;
+	}
+	
+	public ParserRule getYRule() {
+		return getYAccess().getRule();
+	}
+	
+	//HoistingActionNew becomes:
+	//	{HoistingActionNewX} 'hoistA' value=ID ';' | 'hoistB' x=ID ';';
+	public HoistingActionNewElements getHoistingActionNewAccess() {
+		return pHoistingActionNew;
+	}
+	
+	public ParserRule getHoistingActionNewRule() {
+		return getHoistingActionNewAccess().getRule();
 	}
 	
 	//terminal ID:

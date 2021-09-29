@@ -172,6 +172,44 @@ ruleProgram returns [EObject current=null]
 				}
 			)
 		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getProgramAccess().getHoistingAlternativeHoistingAlternativeParserRuleCall_5_0());
+				}
+				lv_hoistingAlternative_5_0=ruleHoistingAlternative
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getProgramRule());
+					}
+					set(
+						$current,
+						"hoistingAlternative",
+						lv_hoistingAlternative_5_0,
+						"org.eclipse.xtext.astconversion.ASTConversionSimple.HoistingAlternative");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getProgramAccess().getHoistingActionNewHoistingActionNewParserRuleCall_6_0());
+				}
+				lv_hoistingActionNew_6_0=ruleHoistingActionNew
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getProgramRule());
+					}
+					set(
+						$current,
+						"hoistingActionNew",
+						lv_hoistingActionNew_6_0,
+						"org.eclipse.xtext.astconversion.ASTConversionSimple.HoistingActionNew");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
 	)
 ;
 
@@ -1285,6 +1323,233 @@ ruleMapEntryCustom returns [EObject current=null]
 					afterParserOrEnumRuleCall();
 				}
 			)
+		)
+	)
+;
+
+// Entry rule entryRuleHoistingAlternative
+entryRuleHoistingAlternative returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getHoistingAlternativeRule()); }
+	iv_ruleHoistingAlternative=ruleHoistingAlternative
+	{ $current=$iv_ruleHoistingAlternative.current; }
+	EOF;
+
+// Rule HoistingAlternative
+ruleHoistingAlternative returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getHoistingAlternativeAccess().getXParserRuleCall_0());
+		}
+		this_X_0=ruleX
+		{
+			$current = $this_X_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getHoistingAlternativeAccess().getYParserRuleCall_1());
+		}
+		this_Y_1=ruleY
+		{
+			$current = $this_Y_1.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleX
+entryRuleX returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getXRule()); }
+	iv_ruleX=ruleX
+	{ $current=$iv_ruleX.current; }
+	EOF;
+
+// Rule X
+ruleX returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='altX'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getXAccess().getAltXKeyword_0());
+		}
+		(
+			(
+				lv_val_1_0=RULE_ID
+				{
+					newLeafNode(lv_val_1_0, grammarAccess.getXAccess().getValIDTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getXRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"val",
+						lv_val_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		otherlv_2=';'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getXAccess().getSemicolonKeyword_2());
+		}
+	)
+;
+
+// Entry rule entryRuleY
+entryRuleY returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getYRule()); }
+	iv_ruleY=ruleY
+	{ $current=$iv_ruleY.current; }
+	EOF;
+
+// Rule Y
+ruleY returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='altY'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getYAccess().getAltYKeyword_0());
+		}
+		(
+			(
+				lv_val_1_0=RULE_ID
+				{
+					newLeafNode(lv_val_1_0, grammarAccess.getYAccess().getValIDTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getYRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"val",
+						lv_val_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		(
+			(
+				lv_y_2_0=RULE_ID
+				{
+					newLeafNode(lv_y_2_0, grammarAccess.getYAccess().getYIDTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getYRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"y",
+						lv_y_2_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		otherlv_3=';'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getYAccess().getSemicolonKeyword_3());
+		}
+	)
+;
+
+// Entry rule entryRuleHoistingActionNew
+entryRuleHoistingActionNew returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getHoistingActionNewRule()); }
+	iv_ruleHoistingActionNew=ruleHoistingActionNew
+	{ $current=$iv_ruleHoistingActionNew.current; }
+	EOF;
+
+// Rule HoistingActionNew
+ruleHoistingActionNew returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getHoistingActionNewAccess().getHoistingActionNewXAction_0_0(),
+						$current);
+				}
+			)
+			otherlv_1='hoistA'
+			{
+				newLeafNode(otherlv_1, grammarAccess.getHoistingActionNewAccess().getHoistAKeyword_0_1());
+			}
+			(
+				(
+					lv_value_2_0=RULE_ID
+					{
+						newLeafNode(lv_value_2_0, grammarAccess.getHoistingActionNewAccess().getValueIDTerminalRuleCall_0_2_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getHoistingActionNewRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"value",
+							lv_value_2_0,
+							"org.eclipse.xtext.common.Terminals.ID");
+					}
+				)
+			)
+			otherlv_3=';'
+			{
+				newLeafNode(otherlv_3, grammarAccess.getHoistingActionNewAccess().getSemicolonKeyword_0_3());
+			}
+		)
+		    |
+		(
+			otherlv_4='hoistB'
+			{
+				newLeafNode(otherlv_4, grammarAccess.getHoistingActionNewAccess().getHoistBKeyword_1_0());
+			}
+			(
+				(
+					lv_x_5_0=RULE_ID
+					{
+						newLeafNode(lv_x_5_0, grammarAccess.getHoistingActionNewAccess().getXIDTerminalRuleCall_1_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getHoistingActionNewRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"x",
+							lv_x_5_0,
+							"org.eclipse.xtext.common.Terminals.ID");
+					}
+				)
+			)
+			otherlv_6=';'
+			{
+				newLeafNode(otherlv_6, grammarAccess.getHoistingActionNewAccess().getSemicolonKeyword_1_2());
+			}
 		)
 	)
 ;

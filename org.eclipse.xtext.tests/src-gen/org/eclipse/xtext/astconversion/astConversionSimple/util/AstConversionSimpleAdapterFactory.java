@@ -161,9 +161,34 @@ public class AstConversionSimpleAdapterFactory extends AdapterFactoryImpl
         return createMapEntryCustomAdapter();
       }
       @Override
+      public Adapter caseHoistingAlternative(HoistingAlternative object)
+      {
+        return createHoistingAlternativeAdapter();
+      }
+      @Override
+      public Adapter caseX(X object)
+      {
+        return createXAdapter();
+      }
+      @Override
+      public Adapter caseY(Y object)
+      {
+        return createYAdapter();
+      }
+      @Override
+      public Adapter caseHoistingActionNew(HoistingActionNew object)
+      {
+        return createHoistingActionNewAdapter();
+      }
+      @Override
       public Adapter caseActionNewX(ActionNewX object)
       {
         return createActionNewXAdapter();
+      }
+      @Override
+      public Adapter caseHoistingActionNewX(HoistingActionNewX object)
+      {
+        return createHoistingActionNewXAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -443,6 +468,66 @@ public class AstConversionSimpleAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.astconversion.astConversionSimple.HoistingAlternative <em>Hoisting Alternative</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.HoistingAlternative
+   * @generated
+   */
+  public Adapter createHoistingAlternativeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.astconversion.astConversionSimple.X <em>X</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.X
+   * @generated
+   */
+  public Adapter createXAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Y <em>Y</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Y
+   * @generated
+   */
+  public Adapter createYAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.astconversion.astConversionSimple.HoistingActionNew <em>Hoisting Action New</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.HoistingActionNew
+   * @generated
+   */
+  public Adapter createHoistingActionNewAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.eclipse.xtext.astconversion.astConversionSimple.ActionNewX <em>Action New X</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -453,6 +538,21 @@ public class AstConversionSimpleAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createActionNewXAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.astconversion.astConversionSimple.HoistingActionNewX <em>Hoisting Action New X</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.HoistingActionNewX
+   * @generated
+   */
+  public Adapter createHoistingActionNewXAdapter()
   {
     return null;
   }

@@ -114,13 +114,31 @@ public interface AstConversionSimplePackage extends EPackage
   int PROGRAM__LIST = 4;
 
   /**
+   * The feature id for the '<em><b>Hoisting Alternative</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROGRAM__HOISTING_ALTERNATIVE = 5;
+
+  /**
+   * The feature id for the '<em><b>Hoisting Action New</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROGRAM__HOISTING_ACTION_NEW = 6;
+
+  /**
    * The number of structural features of the '<em>Program</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROGRAM_FEATURE_COUNT = 5;
+  int PROGRAM_FEATURE_COUNT = 7;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.EntryImpl <em>Entry</em>}' class.
@@ -697,6 +715,127 @@ public interface AstConversionSimplePackage extends EPackage
   int MAP_ENTRY_CUSTOM_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.HoistingAlternativeImpl <em>Hoisting Alternative</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.HoistingAlternativeImpl
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getHoistingAlternative()
+   * @generated
+   */
+  int HOISTING_ALTERNATIVE = 17;
+
+  /**
+   * The feature id for the '<em><b>Val</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HOISTING_ALTERNATIVE__VAL = 0;
+
+  /**
+   * The number of structural features of the '<em>Hoisting Alternative</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HOISTING_ALTERNATIVE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.XImpl <em>X</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.XImpl
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getX()
+   * @generated
+   */
+  int X = 18;
+
+  /**
+   * The feature id for the '<em><b>Val</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int X__VAL = HOISTING_ALTERNATIVE__VAL;
+
+  /**
+   * The number of structural features of the '<em>X</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int X_FEATURE_COUNT = HOISTING_ALTERNATIVE_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.YImpl <em>Y</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.YImpl
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getY()
+   * @generated
+   */
+  int Y = 19;
+
+  /**
+   * The feature id for the '<em><b>Val</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int Y__VAL = HOISTING_ALTERNATIVE__VAL;
+
+  /**
+   * The feature id for the '<em><b>Y</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int Y__Y = HOISTING_ALTERNATIVE_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Y</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int Y_FEATURE_COUNT = HOISTING_ALTERNATIVE_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.HoistingActionNewImpl <em>Hoisting Action New</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.HoistingActionNewImpl
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getHoistingActionNew()
+   * @generated
+   */
+  int HOISTING_ACTION_NEW = 20;
+
+  /**
+   * The feature id for the '<em><b>X</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HOISTING_ACTION_NEW__X = 0;
+
+  /**
+   * The number of structural features of the '<em>Hoisting Action New</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HOISTING_ACTION_NEW_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ActionNewXImpl <em>Action New X</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -704,7 +843,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getActionNewX()
    * @generated
    */
-  int ACTION_NEW_X = 17;
+  int ACTION_NEW_X = 21;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -725,6 +864,43 @@ public interface AstConversionSimplePackage extends EPackage
   int ACTION_NEW_X_FEATURE_COUNT = ACTION_NEW_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.HoistingActionNewXImpl <em>Hoisting Action New X</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.HoistingActionNewXImpl
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getHoistingActionNewX()
+   * @generated
+   */
+  int HOISTING_ACTION_NEW_X = 22;
+
+  /**
+   * The feature id for the '<em><b>X</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HOISTING_ACTION_NEW_X__X = HOISTING_ACTION_NEW__X;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HOISTING_ACTION_NEW_X__VALUE = HOISTING_ACTION_NEW_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Hoisting Action New X</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HOISTING_ACTION_NEW_X_FEATURE_COUNT = HOISTING_ACTION_NEW_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.ChangeKind <em>Change Kind</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -732,7 +908,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getChangeKind()
    * @generated
    */
-  int CHANGE_KIND = 18;
+  int CHANGE_KIND = 23;
 
 
   /**
@@ -799,6 +975,28 @@ public interface AstConversionSimplePackage extends EPackage
    * @generated
    */
   EReference getProgram_List();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getHoistingAlternative <em>Hoisting Alternative</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Hoisting Alternative</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Program#getHoistingAlternative()
+   * @see #getProgram()
+   * @generated
+   */
+  EReference getProgram_HoistingAlternative();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getHoistingActionNew <em>Hoisting Action New</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Hoisting Action New</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Program#getHoistingActionNew()
+   * @see #getProgram()
+   * @generated
+   */
+  EReference getProgram_HoistingActionNew();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Entry <em>Entry</em>}'.
@@ -1203,6 +1401,79 @@ public interface AstConversionSimplePackage extends EPackage
   EReference getMapEntryCustom_Value();
 
   /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.HoistingAlternative <em>Hoisting Alternative</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Hoisting Alternative</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.HoistingAlternative
+   * @generated
+   */
+  EClass getHoistingAlternative();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.xtext.astconversion.astConversionSimple.HoistingAlternative#getVal <em>Val</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Val</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.HoistingAlternative#getVal()
+   * @see #getHoistingAlternative()
+   * @generated
+   */
+  EAttribute getHoistingAlternative_Val();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.X <em>X</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>X</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.X
+   * @generated
+   */
+  EClass getX();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.Y <em>Y</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Y</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Y
+   * @generated
+   */
+  EClass getY();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.xtext.astconversion.astConversionSimple.Y#getY <em>Y</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Y</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Y#getY()
+   * @see #getY()
+   * @generated
+   */
+  EAttribute getY_Y();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.HoistingActionNew <em>Hoisting Action New</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Hoisting Action New</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.HoistingActionNew
+   * @generated
+   */
+  EClass getHoistingActionNew();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.xtext.astconversion.astConversionSimple.HoistingActionNew#getX <em>X</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>X</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.HoistingActionNew#getX()
+   * @see #getHoistingActionNew()
+   * @generated
+   */
+  EAttribute getHoistingActionNew_X();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.ActionNewX <em>Action New X</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1222,6 +1493,27 @@ public interface AstConversionSimplePackage extends EPackage
    * @generated
    */
   EAttribute getActionNewX_Value();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.HoistingActionNewX <em>Hoisting Action New X</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Hoisting Action New X</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.HoistingActionNewX
+   * @generated
+   */
+  EClass getHoistingActionNewX();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.xtext.astconversion.astConversionSimple.HoistingActionNewX#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.HoistingActionNewX#getValue()
+   * @see #getHoistingActionNewX()
+   * @generated
+   */
+  EAttribute getHoistingActionNewX_Value();
 
   /**
    * Returns the meta object for enum '{@link org.eclipse.xtext.astconversion.astConversionSimple.ChangeKind <em>Change Kind</em>}'.
@@ -1305,6 +1597,22 @@ public interface AstConversionSimplePackage extends EPackage
      * @generated
      */
     EReference PROGRAM__LIST = eINSTANCE.getProgram_List();
+
+    /**
+     * The meta object literal for the '<em><b>Hoisting Alternative</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROGRAM__HOISTING_ALTERNATIVE = eINSTANCE.getProgram_HoistingAlternative();
+
+    /**
+     * The meta object literal for the '<em><b>Hoisting Action New</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROGRAM__HOISTING_ACTION_NEW = eINSTANCE.getProgram_HoistingActionNew();
 
     /**
      * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.EntryImpl <em>Entry</em>}' class.
@@ -1643,6 +1951,70 @@ public interface AstConversionSimplePackage extends EPackage
     EReference MAP_ENTRY_CUSTOM__VALUE = eINSTANCE.getMapEntryCustom_Value();
 
     /**
+     * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.HoistingAlternativeImpl <em>Hoisting Alternative</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.HoistingAlternativeImpl
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getHoistingAlternative()
+     * @generated
+     */
+    EClass HOISTING_ALTERNATIVE = eINSTANCE.getHoistingAlternative();
+
+    /**
+     * The meta object literal for the '<em><b>Val</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute HOISTING_ALTERNATIVE__VAL = eINSTANCE.getHoistingAlternative_Val();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.XImpl <em>X</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.XImpl
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getX()
+     * @generated
+     */
+    EClass X = eINSTANCE.getX();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.YImpl <em>Y</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.YImpl
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getY()
+     * @generated
+     */
+    EClass Y = eINSTANCE.getY();
+
+    /**
+     * The meta object literal for the '<em><b>Y</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute Y__Y = eINSTANCE.getY_Y();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.HoistingActionNewImpl <em>Hoisting Action New</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.HoistingActionNewImpl
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getHoistingActionNew()
+     * @generated
+     */
+    EClass HOISTING_ACTION_NEW = eINSTANCE.getHoistingActionNew();
+
+    /**
+     * The meta object literal for the '<em><b>X</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute HOISTING_ACTION_NEW__X = eINSTANCE.getHoistingActionNew_X();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ActionNewXImpl <em>Action New X</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1659,6 +2031,24 @@ public interface AstConversionSimplePackage extends EPackage
      * @generated
      */
     EAttribute ACTION_NEW_X__VALUE = eINSTANCE.getActionNewX_Value();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.HoistingActionNewXImpl <em>Hoisting Action New X</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.HoistingActionNewXImpl
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getHoistingActionNewX()
+     * @generated
+     */
+    EClass HOISTING_ACTION_NEW_X = eINSTANCE.getHoistingActionNewX();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute HOISTING_ACTION_NEW_X__VALUE = eINSTANCE.getHoistingActionNewX_Value();
 
     /**
      * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.ChangeKind <em>Change Kind</em>}' enum.

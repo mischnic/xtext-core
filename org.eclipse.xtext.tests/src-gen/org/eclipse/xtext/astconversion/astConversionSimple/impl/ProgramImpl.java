@@ -22,6 +22,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.xtext.astconversion.astConversionSimple.ActionNew;
 import org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage;
 import org.eclipse.xtext.astconversion.astConversionSimple.Entry;
+import org.eclipse.xtext.astconversion.astConversionSimple.HoistingActionNew;
+import org.eclipse.xtext.astconversion.astConversionSimple.HoistingAlternative;
 import org.eclipse.xtext.astconversion.astConversionSimple.Lists;
 import org.eclipse.xtext.astconversion.astConversionSimple.Program;
 import org.eclipse.xtext.astconversion.astConversionSimple.ReturnsNewX;
@@ -40,6 +42,8 @@ import org.eclipse.xtext.astconversion.astConversionSimple.Sequence;
  *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ProgramImpl#getReturnsNew <em>Returns New</em>}</li>
  *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ProgramImpl#getActionNew <em>Action New</em>}</li>
  *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ProgramImpl#getList <em>List</em>}</li>
+ *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ProgramImpl#getHoistingAlternative <em>Hoisting Alternative</em>}</li>
+ *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ProgramImpl#getHoistingActionNew <em>Hoisting Action New</em>}</li>
  * </ul>
  *
  * @generated
@@ -95,6 +99,26 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * @ordered
    */
   protected Lists list;
+
+  /**
+   * The cached value of the '{@link #getHoistingAlternative() <em>Hoisting Alternative</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getHoistingAlternative()
+   * @generated
+   * @ordered
+   */
+  protected HoistingAlternative hoistingAlternative;
+
+  /**
+   * The cached value of the '{@link #getHoistingActionNew() <em>Hoisting Action New</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getHoistingActionNew()
+   * @generated
+   * @ordered
+   */
+  protected HoistingActionNew hoistingActionNew;
 
   /**
    * <!-- begin-user-doc -->
@@ -303,6 +327,106 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * @generated
    */
   @Override
+  public HoistingAlternative getHoistingAlternative()
+  {
+    return hoistingAlternative;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetHoistingAlternative(HoistingAlternative newHoistingAlternative, NotificationChain msgs)
+  {
+    HoistingAlternative oldHoistingAlternative = hoistingAlternative;
+    hoistingAlternative = newHoistingAlternative;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.PROGRAM__HOISTING_ALTERNATIVE, oldHoistingAlternative, newHoistingAlternative);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setHoistingAlternative(HoistingAlternative newHoistingAlternative)
+  {
+    if (newHoistingAlternative != hoistingAlternative)
+    {
+      NotificationChain msgs = null;
+      if (hoistingAlternative != null)
+        msgs = ((InternalEObject)hoistingAlternative).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.PROGRAM__HOISTING_ALTERNATIVE, null, msgs);
+      if (newHoistingAlternative != null)
+        msgs = ((InternalEObject)newHoistingAlternative).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.PROGRAM__HOISTING_ALTERNATIVE, null, msgs);
+      msgs = basicSetHoistingAlternative(newHoistingAlternative, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.PROGRAM__HOISTING_ALTERNATIVE, newHoistingAlternative, newHoistingAlternative));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public HoistingActionNew getHoistingActionNew()
+  {
+    return hoistingActionNew;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetHoistingActionNew(HoistingActionNew newHoistingActionNew, NotificationChain msgs)
+  {
+    HoistingActionNew oldHoistingActionNew = hoistingActionNew;
+    hoistingActionNew = newHoistingActionNew;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.PROGRAM__HOISTING_ACTION_NEW, oldHoistingActionNew, newHoistingActionNew);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setHoistingActionNew(HoistingActionNew newHoistingActionNew)
+  {
+    if (newHoistingActionNew != hoistingActionNew)
+    {
+      NotificationChain msgs = null;
+      if (hoistingActionNew != null)
+        msgs = ((InternalEObject)hoistingActionNew).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.PROGRAM__HOISTING_ACTION_NEW, null, msgs);
+      if (newHoistingActionNew != null)
+        msgs = ((InternalEObject)newHoistingActionNew).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.PROGRAM__HOISTING_ACTION_NEW, null, msgs);
+      msgs = basicSetHoistingActionNew(newHoistingActionNew, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.PROGRAM__HOISTING_ACTION_NEW, newHoistingActionNew, newHoistingActionNew));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
@@ -317,6 +441,10 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
         return basicSetActionNew(null, msgs);
       case AstConversionSimplePackage.PROGRAM__LIST:
         return basicSetList(null, msgs);
+      case AstConversionSimplePackage.PROGRAM__HOISTING_ALTERNATIVE:
+        return basicSetHoistingAlternative(null, msgs);
+      case AstConversionSimplePackage.PROGRAM__HOISTING_ACTION_NEW:
+        return basicSetHoistingActionNew(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -341,6 +469,10 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
         return getActionNew();
       case AstConversionSimplePackage.PROGRAM__LIST:
         return getList();
+      case AstConversionSimplePackage.PROGRAM__HOISTING_ALTERNATIVE:
+        return getHoistingAlternative();
+      case AstConversionSimplePackage.PROGRAM__HOISTING_ACTION_NEW:
+        return getHoistingActionNew();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -373,6 +505,12 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
       case AstConversionSimplePackage.PROGRAM__LIST:
         setList((Lists)newValue);
         return;
+      case AstConversionSimplePackage.PROGRAM__HOISTING_ALTERNATIVE:
+        setHoistingAlternative((HoistingAlternative)newValue);
+        return;
+      case AstConversionSimplePackage.PROGRAM__HOISTING_ACTION_NEW:
+        setHoistingActionNew((HoistingActionNew)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -402,6 +540,12 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
       case AstConversionSimplePackage.PROGRAM__LIST:
         setList((Lists)null);
         return;
+      case AstConversionSimplePackage.PROGRAM__HOISTING_ALTERNATIVE:
+        setHoistingAlternative((HoistingAlternative)null);
+        return;
+      case AstConversionSimplePackage.PROGRAM__HOISTING_ACTION_NEW:
+        setHoistingActionNew((HoistingActionNew)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -426,6 +570,10 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
         return actionNew != null;
       case AstConversionSimplePackage.PROGRAM__LIST:
         return list != null;
+      case AstConversionSimplePackage.PROGRAM__HOISTING_ALTERNATIVE:
+        return hoistingAlternative != null;
+      case AstConversionSimplePackage.PROGRAM__HOISTING_ACTION_NEW:
+        return hoistingActionNew != null;
     }
     return super.eIsSet(featureID);
   }

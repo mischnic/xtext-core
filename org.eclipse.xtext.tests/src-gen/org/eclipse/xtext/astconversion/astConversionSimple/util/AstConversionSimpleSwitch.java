@@ -200,11 +200,49 @@ public class AstConversionSimpleSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case AstConversionSimplePackage.HOISTING_ALTERNATIVE:
+      {
+        HoistingAlternative hoistingAlternative = (HoistingAlternative)theEObject;
+        T result = caseHoistingAlternative(hoistingAlternative);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AstConversionSimplePackage.X:
+      {
+        X x = (X)theEObject;
+        T result = caseX(x);
+        if (result == null) result = caseHoistingAlternative(x);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AstConversionSimplePackage.Y:
+      {
+        Y y = (Y)theEObject;
+        T result = caseY(y);
+        if (result == null) result = caseHoistingAlternative(y);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AstConversionSimplePackage.HOISTING_ACTION_NEW:
+      {
+        HoistingActionNew hoistingActionNew = (HoistingActionNew)theEObject;
+        T result = caseHoistingActionNew(hoistingActionNew);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case AstConversionSimplePackage.ACTION_NEW_X:
       {
         ActionNewX actionNewX = (ActionNewX)theEObject;
         T result = caseActionNewX(actionNewX);
         if (result == null) result = caseActionNew(actionNewX);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AstConversionSimplePackage.HOISTING_ACTION_NEW_X:
+      {
+        HoistingActionNewX hoistingActionNewX = (HoistingActionNewX)theEObject;
+        T result = caseHoistingActionNewX(hoistingActionNewX);
+        if (result == null) result = caseHoistingActionNew(hoistingActionNewX);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -485,6 +523,70 @@ public class AstConversionSimpleSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Hoisting Alternative</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Hoisting Alternative</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseHoistingAlternative(HoistingAlternative object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>X</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>X</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseX(X object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Y</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Y</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseY(Y object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Hoisting Action New</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Hoisting Action New</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseHoistingActionNew(HoistingActionNew object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Action New X</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -496,6 +598,22 @@ public class AstConversionSimpleSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseActionNewX(ActionNewX object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Hoisting Action New X</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Hoisting Action New X</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseHoistingActionNewX(HoistingActionNewX object)
   {
     return null;
   }

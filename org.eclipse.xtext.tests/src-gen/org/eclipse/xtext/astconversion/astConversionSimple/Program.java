@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getReturnsNew <em>Returns New</em>}</li>
  *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getActionNew <em>Action New</em>}</li>
  *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getList <em>List</em>}</li>
+ *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getHoistingAlternative <em>Hoisting Alternative</em>}</li>
+ *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getHoistingActionNew <em>Hoisting Action New</em>}</li>
  * </ul>
  *
  * @see org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage#getProgram()
@@ -118,5 +120,49 @@ public interface Program extends EObject
    * @generated
    */
   void setList(Lists value);
+
+  /**
+   * Returns the value of the '<em><b>Hoisting Alternative</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Hoisting Alternative</em>' containment reference.
+   * @see #setHoistingAlternative(HoistingAlternative)
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage#getProgram_HoistingAlternative()
+   * @model containment="true"
+   * @generated
+   */
+  HoistingAlternative getHoistingAlternative();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getHoistingAlternative <em>Hoisting Alternative</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Hoisting Alternative</em>' containment reference.
+   * @see #getHoistingAlternative()
+   * @generated
+   */
+  void setHoistingAlternative(HoistingAlternative value);
+
+  /**
+   * Returns the value of the '<em><b>Hoisting Action New</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Hoisting Action New</em>' containment reference.
+   * @see #setHoistingActionNew(HoistingActionNew)
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage#getProgram_HoistingActionNew()
+   * @model containment="true"
+   * @generated
+   */
+  HoistingActionNew getHoistingActionNew();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.xtext.astconversion.astConversionSimple.Program#getHoistingActionNew <em>Hoisting Action New</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Hoisting Action New</em>' containment reference.
+   * @see #getHoistingActionNew()
+   * @generated
+   */
+  void setHoistingActionNew(HoistingActionNew value);
 
 } // Program

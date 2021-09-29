@@ -177,6 +177,42 @@ public interface AstConversionSimpleFactory extends EFactory
   MapEntryCustom createMapEntryCustom();
 
   /**
+   * Returns a new object of class '<em>Hoisting Alternative</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Hoisting Alternative</em>'.
+   * @generated
+   */
+  HoistingAlternative createHoistingAlternative();
+
+  /**
+   * Returns a new object of class '<em>X</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>X</em>'.
+   * @generated
+   */
+  X createX();
+
+  /**
+   * Returns a new object of class '<em>Y</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Y</em>'.
+   * @generated
+   */
+  Y createY();
+
+  /**
+   * Returns a new object of class '<em>Hoisting Action New</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Hoisting Action New</em>'.
+   * @generated
+   */
+  HoistingActionNew createHoistingActionNew();
+
+  /**
    * Returns a new object of class '<em>Action New X</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -184,6 +220,15 @@ public interface AstConversionSimpleFactory extends EFactory
    * @generated
    */
   ActionNewX createActionNewX();
+
+  /**
+   * Returns a new object of class '<em>Hoisting Action New X</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Hoisting Action New X</em>'.
+   * @generated
+   */
+  HoistingActionNewX createHoistingActionNewX();
 
   /**
    * Returns the package supported by this factory.

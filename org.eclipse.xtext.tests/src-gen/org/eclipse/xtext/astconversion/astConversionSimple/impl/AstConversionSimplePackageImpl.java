@@ -24,6 +24,9 @@ import org.eclipse.xtext.astconversion.astConversionSimple.CustomASTClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.CustomCopyASTClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.Element;
 import org.eclipse.xtext.astconversion.astConversionSimple.Entry;
+import org.eclipse.xtext.astconversion.astConversionSimple.HoistingActionNew;
+import org.eclipse.xtext.astconversion.astConversionSimple.HoistingActionNewX;
+import org.eclipse.xtext.astconversion.astConversionSimple.HoistingAlternative;
 import org.eclipse.xtext.astconversion.astConversionSimple.Lists;
 import org.eclipse.xtext.astconversion.astConversionSimple.ManualClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.MapEntry;
@@ -166,7 +169,42 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass hoistingAlternativeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass xEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass yEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass hoistingActionNewEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass actionNewXEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass hoistingActionNewXEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -305,6 +343,28 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
   public EReference getProgram_List()
   {
     return (EReference)programEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getProgram_HoistingAlternative()
+  {
+    return (EReference)programEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getProgram_HoistingActionNew()
+  {
+    return (EReference)programEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -731,6 +791,83 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
    * @generated
    */
   @Override
+  public EClass getHoistingAlternative()
+  {
+    return hoistingAlternativeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getHoistingAlternative_Val()
+  {
+    return (EAttribute)hoistingAlternativeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getX()
+  {
+    return xEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getY()
+  {
+    return yEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getY_Y()
+  {
+    return (EAttribute)yEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getHoistingActionNew()
+  {
+    return hoistingActionNewEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getHoistingActionNew_X()
+  {
+    return (EAttribute)hoistingActionNewEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getActionNewX()
   {
     return actionNewXEClass;
@@ -745,6 +882,28 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
   public EAttribute getActionNewX_Value()
   {
     return (EAttribute)actionNewXEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getHoistingActionNewX()
+  {
+    return hoistingActionNewXEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getHoistingActionNewX_Value()
+  {
+    return (EAttribute)hoistingActionNewXEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -795,6 +954,8 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
     createEReference(programEClass, PROGRAM__RETURNS_NEW);
     createEReference(programEClass, PROGRAM__ACTION_NEW);
     createEReference(programEClass, PROGRAM__LIST);
+    createEReference(programEClass, PROGRAM__HOISTING_ALTERNATIVE);
+    createEReference(programEClass, PROGRAM__HOISTING_ACTION_NEW);
 
     entryEClass = createEClass(ENTRY);
     createEAttribute(entryEClass, ENTRY__NAME);
@@ -850,8 +1011,22 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
     createEAttribute(mapEntryCustomEClass, MAP_ENTRY_CUSTOM__KEYS);
     createEReference(mapEntryCustomEClass, MAP_ENTRY_CUSTOM__VALUE);
 
+    hoistingAlternativeEClass = createEClass(HOISTING_ALTERNATIVE);
+    createEAttribute(hoistingAlternativeEClass, HOISTING_ALTERNATIVE__VAL);
+
+    xEClass = createEClass(X);
+
+    yEClass = createEClass(Y);
+    createEAttribute(yEClass, Y__Y);
+
+    hoistingActionNewEClass = createEClass(HOISTING_ACTION_NEW);
+    createEAttribute(hoistingActionNewEClass, HOISTING_ACTION_NEW__X);
+
     actionNewXEClass = createEClass(ACTION_NEW_X);
     createEAttribute(actionNewXEClass, ACTION_NEW_X__VALUE);
+
+    hoistingActionNewXEClass = createEClass(HOISTING_ACTION_NEW_X);
+    createEAttribute(hoistingActionNewXEClass, HOISTING_ACTION_NEW_X__VALUE);
 
     // Create enums
     changeKindEEnum = createEEnum(CHANGE_KIND);
@@ -897,7 +1072,10 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
     otherEClass.getESuperTypes().add(this.getEntry());
     elementEClass.getESuperTypes().add(this.getEntry());
     additionEClass.getESuperTypes().add(this.getSequence());
+    xEClass.getESuperTypes().add(this.getHoistingAlternative());
+    yEClass.getESuperTypes().add(this.getHoistingAlternative());
     actionNewXEClass.getESuperTypes().add(this.getActionNew());
+    hoistingActionNewXEClass.getESuperTypes().add(this.getHoistingActionNew());
 
     // Initialize classes and features; add operations and parameters
     initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -906,6 +1084,8 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
     initEReference(getProgram_ReturnsNew(), this.getReturnsNewX(), null, "returnsNew", null, 0, 1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProgram_ActionNew(), this.getActionNew(), null, "actionNew", null, 0, 1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProgram_List(), this.getLists(), null, "list", null, 0, 1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProgram_HoistingAlternative(), this.getHoistingAlternative(), null, "hoistingAlternative", null, 0, 1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProgram_HoistingActionNew(), this.getHoistingActionNew(), null, "hoistingActionNew", null, 0, 1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(entryEClass, Entry.class, "Entry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEntry_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -961,8 +1141,22 @@ public class AstConversionSimplePackageImpl extends EPackageImpl implements AstC
     initEAttribute(getMapEntryCustom_Keys(), theEcorePackage.getEString(), "keys", null, 0, -1, MapEntryCustom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMapEntryCustom_Value(), this.getReference(), null, "value", null, 0, 1, MapEntryCustom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(hoistingAlternativeEClass, HoistingAlternative.class, "HoistingAlternative", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getHoistingAlternative_Val(), theEcorePackage.getEString(), "val", null, 0, 1, HoistingAlternative.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(xEClass, org.eclipse.xtext.astconversion.astConversionSimple.X.class, "X", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(yEClass, org.eclipse.xtext.astconversion.astConversionSimple.Y.class, "Y", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getY_Y(), theEcorePackage.getEString(), "y", null, 0, 1, org.eclipse.xtext.astconversion.astConversionSimple.Y.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(hoistingActionNewEClass, HoistingActionNew.class, "HoistingActionNew", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getHoistingActionNew_X(), theEcorePackage.getEString(), "x", null, 0, 1, HoistingActionNew.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(actionNewXEClass, ActionNewX.class, "ActionNewX", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getActionNewX_Value(), theEcorePackage.getEString(), "value", null, 0, 1, ActionNewX.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(hoistingActionNewXEClass, HoistingActionNewX.class, "HoistingActionNewX", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getHoistingActionNewX_Value(), theEcorePackage.getEString(), "value", null, 0, 1, HoistingActionNewX.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(changeKindEEnum, ChangeKind.class, "ChangeKind");
