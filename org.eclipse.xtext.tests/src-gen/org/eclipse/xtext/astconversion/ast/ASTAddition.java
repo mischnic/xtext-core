@@ -6,13 +6,11 @@ package org.eclipse.xtext.astconversion.ast;
 
 public class ASTAddition extends org.eclipse.xtext.astconversion.ast.ASTSequence {
 	public ASTAddition(){}
-	public ASTAddition(String left, String right, java.util.List<org.eclipse.xtext.astconversion.ast.ASTSequence> expressions){
+	public ASTAddition(String left, String right){
 		this.left = left;
 		this.right = right;
-		this.expressions = expressions;
 	}
 	
 	public String left;
 	public String right;
-	public java.util.List<org.eclipse.xtext.astconversion.ast.ASTSequence> expressions;
 }

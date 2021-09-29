@@ -85,8 +85,7 @@ public class ASTConversionSimpleTest extends AbstractXtextTests {
 		assertClassFields(ASTSequence.class, toMap(new Object[][] { { "expressions", List.class } }));
 		assertSuperTypes(ASTSequence.class, Object.class);
 
-		assertClassFields(ASTAddition.class, toMap(
-				new Object[][] { { "expressions", List.class }, { "left", String.class }, { "right", String.class } }));
+		assertClassFields(ASTAddition.class, toMap(new Object[][] { { "left", String.class }, { "right", String.class } }));
 		assertSuperTypes(ASTAddition.class, ASTSequence.class);
 
 		assertClassFields(ASTLists.class, toMap(
