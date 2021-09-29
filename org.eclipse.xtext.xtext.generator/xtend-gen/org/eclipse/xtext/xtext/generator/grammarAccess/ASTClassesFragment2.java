@@ -1,5 +1,6 @@
 package org.eclipse.xtext.xtext.generator.grammarAccess;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.io.Serializable;
@@ -70,7 +71,7 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
     final HashMap<String, String> astClassesListType = CollectionLiterals.<String, String>newHashMap();
     final HashMap<EClass, ParserRule> objectClasses = CollectionLiterals.<EClass, ParserRule>newHashMap();
     final HashSet<EEnum> enumClasses = CollectionLiterals.<EEnum>newHashSet();
-    final HashSet<String> interfaceClasses = CollectionLiterals.<String>newHashSet();
+    final HashMap<EClassifier, String> interfaceClasses = CollectionLiterals.<EClassifier, String>newHashMap();
     for (final EClassifier classifier : generatedClasses) {
       {
         final AbstractRule rule = GrammarUtil.findRuleForName(this.getGrammar(), classifier.getName());
@@ -90,7 +91,7 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
                 astClassNames.add(this._xtextGeneratorNaming.getASTClassName(classifier.getName()));
                 boolean _isUnassigningRule = this._aSTUtils.isUnassigningRule(((ParserRule)rule));
                 if (_isUnassigningRule) {
-                  interfaceClasses.add(this._xtextGeneratorNaming.getASTClassName(classifier.getName()));
+                  interfaceClasses.put(classifier, this._xtextGeneratorNaming.getASTClassName(classifier.getName()));
                 }
                 boolean _isList = ((ParserRule) rule).getBecomes().isList();
                 if (_isList) {
@@ -137,49 +138,51 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
         final HashMap<String, Object> structuralFeatures = CollectionLiterals.<String, Object>newHashMap();
         EList<EStructuralFeature> _eAllStructuralFeatures = type.getEAllStructuralFeatures();
         for (final EStructuralFeature attr : _eAllStructuralFeatures) {
-          if (((attr instanceof EAttribute) && (!(((EAttribute) attr).getEAttributeType() instanceof EEnum)))) {
-            final Class<?> clazz = ((EAttribute) attr).getEAttributeType().getInstanceClass();
-            String _name = attr.getName();
-            Serializable _xifexpression_1 = null;
-            boolean _isPrimitive = clazz.isPrimitive();
-            if (_isPrimitive) {
-              _xifexpression_1 = clazz.toString();
+          if ((Objects.equal(attr.getEContainingClass(), type) || interfaceClasses.containsKey(attr.getEContainingClass()))) {
+            if (((attr instanceof EAttribute) && (!(((EAttribute) attr).getEAttributeType() instanceof EEnum)))) {
+              final Class<?> clazz = ((EAttribute) attr).getEAttributeType().getInstanceClass();
+              String _name = attr.getName();
+              Serializable _xifexpression_1 = null;
+              boolean _isPrimitive = clazz.isPrimitive();
+              if (_isPrimitive) {
+                _xifexpression_1 = clazz.toString();
+              } else {
+                _xifexpression_1 = clazz;
+              }
+              structuralFeatures.put(_name, _xifexpression_1);
             } else {
-              _xifexpression_1 = clazz;
-            }
-            structuralFeatures.put(_name, _xifexpression_1);
-          } else {
-            EClassifier _xifexpression_2 = null;
-            if ((attr instanceof EReference)) {
-              _xifexpression_2 = ((EReference)attr).getEReferenceType();
-            } else {
-              _xifexpression_2 = ((EAttribute) attr).getEAttributeType();
-            }
-            final EClassifier referencedType = _xifexpression_2;
-            final TypeReference referencedASTType = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), referencedType.getName());
-            final boolean isListType = astClassesListType.containsKey(referencedASTType.getSimpleName());
-            final String customListType = astClassesListType.get(referencedASTType.getSimpleName());
-            String _xifexpression_3 = null;
-            if (((customListType != null) && (!attr.isMany()))) {
-              _xifexpression_3 = this._xtextGeneratorNaming.replaceASTTypeReferences(this.getGrammar(), customListType);
-            } else {
-              StringConcatenation _builder = new StringConcatenation();
-              TypeReference _typeReference = new TypeReference(List.class);
-              _builder.append(_typeReference);
-              _builder.append("<");
-              _builder.append(referencedASTType);
-              _builder.append(">");
-              _xifexpression_3 = _builder.toString();
-            }
-            final String listType = _xifexpression_3;
-            if ((isListType || attr.isMany())) {
-              structuralFeatures.put(attr.getName(), listType);
-            } else {
-              structuralFeatures.put(attr.getName(), referencedASTType);
+              EClassifier _xifexpression_2 = null;
+              if ((attr instanceof EReference)) {
+                _xifexpression_2 = ((EReference)attr).getEReferenceType();
+              } else {
+                _xifexpression_2 = ((EAttribute) attr).getEAttributeType();
+              }
+              final EClassifier referencedType = _xifexpression_2;
+              final TypeReference referencedASTType = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), referencedType.getName());
+              final boolean isListType = astClassesListType.containsKey(referencedASTType.getSimpleName());
+              final String customListType = astClassesListType.get(referencedASTType.getSimpleName());
+              String _xifexpression_3 = null;
+              if (((customListType != null) && (!attr.isMany()))) {
+                _xifexpression_3 = this._xtextGeneratorNaming.replaceASTTypeReferences(this.getGrammar(), customListType);
+              } else {
+                StringConcatenation _builder = new StringConcatenation();
+                TypeReference _typeReference = new TypeReference(List.class);
+                _builder.append(_typeReference);
+                _builder.append("<");
+                _builder.append(referencedASTType);
+                _builder.append(">");
+                _xifexpression_3 = _builder.toString();
+              }
+              final String listType = _xifexpression_3;
+              if ((isListType || attr.isMany())) {
+                structuralFeatures.put(attr.getName(), listType);
+              } else {
+                structuralFeatures.put(attr.getName(), referencedASTType);
+              }
             }
           }
         }
-        final boolean isInterface = interfaceClasses.contains(astType.getSimpleName());
+        final boolean isInterface = interfaceClasses.containsValue(astType.getSimpleName());
         final LinkedHashMap<String, Object> attributes = CollectionLiterals.<String, Object>newLinkedHashMap();
         if (isInterface) {
         } else {
@@ -216,8 +219,8 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
             final TypeReference cAST = this._xtextGeneratorNaming.getASTClass(this.getGrammar(), c.getName());
             boolean _contains = astClassNames.contains(cAST.getSimpleName());
             if (_contains) {
-              boolean _contains_1 = interfaceClasses.contains(cAST.getSimpleName());
-              if (_contains_1) {
+              boolean _containsValue = interfaceClasses.containsValue(cAST.getSimpleName());
+              if (_containsValue) {
                 superInterfaces.add(cAST);
               } else {
                 if (isInterface) {

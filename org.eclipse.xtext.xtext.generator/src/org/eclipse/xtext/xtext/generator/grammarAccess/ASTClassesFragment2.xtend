@@ -40,8 +40,8 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 		val objectClasses = newHashMap
 		// classes generated from enum rules
 		val enumClasses = newHashSet
-		// ast classes that become interfaces 
-		val interfaceClasses = newHashSet
+		// EClasses that become interfaces -> their AST class name
+		val interfaceClasses = newHashMap
 		for (classifier : generatedClasses) {
 			val rule = GrammarUtil.findRuleForName(grammar, classifier.name)
 			if (rule === null) {
@@ -55,7 +55,7 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 						objectClasses.put(classifier as EClass, rule as ParserRule)
 						astClassNames.add(classifier.name.ASTClassName)
 						if (rule.isUnassigningRule) {
-							interfaceClasses.add(classifier.name.ASTClassName)
+							interfaceClasses.put(classifier, classifier.name.ASTClassName)
 						}
 						if ((rule as ParserRule).becomes.list) {
 							astClassesListType.put(classifier.name.ASTClassName, (rule as ParserRule).becomes.listType)
@@ -89,34 +89,37 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 			// feature name -> type (string/class)
 			val structuralFeatures = newHashMap
 			for (attr : type.EAllStructuralFeatures) {
-				// TODO don't add feature from parent if parent is not an interface (= add for unassigned rule call but don't add for simple actions) 
-				if (attr instanceof EAttribute && !((attr as EAttribute).EAttributeType instanceof EEnum)) {
-					val clazz = (attr as EAttribute).EAttributeType.instanceClass
-					structuralFeatures.put(
-						attr.name,
-						clazz.isPrimitive ? clazz.toString() : clazz
-					)
-				} else {
-					val referencedType = attr instanceof EReference ? attr.EReferenceType : (attr as EAttribute).
-							EAttributeType
-					val referencedASTType = getASTClass(grammar, referencedType.name)
-
-					val isListType = astClassesListType.containsKey(referencedASTType.simpleName)
-					val customListType = astClassesListType.get(referencedASTType.simpleName)
-
-					val listType = (customListType !== null && !attr.many) ? grammar.
-							replaceASTTypeReferences(
-								customListType) : '''«new TypeReference(List)»<«referencedASTType»>'''
-					if (isListType || attr.many) {
-						structuralFeatures.put(attr.name, listType)
+				// only add inherited feature if it comes from an interface (= add for unassigned rule call but don't add for simple actions)
+				if (attr.EContainingClass == type || interfaceClasses.containsKey(attr.EContainingClass)) {
+					if (attr instanceof EAttribute && !((attr as EAttribute).EAttributeType instanceof EEnum)) {
+						val clazz = (attr as EAttribute).EAttributeType.instanceClass
+						structuralFeatures.put(
+							attr.name,
+							clazz.isPrimitive ? clazz.toString() : clazz
+						)
 					} else {
-						structuralFeatures.put(attr.name, referencedASTType)
+						val referencedType = attr instanceof EReference ? attr.EReferenceType : (attr as EAttribute).
+								EAttributeType
+						val referencedASTType = getASTClass(grammar, referencedType.name)
+
+						val isListType = astClassesListType.containsKey(referencedASTType.simpleName)
+						val customListType = astClassesListType.get(referencedASTType.simpleName)
+
+						val listType = (customListType !== null && !attr.many) ? grammar.
+								replaceASTTypeReferences(
+									customListType) : '''«new TypeReference(List)»<«referencedASTType»>'''
+						if (isListType || attr.many) {
+							structuralFeatures.put(attr.name, listType)
+						} else {
+							structuralFeatures.put(attr.name, referencedASTType)
+						}
 					}
+
 				}
 			}
 
 			// unassigned rule calls or implicit classes become interfaces
-			val isInterface = interfaceClasses.contains(astType.simpleName)
+			val isInterface = interfaceClasses.containsValue(astType.simpleName)
 			val attributes = newLinkedHashMap
 			if (isInterface) {
 				// no attributes
@@ -145,7 +148,7 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 			for (c : type.ESuperTypes) {
 				val cAST = getASTClass(grammar, c.name);
 				if (astClassNames.contains(cAST.simpleName)) {
-					if (interfaceClasses.contains(cAST.simpleName)) {
+					if (interfaceClasses.containsValue(cAST.simpleName)) {
 						superInterfaces.add(cAST)
 					} else {
 						if (isInterface) {
