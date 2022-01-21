@@ -101,7 +101,7 @@ public class ASTConversionSimpleTest extends AbstractXtextTests {
 		assertSuperTypes(ASTAddition.class, ASTSequence.class);
 
 		assertClassFields(ASTLists.class, toMap(new Object[][] { { "a", List.class }, { "b", NodeList.class },
-				{ "c", List.class }, { "d", List.class } }));
+				{ "c", List.class }, { "d", List.class }, { "e", NodeList.class } }));
 		assertSuperTypes(ASTLists.class, Object.class);
 		assertClassFields(ASTMapEntry.class, toMap(new Object[][] { { "x", String.class }, { "y", int.class } }));
 		assertSuperTypes(ASTMapEntry.class, Object.class);
@@ -133,7 +133,8 @@ public class ASTConversionSimpleTest extends AbstractXtextTests {
 	private static final String programCorrect = "auto t1 x; manual t2 y; auto-explicit t3 z; custom t4 u;"
 			+ "custom-copy t5 v; other o auto t2 x; element x = add remove; element y remove = move;"
 			+ "sequence a + b; sequence u + v w + x; returns-new a; action-new b;"
-			+ "[a, b]: 4; [c, d]: e; [f, g, h]: 4 [i]: 6; [j, k]: l [m, n, o]: p;" + "altY h1 h2; hoistA h3;";
+			+ "[a, b]: 4; [c, d]: e; [f, g, h]: 4 [i]: 6; [j, k]: l [m, n, o]: p; [1, 2]: o;"
+			+ "altY h1 h2; hoistA h3;";
 
 	@Test
 	public void testBasicASTConversion() throws Exception {
@@ -260,14 +261,20 @@ public class ASTConversionSimpleTest extends AbstractXtextTests {
 		assertEquals("o", lists.d.get(4).x);
 		assertEquals("p", lists.d.get(4).y);
 
+		assertEquals(2, lists.e.size());
+		assertEquals("1", lists.e.get(0).name);
+		assertEquals("o", lists.e.get(0).type);
+		assertEquals("2", lists.e.get(1).name);
+		assertEquals("o", lists.e.get(1).type);
+
 		ASTHoistingActionNewX hoistingActionNew = (ASTHoistingActionNewX) root.hoistingActionNew;
 		assertEquals(hoistingActionNew.value, "h3");
 		assertEquals(hoistingActionNew.x, null);
-		
+
 		ASTY hoistingAlternative = (ASTY) root.hoistingAlternative;
 		assertEquals(hoistingAlternative.val, "h1");
 		assertEquals(hoistingAlternative.y, "h2");
-		
+
 	}
 
 	private void assertClassFields(Class<?> clazz, Map<String, Class<?>> expectedFields) {

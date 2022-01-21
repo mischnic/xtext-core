@@ -71,7 +71,8 @@ Lists becomes:
 	a=MapEntry ";"
 	b=MapEntryCustom ";"
 	(c+=MapEntry)+ ";"
-	(d+=MapEntryCustom)+ ";";
+	(d+=MapEntryCustom)+ ";"
+	e=MapEntryCustom2 ";";
 
 
 MapEntry becomes[] (String x, int y) $$
@@ -87,6 +88,14 @@ MapEntryCustom becomes[«NodeList»<«ASTMapEntryCustom»>] (String x, String y) $$
   }
 $$:
   "[" keys+=ID ("," keys+=ID)* "]" ":" value=Reference;
+
+MapEntryCustom2 becomes[«NodeList»<«ASTCustomClass»>] ASTCustomClass $$
+  for(Integer key: node.getKeys()){
+    this.add(new «ASTCustomClass»(String.valueOf(key), children.value.name));
+  }
+$$:
+  "[" keys+=INT ("," keys+=INT)* "]" ":" value=Reference;
+
 
 // --------
  

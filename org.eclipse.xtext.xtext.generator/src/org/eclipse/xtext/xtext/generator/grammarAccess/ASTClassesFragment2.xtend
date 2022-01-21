@@ -57,9 +57,10 @@ class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
 						if (rule.isUnassigningRule) {
 							interfaceClasses.put(classifier, classifier.name.ASTClassName)
 						}
-						if ((rule as ParserRule).becomes.list) {
-							astClassesListType.put(classifier.name.ASTClassName, (rule as ParserRule).becomes.listType)
-						}
+					}
+
+					if ((rule as ParserRule).becomes.list) {
+						astClassesListType.put(classifier.name.ASTClassName, (rule as ParserRule).becomes.listType)
 					}
 
 					if (rule.becomes.code !== null || rule.becomes.descriptor instanceof BecomesDeclManualClass) {

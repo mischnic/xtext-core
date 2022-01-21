@@ -93,10 +93,10 @@ public class ASTClassesFragment2 extends AbstractXtextGeneratorFragment {
                 if (_isUnassigningRule) {
                   interfaceClasses.put(classifier, this._xtextGeneratorNaming.getASTClassName(classifier.getName()));
                 }
-                boolean _isList = ((ParserRule) rule).getBecomes().isList();
-                if (_isList) {
-                  astClassesListType.put(this._xtextGeneratorNaming.getASTClassName(classifier.getName()), ((ParserRule) rule).getBecomes().getListType());
-                }
+              }
+              boolean _isList = ((ParserRule) rule).getBecomes().isList();
+              if (_isList) {
+                astClassesListType.put(this._xtextGeneratorNaming.getASTClassName(classifier.getName()), ((ParserRule) rule).getBecomes().getListType());
               }
               if (((((ParserRule)rule).getBecomes().getCode() != null) || (((ParserRule)rule).getBecomes().getDescriptor() instanceof BecomesDeclManualClass))) {
                 final Action differentAction = this._aSTUtils.containsDifferentSimpleAction(((ParserRule)rule));
