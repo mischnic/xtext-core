@@ -632,13 +632,22 @@ public interface AstConversionSimplePackage extends EPackage
   int LISTS__D = 3;
 
   /**
+   * The feature id for the '<em><b>E</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LISTS__E = 4;
+
+  /**
    * The number of structural features of the '<em>Lists</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LISTS_FEATURE_COUNT = 4;
+  int LISTS_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.MapEntryImpl <em>Map Entry</em>}' class.
@@ -715,6 +724,43 @@ public interface AstConversionSimplePackage extends EPackage
   int MAP_ENTRY_CUSTOM_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.MapEntryCustom2Impl <em>Map Entry Custom2</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.MapEntryCustom2Impl
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getMapEntryCustom2()
+   * @generated
+   */
+  int MAP_ENTRY_CUSTOM2 = 17;
+
+  /**
+   * The feature id for the '<em><b>Keys</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAP_ENTRY_CUSTOM2__KEYS = 0;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAP_ENTRY_CUSTOM2__VALUE = 1;
+
+  /**
+   * The number of structural features of the '<em>Map Entry Custom2</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAP_ENTRY_CUSTOM2_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.HoistingAlternativeImpl <em>Hoisting Alternative</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -722,7 +768,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getHoistingAlternative()
    * @generated
    */
-  int HOISTING_ALTERNATIVE = 17;
+  int HOISTING_ALTERNATIVE = 18;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' attribute.
@@ -750,7 +796,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getX()
    * @generated
    */
-  int X = 18;
+  int X = 19;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' attribute.
@@ -778,7 +824,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getY()
    * @generated
    */
-  int Y = 19;
+  int Y = 20;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' attribute.
@@ -815,7 +861,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getHoistingActionNew()
    * @generated
    */
-  int HOISTING_ACTION_NEW = 20;
+  int HOISTING_ACTION_NEW = 21;
 
   /**
    * The feature id for the '<em><b>X</b></em>' attribute.
@@ -843,7 +889,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getActionNewX()
    * @generated
    */
-  int ACTION_NEW_X = 21;
+  int ACTION_NEW_X = 22;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -871,7 +917,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getHoistingActionNewX()
    * @generated
    */
-  int HOISTING_ACTION_NEW_X = 22;
+  int HOISTING_ACTION_NEW_X = 23;
 
   /**
    * The feature id for the '<em><b>X</b></em>' attribute.
@@ -908,7 +954,7 @@ public interface AstConversionSimplePackage extends EPackage
    * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getChangeKind()
    * @generated
    */
-  int CHANGE_KIND = 23;
+  int CHANGE_KIND = 24;
 
 
   /**
@@ -1337,6 +1383,17 @@ public interface AstConversionSimplePackage extends EPackage
   EReference getLists_D();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.Lists#getE <em>E</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>E</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.Lists#getE()
+   * @see #getLists()
+   * @generated
+   */
+  EReference getLists_E();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.MapEntry <em>Map Entry</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1399,6 +1456,38 @@ public interface AstConversionSimplePackage extends EPackage
    * @generated
    */
   EReference getMapEntryCustom_Value();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom2 <em>Map Entry Custom2</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Map Entry Custom2</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom2
+   * @generated
+   */
+  EClass getMapEntryCustom2();
+
+  /**
+   * Returns the meta object for the attribute list '{@link org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom2#getKeys <em>Keys</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Keys</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom2#getKeys()
+   * @see #getMapEntryCustom2()
+   * @generated
+   */
+  EAttribute getMapEntryCustom2_Keys();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom2#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom2#getValue()
+   * @see #getMapEntryCustom2()
+   * @generated
+   */
+  EReference getMapEntryCustom2_Value();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.xtext.astconversion.astConversionSimple.HoistingAlternative <em>Hoisting Alternative</em>}'.
@@ -1899,6 +1988,14 @@ public interface AstConversionSimplePackage extends EPackage
     EReference LISTS__D = eINSTANCE.getLists_D();
 
     /**
+     * The meta object literal for the '<em><b>E</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LISTS__E = eINSTANCE.getLists_E();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.MapEntryImpl <em>Map Entry</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1949,6 +2046,32 @@ public interface AstConversionSimplePackage extends EPackage
      * @generated
      */
     EReference MAP_ENTRY_CUSTOM__VALUE = eINSTANCE.getMapEntryCustom_Value();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.MapEntryCustom2Impl <em>Map Entry Custom2</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.MapEntryCustom2Impl
+     * @see org.eclipse.xtext.astconversion.astConversionSimple.impl.AstConversionSimplePackageImpl#getMapEntryCustom2()
+     * @generated
+     */
+    EClass MAP_ENTRY_CUSTOM2 = eINSTANCE.getMapEntryCustom2();
+
+    /**
+     * The meta object literal for the '<em><b>Keys</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MAP_ENTRY_CUSTOM2__KEYS = eINSTANCE.getMapEntryCustom2_Keys();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MAP_ENTRY_CUSTOM2__VALUE = eINSTANCE.getMapEntryCustom2_Value();
 
     /**
      * The meta object literal for the '{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.HoistingAlternativeImpl <em>Hoisting Alternative</em>}' class.

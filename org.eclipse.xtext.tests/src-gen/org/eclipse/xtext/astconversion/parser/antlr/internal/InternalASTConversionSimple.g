@@ -1141,6 +1141,29 @@ ruleLists returns [EObject current=null]
 		{
 			newLeafNode(otherlv_7, grammarAccess.getListsAccess().getSemicolonKeyword_7());
 		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getListsAccess().getEMapEntryCustom2ParserRuleCall_8_0());
+				}
+				lv_e_8_0=ruleMapEntryCustom2
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getListsRule());
+					}
+					set(
+						$current,
+						"e",
+						lv_e_8_0,
+						"org.eclipse.xtext.astconversion.ASTConversionSimple.MapEntryCustom2");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_9=';'
+		{
+			newLeafNode(otherlv_9, grammarAccess.getListsAccess().getSemicolonKeyword_9());
+		}
 	)
 ;
 
@@ -1314,6 +1337,98 @@ ruleMapEntryCustom returns [EObject current=null]
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getMapEntryCustomRule());
+					}
+					set(
+						$current,
+						"value",
+						lv_value_6_0,
+						"org.eclipse.xtext.astconversion.ASTConversionSimple.Reference");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleMapEntryCustom2
+entryRuleMapEntryCustom2 returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMapEntryCustom2Rule()); }
+	iv_ruleMapEntryCustom2=ruleMapEntryCustom2
+	{ $current=$iv_ruleMapEntryCustom2.current; }
+	EOF;
+
+// Rule MapEntryCustom2
+ruleMapEntryCustom2 returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='['
+		{
+			newLeafNode(otherlv_0, grammarAccess.getMapEntryCustom2Access().getLeftSquareBracketKeyword_0());
+		}
+		(
+			(
+				lv_keys_1_0=RULE_INT
+				{
+					newLeafNode(lv_keys_1_0, grammarAccess.getMapEntryCustom2Access().getKeysINTTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getMapEntryCustom2Rule());
+					}
+					addWithLastConsumed(
+						$current,
+						"keys",
+						lv_keys_1_0,
+						"org.eclipse.xtext.common.Terminals.INT");
+				}
+			)
+		)
+		(
+			otherlv_2=','
+			{
+				newLeafNode(otherlv_2, grammarAccess.getMapEntryCustom2Access().getCommaKeyword_2_0());
+			}
+			(
+				(
+					lv_keys_3_0=RULE_INT
+					{
+						newLeafNode(lv_keys_3_0, grammarAccess.getMapEntryCustom2Access().getKeysINTTerminalRuleCall_2_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getMapEntryCustom2Rule());
+						}
+						addWithLastConsumed(
+							$current,
+							"keys",
+							lv_keys_3_0,
+							"org.eclipse.xtext.common.Terminals.INT");
+					}
+				)
+			)
+		)*
+		otherlv_4=']'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getMapEntryCustom2Access().getRightSquareBracketKeyword_3());
+		}
+		otherlv_5=':'
+		{
+			newLeafNode(otherlv_5, grammarAccess.getMapEntryCustom2Access().getColonKeyword_4());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getMapEntryCustom2Access().getValueReferenceParserRuleCall_5_0());
+				}
+				lv_value_6_0=ruleReference
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getMapEntryCustom2Rule());
 					}
 					set(
 						$current,

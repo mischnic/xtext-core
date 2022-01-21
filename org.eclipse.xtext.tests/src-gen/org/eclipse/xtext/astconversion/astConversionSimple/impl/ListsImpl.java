@@ -23,6 +23,7 @@ import org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePa
 import org.eclipse.xtext.astconversion.astConversionSimple.Lists;
 import org.eclipse.xtext.astconversion.astConversionSimple.MapEntry;
 import org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom;
+import org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom2;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,6 +37,7 @@ import org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom;
  *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ListsImpl#getB <em>B</em>}</li>
  *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ListsImpl#getC <em>C</em>}</li>
  *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ListsImpl#getD <em>D</em>}</li>
+ *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.impl.ListsImpl#getE <em>E</em>}</li>
  * </ul>
  *
  * @generated
@@ -81,6 +83,16 @@ public class ListsImpl extends MinimalEObjectImpl.Container implements Lists
    * @ordered
    */
   protected EList<MapEntryCustom> d;
+
+  /**
+   * The cached value of the '{@link #getE() <em>E</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getE()
+   * @generated
+   * @ordered
+   */
+  protected MapEntryCustom2 e;
 
   /**
    * <!-- begin-user-doc -->
@@ -239,6 +251,56 @@ public class ListsImpl extends MinimalEObjectImpl.Container implements Lists
    * @generated
    */
   @Override
+  public MapEntryCustom2 getE()
+  {
+    return e;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetE(MapEntryCustom2 newE, NotificationChain msgs)
+  {
+    MapEntryCustom2 oldE = e;
+    e = newE;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.LISTS__E, oldE, newE);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setE(MapEntryCustom2 newE)
+  {
+    if (newE != e)
+    {
+      NotificationChain msgs = null;
+      if (e != null)
+        msgs = ((InternalEObject)e).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.LISTS__E, null, msgs);
+      if (newE != null)
+        msgs = ((InternalEObject)newE).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstConversionSimplePackage.LISTS__E, null, msgs);
+      msgs = basicSetE(newE, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AstConversionSimplePackage.LISTS__E, newE, newE));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
@@ -251,6 +313,8 @@ public class ListsImpl extends MinimalEObjectImpl.Container implements Lists
         return ((InternalEList<?>)getC()).basicRemove(otherEnd, msgs);
       case AstConversionSimplePackage.LISTS__D:
         return ((InternalEList<?>)getD()).basicRemove(otherEnd, msgs);
+      case AstConversionSimplePackage.LISTS__E:
+        return basicSetE(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -273,6 +337,8 @@ public class ListsImpl extends MinimalEObjectImpl.Container implements Lists
         return getC();
       case AstConversionSimplePackage.LISTS__D:
         return getD();
+      case AstConversionSimplePackage.LISTS__E:
+        return getE();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -302,6 +368,9 @@ public class ListsImpl extends MinimalEObjectImpl.Container implements Lists
         getD().clear();
         getD().addAll((Collection<? extends MapEntryCustom>)newValue);
         return;
+      case AstConversionSimplePackage.LISTS__E:
+        setE((MapEntryCustom2)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -328,6 +397,9 @@ public class ListsImpl extends MinimalEObjectImpl.Container implements Lists
       case AstConversionSimplePackage.LISTS__D:
         getD().clear();
         return;
+      case AstConversionSimplePackage.LISTS__E:
+        setE((MapEntryCustom2)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -350,6 +422,8 @@ public class ListsImpl extends MinimalEObjectImpl.Container implements Lists
         return c != null && !c.isEmpty();
       case AstConversionSimplePackage.LISTS__D:
         return d != null && !d.isEmpty();
+      case AstConversionSimplePackage.LISTS__E:
+        return e != null;
     }
     return super.eIsSet(featureID);
   }

@@ -6,15 +6,17 @@ package org.eclipse.xtext.astconversion.ast;
 
 public class ASTLists {
 	public ASTLists(){}
-	public ASTLists(java.util.List<org.eclipse.xtext.astconversion.ast.ASTMapEntry> a, org.eclipse.xtext.astconversion.ast.NodeList<org.eclipse.xtext.astconversion.ast.ASTMapEntryCustom> b, java.util.List<org.eclipse.xtext.astconversion.ast.ASTMapEntry> c, java.util.List<org.eclipse.xtext.astconversion.ast.ASTMapEntryCustom> d){
+	public ASTLists(java.util.List<org.eclipse.xtext.astconversion.ast.ASTMapEntry> a, org.eclipse.xtext.astconversion.ast.NodeList<org.eclipse.xtext.astconversion.ast.ASTMapEntryCustom> b, java.util.List<org.eclipse.xtext.astconversion.ast.ASTMapEntry> c, java.util.List<org.eclipse.xtext.astconversion.ast.ASTMapEntryCustom> d, org.eclipse.xtext.astconversion.ast.NodeList<org.eclipse.xtext.astconversion.ast.ASTCustomClass> e){
 		this.a = a;
 		this.b = b;
 		this.c = c;
 		this.d = d;
+		this.e = e;
 	}
 	
 	public java.util.List<org.eclipse.xtext.astconversion.ast.ASTMapEntry> a;
 	public org.eclipse.xtext.astconversion.ast.NodeList<org.eclipse.xtext.astconversion.ast.ASTMapEntryCustom> b;
 	public java.util.List<org.eclipse.xtext.astconversion.ast.ASTMapEntry> c;
 	public java.util.List<org.eclipse.xtext.astconversion.ast.ASTMapEntryCustom> d;
+	public org.eclipse.xtext.astconversion.ast.NodeList<org.eclipse.xtext.astconversion.ast.ASTCustomClass> e;
 }

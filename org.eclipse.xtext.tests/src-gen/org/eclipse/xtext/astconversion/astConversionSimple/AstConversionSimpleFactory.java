@@ -177,6 +177,15 @@ public interface AstConversionSimpleFactory extends EFactory
   MapEntryCustom createMapEntryCustom();
 
   /**
+   * Returns a new object of class '<em>Map Entry Custom2</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Map Entry Custom2</em>'.
+   * @generated
+   */
+  MapEntryCustom2 createMapEntryCustom2();
+
+  /**
    * Returns a new object of class '<em>Hoisting Alternative</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

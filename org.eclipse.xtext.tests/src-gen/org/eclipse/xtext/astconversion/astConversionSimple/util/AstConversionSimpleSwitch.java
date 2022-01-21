@@ -200,6 +200,13 @@ public class AstConversionSimpleSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case AstConversionSimplePackage.MAP_ENTRY_CUSTOM2:
+      {
+        MapEntryCustom2 mapEntryCustom2 = (MapEntryCustom2)theEObject;
+        T result = caseMapEntryCustom2(mapEntryCustom2);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case AstConversionSimplePackage.HOISTING_ALTERNATIVE:
       {
         HoistingAlternative hoistingAlternative = (HoistingAlternative)theEObject;
@@ -518,6 +525,22 @@ public class AstConversionSimpleSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseMapEntryCustom(MapEntryCustom object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Map Entry Custom2</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Map Entry Custom2</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMapEntryCustom2(MapEntryCustom2 object)
   {
     return null;
   }

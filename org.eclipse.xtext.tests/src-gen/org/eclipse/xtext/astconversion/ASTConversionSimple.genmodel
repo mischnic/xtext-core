@@ -64,6 +64,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Lists/b"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Lists/c"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Lists/d"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//Lists/e"/>
     </genClasses>
     <genClasses ecoreClass="ASTConversionSimple.ecore#//MapEntry">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//MapEntry/keys"/>
@@ -72,6 +73,10 @@
     <genClasses ecoreClass="ASTConversionSimple.ecore#//MapEntryCustom">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//MapEntryCustom/keys"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//MapEntryCustom/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ASTConversionSimple.ecore#//MapEntryCustom2">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//MapEntryCustom2/keys"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASTConversionSimple.ecore#//MapEntryCustom2/value"/>
     </genClasses>
     <genClasses ecoreClass="ASTConversionSimple.ecore#//HoistingAlternative">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASTConversionSimple.ecore#//HoistingAlternative/val"/>

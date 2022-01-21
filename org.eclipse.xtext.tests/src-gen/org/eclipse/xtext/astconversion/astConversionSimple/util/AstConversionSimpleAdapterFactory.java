@@ -161,6 +161,11 @@ public class AstConversionSimpleAdapterFactory extends AdapterFactoryImpl
         return createMapEntryCustomAdapter();
       }
       @Override
+      public Adapter caseMapEntryCustom2(MapEntryCustom2 object)
+      {
+        return createMapEntryCustom2Adapter();
+      }
+      @Override
       public Adapter caseHoistingAlternative(HoistingAlternative object)
       {
         return createHoistingAlternativeAdapter();
@@ -463,6 +468,21 @@ public class AstConversionSimpleAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMapEntryCustomAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom2 <em>Map Entry Custom2</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom2
+   * @generated
+   */
+  public Adapter createMapEntryCustom2Adapter()
   {
     return null;
   }

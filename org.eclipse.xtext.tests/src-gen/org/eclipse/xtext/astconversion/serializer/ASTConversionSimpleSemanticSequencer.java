@@ -24,6 +24,7 @@ import org.eclipse.xtext.astconversion.astConversionSimple.Lists;
 import org.eclipse.xtext.astconversion.astConversionSimple.ManualClass;
 import org.eclipse.xtext.astconversion.astConversionSimple.MapEntry;
 import org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom;
+import org.eclipse.xtext.astconversion.astConversionSimple.MapEntryCustom2;
 import org.eclipse.xtext.astconversion.astConversionSimple.Other;
 import org.eclipse.xtext.astconversion.astConversionSimple.Program;
 import org.eclipse.xtext.astconversion.astConversionSimple.Reference;
@@ -89,6 +90,9 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 				return; 
 			case AstConversionSimplePackage.MAP_ENTRY_CUSTOM:
 				sequence_MapEntryCustom(context, (MapEntryCustom) semanticObject); 
+				return; 
+			case AstConversionSimplePackage.MAP_ENTRY_CUSTOM2:
+				sequence_MapEntryCustom2(context, (MapEntryCustom2) semanticObject); 
 				return; 
 			case AstConversionSimplePackage.OTHER:
 				sequence_Other(context, (Other) semanticObject); 
@@ -299,7 +303,7 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 	 *     Lists returns Lists
 	 *
 	 * Constraint:
-	 *     (a=MapEntry b=MapEntryCustom c+=MapEntry+ d+=MapEntryCustom+)
+	 *     (a=MapEntry b=MapEntryCustom c+=MapEntry+ d+=MapEntryCustom+ e=MapEntryCustom2)
 	 */
 	protected void sequence_Lists(ISerializationContext context, Lists semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -325,6 +329,18 @@ public class ASTConversionSimpleSemanticSequencer extends AbstractDelegatingSema
 		feeder.accept(grammarAccess.getManualClassAccess().getRefReferenceParserRuleCall_1_0(), semanticObject.getRef());
 		feeder.accept(grammarAccess.getManualClassAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     MapEntryCustom2 returns MapEntryCustom2
+	 *
+	 * Constraint:
+	 *     (keys+=INT keys+=INT* value=Reference)
+	 */
+	protected void sequence_MapEntryCustom2(ISerializationContext context, MapEntryCustom2 semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

@@ -2496,7 +2496,7 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
 
     // $ANTLR start "ruleLists"
-    // InternalASTConversionSimple.g:1044:1: ruleLists returns [EObject current=null] : ( ( (lv_a_0_0= ruleMapEntry ) ) otherlv_1= ';' ( (lv_b_2_0= ruleMapEntryCustom ) ) otherlv_3= ';' ( (lv_c_4_0= ruleMapEntry ) )+ otherlv_5= ';' ( (lv_d_6_0= ruleMapEntryCustom ) )+ otherlv_7= ';' ) ;
+    // InternalASTConversionSimple.g:1044:1: ruleLists returns [EObject current=null] : ( ( (lv_a_0_0= ruleMapEntry ) ) otherlv_1= ';' ( (lv_b_2_0= ruleMapEntryCustom ) ) otherlv_3= ';' ( (lv_c_4_0= ruleMapEntry ) )+ otherlv_5= ';' ( (lv_d_6_0= ruleMapEntryCustom ) )+ otherlv_7= ';' ( (lv_e_8_0= ruleMapEntryCustom2 ) ) otherlv_9= ';' ) ;
     public final EObject ruleLists() throws RecognitionException {
         EObject current = null;
 
@@ -2504,6 +2504,7 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
         Token otherlv_3=null;
         Token otherlv_5=null;
         Token otherlv_7=null;
+        Token otherlv_9=null;
         EObject lv_a_0_0 = null;
 
         EObject lv_b_2_0 = null;
@@ -2512,16 +2513,18 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
         EObject lv_d_6_0 = null;
 
+        EObject lv_e_8_0 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalASTConversionSimple.g:1050:2: ( ( ( (lv_a_0_0= ruleMapEntry ) ) otherlv_1= ';' ( (lv_b_2_0= ruleMapEntryCustom ) ) otherlv_3= ';' ( (lv_c_4_0= ruleMapEntry ) )+ otherlv_5= ';' ( (lv_d_6_0= ruleMapEntryCustom ) )+ otherlv_7= ';' ) )
-            // InternalASTConversionSimple.g:1051:2: ( ( (lv_a_0_0= ruleMapEntry ) ) otherlv_1= ';' ( (lv_b_2_0= ruleMapEntryCustom ) ) otherlv_3= ';' ( (lv_c_4_0= ruleMapEntry ) )+ otherlv_5= ';' ( (lv_d_6_0= ruleMapEntryCustom ) )+ otherlv_7= ';' )
+            // InternalASTConversionSimple.g:1050:2: ( ( ( (lv_a_0_0= ruleMapEntry ) ) otherlv_1= ';' ( (lv_b_2_0= ruleMapEntryCustom ) ) otherlv_3= ';' ( (lv_c_4_0= ruleMapEntry ) )+ otherlv_5= ';' ( (lv_d_6_0= ruleMapEntryCustom ) )+ otherlv_7= ';' ( (lv_e_8_0= ruleMapEntryCustom2 ) ) otherlv_9= ';' ) )
+            // InternalASTConversionSimple.g:1051:2: ( ( (lv_a_0_0= ruleMapEntry ) ) otherlv_1= ';' ( (lv_b_2_0= ruleMapEntryCustom ) ) otherlv_3= ';' ( (lv_c_4_0= ruleMapEntry ) )+ otherlv_5= ';' ( (lv_d_6_0= ruleMapEntryCustom ) )+ otherlv_7= ';' ( (lv_e_8_0= ruleMapEntryCustom2 ) ) otherlv_9= ';' )
             {
-            // InternalASTConversionSimple.g:1051:2: ( ( (lv_a_0_0= ruleMapEntry ) ) otherlv_1= ';' ( (lv_b_2_0= ruleMapEntryCustom ) ) otherlv_3= ';' ( (lv_c_4_0= ruleMapEntry ) )+ otherlv_5= ';' ( (lv_d_6_0= ruleMapEntryCustom ) )+ otherlv_7= ';' )
-            // InternalASTConversionSimple.g:1052:3: ( (lv_a_0_0= ruleMapEntry ) ) otherlv_1= ';' ( (lv_b_2_0= ruleMapEntryCustom ) ) otherlv_3= ';' ( (lv_c_4_0= ruleMapEntry ) )+ otherlv_5= ';' ( (lv_d_6_0= ruleMapEntryCustom ) )+ otherlv_7= ';'
+            // InternalASTConversionSimple.g:1051:2: ( ( (lv_a_0_0= ruleMapEntry ) ) otherlv_1= ';' ( (lv_b_2_0= ruleMapEntryCustom ) ) otherlv_3= ';' ( (lv_c_4_0= ruleMapEntry ) )+ otherlv_5= ';' ( (lv_d_6_0= ruleMapEntryCustom ) )+ otherlv_7= ';' ( (lv_e_8_0= ruleMapEntryCustom2 ) ) otherlv_9= ';' )
+            // InternalASTConversionSimple.g:1052:3: ( (lv_a_0_0= ruleMapEntry ) ) otherlv_1= ';' ( (lv_b_2_0= ruleMapEntryCustom ) ) otherlv_3= ';' ( (lv_c_4_0= ruleMapEntry ) )+ otherlv_5= ';' ( (lv_d_6_0= ruleMapEntryCustom ) )+ otherlv_7= ';' ( (lv_e_8_0= ruleMapEntryCustom2 ) ) otherlv_9= ';'
             {
             // InternalASTConversionSimple.g:1052:3: ( (lv_a_0_0= ruleMapEntry ) )
             // InternalASTConversionSimple.g:1053:4: (lv_a_0_0= ruleMapEntry )
@@ -2705,9 +2708,44 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
                 cnt9++;
             } while (true);
 
-            otherlv_7=(Token)match(input,12,FollowSets000.FOLLOW_2); 
+            otherlv_7=(Token)match(input,12,FollowSets000.FOLLOW_6); 
 
             			newLeafNode(otherlv_7, grammarAccess.getListsAccess().getSemicolonKeyword_7());
+            		
+            // InternalASTConversionSimple.g:1144:3: ( (lv_e_8_0= ruleMapEntryCustom2 ) )
+            // InternalASTConversionSimple.g:1145:4: (lv_e_8_0= ruleMapEntryCustom2 )
+            {
+            // InternalASTConversionSimple.g:1145:4: (lv_e_8_0= ruleMapEntryCustom2 )
+            // InternalASTConversionSimple.g:1146:5: lv_e_8_0= ruleMapEntryCustom2
+            {
+
+            					newCompositeNode(grammarAccess.getListsAccess().getEMapEntryCustom2ParserRuleCall_8_0());
+            				
+            pushFollow(FollowSets000.FOLLOW_10);
+            lv_e_8_0=ruleMapEntryCustom2();
+
+            state._fsp--;
+
+
+            					if (current==null) {
+            						current = createModelElementForParent(grammarAccess.getListsRule());
+            					}
+            					set(
+            						current,
+            						"e",
+            						lv_e_8_0,
+            						"org.eclipse.xtext.astconversion.ASTConversionSimple.MapEntryCustom2");
+            					afterParserOrEnumRuleCall();
+            				
+
+            }
+
+
+            }
+
+            otherlv_9=(Token)match(input,12,FollowSets000.FOLLOW_2); 
+
+            			newLeafNode(otherlv_9, grammarAccess.getListsAccess().getSemicolonKeyword_9());
             		
 
             }
@@ -2732,7 +2770,7 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
 
     // $ANTLR start "entryRuleMapEntry"
-    // InternalASTConversionSimple.g:1148:1: entryRuleMapEntry returns [EObject current=null] : iv_ruleMapEntry= ruleMapEntry EOF ;
+    // InternalASTConversionSimple.g:1171:1: entryRuleMapEntry returns [EObject current=null] : iv_ruleMapEntry= ruleMapEntry EOF ;
     public final EObject entryRuleMapEntry() throws RecognitionException {
         EObject current = null;
 
@@ -2740,8 +2778,8 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
 
         try {
-            // InternalASTConversionSimple.g:1148:49: (iv_ruleMapEntry= ruleMapEntry EOF )
-            // InternalASTConversionSimple.g:1149:2: iv_ruleMapEntry= ruleMapEntry EOF
+            // InternalASTConversionSimple.g:1171:49: (iv_ruleMapEntry= ruleMapEntry EOF )
+            // InternalASTConversionSimple.g:1172:2: iv_ruleMapEntry= ruleMapEntry EOF
             {
              newCompositeNode(grammarAccess.getMapEntryRule()); 
             pushFollow(FollowSets000.FOLLOW_1);
@@ -2768,7 +2806,7 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
 
     // $ANTLR start "ruleMapEntry"
-    // InternalASTConversionSimple.g:1155:1: ruleMapEntry returns [EObject current=null] : (otherlv_0= '[' ( (lv_keys_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= RULE_INT ) ) ) ;
+    // InternalASTConversionSimple.g:1178:1: ruleMapEntry returns [EObject current=null] : (otherlv_0= '[' ( (lv_keys_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= RULE_INT ) ) ) ;
     public final EObject ruleMapEntry() throws RecognitionException {
         EObject current = null;
 
@@ -2784,21 +2822,21 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
         	enterRule();
 
         try {
-            // InternalASTConversionSimple.g:1161:2: ( (otherlv_0= '[' ( (lv_keys_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= RULE_INT ) ) ) )
-            // InternalASTConversionSimple.g:1162:2: (otherlv_0= '[' ( (lv_keys_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= RULE_INT ) ) )
+            // InternalASTConversionSimple.g:1184:2: ( (otherlv_0= '[' ( (lv_keys_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= RULE_INT ) ) ) )
+            // InternalASTConversionSimple.g:1185:2: (otherlv_0= '[' ( (lv_keys_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= RULE_INT ) ) )
             {
-            // InternalASTConversionSimple.g:1162:2: (otherlv_0= '[' ( (lv_keys_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= RULE_INT ) ) )
-            // InternalASTConversionSimple.g:1163:3: otherlv_0= '[' ( (lv_keys_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= RULE_INT ) )
+            // InternalASTConversionSimple.g:1185:2: (otherlv_0= '[' ( (lv_keys_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= RULE_INT ) ) )
+            // InternalASTConversionSimple.g:1186:3: otherlv_0= '[' ( (lv_keys_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= RULE_INT ) )
             {
             otherlv_0=(Token)match(input,24,FollowSets000.FOLLOW_9); 
 
             			newLeafNode(otherlv_0, grammarAccess.getMapEntryAccess().getLeftSquareBracketKeyword_0());
             		
-            // InternalASTConversionSimple.g:1167:3: ( (lv_keys_1_0= RULE_ID ) )
-            // InternalASTConversionSimple.g:1168:4: (lv_keys_1_0= RULE_ID )
+            // InternalASTConversionSimple.g:1190:3: ( (lv_keys_1_0= RULE_ID ) )
+            // InternalASTConversionSimple.g:1191:4: (lv_keys_1_0= RULE_ID )
             {
-            // InternalASTConversionSimple.g:1168:4: (lv_keys_1_0= RULE_ID )
-            // InternalASTConversionSimple.g:1169:5: lv_keys_1_0= RULE_ID
+            // InternalASTConversionSimple.g:1191:4: (lv_keys_1_0= RULE_ID )
+            // InternalASTConversionSimple.g:1192:5: lv_keys_1_0= RULE_ID
             {
             lv_keys_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_19); 
 
@@ -2820,7 +2858,7 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
             }
 
-            // InternalASTConversionSimple.g:1185:3: (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )*
+            // InternalASTConversionSimple.g:1208:3: (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )*
             loop10:
             do {
                 int alt10=2;
@@ -2833,17 +2871,17 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
                 switch (alt10) {
             	case 1 :
-            	    // InternalASTConversionSimple.g:1186:4: otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) )
+            	    // InternalASTConversionSimple.g:1209:4: otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) )
             	    {
             	    otherlv_2=(Token)match(input,25,FollowSets000.FOLLOW_9); 
 
             	    				newLeafNode(otherlv_2, grammarAccess.getMapEntryAccess().getCommaKeyword_2_0());
             	    			
-            	    // InternalASTConversionSimple.g:1190:4: ( (lv_keys_3_0= RULE_ID ) )
-            	    // InternalASTConversionSimple.g:1191:5: (lv_keys_3_0= RULE_ID )
+            	    // InternalASTConversionSimple.g:1213:4: ( (lv_keys_3_0= RULE_ID ) )
+            	    // InternalASTConversionSimple.g:1214:5: (lv_keys_3_0= RULE_ID )
             	    {
-            	    // InternalASTConversionSimple.g:1191:5: (lv_keys_3_0= RULE_ID )
-            	    // InternalASTConversionSimple.g:1192:6: lv_keys_3_0= RULE_ID
+            	    // InternalASTConversionSimple.g:1214:5: (lv_keys_3_0= RULE_ID )
+            	    // InternalASTConversionSimple.g:1215:6: lv_keys_3_0= RULE_ID
             	    {
             	    lv_keys_3_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_19); 
 
@@ -2882,11 +2920,11 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
             			newLeafNode(otherlv_5, grammarAccess.getMapEntryAccess().getColonKeyword_4());
             		
-            // InternalASTConversionSimple.g:1217:3: ( (lv_value_6_0= RULE_INT ) )
-            // InternalASTConversionSimple.g:1218:4: (lv_value_6_0= RULE_INT )
+            // InternalASTConversionSimple.g:1240:3: ( (lv_value_6_0= RULE_INT ) )
+            // InternalASTConversionSimple.g:1241:4: (lv_value_6_0= RULE_INT )
             {
-            // InternalASTConversionSimple.g:1218:4: (lv_value_6_0= RULE_INT )
-            // InternalASTConversionSimple.g:1219:5: lv_value_6_0= RULE_INT
+            // InternalASTConversionSimple.g:1241:4: (lv_value_6_0= RULE_INT )
+            // InternalASTConversionSimple.g:1242:5: lv_value_6_0= RULE_INT
             {
             lv_value_6_0=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_2); 
 
@@ -2931,7 +2969,7 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
 
     // $ANTLR start "entryRuleMapEntryCustom"
-    // InternalASTConversionSimple.g:1239:1: entryRuleMapEntryCustom returns [EObject current=null] : iv_ruleMapEntryCustom= ruleMapEntryCustom EOF ;
+    // InternalASTConversionSimple.g:1262:1: entryRuleMapEntryCustom returns [EObject current=null] : iv_ruleMapEntryCustom= ruleMapEntryCustom EOF ;
     public final EObject entryRuleMapEntryCustom() throws RecognitionException {
         EObject current = null;
 
@@ -2939,8 +2977,8 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
 
         try {
-            // InternalASTConversionSimple.g:1239:55: (iv_ruleMapEntryCustom= ruleMapEntryCustom EOF )
-            // InternalASTConversionSimple.g:1240:2: iv_ruleMapEntryCustom= ruleMapEntryCustom EOF
+            // InternalASTConversionSimple.g:1262:55: (iv_ruleMapEntryCustom= ruleMapEntryCustom EOF )
+            // InternalASTConversionSimple.g:1263:2: iv_ruleMapEntryCustom= ruleMapEntryCustom EOF
             {
              newCompositeNode(grammarAccess.getMapEntryCustomRule()); 
             pushFollow(FollowSets000.FOLLOW_1);
@@ -2967,7 +3005,7 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
 
     // $ANTLR start "ruleMapEntryCustom"
-    // InternalASTConversionSimple.g:1246:1: ruleMapEntryCustom returns [EObject current=null] : (otherlv_0= '[' ( (lv_keys_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= ruleReference ) ) ) ;
+    // InternalASTConversionSimple.g:1269:1: ruleMapEntryCustom returns [EObject current=null] : (otherlv_0= '[' ( (lv_keys_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= ruleReference ) ) ) ;
     public final EObject ruleMapEntryCustom() throws RecognitionException {
         EObject current = null;
 
@@ -2984,21 +3022,21 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
         	enterRule();
 
         try {
-            // InternalASTConversionSimple.g:1252:2: ( (otherlv_0= '[' ( (lv_keys_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= ruleReference ) ) ) )
-            // InternalASTConversionSimple.g:1253:2: (otherlv_0= '[' ( (lv_keys_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= ruleReference ) ) )
+            // InternalASTConversionSimple.g:1275:2: ( (otherlv_0= '[' ( (lv_keys_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= ruleReference ) ) ) )
+            // InternalASTConversionSimple.g:1276:2: (otherlv_0= '[' ( (lv_keys_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= ruleReference ) ) )
             {
-            // InternalASTConversionSimple.g:1253:2: (otherlv_0= '[' ( (lv_keys_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= ruleReference ) ) )
-            // InternalASTConversionSimple.g:1254:3: otherlv_0= '[' ( (lv_keys_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= ruleReference ) )
+            // InternalASTConversionSimple.g:1276:2: (otherlv_0= '[' ( (lv_keys_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= ruleReference ) ) )
+            // InternalASTConversionSimple.g:1277:3: otherlv_0= '[' ( (lv_keys_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= ruleReference ) )
             {
             otherlv_0=(Token)match(input,24,FollowSets000.FOLLOW_9); 
 
             			newLeafNode(otherlv_0, grammarAccess.getMapEntryCustomAccess().getLeftSquareBracketKeyword_0());
             		
-            // InternalASTConversionSimple.g:1258:3: ( (lv_keys_1_0= RULE_ID ) )
-            // InternalASTConversionSimple.g:1259:4: (lv_keys_1_0= RULE_ID )
+            // InternalASTConversionSimple.g:1281:3: ( (lv_keys_1_0= RULE_ID ) )
+            // InternalASTConversionSimple.g:1282:4: (lv_keys_1_0= RULE_ID )
             {
-            // InternalASTConversionSimple.g:1259:4: (lv_keys_1_0= RULE_ID )
-            // InternalASTConversionSimple.g:1260:5: lv_keys_1_0= RULE_ID
+            // InternalASTConversionSimple.g:1282:4: (lv_keys_1_0= RULE_ID )
+            // InternalASTConversionSimple.g:1283:5: lv_keys_1_0= RULE_ID
             {
             lv_keys_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_19); 
 
@@ -3020,7 +3058,7 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
             }
 
-            // InternalASTConversionSimple.g:1276:3: (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )*
+            // InternalASTConversionSimple.g:1299:3: (otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) ) )*
             loop11:
             do {
                 int alt11=2;
@@ -3033,17 +3071,17 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
                 switch (alt11) {
             	case 1 :
-            	    // InternalASTConversionSimple.g:1277:4: otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) )
+            	    // InternalASTConversionSimple.g:1300:4: otherlv_2= ',' ( (lv_keys_3_0= RULE_ID ) )
             	    {
             	    otherlv_2=(Token)match(input,25,FollowSets000.FOLLOW_9); 
 
             	    				newLeafNode(otherlv_2, grammarAccess.getMapEntryCustomAccess().getCommaKeyword_2_0());
             	    			
-            	    // InternalASTConversionSimple.g:1281:4: ( (lv_keys_3_0= RULE_ID ) )
-            	    // InternalASTConversionSimple.g:1282:5: (lv_keys_3_0= RULE_ID )
+            	    // InternalASTConversionSimple.g:1304:4: ( (lv_keys_3_0= RULE_ID ) )
+            	    // InternalASTConversionSimple.g:1305:5: (lv_keys_3_0= RULE_ID )
             	    {
-            	    // InternalASTConversionSimple.g:1282:5: (lv_keys_3_0= RULE_ID )
-            	    // InternalASTConversionSimple.g:1283:6: lv_keys_3_0= RULE_ID
+            	    // InternalASTConversionSimple.g:1305:5: (lv_keys_3_0= RULE_ID )
+            	    // InternalASTConversionSimple.g:1306:6: lv_keys_3_0= RULE_ID
             	    {
             	    lv_keys_3_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_19); 
 
@@ -3082,11 +3120,11 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
             			newLeafNode(otherlv_5, grammarAccess.getMapEntryCustomAccess().getColonKeyword_4());
             		
-            // InternalASTConversionSimple.g:1308:3: ( (lv_value_6_0= ruleReference ) )
-            // InternalASTConversionSimple.g:1309:4: (lv_value_6_0= ruleReference )
+            // InternalASTConversionSimple.g:1331:3: ( (lv_value_6_0= ruleReference ) )
+            // InternalASTConversionSimple.g:1332:4: (lv_value_6_0= ruleReference )
             {
-            // InternalASTConversionSimple.g:1309:4: (lv_value_6_0= ruleReference )
-            // InternalASTConversionSimple.g:1310:5: lv_value_6_0= ruleReference
+            // InternalASTConversionSimple.g:1332:4: (lv_value_6_0= ruleReference )
+            // InternalASTConversionSimple.g:1333:5: lv_value_6_0= ruleReference
             {
 
             					newCompositeNode(grammarAccess.getMapEntryCustomAccess().getValueReferenceParserRuleCall_5_0());
@@ -3135,8 +3173,213 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
     // $ANTLR end "ruleMapEntryCustom"
 
 
+    // $ANTLR start "entryRuleMapEntryCustom2"
+    // InternalASTConversionSimple.g:1354:1: entryRuleMapEntryCustom2 returns [EObject current=null] : iv_ruleMapEntryCustom2= ruleMapEntryCustom2 EOF ;
+    public final EObject entryRuleMapEntryCustom2() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleMapEntryCustom2 = null;
+
+
+        try {
+            // InternalASTConversionSimple.g:1354:56: (iv_ruleMapEntryCustom2= ruleMapEntryCustom2 EOF )
+            // InternalASTConversionSimple.g:1355:2: iv_ruleMapEntryCustom2= ruleMapEntryCustom2 EOF
+            {
+             newCompositeNode(grammarAccess.getMapEntryCustom2Rule()); 
+            pushFollow(FollowSets000.FOLLOW_1);
+            iv_ruleMapEntryCustom2=ruleMapEntryCustom2();
+
+            state._fsp--;
+
+             current =iv_ruleMapEntryCustom2; 
+            match(input,EOF,FollowSets000.FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleMapEntryCustom2"
+
+
+    // $ANTLR start "ruleMapEntryCustom2"
+    // InternalASTConversionSimple.g:1361:1: ruleMapEntryCustom2 returns [EObject current=null] : (otherlv_0= '[' ( (lv_keys_1_0= RULE_INT ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_INT ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= ruleReference ) ) ) ;
+    public final EObject ruleMapEntryCustom2() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token lv_keys_1_0=null;
+        Token otherlv_2=null;
+        Token lv_keys_3_0=null;
+        Token otherlv_4=null;
+        Token otherlv_5=null;
+        EObject lv_value_6_0 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalASTConversionSimple.g:1367:2: ( (otherlv_0= '[' ( (lv_keys_1_0= RULE_INT ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_INT ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= ruleReference ) ) ) )
+            // InternalASTConversionSimple.g:1368:2: (otherlv_0= '[' ( (lv_keys_1_0= RULE_INT ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_INT ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= ruleReference ) ) )
+            {
+            // InternalASTConversionSimple.g:1368:2: (otherlv_0= '[' ( (lv_keys_1_0= RULE_INT ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_INT ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= ruleReference ) ) )
+            // InternalASTConversionSimple.g:1369:3: otherlv_0= '[' ( (lv_keys_1_0= RULE_INT ) ) (otherlv_2= ',' ( (lv_keys_3_0= RULE_INT ) ) )* otherlv_4= ']' otherlv_5= ':' ( (lv_value_6_0= ruleReference ) )
+            {
+            otherlv_0=(Token)match(input,24,FollowSets000.FOLLOW_21); 
+
+            			newLeafNode(otherlv_0, grammarAccess.getMapEntryCustom2Access().getLeftSquareBracketKeyword_0());
+            		
+            // InternalASTConversionSimple.g:1373:3: ( (lv_keys_1_0= RULE_INT ) )
+            // InternalASTConversionSimple.g:1374:4: (lv_keys_1_0= RULE_INT )
+            {
+            // InternalASTConversionSimple.g:1374:4: (lv_keys_1_0= RULE_INT )
+            // InternalASTConversionSimple.g:1375:5: lv_keys_1_0= RULE_INT
+            {
+            lv_keys_1_0=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_19); 
+
+            					newLeafNode(lv_keys_1_0, grammarAccess.getMapEntryCustom2Access().getKeysINTTerminalRuleCall_1_0());
+            				
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getMapEntryCustom2Rule());
+            					}
+            					addWithLastConsumed(
+            						current,
+            						"keys",
+            						lv_keys_1_0,
+            						"org.eclipse.xtext.common.Terminals.INT");
+            				
+
+            }
+
+
+            }
+
+            // InternalASTConversionSimple.g:1391:3: (otherlv_2= ',' ( (lv_keys_3_0= RULE_INT ) ) )*
+            loop12:
+            do {
+                int alt12=2;
+                int LA12_0 = input.LA(1);
+
+                if ( (LA12_0==25) ) {
+                    alt12=1;
+                }
+
+
+                switch (alt12) {
+            	case 1 :
+            	    // InternalASTConversionSimple.g:1392:4: otherlv_2= ',' ( (lv_keys_3_0= RULE_INT ) )
+            	    {
+            	    otherlv_2=(Token)match(input,25,FollowSets000.FOLLOW_21); 
+
+            	    				newLeafNode(otherlv_2, grammarAccess.getMapEntryCustom2Access().getCommaKeyword_2_0());
+            	    			
+            	    // InternalASTConversionSimple.g:1396:4: ( (lv_keys_3_0= RULE_INT ) )
+            	    // InternalASTConversionSimple.g:1397:5: (lv_keys_3_0= RULE_INT )
+            	    {
+            	    // InternalASTConversionSimple.g:1397:5: (lv_keys_3_0= RULE_INT )
+            	    // InternalASTConversionSimple.g:1398:6: lv_keys_3_0= RULE_INT
+            	    {
+            	    lv_keys_3_0=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_19); 
+
+            	    						newLeafNode(lv_keys_3_0, grammarAccess.getMapEntryCustom2Access().getKeysINTTerminalRuleCall_2_1_0());
+            	    					
+
+            	    						if (current==null) {
+            	    							current = createModelElement(grammarAccess.getMapEntryCustom2Rule());
+            	    						}
+            	    						addWithLastConsumed(
+            	    							current,
+            	    							"keys",
+            	    							lv_keys_3_0,
+            	    							"org.eclipse.xtext.common.Terminals.INT");
+            	    					
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop12;
+                }
+            } while (true);
+
+            otherlv_4=(Token)match(input,26,FollowSets000.FOLLOW_20); 
+
+            			newLeafNode(otherlv_4, grammarAccess.getMapEntryCustom2Access().getRightSquareBracketKeyword_3());
+            		
+            otherlv_5=(Token)match(input,27,FollowSets000.FOLLOW_9); 
+
+            			newLeafNode(otherlv_5, grammarAccess.getMapEntryCustom2Access().getColonKeyword_4());
+            		
+            // InternalASTConversionSimple.g:1423:3: ( (lv_value_6_0= ruleReference ) )
+            // InternalASTConversionSimple.g:1424:4: (lv_value_6_0= ruleReference )
+            {
+            // InternalASTConversionSimple.g:1424:4: (lv_value_6_0= ruleReference )
+            // InternalASTConversionSimple.g:1425:5: lv_value_6_0= ruleReference
+            {
+
+            					newCompositeNode(grammarAccess.getMapEntryCustom2Access().getValueReferenceParserRuleCall_5_0());
+            				
+            pushFollow(FollowSets000.FOLLOW_2);
+            lv_value_6_0=ruleReference();
+
+            state._fsp--;
+
+
+            					if (current==null) {
+            						current = createModelElementForParent(grammarAccess.getMapEntryCustom2Rule());
+            					}
+            					set(
+            						current,
+            						"value",
+            						lv_value_6_0,
+            						"org.eclipse.xtext.astconversion.ASTConversionSimple.Reference");
+            					afterParserOrEnumRuleCall();
+            				
+
+            }
+
+
+            }
+
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleMapEntryCustom2"
+
+
     // $ANTLR start "entryRuleHoistingAlternative"
-    // InternalASTConversionSimple.g:1331:1: entryRuleHoistingAlternative returns [EObject current=null] : iv_ruleHoistingAlternative= ruleHoistingAlternative EOF ;
+    // InternalASTConversionSimple.g:1446:1: entryRuleHoistingAlternative returns [EObject current=null] : iv_ruleHoistingAlternative= ruleHoistingAlternative EOF ;
     public final EObject entryRuleHoistingAlternative() throws RecognitionException {
         EObject current = null;
 
@@ -3144,8 +3387,8 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
 
         try {
-            // InternalASTConversionSimple.g:1331:60: (iv_ruleHoistingAlternative= ruleHoistingAlternative EOF )
-            // InternalASTConversionSimple.g:1332:2: iv_ruleHoistingAlternative= ruleHoistingAlternative EOF
+            // InternalASTConversionSimple.g:1446:60: (iv_ruleHoistingAlternative= ruleHoistingAlternative EOF )
+            // InternalASTConversionSimple.g:1447:2: iv_ruleHoistingAlternative= ruleHoistingAlternative EOF
             {
              newCompositeNode(grammarAccess.getHoistingAlternativeRule()); 
             pushFollow(FollowSets000.FOLLOW_1);
@@ -3172,7 +3415,7 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
 
     // $ANTLR start "ruleHoistingAlternative"
-    // InternalASTConversionSimple.g:1338:1: ruleHoistingAlternative returns [EObject current=null] : (this_X_0= ruleX | this_Y_1= ruleY ) ;
+    // InternalASTConversionSimple.g:1453:1: ruleHoistingAlternative returns [EObject current=null] : (this_X_0= ruleX | this_Y_1= ruleY ) ;
     public final EObject ruleHoistingAlternative() throws RecognitionException {
         EObject current = null;
 
@@ -3185,28 +3428,28 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
         	enterRule();
 
         try {
-            // InternalASTConversionSimple.g:1344:2: ( (this_X_0= ruleX | this_Y_1= ruleY ) )
-            // InternalASTConversionSimple.g:1345:2: (this_X_0= ruleX | this_Y_1= ruleY )
+            // InternalASTConversionSimple.g:1459:2: ( (this_X_0= ruleX | this_Y_1= ruleY ) )
+            // InternalASTConversionSimple.g:1460:2: (this_X_0= ruleX | this_Y_1= ruleY )
             {
-            // InternalASTConversionSimple.g:1345:2: (this_X_0= ruleX | this_Y_1= ruleY )
-            int alt12=2;
-            int LA12_0 = input.LA(1);
+            // InternalASTConversionSimple.g:1460:2: (this_X_0= ruleX | this_Y_1= ruleY )
+            int alt13=2;
+            int LA13_0 = input.LA(1);
 
-            if ( (LA12_0==28) ) {
-                alt12=1;
+            if ( (LA13_0==28) ) {
+                alt13=1;
             }
-            else if ( (LA12_0==29) ) {
-                alt12=2;
+            else if ( (LA13_0==29) ) {
+                alt13=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 12, 0, input);
+                    new NoViableAltException("", 13, 0, input);
 
                 throw nvae;
             }
-            switch (alt12) {
+            switch (alt13) {
                 case 1 :
-                    // InternalASTConversionSimple.g:1346:3: this_X_0= ruleX
+                    // InternalASTConversionSimple.g:1461:3: this_X_0= ruleX
                     {
 
                     			newCompositeNode(grammarAccess.getHoistingAlternativeAccess().getXParserRuleCall_0());
@@ -3224,7 +3467,7 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
                     }
                     break;
                 case 2 :
-                    // InternalASTConversionSimple.g:1355:3: this_Y_1= ruleY
+                    // InternalASTConversionSimple.g:1470:3: this_Y_1= ruleY
                     {
 
                     			newCompositeNode(grammarAccess.getHoistingAlternativeAccess().getYParserRuleCall_1());
@@ -3264,7 +3507,7 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
 
     // $ANTLR start "entryRuleX"
-    // InternalASTConversionSimple.g:1367:1: entryRuleX returns [EObject current=null] : iv_ruleX= ruleX EOF ;
+    // InternalASTConversionSimple.g:1482:1: entryRuleX returns [EObject current=null] : iv_ruleX= ruleX EOF ;
     public final EObject entryRuleX() throws RecognitionException {
         EObject current = null;
 
@@ -3272,8 +3515,8 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
 
         try {
-            // InternalASTConversionSimple.g:1367:42: (iv_ruleX= ruleX EOF )
-            // InternalASTConversionSimple.g:1368:2: iv_ruleX= ruleX EOF
+            // InternalASTConversionSimple.g:1482:42: (iv_ruleX= ruleX EOF )
+            // InternalASTConversionSimple.g:1483:2: iv_ruleX= ruleX EOF
             {
              newCompositeNode(grammarAccess.getXRule()); 
             pushFollow(FollowSets000.FOLLOW_1);
@@ -3300,7 +3543,7 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
 
     // $ANTLR start "ruleX"
-    // InternalASTConversionSimple.g:1374:1: ruleX returns [EObject current=null] : (otherlv_0= 'altX' ( (lv_val_1_0= RULE_ID ) ) otherlv_2= ';' ) ;
+    // InternalASTConversionSimple.g:1489:1: ruleX returns [EObject current=null] : (otherlv_0= 'altX' ( (lv_val_1_0= RULE_ID ) ) otherlv_2= ';' ) ;
     public final EObject ruleX() throws RecognitionException {
         EObject current = null;
 
@@ -3312,21 +3555,21 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
         	enterRule();
 
         try {
-            // InternalASTConversionSimple.g:1380:2: ( (otherlv_0= 'altX' ( (lv_val_1_0= RULE_ID ) ) otherlv_2= ';' ) )
-            // InternalASTConversionSimple.g:1381:2: (otherlv_0= 'altX' ( (lv_val_1_0= RULE_ID ) ) otherlv_2= ';' )
+            // InternalASTConversionSimple.g:1495:2: ( (otherlv_0= 'altX' ( (lv_val_1_0= RULE_ID ) ) otherlv_2= ';' ) )
+            // InternalASTConversionSimple.g:1496:2: (otherlv_0= 'altX' ( (lv_val_1_0= RULE_ID ) ) otherlv_2= ';' )
             {
-            // InternalASTConversionSimple.g:1381:2: (otherlv_0= 'altX' ( (lv_val_1_0= RULE_ID ) ) otherlv_2= ';' )
-            // InternalASTConversionSimple.g:1382:3: otherlv_0= 'altX' ( (lv_val_1_0= RULE_ID ) ) otherlv_2= ';'
+            // InternalASTConversionSimple.g:1496:2: (otherlv_0= 'altX' ( (lv_val_1_0= RULE_ID ) ) otherlv_2= ';' )
+            // InternalASTConversionSimple.g:1497:3: otherlv_0= 'altX' ( (lv_val_1_0= RULE_ID ) ) otherlv_2= ';'
             {
             otherlv_0=(Token)match(input,28,FollowSets000.FOLLOW_9); 
 
             			newLeafNode(otherlv_0, grammarAccess.getXAccess().getAltXKeyword_0());
             		
-            // InternalASTConversionSimple.g:1386:3: ( (lv_val_1_0= RULE_ID ) )
-            // InternalASTConversionSimple.g:1387:4: (lv_val_1_0= RULE_ID )
+            // InternalASTConversionSimple.g:1501:3: ( (lv_val_1_0= RULE_ID ) )
+            // InternalASTConversionSimple.g:1502:4: (lv_val_1_0= RULE_ID )
             {
-            // InternalASTConversionSimple.g:1387:4: (lv_val_1_0= RULE_ID )
-            // InternalASTConversionSimple.g:1388:5: lv_val_1_0= RULE_ID
+            // InternalASTConversionSimple.g:1502:4: (lv_val_1_0= RULE_ID )
+            // InternalASTConversionSimple.g:1503:5: lv_val_1_0= RULE_ID
             {
             lv_val_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_10); 
 
@@ -3375,7 +3618,7 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
 
     // $ANTLR start "entryRuleY"
-    // InternalASTConversionSimple.g:1412:1: entryRuleY returns [EObject current=null] : iv_ruleY= ruleY EOF ;
+    // InternalASTConversionSimple.g:1527:1: entryRuleY returns [EObject current=null] : iv_ruleY= ruleY EOF ;
     public final EObject entryRuleY() throws RecognitionException {
         EObject current = null;
 
@@ -3383,8 +3626,8 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
 
         try {
-            // InternalASTConversionSimple.g:1412:42: (iv_ruleY= ruleY EOF )
-            // InternalASTConversionSimple.g:1413:2: iv_ruleY= ruleY EOF
+            // InternalASTConversionSimple.g:1527:42: (iv_ruleY= ruleY EOF )
+            // InternalASTConversionSimple.g:1528:2: iv_ruleY= ruleY EOF
             {
              newCompositeNode(grammarAccess.getYRule()); 
             pushFollow(FollowSets000.FOLLOW_1);
@@ -3411,7 +3654,7 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
 
     // $ANTLR start "ruleY"
-    // InternalASTConversionSimple.g:1419:1: ruleY returns [EObject current=null] : (otherlv_0= 'altY' ( (lv_val_1_0= RULE_ID ) ) ( (lv_y_2_0= RULE_ID ) ) otherlv_3= ';' ) ;
+    // InternalASTConversionSimple.g:1534:1: ruleY returns [EObject current=null] : (otherlv_0= 'altY' ( (lv_val_1_0= RULE_ID ) ) ( (lv_y_2_0= RULE_ID ) ) otherlv_3= ';' ) ;
     public final EObject ruleY() throws RecognitionException {
         EObject current = null;
 
@@ -3424,21 +3667,21 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
         	enterRule();
 
         try {
-            // InternalASTConversionSimple.g:1425:2: ( (otherlv_0= 'altY' ( (lv_val_1_0= RULE_ID ) ) ( (lv_y_2_0= RULE_ID ) ) otherlv_3= ';' ) )
-            // InternalASTConversionSimple.g:1426:2: (otherlv_0= 'altY' ( (lv_val_1_0= RULE_ID ) ) ( (lv_y_2_0= RULE_ID ) ) otherlv_3= ';' )
+            // InternalASTConversionSimple.g:1540:2: ( (otherlv_0= 'altY' ( (lv_val_1_0= RULE_ID ) ) ( (lv_y_2_0= RULE_ID ) ) otherlv_3= ';' ) )
+            // InternalASTConversionSimple.g:1541:2: (otherlv_0= 'altY' ( (lv_val_1_0= RULE_ID ) ) ( (lv_y_2_0= RULE_ID ) ) otherlv_3= ';' )
             {
-            // InternalASTConversionSimple.g:1426:2: (otherlv_0= 'altY' ( (lv_val_1_0= RULE_ID ) ) ( (lv_y_2_0= RULE_ID ) ) otherlv_3= ';' )
-            // InternalASTConversionSimple.g:1427:3: otherlv_0= 'altY' ( (lv_val_1_0= RULE_ID ) ) ( (lv_y_2_0= RULE_ID ) ) otherlv_3= ';'
+            // InternalASTConversionSimple.g:1541:2: (otherlv_0= 'altY' ( (lv_val_1_0= RULE_ID ) ) ( (lv_y_2_0= RULE_ID ) ) otherlv_3= ';' )
+            // InternalASTConversionSimple.g:1542:3: otherlv_0= 'altY' ( (lv_val_1_0= RULE_ID ) ) ( (lv_y_2_0= RULE_ID ) ) otherlv_3= ';'
             {
             otherlv_0=(Token)match(input,29,FollowSets000.FOLLOW_9); 
 
             			newLeafNode(otherlv_0, grammarAccess.getYAccess().getAltYKeyword_0());
             		
-            // InternalASTConversionSimple.g:1431:3: ( (lv_val_1_0= RULE_ID ) )
-            // InternalASTConversionSimple.g:1432:4: (lv_val_1_0= RULE_ID )
+            // InternalASTConversionSimple.g:1546:3: ( (lv_val_1_0= RULE_ID ) )
+            // InternalASTConversionSimple.g:1547:4: (lv_val_1_0= RULE_ID )
             {
-            // InternalASTConversionSimple.g:1432:4: (lv_val_1_0= RULE_ID )
-            // InternalASTConversionSimple.g:1433:5: lv_val_1_0= RULE_ID
+            // InternalASTConversionSimple.g:1547:4: (lv_val_1_0= RULE_ID )
+            // InternalASTConversionSimple.g:1548:5: lv_val_1_0= RULE_ID
             {
             lv_val_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_9); 
 
@@ -3460,11 +3703,11 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
             }
 
-            // InternalASTConversionSimple.g:1449:3: ( (lv_y_2_0= RULE_ID ) )
-            // InternalASTConversionSimple.g:1450:4: (lv_y_2_0= RULE_ID )
+            // InternalASTConversionSimple.g:1564:3: ( (lv_y_2_0= RULE_ID ) )
+            // InternalASTConversionSimple.g:1565:4: (lv_y_2_0= RULE_ID )
             {
-            // InternalASTConversionSimple.g:1450:4: (lv_y_2_0= RULE_ID )
-            // InternalASTConversionSimple.g:1451:5: lv_y_2_0= RULE_ID
+            // InternalASTConversionSimple.g:1565:4: (lv_y_2_0= RULE_ID )
+            // InternalASTConversionSimple.g:1566:5: lv_y_2_0= RULE_ID
             {
             lv_y_2_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_10); 
 
@@ -3513,7 +3756,7 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
 
     // $ANTLR start "entryRuleHoistingActionNew"
-    // InternalASTConversionSimple.g:1475:1: entryRuleHoistingActionNew returns [EObject current=null] : iv_ruleHoistingActionNew= ruleHoistingActionNew EOF ;
+    // InternalASTConversionSimple.g:1590:1: entryRuleHoistingActionNew returns [EObject current=null] : iv_ruleHoistingActionNew= ruleHoistingActionNew EOF ;
     public final EObject entryRuleHoistingActionNew() throws RecognitionException {
         EObject current = null;
 
@@ -3521,8 +3764,8 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
 
         try {
-            // InternalASTConversionSimple.g:1475:58: (iv_ruleHoistingActionNew= ruleHoistingActionNew EOF )
-            // InternalASTConversionSimple.g:1476:2: iv_ruleHoistingActionNew= ruleHoistingActionNew EOF
+            // InternalASTConversionSimple.g:1590:58: (iv_ruleHoistingActionNew= ruleHoistingActionNew EOF )
+            // InternalASTConversionSimple.g:1591:2: iv_ruleHoistingActionNew= ruleHoistingActionNew EOF
             {
              newCompositeNode(grammarAccess.getHoistingActionNewRule()); 
             pushFollow(FollowSets000.FOLLOW_1);
@@ -3549,7 +3792,7 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
 
     // $ANTLR start "ruleHoistingActionNew"
-    // InternalASTConversionSimple.g:1482:1: ruleHoistingActionNew returns [EObject current=null] : ( ( () otherlv_1= 'hoistA' ( (lv_value_2_0= RULE_ID ) ) otherlv_3= ';' ) | (otherlv_4= 'hoistB' ( (lv_x_5_0= RULE_ID ) ) otherlv_6= ';' ) ) ;
+    // InternalASTConversionSimple.g:1597:1: ruleHoistingActionNew returns [EObject current=null] : ( ( () otherlv_1= 'hoistA' ( (lv_value_2_0= RULE_ID ) ) otherlv_3= ';' ) | (otherlv_4= 'hoistB' ( (lv_x_5_0= RULE_ID ) ) otherlv_6= ';' ) ) ;
     public final EObject ruleHoistingActionNew() throws RecognitionException {
         EObject current = null;
 
@@ -3564,34 +3807,34 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
         	enterRule();
 
         try {
-            // InternalASTConversionSimple.g:1488:2: ( ( ( () otherlv_1= 'hoistA' ( (lv_value_2_0= RULE_ID ) ) otherlv_3= ';' ) | (otherlv_4= 'hoistB' ( (lv_x_5_0= RULE_ID ) ) otherlv_6= ';' ) ) )
-            // InternalASTConversionSimple.g:1489:2: ( ( () otherlv_1= 'hoistA' ( (lv_value_2_0= RULE_ID ) ) otherlv_3= ';' ) | (otherlv_4= 'hoistB' ( (lv_x_5_0= RULE_ID ) ) otherlv_6= ';' ) )
+            // InternalASTConversionSimple.g:1603:2: ( ( ( () otherlv_1= 'hoistA' ( (lv_value_2_0= RULE_ID ) ) otherlv_3= ';' ) | (otherlv_4= 'hoistB' ( (lv_x_5_0= RULE_ID ) ) otherlv_6= ';' ) ) )
+            // InternalASTConversionSimple.g:1604:2: ( ( () otherlv_1= 'hoistA' ( (lv_value_2_0= RULE_ID ) ) otherlv_3= ';' ) | (otherlv_4= 'hoistB' ( (lv_x_5_0= RULE_ID ) ) otherlv_6= ';' ) )
             {
-            // InternalASTConversionSimple.g:1489:2: ( ( () otherlv_1= 'hoistA' ( (lv_value_2_0= RULE_ID ) ) otherlv_3= ';' ) | (otherlv_4= 'hoistB' ( (lv_x_5_0= RULE_ID ) ) otherlv_6= ';' ) )
-            int alt13=2;
-            int LA13_0 = input.LA(1);
+            // InternalASTConversionSimple.g:1604:2: ( ( () otherlv_1= 'hoistA' ( (lv_value_2_0= RULE_ID ) ) otherlv_3= ';' ) | (otherlv_4= 'hoistB' ( (lv_x_5_0= RULE_ID ) ) otherlv_6= ';' ) )
+            int alt14=2;
+            int LA14_0 = input.LA(1);
 
-            if ( (LA13_0==30) ) {
-                alt13=1;
+            if ( (LA14_0==30) ) {
+                alt14=1;
             }
-            else if ( (LA13_0==31) ) {
-                alt13=2;
+            else if ( (LA14_0==31) ) {
+                alt14=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 13, 0, input);
+                    new NoViableAltException("", 14, 0, input);
 
                 throw nvae;
             }
-            switch (alt13) {
+            switch (alt14) {
                 case 1 :
-                    // InternalASTConversionSimple.g:1490:3: ( () otherlv_1= 'hoistA' ( (lv_value_2_0= RULE_ID ) ) otherlv_3= ';' )
+                    // InternalASTConversionSimple.g:1605:3: ( () otherlv_1= 'hoistA' ( (lv_value_2_0= RULE_ID ) ) otherlv_3= ';' )
                     {
-                    // InternalASTConversionSimple.g:1490:3: ( () otherlv_1= 'hoistA' ( (lv_value_2_0= RULE_ID ) ) otherlv_3= ';' )
-                    // InternalASTConversionSimple.g:1491:4: () otherlv_1= 'hoistA' ( (lv_value_2_0= RULE_ID ) ) otherlv_3= ';'
+                    // InternalASTConversionSimple.g:1605:3: ( () otherlv_1= 'hoistA' ( (lv_value_2_0= RULE_ID ) ) otherlv_3= ';' )
+                    // InternalASTConversionSimple.g:1606:4: () otherlv_1= 'hoistA' ( (lv_value_2_0= RULE_ID ) ) otherlv_3= ';'
                     {
-                    // InternalASTConversionSimple.g:1491:4: ()
-                    // InternalASTConversionSimple.g:1492:5: 
+                    // InternalASTConversionSimple.g:1606:4: ()
+                    // InternalASTConversionSimple.g:1607:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -3605,11 +3848,11 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
                     				newLeafNode(otherlv_1, grammarAccess.getHoistingActionNewAccess().getHoistAKeyword_0_1());
                     			
-                    // InternalASTConversionSimple.g:1502:4: ( (lv_value_2_0= RULE_ID ) )
-                    // InternalASTConversionSimple.g:1503:5: (lv_value_2_0= RULE_ID )
+                    // InternalASTConversionSimple.g:1617:4: ( (lv_value_2_0= RULE_ID ) )
+                    // InternalASTConversionSimple.g:1618:5: (lv_value_2_0= RULE_ID )
                     {
-                    // InternalASTConversionSimple.g:1503:5: (lv_value_2_0= RULE_ID )
-                    // InternalASTConversionSimple.g:1504:6: lv_value_2_0= RULE_ID
+                    // InternalASTConversionSimple.g:1618:5: (lv_value_2_0= RULE_ID )
+                    // InternalASTConversionSimple.g:1619:6: lv_value_2_0= RULE_ID
                     {
                     lv_value_2_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_10); 
 
@@ -3642,20 +3885,20 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
                     }
                     break;
                 case 2 :
-                    // InternalASTConversionSimple.g:1526:3: (otherlv_4= 'hoistB' ( (lv_x_5_0= RULE_ID ) ) otherlv_6= ';' )
+                    // InternalASTConversionSimple.g:1641:3: (otherlv_4= 'hoistB' ( (lv_x_5_0= RULE_ID ) ) otherlv_6= ';' )
                     {
-                    // InternalASTConversionSimple.g:1526:3: (otherlv_4= 'hoistB' ( (lv_x_5_0= RULE_ID ) ) otherlv_6= ';' )
-                    // InternalASTConversionSimple.g:1527:4: otherlv_4= 'hoistB' ( (lv_x_5_0= RULE_ID ) ) otherlv_6= ';'
+                    // InternalASTConversionSimple.g:1641:3: (otherlv_4= 'hoistB' ( (lv_x_5_0= RULE_ID ) ) otherlv_6= ';' )
+                    // InternalASTConversionSimple.g:1642:4: otherlv_4= 'hoistB' ( (lv_x_5_0= RULE_ID ) ) otherlv_6= ';'
                     {
                     otherlv_4=(Token)match(input,31,FollowSets000.FOLLOW_9); 
 
                     				newLeafNode(otherlv_4, grammarAccess.getHoistingActionNewAccess().getHoistBKeyword_1_0());
                     			
-                    // InternalASTConversionSimple.g:1531:4: ( (lv_x_5_0= RULE_ID ) )
-                    // InternalASTConversionSimple.g:1532:5: (lv_x_5_0= RULE_ID )
+                    // InternalASTConversionSimple.g:1646:4: ( (lv_x_5_0= RULE_ID ) )
+                    // InternalASTConversionSimple.g:1647:5: (lv_x_5_0= RULE_ID )
                     {
-                    // InternalASTConversionSimple.g:1532:5: (lv_x_5_0= RULE_ID )
-                    // InternalASTConversionSimple.g:1533:6: lv_x_5_0= RULE_ID
+                    // InternalASTConversionSimple.g:1647:5: (lv_x_5_0= RULE_ID )
+                    // InternalASTConversionSimple.g:1648:6: lv_x_5_0= RULE_ID
                     {
                     lv_x_5_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_10); 
 
@@ -3710,7 +3953,7 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
 
 
     // $ANTLR start "ruleChangeKind"
-    // InternalASTConversionSimple.g:1558:1: ruleChangeKind returns [Enumerator current=null] : ( (enumLiteral_0= 'add' ) | (enumLiteral_1= 'move' ) | (enumLiteral_2= 'remove' ) ) ;
+    // InternalASTConversionSimple.g:1673:1: ruleChangeKind returns [Enumerator current=null] : ( (enumLiteral_0= 'add' ) | (enumLiteral_1= 'move' ) | (enumLiteral_2= 'remove' ) ) ;
     public final Enumerator ruleChangeKind() throws RecognitionException {
         Enumerator current = null;
 
@@ -3722,40 +3965,40 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
         	enterRule();
 
         try {
-            // InternalASTConversionSimple.g:1564:2: ( ( (enumLiteral_0= 'add' ) | (enumLiteral_1= 'move' ) | (enumLiteral_2= 'remove' ) ) )
-            // InternalASTConversionSimple.g:1565:2: ( (enumLiteral_0= 'add' ) | (enumLiteral_1= 'move' ) | (enumLiteral_2= 'remove' ) )
+            // InternalASTConversionSimple.g:1679:2: ( ( (enumLiteral_0= 'add' ) | (enumLiteral_1= 'move' ) | (enumLiteral_2= 'remove' ) ) )
+            // InternalASTConversionSimple.g:1680:2: ( (enumLiteral_0= 'add' ) | (enumLiteral_1= 'move' ) | (enumLiteral_2= 'remove' ) )
             {
-            // InternalASTConversionSimple.g:1565:2: ( (enumLiteral_0= 'add' ) | (enumLiteral_1= 'move' ) | (enumLiteral_2= 'remove' ) )
-            int alt14=3;
+            // InternalASTConversionSimple.g:1680:2: ( (enumLiteral_0= 'add' ) | (enumLiteral_1= 'move' ) | (enumLiteral_2= 'remove' ) )
+            int alt15=3;
             switch ( input.LA(1) ) {
             case 32:
                 {
-                alt14=1;
+                alt15=1;
                 }
                 break;
             case 33:
                 {
-                alt14=2;
+                alt15=2;
                 }
                 break;
             case 34:
                 {
-                alt14=3;
+                alt15=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 14, 0, input);
+                    new NoViableAltException("", 15, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt14) {
+            switch (alt15) {
                 case 1 :
-                    // InternalASTConversionSimple.g:1566:3: (enumLiteral_0= 'add' )
+                    // InternalASTConversionSimple.g:1681:3: (enumLiteral_0= 'add' )
                     {
-                    // InternalASTConversionSimple.g:1566:3: (enumLiteral_0= 'add' )
-                    // InternalASTConversionSimple.g:1567:4: enumLiteral_0= 'add'
+                    // InternalASTConversionSimple.g:1681:3: (enumLiteral_0= 'add' )
+                    // InternalASTConversionSimple.g:1682:4: enumLiteral_0= 'add'
                     {
                     enumLiteral_0=(Token)match(input,32,FollowSets000.FOLLOW_2); 
 
@@ -3769,10 +4012,10 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
                     }
                     break;
                 case 2 :
-                    // InternalASTConversionSimple.g:1574:3: (enumLiteral_1= 'move' )
+                    // InternalASTConversionSimple.g:1689:3: (enumLiteral_1= 'move' )
                     {
-                    // InternalASTConversionSimple.g:1574:3: (enumLiteral_1= 'move' )
-                    // InternalASTConversionSimple.g:1575:4: enumLiteral_1= 'move'
+                    // InternalASTConversionSimple.g:1689:3: (enumLiteral_1= 'move' )
+                    // InternalASTConversionSimple.g:1690:4: enumLiteral_1= 'move'
                     {
                     enumLiteral_1=(Token)match(input,33,FollowSets000.FOLLOW_2); 
 
@@ -3786,10 +4029,10 @@ public class InternalASTConversionSimpleParser extends AbstractInternalAntlrPars
                     }
                     break;
                 case 3 :
-                    // InternalASTConversionSimple.g:1582:3: (enumLiteral_2= 'remove' )
+                    // InternalASTConversionSimple.g:1697:3: (enumLiteral_2= 'remove' )
                     {
-                    // InternalASTConversionSimple.g:1582:3: (enumLiteral_2= 'remove' )
-                    // InternalASTConversionSimple.g:1583:4: enumLiteral_2= 'remove'
+                    // InternalASTConversionSimple.g:1697:3: (enumLiteral_2= 'remove' )
+                    // InternalASTConversionSimple.g:1698:4: enumLiteral_2= 'remove'
                     {
                     enumLiteral_2=(Token)match(input,34,FollowSets000.FOLLOW_2); 
 

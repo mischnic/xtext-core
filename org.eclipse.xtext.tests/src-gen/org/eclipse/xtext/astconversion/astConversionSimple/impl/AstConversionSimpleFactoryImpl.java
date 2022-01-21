@@ -83,6 +83,7 @@ public class AstConversionSimpleFactoryImpl extends EFactoryImpl implements AstC
       case AstConversionSimplePackage.LISTS: return createLists();
       case AstConversionSimplePackage.MAP_ENTRY: return createMapEntry();
       case AstConversionSimplePackage.MAP_ENTRY_CUSTOM: return createMapEntryCustom();
+      case AstConversionSimplePackage.MAP_ENTRY_CUSTOM2: return createMapEntryCustom2();
       case AstConversionSimplePackage.HOISTING_ALTERNATIVE: return createHoistingAlternative();
       case AstConversionSimplePackage.X: return createX();
       case AstConversionSimplePackage.Y: return createY();
@@ -330,6 +331,18 @@ public class AstConversionSimpleFactoryImpl extends EFactoryImpl implements AstC
   {
     MapEntryCustomImpl mapEntryCustom = new MapEntryCustomImpl();
     return mapEntryCustom;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MapEntryCustom2 createMapEntryCustom2()
+  {
+    MapEntryCustom2Impl mapEntryCustom2 = new MapEntryCustom2Impl();
+    return mapEntryCustom2;
   }
 
   /**

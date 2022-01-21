@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.Lists#getB <em>B</em>}</li>
  *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.Lists#getC <em>C</em>}</li>
  *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.Lists#getD <em>D</em>}</li>
+ *   <li>{@link org.eclipse.xtext.astconversion.astConversionSimple.Lists#getE <em>E</em>}</li>
  * </ul>
  *
  * @see org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage#getLists()
@@ -95,5 +96,27 @@ public interface Lists extends EObject
    * @generated
    */
   EList<MapEntryCustom> getD();
+
+  /**
+   * Returns the value of the '<em><b>E</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>E</em>' containment reference.
+   * @see #setE(MapEntryCustom2)
+   * @see org.eclipse.xtext.astconversion.astConversionSimple.AstConversionSimplePackage#getLists_E()
+   * @model containment="true"
+   * @generated
+   */
+  MapEntryCustom2 getE();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.xtext.astconversion.astConversionSimple.Lists#getE <em>E</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>E</em>' containment reference.
+   * @see #getE()
+   * @generated
+   */
+  void setE(MapEntryCustom2 value);
 
 } // Lists
