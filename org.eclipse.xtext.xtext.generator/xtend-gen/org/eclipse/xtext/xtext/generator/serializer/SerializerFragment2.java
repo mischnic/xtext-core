@@ -1181,7 +1181,7 @@ public class SerializerFragment2 extends AbstractStubGeneratingFragment {
     final GeneratedJavaFileAccess javaFile = this.fileAccessFactory.createGeneratedJavaFile(clazz);
     javaFile.setResourceSet(this.getLanguage().getResourceSet());
     final List<EqualAmbiguousTransitions> elements = this._syntacticSequencerExtensions.getAllAmbiguousTransitionsBySyntax();
-    final Iterable<List<EqualAmbiguousTransitions>> partitions = Iterables.<EqualAmbiguousTransitions>partition(elements, 20);
+    final Iterable<List<EqualAmbiguousTransitions>> partitions = Iterables.<EqualAmbiguousTransitions>partition(elements, 25);
     StringConcatenationClient _client = new StringConcatenationClient() {
       @Override
       protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
@@ -1272,44 +1272,52 @@ public class SerializerFragment2 extends AbstractStubGeneratingFragment {
         _builder.append("\t");
         _builder.append("}");
         _builder.newLine();
-        _builder.append("  ");
-        _builder.newLine();
         {
-          Iterable<Pair<Integer, List<EqualAmbiguousTransitions>>> _indexed_1 = IterableExtensions.<List<EqualAmbiguousTransitions>>indexed(partitions);
-          for(final Pair<Integer, List<EqualAmbiguousTransitions>> partition_1 : _indexed_1) {
-            _builder.append("\t\t\t  \t");
-            _builder.append("@");
-            _builder.append(Inject.class, "\t\t\t  \t");
-            _builder.newLineIfNotEmpty();
-            _builder.append("private void init");
-            Integer _key_1 = partition_1.getKey();
-            _builder.append(_key_1);
-            _builder.append("(");
-            _builder.append(IGrammarAccess.class);
-            _builder.append(" access) {");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("grammarAccess = (");
-            TypeReference _grammarAccess_2 = SerializerFragment2.this._grammarAccessExtensions.getGrammarAccess(SerializerFragment2.this.getGrammar());
-            _builder.append(_grammarAccess_2, "\t");
-            _builder.append(") access;");
-            _builder.newLineIfNotEmpty();
+          int _size_1 = IterableExtensions.size(partitions);
+          boolean _greaterThan_1 = (_size_1 > 1);
+          if (_greaterThan_1) {
             {
-              List<EqualAmbiguousTransitions> _value = partition_1.getValue();
-              for(final EqualAmbiguousTransitions element : _value) {
+              Iterable<Pair<Integer, List<EqualAmbiguousTransitions>>> _indexed_1 = IterableExtensions.<List<EqualAmbiguousTransitions>>indexed(partitions);
+              for(final Pair<Integer, List<EqualAmbiguousTransitions>> partition_1 : _indexed_1) {
                 _builder.append("\t");
-                _builder.append("match_");
-                String _identifier_2 = element.getIdentifier();
-                _builder.append(_identifier_2, "\t");
-                _builder.append(" = ");
-                StringConcatenationClient _elementAliasToConstructor_1 = SerializerFragment2.this._syntacticSequencerExtensions.elementAliasToConstructor(element.getElementAlias());
-                _builder.append(_elementAliasToConstructor_1, "\t");
-                _builder.append(";");
+                _builder.append("private void init");
+                Integer _key_1 = partition_1.getKey();
+                _builder.append(_key_1, "\t");
+                _builder.append("(");
+                _builder.append(IGrammarAccess.class, "\t");
+                _builder.append(" access) {");
                 _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t");
+                _builder.append("grammarAccess = (");
+                TypeReference _grammarAccess_2 = SerializerFragment2.this._grammarAccessExtensions.getGrammarAccess(SerializerFragment2.this.getGrammar());
+                _builder.append(_grammarAccess_2, "\t\t");
+                _builder.append(") access;");
+                _builder.newLineIfNotEmpty();
+                {
+                  List<EqualAmbiguousTransitions> _value = partition_1.getValue();
+                  for(final EqualAmbiguousTransitions element : _value) {
+                    _builder.append("\t");
+                    _builder.append("\t");
+                    _builder.append("match_");
+                    String _identifier_2 = element.getIdentifier();
+                    _builder.append(_identifier_2, "\t\t");
+                    _builder.append(" = ");
+                    StringConcatenationClient _elementAliasToConstructor_1 = SerializerFragment2.this._syntacticSequencerExtensions.elementAliasToConstructor(element.getElementAlias());
+                    _builder.append(_elementAliasToConstructor_1, "\t\t");
+                    _builder.append(";");
+                    _builder.newLineIfNotEmpty();
+                  }
+                }
+                _builder.append("\t");
+                _builder.append("}");
+                _builder.newLine();
+                _builder.append("\t");
+                _builder.newLine();
               }
             }
-            _builder.append("}");
-            _builder.newLine();
+          } else {
+            _builder.append("\t");
             _builder.newLine();
           }
         }

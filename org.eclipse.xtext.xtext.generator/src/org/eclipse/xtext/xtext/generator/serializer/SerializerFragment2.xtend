@@ -448,7 +448,7 @@ class SerializerFragment2 extends AbstractStubGeneratingFragment {
 		javaFile.resourceSet = language.resourceSet
     
 	    val elements = allAmbiguousTransitionsBySyntax
-	    val partitions = Iterables.partition(elements, 20)
+	    val partitions = Iterables.partition(elements, 25)
 		
 		javaFile.content = '''
 			public «IF isGenerateStub»abstract «ENDIF»class «clazz.simpleName» extends «AbstractSyntacticSequencer» {
@@ -471,17 +471,19 @@ class SerializerFragment2 extends AbstractStubGeneratingFragment {
 						«ENDFOR»
 					«ENDIF»
 				}
-			  
-			  «FOR partition : partitions.indexed»
-			  	@«Inject»
-				private void init«partition.key»(«IGrammarAccess» access) {
-					grammarAccess = («grammar.grammarAccess») access;
-					«FOR element : partition.value»
-						match_«element.identifier» = «element.elementAlias.elementAliasToConstructor»;
-					«ENDFOR»
-				}
-				
+				«IF partitions.size > 1»
+					«FOR partition : partitions.indexed»
+					private void init«partition.key»(«IGrammarAccess» access) {
+						grammarAccess = («grammar.grammarAccess») access;
+						«FOR element : partition.value»
+							match_«element.identifier» = «element.elementAlias.elementAliasToConstructor»;
+						«ENDFOR»
+					}
+					
 				«ENDFOR»
+				«ELSE»
+				
+				«ENDIF»
 				«genGetUnassignedRuleCallTokens»
 				
 				«FOR rule : unassignedCalledTokenRules SEPARATOR "\n"»
